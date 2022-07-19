@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'ui_patients.ui'
+## Form generated from reading UI file 'ui_patients_res.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.3.1
 ##
@@ -15,14 +15,13 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QCheckBox, QFrame, QHBoxLayout,
-    QLabel, QPushButton, QSizePolicy, QSpacerItem,
-    QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QApplication, QCheckBox, QFrame, QGridLayout,
+    QHBoxLayout, QLabel, QLineEdit, QPushButton,
+    QSizePolicy, QSpacerItem, QVBoxLayout, QWidget)
 
 from promoted.check_button import CheckButton
 from promoted.line_edit import LineEdit
 from promoted.menu_button import MenuButton
-from promoted.pagination import Pagination
 from promoted.search_line import SearchLine
 
 class Ui_patients(object):
@@ -386,15 +385,15 @@ class Ui_patients(object):
 
         self.bt_organizer_1 = CheckButton(self.frame_12)
         self.bt_organizer_1.setObjectName(u"bt_organizer_1")
-        self.bt_organizer_1.setMinimumSize(QSize(25, 25))
-        self.bt_organizer_1.setMaximumSize(QSize(25, 25))
+        self.bt_organizer_1.setMinimumSize(QSize(30, 30))
+        self.bt_organizer_1.setMaximumSize(QSize(30, 30))
 
         self.horizontalLayout_3.addWidget(self.bt_organizer_1)
 
         self.bt_organizer_2 = CheckButton(self.frame_12)
         self.bt_organizer_2.setObjectName(u"bt_organizer_2")
-        self.bt_organizer_2.setMinimumSize(QSize(25, 25))
-        self.bt_organizer_2.setMaximumSize(QSize(25, 25))
+        self.bt_organizer_2.setMinimumSize(QSize(30, 30))
+        self.bt_organizer_2.setMaximumSize(QSize(30, 30))
 
         self.horizontalLayout_3.addWidget(self.bt_organizer_2)
 
@@ -404,15 +403,15 @@ class Ui_patients(object):
 
         self.bt_organizer_3 = CheckButton(self.frame_12)
         self.bt_organizer_3.setObjectName(u"bt_organizer_3")
-        self.bt_organizer_3.setMinimumSize(QSize(25, 25))
-        self.bt_organizer_3.setMaximumSize(QSize(25, 25))
+        self.bt_organizer_3.setMinimumSize(QSize(30, 30))
+        self.bt_organizer_3.setMaximumSize(QSize(30, 30))
 
         self.horizontalLayout_3.addWidget(self.bt_organizer_3)
 
         self.bt_organizer_4 = CheckButton(self.frame_12)
         self.bt_organizer_4.setObjectName(u"bt_organizer_4")
-        self.bt_organizer_4.setMinimumSize(QSize(25, 25))
-        self.bt_organizer_4.setMaximumSize(QSize(25, 25))
+        self.bt_organizer_4.setMinimumSize(QSize(30, 30))
+        self.bt_organizer_4.setMaximumSize(QSize(30, 30))
 
         self.horizontalLayout_3.addWidget(self.bt_organizer_4)
 
@@ -422,8 +421,8 @@ class Ui_patients(object):
 
         self.bt_organizer_5 = CheckButton(self.frame_12)
         self.bt_organizer_5.setObjectName(u"bt_organizer_5")
-        self.bt_organizer_5.setMinimumSize(QSize(25, 25))
-        self.bt_organizer_5.setMaximumSize(QSize(25, 25))
+        self.bt_organizer_5.setMinimumSize(QSize(30, 30))
+        self.bt_organizer_5.setMaximumSize(QSize(30, 30))
 
         self.horizontalLayout_3.addWidget(self.bt_organizer_5)
 
@@ -438,10 +437,6 @@ class Ui_patients(object):
 
         self.horizontalLayout_3.addItem(self.horizontalSpacer_6)
 
-        self.horizontalLayout_3.setStretch(0, 2)
-        self.horizontalLayout_3.setStretch(3, 1)
-        self.horizontalLayout_3.setStretch(6, 1)
-        self.horizontalLayout_3.setStretch(9, 2)
 
         self.verticalLayout_5.addWidget(self.frame_12)
 
@@ -451,10 +446,155 @@ class Ui_patients(object):
 
         self.verticalLayout_3.addWidget(self.frame_7)
 
-        self.c_pagination = Pagination(self.frame)
+        self.c_pagination = QFrame(self.frame)
         self.c_pagination.setObjectName(u"c_pagination")
         self.c_pagination.setFrameShape(QFrame.StyledPanel)
         self.c_pagination.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_15 = QVBoxLayout(self.c_pagination)
+        self.verticalLayout_15.setObjectName(u"verticalLayout_15")
+        self.c_cards = QFrame(self.c_pagination)
+        self.c_cards.setObjectName(u"c_cards")
+        self.c_cards.setFrameShape(QFrame.StyledPanel)
+        self.c_cards.setFrameShadow(QFrame.Raised)
+        self.gridLayout = QGridLayout(self.c_cards)
+        self.gridLayout.setObjectName(u"gridLayout")
+        self.pushButton_11 = QPushButton(self.c_cards)
+        self.pushButton_11.setObjectName(u"pushButton_11")
+        self.pushButton_11.setMinimumSize(QSize(100, 100))
+        self.pushButton_11.setMaximumSize(QSize(150, 150))
+
+        self.gridLayout.addWidget(self.pushButton_11, 2, 3, 1, 1)
+
+        self.pushButton_13 = QPushButton(self.c_cards)
+        self.pushButton_13.setObjectName(u"pushButton_13")
+        self.pushButton_13.setMinimumSize(QSize(100, 100))
+        self.pushButton_13.setMaximumSize(QSize(150, 150))
+
+        self.gridLayout.addWidget(self.pushButton_13, 0, 3, 1, 1)
+
+        self.pushButton_16 = QPushButton(self.c_cards)
+        self.pushButton_16.setObjectName(u"pushButton_16")
+        self.pushButton_16.setMinimumSize(QSize(100, 100))
+        self.pushButton_16.setMaximumSize(QSize(150, 150))
+
+        self.gridLayout.addWidget(self.pushButton_16, 0, 1, 1, 1)
+
+        self.pushButton_10 = QPushButton(self.c_cards)
+        self.pushButton_10.setObjectName(u"pushButton_10")
+        self.pushButton_10.setMinimumSize(QSize(100, 100))
+        self.pushButton_10.setMaximumSize(QSize(150, 150))
+
+        self.gridLayout.addWidget(self.pushButton_10, 2, 2, 1, 1)
+
+        self.pushButton_12 = QPushButton(self.c_cards)
+        self.pushButton_12.setObjectName(u"pushButton_12")
+        self.pushButton_12.setMinimumSize(QSize(100, 100))
+        self.pushButton_12.setMaximumSize(QSize(150, 150))
+
+        self.gridLayout.addWidget(self.pushButton_12, 0, 2, 1, 1)
+
+        self.pushButton_14 = QPushButton(self.c_cards)
+        self.pushButton_14.setObjectName(u"pushButton_14")
+        self.pushButton_14.setMinimumSize(QSize(100, 100))
+        self.pushButton_14.setMaximumSize(QSize(150, 150))
+
+        self.gridLayout.addWidget(self.pushButton_14, 1, 2, 1, 1)
+
+        self.pushButton_15 = QPushButton(self.c_cards)
+        self.pushButton_15.setObjectName(u"pushButton_15")
+        self.pushButton_15.setMinimumSize(QSize(100, 100))
+        self.pushButton_15.setMaximumSize(QSize(150, 150))
+
+        self.gridLayout.addWidget(self.pushButton_15, 1, 3, 1, 1)
+
+        self.pushButton_17 = QPushButton(self.c_cards)
+        self.pushButton_17.setObjectName(u"pushButton_17")
+        self.pushButton_17.setMinimumSize(QSize(100, 100))
+        self.pushButton_17.setMaximumSize(QSize(150, 150))
+
+        self.gridLayout.addWidget(self.pushButton_17, 0, 0, 1, 1)
+
+        self.pushButton_18 = QPushButton(self.c_cards)
+        self.pushButton_18.setObjectName(u"pushButton_18")
+        self.pushButton_18.setMinimumSize(QSize(100, 100))
+        self.pushButton_18.setMaximumSize(QSize(150, 150))
+
+        self.gridLayout.addWidget(self.pushButton_18, 1, 0, 1, 1)
+
+        self.pushButton_19 = QPushButton(self.c_cards)
+        self.pushButton_19.setObjectName(u"pushButton_19")
+        self.pushButton_19.setMinimumSize(QSize(100, 100))
+        self.pushButton_19.setMaximumSize(QSize(150, 150))
+
+        self.gridLayout.addWidget(self.pushButton_19, 1, 1, 1, 1)
+
+        self.pushButton_20 = QPushButton(self.c_cards)
+        self.pushButton_20.setObjectName(u"pushButton_20")
+        self.pushButton_20.setMinimumSize(QSize(100, 100))
+        self.pushButton_20.setMaximumSize(QSize(150, 150))
+
+        self.gridLayout.addWidget(self.pushButton_20, 2, 0, 1, 1)
+
+        self.pushButton_21 = QPushButton(self.c_cards)
+        self.pushButton_21.setObjectName(u"pushButton_21")
+        self.pushButton_21.setMinimumSize(QSize(100, 100))
+        self.pushButton_21.setMaximumSize(QSize(150, 150))
+
+        self.gridLayout.addWidget(self.pushButton_21, 2, 1, 1, 1)
+
+        self.gridLayout.setRowStretch(0, 1)
+        self.gridLayout.setRowStretch(1, 1)
+        self.gridLayout.setRowStretch(2, 1)
+        self.gridLayout.setColumnStretch(0, 1)
+        self.gridLayout.setColumnStretch(1, 1)
+        self.gridLayout.setColumnStretch(2, 1)
+        self.gridLayout.setColumnStretch(3, 1)
+        self.gridLayout.setColumnMinimumWidth(0, 1)
+        self.gridLayout.setColumnMinimumWidth(1, 1)
+        self.gridLayout.setColumnMinimumWidth(2, 1)
+        self.gridLayout.setColumnMinimumWidth(3, 1)
+        self.gridLayout.setRowMinimumHeight(0, 1)
+        self.gridLayout.setRowMinimumHeight(1, 1)
+        self.gridLayout.setRowMinimumHeight(2, 1)
+
+        self.verticalLayout_15.addWidget(self.c_cards)
+
+        self.c_controllers = QFrame(self.c_pagination)
+        self.c_controllers.setObjectName(u"c_controllers")
+        self.c_controllers.setMaximumSize(QSize(16777215, 35))
+        self.c_controllers.setFrameShape(QFrame.StyledPanel)
+        self.c_controllers.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_5 = QHBoxLayout(self.c_controllers)
+        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
+        self.horizontalLayout_5.setContentsMargins(-1, 0, -1, 0)
+        self.bt_back_page = QPushButton(self.c_controllers)
+        self.bt_back_page.setObjectName(u"bt_back_page")
+        self.bt_back_page.setMinimumSize(QSize(30, 30))
+        self.bt_back_page.setMaximumSize(QSize(30, 30))
+
+        self.horizontalLayout_5.addWidget(self.bt_back_page)
+
+        self.i_actual_page = QLineEdit(self.c_controllers)
+        self.i_actual_page.setObjectName(u"i_actual_page")
+        self.i_actual_page.setMaximumSize(QSize(40, 16777215))
+
+        self.horizontalLayout_5.addWidget(self.i_actual_page)
+
+        self.lb_number_of_pages = QLabel(self.c_controllers)
+        self.lb_number_of_pages.setObjectName(u"lb_number_of_pages")
+
+        self.horizontalLayout_5.addWidget(self.lb_number_of_pages)
+
+        self.bt_next_page = QPushButton(self.c_controllers)
+        self.bt_next_page.setObjectName(u"bt_next_page")
+        self.bt_next_page.setMinimumSize(QSize(30, 30))
+        self.bt_next_page.setMaximumSize(QSize(30, 30))
+
+        self.horizontalLayout_5.addWidget(self.bt_next_page)
+
+
+        self.verticalLayout_15.addWidget(self.c_controllers, 0, Qt.AlignHCenter)
+
 
         self.verticalLayout_3.addWidget(self.c_pagination)
 
@@ -501,5 +641,20 @@ class Ui_patients(object):
         self.bt_organizer_4.setText(QCoreApplication.translate("patients", u"MM", None))
         self.bt_organizer_5.setText(QCoreApplication.translate("patients", u"MM", None))
         self.bt_organizer_6.setText(QCoreApplication.translate("patients", u"MM", None))
+        self.pushButton_11.setText(QCoreApplication.translate("patients", u"MM", None))
+        self.pushButton_13.setText(QCoreApplication.translate("patients", u"MM", None))
+        self.pushButton_16.setText(QCoreApplication.translate("patients", u"MM", None))
+        self.pushButton_10.setText(QCoreApplication.translate("patients", u"MM", None))
+        self.pushButton_12.setText(QCoreApplication.translate("patients", u"MM", None))
+        self.pushButton_14.setText(QCoreApplication.translate("patients", u"MM", None))
+        self.pushButton_15.setText(QCoreApplication.translate("patients", u"MM", None))
+        self.pushButton_17.setText(QCoreApplication.translate("patients", u"MM", None))
+        self.pushButton_18.setText(QCoreApplication.translate("patients", u"MM", None))
+        self.pushButton_19.setText(QCoreApplication.translate("patients", u"MM", None))
+        self.pushButton_20.setText(QCoreApplication.translate("patients", u"MM", None))
+        self.pushButton_21.setText(QCoreApplication.translate("patients", u"MM", None))
+        self.bt_back_page.setText(QCoreApplication.translate("patients", u"MM", None))
+        self.lb_number_of_pages.setText(QCoreApplication.translate("patients", u"of 250", None))
+        self.bt_next_page.setText(QCoreApplication.translate("patients", u"MM", None))
     # retranslateUi
 

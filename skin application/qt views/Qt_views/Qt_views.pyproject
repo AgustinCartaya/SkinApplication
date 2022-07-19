@@ -7,6 +7,8 @@
     "promoted/menu_button.py",
     "promoted/line_edit.py",
     "promoted/search_line.py",
+    "promoted/pagination.py",
+    "promoted/card_button.py",
     "styles/global.css",
     "login.py",
     "ui_login.ui",
@@ -19,5 +21,8 @@
     "ui_add_patient.py",
     "patients.py",
     "ui_patients.ui",
-    "ui_patients.py"]
+    "ui_patients.py",
+    "ui_patients_res.ui",
+    "ui_patients_res.py"]
+
 }

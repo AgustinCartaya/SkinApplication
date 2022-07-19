@@ -1,21 +1,23 @@
 from PySide6.QtWidgets import QPushButton
-from PySide6.QtWidgets import QApplication
+# from PySide6.QtWidgets import QApplication
+
 
 class MenuButton(QPushButton):
+
     def __init__(self, *args, **kwards):
-        QPushButton.__init__( self, *args, **kwards)
+        QPushButton.__init__(self, *args, **kwards)
 #        self.clicked.connect(self.switch)
 #        self.select(False)
 
     def set_position(self, pos):
         if pos == 1:
-            self.setProperty("position","top-left")
+            self.setProperty("position", "top-left")
         elif pos == 2:
-            self.setProperty("position","top-right")
+            self.setProperty("position", "top-right")
         elif pos == 3:
-            self.setProperty("position","bottom-right")
+            self.setProperty("position", "bottom-right")
         elif pos == 4:
-            self.setProperty("position","bottom-left")
+            self.setProperty("position", "bottom-left")
 
 #    def is_selected(self):
 #        return self.property("selected")

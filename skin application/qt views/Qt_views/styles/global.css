@@ -136,6 +136,7 @@ QLineEdit::hover
 }
 
 .SearchLine > QLineEdit{
+    border: None;
     background-color: transparent;
 }
 
