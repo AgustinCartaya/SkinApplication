@@ -26,7 +26,7 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(Patients())
 
     def load_style_sheet(self):
-        _file = open("styles.css")
+        _file = open("styles/global.css")
         self.setStyleSheet( _file.read())
 
 

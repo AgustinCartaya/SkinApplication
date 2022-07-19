@@ -17,6 +17,15 @@
    <string notr="true"/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
    <item>
     <widget class="QFrame" name="frame_6">
      <property name="maximumSize">
@@ -31,9 +40,24 @@
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <layout class="QHBoxLayout" name="horizontalLayout">
+     <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,4,0,3,0">
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
       <item>
-       <widget class="QPushButton" name="pushButton">
+       <widget class="MenuButton" name="bt_back">
+        <property name="minimumSize">
+         <size>
+          <width>50</width>
+          <height>50</height>
+         </size>
+        </property>
         <property name="text">
          <string>Back</string>
         </property>
@@ -52,14 +76,8 @@
         </property>
        </spacer>
       </item>
-      <item alignment="Qt::AlignHCenter">
-       <widget class="QLabel" name="label_2">
-        <property name="maximumSize">
-         <size>
-          <width>16777215</width>
-          <height>20</height>
-         </size>
-        </property>
+      <item>
+       <widget class="QLabel" name="lb_title">
         <property name="text">
          <string>List of patients</string>
         </property>
@@ -70,6 +88,9 @@
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Expanding</enum>
+        </property>
         <property name="sizeHint" stdset="0">
          <size>
           <width>40</width>
@@ -79,7 +100,13 @@
        </spacer>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_2">
+       <widget class="MenuButton" name="bt_add_new_patient">
+        <property name="minimumSize">
+         <size>
+          <width>150</width>
+          <height>50</height>
+         </size>
+        </property>
         <property name="text">
          <string>Add new patient</string>
         </property>
@@ -97,17 +124,26 @@
       <enum>QFrame::Raised</enum>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <property name="leftMargin">
+       <number>18</number>
+      </property>
+      <property name="topMargin">
+       <number>9</number>
+      </property>
+      <property name="rightMargin">
+       <number>18</number>
+      </property>
       <item>
        <widget class="QFrame" name="frame_2">
         <property name="minimumSize">
          <size>
-          <width>300</width>
+          <width>350</width>
           <height>0</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
-          <width>360</width>
+          <width>380</width>
           <height>16777215</height>
          </size>
         </property>
@@ -119,7 +155,7 @@
         </property>
         <layout class="QVBoxLayout" name="verticalLayout">
          <item alignment="Qt::AlignHCenter">
-          <widget class="QLabel" name="label">
+          <widget class="QLabel" name="lb_filters_title">
            <property name="maximumSize">
             <size>
              <width>16777215</width>
@@ -144,7 +180,7 @@
              <number>0</number>
             </property>
             <item alignment="Qt::AlignLeft">
-             <widget class="QLabel" name="label_5">
+             <widget class="QLabel" name="lb_filter_clinical_attributes">
               <property name="maximumSize">
                <size>
                 <width>16777215</width>
@@ -175,7 +211,7 @@
                 <number>0</number>
                </property>
                <item>
-                <widget class="QLabel" name="label_6">
+                <widget class="QLabel" name="lb_filter_gender">
                  <property name="text">
                   <string>Gender</string>
                  </property>
@@ -197,14 +233,14 @@
                    <number>0</number>
                   </property>
                   <item>
-                   <widget class="QCheckBox" name="checkBox">
+                   <widget class="QCheckBox" name="i_female">
                     <property name="text">
                      <string>Female</string>
                     </property>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QCheckBox" name="checkBox_2">
+                   <widget class="QCheckBox" name="i_male">
                     <property name="text">
                      <string>Male</string>
                     </property>
@@ -248,7 +284,7 @@
                 <number>0</number>
                </property>
                <item>
-                <widget class="QLabel" name="label_9">
+                <widget class="QLabel" name="lb_filter_age">
                  <property name="text">
                   <string>Age</string>
                  </property>
@@ -273,7 +309,7 @@
                    <number>0</number>
                   </property>
                   <item>
-                   <widget class="QLabel" name="label_7">
+                   <widget class="QLabel" name="lb_filter_age_precise">
                     <property name="text">
                      <string>Precise</string>
                     </property>
@@ -298,12 +334,15 @@
                       <number>0</number>
                      </property>
                      <item>
-                      <widget class="QLineEdit" name="lineEdit_3">
+                      <widget class="LineEdit" name="i_agre_precise">
                        <property name="maximumSize">
                         <size>
                          <width>60</width>
                          <height>16777215</height>
                         </size>
+                       </property>
+                       <property name="placeholderText">
+                        <string>E.g: 43</string>
                        </property>
                       </widget>
                      </item>
@@ -332,7 +371,7 @@
                    <number>0</number>
                   </property>
                   <item>
-                   <widget class="QLabel" name="label_8">
+                   <widget class="QLabel" name="lb_age_rangue">
                     <property name="text">
                      <string>Rangue</string>
                     </property>
@@ -378,7 +417,7 @@
                          <number>0</number>
                         </property>
                         <item>
-                         <widget class="QPushButton" name="pushButton_24">
+                         <widget class="CheckButton" name="bt_age_rangue_1">
                           <property name="minimumSize">
                            <size>
                             <width>90</width>
@@ -397,7 +436,7 @@
                          </widget>
                         </item>
                         <item>
-                         <widget class="QPushButton" name="pushButton_25">
+                         <widget class="CheckButton" name="bt_age_rangue_2">
                           <property name="minimumSize">
                            <size>
                             <width>90</width>
@@ -416,7 +455,7 @@
                          </widget>
                         </item>
                         <item>
-                         <widget class="QPushButton" name="pushButton_26">
+                         <widget class="CheckButton" name="bt_age_rangue_3">
                           <property name="minimumSize">
                            <size>
                             <width>90</width>
@@ -451,12 +490,15 @@
                       </widget>
                      </item>
                      <item>
-                      <widget class="QLineEdit" name="lineEdit_4">
+                      <widget class="LineEdit" name="i_age_rangue">
                        <property name="maximumSize">
                         <size>
                          <width>150</width>
                          <height>16777215</height>
                         </size>
+                       </property>
+                       <property name="placeholderText">
+                        <string>E.g: 17 - 32</string>
                        </property>
                       </widget>
                      </item>
@@ -485,7 +527,7 @@
              <number>0</number>
             </property>
             <item>
-             <widget class="QLabel" name="label_10">
+             <widget class="QLabel" name="lb_filter_diagnostic_attributes">
               <property name="maximumSize">
                <size>
                 <width>16777215</width>
@@ -513,21 +555,21 @@
                 <number>0</number>
                </property>
                <item>
-                <widget class="QCheckBox" name="checkBox_3">
+                <widget class="QCheckBox" name="i_bening">
                  <property name="text">
                   <string>Bening (120 / 300)</string>
                  </property>
                 </widget>
                </item>
                <item>
-                <widget class="QCheckBox" name="checkBox_4">
+                <widget class="QCheckBox" name="i_malignant">
                  <property name="text">
                   <string>Malignant (150 / 300)</string>
                  </property>
                 </widget>
                </item>
                <item>
-                <widget class="QCheckBox" name="checkBox_5">
+                <widget class="QCheckBox" name="i_indeterminate">
                  <property name="text">
                   <string>Indeterminate (30 / 300)</string>
                  </property>
@@ -580,16 +622,10 @@
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_4">
             <item alignment="Qt::AlignHCenter">
-             <widget class="QFrame" name="frame_9">
+             <widget class="SearchLine" name="c_search">
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>40</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>16777215</width>
                 <height>40</height>
                </size>
               </property>
@@ -600,27 +636,42 @@
                <enum>QFrame::Raised</enum>
               </property>
               <layout class="QHBoxLayout" name="horizontalLayout_4">
+               <property name="spacing">
+                <number>0</number>
+               </property>
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
                <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
                 <number>0</number>
                </property>
                <property name="bottomMargin">
                 <number>0</number>
                </property>
                <item>
-                <widget class="QPushButton" name="pushButton_9">
+                <widget class="QPushButton" name="pushButton">
+                 <property name="minimumSize">
+                  <size>
+                   <width>30</width>
+                   <height>30</height>
+                  </size>
+                 </property>
                  <property name="maximumSize">
                   <size>
-                   <width>50</width>
+                   <width>60</width>
                    <height>16777215</height>
                   </size>
                  </property>
                  <property name="text">
-                  <string>MM</string>
+                  <string/>
                  </property>
                 </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="lineEdit">
+                <widget class="LineEdit" name="i_search">
                  <property name="minimumSize">
                   <size>
                    <width>300</width>
@@ -684,7 +735,7 @@
                    <number>0</number>
                   </property>
                   <item>
-                   <widget class="QLabel" name="label_3">
+                   <widget class="QLabel" name="lb_organizer_titles">
                     <property name="maximumSize">
                      <size>
                       <width>16777215</width>
@@ -734,7 +785,7 @@
                    </spacer>
                   </item>
                   <item>
-                   <widget class="QPushButton" name="pushButton_6">
+                   <widget class="CheckButton" name="bt_organizer_1">
                     <property name="minimumSize">
                      <size>
                       <width>30</width>
@@ -753,7 +804,7 @@
                    </widget>
                   </item>
                   <item>
-                   <widget class="QPushButton" name="pushButton_5">
+                   <widget class="CheckButton" name="bt_organizer_2">
                     <property name="minimumSize">
                      <size>
                       <width>30</width>
@@ -785,7 +836,7 @@
                    </spacer>
                   </item>
                   <item>
-                   <widget class="QPushButton" name="pushButton_8">
+                   <widget class="CheckButton" name="bt_organizer_3">
                     <property name="minimumSize">
                      <size>
                       <width>30</width>
@@ -804,7 +855,7 @@
                    </widget>
                   </item>
                   <item>
-                   <widget class="QPushButton" name="pushButton_7">
+                   <widget class="CheckButton" name="bt_organizer_4">
                     <property name="minimumSize">
                      <size>
                       <width>30</width>
@@ -836,7 +887,7 @@
                    </spacer>
                   </item>
                   <item>
-                   <widget class="QPushButton" name="pushButton_3">
+                   <widget class="CheckButton" name="bt_organizer_5">
                     <property name="minimumSize">
                      <size>
                       <width>30</width>
@@ -855,7 +906,7 @@
                    </widget>
                   </item>
                   <item>
-                   <widget class="QPushButton" name="pushButton_4">
+                   <widget class="CheckButton" name="bt_organizer_6">
                     <property name="minimumSize">
                      <size>
                       <width>30</width>
@@ -896,7 +947,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QFrame" name="frame_8">
+          <widget class="QFrame" name="c_patient_cards">
            <property name="frameShape">
             <enum>QFrame::StyledPanel</enum>
            </property>
@@ -1222,6 +1273,29 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>CheckButton</class>
+   <extends>QPushButton</extends>
+   <header>promoted.check_button</header>
+  </customwidget>
+  <customwidget>
+   <class>LineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>promoted.line_edit</header>
+  </customwidget>
+  <customwidget>
+   <class>MenuButton</class>
+   <extends>QPushButton</extends>
+   <header>promoted.menu_button</header>
+  </customwidget>
+  <customwidget>
+   <class>SearchLine</class>
+   <extends>QFrame</extends>
+   <header>promoted.search_line</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
