@@ -1,0 +1,17 @@
+black color:
+base: #000
+dark: #333
+light: #8c8c8c
+ultra-light: #c5c5c5
+
+Skin color
+base: #cf9988
+dark: #916c5f
+light: #ffefe9
+ultra-light: #ffefe9
+
+Blue color
+base: #4696fd
+dark: #3184b1
+light: #a3deff
+ultra-light: #d1efff

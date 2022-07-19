@@ -1,0 +1,19 @@
+{
+    "files": [
+    "mainwindow.py",
+    "form.py",
+    "form.ui",
+    "styles.css",
+    "login.py",
+    "ui_login.ui",
+    "ui_login.py",
+    "create_account.py",
+    "ui_create_account.ui",
+    "ui_create_account.py",
+    "add_patient.py",
+    "ui_add_patient.ui",
+    "ui_add_patient.py",
+    "patients.py",
+    "ui_patients.ui",
+    "ui_patients.py"]
+}
