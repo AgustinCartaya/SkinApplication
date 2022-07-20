@@ -1,10 +1,10 @@
 from PySide6.QtWidgets import (QFrame, QVBoxLayout, QHBoxLayout,
-        QLineEdit,QGridLayout, QPushButton, QLabel)
+        QLineEdit,QGridLayout, QLabel)
 
 #from PySide6.QtWidgets import QApplication
 
 from PySide6.QtCore import QCoreApplication, Qt, QSize
-
+from .card_button import *
 
 class Pagination(QFrame):
 
@@ -63,7 +63,7 @@ class Pagination(QFrame):
         self.c_controllers_layout = QHBoxLayout(self.c_controllers)
         self.c_controllers_layout.setContentsMargins(-1, 0, -1, 0)
 
-        self.bt_back_page = QPushButton(self.c_controllers)
+        self.bt_back_page = Button(self.c_controllers)
         self.bt_back_page.setMinimumSize(QSize(30, 30))
         self.bt_back_page.setMaximumSize(QSize(30, 30))
         self.c_controllers_layout.addWidget(self.bt_back_page)
@@ -78,7 +78,7 @@ class Pagination(QFrame):
         self.lb_number_of_pages.setText(QCoreApplication.translate("pagination", u"of ...", None))
         self.c_controllers_layout.addWidget(self.lb_number_of_pages)
 
-        self.bt_next_page = QPushButton(self.c_controllers)
+        self.bt_next_page = Button(self.c_controllers)
         self.bt_next_page.setMinimumSize(QSize(30, 30))
         self.bt_next_page.setMaximumSize(QSize(30, 30))
         self.c_controllers_layout.addWidget(self.bt_next_page)
@@ -102,12 +102,12 @@ class Pagination(QFrame):
 
         while i < self.nb_rows and index_card < self.nb_cards:
             while j < self.nb_cols and index_card < self.nb_cards:
-                pushButton = QPushButton(self.c_cards)
-                pushButton.setText(self.cards[index_card])
-                pushButton.setMinimumSize(QSize(100, 100))
+                bt = CardButton(self.c_cards)
+                bt.setText(self.cards[index_card])
+                bt.setMinimumSize(QSize(100, 100))
 #               pushButton.setMaximumSize(QSize(150, 150))
 
-                self.c_cards_layout.addWidget(pushButton, i, j, 1, 1)
+                self.c_cards_layout.addWidget(bt, i, j, 1, 1)
 
                 j = j+1
                 index_card = index_card+1

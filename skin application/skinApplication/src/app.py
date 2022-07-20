@@ -4,6 +4,11 @@ from src.main_window import MainWindow
 
 from src.db_controllers.db_controller import DBController
 
+#--------- pre compiler delete at the end --------
+from src.views.ui.styles.raw.compile_styles import *
+compile_styles()
+#--------- fin pre compiler --------
+
 def first_time():
     # check the existence of the database and the existence of at least 
     # one element in the DOCTOR table 
@@ -15,12 +20,12 @@ def run():
     app = QApplication([])
 
     mainWindow = MainWindow()
-    # mainWindow.change_view(None, cfg.ADD_PATIENT_VIEW, [])
-    # first_time()
-    if first_time():
-        mainWindow.change_view(None, cfg.CREATE_ACCOUNT_VIEW, [])
-    else:
-        mainWindow.change_view(None, cfg.LOGIN_VIEW, [])
+    mainWindow.change_view(None, cfg.PATIENTS_VIEW, [])
+    first_time()
+#    if first_time():
+#        mainWindow.change_view(None, cfg.CREATE_ACCOUNT_VIEW, [])
+#    else:
+#        mainWindow.change_view(None, cfg.LOGIN_VIEW, [])
 
     mainWindow.show()
     app.exec()

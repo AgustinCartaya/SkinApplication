@@ -16,8 +16,9 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QFrame, QLabel, QLineEdit,
-    QPushButton, QSizePolicy, QSpacerItem, QVBoxLayout,
-    QWidget)
+    QSizePolicy, QSpacerItem, QVBoxLayout, QWidget)
+
+from .promoted.button import Button
 
 class Ui_login(object):
     def setupUi(self, login):
@@ -77,7 +78,7 @@ class Ui_login(object):
 
         self.verticalLayout_2.addItem(self.verticalSpacer)
 
-        self.bt_login = QPushButton(self.center_container)
+        self.bt_login = Button(self.center_container)
         self.bt_login.setObjectName(u"bt_login")
 
         self.verticalLayout_2.addWidget(self.bt_login, 0, Qt.AlignHCenter)

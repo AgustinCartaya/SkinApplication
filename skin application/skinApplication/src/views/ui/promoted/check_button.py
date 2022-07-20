@@ -1,11 +1,12 @@
-from PySide6.QtWidgets import QPushButton
-from PySide6.QtWidgets import QApplication
+#from PySide6.QtWidgets import QPushButton
+#from PySide6.QtWidgets import QApplication
 
+from .button import *
 
-class CheckButton(QPushButton):
+class CheckButton(Button):
 
     def __init__(self, *args, **kwards):
-        QPushButton.__init__(self, *args, **kwards)
+        Button.__init__(self, *args, **kwards)
         self.clicked.connect(self.switch)
         self.select(False)
         self.__group = None
@@ -23,7 +24,8 @@ class CheckButton(QPushButton):
 
     def select(self, value):
         self.setProperty("selected", value)
-        self.setStyle(QApplication.style())
+        self.repaint()
+#        self.setStyle(QApplication.style())
 
     def add_group(self, group):
         self.__group = group

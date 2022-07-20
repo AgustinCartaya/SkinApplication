@@ -224,10 +224,29 @@
        </spacer>
       </item>
       <item alignment="Qt::AlignHCenter">
-       <widget class="QPushButton" name="bt_add">
-        <property name="text">
-         <string>Add</string>
+       <widget class="QFrame" name="frame_2">
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
         </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <item>
+          <widget class="Button" name="bt_cancel">
+           <property name="text">
+            <string>Cancel</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="Button" name="bt_add">
+           <property name="text">
+            <string>Add</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </widget>
       </item>
      </layout>
@@ -240,6 +259,11 @@
    <class>LineEdit</class>
    <extends>QLineEdit</extends>
    <header>.promoted.line_edit</header>
+  </customwidget>
+  <customwidget>
+   <class>Button</class>
+   <extends>QPushButton</extends>
+   <header>.promoted.button</header>
   </customwidget>
  </customwidgets>
  <resources/>

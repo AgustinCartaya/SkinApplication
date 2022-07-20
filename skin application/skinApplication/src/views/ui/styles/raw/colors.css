@@ -1,0 +1,23 @@
+/*-----Gray color-----*/
+
+@c_gray_ultra_dark = #111;
+@c_gray_dark = #333;
+@c_gray_base = #666;
+@c_gray_light = #8c8c8c;
+@c_gray_ultra_light = #c5c5c5;
+
+
+/*-----Skin color-----*/
+
+@c_skin_dark = #916c5f;
+@c_skin_base = #cf9988;
+@c_skin_light = #ffefe9;
+@c_skin_ultra_light = #ffefe9;
+
+
+/*-----Blue color-----*/
+
+@c_blue_dark = #3184b1;
+@c_blue_base = #4696fd;
+@c_blue_light = #a3deff;
+@c_blue_ultra_light = #d1efff;

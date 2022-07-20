@@ -104,7 +104,7 @@
        </spacer>
       </item>
       <item alignment="Qt::AlignHCenter">
-       <widget class="QPushButton" name="bt_login">
+       <widget class="Button" name="bt_login">
         <property name="text">
          <string>Login</string>
         </property>
@@ -115,6 +115,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>Button</class>
+   <extends>QPushButton</extends>
+   <header>.promoted.button</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

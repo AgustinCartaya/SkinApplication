@@ -2,7 +2,7 @@
 QWidget
 {
         background-color: #fff;
-        color: #333;
+        color: @c_gray_dark;
 }
 
 
@@ -10,7 +10,7 @@ QWidget
 QLabel
 {
         background-color: transparent;
-        color: #333;
+        color: @c_gray_dark;
 }
 
 
@@ -31,49 +31,49 @@ Button
 
 Button[type=add]
 {
-    background-color: #4696fd;
+    background-color: @c_blue_base;
     color: #ffffff;
 }
 
 Button[type=add]::hover
 {
-        background-color: #3184b1;
+        background-color: @c_blue_dark;
 }
 
 
 Button[type=add]::pressed
 {
-        background-color: #4696fd;
+        background-color: @c_blue_base;
 }
 
 
 Button[type=cancel]
 {
-    background-color: #666;
+    background-color: @c_gray_base;
     color: #ffffff;
 }
 
 Button[type=cancel]::hover
 {
-        background-color: #333;
+        background-color: @c_gray_dark;
 }
 
 
 Button[type=cancel]::pressed
 {
-        background-color: #666;
+        background-color: @c_gray_base;
 }
 
 Button::disabled
 {
     background-color: #eee;
-    color: #8c8c8c;
+    color: @c_gray_light;
 }
 
 /*-----CheckButton-----*/
 .CheckButton[selected=true]
 {
-        background-color: #4696fd;
+        background-color: @c_blue_base;
         color: #ffffff;
         border-radius: 3px;
         padding: 5px 5px;
@@ -82,19 +82,19 @@ Button::disabled
 .CheckButton[selected=false]
 {
         background-color: #eee;
-        color: #8c8c8c;
+        color: @c_gray_light;
         border-radius: 3px;
         padding: 5px 5px;
 }
 
 .CheckButton[selected=true]::hover
 {
-        background-color: #3184b1;
+        background-color: @c_blue_dark;
 }
 
 .CheckButton[selected=false]::hover
 {
-        background-color:  #a3deff;
+        background-color:  @c_blue_light;
 }
 
 /*-----MenuButton-----*/
@@ -113,11 +113,11 @@ Button::disabled
 /*-----QLineEdit-----*/
 
 .LineEdit[empty=true]{
-    color: #8c8c8c
+    color: @c_gray_light
 }
 
 .LineEdit[empty=false]{
-    color: #333;
+    color: @c_gray_dark;
 }
 
 
@@ -135,7 +135,7 @@ QLineEdit
 QLineEdit::hover
 {
 
-        border: 1px solid #4696fd;
+        border: 1px solid @c_blue_base;
 }
 
 
@@ -153,7 +153,7 @@ QLineEdit::hover
 /*-----SearchLine-----*/
 
 .SearchLine{
-    border: 1px solid #4696fd;
+    border: 1px solid @c_blue_base;
     border-radius: 20px;
 }
 
@@ -209,7 +209,7 @@ QCheckBox::indicator
 
 QCheckBox::indicator:checked
 {
-    background-color: #4696fd;
+    background-color: @c_blue_base;
 
 }
 
@@ -217,14 +217,14 @@ QCheckBox::indicator:checked
 QCheckBox::indicator:unchecked:hover
 {
 /*    border: 1px solid #607cff;*/
-    background-color:  #a3deff;
+    background-color:  @c_blue_light;
 
 }
 
 QCheckBox::indicator:checked:hover
 {
 /*    border: 1px solid #607cff;*/
-    background-color:  #3184b1;
+    background-color:  @c_blue_dark;
 
 }
 
@@ -249,20 +249,20 @@ QCheckBox::indicator:disabled
 QRadioButton::indicator::unchecked
 {
         border: None;
-/*        border: 1px solid #333;*/
+/*        border: 1px solid @c_gray_dark;*/
         border-radius: 7px;
         background-color:  #eee;
         width: 14px;
         height: 14px;
-        color: #333;
+        color: @c_gray_dark;
 }
 
 
 QRadioButton::indicator::unchecked:hover
 {
-/*        border: 1px solid #4696fd;*/
+/*        border: 1px solid @c_blue_base;*/
         border-radius: 7px;
-        background-color:  #a3deff;
+        background-color:  @c_blue_light;
         width: 14px;
         height: 14px;
 }
@@ -272,7 +272,7 @@ QRadioButton::indicator::checked
 {
 
         border-radius: 7px;
-        background-color: #4696fd;
+        background-color: @c_blue_base;
         width: 14px;
         height: 14px;
 }
@@ -538,7 +538,7 @@ QSpinBox:hover,
 QDoubleSpinBox::hover,
 QDateTimeEdit::hover
 {
-    border: 1px solid #4696fd;
+    border: 1px solid @c_blue_base;
 }
 
 
@@ -546,7 +546,7 @@ QSpinBox::up-button, QSpinBox::down-button,
 QDoubleSpinBox::up-button, QDoubleSpinBox::down-button,
 QDateTimeEdit::up-button, QDateTimeEdit::down-button
 {
-    background-color: #c5c5c5;
+    background-color: @c_gray_ultra_light;
 /*    border-radius: 0px 2px 0px 0px;*/
 
 }
@@ -567,7 +567,7 @@ QSpinBox::up-button:hover, QSpinBox::down-button:hover,
 QDoubleSpinBox::up-button:hover, QDoubleSpinBox::down-button:hover,
 QDateTimeEdit::up-button:hover, QDateTimeEdit::down-button:hover
 {
-    background-color: #4696fd;
+    background-color: @c_blue_base;
 }
 
 
@@ -586,7 +586,7 @@ QSpinBox::up-button:pressed, QSpinBox::down-button:pressed,
 QDoubleSpinBox::up-button:pressed, QDoubleSpinBox::down-button::pressed,
 QDateTimeEdit::up-button:pressed, QDateTimeEdit::down-button::pressed
 {
-    background-color: #3184b1;
+    background-color: @c_blue_dark;
 
 }
 
@@ -951,7 +951,7 @@ QSlider::sub-page:horizontal
 
 QSlider::add-page:horizontal
 {
-        background-color: #666765;
+        background-color: @c_gray_base765;
 
 }
 
@@ -1017,7 +1017,7 @@ QSlider::sub-page:vertical
 
 QSlider::add-page:vertical
 {
-        background-color: #666765;
+        background-color: @c_gray_base765;
 
 }
 

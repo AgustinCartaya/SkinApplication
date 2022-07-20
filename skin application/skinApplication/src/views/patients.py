@@ -30,11 +30,17 @@ class Patients(ViewObject):
         self.ui.bt_organizer_6.add_group(g3)
 
 
-    mySignam = Signal(str,str,str)
+    s_change_view = Signal(str,str,str)
     def connect_ui_signals(self):
-        pass
         #ui signals
-        # self.ui.bt_login.clicked.connect(self.login)
-        # # created signals
-        # self.mySignam.connect(self.MW.change_view)
+        self.ui.bt_back.clicked.connect(self.back)
+        self.ui.bt_add_new_patient.clicked.connect(self.add_new_patient)
 
+        # created signals
+        self.s_change_view.connect(self.MW.change_view)
+
+    def back(self):
+        self.s_change_view.emit(cfg.PATIENTS_VIEW, cfg.LOGIN_VIEW, None)
+
+    def add_new_patient(self):
+        self.s_change_view.emit(cfg.PATIENTS_VIEW, cfg.ADD_PATIENT_VIEW, None)

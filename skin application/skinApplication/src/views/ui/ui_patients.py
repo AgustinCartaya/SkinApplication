@@ -21,7 +21,7 @@ from PySide6.QtWidgets import (QApplication, QCheckBox, QFrame, QHBoxLayout,
 
 from .promoted.check_button import CheckButton
 from .promoted.line_edit import LineEdit
-from .promoted.menu_button import MenuButton
+from .promoted.navigator_button import NavigatorButton
 from .promoted.pagination import Pagination
 from .promoted.search_line import SearchLine
 
@@ -42,7 +42,7 @@ class Ui_patients(object):
         self.horizontalLayout = QHBoxLayout(self.frame_6)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.horizontalLayout.setContentsMargins(0, 0, 0, -1)
-        self.bt_back = MenuButton(self.frame_6)
+        self.bt_back = NavigatorButton(self.frame_6)
         self.bt_back.setObjectName(u"bt_back")
         self.bt_back.setMinimumSize(QSize(50, 50))
 
@@ -61,7 +61,7 @@ class Ui_patients(object):
 
         self.horizontalLayout.addItem(self.horizontalSpacer_2)
 
-        self.bt_add_new_patient = MenuButton(self.frame_6)
+        self.bt_add_new_patient = NavigatorButton(self.frame_6)
         self.bt_add_new_patient.setObjectName(u"bt_add_new_patient")
         self.bt_add_new_patient.setMinimumSize(QSize(150, 50))
 
@@ -332,8 +332,8 @@ class Ui_patients(object):
         self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
         self.pushButton = QPushButton(self.c_search)
         self.pushButton.setObjectName(u"pushButton")
-        self.pushButton.setMinimumSize(QSize(30, 30))
-        self.pushButton.setMaximumSize(QSize(60, 16777215))
+        self.pushButton.setMinimumSize(QSize(20, 20))
+        self.pushButton.setMaximumSize(QSize(50, 16777215))
 
         self.horizontalLayout_4.addWidget(self.pushButton)
 
@@ -404,15 +404,15 @@ class Ui_patients(object):
 
         self.bt_organizer_3 = CheckButton(self.frame_12)
         self.bt_organizer_3.setObjectName(u"bt_organizer_3")
-        self.bt_organizer_3.setMinimumSize(QSize(25, 25))
-        self.bt_organizer_3.setMaximumSize(QSize(25, 25))
+        self.bt_organizer_3.setMinimumSize(QSize(40, 25))
+        self.bt_organizer_3.setMaximumSize(QSize(40, 25))
 
         self.horizontalLayout_3.addWidget(self.bt_organizer_3)
 
         self.bt_organizer_4 = CheckButton(self.frame_12)
         self.bt_organizer_4.setObjectName(u"bt_organizer_4")
-        self.bt_organizer_4.setMinimumSize(QSize(25, 25))
-        self.bt_organizer_4.setMaximumSize(QSize(25, 25))
+        self.bt_organizer_4.setMinimumSize(QSize(40, 25))
+        self.bt_organizer_4.setMaximumSize(QSize(40, 25))
 
         self.horizontalLayout_3.addWidget(self.bt_organizer_4)
 
@@ -422,15 +422,15 @@ class Ui_patients(object):
 
         self.bt_organizer_5 = CheckButton(self.frame_12)
         self.bt_organizer_5.setObjectName(u"bt_organizer_5")
-        self.bt_organizer_5.setMinimumSize(QSize(25, 25))
-        self.bt_organizer_5.setMaximumSize(QSize(25, 25))
+        self.bt_organizer_5.setMinimumSize(QSize(40, 25))
+        self.bt_organizer_5.setMaximumSize(QSize(40, 25))
 
         self.horizontalLayout_3.addWidget(self.bt_organizer_5)
 
         self.bt_organizer_6 = CheckButton(self.frame_12)
         self.bt_organizer_6.setObjectName(u"bt_organizer_6")
-        self.bt_organizer_6.setMinimumSize(QSize(25, 25))
-        self.bt_organizer_6.setMaximumSize(QSize(25, 25))
+        self.bt_organizer_6.setMinimumSize(QSize(50, 25))
+        self.bt_organizer_6.setMaximumSize(QSize(50, 25))
 
         self.horizontalLayout_3.addWidget(self.bt_organizer_6)
 
@@ -438,10 +438,10 @@ class Ui_patients(object):
 
         self.horizontalLayout_3.addItem(self.horizontalSpacer_6)
 
-        self.horizontalLayout_3.setStretch(0, 2)
-        self.horizontalLayout_3.setStretch(3, 1)
-        self.horizontalLayout_3.setStretch(6, 1)
-        self.horizontalLayout_3.setStretch(9, 2)
+        self.horizontalLayout_3.setStretch(0, 4)
+        self.horizontalLayout_3.setStretch(3, 2)
+        self.horizontalLayout_3.setStretch(6, 2)
+        self.horizontalLayout_3.setStretch(9, 3)
 
         self.verticalLayout_5.addWidget(self.frame_12)
 
@@ -497,9 +497,9 @@ class Ui_patients(object):
         self.lb_organizer_titles.setText(QCoreApplication.translate("patients", u"Organizer", None))
         self.bt_organizer_1.setText(QCoreApplication.translate("patients", u"MM", None))
         self.bt_organizer_2.setText(QCoreApplication.translate("patients", u"MM", None))
-        self.bt_organizer_3.setText(QCoreApplication.translate("patients", u"MM", None))
-        self.bt_organizer_4.setText(QCoreApplication.translate("patients", u"MM", None))
-        self.bt_organizer_5.setText(QCoreApplication.translate("patients", u"MM", None))
-        self.bt_organizer_6.setText(QCoreApplication.translate("patients", u"MM", None))
+        self.bt_organizer_3.setText(QCoreApplication.translate("patients", u"A-z", None))
+        self.bt_organizer_4.setText(QCoreApplication.translate("patients", u"z-A", None))
+        self.bt_organizer_5.setText(QCoreApplication.translate("patients", u"ID", None))
+        self.bt_organizer_6.setText(QCoreApplication.translate("patients", u"Name", None))
     # retranslateUi
 

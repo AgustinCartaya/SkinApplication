@@ -46,25 +46,31 @@ Button[type=add]::pressed
         background-color: #4696fd;
 }
 
+Button[type=add]::disabled
+{
+    background-color: #eee;
+    color: #8c8c8c;
+}
+
 
 Button[type=cancel]
 {
-    background-color: #666;
+    background-color: #4696fd;
     color: #ffffff;
 }
 
 Button[type=cancel]::hover
 {
-        background-color: #333;
+        background-color: #3184b1;
 }
 
 
 Button[type=cancel]::pressed
 {
-        background-color: #666;
+        background-color: #4696fd;
 }
 
-Button::disabled
+Button[type=cancel]::disabled
 {
     background-color: #eee;
     color: #8c8c8c;

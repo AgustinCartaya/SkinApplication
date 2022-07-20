@@ -51,7 +51,7 @@
        <number>0</number>
       </property>
       <item>
-       <widget class="MenuButton" name="bt_back">
+       <widget class="NavigatorButton" name="bt_back">
         <property name="minimumSize">
          <size>
           <width>50</width>
@@ -100,7 +100,7 @@
        </spacer>
       </item>
       <item>
-       <widget class="MenuButton" name="bt_add_new_patient">
+       <widget class="NavigatorButton" name="bt_add_new_patient">
         <property name="minimumSize">
          <size>
           <width>150</width>
@@ -655,13 +655,13 @@
                 <widget class="QPushButton" name="pushButton">
                  <property name="minimumSize">
                   <size>
-                   <width>30</width>
-                   <height>30</height>
+                   <width>20</width>
+                   <height>20</height>
                   </size>
                  </property>
                  <property name="maximumSize">
                   <size>
-                   <width>60</width>
+                   <width>50</width>
                    <height>16777215</height>
                   </size>
                  </property>
@@ -767,7 +767,7 @@
                  <property name="frameShadow">
                   <enum>QFrame::Raised</enum>
                  </property>
-                 <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="2,0,0,1,0,0,1,0,0,2">
+                 <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="4,0,0,2,0,0,2,0,0,3">
                   <property name="topMargin">
                    <number>0</number>
                   </property>
@@ -842,18 +842,18 @@
                    <widget class="CheckButton" name="bt_organizer_3">
                     <property name="minimumSize">
                      <size>
-                      <width>25</width>
+                      <width>40</width>
                       <height>25</height>
                      </size>
                     </property>
                     <property name="maximumSize">
                      <size>
-                      <width>25</width>
+                      <width>40</width>
                       <height>25</height>
                      </size>
                     </property>
                     <property name="text">
-                     <string>MM</string>
+                     <string>A-z</string>
                     </property>
                    </widget>
                   </item>
@@ -861,18 +861,18 @@
                    <widget class="CheckButton" name="bt_organizer_4">
                     <property name="minimumSize">
                      <size>
-                      <width>25</width>
+                      <width>40</width>
                       <height>25</height>
                      </size>
                     </property>
                     <property name="maximumSize">
                      <size>
-                      <width>25</width>
+                      <width>40</width>
                       <height>25</height>
                      </size>
                     </property>
                     <property name="text">
-                     <string>MM</string>
+                     <string>z-A</string>
                     </property>
                    </widget>
                   </item>
@@ -893,18 +893,18 @@
                    <widget class="CheckButton" name="bt_organizer_5">
                     <property name="minimumSize">
                      <size>
-                      <width>25</width>
+                      <width>40</width>
                       <height>25</height>
                      </size>
                     </property>
                     <property name="maximumSize">
                      <size>
-                      <width>25</width>
+                      <width>40</width>
                       <height>25</height>
                      </size>
                     </property>
                     <property name="text">
-                     <string>MM</string>
+                     <string>ID</string>
                     </property>
                    </widget>
                   </item>
@@ -912,18 +912,18 @@
                    <widget class="CheckButton" name="bt_organizer_6">
                     <property name="minimumSize">
                      <size>
-                      <width>25</width>
+                      <width>50</width>
                       <height>25</height>
                      </size>
                     </property>
                     <property name="maximumSize">
                      <size>
-                      <width>25</width>
+                      <width>50</width>
                       <height>25</height>
                      </size>
                     </property>
                     <property name="text">
-                     <string>MM</string>
+                     <string>Name</string>
                     </property>
                    </widget>
                   </item>
@@ -969,19 +969,19 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>CheckButton</class>
-   <extends>QPushButton</extends>
-   <header>.promoted.check_button</header>
-  </customwidget>
-  <customwidget>
    <class>LineEdit</class>
    <extends>QLineEdit</extends>
    <header>.promoted.line_edit</header>
   </customwidget>
   <customwidget>
-   <class>MenuButton</class>
+   <class>CheckButton</class>
    <extends>QPushButton</extends>
-   <header>.promoted.menu_button</header>
+   <header>.promoted.check_button</header>
+  </customwidget>
+  <customwidget>
+   <class>NavigatorButton</class>
+   <extends>QPushButton</extends>
+   <header>.promoted.navigator_button</header>
   </customwidget>
   <customwidget>
    <class>SearchLine</class>

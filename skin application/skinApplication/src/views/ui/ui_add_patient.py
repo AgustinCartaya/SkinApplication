@@ -16,9 +16,10 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QDateEdit, QFrame, QHBoxLayout,
-    QLabel, QPushButton, QRadioButton, QSizePolicy,
-    QSpacerItem, QVBoxLayout, QWidget)
+    QLabel, QRadioButton, QSizePolicy, QSpacerItem,
+    QVBoxLayout, QWidget)
 
+from .promoted.button import Button
 from .promoted.line_edit import LineEdit
 
 class Ui_add_patient(object):
@@ -141,10 +142,24 @@ class Ui_add_patient(object):
 
         self.verticalLayout_2.addItem(self.verticalSpacer)
 
-        self.bt_add = QPushButton(self.center_container)
+        self.frame_2 = QFrame(self.center_container)
+        self.frame_2.setObjectName(u"frame_2")
+        self.frame_2.setFrameShape(QFrame.StyledPanel)
+        self.frame_2.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_3 = QHBoxLayout(self.frame_2)
+        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
+        self.bt_cancel = Button(self.frame_2)
+        self.bt_cancel.setObjectName(u"bt_cancel")
+
+        self.horizontalLayout_3.addWidget(self.bt_cancel)
+
+        self.bt_add = Button(self.frame_2)
         self.bt_add.setObjectName(u"bt_add")
 
-        self.verticalLayout_2.addWidget(self.bt_add, 0, Qt.AlignHCenter)
+        self.horizontalLayout_3.addWidget(self.bt_add)
+
+
+        self.verticalLayout_2.addWidget(self.frame_2, 0, Qt.AlignHCenter)
 
 
         self.verticalLayout.addWidget(self.center_container, 0, Qt.AlignHCenter|Qt.AlignVCenter)
@@ -165,6 +180,7 @@ class Ui_add_patient(object):
         self.lb_gender.setText(QCoreApplication.translate("add_patient", u"Gender", None))
         self.i_gender_f.setText(QCoreApplication.translate("add_patient", u"Female", None))
         self.i_gender_m.setText(QCoreApplication.translate("add_patient", u"Male", None))
+        self.bt_cancel.setText(QCoreApplication.translate("add_patient", u"Cancel", None))
         self.bt_add.setText(QCoreApplication.translate("add_patient", u"Add", None))
     # retranslateUi
 

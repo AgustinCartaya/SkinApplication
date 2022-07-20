@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 7.0.2, 2022-07-20T11:57:46. -->
+<!-- Written by QtCreator 7.0.2, 2022-07-20T18:15:31. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -139,6 +139,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/main_window.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/main_window.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/main_window.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{cb1eb092-b461-42a2-a843-47591fc0215f}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\main_window.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -153,10 +154,11 @@
     <valuelist type="QVariantList" key="CustomOutputParsers"/>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/promoted/menu_button.py</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/promoted/menu_button.py</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/promoted/menu_button.py</value>
-    <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\views\ui\promoted\menu_button.py</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/promoted/search_line.py</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/promoted/search_line.py</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/promoted/search_line.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{cb1eb092-b461-42a2-a843-47591fc0215f}</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\views\ui\promoted\search_line.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
@@ -170,10 +172,11 @@
     <valuelist type="QVariantList" key="CustomOutputParsers"/>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/promoted/search_line.py</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/promoted/search_line.py</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/promoted/search_line.py</value>
-    <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\views\ui\promoted\search_line.py</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/promoted/card_button.py</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/promoted/card_button.py</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/promoted/card_button.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{cb1eb092-b461-42a2-a843-47591fc0215f}</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\views\ui\promoted\card_button.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
@@ -187,26 +190,10 @@
     <valuelist type="QVariantList" key="CustomOutputParsers"/>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/promoted/card_button.py</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/promoted/card_button.py</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/promoted/card_button.py</value>
-    <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\views\ui\promoted\card_button.py</value>
-    <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
-    <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
-    <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
-    <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/promoted</value>
-   </valuemap>
-   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.13">
-    <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
-    <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
-    <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
-    <valuelist type="QVariantList" key="CustomOutputParsers"/>
-    <value type="int" key="PE.EnvironmentAspect.Base">2</value>
-    <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/objects/time_line.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/objects/time_line.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/objects/time_line.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{cb1eb092-b461-42a2-a843-47591fc0215f}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\objects\time_line.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -214,7 +201,7 @@
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/objects</value>
    </valuemap>
-   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.14">
+   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.13">
     <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
     <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
     <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
@@ -224,7 +211,26 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/create_account.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/create_account.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/create_account.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{cb1eb092-b461-42a2-a843-47591fc0215f}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\views\create_account.py</value>
+    <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
+    <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
+    <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
+    <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views</value>
+   </valuemap>
+   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.14">
+    <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
+    <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
+    <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
+    <valuelist type="QVariantList" key="CustomOutputParsers"/>
+    <value type="int" key="PE.EnvironmentAspect.Base">2</value>
+    <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/login.py</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/login.py</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/login.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{cb1eb092-b461-42a2-a843-47591fc0215f}</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\views\login.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
@@ -238,26 +244,10 @@
     <valuelist type="QVariantList" key="CustomOutputParsers"/>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/login.py</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/login.py</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/login.py</value>
-    <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\views\login.py</value>
-    <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
-    <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
-    <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
-    <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views</value>
-   </valuemap>
-   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.16">
-    <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
-    <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
-    <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
-    <valuelist type="QVariantList" key="CustomOutputParsers"/>
-    <value type="int" key="PE.EnvironmentAspect.Base">2</value>
-    <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/main.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/main.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/main.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{cb1eb092-b461-42a2-a843-47591fc0215f}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\main.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -265,7 +255,7 @@
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/Agustin/Documents/Internship/skin application/skinApplication</value>
    </valuemap>
-   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.17">
+   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.16">
     <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
     <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
     <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
@@ -275,6 +265,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/ui_create_account.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/ui_create_account.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/ui_create_account.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{cb1eb092-b461-42a2-a843-47591fc0215f}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\views\ui\ui_create_account.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -282,7 +273,7 @@
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui</value>
    </valuemap>
-   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.18">
+   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.17">
     <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
     <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
     <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
@@ -292,7 +283,26 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ai.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ai.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ai.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{cb1eb092-b461-42a2-a843-47591fc0215f}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\views\ai.py</value>
+    <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
+    <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
+    <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
+    <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views</value>
+   </valuemap>
+   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.18">
+    <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
+    <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
+    <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
+    <valuelist type="QVariantList" key="CustomOutputParsers"/>
+    <value type="int" key="PE.EnvironmentAspect.Base">2</value>
+    <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/add_skin_part.py</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/add_skin_part.py</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/add_skin_part.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{cb1eb092-b461-42a2-a843-47591fc0215f}</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\views\add_skin_part.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
@@ -306,10 +316,11 @@
     <valuelist type="QVariantList" key="CustomOutputParsers"/>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/add_skin_part.py</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/add_skin_part.py</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/add_skin_part.py</value>
-    <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\views\add_skin_part.py</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/time_line.py</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/time_line.py</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/time_line.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{cb1eb092-b461-42a2-a843-47591fc0215f}</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\views\time_line.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
@@ -326,6 +337,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/objects/image.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/objects/image.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/objects/image.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{cb1eb092-b461-42a2-a843-47591fc0215f}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\objects\image.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -340,26 +352,10 @@
     <valuelist type="QVariantList" key="CustomOutputParsers"/>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/time_line.py</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/time_line.py</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/time_line.py</value>
-    <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\views\time_line.py</value>
-    <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
-    <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
-    <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
-    <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views</value>
-   </valuemap>
-   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.21">
-    <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
-    <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
-    <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
-    <valuelist type="QVariantList" key="CustomOutputParsers"/>
-    <value type="int" key="PE.EnvironmentAspect.Base">2</value>
-    <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/objects/image_list.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/objects/image_list.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/objects/image_list.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{cb1eb092-b461-42a2-a843-47591fc0215f}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\objects\image_list.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -367,7 +363,7 @@
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/objects</value>
    </valuemap>
-   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.22">
+   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.21">
     <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
     <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
     <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
@@ -377,6 +373,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/db_controllers/db_connection.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/db_controllers/db_connection.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/db_controllers/db_connection.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{cb1eb092-b461-42a2-a843-47591fc0215f}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\db_controllers\db_connection.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -384,7 +381,7 @@
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/db_controllers</value>
    </valuemap>
-   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.23">
+   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.22">
     <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
     <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
     <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
@@ -394,6 +391,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/ui_patients.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/ui_patients.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/ui_patients.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{cb1eb092-b461-42a2-a843-47591fc0215f}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\views\ui\ui_patients.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -401,7 +399,7 @@
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui</value>
    </valuemap>
-   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.24">
+   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.23">
     <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
     <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
     <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
@@ -411,7 +409,26 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/objects/ai.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/objects/ai.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/objects/ai.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{cb1eb092-b461-42a2-a843-47591fc0215f}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\objects\ai.py</value>
+    <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
+    <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
+    <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
+    <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/objects</value>
+   </valuemap>
+   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.24">
+    <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
+    <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
+    <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
+    <valuelist type="QVariantList" key="CustomOutputParsers"/>
+    <value type="int" key="PE.EnvironmentAspect.Base">2</value>
+    <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/objects/skin_part.py</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/objects/skin_part.py</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/objects/skin_part.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{cb1eb092-b461-42a2-a843-47591fc0215f}</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\objects\skin_part.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
@@ -425,26 +442,10 @@
     <valuelist type="QVariantList" key="CustomOutputParsers"/>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/objects/skin_part.py</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/objects/skin_part.py</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/objects/skin_part.py</value>
-    <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\objects\skin_part.py</value>
-    <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
-    <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
-    <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
-    <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/objects</value>
-   </valuemap>
-   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.26">
-    <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
-    <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
-    <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
-    <valuelist type="QVariantList" key="CustomOutputParsers"/>
-    <value type="int" key="PE.EnvironmentAspect.Base">2</value>
-    <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/add_patient.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/add_patient.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/add_patient.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{cb1eb092-b461-42a2-a843-47591fc0215f}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\views\add_patient.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -452,7 +453,7 @@
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views</value>
    </valuemap>
-   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.27">
+   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.26">
     <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
     <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
     <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
@@ -462,6 +463,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/objects/patient_list.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/objects/patient_list.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/objects/patient_list.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{cb1eb092-b461-42a2-a843-47591fc0215f}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\objects\patient_list.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -469,7 +471,7 @@
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/objects</value>
    </valuemap>
-   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.28">
+   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.27">
     <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
     <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
     <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
@@ -479,6 +481,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/ui_add_patient.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/ui_add_patient.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/ui_add_patient.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{cb1eb092-b461-42a2-a843-47591fc0215f}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\views\ui\ui_add_patient.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -486,7 +489,7 @@
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui</value>
    </valuemap>
-   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.29">
+   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.28">
     <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
     <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
     <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
@@ -496,12 +499,31 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/objects/patient.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/objects/patient.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/objects/patient.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{cb1eb092-b461-42a2-a843-47591fc0215f}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\objects\patient.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/objects</value>
+   </valuemap>
+   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.29">
+    <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
+    <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
+    <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
+    <valuelist type="QVariantList" key="CustomOutputParsers"/>
+    <value type="int" key="PE.EnvironmentAspect.Base">2</value>
+    <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/app.py</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/app.py</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/app.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{cb1eb092-b461-42a2-a843-47591fc0215f}</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\app.py</value>
+    <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
+    <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
+    <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
+    <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src</value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.3">
     <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
@@ -513,6 +535,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/promoted/check_button.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/promoted/check_button.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/promoted/check_button.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{cb1eb092-b461-42a2-a843-47591fc0215f}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\views\ui\promoted\check_button.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -527,15 +550,16 @@
     <valuelist type="QVariantList" key="CustomOutputParsers"/>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/app.py</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/app.py</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/app.py</value>
-    <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\app.py</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/objects/body2d.py</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/objects/body2d.py</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/objects/body2d.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{cb1eb092-b461-42a2-a843-47591fc0215f}</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\objects\body2d.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/objects</value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.31">
     <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
@@ -544,10 +568,11 @@
     <valuelist type="QVariantList" key="CustomOutputParsers"/>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/objects/body2d.py</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/objects/body2d.py</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/objects/body2d.py</value>
-    <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\objects\body2d.py</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/objects/time_line_point.py</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/objects/time_line_point.py</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/objects/time_line_point.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{cb1eb092-b461-42a2-a843-47591fc0215f}</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\objects\time_line_point.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
@@ -561,10 +586,11 @@
     <valuelist type="QVariantList" key="CustomOutputParsers"/>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/objects/time_line_point.py</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/objects/time_line_point.py</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/objects/time_line_point.py</value>
-    <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\objects\time_line_point.py</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/objects/doctor.py</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/objects/doctor.py</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/objects/doctor.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{cb1eb092-b461-42a2-a843-47591fc0215f}</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\objects\doctor.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
@@ -578,15 +604,16 @@
     <valuelist type="QVariantList" key="CustomOutputParsers"/>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/objects/doctor.py</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/objects/doctor.py</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/objects/doctor.py</value>
-    <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\objects\doctor.py</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/config.py</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/config.py</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/config.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{cb1eb092-b461-42a2-a843-47591fc0215f}</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\config.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/objects</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src</value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.34">
     <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
@@ -595,15 +622,106 @@
     <valuelist type="QVariantList" key="CustomOutputParsers"/>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/styles/global.css</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/styles/global.css</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/styles/global.css</value>
-    <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\views\ui\styles\global.css</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/util/util.py</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/util/util.py</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/util/util.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{cb1eb092-b461-42a2-a843-47591fc0215f}</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\util\util.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/styles</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/util</value>
+   </valuemap>
+   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.35">
+    <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
+    <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
+    <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
+    <valuelist type="QVariantList" key="CustomOutputParsers"/>
+    <value type="int" key="PE.EnvironmentAspect.Base">2</value>
+    <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/util/data_cleaner.py</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/util/data_cleaner.py</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/util/data_cleaner.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{cb1eb092-b461-42a2-a843-47591fc0215f}</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\util\data_cleaner.py</value>
+    <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
+    <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
+    <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
+    <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/util</value>
+   </valuemap>
+   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.36">
+    <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
+    <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
+    <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
+    <valuelist type="QVariantList" key="CustomOutputParsers"/>
+    <value type="int" key="PE.EnvironmentAspect.Base">2</value>
+    <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/db_controllers/db_controller.py</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/db_controllers/db_controller.py</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/db_controllers/db_controller.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{cb1eb092-b461-42a2-a843-47591fc0215f}</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\db_controllers\db_controller.py</value>
+    <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
+    <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
+    <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
+    <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/db_controllers</value>
+   </valuemap>
+   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.37">
+    <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
+    <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
+    <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
+    <valuelist type="QVariantList" key="CustomOutputParsers"/>
+    <value type="int" key="PE.EnvironmentAspect.Base">2</value>
+    <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/promoted/navigator_button.py</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/promoted/navigator_button.py</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/promoted/navigator_button.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{cb1eb092-b461-42a2-a843-47591fc0215f}</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\views\ui\promoted\navigator_button.py</value>
+    <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
+    <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
+    <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
+    <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/promoted</value>
+   </valuemap>
+   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.38">
+    <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
+    <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
+    <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
+    <valuelist type="QVariantList" key="CustomOutputParsers"/>
+    <value type="int" key="PE.EnvironmentAspect.Base">2</value>
+    <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/promoted/button.py</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/promoted/button.py</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/promoted/button.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{cb1eb092-b461-42a2-a843-47591fc0215f}</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\views\ui\promoted\button.py</value>
+    <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
+    <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
+    <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
+    <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/promoted</value>
+   </valuemap>
+   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.39">
+    <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
+    <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
+    <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
+    <valuelist type="QVariantList" key="CustomOutputParsers"/>
+    <value type="int" key="PE.EnvironmentAspect.Base">2</value>
+    <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/styles/raw/colors.css</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/styles/raw/colors.css</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/styles/raw/colors.css</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{cb1eb092-b461-42a2-a843-47591fc0215f}</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\views\ui\styles\raw\colors.css</value>
+    <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
+    <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
+    <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
+    <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/styles/raw</value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.4">
     <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
@@ -615,12 +733,49 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/promoted/pagination.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/promoted/pagination.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/promoted/pagination.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{cb1eb092-b461-42a2-a843-47591fc0215f}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\views\ui\promoted\pagination.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/promoted</value>
+   </valuemap>
+   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.40">
+    <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
+    <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
+    <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
+    <valuelist type="QVariantList" key="CustomOutputParsers"/>
+    <value type="int" key="PE.EnvironmentAspect.Base">2</value>
+    <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/styles/raw/global.css</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/styles/raw/global.css</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/styles/raw/global.css</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{cb1eb092-b461-42a2-a843-47591fc0215f}</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\views\ui\styles\raw\global.css</value>
+    <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
+    <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
+    <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
+    <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/styles/raw</value>
+   </valuemap>
+   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.41">
+    <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
+    <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
+    <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
+    <valuelist type="QVariantList" key="CustomOutputParsers"/>
+    <value type="int" key="PE.EnvironmentAspect.Base">2</value>
+    <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/styles/raw/compile_styles.py</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/styles/raw/compile_styles.py</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/styles/raw/compile_styles.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{cb1eb092-b461-42a2-a843-47591fc0215f}</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\views\ui\styles\raw\compile_styles.py</value>
+    <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
+    <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
+    <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
+    <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/styles/raw</value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.5">
     <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
@@ -632,6 +787,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/check_patient.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/check_patient.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/check_patient.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{cb1eb092-b461-42a2-a843-47591fc0215f}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\views\check_patient.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -649,6 +805,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/ui_login.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/ui_login.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/ui_login.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{cb1eb092-b461-42a2-a843-47591fc0215f}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\views\ui\ui_login.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -666,6 +823,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/objects/annotation.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/objects/annotation.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/objects/annotation.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{cb1eb092-b461-42a2-a843-47591fc0215f}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\objects\annotation.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -683,6 +841,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/promoted/line_edit.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/promoted/line_edit.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/promoted/line_edit.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{cb1eb092-b461-42a2-a843-47591fc0215f}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\views\ui\promoted\line_edit.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -700,6 +859,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/photos.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/photos.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/photos.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{cb1eb092-b461-42a2-a843-47591fc0215f}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\views\photos.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -707,7 +867,7 @@
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views</value>
    </valuemap>
-   <value type="qlonglong" key="ProjectExplorer.Target.RunConfigurationCount">35</value>
+   <value type="qlonglong" key="ProjectExplorer.Target.RunConfigurationCount">42</value>
   </valuemap>
  </data>
  <data>

@@ -1,4 +1,4 @@
-black color:
+Gray color:
 base: #000
 dark: #333
 light: #8c8c8c
