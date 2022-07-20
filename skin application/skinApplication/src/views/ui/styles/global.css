@@ -28,27 +28,12 @@ QPushButton
         background-color: #4696fd;
         color: #ffffff;
         border-radius: 3px;
-        border-color: #051a39;
         padding: 8px 25px;
 }
-
-
-/*QPushButton::disabled
-{
-        background-color: #404040;
-        color: #656565;
-        border-color: #051a39;
-
-}*/
-
 
 QPushButton::hover
 {
         background-color: #3184b1;
-  /*      color: #ffffff;
-        border-radius: 3px;
-        border-color: #051a39;
-        padding: 5px;*/
 }
 
 
@@ -57,17 +42,73 @@ QPushButton::pressed
         background-color: #4696fd;
 }
 
+QPushButton::disabled
+{
+    background-color: #eee;
+    color: #8c8c8c;
+}
+
+/*-----CheckButton-----*/
+.CheckButton[selected=true]
+{
+        background-color: #4696fd;
+        color: #ffffff;
+        border-radius: 3px;
+        padding: 5px 5px;
+}
+
+.CheckButton[selected=false]
+{
+        background-color: #eee;
+        color: #8c8c8c;
+        border-radius: 3px;
+        padding: 5px 5px;
+}
+
+.CheckButton[selected=true]::hover
+{
+        background-color: #3184b1;
+}
+
+.CheckButton[selected=false]::hover
+{
+        background-color:  #a3deff;
+}
+
+/*-----MenuButton-----*/
+.MenuButton
+{
+    border-radius: 0px;
+    border-bottom-right-radius: 10px;
+}
+
+.MenuButton[position="top-right"]
+{
+    border-radius: 0px;
+    border-bottom-left-radius: 10px;
+}
+
 /*-----QLineEdit-----*/
+
+.LineEdit[empty=true]{
+    color: #8c8c8c
+}
+
+.LineEdit[empty=false]{
+    color: #333;
+}
+
+
 QLineEdit
 {
         background-color: #eee;
-        color: #000;
-/*        border: 1px solid gray;*/
-        border-width: 1px;
+        border: 1px solid transparent;
         border-radius: 2px;
         border-color: transparent;
         padding: 5px;
 }
+
+
 
 QLineEdit::hover
 {
@@ -86,6 +127,33 @@ QLineEdit::hover
         padding: 2px;
 
 }*/
+
+/*-----SearchLine-----*/
+
+.SearchLine{
+    border: 1px solid #4696fd;
+    border-radius: 20px;
+}
+
+.SearchLine > QLineEdit{
+    border: None;
+    background-color: transparent;
+}
+
+.SearchLine > QLineEdit::hover{
+    border: None;
+}
+
+.SearchLine > QPushButton{
+    border: None;
+    background-color: transparent;
+    image: url(assets/icons/search.png);
+    margin-left: 10px;
+    padding: 0px;
+}
+
+
+
 
 /*-----QTextEdit-----*/
 QTextEdit
@@ -106,33 +174,40 @@ QTextEdit::disabled
 }
 
 /*-----QCheckBox-----*/
-/*QCheckBox::indicator
+QCheckBox::indicator
 {
-    color: #b1b1b1;
-    background-color: #323232;
-    border: 1px solid #b1b1b1;
-    width: 12px;
-    height: 12px;
+    border: None;
+    background-color:  #eee;
+    border-radius: 1px;
+    width: 14px;
+    height: 14px;
 
 }
 
 
 QCheckBox::indicator:checked
 {
-    image:url(://checkbox.png);
-    border: 1px solid #607cff;
+    background-color: #4696fd;
 
 }
 
 
 QCheckBox::indicator:unchecked:hover
 {
-    border: 1px solid #607cff;
+/*    border: 1px solid #607cff;*/
+    background-color:  #a3deff;
+
+}
+
+QCheckBox::indicator:checked:hover
+{
+/*    border: 1px solid #607cff;*/
+    background-color:  #3184b1;
 
 }
 
 
-QCheckBox::disabled
+/*QCheckBox::disabled
 {
         color: #656565;
 

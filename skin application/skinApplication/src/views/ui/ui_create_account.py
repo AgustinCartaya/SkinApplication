@@ -16,8 +16,10 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QFrame, QHBoxLayout, QLabel,
-    QLineEdit, QPushButton, QSizePolicy, QSpacerItem,
-    QVBoxLayout, QWidget)
+    QPushButton, QSizePolicy, QSpacerItem, QVBoxLayout,
+    QWidget)
+
+from .promoted.line_edit import LineEdit
 
 class Ui_create_account(object):
     def setupUi(self, create_account):
@@ -70,7 +72,7 @@ class Ui_create_account(object):
 
         self.verticalLayout_3.addWidget(self.lb_first_name)
 
-        self.i_first_name = QLineEdit(self.left_side_container)
+        self.i_first_name = LineEdit(self.left_side_container)
         self.i_first_name.setObjectName(u"i_first_name")
 
         self.verticalLayout_3.addWidget(self.i_first_name)
@@ -80,7 +82,7 @@ class Ui_create_account(object):
 
         self.verticalLayout_3.addWidget(self.lb_password)
 
-        self.i_password = QLineEdit(self.left_side_container)
+        self.i_password = LineEdit(self.left_side_container)
         self.i_password.setObjectName(u"i_password")
 
         self.verticalLayout_3.addWidget(self.i_password)
@@ -102,7 +104,7 @@ class Ui_create_account(object):
 
         self.verticalLayout_6.addWidget(self.lb_last_name)
 
-        self.i_last_name = QLineEdit(self.right_side_container)
+        self.i_last_name = LineEdit(self.right_side_container)
         self.i_last_name.setObjectName(u"i_last_name")
 
         self.verticalLayout_6.addWidget(self.i_last_name)
@@ -112,7 +114,7 @@ class Ui_create_account(object):
 
         self.verticalLayout_6.addWidget(self.lb_repeat_password)
 
-        self.i_repeat_password = QLineEdit(self.right_side_container)
+        self.i_repeat_password = LineEdit(self.right_side_container)
         self.i_repeat_password.setObjectName(u"i_repeat_password")
 
         self.verticalLayout_6.addWidget(self.i_repeat_password)
@@ -134,7 +136,7 @@ class Ui_create_account(object):
 
         self.verticalLayout_4.addWidget(self.lb_email)
 
-        self.i_email = QLineEdit(self.frame)
+        self.i_email = LineEdit(self.frame)
         self.i_email.setObjectName(u"i_email")
 
         self.verticalLayout_4.addWidget(self.i_email)

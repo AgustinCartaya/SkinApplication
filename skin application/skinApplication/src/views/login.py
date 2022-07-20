@@ -15,12 +15,13 @@ class LoginView(ViewObject):
         self.ui = Ui_login()
         self.ui.setupUi(self)
         
-    mySignam = Signal(str,str,str)
+    s_change_view = Signal(str,str,str)
     def connect_ui_signals(self):
         #ui signals
         self.ui.bt_login.clicked.connect(self.login)
+
         # created signals
-        self.mySignam.connect(self.MW.change_view)
+        self.s_change_view.connect(self.MW.change_view)
 
     def charge_doctors_name(self):
         dc = Doctor()
@@ -30,8 +31,10 @@ class LoginView(ViewObject):
     # connecting click to the main window
     def login(self):
         dc = Doctor()
-        dc.get_doctor_by_last_name_and_password(self.ui.i_name.text(),self.ui.i_password.text())
-        print(dc.email)
-        # self.mySignam.emit(cfg.LOGIN_VIEW, cfg.PATIENTS_VIEW, None)
+        try:
+            dc.get_doctor_by_last_name_and_password(self.ui.i_name.text(),self.ui.i_password.text())
+            self.s_change_view.emit(cfg.LOGIN_VIEW, cfg.PATIENTS_VIEW, None)
+        except ValueError as err:
+            print(err.args)
 
 

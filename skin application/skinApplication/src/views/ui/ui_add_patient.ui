@@ -99,7 +99,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="i_first_name"/>
+             <widget class="LineEdit" name="i_first_name"/>
             </item>
             <item>
              <widget class="QLabel" name="lb_birth_date">
@@ -147,7 +147,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="i_last_name"/>
+             <widget class="LineEdit" name="i_last_name"/>
             </item>
             <item>
              <widget class="QLabel" name="lb_gender">
@@ -235,6 +235,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>LineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>.promoted.line_edit</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

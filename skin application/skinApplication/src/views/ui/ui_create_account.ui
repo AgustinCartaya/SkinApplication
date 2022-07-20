@@ -111,7 +111,7 @@
                 </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="i_first_name"/>
+                <widget class="LineEdit" name="i_first_name"/>
                </item>
                <item>
                 <widget class="QLabel" name="lb_password">
@@ -121,7 +121,7 @@
                 </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="i_password"/>
+                <widget class="LineEdit" name="i_password"/>
                </item>
               </layout>
              </widget>
@@ -158,7 +158,7 @@
                 </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="i_last_name"/>
+                <widget class="LineEdit" name="i_last_name"/>
                </item>
                <item>
                 <widget class="QLabel" name="lb_repeat_password">
@@ -168,7 +168,7 @@
                 </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="i_repeat_password"/>
+                <widget class="LineEdit" name="i_repeat_password"/>
                </item>
               </layout>
              </widget>
@@ -193,7 +193,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="i_email"/>
+             <widget class="LineEdit" name="i_email"/>
             </item>
            </layout>
           </widget>
@@ -226,6 +226,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>LineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>.promoted.line_edit</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

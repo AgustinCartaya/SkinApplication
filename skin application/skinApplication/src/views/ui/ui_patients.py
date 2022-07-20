@@ -19,11 +19,11 @@ from PySide6.QtWidgets import (QApplication, QCheckBox, QFrame, QHBoxLayout,
     QLabel, QPushButton, QSizePolicy, QSpacerItem,
     QVBoxLayout, QWidget)
 
-from promoted.check_button import CheckButton
-from promoted.line_edit import LineEdit
-from promoted.menu_button import MenuButton
-from promoted.pagination import Pagination
-from promoted.search_line import SearchLine
+from .promoted.check_button import CheckButton
+from .promoted.line_edit import LineEdit
+from .promoted.menu_button import MenuButton
+from .promoted.pagination import Pagination
+from .promoted.search_line import SearchLine
 
 class Ui_patients(object):
     def setupUi(self, patients):

@@ -24,9 +24,20 @@
         "src/views/patients.py",
         "src/views/photos.py",
         "src/views/time_line.py",
-        "src/views/ui/create_account.ui",
+        "src/views/ui/ui_create_account.ui",
+        "src/views/ui/ui_create_account.py",
         "src/views/ui/ui_login.ui",
         "src/views/ui/ui_login.py",
-        "src/views/ui/patients.ui",
-        "src/views/ui/ui_create_account.py"]
+        "src/views/ui/ui_add_patient.ui",
+        "src/views/ui/ui_add_patient.py",
+        "src/views/ui/ui_patients.ui",
+        "src/views/ui/ui_patients.py",
+        "src/views/ui/ui_create_account.py",
+        "src/views/ui/promoted/check_button.py",
+        "src/views/ui/promoted/menu_button.py",
+        "src/views/ui/promoted/line_edit.py",
+        "src/views/ui/promoted/search_line.py",
+        "src/views/ui/promoted/pagination.py",
+        "src/views/ui/promoted/card_button.py",
+        "src/views/ui/styles/global.css"]
 }

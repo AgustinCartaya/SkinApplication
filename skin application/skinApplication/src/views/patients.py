@@ -1,23 +1,40 @@
-import os
-from pathlib import Path
-import sys
+from .view_object import *
+from .ui.ui_patients import Ui_patients
 
-from PySide6.QtWidgets import QApplication, QWidget
-from PySide6.QtCore import QFile
-from PySide6.QtUiTools import QUiLoader
-
-
-class Patients(QWidget):
+class Patients(ViewObject):
     def __init__(self, mw):
-        super(Patients, self).__init__()
+        super().__init__(mw)
         self.load_ui()
+        self.connect_ui_signals()
 
     def load_ui(self):
-        loader = QUiLoader()
+        self.ui = Ui_patients()
+        self.ui.setupUi(self)
 
-        ui_path = os.fspath(Path(__file__).resolve().parent / "ui/patients.ui")
-        ui_file = QFile(ui_path)
-        ui_file.open(QFile.ReadOnly)
-        loader.load(ui_file, self)
-        ui_file.close()
+        self.ui.bt_add_new_patient.set_position(2)
+
+        # organizer
+        self.ui.bt_organizer_1.select(True)
+        self.ui.bt_organizer_3.select(True)
+        self.ui.bt_organizer_5.select(True)
+
+        g1 = [self.ui.bt_organizer_1, self.ui.bt_organizer_2]
+        g2 = [self.ui.bt_organizer_3, self.ui.bt_organizer_4]
+        g3 = [self.ui.bt_organizer_5, self.ui.bt_organizer_6]
+
+        self.ui.bt_organizer_1.add_group(g1)
+        self.ui.bt_organizer_2.add_group(g1)
+        self.ui.bt_organizer_3.add_group(g2)
+        self.ui.bt_organizer_4.add_group(g2)
+        self.ui.bt_organizer_5.add_group(g3)
+        self.ui.bt_organizer_6.add_group(g3)
+
+
+    mySignam = Signal(str,str,str)
+    def connect_ui_signals(self):
+        pass
+        #ui signals
+        # self.ui.bt_login.clicked.connect(self.login)
+        # # created signals
+        # self.mySignam.connect(self.MW.change_view)
 

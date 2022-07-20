@@ -26,7 +26,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def set_initial_state(self):
         self.setWindowTitle("Skin app")
-        self.setMinimumSize(600, 400)
+        self.setMinimumSize(1000, 650)
         self.center()
         self.load_style_sheet()
         # self.showMaximized()
@@ -39,7 +39,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def load_style_sheet(self):
         st = util.file_to_string(
-            util.uppath(__file__, 1) + "/views/styles/styles.css")
+            util.uppath(__file__, 1) + "/views/ui/styles/global.css")
         self.setStyleSheet(st)
 
     @property

@@ -16,8 +16,10 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QDateEdit, QFrame, QHBoxLayout,
-    QLabel, QLineEdit, QPushButton, QRadioButton,
-    QSizePolicy, QSpacerItem, QVBoxLayout, QWidget)
+    QLabel, QPushButton, QRadioButton, QSizePolicy,
+    QSpacerItem, QVBoxLayout, QWidget)
+
+from .promoted.line_edit import LineEdit
 
 class Ui_add_patient(object):
     def setupUi(self, add_patient):
@@ -63,7 +65,7 @@ class Ui_add_patient(object):
 
         self.verticalLayout_3.addWidget(self.lb_first_name)
 
-        self.i_first_name = QLineEdit(self.left_side_container)
+        self.i_first_name = LineEdit(self.left_side_container)
         self.i_first_name.setObjectName(u"i_first_name")
 
         self.verticalLayout_3.addWidget(self.i_first_name)
@@ -94,7 +96,7 @@ class Ui_add_patient(object):
 
         self.verticalLayout_6.addWidget(self.lb_last_name)
 
-        self.i_last_name = QLineEdit(self.right_side_container)
+        self.i_last_name = LineEdit(self.right_side_container)
         self.i_last_name.setObjectName(u"i_last_name")
 
         self.verticalLayout_6.addWidget(self.i_last_name)
