@@ -1,5 +1,10 @@
 import re 
 
+regex_email = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
+regex_name = "([a-zA-Z]|-|')*"
+regex_letters = "[a-zA-Z]*"
+#regex_plain_text = '[^!@#\$%\^&\*\(\)\+\?_=,<>/\"\\\.]'
+
 def normalize_name(text):
     return text.strip().upper()
 
@@ -20,7 +25,7 @@ def is_name(text):
         return True
 
 def is_email(text):
-    regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'  
+    regex = regex_email
     if re.search(regex,text):   
         return True 
     else:   

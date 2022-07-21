@@ -19,6 +19,7 @@ class LoginView(ViewObject):
     def connect_ui_signals(self):
         #ui signals
         self.ui.bt_login.clicked.connect(self.login)
+        self.ui.i_password.returnPressed.connect(self.ui.bt_login.click)
 
         # created signals
         self.s_change_view.connect(self.MW.change_view)

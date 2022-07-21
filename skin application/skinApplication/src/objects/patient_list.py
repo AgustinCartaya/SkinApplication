@@ -8,8 +8,11 @@ from operator import attrgetter
 from .patient import Patient
 
 class PatientList:
-    def __init__(self):
+    def __init__(self, *args):
         self.patients = []
+
+        if len(args) >= 1:
+            self.extract_patients(args[0])
 
     def search_all_patients(self):
         dbc = DBController()
@@ -32,4 +35,18 @@ class PatientList:
         elif of == "first_name":
             return [x.first_name for x in self.patients]
 
+    def append_patient(self, patient):
+        self.patients.append(patient)
 
+    def extract_patients(self, pl):
+        for patient in pl.patients:
+            self.patients.append(patient)
+
+    def get_filtered(self, key, value):
+        filtered = PatientList()
+        for patient in self.patients:
+            if getattr(patient, key) == value:
+                filtered.append_patient(patient)
+#        print(getattr(self.patients[5], key))
+#        self.patients = filter(lambda patient: getattr(patient, key) == value, self.patients)
+        return filtered

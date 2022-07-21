@@ -17,10 +17,21 @@ class Patients(ViewObject):
         self.ui = Ui_patients()
         self.ui.setupUi(self)
 
+        # navigator
         self.ui.bt_add_new_patient.set_position(2)
 
-        # organizer
+        # filters
+        self.ui.i_male.setChecked(True)
+        self.ui.i_female.setChecked(True)
 
+#        regex = QRegularExpression("[a-z-A-Z_]+")
+#        validator = QRegularExpressionValidator(regex)
+#        self.ui.i_agre_precise.setValidator(validator)
+
+        self.ui.i_agre_precise.setValidator(self.create_text_validator("[1-9][0-9]{0,2}"))
+        self.ui.i_age_rangue.setValidator(self.create_text_validator("[1-9][0-9]{0,2} ?- ?[1-9][0-9]{2}"))
+
+        # organizer
         self.ui.bt_organizer_mosaico.set_icon(Button.IC_MOSAICO)
         self.ui.bt_organizer_list.set_icon(Button.IC_LIST)
 
@@ -39,6 +50,8 @@ class Patients(ViewObject):
         self.ui.bt_organizer_id.add_group(g3)
         self.ui.bt_organizer_name.add_group(g3)
 
+
+
     def load_patients(self):
         self.p_list = PatientList()
         self.p_list.search_all_patients()
@@ -46,20 +59,66 @@ class Patients(ViewObject):
 
     s_change_view = Signal(str,str,str)
     def connect_ui_signals(self):
-        #ui signals
+        # navigator
         self.ui.bt_back.clicked.connect(self.back)
         self.ui.bt_add_new_patient.clicked.connect(self.add_new_patient)
 
+        # organizer
         self.ui.bt_organizer_mosaico.clicked.connect(self.show_patients)
         self.ui.bt_organizer_list.clicked.connect(self.show_patients)
         self.ui.bt_organizer_asc.clicked.connect(self.show_patients)
         self.ui.bt_organizer_dsc.clicked.connect(self.show_patients)
-        self.ui.bt_organizer_id.clicked.connect(self.show_patients)
-        self.ui.bt_organizer_name.clicked.connect(self.show_patients)
+#        self.ui.bt_organizer_id.clicked.connect(self.show_patients)
+#        self.ui.bt_organizer_name.clicked.connect(self.show_patients)
+        self.ui.bt_organizer_id.clicked.connect(lambda: (self.change_search_by_organizer("id") ) )
+        self.ui.bt_organizer_name.clicked.connect(lambda: (self.change_search_by_organizer("name") ) )
+
+        # filters
+        self.ui.i_male.stateChanged.connect(self.show_patients)
+        self.ui.i_female.stateChanged.connect(self.show_patients)
+
+        self.ui.i_agre_precise.returnPressed.connect(self.show_patients)
+        self.ui.i_age_rangue.returnPressed.connect(self.show_patients)
+        self.ui.i_search.returnPressed.connect(self.show_patients)
+
+#        self.ui.i_male.stateChanged.connect(lambda state: (self.filter_gender(state, 1)) )
+#        self.ui.i_female.stateChanged.connect(lambda state: (self.filter_gender(state, 0)) )
 
         # created signals
         self.s_change_view.connect(self.MW.change_view)
 
+
+    @Slot()
+    def change_search_by_organizer(self, organizer):
+        place_holder = ""
+#        regex = ""
+        if organizer == "id":
+            place_holder = "E.g: AG4432YA"
+        elif organizer == "name":
+            place_holder = "E.g: Alex"
+
+#        self.ui.i_age_rangue.setValidator(self.create_text_validator(regex))
+        self.ui.i_search.setPlaceholderText(place_holder)
+        self.show_patients()
+
+#    @Slot()
+#    def filter_gender(self, state, check_box):
+#        print("state: ", state)
+#        print("check_box: ", check_box)
+#        print()
+#        if not state:
+#            if check_box == 0 and not self.ui.i_male.isChecked():
+#                self.ui.i_female.setChecked(True)
+#            elif check_box == 1 and not self.ui.i_female.isChecked():
+#                self.ui.i_male.setChecked(True)
+#            else:
+#                self.show_patients()
+#        else:
+#            self.show_patients()
+#        self.show_patients()
+#        print("2 state: ", state)
+#        print("2 check_box: ", check_box)
+#        print()
     @Slot()
     def show_patients(self):
         self.filter_patients()
@@ -67,17 +126,26 @@ class Patients(ViewObject):
         self.ui.c_pagination.add_cards(self.p_organized)
 
     def filter_patients(self):
-        self.p_list_filtered = self.p_list
+        self.p_list_filtered = PatientList(self.p_list)
+
+        # Clinical attributes
+        # ---- gender
+        if self.ui.i_female.isChecked() and not self.ui.i_male.isChecked():
+            self.p_list_filtered = self.p_list_filtered.get_filtered("gender",0)
+#            print("just females")
+        elif self.ui.i_male.isChecked() and not self.ui.i_female.isChecked():
+            self.p_list_filtered = self.p_list_filtered.get_filtered("gender",1)
+#            print("just males")
+
 
     def organize_patients(self):
         if self.ui.bt_organizer_id.property("selected"):
-            self.p_organized = self.p_list_filtered.get_list_of()
+            self.p_organized = self.p_list_filtered.get_list_of("id")
         else:
             self.p_organized = self.p_list_filtered.get_list_of("first_name")
+
         self.p_organized = util.sort_list(self.p_organized,
         self.ui.bt_organizer_asc.property("selected"))
-
-
 
     @Slot()
     def back(self):
