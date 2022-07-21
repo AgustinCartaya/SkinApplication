@@ -60,3 +60,10 @@ class Patient(DataObject):
             self.initialize(obj[0], obj[1], obj[2], obj[3], obj[4], obj[5])
         else:
             raise ValueError('No object found', "DOCTOR", "NOT_FOUND")
+
+    def to_string(self):
+        return  ("(" + self.id + ", " +
+            self.first_name + ", " +
+            self.last_name + ", " +
+            self.birth_date + ", " +
+            str(self.gender) + ")")

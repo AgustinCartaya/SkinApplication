@@ -20,12 +20,12 @@ def run():
     app = QApplication([])
 
     mainWindow = MainWindow()
-    mainWindow.change_view(None, cfg.PATIENTS_VIEW, [])
-    first_time()
-#    if first_time():
-#        mainWindow.change_view(None, cfg.CREATE_ACCOUNT_VIEW, [])
-#    else:
-#        mainWindow.change_view(None, cfg.LOGIN_VIEW, [])
+#    mainWindow.change_view(None, cfg.PATIENTS_VIEW, [])
+#    first_time()
+    if first_time():
+        mainWindow.change_view(None, cfg.CREATE_ACCOUNT_VIEW, [])
+    else:
+        mainWindow.change_view(None, cfg.LOGIN_VIEW, [])
 
     mainWindow.show()
     app.exec()

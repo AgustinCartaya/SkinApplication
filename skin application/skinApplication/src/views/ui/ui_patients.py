@@ -384,55 +384,55 @@ class Ui_patients(object):
 
         self.horizontalLayout_3.addItem(self.horizontalSpacer_5)
 
-        self.bt_organizer_1 = CheckButton(self.frame_12)
-        self.bt_organizer_1.setObjectName(u"bt_organizer_1")
-        self.bt_organizer_1.setMinimumSize(QSize(25, 25))
-        self.bt_organizer_1.setMaximumSize(QSize(25, 25))
+        self.bt_organizer_mosaico = CheckButton(self.frame_12)
+        self.bt_organizer_mosaico.setObjectName(u"bt_organizer_mosaico")
+        self.bt_organizer_mosaico.setMinimumSize(QSize(25, 25))
+        self.bt_organizer_mosaico.setMaximumSize(QSize(25, 25))
 
-        self.horizontalLayout_3.addWidget(self.bt_organizer_1)
+        self.horizontalLayout_3.addWidget(self.bt_organizer_mosaico)
 
-        self.bt_organizer_2 = CheckButton(self.frame_12)
-        self.bt_organizer_2.setObjectName(u"bt_organizer_2")
-        self.bt_organizer_2.setMinimumSize(QSize(25, 25))
-        self.bt_organizer_2.setMaximumSize(QSize(25, 25))
+        self.bt_organizer_list = CheckButton(self.frame_12)
+        self.bt_organizer_list.setObjectName(u"bt_organizer_list")
+        self.bt_organizer_list.setMinimumSize(QSize(25, 25))
+        self.bt_organizer_list.setMaximumSize(QSize(25, 25))
 
-        self.horizontalLayout_3.addWidget(self.bt_organizer_2)
+        self.horizontalLayout_3.addWidget(self.bt_organizer_list)
 
         self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout_3.addItem(self.horizontalSpacer_3)
 
-        self.bt_organizer_3 = CheckButton(self.frame_12)
-        self.bt_organizer_3.setObjectName(u"bt_organizer_3")
-        self.bt_organizer_3.setMinimumSize(QSize(40, 25))
-        self.bt_organizer_3.setMaximumSize(QSize(40, 25))
+        self.bt_organizer_asc = CheckButton(self.frame_12)
+        self.bt_organizer_asc.setObjectName(u"bt_organizer_asc")
+        self.bt_organizer_asc.setMinimumSize(QSize(40, 25))
+        self.bt_organizer_asc.setMaximumSize(QSize(40, 25))
 
-        self.horizontalLayout_3.addWidget(self.bt_organizer_3)
+        self.horizontalLayout_3.addWidget(self.bt_organizer_asc)
 
-        self.bt_organizer_4 = CheckButton(self.frame_12)
-        self.bt_organizer_4.setObjectName(u"bt_organizer_4")
-        self.bt_organizer_4.setMinimumSize(QSize(40, 25))
-        self.bt_organizer_4.setMaximumSize(QSize(40, 25))
+        self.bt_organizer_dsc = CheckButton(self.frame_12)
+        self.bt_organizer_dsc.setObjectName(u"bt_organizer_dsc")
+        self.bt_organizer_dsc.setMinimumSize(QSize(40, 25))
+        self.bt_organizer_dsc.setMaximumSize(QSize(40, 25))
 
-        self.horizontalLayout_3.addWidget(self.bt_organizer_4)
+        self.horizontalLayout_3.addWidget(self.bt_organizer_dsc)
 
         self.horizontalSpacer_4 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout_3.addItem(self.horizontalSpacer_4)
 
-        self.bt_organizer_5 = CheckButton(self.frame_12)
-        self.bt_organizer_5.setObjectName(u"bt_organizer_5")
-        self.bt_organizer_5.setMinimumSize(QSize(40, 25))
-        self.bt_organizer_5.setMaximumSize(QSize(40, 25))
+        self.bt_organizer_id = CheckButton(self.frame_12)
+        self.bt_organizer_id.setObjectName(u"bt_organizer_id")
+        self.bt_organizer_id.setMinimumSize(QSize(40, 25))
+        self.bt_organizer_id.setMaximumSize(QSize(40, 25))
 
-        self.horizontalLayout_3.addWidget(self.bt_organizer_5)
+        self.horizontalLayout_3.addWidget(self.bt_organizer_id)
 
-        self.bt_organizer_6 = CheckButton(self.frame_12)
-        self.bt_organizer_6.setObjectName(u"bt_organizer_6")
-        self.bt_organizer_6.setMinimumSize(QSize(50, 25))
-        self.bt_organizer_6.setMaximumSize(QSize(50, 25))
+        self.bt_organizer_name = CheckButton(self.frame_12)
+        self.bt_organizer_name.setObjectName(u"bt_organizer_name")
+        self.bt_organizer_name.setMinimumSize(QSize(50, 25))
+        self.bt_organizer_name.setMaximumSize(QSize(50, 25))
 
-        self.horizontalLayout_3.addWidget(self.bt_organizer_6)
+        self.horizontalLayout_3.addWidget(self.bt_organizer_name)
 
         self.horizontalSpacer_6 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
@@ -495,11 +495,11 @@ class Ui_patients(object):
         self.pushButton.setText("")
         self.i_search.setPlaceholderText(QCoreApplication.translate("patients", u"E.g: id: AG4432YA", None))
         self.lb_organizer_titles.setText(QCoreApplication.translate("patients", u"Organizer", None))
-        self.bt_organizer_1.setText(QCoreApplication.translate("patients", u"MM", None))
-        self.bt_organizer_2.setText(QCoreApplication.translate("patients", u"MM", None))
-        self.bt_organizer_3.setText(QCoreApplication.translate("patients", u"A-z", None))
-        self.bt_organizer_4.setText(QCoreApplication.translate("patients", u"z-A", None))
-        self.bt_organizer_5.setText(QCoreApplication.translate("patients", u"ID", None))
-        self.bt_organizer_6.setText(QCoreApplication.translate("patients", u"Name", None))
+        self.bt_organizer_mosaico.setText("")
+        self.bt_organizer_list.setText("")
+        self.bt_organizer_asc.setText(QCoreApplication.translate("patients", u"A-z", None))
+        self.bt_organizer_dsc.setText(QCoreApplication.translate("patients", u"z-A", None))
+        self.bt_organizer_id.setText(QCoreApplication.translate("patients", u"ID", None))
+        self.bt_organizer_name.setText(QCoreApplication.translate("patients", u"Name", None))
     # retranslateUi
 

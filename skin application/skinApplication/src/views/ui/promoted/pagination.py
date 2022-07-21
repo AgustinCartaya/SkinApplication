@@ -4,7 +4,9 @@ from PySide6.QtWidgets import (QFrame, QVBoxLayout, QHBoxLayout,
 #from PySide6.QtWidgets import QApplication
 
 from PySide6.QtCore import QCoreApplication, Qt, QSize
-from .card_button import *
+
+from .button import Button
+from .card_button import CardButton
 
 class Pagination(QFrame):
 
@@ -23,14 +25,13 @@ class Pagination(QFrame):
 
         self.min_sep = 5
 
-        self.min_card_width = 100
-        self.min_card_height = 100
+        self.min_card_width = 50
+        self.min_card_height = 50
         # fin no usado
 
         self.nb_cards = 0
         self.pointer = 0
         self.nb_max_pages = 0
-
 
         self.__create()
 
@@ -49,8 +50,6 @@ class Pagination(QFrame):
 
     def __crete_cards_container(self):
         self.c_cards = QFrame(self)
-        self.c_cards.setFrameShape(QFrame.StyledPanel)
-        self.c_cards.setFrameShadow(QFrame.Raised)
         self.c_cards_layout = QGridLayout(self.c_cards)
 
 
@@ -64,8 +63,9 @@ class Pagination(QFrame):
         self.c_controllers_layout.setContentsMargins(-1, 0, -1, 0)
 
         self.bt_back_page = Button(self.c_controllers)
-        self.bt_back_page.setMinimumSize(QSize(30, 30))
-        self.bt_back_page.setMaximumSize(QSize(30, 30))
+        self.bt_back_page.setMinimumSize(QSize(28, 28))
+        self.bt_back_page.setMaximumSize(QSize(28, 28))
+        self.bt_back_page.set_icon(Button.IC_LEFT)
         self.c_controllers_layout.addWidget(self.bt_back_page)
         self.bt_back_page.clicked.connect(self.back_page)
 
@@ -79,15 +79,16 @@ class Pagination(QFrame):
         self.c_controllers_layout.addWidget(self.lb_number_of_pages)
 
         self.bt_next_page = Button(self.c_controllers)
-        self.bt_next_page.setMinimumSize(QSize(30, 30))
-        self.bt_next_page.setMaximumSize(QSize(30, 30))
+        self.bt_next_page.setMinimumSize(QSize(28, 28))
+        self.bt_next_page.setMaximumSize(QSize(28, 28))
+        self.bt_next_page.set_icon(Button.IC_RIGHT)
         self.c_controllers_layout.addWidget(self.bt_next_page)
         self.bt_next_page.clicked.connect(self.next_page)
 
     def add_cards(self, cards):
         self.cards = cards
         self.nb_cards = len(cards)
-        self.nb_max_pages = self.nb_cards//(self.nb_rows * self.nb_cols) + 1
+        self.nb_max_pages = (self.nb_cards-1)//(self.nb_rows * self.nb_cols) + 1
         self.lb_number_of_pages.setText(QCoreApplication.translate("pagination", u"of " + str(self.nb_max_pages), None))
         self.__paint_cards()
 
@@ -103,7 +104,11 @@ class Pagination(QFrame):
         while i < self.nb_rows and index_card < self.nb_cards:
             while j < self.nb_cols and index_card < self.nb_cards:
                 bt = CardButton(self.c_cards)
-                bt.setText(self.cards[index_card])
+                text = self.cards[index_card]
+                if len(text) > 10:
+                    bt.setText(text[:10] + "...")
+                else:
+                    bt.setText(text)
                 bt.setMinimumSize(QSize(100, 100))
 #               pushButton.setMaximumSize(QSize(150, 150))
 

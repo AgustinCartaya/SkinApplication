@@ -11,6 +11,10 @@ def file_to_string(file_path_name):
     return _file.read()
 
 def generate_id(base_text):
-
     return base_text[:2].upper() + str(random.randint(1000,9999)) + base_text[-2:].upper()
 
+def sort_list_of_tuples(list, index, asc=True):
+    return sorted(list, key=lambda tup: tup[index], reverse = not asc)
+
+def sort_list(list, asc=True):
+    return sorted(list, reverse = not asc)

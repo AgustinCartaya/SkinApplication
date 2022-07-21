@@ -788,7 +788,7 @@
                    </spacer>
                   </item>
                   <item>
-                   <widget class="CheckButton" name="bt_organizer_1">
+                   <widget class="CheckButton" name="bt_organizer_mosaico">
                     <property name="minimumSize">
                      <size>
                       <width>25</width>
@@ -802,12 +802,12 @@
                      </size>
                     </property>
                     <property name="text">
-                     <string>MM</string>
+                     <string/>
                     </property>
                    </widget>
                   </item>
                   <item>
-                   <widget class="CheckButton" name="bt_organizer_2">
+                   <widget class="CheckButton" name="bt_organizer_list">
                     <property name="minimumSize">
                      <size>
                       <width>25</width>
@@ -821,7 +821,7 @@
                      </size>
                     </property>
                     <property name="text">
-                     <string>MM</string>
+                     <string/>
                     </property>
                    </widget>
                   </item>
@@ -839,7 +839,7 @@
                    </spacer>
                   </item>
                   <item>
-                   <widget class="CheckButton" name="bt_organizer_3">
+                   <widget class="CheckButton" name="bt_organizer_asc">
                     <property name="minimumSize">
                      <size>
                       <width>40</width>
@@ -858,7 +858,7 @@
                    </widget>
                   </item>
                   <item>
-                   <widget class="CheckButton" name="bt_organizer_4">
+                   <widget class="CheckButton" name="bt_organizer_dsc">
                     <property name="minimumSize">
                      <size>
                       <width>40</width>
@@ -890,7 +890,7 @@
                    </spacer>
                   </item>
                   <item>
-                   <widget class="CheckButton" name="bt_organizer_5">
+                   <widget class="CheckButton" name="bt_organizer_id">
                     <property name="minimumSize">
                      <size>
                       <width>40</width>
@@ -909,7 +909,7 @@
                    </widget>
                   </item>
                   <item>
-                   <widget class="CheckButton" name="bt_organizer_6">
+                   <widget class="CheckButton" name="bt_organizer_name">
                     <property name="minimumSize">
                      <size>
                       <width>50</width>

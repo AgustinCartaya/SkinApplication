@@ -16,7 +16,6 @@ class CreateAccountView(ViewObject):
     def load_ui(self):
         self.ui = Ui_create_account()
         self.ui.setupUi(self)
-        
 
     mySignam = Signal(str,str,str)
     def connect_ui_signals(self):

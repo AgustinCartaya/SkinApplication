@@ -34,10 +34,10 @@ class Ui_login(object):
         self.center_container.setFrameShadow(QFrame.Raised)
         self.verticalLayout_2 = QVBoxLayout(self.center_container)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
-        self.lb_login = QLabel(self.center_container)
-        self.lb_login.setObjectName(u"lb_login")
+        self.lb_title = QLabel(self.center_container)
+        self.lb_title.setObjectName(u"lb_title")
 
-        self.verticalLayout_2.addWidget(self.lb_login, 0, Qt.AlignHCenter)
+        self.verticalLayout_2.addWidget(self.lb_title, 0, Qt.AlignHCenter)
 
         self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
@@ -94,7 +94,7 @@ class Ui_login(object):
 
     def retranslateUi(self, login):
         login.setWindowTitle(QCoreApplication.translate("login", u"Loggin", None))
-        self.lb_login.setText(QCoreApplication.translate("login", u"Login", None))
+        self.lb_title.setText(QCoreApplication.translate("login", u"Login", None))
         self.lb_email.setText(QCoreApplication.translate("login", u"Name", None))
         self.lb_password.setText(QCoreApplication.translate("login", u"Password", None))
         self.bt_login.setText(QCoreApplication.translate("login", u"Login", None))

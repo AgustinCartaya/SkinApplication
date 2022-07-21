@@ -1,3 +1,4 @@
+
 /*-----QWidget-----*/
 QWidget
 {
@@ -5,7 +6,9 @@ QWidget
         color: @c_gray_dark;
 }
 
-
+QFrame{
+background-color: transparent;
+}
 /*-----QLabel-----*/
 QLabel
 {
@@ -13,6 +16,11 @@ QLabel
         color: @c_gray_dark;
 }
 
+#lb_title
+{
+    font-size: 16px;
+    text-decoration: underline;
+}
 
 /*QLabel::disabled
 {
@@ -69,6 +77,44 @@ Button::disabled
     background-color: #eee;
     color: @c_gray_light;
 }
+
+Button[bt_icon=up]
+{
+    padding: 5px 5px;
+    image: url(assets/icons/angle-up.png);
+
+}
+
+Button[bt_icon=right]
+{
+    padding: 5px 5px;
+    image: url(assets/icons/angle-right.png);
+}
+
+Button[bt_icon=down]
+{
+    padding: 5px 5px;
+    image: url(assets/icons/angle-down.png);
+}
+
+Button[bt_icon=left]
+{
+    padding: 5px 5px;
+    image: url(assets/icons/angle-left.png);
+}
+
+Button[bt_icon=list]
+{
+    padding: 5px 5px;
+    image: url(assets/icons/list.png);
+}
+
+Button[bt_icon=mosaico]
+{
+    padding: 5px 5px;
+    image: url(assets/icons/mosaico.png);
+}
+
 
 /*-----CheckButton-----*/
 .CheckButton[selected=true]
@@ -154,7 +200,7 @@ QLineEdit::hover
 
 .SearchLine{
     border: 1px solid @c_blue_base;
-    border-radius: 20px;
+    border-radius: 22px;
 }
 
 .SearchLine > QLineEdit{
@@ -1247,4 +1293,12 @@ QStatusBar
 
 }
 
+/*#c_gradient
+{*/
+/*background-color: #000;*/
+/*background: qradialgradient(cx:0, cy:0, radius: 1,
+              fx:10, fy:10, stop:0 @c_blue_base, stop:1 white);*/
+/*              background: qlineargradient(x1:0, x2:.5, stop: 0.49 @c_blue_base, stop: 0.5 white )*/
+/*background-color: linear-gradient(45deg, #fff, #000);*/
 
+/*}*/

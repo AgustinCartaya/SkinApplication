@@ -16,9 +16,9 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QFrame, QHBoxLayout, QLabel,
-    QPushButton, QSizePolicy, QSpacerItem, QVBoxLayout,
-    QWidget)
+    QSizePolicy, QSpacerItem, QVBoxLayout, QWidget)
 
+from .promoted.button import Button
 from .promoted.line_edit import LineEdit
 
 class Ui_create_account(object):
@@ -28,13 +28,16 @@ class Ui_create_account(object):
         create_account.resize(800, 600)
         create_account.setStyleSheet(u"")
         self.verticalLayout = QVBoxLayout(create_account)
+        self.verticalLayout.setSpacing(6)
         self.verticalLayout.setObjectName(u"verticalLayout")
+        self.verticalLayout.setContentsMargins(9, 9, 9, 9)
         self.center_container = QFrame(create_account)
         self.center_container.setObjectName(u"center_container")
         self.center_container.setFrameShape(QFrame.StyledPanel)
         self.center_container.setFrameShadow(QFrame.Raised)
         self.verticalLayout_2 = QVBoxLayout(self.center_container)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.verticalLayout_2.setContentsMargins(9, 9, 9, -1)
         self.lb_title = QLabel(self.center_container)
         self.lb_title.setObjectName(u"lb_title")
 
@@ -65,6 +68,7 @@ class Ui_create_account(object):
         self.left_side_container.setFrameShape(QFrame.StyledPanel)
         self.left_side_container.setFrameShadow(QFrame.Raised)
         self.verticalLayout_3 = QVBoxLayout(self.left_side_container)
+        self.verticalLayout_3.setSpacing(9)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.verticalLayout_3.setContentsMargins(-1, -1, -1, 0)
         self.lb_first_name = QLabel(self.left_side_container)
@@ -97,6 +101,7 @@ class Ui_create_account(object):
         self.right_side_container.setFrameShape(QFrame.StyledPanel)
         self.right_side_container.setFrameShadow(QFrame.Raised)
         self.verticalLayout_6 = QVBoxLayout(self.right_side_container)
+        self.verticalLayout_6.setSpacing(9)
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
         self.verticalLayout_6.setContentsMargins(-1, -1, -1, 0)
         self.lb_last_name = QLabel(self.right_side_container)
@@ -151,7 +156,7 @@ class Ui_create_account(object):
 
         self.verticalLayout_2.addItem(self.verticalSpacer)
 
-        self.bt_create = QPushButton(self.center_container)
+        self.bt_create = Button(self.center_container)
         self.bt_create.setObjectName(u"bt_create")
 
         self.verticalLayout_2.addWidget(self.bt_create, 0, Qt.AlignHCenter)
