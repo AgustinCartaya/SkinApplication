@@ -16,7 +16,9 @@ from PySide6.QtUiTools import QUiLoader
 import src.config as cfg
 from src.db_controllers.db_connection import DBConnection
 
+from .ui.promoted.button import Button
 import src.util.data_cleaner as data_cleaner
+import src.util.util as util
 
 class ViewObject(QWidget, QObject):
 
@@ -41,5 +43,4 @@ class ViewObject(QWidget, QObject):
        ui_file.close()
 
     def create_text_validator(self, regex_text):
-        regex = QRegularExpression(regex_text)
-        return QRegularExpressionValidator(regex)
+        return data_cleaner.create_text_validator(regex_text)

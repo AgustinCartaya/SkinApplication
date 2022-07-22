@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>login</class>
- <widget class="QWidget" name="login">
+ <class>add_patient_p2</class>
+ <widget class="QWidget" name="add_patient_p2">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -17,8 +17,73 @@
    <string notr="true"/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>7</number>
+   </property>
+   <item alignment="Qt::AlignLeft">
+    <widget class="QFrame" name="frame_5">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="NavigatorButton" name="bt_back">
+        <property name="text">
+         <string>Back</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <spacer name="verticalSpacer_3">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
    <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
-    <widget class="QFrame" name="center_container">
+    <widget class="QFrame" name="c_center">
+     <property name="minimumSize">
+      <size>
+       <width>400</width>
+       <height>0</height>
+      </size>
+     </property>
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
      </property>
@@ -41,7 +106,7 @@
       <item alignment="Qt::AlignHCenter">
        <widget class="Label" name="lb_title">
         <property name="text">
-         <string>Login</string>
+         <string>Add patient</string>
         </property>
        </widget>
       </item>
@@ -59,19 +124,7 @@
        </spacer>
       </item>
       <item>
-       <widget class="QFrame" name="inputs_container">
-        <property name="minimumSize">
-         <size>
-          <width>300</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>200</width>
-          <height>300</height>
-         </size>
-        </property>
+       <widget class="QFrame" name="c_inputs">
         <property name="frameShape">
          <enum>QFrame::StyledPanel</enum>
         </property>
@@ -95,41 +148,7 @@
           <number>0</number>
          </property>
          <item>
-          <widget class="QFrame" name="c_name">
-           <property name="frameShape">
-            <enum>QFrame::StyledPanel</enum>
-           </property>
-           <property name="frameShadow">
-            <enum>QFrame::Raised</enum>
-           </property>
-           <layout class="QVBoxLayout" name="verticalLayout_4">
-            <property name="leftMargin">
-             <number>0</number>
-            </property>
-            <property name="topMargin">
-             <number>0</number>
-            </property>
-            <property name="rightMargin">
-             <number>0</number>
-            </property>
-            <property name="bottomMargin">
-             <number>0</number>
-            </property>
-            <item>
-             <widget class="QLabel" name="lb_email">
-              <property name="text">
-               <string>Name</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="LineEdit" name="i_name"/>
-            </item>
-           </layout>
-          </widget>
-         </item>
-         <item>
-          <widget class="QFrame" name="c_password">
+          <widget class="QFrame" name="c_hair_color">
            <property name="frameShape">
             <enum>QFrame::StyledPanel</enum>
            </property>
@@ -150,14 +169,48 @@
              <number>0</number>
             </property>
             <item>
-             <widget class="QLabel" name="lb_password">
+             <widget class="QLabel" name="lb_hair_color">
               <property name="text">
-               <string>Password</string>
+               <string>Hair color</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="LineEdit" name="i_password"/>
+             <widget class="QComboBox" name="i_hair_color"/>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QFrame" name="c_eye_color">
+           <property name="frameShape">
+            <enum>QFrame::StyledPanel</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Raised</enum>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_4">
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="lb_eye_color">
+              <property name="text">
+               <string>Eye color</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="i_eye_color"/>
             </item>
            </layout>
           </widget>
@@ -179,9 +232,82 @@
        </spacer>
       </item>
       <item alignment="Qt::AlignHCenter">
-       <widget class="Button" name="bt_login">
+       <widget class="QFrame" name="c_buttons">
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="Button" name="bt_cancel">
+           <property name="text">
+            <string>Cancel</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="Button" name="bt_add">
+           <property name="text">
+            <string>Next</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <spacer name="verticalSpacer_4">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+    <widget class="QFrame" name="frame_3">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_4">
+      <item>
+       <widget class="QRadioButton" name="i_add_patient_view">
         <property name="text">
-         <string>Login</string>
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="i_add_patient_p2_view">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
@@ -197,14 +323,14 @@
    <header>.promoted.button</header>
   </customwidget>
   <customwidget>
-   <class>LineEdit</class>
-   <extends>QLineEdit</extends>
-   <header>.promoted.line_edit</header>
-  </customwidget>
-  <customwidget>
    <class>Label</class>
    <extends>QLabel</extends>
    <header>.promoted.label</header>
+  </customwidget>
+  <customwidget>
+   <class>NavigatorButton</class>
+   <extends>QPushButton</extends>
+   <header location="global">.promoted.navigator_button</header>
   </customwidget>
  </customwidgets>
  <resources/>

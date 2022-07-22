@@ -36,6 +36,7 @@ class Ui_login(object):
         self.center_container.setFrameShadow(QFrame.Raised)
         self.verticalLayout_2 = QVBoxLayout(self.center_container)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.lb_title = Label(self.center_container)
         self.lb_title.setObjectName(u"lb_title")
 
@@ -52,26 +53,48 @@ class Ui_login(object):
         self.inputs_container.setFrameShape(QFrame.StyledPanel)
         self.inputs_container.setFrameShadow(QFrame.Raised)
         self.verticalLayout_3 = QVBoxLayout(self.inputs_container)
+        self.verticalLayout_3.setSpacing(16)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
-        self.lb_email = QLabel(self.inputs_container)
+        self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
+        self.c_name = QFrame(self.inputs_container)
+        self.c_name.setObjectName(u"c_name")
+        self.c_name.setFrameShape(QFrame.StyledPanel)
+        self.c_name.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_4 = QVBoxLayout(self.c_name)
+        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
+        self.verticalLayout_4.setContentsMargins(0, 0, 0, 0)
+        self.lb_email = QLabel(self.c_name)
         self.lb_email.setObjectName(u"lb_email")
 
-        self.verticalLayout_3.addWidget(self.lb_email)
+        self.verticalLayout_4.addWidget(self.lb_email)
 
-        self.i_name = LineEdit(self.inputs_container)
+        self.i_name = LineEdit(self.c_name)
         self.i_name.setObjectName(u"i_name")
 
-        self.verticalLayout_3.addWidget(self.i_name)
+        self.verticalLayout_4.addWidget(self.i_name)
 
-        self.lb_password = QLabel(self.inputs_container)
+
+        self.verticalLayout_3.addWidget(self.c_name)
+
+        self.c_password = QFrame(self.inputs_container)
+        self.c_password.setObjectName(u"c_password")
+        self.c_password.setFrameShape(QFrame.StyledPanel)
+        self.c_password.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_5 = QVBoxLayout(self.c_password)
+        self.verticalLayout_5.setObjectName(u"verticalLayout_5")
+        self.verticalLayout_5.setContentsMargins(0, 0, 0, 0)
+        self.lb_password = QLabel(self.c_password)
         self.lb_password.setObjectName(u"lb_password")
 
-        self.verticalLayout_3.addWidget(self.lb_password)
+        self.verticalLayout_5.addWidget(self.lb_password)
 
-        self.i_password = LineEdit(self.inputs_container)
+        self.i_password = LineEdit(self.c_password)
         self.i_password.setObjectName(u"i_password")
 
-        self.verticalLayout_3.addWidget(self.i_password)
+        self.verticalLayout_5.addWidget(self.i_password)
+
+
+        self.verticalLayout_3.addWidget(self.c_password)
 
 
         self.verticalLayout_2.addWidget(self.inputs_container)

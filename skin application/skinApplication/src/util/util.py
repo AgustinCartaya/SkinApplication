@@ -23,3 +23,18 @@ def calc_age(birthdate):
     today = date.today()
     age = today.year - birthdate.year - ((today.month, today.day) < (birthdate.month, birthdate.day))
     return age
+
+def read_file_list(file_name, separator="\n"):
+
+    file_path_name = uppath(__file__,3) + "/assets/files/" + file_name
+    _file = open(file_path_name)
+    file_lines = _file.read()
+    lst = file_lines.split(separator)
+#    for line in file_lines:
+#        print(line)
+#        if len(line.replace(" ","")) > 0:
+#            lst.append(line)
+    return lst
+
+
+

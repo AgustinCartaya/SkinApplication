@@ -2,7 +2,7 @@ from .view_object import *
 from .ui.ui_add_patient import Ui_add_patient
 
 from src.objects.patient import Patient
-from .ui.promoted.button import Button
+
 
 class AddPatientView(ViewObject):
     def __init__(self, mw):
@@ -42,7 +42,7 @@ class AddPatientView(ViewObject):
                 self.ui.i_birth_date.date().toString("dd-MM-yyyy"),
                 int(self.ui.i_gender_m.isChecked()))
             patient.save_data()
-            self.s_change_view.emit(cfg.ADD_PATIENT_VIEW, cfg.PATIENTS_VIEW, None)
+            self.s_change_view.emit(cfg.ADD_PATIENT_VIEW, cfg.ADD_PATIENT_P2_VIEW, None)
         except ValueError as err:
             print(err.args)
         

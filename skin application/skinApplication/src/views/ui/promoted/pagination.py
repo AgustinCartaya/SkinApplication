@@ -9,6 +9,8 @@ from .button import Button
 from .card_button import CardButton
 from .line_edit import LineEdit
 
+import src.util.data_cleaner as data_cleaner
+
 class Pagination(QFrame):
 
     def __init__(self, *args, **kwards):
@@ -73,7 +75,8 @@ class Pagination(QFrame):
         self.i_actual_page = LineEdit(self.c_controllers)
         self.i_actual_page.setMaximumSize(QSize(40, 16777215))
         self.c_controllers_layout.addWidget(self.i_actual_page)
-        self.i_actual_page.textChanged.connect(self.change_manual_page)
+        self.i_actual_page.returnPressed.connect(self.change_page_manually)
+        self.i_actual_page.setValidator(data_cleaner.create_text_validator(data_cleaner.regex_not_null_4_number))
 
         self.lb_number_of_pages = QLabel(self.c_controllers)
         self.lb_number_of_pages.setText(QCoreApplication.translate("pagination", u"of ...", None))
@@ -125,20 +128,26 @@ class Pagination(QFrame):
 
     def next_page(self):
         if (self.pointer + 1)  < self.nb_max_pages:
-            self.pointer = self.pointer + 1
-        self.__paint_cards()
+            self.go_to_page(self.pointer + 2)
+#            self.pointer = self.pointer + 1
+#        self.__paint_cards()
 
     def back_page(self):
         if (self.pointer - 1)  >= 0:
-            self.pointer = self.pointer - 1
-        self.__paint_cards()
+            self.go_to_page(self.pointer)
+#            self.pointer = self.pointer - 1
+#        self.__paint_cards()
 
-    def change_manual_page(self):
-        if int(self.i_actual_page.text()) <= 0:
-            self.i_actual_page.setText("1")
-        elif int(self.i_actual_page.text()) > self.nb_max_pages:
-            self.i_actual_page.setText(str(self.nb_max_pages))
-        else:
-            self.pointer = int(self.i_actual_page.text()) - 1
-            self.__paint_cards()
+    def change_page_manually(self):
+        page = int(self.i_actual_page.text())
+        if page <= 0:
+            page = 1
+        elif page > self.nb_max_pages:
+            page = self.nb_max_pages
+        self.go_to_page(page)
+
+    def go_to_page(self, page):
+        self.pointer = page - 1
+        self.__paint_cards()
+        print(page)
 

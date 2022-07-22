@@ -1,8 +1,6 @@
 from .view_object import *
 from .ui.ui_patients import Ui_patients
-from .ui.promoted.button import Button
 
-import src.util.util as util
 from src.objects.patient_list import PatientList
 
 class Patients(ViewObject):
@@ -28,8 +26,8 @@ class Patients(ViewObject):
         self.ui.i_male.setChecked(True)
         self.ui.i_female.setChecked(True)
 
-        self.ui.i_agre_precise.setValidator(self.create_text_validator("(|[1-9][0-9]{0,2})"))
-        self.ui.i_age_rangue.setValidator(self.create_text_validator("(|[1-9][0-9]{0,2} ?- ?[1-9][0-9]{0,2}|[1-9][0-9]{0,2}(\+|\-))"))
+        self.ui.i_agre_precise.setValidator(self.create_text_validator(data_cleaner.regex_age))
+        self.ui.i_age_rangue.setValidator(self.create_text_validator(data_cleaner.regex_rangue))
         self.ui.i_agre_precise.set_marked_when_filled(True)
         self.ui.i_age_rangue.set_marked_when_filled(True)
 

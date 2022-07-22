@@ -16,6 +16,7 @@ from .views.patients import Patients
 from .views.create_account import CreateAccountView
 from .views.login import LoginView
 from .views.add_patient import AddPatientView 
+from .views.add_patient_p2 import AddPatientP2View
 
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
@@ -61,4 +62,6 @@ class MainWindow(QtWidgets.QMainWindow):
             self.actual_view = Patients(self)
         elif view_to == ADD_PATIENT_VIEW:
             self.actual_view = AddPatientView(self)
+        elif view_to == ADD_PATIENT_P2_VIEW:
+            self.actual_view = AddPatientP2View(self)
 

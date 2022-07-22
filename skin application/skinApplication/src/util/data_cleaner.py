@@ -1,8 +1,15 @@
 import re 
+from PySide6.QtGui import QRegularExpressionValidator
+from PySide6.QtCore import QRegularExpression
 
 regex_email = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
 regex_name = "^([a-zA-Z]|-|')*$"
 regex_letters = "[a-zA-Z]*"
+regex_number = "[0-9]*"
+regex_not_null_number = "[1-9][0-9]*"
+regex_not_null_4_number = "[1-9][0-9]{0,3}"
+regex_age = "(|[1-9][0-9]{0,2})"
+regex_rangue = "(|[1-9][0-9]{0,2} ?- ?[1-9][0-9]{0,2}|[1-9][0-9]{0,2}(\+|\-))"
 #regex_plain_text = '[^!@#\$%\^&\*\(\)\+\?_=,<>/\"\\\.]'
 
 
@@ -69,3 +76,8 @@ def is_password(text):
         return True
     else:
         return False
+
+
+def create_text_validator(regex_text):
+    regex = QRegularExpression(regex_text)
+    return QRegularExpressionValidator(regex)
