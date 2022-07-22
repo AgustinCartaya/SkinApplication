@@ -21,6 +21,10 @@ class CreateAccountView(ViewObject):
         self.ui.i_last_name.setValidator(self.create_text_validator(data_cleaner.regex_name))
         self.ui.i_email.setValidator(self.create_text_validator(data_cleaner.regex_email))
 
+        # labels
+        self.ui.lb_title.set_title(1)
+
+
     mySignam = Signal(str,str,str)
     def connect_ui_signals(self):
         #ui signals

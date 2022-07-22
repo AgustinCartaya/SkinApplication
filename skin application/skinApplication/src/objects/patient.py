@@ -34,7 +34,6 @@ class Patient(DataObject):
         self.gender = gender
 
         self.age = util.calc_age(self.birth_date)
-        print(self.age)
 
 #        (QDate.currentDate().year() - QDate.fromString(birth_date).year())
 

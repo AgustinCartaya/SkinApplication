@@ -9,16 +9,29 @@ QWidget
 QFrame{
 background-color: transparent;
 }
+
+#frame_filters{
+    background-color: #ddd;
+    border-top-right-radius: 10px;
+}
+
+
 /*-----QLabel-----*/
-QLabel
+Label
 {
         background-color: transparent;
         color: #333;
 }
 
-#lb_title
+Label[title="1"]
 {
     font-size: 16px;
+    text-decoration: underline;
+}
+
+Label[title="2"]
+{
+    font-size: 14px;
     text-decoration: underline;
 }
 
@@ -158,16 +171,7 @@ Button[bt_icon=mosaico]
 
 /*-----QLineEdit-----*/
 
-.LineEdit[empty=true]{
-    color: #8c8c8c
-}
-
-.LineEdit[empty=false]{
-    color: #333;
-}
-
-
-QLineEdit
+LineEdit
 {
         background-color: #eee;
         border: 1px solid transparent;
@@ -178,11 +182,28 @@ QLineEdit
 
 
 
-QLineEdit::hover
+LineEdit::hover
 {
-
         border: 1px solid #4696fd;
 }
+
+.LineEdit[empty=true]{
+    color: #8c8c8c
+}
+
+.LineEdit[empty=false]{
+    color: #333;
+}
+
+.LineEdit[empty=true][marked_when_filled=true]{
+     background-color: #eee;
+}
+
+.LineEdit[empty=false][marked_when_filled=true]{
+     background-color: #a3deff;
+}
+
+
 
 
 /*QLineEdit::disabled
@@ -242,6 +263,11 @@ QTextEdit::disabled
 }
 
 /*-----QCheckBox-----*/
+
+QCheckBox{
+    background-color:  transparent;
+}
+
 QCheckBox::indicator
 {
     border: None;

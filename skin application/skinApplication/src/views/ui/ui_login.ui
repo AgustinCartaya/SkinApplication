@@ -27,7 +27,7 @@
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item alignment="Qt::AlignHCenter">
-       <widget class="QLabel" name="lb_title">
+       <widget class="Label" name="lb_title">
         <property name="text">
          <string>Login</string>
         </property>
@@ -75,7 +75,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="i_name"/>
+          <widget class="LineEdit" name="i_name"/>
          </item>
          <item>
           <widget class="QLabel" name="lb_password">
@@ -85,7 +85,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="i_password"/>
+          <widget class="LineEdit" name="i_password"/>
          </item>
         </layout>
        </widget>
@@ -120,6 +120,16 @@
    <class>Button</class>
    <extends>QPushButton</extends>
    <header>.promoted.button</header>
+  </customwidget>
+  <customwidget>
+   <class>LineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>.promoted.line_edit</header>
+  </customwidget>
+  <customwidget>
+   <class>Label</class>
+   <extends>QLabel</extends>
+   <header>.promoted.label</header>
   </customwidget>
  </customwidgets>
  <resources/>

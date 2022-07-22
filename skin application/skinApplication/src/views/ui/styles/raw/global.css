@@ -9,16 +9,29 @@ QWidget
 QFrame{
 background-color: transparent;
 }
+
+#frame_filters{
+    background-color: #ddd;
+    border-top-right-radius: 10px;
+}
+
+
 /*-----QLabel-----*/
-QLabel
+Label
 {
         background-color: transparent;
         color: @c_gray_dark;
 }
 
-#lb_title
+Label[title="1"]
 {
     font-size: 16px;
+    text-decoration: underline;
+}
+
+Label[title="2"]
+{
+    font-size: 14px;
     text-decoration: underline;
 }
 
@@ -74,7 +87,7 @@ Button[type=cancel]::pressed
 
 Button::disabled
 {
-    background-color: #eee;
+    background-color: @c_gray_white;
     color: @c_gray_light;
 }
 
@@ -127,7 +140,7 @@ Button[bt_icon=mosaico]
 
 .CheckButton[selected=false]
 {
-        background-color: #eee;
+        background-color: @c_gray_white;
         color: @c_gray_light;
         border-radius: 3px;
         padding: 5px 5px;
@@ -158,18 +171,9 @@ Button[bt_icon=mosaico]
 
 /*-----QLineEdit-----*/
 
-.LineEdit[empty=true]{
-    color: @c_gray_light
-}
-
-.LineEdit[empty=false]{
-    color: @c_gray_dark;
-}
-
-
-QLineEdit
+LineEdit
 {
-        background-color: #eee;
+        background-color: @c_gray_white;
         border: 1px solid transparent;
         border-radius: 2px;
         border-color: transparent;
@@ -178,11 +182,28 @@ QLineEdit
 
 
 
-QLineEdit::hover
+LineEdit::hover
 {
-
         border: 1px solid @c_blue_base;
 }
+
+.LineEdit[empty=true]{
+    color: @c_gray_light
+}
+
+.LineEdit[empty=false]{
+    color: @c_gray_dark;
+}
+
+.LineEdit[empty=true][marked_when_filled=true]{
+     background-color: @c_gray_white;
+}
+
+.LineEdit[empty=false][marked_when_filled=true]{
+     background-color: @c_blue_light;
+}
+
+
 
 
 /*QLineEdit::disabled
@@ -242,10 +263,15 @@ QTextEdit::disabled
 }
 
 /*-----QCheckBox-----*/
+
+QCheckBox{
+    background-color:  transparent;
+}
+
 QCheckBox::indicator
 {
     border: None;
-    background-color:  #eee;
+    background-color:  @c_gray_white;
     border-radius: 1px;
     width: 14px;
     height: 14px;
@@ -297,7 +323,7 @@ QRadioButton::indicator::unchecked
         border: None;
 /*        border: 1px solid @c_gray_dark;*/
         border-radius: 7px;
-        background-color:  #eee;
+        background-color:  @c_gray_white;
         width: 14px;
         height: 14px;
         color: @c_gray_dark;
@@ -560,7 +586,7 @@ QSpinBox,
 QDoubleSpinBox,
 QDateTimeEdit
 {
-        background-color: #eee;
+        background-color: @c_gray_white;
         color: #000;
         border-color: transparent;
         border-radius: 2px;
@@ -1031,7 +1057,7 @@ QSlider::sub-page:horizontal:disabled
 
 QSlider::add-page:horizontal:disabled
 {
-        background-color: #eee;
+        background-color: @c_gray_white;
         border-color: #999;
 
 }
@@ -1039,7 +1065,7 @@ QSlider::add-page:horizontal:disabled
 
 QSlider::handle:horizontal:disabled
 {
-        background-color: #eee;
+        background-color: @c_gray_white;
         border: 1px solid #aaa;
         border-radius: 3px;
 
@@ -1097,7 +1123,7 @@ QSlider::sub-page:vertical:disabled
 
 QSlider::add-page:vertical:disabled
 {
-        background-color: #eee;
+        background-color: @c_gray_white;
         border-color: #999;
 
 }
@@ -1105,7 +1131,7 @@ QSlider::add-page:vertical:disabled
 
 QSlider::handle:vertical:disabled
 {
-        background-color: #eee;
+        background-color: @c_gray_white;
         border: 1px solid #aaa;
         border-radius: 3px;
 

@@ -12,3 +12,8 @@ class LineEdit(QLineEdit):
     def change_color(self):
         self.setProperty("empty", self.text() == '')
         self.setStyle(QApplication.style())
+#        print(self.property("marked_when_filled"))
+
+    def set_marked_when_filled(self, marked):
+        self.setProperty("marked_when_filled", marked)
+

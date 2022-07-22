@@ -21,6 +21,9 @@ class AddPatientView(ViewObject):
         self.ui.i_first_name.setValidator(self.create_text_validator(data_cleaner.regex_name))
         self.ui.i_last_name.setValidator(self.create_text_validator(data_cleaner.regex_name))
 
+        # labels
+        self.ui.lb_title.set_title(1)
+
         
 
     s_change_view = Signal(str,str,str)

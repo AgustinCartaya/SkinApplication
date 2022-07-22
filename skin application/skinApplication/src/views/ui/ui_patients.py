@@ -20,6 +20,7 @@ from PySide6.QtWidgets import (QApplication, QCheckBox, QFrame, QHBoxLayout,
     QVBoxLayout, QWidget)
 
 from .promoted.check_button import CheckButton
+from .promoted.label import Label
 from .promoted.line_edit import LineEdit
 from .promoted.navigator_button import NavigatorButton
 from .promoted.pagination import Pagination
@@ -33,7 +34,7 @@ class Ui_patients(object):
         patients.setStyleSheet(u"")
         self.verticalLayout_2 = QVBoxLayout(patients)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
-        self.verticalLayout_2.setContentsMargins(0, 0, 0, -1)
+        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.frame_6 = QFrame(patients)
         self.frame_6.setObjectName(u"frame_6")
         self.frame_6.setMaximumSize(QSize(16777215, 60))
@@ -52,7 +53,7 @@ class Ui_patients(object):
 
         self.horizontalLayout.addItem(self.horizontalSpacer)
 
-        self.lb_title = QLabel(self.frame_6)
+        self.lb_title = Label(self.frame_6)
         self.lb_title.setObjectName(u"lb_title")
 
         self.horizontalLayout.addWidget(self.lb_title)
@@ -78,22 +79,22 @@ class Ui_patients(object):
         self.frame_5.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_2 = QHBoxLayout(self.frame_5)
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.horizontalLayout_2.setContentsMargins(18, 9, 18, -1)
-        self.frame_2 = QFrame(self.frame_5)
-        self.frame_2.setObjectName(u"frame_2")
-        self.frame_2.setMinimumSize(QSize(350, 0))
-        self.frame_2.setMaximumSize(QSize(380, 16777215))
-        self.frame_2.setFrameShape(QFrame.StyledPanel)
-        self.frame_2.setFrameShadow(QFrame.Raised)
-        self.verticalLayout = QVBoxLayout(self.frame_2)
+        self.horizontalLayout_2.setContentsMargins(0, 9, 18, 0)
+        self.frame_filters = QFrame(self.frame_5)
+        self.frame_filters.setObjectName(u"frame_filters")
+        self.frame_filters.setMinimumSize(QSize(350, 0))
+        self.frame_filters.setMaximumSize(QSize(380, 16777215))
+        self.frame_filters.setFrameShape(QFrame.StyledPanel)
+        self.frame_filters.setFrameShadow(QFrame.Raised)
+        self.verticalLayout = QVBoxLayout(self.frame_filters)
         self.verticalLayout.setObjectName(u"verticalLayout")
-        self.lb_filters_title = QLabel(self.frame_2)
+        self.lb_filters_title = Label(self.frame_filters)
         self.lb_filters_title.setObjectName(u"lb_filters_title")
         self.lb_filters_title.setMaximumSize(QSize(16777215, 20))
 
         self.verticalLayout.addWidget(self.lb_filters_title, 0, Qt.AlignHCenter)
 
-        self.frame_3 = QFrame(self.frame_2)
+        self.frame_3 = QFrame(self.frame_filters)
         self.frame_3.setObjectName(u"frame_3")
         self.frame_3.setFrameShape(QFrame.StyledPanel)
         self.frame_3.setFrameShadow(QFrame.Raised)
@@ -260,7 +261,7 @@ class Ui_patients(object):
 
         self.verticalLayout.addWidget(self.frame_3)
 
-        self.frame_4 = QFrame(self.frame_2)
+        self.frame_4 = QFrame(self.frame_filters)
         self.frame_4.setObjectName(u"frame_4")
         self.frame_4.setFrameShape(QFrame.StyledPanel)
         self.frame_4.setFrameShadow(QFrame.Raised)
@@ -306,7 +307,7 @@ class Ui_patients(object):
         self.verticalLayout.addItem(self.verticalSpacer)
 
 
-        self.horizontalLayout_2.addWidget(self.frame_2)
+        self.horizontalLayout_2.addWidget(self.frame_filters)
 
         self.frame = QFrame(self.frame_5)
         self.frame.setObjectName(u"frame")

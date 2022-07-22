@@ -51,7 +51,7 @@
        <number>9</number>
       </property>
       <item alignment="Qt::AlignHCenter">
-       <widget class="QLabel" name="lb_title">
+       <widget class="Label" name="lb_title">
         <property name="text">
          <string>Create account</string>
         </property>
@@ -258,14 +258,19 @@
  </widget>
  <customwidgets>
   <customwidget>
+   <class>Button</class>
+   <extends>QPushButton</extends>
+   <header>.promoted.button</header>
+  </customwidget>
+  <customwidget>
    <class>LineEdit</class>
    <extends>QLineEdit</extends>
    <header>.promoted.line_edit</header>
   </customwidget>
   <customwidget>
-   <class>Button</class>
-   <extends>QPushButton</extends>
-   <header>.promoted.button</header>
+   <class>Label</class>
+   <extends>QLabel</extends>
+   <header>.promoted.label</header>
   </customwidget>
  </customwidgets>
  <resources/>

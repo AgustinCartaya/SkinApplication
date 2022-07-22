@@ -7,6 +7,7 @@ from PySide6.QtCore import QCoreApplication, Qt, QSize
 
 from .button import Button
 from .card_button import CardButton
+from .line_edit import LineEdit
 
 class Pagination(QFrame):
 
@@ -69,7 +70,7 @@ class Pagination(QFrame):
         self.c_controllers_layout.addWidget(self.bt_back_page)
         self.bt_back_page.clicked.connect(self.back_page)
 
-        self.i_actual_page = QLineEdit(self.c_controllers)
+        self.i_actual_page = LineEdit(self.c_controllers)
         self.i_actual_page.setMaximumSize(QSize(40, 16777215))
         self.c_controllers_layout.addWidget(self.i_actual_page)
         self.i_actual_page.textChanged.connect(self.change_manual_page)

@@ -12,7 +12,7 @@ class PatientList:
         self.patients = []
 
         if len(args) >= 1:
-            self.extract_patients(args[0])
+            self.extract_patients(args)
 
     def search_all_patients(self):
         dbc = DBController()
@@ -38,9 +38,10 @@ class PatientList:
     def append_patient(self, patient):
         self.patients.append(patient)
 
-    def extract_patients(self, pl):
-        for patient in pl.patients:
-            self.patients.append(patient)
+    def extract_patients(self, list_of_patient_list):
+        for pl in list_of_patient_list:
+            for patient in pl.patients:
+                self.patients.append(patient)
 
     def get_filtered(self, key, value):
         filtered = PatientList()
@@ -60,6 +61,17 @@ class PatientList:
                     filtered.append_patient(patient)
         return filtered
 
+    def get_filtered_lower_than(self, key, base, include = True):
+        filtered = PatientList()
+        for patient in self.patients:
+            if include:
+                if getattr(patient, key) <= base:
+                    filtered.append_patient(patient)
+            else:
+                if getattr(patient, key) < base:
+                    filtered.append_patient(patient)
+        return filtered
+
     def get_filtered_greater_than(self, key, base, include = True):
         filtered = PatientList()
         for patient in self.patients:
@@ -71,16 +83,24 @@ class PatientList:
                     filtered.append_patient(patient)
         return filtered
 
-    def get_filtered_conains(self, key, value):
+    def get_filtered_conains(self, key, value, case_sensitive =  True):
         filtered = PatientList()
         for patient in self.patients:
-            if value in getattr(patient, key):
-                filtered.append_patient(patient)
+            if case_sensitive:
+                if value in getattr(patient, key):
+                    filtered.append_patient(patient)
+            else:
+                if value.lower() in getattr(patient, key).lower():
+                    filtered.append_patient(patient)
         return filtered
 
-    def get_filtered_starts_with(self, key, value):
+    def get_filtered_starts_with(self, key, value, case_sensitive =  True):
         filtered = PatientList()
         for patient in self.patients:
-            if getattr(patient, key).startswith(value):
-                filtered.append_patient(patient)
+            if case_sensitive:
+                if getattr(patient, key).startswith(value):
+                    filtered.append_patient(patient)
+            else:
+                if getattr(patient, key).lower().startswith(value.lower()):
+                    filtered.append_patient(patient)
         return filtered

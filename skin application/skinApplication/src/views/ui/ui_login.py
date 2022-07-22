@@ -15,10 +15,12 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QFrame, QLabel, QLineEdit,
-    QSizePolicy, QSpacerItem, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QApplication, QFrame, QLabel, QSizePolicy,
+    QSpacerItem, QVBoxLayout, QWidget)
 
 from .promoted.button import Button
+from .promoted.label import Label
+from .promoted.line_edit import LineEdit
 
 class Ui_login(object):
     def setupUi(self, login):
@@ -34,7 +36,7 @@ class Ui_login(object):
         self.center_container.setFrameShadow(QFrame.Raised)
         self.verticalLayout_2 = QVBoxLayout(self.center_container)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
-        self.lb_title = QLabel(self.center_container)
+        self.lb_title = Label(self.center_container)
         self.lb_title.setObjectName(u"lb_title")
 
         self.verticalLayout_2.addWidget(self.lb_title, 0, Qt.AlignHCenter)
@@ -56,7 +58,7 @@ class Ui_login(object):
 
         self.verticalLayout_3.addWidget(self.lb_email)
 
-        self.i_name = QLineEdit(self.inputs_container)
+        self.i_name = LineEdit(self.inputs_container)
         self.i_name.setObjectName(u"i_name")
 
         self.verticalLayout_3.addWidget(self.i_name)
@@ -66,7 +68,7 @@ class Ui_login(object):
 
         self.verticalLayout_3.addWidget(self.lb_password)
 
-        self.i_password = QLineEdit(self.inputs_container)
+        self.i_password = LineEdit(self.inputs_container)
         self.i_password.setObjectName(u"i_password")
 
         self.verticalLayout_3.addWidget(self.i_password)

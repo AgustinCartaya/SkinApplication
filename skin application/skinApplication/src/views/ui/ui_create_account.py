@@ -19,6 +19,7 @@ from PySide6.QtWidgets import (QApplication, QFrame, QHBoxLayout, QLabel,
     QSizePolicy, QSpacerItem, QVBoxLayout, QWidget)
 
 from .promoted.button import Button
+from .promoted.label import Label
 from .promoted.line_edit import LineEdit
 
 class Ui_create_account(object):
@@ -38,7 +39,7 @@ class Ui_create_account(object):
         self.verticalLayout_2 = QVBoxLayout(self.center_container)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.verticalLayout_2.setContentsMargins(9, 9, 9, -1)
-        self.lb_title = QLabel(self.center_container)
+        self.lb_title = Label(self.center_container)
         self.lb_title.setObjectName(u"lb_title")
 
         self.verticalLayout_2.addWidget(self.lb_title, 0, Qt.AlignHCenter)
