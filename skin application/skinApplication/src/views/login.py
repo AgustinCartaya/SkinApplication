@@ -14,6 +14,8 @@ class LoginView(ViewObject):
     def load_ui(self):
         self.ui = Ui_login()
         self.ui.setupUi(self)
+
+        self.ui.i_password.setFocus()
         
     s_change_view = Signal(str,str,str)
     def connect_ui_signals(self):

@@ -1,28 +1,40 @@
 import re 
 
 regex_email = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
-regex_name = "([a-zA-Z]|-|')*"
+regex_name = "^([a-zA-Z]|-|')*$"
 regex_letters = "[a-zA-Z]*"
 #regex_plain_text = '[^!@#\$%\^&\*\(\)\+\?_=,<>/\"\\\.]'
+
 
 def normalize_name(text):
     return text.strip().upper()
 
+
 def normalize_email(text):
     return text.strip().lower()
+
 
 def normalize_password(text):
     return text.strip()
 
+
 def is_only_text(text):
     return text.isalpha()
 
+
+#def is_name(text):
+#    special_characters = '''!@#$%^&*()+?_=,<>/\"\\.'''
+#    if any(c in special_characters for c in text):
+#        return False
+#    else:
+#        return True
+
 def is_name(text):
-    special_characters = '''!@#$%^&*()+?_=,<>/\"\\.'''
-    if any(c in special_characters for c in text):
-        return False
-    else:
+    regex = regex_name
+    if re.search(regex,text):
         return True
+    else:
+        return False
 
 def is_email(text):
     regex = regex_email
@@ -30,6 +42,7 @@ def is_email(text):
         return True 
     else:   
         return False
+
 
 def is_password(text):
     l, u, p, d = 0, 0, 0, 0

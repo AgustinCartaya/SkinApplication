@@ -652,7 +652,7 @@
                 <number>0</number>
                </property>
                <item>
-                <widget class="QPushButton" name="pushButton">
+                <widget class="QPushButton" name="bt_search">
                  <property name="minimumSize">
                   <size>
                    <width>20</width>
@@ -685,7 +685,7 @@
                   </size>
                  </property>
                  <property name="placeholderText">
-                  <string>E.g: id: AG4432YA</string>
+                  <string>E.g: AG4432YA</string>
                  </property>
                 </widget>
                </item>

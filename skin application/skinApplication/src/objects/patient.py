@@ -15,6 +15,9 @@ class Patient(DataObject):
             self.birth_date = ""
             self.gender = ""
 
+            # calculated
+            self.age = 0
+
 
     def verify_data(self):
         if (self._verify(self.first_name, "NAME", "FIRST_NAME") and
@@ -27,8 +30,13 @@ class Patient(DataObject):
         self.id = id
         self.first_name = first_name
         self.last_name = last_name
-        self.birth_date = birth_date
+        self.birth_date = datetime.strptime(birth_date, '%d-%m-%Y')
         self.gender = gender
+
+        self.age = util.calc_age(self.birth_date)
+        print(self.age)
+
+#        (QDate.currentDate().year() - QDate.fromString(birth_date).year())
 
     def save_data(self):
         if self.verify_data():
@@ -42,7 +50,7 @@ class Patient(DataObject):
                 dbc.insert(cfg.TABLE_PATIENTS,(self.id,
                     self.first_name,
                     self.last_name,
-                    self.birth_date,
+                    self.birth_date.strftime('%d-%m-%Y'),
                     self.gender,
                     "Algo")
                     )
@@ -65,5 +73,5 @@ class Patient(DataObject):
         return  ("(" + self.id + ", " +
             self.first_name + ", " +
             self.last_name + ", " +
-            self.birth_date + ", " +
+            self.birth_date.strftime('%d-%m-%Y') + ", " +
             str(self.gender) + ")")

@@ -47,6 +47,40 @@ class PatientList:
         for patient in self.patients:
             if getattr(patient, key) == value:
                 filtered.append_patient(patient)
-#        print(getattr(self.patients[5], key))
-#        self.patients = filter(lambda patient: getattr(patient, key) == value, self.patients)
+        return filtered
+
+    def get_filtered_rangue(self, key, min, max, include = True):
+        filtered = PatientList()
+        for patient in self.patients:
+            if include:
+                if getattr(patient, key) >= min and getattr(patient, key) <= max:
+                    filtered.append_patient(patient)
+            else:
+                if getattr(patient, key) > min and getattr(patient, key) < max:
+                    filtered.append_patient(patient)
+        return filtered
+
+    def get_filtered_greater_than(self, key, base, include = True):
+        filtered = PatientList()
+        for patient in self.patients:
+            if include:
+                if getattr(patient, key) >= base:
+                    filtered.append_patient(patient)
+            else:
+                if getattr(patient, key) > base:
+                    filtered.append_patient(patient)
+        return filtered
+
+    def get_filtered_conains(self, key, value):
+        filtered = PatientList()
+        for patient in self.patients:
+            if value in getattr(patient, key):
+                filtered.append_patient(patient)
+        return filtered
+
+    def get_filtered_starts_with(self, key, value):
+        filtered = PatientList()
+        for patient in self.patients:
+            if getattr(patient, key).startswith(value):
+                filtered.append_patient(patient)
         return filtered

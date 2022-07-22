@@ -18,6 +18,7 @@ class Button(QPushButton):
     def __init__(self, *args, **kwards):
         QPushButton.__init__(self, *args, **kwards)
         self.set_type(Button.BT_ADD)
+        self.action_value = ""
 
     def repaint(self):
         self.setStyle(QApplication.style())

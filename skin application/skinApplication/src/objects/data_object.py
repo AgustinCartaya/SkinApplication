@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from src.db_controllers.db_controller import DBController
 import src.util.data_cleaner as dc
 import src.config as cfg

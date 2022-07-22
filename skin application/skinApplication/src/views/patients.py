@@ -24,13 +24,16 @@ class Patients(ViewObject):
         self.ui.i_male.setChecked(True)
         self.ui.i_female.setChecked(True)
 
-#        regex = QRegularExpression("[a-z-A-Z_]+")
-#        validator = QRegularExpressionValidator(regex)
-#        self.ui.i_agre_precise.setValidator(validator)
+        self.ui.i_agre_precise.setValidator(self.create_text_validator("(|[1-9][0-9]{0,2})"))
+        self.ui.i_age_rangue.setValidator(self.create_text_validator("(|[1-9][0-9]{0,2} ?- ?[1-9][0-9]{0,2})"))
 
-        self.ui.i_agre_precise.setValidator(self.create_text_validator("[1-9][0-9]{0,2}"))
-        self.ui.i_age_rangue.setValidator(self.create_text_validator("[1-9][0-9]{0,2} ?- ?[1-9][0-9]{2}"))
+        self.ui.bt_age_rangue_1.setText("0 - 20")
+        self.ui.bt_age_rangue_2.setText("20 - 50")
+        self.ui.bt_age_rangue_3.setText("50+")
 
+        self.ui.bt_age_rangue_1.action_value =  self.ui.bt_age_rangue_1.text().replace(" ", "")
+        self.ui.bt_age_rangue_2.action_value =  self.ui.bt_age_rangue_2.text().replace(" ", "")
+        self.ui.bt_age_rangue_3.action_value =  self.ui.bt_age_rangue_3.text().replace(" ", "")
         # organizer
         self.ui.bt_organizer_mosaico.set_icon(Button.IC_MOSAICO)
         self.ui.bt_organizer_list.set_icon(Button.IC_LIST)
@@ -70,16 +73,22 @@ class Patients(ViewObject):
         self.ui.bt_organizer_dsc.clicked.connect(self.show_patients)
 #        self.ui.bt_organizer_id.clicked.connect(self.show_patients)
 #        self.ui.bt_organizer_name.clicked.connect(self.show_patients)
-        self.ui.bt_organizer_id.clicked.connect(lambda: (self.change_search_by_organizer("id") ) )
-        self.ui.bt_organizer_name.clicked.connect(lambda: (self.change_search_by_organizer("name") ) )
+        self.ui.bt_organizer_id.clicked.connect(lambda: (self.slot_organizer_id_name("id") ) )
+        self.ui.bt_organizer_name.clicked.connect(lambda: (self.slot_organizer_id_name("name") ) )
 
         # filters
         self.ui.i_male.stateChanged.connect(self.show_patients)
         self.ui.i_female.stateChanged.connect(self.show_patients)
 
-        self.ui.i_agre_precise.returnPressed.connect(self.show_patients)
-        self.ui.i_age_rangue.returnPressed.connect(self.show_patients)
+        self.ui.i_agre_precise.returnPressed.connect(lambda: (self.slot_filter_age("precise") ) )
+        self.ui.bt_age_rangue_1.clicked.connect(lambda: (self.slot_filter_age("rangue_bt") ) )
+        self.ui.bt_age_rangue_2.clicked.connect(lambda: (self.slot_filter_age("rangue_bt") ) )
+        self.ui.bt_age_rangue_3.clicked.connect(lambda: (self.slot_filter_age("rangue_bt") ) )
+        self.ui.i_age_rangue.returnPressed.connect(lambda: (self.slot_filter_age("rangue") ) )
+
+
         self.ui.i_search.returnPressed.connect(self.show_patients)
+        self.ui.bt_search.clicked.connect(self.show_patients)
 
 #        self.ui.i_male.stateChanged.connect(lambda state: (self.filter_gender(state, 1)) )
 #        self.ui.i_female.stateChanged.connect(lambda state: (self.filter_gender(state, 0)) )
@@ -88,8 +97,8 @@ class Patients(ViewObject):
         self.s_change_view.connect(self.MW.change_view)
 
 
-    @Slot()
-    def change_search_by_organizer(self, organizer):
+    @Slot(str)
+    def slot_organizer_id_name(self, organizer):
         place_holder = ""
 #        regex = ""
         if organizer == "id":
@@ -99,6 +108,19 @@ class Patients(ViewObject):
 
 #        self.ui.i_age_rangue.setValidator(self.create_text_validator(regex))
         self.ui.i_search.setPlaceholderText(place_holder)
+        self.show_patients()
+
+    @Slot(str)
+    def slot_filter_age(self, type_filter):
+        if type_filter == "precise":
+            self.ui.i_age_rangue.setText("")
+            self.ui.bt_age_rangue_1.select(False)
+            self.ui.bt_age_rangue_2.select(False)
+            self.ui.bt_age_rangue_3.select(False)
+
+        elif type_filter == "rangue" or type_filter == "rangue_bt":
+            self.ui.i_agre_precise.setText("")
+
         self.show_patients()
 
 #    @Slot()
@@ -121,12 +143,20 @@ class Patients(ViewObject):
 #        print()
     @Slot()
     def show_patients(self):
+        print("show_patients")
         self.filter_patients()
         self.organize_patients()
         self.ui.c_pagination.add_cards(self.p_organized)
 
     def filter_patients(self):
         self.p_list_filtered = PatientList(self.p_list)
+
+        # search
+        if len(self.ui.i_search.text()) > 0:
+            if self.ui.bt_organizer_id.is_selected():
+                self.p_list_filtered = self.p_list_filtered.get_filtered_starts_with("id", self.ui.i_search.text())
+            else:
+                self.p_list_filtered = self.p_list_filtered.get_filtered_starts_with("first_name", self.ui.i_search.text())
 
         # Clinical attributes
         # ---- gender
@@ -137,15 +167,34 @@ class Patients(ViewObject):
             self.p_list_filtered = self.p_list_filtered.get_filtered("gender",1)
 #            print("just males")
 
+        # ---- age
+        if len(self.ui.i_agre_precise.text()) > 0:
+            p_age = int(self.ui.i_agre_precise.text())
+            self.p_list_filtered = self.p_list_filtered.get_filtered("age",p_age)
+        else:
+            if self.ui.bt_age_rangue_1.is_selected():
+                rg = self.ui.bt_age_rangue_1.action_value.split("-")
+                self.p_list_filtered = self.p_list_filtered.get_filtered_rangue("age", int(rg[0]), int(rg[1]))
+            if self.ui.bt_age_rangue_2.is_selected():
+                rg = self.ui.bt_age_rangue_2.action_value.split("-")
+                self.p_list_filtered = self.p_list_filtered.get_filtered_rangue("age", int(rg[0]), int(rg[1]))
+            if self.ui.bt_age_rangue_3.is_selected():
+                rg = self.ui.bt_age_rangue_3.action_value.replace("+","")
+                self.p_list_filtered = self.p_list_filtered.get_filtered_greater_than("age", int(rg))
+            if len(self.ui.i_age_rangue.text()) > 0:
+                rg = self.ui.i_age_rangue.text().replace(" ","").split("-")
+                self.p_list_filtered = self.p_list_filtered.get_filtered_rangue("age", int(rg[0]), int(rg[1]))
+
+
 
     def organize_patients(self):
-        if self.ui.bt_organizer_id.property("selected"):
+        if self.ui.bt_organizer_id.is_selected():
             self.p_organized = self.p_list_filtered.get_list_of("id")
         else:
             self.p_organized = self.p_list_filtered.get_list_of("first_name")
 
         self.p_organized = util.sort_list(self.p_organized,
-        self.ui.bt_organizer_asc.property("selected"))
+        self.ui.bt_organizer_asc.is_selected())
 
     @Slot()
     def back(self):

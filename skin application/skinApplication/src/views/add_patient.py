@@ -18,6 +18,9 @@ class AddPatientView(ViewObject):
         self.ui.setupUi(self)
         self.ui.bt_cancel.set_type(Button.BT_CANCEL)
 
+        self.ui.i_first_name.setValidator(self.create_text_validator(data_cleaner.regex_name))
+        self.ui.i_last_name.setValidator(self.create_text_validator(data_cleaner.regex_name))
+
         
 
     s_change_view = Signal(str,str,str)
@@ -33,7 +36,7 @@ class AddPatientView(ViewObject):
         try:  
             patient = Patient(self.ui.i_first_name.text(),
                 self.ui.i_last_name.text(),
-                self.ui.i_birth_date.date().toString(),
+                self.ui.i_birth_date.date().toString("dd-MM-yyyy"),
                 int(self.ui.i_gender_m.isChecked()))
             patient.save_data()
             self.s_change_view.emit(cfg.ADD_PATIENT_VIEW, cfg.PATIENTS_VIEW, None)
