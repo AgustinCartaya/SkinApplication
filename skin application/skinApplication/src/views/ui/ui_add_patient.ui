@@ -409,7 +409,7 @@
           </widget>
          </item>
          <item>
-          <widget class="Button" name="bt_add">
+          <widget class="Button" name="bt_next">
            <property name="text">
             <string>Next</string>
            </property>
@@ -454,7 +454,14 @@
        </widget>
       </item>
       <item>
-       <widget class="QRadioButton" name="i_add_patient_p2_view">
+       <widget class="QRadioButton" name="i_add_patient_mi_view">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="i_add_patient_preview_view">
         <property name="text">
          <string/>
         </property>
@@ -467,11 +474,6 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>Button</class>
-   <extends>QPushButton</extends>
-   <header>.promoted.button</header>
-  </customwidget>
-  <customwidget>
    <class>LineEdit</class>
    <extends>QLineEdit</extends>
    <header>.promoted.line_edit</header>
@@ -480,6 +482,11 @@
    <class>Label</class>
    <extends>QLabel</extends>
    <header>.promoted.label</header>
+  </customwidget>
+  <customwidget>
+   <class>Button</class>
+   <extends>QPushButton</extends>
+   <header>.promoted.button</header>
   </customwidget>
  </customwidgets>
  <resources/>

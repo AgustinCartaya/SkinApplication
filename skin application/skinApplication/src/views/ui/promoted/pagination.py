@@ -55,7 +55,6 @@ class Pagination(QFrame):
         self.c_cards = QFrame(self)
         self.c_cards_layout = QGridLayout(self.c_cards)
 
-
     def __create_controls(self):
         self.c_controllers = QFrame(self)
         self.c_controllers.setMaximumSize(QSize(16777215, 35))
@@ -94,7 +93,7 @@ class Pagination(QFrame):
         self.nb_cards = len(cards)
         self.nb_max_pages = (self.nb_cards-1)//(self.nb_rows * self.nb_cols) + 1
         self.lb_number_of_pages.setText(QCoreApplication.translate("pagination", u"of " + str(self.nb_max_pages), None))
-        self.__paint_cards()
+        self.go_to_page(self.pointer + 1)
 
     def __paint_cards(self):
 
@@ -125,29 +124,20 @@ class Pagination(QFrame):
         self.i_actual_page.setText(str(self.pointer+1))
         self.c_cards_layout.update()
 
-
     def next_page(self):
-        if (self.pointer + 1)  < self.nb_max_pages:
-            self.go_to_page(self.pointer + 2)
-#            self.pointer = self.pointer + 1
-#        self.__paint_cards()
+        self.go_to_page(self.pointer + 2)
 
     def back_page(self):
-        if (self.pointer - 1)  >= 0:
-            self.go_to_page(self.pointer)
-#            self.pointer = self.pointer - 1
-#        self.__paint_cards()
+        self.go_to_page(self.pointer)
 
     def change_page_manually(self):
-        page = int(self.i_actual_page.text())
-        if page <= 0:
-            page = 1
-        elif page > self.nb_max_pages:
-            page = self.nb_max_pages
-        self.go_to_page(page)
+        self.go_to_page(int(self.i_actual_page.text()))
 
     def go_to_page(self, page):
+        if page > self.nb_max_pages:
+            page = self.nb_max_pages
+        elif page <= 0:
+            page = 1
         self.pointer = page - 1
         self.__paint_cards()
-        print(page)
 

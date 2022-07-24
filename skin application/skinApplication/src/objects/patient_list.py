@@ -17,7 +17,7 @@ class PatientList:
     def search_all_patients(self):
         dbc = DBController()
         for p in dbc.select(cfg.TABLE_PATIENTS):
-            self.patients.append(Patient(p[0], p[1], p[2], p[3], p[4]))
+            self.patients.append(Patient(p[0], p[1], p[2], p[3], p[4], p[5]))
 
     def to_string(self):
         str = "["

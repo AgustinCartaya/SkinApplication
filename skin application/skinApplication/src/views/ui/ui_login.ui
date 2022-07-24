@@ -123,7 +123,7 @@
              </widget>
             </item>
             <item>
-             <widget class="LineEdit" name="i_name"/>
+             <widget class="QComboBox" name="i_name"/>
             </item>
            </layout>
           </widget>
@@ -192,11 +192,6 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>Button</class>
-   <extends>QPushButton</extends>
-   <header>.promoted.button</header>
-  </customwidget>
-  <customwidget>
    <class>LineEdit</class>
    <extends>QLineEdit</extends>
    <header>.promoted.line_edit</header>
@@ -205,6 +200,11 @@
    <class>Label</class>
    <extends>QLabel</extends>
    <header>.promoted.label</header>
+  </customwidget>
+  <customwidget>
+   <class>Button</class>
+   <extends>QPushButton</extends>
+   <header>.promoted.button</header>
   </customwidget>
  </customwidgets>
  <resources/>

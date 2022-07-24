@@ -3,7 +3,7 @@ from .ui.ui_patients import Ui_patients
 
 from src.objects.patient_list import PatientList
 
-class Patients(ViewObject):
+class PatientsView(ViewObject):
     def __init__(self, mw):
         super().__init__(mw)
         self.load_ui()

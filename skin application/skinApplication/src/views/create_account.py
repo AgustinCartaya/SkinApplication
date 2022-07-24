@@ -25,12 +25,12 @@ class CreateAccountView(ViewObject):
         self.ui.lb_title.set_title(1)
 
 
-    mySignam = Signal(str,str,str)
+    s_change_view = Signal(str,str,dict)
     def connect_ui_signals(self):
         #ui signals
         self.ui.bt_create.clicked.connect(self.create_account)
         # created signals
-        self.mySignam.connect(self.MW.change_view)
+        self.s_change_view.connect(self.MW.change_view)
 
     # connecting click to the main window
     def create_account(self):
@@ -40,7 +40,7 @@ class CreateAccountView(ViewObject):
                 self.ui.i_password.text(),
                 self.ui.i_email.text())
             doctor.save_data()
-            self.mySignam.emit(cfg.CREATE_ACCOUNT_VIEW, cfg.PATIENTS_VIEW, None)
+            self.s_change_view.emit(cfg.CREATE_ACCOUNT_VIEW, cfg.PATIENTS_VIEW, None)
         except ValueError as err:
             print(err.args)
 

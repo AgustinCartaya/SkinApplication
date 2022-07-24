@@ -21,7 +21,7 @@ class LoginView(ViewObject):
         self.ui.lb_title.set_title(1)
 
         
-    s_change_view = Signal(str,str,str)
+    s_change_view = Signal(str,str,dict)
     def connect_ui_signals(self):
         #ui signals
         self.ui.bt_login.clicked.connect(self.login)
@@ -33,13 +33,13 @@ class LoginView(ViewObject):
     def charge_doctors_name(self):
         dc = Doctor()
         names = dc.obtain_doctors_name()
-        self.ui.i_name.setText(names[0][0])
+        self.ui.i_name.addItems(names[0])
 
     # connecting click to the main window
     def login(self):
         dc = Doctor()
         try:
-            dc.get_doctor_by_last_name_and_password(self.ui.i_name.text(),self.ui.i_password.text())
+            dc.get_doctor_by_last_name_and_password(self.ui.i_name.currentText(),self.ui.i_password.text())
             self.s_change_view.emit(cfg.LOGIN_VIEW, cfg.PATIENTS_VIEW, None)
         except ValueError as err:
             print(err.args)

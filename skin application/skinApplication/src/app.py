@@ -1,6 +1,7 @@
 from PySide6.QtWidgets import QApplication
 import src.config as cfg
 from src.main_window import MainWindow
+#from PySide6.QtCore  import QTextCodec
 
 from src.db_controllers.db_controller import DBController
 
@@ -18,14 +19,17 @@ def first_time():
 
 def run():
     app = QApplication([])
+#    QTextCodec.setCodecForTr(QTextCodec.codecForName("UTF-8"));
 
     mainWindow = MainWindow()
-    mainWindow.change_view(None, cfg.PATIENTS_VIEW, [])
-    first_time()
-#    if first_time():
-#        mainWindow.change_view(None, cfg.CREATE_ACCOUNT_VIEW, [])
-#    else:
-#        mainWindow.change_view(None, cfg.LOGIN_VIEW, [])
+
+#    mainWindow.change_view(None, cfg.PATIENTS_VIEW, [])
+#    first_time()
+
+    if first_time():
+        mainWindow.change_view(None, cfg.CREATE_ACCOUNT_VIEW, [])
+    else:
+        mainWindow.change_view(None, cfg.LOGIN_VIEW, [])
 
     mainWindow.show()
     app.exec()

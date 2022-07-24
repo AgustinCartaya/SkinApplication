@@ -4,10 +4,11 @@ from .data_object import *
 class Patient(DataObject):
     def __init__(self, *args):
         if len(args) > 0:
+
             if len(args) == 5:
-                self.initialize(args[0], args[1], args[2], args[3], args[4])
-            if len(args) == 4:
-                self.initialize("", args[0], args[1], args[2], args[3])
+                self.initialize("", args[0], args[1], args[2], args[3], args[4])
+            if len(args) == 6:
+                self.initialize(args[0], args[1], args[2], args[3], args[4], args[5])
         else:
             self.id = ""
             self.first_name = ""
@@ -18,6 +19,9 @@ class Patient(DataObject):
             # calculated
             self.age = 0
 
+            # medical information
+            self. mi = {}
+
 
     def verify_data(self):
         if (self._verify(self.first_name, "NAME", "FIRST_NAME") and
@@ -26,12 +30,13 @@ class Patient(DataObject):
             return True
         return False 
 
-    def initialize(self, id, first_name, last_name, birth_date, gender):
+    def initialize(self, id, first_name, last_name, birth_date, gender, mi = {}):
         self.id = id
         self.first_name = first_name
         self.last_name = last_name
         self.birth_date = datetime.strptime(birth_date, '%d-%m-%Y')
         self.gender = gender
+        self. mi = mi
 
         self.age = util.calc_age(self.birth_date)
 
@@ -51,7 +56,7 @@ class Patient(DataObject):
                     self.last_name,
                     self.birth_date.strftime('%d-%m-%Y'),
                     self.gender,
-                    "Algo")
+                    json.dumps(self.mi))
                     )
             except ValueError as err:
                 # If doctor already exists
@@ -73,4 +78,7 @@ class Patient(DataObject):
             self.first_name + ", " +
             self.last_name + ", " +
             self.birth_date.strftime('%d-%m-%Y') + ", " +
-            str(self.gender) + ")")
+            str(self.gender) + ", " +
+            str(self.age) + ", " +
+            json.dumps(self.mi) + ", " +
+            ")")

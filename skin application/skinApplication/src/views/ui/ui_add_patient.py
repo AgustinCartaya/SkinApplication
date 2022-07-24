@@ -206,10 +206,10 @@ class Ui_add_patient(object):
 
         self.horizontalLayout_3.addWidget(self.bt_cancel)
 
-        self.bt_add = Button(self.c_buttons)
-        self.bt_add.setObjectName(u"bt_add")
+        self.bt_next = Button(self.c_buttons)
+        self.bt_next.setObjectName(u"bt_next")
 
-        self.horizontalLayout_3.addWidget(self.bt_add)
+        self.horizontalLayout_3.addWidget(self.bt_next)
 
 
         self.verticalLayout_2.addWidget(self.c_buttons, 0, Qt.AlignHCenter)
@@ -233,10 +233,15 @@ class Ui_add_patient(object):
 
         self.horizontalLayout_4.addWidget(self.i_add_patient_view)
 
-        self.i_add_patient_p2_view = QRadioButton(self.c_rb_views)
-        self.i_add_patient_p2_view.setObjectName(u"i_add_patient_p2_view")
+        self.i_add_patient_mi_view = QRadioButton(self.c_rb_views)
+        self.i_add_patient_mi_view.setObjectName(u"i_add_patient_mi_view")
 
-        self.horizontalLayout_4.addWidget(self.i_add_patient_p2_view)
+        self.horizontalLayout_4.addWidget(self.i_add_patient_mi_view)
+
+        self.i_add_patient_preview_view = QRadioButton(self.c_rb_views)
+        self.i_add_patient_preview_view.setObjectName(u"i_add_patient_preview_view")
+
+        self.horizontalLayout_4.addWidget(self.i_add_patient_preview_view)
 
 
         self.verticalLayout.addWidget(self.c_rb_views, 0, Qt.AlignHCenter|Qt.AlignVCenter)
@@ -258,8 +263,9 @@ class Ui_add_patient(object):
         self.i_gender_f.setText(QCoreApplication.translate("add_patient", u"Female", None))
         self.i_gender_m.setText(QCoreApplication.translate("add_patient", u"Male", None))
         self.bt_cancel.setText(QCoreApplication.translate("add_patient", u"Cancel", None))
-        self.bt_add.setText(QCoreApplication.translate("add_patient", u"Next", None))
+        self.bt_next.setText(QCoreApplication.translate("add_patient", u"Next", None))
         self.i_add_patient_view.setText("")
-        self.i_add_patient_p2_view.setText("")
+        self.i_add_patient_mi_view.setText("")
+        self.i_add_patient_preview_view.setText("")
     # retranslateUi
 

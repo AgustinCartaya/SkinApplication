@@ -11,11 +11,11 @@ class DBConnection:
         # self.test()
 
     def connect(self):
-        self.connection = sqlite3.connect(util.uppath(__file__, 3) + "/" + cfg.DB_PATH_NAME)
+        self.connection = sqlite3.connect(cfg.DB_PATH_NAME)
         self.cursor = self.connection.cursor()
 
     def verify_db_existence(self):
-        if not exists(util.uppath(__file__, 3) + "/" + cfg.DB_PATH_NAME):
+        if not exists(cfg.DB_PATH_NAME):
             self.create_db()
         return True
 
@@ -25,8 +25,7 @@ class DBConnection:
         self.connection.close()
 
     def create_tables(self):
-        sql_as_string = util.file_to_string(
-            util.uppath(__file__, 3) + "/" + cfg.DB_SCRIPT_PATH_NAME)
+        sql_as_string = util.file_to_string(cfg.DB_SCRIPT_PATH_NAME)
         self.cursor.executescript(sql_as_string)
 
     

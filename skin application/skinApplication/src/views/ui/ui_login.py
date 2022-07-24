@@ -15,8 +15,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QFrame, QLabel, QSizePolicy,
-    QSpacerItem, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QApplication, QComboBox, QFrame, QLabel,
+    QSizePolicy, QSpacerItem, QVBoxLayout, QWidget)
 
 from .promoted.button import Button
 from .promoted.label import Label
@@ -68,7 +68,7 @@ class Ui_login(object):
 
         self.verticalLayout_4.addWidget(self.lb_email)
 
-        self.i_name = LineEdit(self.c_name)
+        self.i_name = QComboBox(self.c_name)
         self.i_name.setObjectName(u"i_name")
 
         self.verticalLayout_4.addWidget(self.i_name)
