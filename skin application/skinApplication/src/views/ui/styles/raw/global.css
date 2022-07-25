@@ -16,6 +16,8 @@ background-color: transparent;
 /*    background-color: #ddd;*/
 }
 
+/*-----PatientCard-----*/
+
 PatientCard{
     background-color: @c_skin_base;
     border-radius: 3px;
@@ -37,6 +39,19 @@ PatientCard Label{
     color: white;
 }
 
+/*-----AnnotationPreview-----*/
+AnnotationPreview,
+#c_ai_results,
+#c_annotations{
+    border: 1px solid @c_gray_light;
+    border-radius: 3px;
+}
+
+AnnotationPreview[c_title=true]{
+    background-color: @c_skin_base;
+    border: None;
+    border-radius: 0px;
+}
 /*-----QLabel-----*/
 Label
 {
