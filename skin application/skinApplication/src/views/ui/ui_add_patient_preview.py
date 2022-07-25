@@ -75,13 +75,12 @@ class Ui_add_patient_preview(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 496, 327))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 496, 318))
         self.verticalLayout_3 = QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_3.setSpacing(20)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.c_up_basic_information = QFrame(self.scrollAreaWidgetContents)
         self.c_up_basic_information.setObjectName(u"c_up_basic_information")
-        self.c_up_basic_information.setMaximumSize(QSize(16777215, 140))
         self.c_up_basic_information.setFrameShape(QFrame.StyledPanel)
         self.c_up_basic_information.setFrameShadow(QFrame.Raised)
         self.verticalLayout_10 = QVBoxLayout(self.c_up_basic_information)
@@ -96,7 +95,6 @@ class Ui_add_patient_preview(object):
 
         self.c_basic_information = QFrame(self.c_up_basic_information)
         self.c_basic_information.setObjectName(u"c_basic_information")
-        self.c_basic_information.setMaximumSize(QSize(16777215, 100))
         self.c_basic_information.setFrameShape(QFrame.StyledPanel)
         self.c_basic_information.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_2 = QHBoxLayout(self.c_basic_information)
@@ -126,7 +124,7 @@ class Ui_add_patient_preview(object):
         self.i_first_name = Label(self.c_first_name)
         self.i_first_name.setObjectName(u"i_first_name")
 
-        self.verticalLayout_9.addWidget(self.i_first_name)
+        self.verticalLayout_9.addWidget(self.i_first_name, 0, Qt.AlignLeft)
 
 
         self.verticalLayout_5.addWidget(self.c_first_name)
@@ -146,7 +144,7 @@ class Ui_add_patient_preview(object):
         self.i_birth_date = Label(self.c_birth_date)
         self.i_birth_date.setObjectName(u"i_birth_date")
 
-        self.verticalLayout_8.addWidget(self.i_birth_date)
+        self.verticalLayout_8.addWidget(self.i_birth_date, 0, Qt.AlignLeft)
 
 
         self.verticalLayout_5.addWidget(self.c_birth_date)
@@ -177,7 +175,7 @@ class Ui_add_patient_preview(object):
         self.i_last_name = Label(self.c_last_name)
         self.i_last_name.setObjectName(u"i_last_name")
 
-        self.verticalLayout_6.addWidget(self.i_last_name)
+        self.verticalLayout_6.addWidget(self.i_last_name, 0, Qt.AlignLeft)
 
 
         self.verticalLayout_4.addWidget(self.c_last_name)
@@ -197,7 +195,7 @@ class Ui_add_patient_preview(object):
         self.i_gender = Label(self.c_gender)
         self.i_gender.setObjectName(u"i_gender")
 
-        self.verticalLayout_7.addWidget(self.i_gender)
+        self.verticalLayout_7.addWidget(self.i_gender, 0, Qt.AlignLeft)
 
 
         self.verticalLayout_4.addWidget(self.c_gender)

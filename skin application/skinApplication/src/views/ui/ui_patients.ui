@@ -800,7 +800,7 @@
                    </spacer>
                   </item>
                   <item>
-                   <widget class="CheckButton" name="bt_organizer_mosaico">
+                   <widget class="CheckButton" name="bt_sorter_mosaico">
                     <property name="minimumSize">
                      <size>
                       <width>25</width>
@@ -819,7 +819,7 @@
                    </widget>
                   </item>
                   <item>
-                   <widget class="CheckButton" name="bt_organizer_list">
+                   <widget class="CheckButton" name="bt_sorter_list">
                     <property name="minimumSize">
                      <size>
                       <width>25</width>
@@ -851,7 +851,7 @@
                    </spacer>
                   </item>
                   <item>
-                   <widget class="CheckButton" name="bt_organizer_asc">
+                   <widget class="CheckButton" name="bt_sorter_asc">
                     <property name="minimumSize">
                      <size>
                       <width>40</width>
@@ -870,7 +870,7 @@
                    </widget>
                   </item>
                   <item>
-                   <widget class="CheckButton" name="bt_organizer_dsc">
+                   <widget class="CheckButton" name="bt_sorter_dsc">
                     <property name="minimumSize">
                      <size>
                       <width>40</width>
@@ -902,7 +902,7 @@
                    </spacer>
                   </item>
                   <item>
-                   <widget class="CheckButton" name="bt_organizer_id">
+                   <widget class="CheckButton" name="bt_sorter_id">
                     <property name="minimumSize">
                      <size>
                       <width>40</width>
@@ -921,7 +921,7 @@
                    </widget>
                   </item>
                   <item>
-                   <widget class="CheckButton" name="bt_organizer_name">
+                   <widget class="CheckButton" name="bt_sorter_name">
                     <property name="minimumSize">
                      <size>
                       <width>50</width>
@@ -981,24 +981,24 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>LineEdit</class>
-   <extends>QLineEdit</extends>
-   <header>.promoted.line_edit</header>
-  </customwidget>
-  <customwidget>
    <class>Label</class>
    <extends>QLabel</extends>
    <header>.promoted.label</header>
   </customwidget>
   <customwidget>
-   <class>CheckButton</class>
-   <extends>QPushButton</extends>
-   <header>.promoted.check_button</header>
-  </customwidget>
-  <customwidget>
    <class>NavigatorButton</class>
    <extends>QPushButton</extends>
    <header location="global">.promoted.navigator_button</header>
+  </customwidget>
+  <customwidget>
+   <class>LineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>.promoted.line_edit</header>
+  </customwidget>
+  <customwidget>
+   <class>CheckButton</class>
+   <extends>QPushButton</extends>
+   <header>.promoted.check_button</header>
   </customwidget>
   <customwidget>
    <class>SearchLine</class>

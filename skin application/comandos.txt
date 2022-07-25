@@ -1,7 +1,7 @@
 convert .ui to .py
 pyside6-uic ui_name.ui > ui_name.py
 
-pyside6-uic ui_add_patient_preview.ui > ui_add_patient_preview.py; pyside6-uic ui_add_patient.ui > ui_add_patient.py; pyside6-uic ui_add_patient_mi.ui > ui_add_patient_mi.py;  pyside6-uic ui_create_account.ui > ui_create_account.py; pyside6-uic ui_login.ui > ui_login.py; pyside6-uic ui_patients.ui > ui_patients.py
+pyside6-uic ui_check_patient.ui > ui_check_patient.py; pyside6-uic ui_add_patient_preview.ui > ui_add_patient_preview.py; pyside6-uic ui_add_patient.ui > ui_add_patient.py; pyside6-uic ui_add_patient_mi.ui > ui_add_patient_mi.py;  pyside6-uic ui_create_account.ui > ui_create_account.py; pyside6-uic ui_login.ui > ui_login.py; pyside6-uic ui_patients.ui > ui_patients.py
 
 
 create exe

@@ -20,7 +20,7 @@ class Patient(DataObject):
             self.age = 0
 
             # medical information
-            self. mi = {}
+            self.mi = {}
 
 
     def verify_data(self):
@@ -36,7 +36,10 @@ class Patient(DataObject):
         self.last_name = last_name
         self.birth_date = datetime.strptime(birth_date, '%d-%m-%Y')
         self.gender = gender
-        self. mi = mi
+        self.mi = mi
+        if type(mi) is str:
+            self.mi = json.loads(mi)
+
 
         self.age = util.calc_age(self.birth_date)
 

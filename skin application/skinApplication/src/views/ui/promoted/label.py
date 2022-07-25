@@ -10,3 +10,6 @@ class Label(QLabel):
 
     def set_title(self, title):
         self.setProperty("title", title)
+
+    def set_decoration(self, decoration):
+        self.setProperty("decoration", decoration)

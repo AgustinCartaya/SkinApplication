@@ -6,7 +6,7 @@ from PySide6.QtWidgets import (QFrame, QVBoxLayout, QHBoxLayout,
 from PySide6.QtCore import QCoreApplication, Qt, QSize
 
 from .button import Button
-from .card_button import CardButton
+
 from .line_edit import LineEdit
 
 import src.util.data_cleaner as data_cleaner
@@ -38,10 +38,10 @@ class Pagination(QFrame):
 
         self.__create()
 
-        cards = []
-        for i in range(25):
-            cards.append("C"+str(i))
-        self.add_cards(cards)
+#        cards = []
+#        for i in range(25):
+#            cards.append("C"+str(i))
+#        self.add_cards(cards)
 
     def __create(self):
         self.__crete_cards_container()
@@ -91,7 +91,11 @@ class Pagination(QFrame):
     def add_cards(self, cards):
         self.cards = cards
         self.nb_cards = len(cards)
-        self.nb_max_pages = (self.nb_cards-1)//(self.nb_rows * self.nb_cols) + 1
+        if self.nb_cards == 0:
+            self.nb_max_pages = 1
+        else :
+            self.nb_max_pages = (self.nb_cards-1)//(self.nb_rows * self.nb_cols) + 1
+
         self.lb_number_of_pages.setText(QCoreApplication.translate("pagination", u"of " + str(self.nb_max_pages), None))
         self.go_to_page(self.pointer + 1)
 
@@ -104,18 +108,18 @@ class Pagination(QFrame):
         i = 0
         j = 0
 
-        while i < self.nb_rows and index_card < self.nb_cards:
-            while j < self.nb_cols and index_card < self.nb_cards:
-                bt = CardButton(self.c_cards)
-                text = self.cards[index_card]
-                if len(text) > 10:
-                    bt.setText(text[:10] + "...")
-                else:
-                    bt.setText(text)
-                bt.setMinimumSize(QSize(100, 100))
+        while (i < self.nb_rows and index_card < self.nb_cards):
+            while (j < self.nb_cols and index_card < self.nb_cards):
+#                bt = CardButton(self.c_cards)
+#                text = self.cards[index_card]
+#                if len(text) > 10:
+#                    bt.setText(text[:10] + "...")
+#                else:
+#                    bt.setText(text)
+#                bt.setMinimumSize(QSize(100, 100))
 #               pushButton.setMaximumSize(QSize(150, 150))
 
-                self.c_cards_layout.addWidget(bt, i, j, 1, 1)
+                self.c_cards_layout.addWidget(self.cards[index_card], i, j, 1, 1)
 
                 j = j+1
                 index_card = index_card+1

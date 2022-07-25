@@ -2,6 +2,10 @@ from .view_object import *
 from .ui.ui_patients import Ui_patients
 
 from src.objects.patient_list import PatientList
+from src.objects.patient import Patient
+
+from PySide6.QtCore import QSize
+from .ui.promoted.patient_card import PatientCard
 
 class PatientsView(ViewObject):
     def __init__(self, mw):
@@ -10,6 +14,11 @@ class PatientsView(ViewObject):
         self.connect_ui_signals()
         self.load_patients()
         self.show_patients()
+
+    def load_patients(self):
+        self.p_list = PatientList()
+        self.p_list.search_all_patients()
+        self.p_list_filtered = PatientList(self.p_list)
 
     def load_ui(self):
         self.ui = Ui_patients()
@@ -43,51 +52,46 @@ class PatientsView(ViewObject):
         self.ui.bt_age_rangue_1.action_value =  self.ui.bt_age_rangue_1.text().replace(" ", "")
         self.ui.bt_age_rangue_2.action_value =  self.ui.bt_age_rangue_2.text().replace(" ", "")
         self.ui.bt_age_rangue_3.action_value =  self.ui.bt_age_rangue_3.text().replace(" ", "")
+
         # organizer
-        self.ui.bt_organizer_mosaico.set_icon(Button.IC_MOSAICO)
-        self.ui.bt_organizer_list.set_icon(Button.IC_LIST)
+        self.ui.bt_sorter_mosaico.set_icon(Button.IC_MOSAICO)
+        self.ui.bt_sorter_list.set_icon(Button.IC_LIST)
 
-        self.ui.bt_organizer_mosaico.select(True)
-        self.ui.bt_organizer_asc.select(True)
-        self.ui.bt_organizer_id.select(True)
+        self.ui.bt_sorter_mosaico.select(True)
+        self.ui.bt_sorter_asc.select(True)
+        self.ui.bt_sorter_id.select(True)
 
-        g1 = [self.ui.bt_organizer_mosaico, self.ui.bt_organizer_list]
-        g2 = [self.ui.bt_organizer_asc, self.ui.bt_organizer_dsc]
-        g3 = [self.ui.bt_organizer_id, self.ui.bt_organizer_name]
+        g1 = [self.ui.bt_sorter_mosaico, self.ui.bt_sorter_list]
+        g2 = [self.ui.bt_sorter_asc, self.ui.bt_sorter_dsc]
+        g3 = [self.ui.bt_sorter_id, self.ui.bt_sorter_name]
 
-        self.ui.bt_organizer_mosaico.add_group(g1)
-        self.ui.bt_organizer_list.add_group(g1)
-        self.ui.bt_organizer_asc.add_group(g2)
-        self.ui.bt_organizer_dsc.add_group(g2)
-        self.ui.bt_organizer_id.add_group(g3)
-        self.ui.bt_organizer_name.add_group(g3)
+        self.ui.bt_sorter_mosaico.add_group(g1)
+        self.ui.bt_sorter_list.add_group(g1)
+        self.ui.bt_sorter_asc.add_group(g2)
+        self.ui.bt_sorter_dsc.add_group(g2)
+        self.ui.bt_sorter_id.add_group(g3)
+        self.ui.bt_sorter_name.add_group(g3)
 
 
-
-    def load_patients(self):
-        self.p_list = PatientList()
-        self.p_list.search_all_patients()
-#        print(self.pl.to_string())
-
-    s_change_view = Signal(str,str,str)
+    s_change_view = Signal(str,str,dict)
     def connect_ui_signals(self):
         # navigator
         self.ui.bt_back.clicked.connect(self.back)
         self.ui.bt_add_new_patient.clicked.connect(self.add_new_patient)
 
         # organizer
-        self.ui.bt_organizer_mosaico.clicked.connect(self.show_patients)
-        self.ui.bt_organizer_list.clicked.connect(self.show_patients)
-        self.ui.bt_organizer_asc.clicked.connect(self.show_patients)
-        self.ui.bt_organizer_dsc.clicked.connect(self.show_patients)
-#        self.ui.bt_organizer_id.clicked.connect(self.show_patients)
-#        self.ui.bt_organizer_name.clicked.connect(self.show_patients)
-        self.ui.bt_organizer_id.clicked.connect(lambda: (self.slot_organizer_id_name("id") ) )
-        self.ui.bt_organizer_name.clicked.connect(lambda: (self.slot_organizer_id_name("name") ) )
+        self.ui.bt_sorter_mosaico.clicked.connect(self.show_patients)
+        self.ui.bt_sorter_list.clicked.connect(self.show_patients)
+        self.ui.bt_sorter_asc.clicked.connect(self.show_patients)
+        self.ui.bt_sorter_dsc.clicked.connect(self.show_patients)
+#        self.ui.bt_sorter_id.clicked.connect(self.show_patients)
+#        self.ui.bt_sorter_name.clicked.connect(self.show_patients)
+        self.ui.bt_sorter_id.clicked.connect(lambda: (self.slot_organizer_id_name("id") ) )
+        self.ui.bt_sorter_name.clicked.connect(lambda: (self.slot_organizer_id_name("name") ) )
 
         # filters
-        self.ui.i_male.stateChanged.connect(self.show_patients)
-        self.ui.i_female.stateChanged.connect(self.show_patients)
+        self.ui.i_male.stateChanged.connect(self.filter_patients)
+        self.ui.i_female.stateChanged.connect(self.filter_patients)
 
         self.ui.i_agre_precise.returnPressed.connect(lambda: (self.slot_filter_age("precise") ) )
         self.ui.bt_age_rangue_1.clicked.connect(lambda: (self.slot_filter_age("rangue_bt") ) )
@@ -95,29 +99,29 @@ class PatientsView(ViewObject):
         self.ui.bt_age_rangue_3.clicked.connect(lambda: (self.slot_filter_age("rangue_bt") ) )
         self.ui.i_age_rangue.returnPressed.connect(lambda: (self.slot_filter_age("rangue") ) )
 
-
-        self.ui.i_search.returnPressed.connect(self.show_patients)
-        self.ui.bt_search.clicked.connect(self.show_patients)
-
-#        self.ui.i_male.stateChanged.connect(lambda state: (self.filter_gender(state, 1)) )
-#        self.ui.i_female.stateChanged.connect(lambda state: (self.filter_gender(state, 0)) )
-
+        self.ui.i_search.returnPressed.connect(self.filter_patients)
+        self.ui.bt_search.clicked.connect(self.filter_patients)
         # created signals
         self.s_change_view.connect(self.MW.change_view)
 
+    @Slot()
+    def back(self):
+        self.s_change_view.emit(cfg.PATIENTS_VIEW, cfg.LOGIN_VIEW, None)
 
-    @Slot(str)
-    def slot_organizer_id_name(self, organizer):
-        place_holder = ""
-#        regex = ""
-        if organizer == "id":
-            place_holder = "E.g: AG4432YA"
-        elif organizer == "name":
-            place_holder = "E.g: Alex"
+    @Slot()
+    def add_new_patient(self):
+        self.s_change_view.emit(cfg.PATIENTS_VIEW, cfg.ADD_PATIENT_VIEW, None)
 
-#        self.ui.i_age_rangue.setValidator(self.create_text_validator(regex))
-        self.ui.i_search.setPlaceholderText(place_holder)
-        self.show_patients()
+    @Slot(Patient)
+    def check_patient(self, patient):
+        self.s_change_view.emit(cfg.PATIENTS_VIEW, cfg.CHECK_PATIENT_VIEW, {"patient":patient})
+
+
+    @Slot()
+    def show_patients(self):
+        self.sort_patients()
+        self.create_patient_cards()
+
 
     @Slot(str)
     def slot_filter_age(self, type_filter):
@@ -137,42 +141,28 @@ class PatientsView(ViewObject):
             self.ui.i_agre_precise.setText("")
             self.ui.i_age_rangue.setText("")
 
+        self.filter_patients()
 
+    @Slot(str)
+    def slot_organizer_id_name(self, organizer):
+        place_holder = ""
+#        regex = ""
+        if organizer == "id":
+            place_holder = "E.g: AG4432YA"
+        elif organizer == "name":
+            place_holder = "E.g: Alex"
 
-
+#        self.ui.i_age_rangue.setValidator(self.create_text_validator(regex))
+        self.ui.i_search.setPlaceholderText(place_holder)
         self.show_patients()
 
-#    @Slot()
-#    def filter_gender(self, state, check_box):
-#        print("state: ", state)
-#        print("check_box: ", check_box)
-#        print()
-#        if not state:
-#            if check_box == 0 and not self.ui.i_male.isChecked():
-#                self.ui.i_female.setChecked(True)
-#            elif check_box == 1 and not self.ui.i_female.isChecked():
-#                self.ui.i_male.setChecked(True)
-#            else:
-#                self.show_patients()
-#        else:
-#            self.show_patients()
-#        self.show_patients()
-#        print("2 state: ", state)
-#        print("2 check_box: ", check_box)
-#        print()
-    @Slot()
-    def show_patients(self):
-#        print("show_patients")
-        self.filter_patients()
-        self.organize_patients()
-        self.ui.c_pagination.add_cards(self.p_organized)
 
     def filter_patients(self):
         self.p_list_filtered = PatientList(self.p_list)
 
         # search
         if len(self.ui.i_search.text()) > 0:
-            if self.ui.bt_organizer_id.is_selected():
+            if self.ui.bt_sorter_id.is_selected():
                 self.p_list_filtered = self.p_list_filtered.get_filtered_starts_with("id", self.ui.i_search.text(), False)
             else:
                 self.p_list_filtered = self.p_list_filtered.get_filtered_starts_with("first_name", self.ui.i_search.text(), False)
@@ -221,20 +211,26 @@ class PatientsView(ViewObject):
 
             self.p_list_filtered = PatientList(plf_age_1, plf_age_2, plf_age_3)
 
+        self.show_patients()
 
-    def organize_patients(self):
-        if self.ui.bt_organizer_id.is_selected():
-            self.p_organized = self.p_list_filtered.get_list_of("id")
+    def sort_patients(self):
+        if self.ui.bt_sorter_id.is_selected():
+            sort_by = "id"
         else:
-            self.p_organized = self.p_list_filtered.get_list_of("first_name")
+            sort_by = "first_name"
+        self.p_list_filtered.sort_by(sort_by, self.ui.bt_sorter_dsc.is_selected())
+        self.p_list_sortered = self.p_list_filtered
 
-        self.p_organized = util.sort_list(self.p_organized,
-        self.ui.bt_organizer_asc.is_selected())
+    def create_patient_cards(self):
+        card_patients = []
+        for p in self.p_list_sortered.patients:
+            bt = PatientCard(p, self)
+#            bt.setPatient(p)
+            # a modificar
+            bt.setTitle(self.p_list_sortered.sorted_by)
 
-    @Slot()
-    def back(self):
-        self.s_change_view.emit(cfg.PATIENTS_VIEW, cfg.LOGIN_VIEW, None)
+            card_patients.append(bt)
+        self.ui.c_pagination.add_cards(card_patients)
 
-    @Slot()
-    def add_new_patient(self):
-        self.s_change_view.emit(cfg.PATIENTS_VIEW, cfg.ADD_PATIENT_VIEW, None)
+
+

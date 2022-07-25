@@ -10,6 +10,7 @@ from .patient import Patient
 class PatientList:
     def __init__(self, *args):
         self.patients = []
+        self.sorted_by = None
 
         if len(args) >= 1:
             self.extract_patients(args)
@@ -26,8 +27,9 @@ class PatientList:
         str = str + "]"
         return str
 
-    def sort_by(self, by="id"):
-        self.patients.sort(key=attrgetter(by))
+    def sort_by(self, by="id", dsc=True):
+        self.patients.sort(key=attrgetter(by), reverse=dsc)
+        self.sorted_by = by
 
     def get_list_of(self, of="id"):
         if of == "id":

@@ -10,11 +10,32 @@ QFrame{
 background-color: transparent;
 }
 
-#frame_filters{
+#frame_filters,
+#c_patient_information{
     border-right: 1px solid #c5c5c5;
 /*    background-color: #ddd;*/
 }
 
+PatientCard{
+    background-color: #cf9988;
+    border-radius: 3px;
+    color: white;
+}
+
+PatientCard{
+    background-color: #cf9988;
+    border-radius: 3px;
+    color: white;
+}
+
+PatientCard::hover{
+    background-color: #916c5f;
+}
+
+
+PatientCard Label{
+    color: white;
+}
 
 /*-----QLabel-----*/
 Label
@@ -41,6 +62,15 @@ Label[title="2"]
         color: #656565;
 
 }*/
+Label[decoration="mi_content"]
+{
+    background-color: #cf9988;
+    color: white;
+    font-weight:800;
+    margin-left: 10px;
+    padding: 3px 5px;
+    border-radius: 3px;
+}
 
 
 /*-----QPushButton-----*/

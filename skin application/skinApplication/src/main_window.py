@@ -19,15 +19,14 @@ from .views.login import LoginView
 from .views.add_patient import AddPatientView 
 from .views.add_patient_mi import AddPatientMiView
 from .views.add_patient_preview import AddPatientPreiewView
+from .views.check_patient import CheckPatientView
 
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
         self.set_initial_state()
-#        self._actual_view = None
         self._layers = QStackedWidget()
         self.setCentralWidget(self._layers)
-#        self.actual_view = self._layers
 
         self._add_patient_view = None
         self.add_patient_mi_view = None
@@ -38,7 +37,6 @@ class MainWindow(QtWidgets.QMainWindow):
         self.setMinimumSize(1000, 650)
         self.center()
         self.load_style_sheet()
-        # self.showMaximized()
 
     def center(self):
         center = QScreen.availableGeometry(QApplication.primaryScreen()).center()
@@ -51,15 +49,6 @@ class MainWindow(QtWidgets.QMainWindow):
         self.setStyleSheet(st)
 
 
-#    @property
-#    def actual_view(self):
-#        return self._actual_view
-
-#    @actual_view.setter
-#    def actual_view(self, view):
-#        self._actual_view = view
-#        self.setCentralWidget(self._actual_view)
-
     def set_view(self, view):
         if self._layers.indexOf(view) == -1:
             self._layers.addWidget(view)
@@ -69,16 +58,13 @@ class MainWindow(QtWidgets.QMainWindow):
     @Slot(str,str,dict)
     def change_view(self, view_from, view_to, atts):
         if view_to == cfg.CREATE_ACCOUNT_VIEW:
-#            self.actual_view = CreateAccountView(self)
             self.set_view(CreateAccountView(self))
 
         elif view_to == cfg.LOGIN_VIEW:
-#            self.actual_view = LoginView(self)
             self.clean_views()
             self.set_view(LoginView(self))
 
         elif view_to == cfg.PATIENTS_VIEW:
-#            self.actual_view = PatientsView(self)
             self.clean_views()
             self.set_view(PatientsView(self))
 
@@ -89,7 +75,6 @@ class MainWindow(QtWidgets.QMainWindow):
                 self._add_patient_view.p_info = atts
             elif view_from == cfg.ADD_PATIENT_PREVIEW_VIEW:
                 self._layers.removeWidget(self._layers.currentWidget())
-#            self.actual_view = self._add_patient_view
             self.set_view(self._add_patient_view)
 
         elif view_to == cfg.ADD_PATIENT_MI_VIEW:
@@ -100,22 +85,14 @@ class MainWindow(QtWidgets.QMainWindow):
                 self.add_patient_mi_view.p_info = atts
             elif view_from == cfg.ADD_PATIENT_PREVIEW_VIEW:
                 self._layers.removeWidget(self._layers.currentWidget())
-#            if (view_from == cfg.ADD_PATIENT_VIEW and
-#                len(self._add_patient_view.p_info['medical_info']) == 0):
-#                self.add_patient_mi_view = AddPatientMiView(self, atts)
-#            self.actual_view = self.add_patient_mi_view
             self.set_view(self.add_patient_mi_view)
 
         elif view_to == cfg.ADD_PATIENT_PREVIEW_VIEW:
-#            self.actual_view = AddPatientPreiewView(self, atts)
-#            self.set_view(AddPatientPreiewView(self, atts))
-
-#            if self.add_patient_preview_view is None:
-#                self.add_patient_preview_view = AddPatientPreiewView(self, atts)
-#            else:
-#                self.add_patient_preview_view.p_info = atts
             self.set_view(AddPatientPreiewView(self, atts))
-        print(self._layers.count())
+
+        elif view_to == cfg.CHECK_PATIENT_VIEW:
+            self.set_view(CheckPatientView(self, atts))
+#        print(self._layers.count())
 
     def clean_views(self):
         nb = self._layers.count()

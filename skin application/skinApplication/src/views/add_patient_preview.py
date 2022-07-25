@@ -3,9 +3,11 @@ from .ui.ui_add_patient_preview import Ui_add_patient_preview
 
 from src.objects.patient import Patient
 
-
+from PySide6.QtCore import Qt
 from PySide6.QtWidgets import (QFrame, QVBoxLayout, QHBoxLayout,
-        QLineEdit,QGridLayout, QLabel, QComboBox)
+        QLineEdit,QGridLayout, QComboBox)
+
+from .ui.promoted.label import Label
 
 class AddPatientPreiewView(ViewObject):
     def __init__(self, mw, p_info):
@@ -31,6 +33,11 @@ class AddPatientPreiewView(ViewObject):
         self.ui.lb_title.set_title(1)
         self.ui.lb_basic_information_title.set_title(2)
         self.ui.lb_medical_information_title.set_title(2)
+
+        self.ui.i_first_name.set_decoration("mi_content")
+        self.ui.i_last_name.set_decoration("mi_content")
+        self.ui.i_birth_date.set_decoration("mi_content")
+        self.ui.i_gender.set_decoration("mi_content")
 
         # medical information frame
         self.c_medical_information_layout = QVBoxLayout(self.ui.c_medical_information)
@@ -59,15 +66,16 @@ class AddPatientPreiewView(ViewObject):
             mi_frame_layout = QVBoxLayout(mi_frame)
             mi_frame_layout.setContentsMargins(0, 0, 0, 0)
 
-            mi_title = QLabel(mi_frame)
-            mi_title.setText(util.file_name_to_title(medical_info))
+            mi_title = Label(mi_frame)
+            mi_title.setText(util.file_name_to_title(medical_info) + " :")
             mi_frame_layout.addWidget(mi_title)
 
-            mi_content = QLabel(mi_frame)
+            mi_content = Label(mi_frame)
             mi_content.setText(self.p_info["medical_info"][medical_info])
+            mi_content.set_decoration("mi_content")
             mi_frame_layout.addWidget(mi_content)
 
-            self.c_medical_information_layout.addWidget(mi_frame)
+            self.c_medical_information_layout.addWidget(mi_frame,0, Qt.AlignLeft)
 
     s_change_view = Signal(str,str,dict)
     def connect_ui_signals(self):
