@@ -6,7 +6,7 @@ from PySide6.QtWidgets import (QFormLayout, QVBoxLayout, QFrame)
 from PySide6.QtCore import Qt
 
 from .ui.promoted.label import Label
-from .ui.promoted.skin_part_preview import SkinPartPreview
+from .ui.promoted.skin_lesion_preview import SkinLesionPreview
 
 class CheckPatientView(ViewObject):
     def __init__(self, mw, patient):
@@ -46,10 +46,13 @@ class CheckPatientView(ViewObject):
         self.c_mi_content_layout.setVerticalSpacing(16)
         self.show_medical_information()
 
-        # skin part preview
-        for i in range(1):
-            skp = SkinPartPreview()
-            self.ui.verticalLayout_4.addWidget(skp)
+        # skin lesions preview
+        self.skin_lesions_layout = QVBoxLayout(self.ui.c_skin_lesions)
+        self.skin_lesions_layout.setSpacing(40)
+        self.skin_lesions_layout.setContentsMargins(0, 0, 0, 0)
+        for i in range(2):
+            skp = SkinLesionPreview()
+            self.skin_lesions_layout.addWidget(skp)
 
 
     def show_medical_information(self):

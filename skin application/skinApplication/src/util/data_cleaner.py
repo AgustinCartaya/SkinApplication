@@ -9,7 +9,7 @@ regex_number = "[0-9]*"
 regex_not_null_number = "[1-9][0-9]*"
 regex_not_null_4_number = "[1-9][0-9]{0,3}"
 regex_age = "(|[1-9][0-9]{0,2})"
-regex_rangue = "(|[1-9][0-9]{0,2} ?- ?[1-9][0-9]{0,2}|[1-9][0-9]{0,2}(\+|\-))"
+regex_range = "(|[1-9][0-9]{0,2} ?- ?[1-9][0-9]{0,2}|[1-9][0-9]{0,2}(\+|\-))"
 regex_plain_text = '[^!@#\$%\^&\*\(\)\+\?_=,<>/\"\\\.]'
 regex_letter_space = "^([A-Za-z]| )*$"
 regex_letter_number_space = "^([A-Za-z]| |[0-9])*$"

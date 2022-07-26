@@ -36,22 +36,22 @@ class PatientsView(ViewObject):
         self.ui.i_female.setChecked(True)
 
         self.ui.i_agre_precise.setValidator(self.create_text_validator(data_cleaner.regex_age))
-        self.ui.i_age_rangue.setValidator(self.create_text_validator(data_cleaner.regex_rangue))
+        self.ui.i_age_range.setValidator(self.create_text_validator(data_cleaner.regex_range))
         self.ui.i_agre_precise.set_marked_when_filled(True)
-        self.ui.i_age_rangue.set_marked_when_filled(True)
+        self.ui.i_age_range.set_marked_when_filled(True)
 
-        self.ui.bt_age_rangue_1.setText("0 - 20")
-        self.ui.bt_age_rangue_2.setText("20 - 50")
-        self.ui.bt_age_rangue_3.setText("50+")
+        self.ui.bt_age_range_1.setText("0 - 20")
+        self.ui.bt_age_range_2.setText("20 - 50")
+        self.ui.bt_age_range_3.setText("50+")
 
-        self.ui.bt_age_rangue_1.select(True)
-        self.ui.bt_age_rangue_2.select(True)
-        self.ui.bt_age_rangue_3.select(True)
+        self.ui.bt_age_range_1.select(True)
+        self.ui.bt_age_range_2.select(True)
+        self.ui.bt_age_range_3.select(True)
 
 
-        self.ui.bt_age_rangue_1.action_value =  self.ui.bt_age_rangue_1.text().replace(" ", "")
-        self.ui.bt_age_rangue_2.action_value =  self.ui.bt_age_rangue_2.text().replace(" ", "")
-        self.ui.bt_age_rangue_3.action_value =  self.ui.bt_age_rangue_3.text().replace(" ", "")
+        self.ui.bt_age_range_1.action_value =  self.ui.bt_age_range_1.text().replace(" ", "")
+        self.ui.bt_age_range_2.action_value =  self.ui.bt_age_range_2.text().replace(" ", "")
+        self.ui.bt_age_range_3.action_value =  self.ui.bt_age_range_3.text().replace(" ", "")
 
         # organizer
         self.ui.bt_sorter_mosaico.set_icon(Button.IC_MOSAICO)
@@ -94,10 +94,10 @@ class PatientsView(ViewObject):
         self.ui.i_female.stateChanged.connect(self.filter_patients)
 
         self.ui.i_agre_precise.returnPressed.connect(lambda: (self.slot_filter_age("precise") ) )
-        self.ui.bt_age_rangue_1.clicked.connect(lambda: (self.slot_filter_age("rangue_bt") ) )
-        self.ui.bt_age_rangue_2.clicked.connect(lambda: (self.slot_filter_age("rangue_bt") ) )
-        self.ui.bt_age_rangue_3.clicked.connect(lambda: (self.slot_filter_age("rangue_bt") ) )
-        self.ui.i_age_rangue.returnPressed.connect(lambda: (self.slot_filter_age("rangue") ) )
+        self.ui.bt_age_range_1.clicked.connect(lambda: (self.slot_filter_age("range_bt") ) )
+        self.ui.bt_age_range_2.clicked.connect(lambda: (self.slot_filter_age("range_bt") ) )
+        self.ui.bt_age_range_3.clicked.connect(lambda: (self.slot_filter_age("range_bt") ) )
+        self.ui.i_age_range.returnPressed.connect(lambda: (self.slot_filter_age("range") ) )
 
         self.ui.i_search.returnPressed.connect(self.filter_patients)
         self.ui.bt_search.clicked.connect(self.filter_patients)
@@ -126,20 +126,20 @@ class PatientsView(ViewObject):
     @Slot(str)
     def slot_filter_age(self, type_filter):
         if type_filter == "precise":
-            self.ui.i_age_rangue.setText("")
-            self.ui.bt_age_rangue_1.select(False)
-            self.ui.bt_age_rangue_2.select(False)
-            self.ui.bt_age_rangue_3.select(False)
+            self.ui.i_age_range.setText("")
+            self.ui.bt_age_range_1.select(False)
+            self.ui.bt_age_range_2.select(False)
+            self.ui.bt_age_range_3.select(False)
 
-        elif type_filter == "rangue":
+        elif type_filter == "range":
             self.ui.i_agre_precise.setText("")
-            self.ui.bt_age_rangue_1.select(False)
-            self.ui.bt_age_rangue_2.select(False)
-            self.ui.bt_age_rangue_3.select(False)
+            self.ui.bt_age_range_1.select(False)
+            self.ui.bt_age_range_2.select(False)
+            self.ui.bt_age_range_3.select(False)
 
-        elif  type_filter == "rangue_bt":
+        elif  type_filter == "range_bt":
             self.ui.i_agre_precise.setText("")
-            self.ui.i_age_rangue.setText("")
+            self.ui.i_age_range.setText("")
 
         self.filter_patients()
 
@@ -152,7 +152,7 @@ class PatientsView(ViewObject):
         elif organizer == "name":
             place_holder = "E.g: Alex"
 
-#        self.ui.i_age_rangue.setValidator(self.create_text_validator(regex))
+#        self.ui.i_age_range.setValidator(self.create_text_validator(regex))
         self.ui.i_search.setPlaceholderText(place_holder)
         self.show_patients()
 
@@ -181,32 +181,32 @@ class PatientsView(ViewObject):
             p_age = int(self.ui.i_agre_precise.text())
             self.p_list_filtered = self.p_list_filtered.get_filtered("age",p_age)
 
-        elif len(self.ui.i_age_rangue.text()) > 0:
-                if self.ui.i_age_rangue.text().endswith("+"):
-                    rg = self.ui.i_age_rangue.text().replace("+","")
+        elif len(self.ui.i_age_range.text()) > 0:
+                if self.ui.i_age_range.text().endswith("+"):
+                    rg = self.ui.i_age_range.text().replace("+","")
                     self.p_list_filtered = self.p_list_filtered.get_filtered_greater_than("age", int(rg))
 
-                elif self.ui.i_age_rangue.text().endswith("-"):
-                    rg = self.ui.i_age_rangue.text().replace("-","")
+                elif self.ui.i_age_range.text().endswith("-"):
+                    rg = self.ui.i_age_range.text().replace("-","")
                     self.p_list_filtered = self.p_list_filtered.get_filtered_lower_than("age", int(rg))
                 else:
-                    rg = self.ui.i_age_rangue.text().replace(" ","").split("-")
-                    self.p_list_filtered = self.p_list_filtered.get_filtered_rangue("age", int(rg[0]), int(rg[1]))
+                    rg = self.ui.i_age_range.text().replace(" ","").split("-")
+                    self.p_list_filtered = self.p_list_filtered.get_filtered_range("age", int(rg[0]), int(rg[1]))
         else:
             plf_age_1 = PatientList()
             plf_age_2 = PatientList()
             plf_age_3 = PatientList()
 
-            if self.ui.bt_age_rangue_1.is_selected():
-                rg = self.ui.bt_age_rangue_1.action_value.split("-")
-                plf_age_1 = self.p_list_filtered.get_filtered_rangue("age", int(rg[0]), int(rg[1]))
+            if self.ui.bt_age_range_1.is_selected():
+                rg = self.ui.bt_age_range_1.action_value.split("-")
+                plf_age_1 = self.p_list_filtered.get_filtered_range("age", int(rg[0]), int(rg[1]))
 
-            if self.ui.bt_age_rangue_2.is_selected():
-                rg = self.ui.bt_age_rangue_2.action_value.split("-")
-                plf_age_2 = self.p_list_filtered.get_filtered_rangue("age", int(rg[0]), int(rg[1]))
+            if self.ui.bt_age_range_2.is_selected():
+                rg = self.ui.bt_age_range_2.action_value.split("-")
+                plf_age_2 = self.p_list_filtered.get_filtered_range("age", int(rg[0]), int(rg[1]))
 
-            if self.ui.bt_age_rangue_3.is_selected():
-                rg = self.ui.bt_age_rangue_3.action_value.replace("+","")
+            if self.ui.bt_age_range_3.is_selected():
+                rg = self.ui.bt_age_range_3.action_value.replace("+","")
                 plf_age_3 = self.p_list_filtered.get_filtered_greater_than("age", int(rg))
 
             self.p_list_filtered = PatientList(plf_age_1, plf_age_2, plf_age_3)

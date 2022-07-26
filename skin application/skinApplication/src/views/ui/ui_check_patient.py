@@ -16,8 +16,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QFormLayout, QFrame, QHBoxLayout,
-    QLabel, QScrollArea, QSizePolicy, QSpacerItem,
-    QVBoxLayout, QWidget)
+    QScrollArea, QSizePolicy, QSpacerItem, QVBoxLayout,
+    QWidget)
 
 from .promoted.button import Button
 from .promoted.label import Label
@@ -84,6 +84,7 @@ class Ui_check_patient(object):
         self.c_patient_information.setFrameShadow(QFrame.Raised)
         self.verticalLayout = QVBoxLayout(self.c_patient_information)
         self.verticalLayout.setObjectName(u"verticalLayout")
+        self.verticalLayout.setContentsMargins(-1, -1, -1, 18)
         self.lb_patient_information = Label(self.c_patient_information)
         self.lb_patient_information.setObjectName(u"lb_patient_information")
         self.lb_patient_information.setMaximumSize(QSize(16777215, 20))
@@ -95,7 +96,7 @@ class Ui_check_patient(object):
         self.scrollArea.setWidgetResizable(True)
         self.c_basic_information_scroll_area = QWidget()
         self.c_basic_information_scroll_area.setObjectName(u"c_basic_information_scroll_area")
-        self.c_basic_information_scroll_area.setGeometry(QRect(0, 0, 258, 344))
+        self.c_basic_information_scroll_area.setGeometry(QRect(0, 0, 258, 335))
         self.verticalLayout_5 = QVBoxLayout(self.c_basic_information_scroll_area)
         self.verticalLayout_5.setObjectName(u"verticalLayout_5")
         self.c_basic_information = QFrame(self.c_basic_information_scroll_area)
@@ -221,299 +222,15 @@ class Ui_check_patient(object):
         self.scrollArea_2.setWidgetResizable(True)
         self.c_skin_parts_scroll_area = QWidget()
         self.c_skin_parts_scroll_area.setObjectName(u"c_skin_parts_scroll_area")
-        self.c_skin_parts_scroll_area.setGeometry(QRect(0, 0, 872, 708))
+        self.c_skin_parts_scroll_area.setGeometry(QRect(0, 0, 872, 702))
         self.verticalLayout_6 = QVBoxLayout(self.c_skin_parts_scroll_area)
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
-        self.c_skin_parts = QFrame(self.c_skin_parts_scroll_area)
-        self.c_skin_parts.setObjectName(u"c_skin_parts")
-        self.c_skin_parts.setFrameShape(QFrame.StyledPanel)
-        self.c_skin_parts.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_4 = QVBoxLayout(self.c_skin_parts)
-        self.verticalLayout_4.setSpacing(30)
-        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
-        self.verticalLayout_4.setContentsMargins(0, 0, 0, 0)
-        self.c_skin_part_to_duplicate = QFrame(self.c_skin_parts)
-        self.c_skin_part_to_duplicate.setObjectName(u"c_skin_part_to_duplicate")
-        self.c_skin_part_to_duplicate.setFrameShape(QFrame.StyledPanel)
-        self.c_skin_part_to_duplicate.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_14 = QVBoxLayout(self.c_skin_part_to_duplicate)
-        self.verticalLayout_14.setSpacing(16)
-        self.verticalLayout_14.setObjectName(u"verticalLayout_14")
-        self.verticalLayout_14.setContentsMargins(0, 0, 0, 0)
-        self.frame_2 = QFrame(self.c_skin_part_to_duplicate)
-        self.frame_2.setObjectName(u"frame_2")
-        self.frame_2.setFrameShape(QFrame.StyledPanel)
-        self.frame_2.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_7 = QHBoxLayout(self.frame_2)
-        self.horizontalLayout_7.setSpacing(16)
-        self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
-        self.horizontalLayout_7.setContentsMargins(0, 0, 0, 0)
-        self.c_n1 = QFrame(self.frame_2)
-        self.c_n1.setObjectName(u"c_n1")
-        self.c_n1.setFrameShape(QFrame.StyledPanel)
-        self.c_n1.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_10 = QVBoxLayout(self.c_n1)
-        self.verticalLayout_10.setObjectName(u"verticalLayout_10")
-        self.verticalLayout_10.setContentsMargins(0, 0, 0, 0)
-        self.c_image = QFrame(self.c_n1)
-        self.c_image.setObjectName(u"c_image")
-        self.c_image.setFrameShape(QFrame.StyledPanel)
-        self.c_image.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_5 = QHBoxLayout(self.c_image)
-        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
-        self.horizontalLayout_5.setContentsMargins(0, 0, 0, 0)
-        self.lb_image = QLabel(self.c_image)
-        self.lb_image.setObjectName(u"lb_image")
-        self.lb_image.setMaximumSize(QSize(150, 150))
-        self.lb_image.setPixmap(QPixmap(u"assets/img/Screenshot 2022-07-25 180616.png"))
-        self.lb_image.setScaledContents(True)
-
-        self.horizontalLayout_5.addWidget(self.lb_image)
-
-
-        self.verticalLayout_10.addWidget(self.c_image)
-
-
-        self.horizontalLayout_7.addWidget(self.c_n1)
-
-        self.c_n2 = QFrame(self.frame_2)
-        self.c_n2.setObjectName(u"c_n2")
-        self.c_n2.setFrameShape(QFrame.StyledPanel)
-        self.c_n2.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_4 = QHBoxLayout(self.c_n2)
-        self.horizontalLayout_4.setSpacing(16)
-        self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
-        self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
-        self.c_annotations = QFrame(self.c_n2)
-        self.c_annotations.setObjectName(u"c_annotations")
-        self.c_annotations.setFrameShape(QFrame.StyledPanel)
-        self.c_annotations.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_12 = QVBoxLayout(self.c_annotations)
-        self.verticalLayout_12.setObjectName(u"verticalLayout_12")
-        self.verticalLayout_12.setContentsMargins(0, 0, 0, 0)
-        self.c_annotation_title = QFrame(self.c_annotations)
-        self.c_annotation_title.setObjectName(u"c_annotation_title")
-        self.c_annotation_title.setMaximumSize(QSize(16777215, 20))
-        self.c_annotation_title.setFrameShape(QFrame.StyledPanel)
-        self.c_annotation_title.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_6 = QHBoxLayout(self.c_annotation_title)
-        self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
-        self.horizontalLayout_6.setContentsMargins(0, 0, 0, 0)
-        self.lb_annotations = QLabel(self.c_annotation_title)
-        self.lb_annotations.setObjectName(u"lb_annotations")
-        self.lb_annotations.setMaximumSize(QSize(16777215, 20))
-
-        self.horizontalLayout_6.addWidget(self.lb_annotations, 0, Qt.AlignHCenter)
-
-
-        self.verticalLayout_12.addWidget(self.c_annotation_title)
-
-        self.c_annotation_content = QFrame(self.c_annotations)
-        self.c_annotation_content.setObjectName(u"c_annotation_content")
-        self.c_annotation_content.setFrameShape(QFrame.StyledPanel)
-        self.c_annotation_content.setFrameShadow(QFrame.Raised)
-        self.formLayout = QFormLayout(self.c_annotation_content)
-        self.formLayout.setObjectName(u"formLayout")
-        self.formLayout.setVerticalSpacing(12)
-        self.formLayout.setContentsMargins(9, 0, 9, 0)
-        self.lb_annotation_risk = QLabel(self.c_annotation_content)
-        self.lb_annotation_risk.setObjectName(u"lb_annotation_risk")
-
-        self.formLayout.setWidget(0, QFormLayout.LabelRole, self.lb_annotation_risk)
-
-        self.label_7 = QLabel(self.c_annotation_content)
-        self.label_7.setObjectName(u"label_7")
-
-        self.formLayout.setWidget(0, QFormLayout.FieldRole, self.label_7)
-
-        self.lb_annotation_type = QLabel(self.c_annotation_content)
-        self.lb_annotation_type.setObjectName(u"lb_annotation_type")
-
-        self.formLayout.setWidget(1, QFormLayout.LabelRole, self.lb_annotation_type)
-
-        self.label_8 = QLabel(self.c_annotation_content)
-        self.label_8.setObjectName(u"label_8")
-
-        self.formLayout.setWidget(1, QFormLayout.FieldRole, self.label_8)
-
-        self.lb_annotation_notes = QLabel(self.c_annotation_content)
-        self.lb_annotation_notes.setObjectName(u"lb_annotation_notes")
-
-        self.formLayout.setWidget(2, QFormLayout.LabelRole, self.lb_annotation_notes)
-
-        self.label_9 = QLabel(self.c_annotation_content)
-        self.label_9.setObjectName(u"label_9")
-
-        self.formLayout.setWidget(2, QFormLayout.FieldRole, self.label_9)
-
-
-        self.verticalLayout_12.addWidget(self.c_annotation_content)
-
-        self.lb_read_more_annotations = QLabel(self.c_annotations)
-        self.lb_read_more_annotations.setObjectName(u"lb_read_more_annotations")
-
-        self.verticalLayout_12.addWidget(self.lb_read_more_annotations, 0, Qt.AlignHCenter|Qt.AlignBottom)
-
-
-        self.horizontalLayout_4.addWidget(self.c_annotations)
-
-        self.c_ai_results = QFrame(self.c_n2)
-        self.c_ai_results.setObjectName(u"c_ai_results")
-        self.c_ai_results.setFrameShape(QFrame.StyledPanel)
-        self.c_ai_results.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_11 = QVBoxLayout(self.c_ai_results)
-        self.verticalLayout_11.setObjectName(u"verticalLayout_11")
-        self.label_3 = QLabel(self.c_ai_results)
-        self.label_3.setObjectName(u"label_3")
-        self.label_3.setMaximumSize(QSize(16777215, 20))
-
-        self.verticalLayout_11.addWidget(self.label_3, 0, Qt.AlignHCenter|Qt.AlignTop)
-
-        self.c_ai_content = QFrame(self.c_ai_results)
-        self.c_ai_content.setObjectName(u"c_ai_content")
-        self.c_ai_content.setFrameShape(QFrame.StyledPanel)
-        self.c_ai_content.setFrameShadow(QFrame.Raised)
-        self.formLayout_3 = QFormLayout(self.c_ai_content)
-        self.formLayout_3.setObjectName(u"formLayout_3")
-        self.formLayout_3.setVerticalSpacing(12)
-        self.formLayout_3.setContentsMargins(0, 0, 0, 0)
-        self.lb_ai_type_ai = QLabel(self.c_ai_content)
-        self.lb_ai_type_ai.setObjectName(u"lb_ai_type_ai")
-
-        self.formLayout_3.setWidget(0, QFormLayout.LabelRole, self.lb_ai_type_ai)
-
-        self.label_13 = QLabel(self.c_ai_content)
-        self.label_13.setObjectName(u"label_13")
-
-        self.formLayout_3.setWidget(0, QFormLayout.FieldRole, self.label_13)
-
-        self.lb_ai_risk = QLabel(self.c_ai_content)
-        self.lb_ai_risk.setObjectName(u"lb_ai_risk")
-
-        self.formLayout_3.setWidget(2, QFormLayout.LabelRole, self.lb_ai_risk)
-
-        self.label_14 = QLabel(self.c_ai_content)
-        self.label_14.setObjectName(u"label_14")
-
-        self.formLayout_3.setWidget(2, QFormLayout.FieldRole, self.label_14)
-
-        self.lb_ai_accurance = QLabel(self.c_ai_content)
-        self.lb_ai_accurance.setObjectName(u"lb_ai_accurance")
-
-        self.formLayout_3.setWidget(3, QFormLayout.LabelRole, self.lb_ai_accurance)
-
-        self.label_15 = QLabel(self.c_ai_content)
-        self.label_15.setObjectName(u"label_15")
-
-        self.formLayout_3.setWidget(3, QFormLayout.FieldRole, self.label_15)
-
-        self.lb_ai_type = QLabel(self.c_ai_content)
-        self.lb_ai_type.setObjectName(u"lb_ai_type")
-
-        self.formLayout_3.setWidget(1, QFormLayout.LabelRole, self.lb_ai_type)
-
-        self.label_4 = QLabel(self.c_ai_content)
-        self.label_4.setObjectName(u"label_4")
-
-        self.formLayout_3.setWidget(1, QFormLayout.FieldRole, self.label_4)
-
-
-        self.verticalLayout_11.addWidget(self.c_ai_content)
-
-        self.lb_read_more_ai_results = QLabel(self.c_ai_results)
-        self.lb_read_more_ai_results.setObjectName(u"lb_read_more_ai_results")
-
-        self.verticalLayout_11.addWidget(self.lb_read_more_ai_results, 0, Qt.AlignHCenter|Qt.AlignBottom)
-
-
-        self.horizontalLayout_4.addWidget(self.c_ai_results)
-
-
-        self.horizontalLayout_7.addWidget(self.c_n2)
-
-        self.c_n3 = QFrame(self.frame_2)
-        self.c_n3.setObjectName(u"c_n3")
-        self.c_n3.setFrameShape(QFrame.StyledPanel)
-        self.c_n3.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_9 = QVBoxLayout(self.c_n3)
-        self.verticalLayout_9.setObjectName(u"verticalLayout_9")
-        self.verticalLayout_9.setContentsMargins(0, 0, 0, 0)
-        self.c_buttons = QFrame(self.c_n3)
-        self.c_buttons.setObjectName(u"c_buttons")
-        self.c_buttons.setFrameShape(QFrame.StyledPanel)
-        self.c_buttons.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_13 = QVBoxLayout(self.c_buttons)
-        self.verticalLayout_13.setObjectName(u"verticalLayout_13")
-        self.verticalLayout_13.setContentsMargins(0, 0, 0, 0)
-        self.bt_see_time_line = Button(self.c_buttons)
-        self.bt_see_time_line.setObjectName(u"bt_see_time_line")
-        self.bt_see_time_line.setMinimumSize(QSize(100, 0))
-        self.bt_see_time_line.setMaximumSize(QSize(100, 16777215))
-
-        self.verticalLayout_13.addWidget(self.bt_see_time_line)
-
-        self.bt_see_images = Button(self.c_buttons)
-        self.bt_see_images.setObjectName(u"bt_see_images")
-        self.bt_see_images.setMinimumSize(QSize(100, 0))
-        self.bt_see_images.setMaximumSize(QSize(100, 16777215))
-
-        self.verticalLayout_13.addWidget(self.bt_see_images)
-
-        self.bt_more_options = Button(self.c_buttons)
-        self.bt_more_options.setObjectName(u"bt_more_options")
-        self.bt_more_options.setMinimumSize(QSize(100, 0))
-        self.bt_more_options.setMaximumSize(QSize(100, 16777215))
-
-        self.verticalLayout_13.addWidget(self.bt_more_options)
-
-
-        self.verticalLayout_9.addWidget(self.c_buttons)
-
-        self.vs_buttons = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Minimum)
-
-        self.verticalLayout_9.addItem(self.vs_buttons)
-
-
-        self.horizontalLayout_7.addWidget(self.c_n3)
-
-        self.horizontalLayout_7.setStretch(0, 2)
-        self.horizontalLayout_7.setStretch(1, 6)
-        self.horizontalLayout_7.setStretch(2, 1)
-
-        self.verticalLayout_14.addWidget(self.frame_2)
-
-        self.frame_3 = QFrame(self.c_skin_part_to_duplicate)
-        self.frame_3.setObjectName(u"frame_3")
-        self.frame_3.setFrameShape(QFrame.StyledPanel)
-        self.frame_3.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_3 = QHBoxLayout(self.frame_3)
-        self.horizontalLayout_3.setSpacing(0)
-        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
-        self.horizontalLayout_3.setContentsMargins(10, 0, 10, 0)
-        self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.horizontalLayout_3.addItem(self.horizontalSpacer_3)
-
-        self.bt_update = Button(self.frame_3)
-        self.bt_update.setObjectName(u"bt_update")
-
-        self.horizontalLayout_3.addWidget(self.bt_update)
-
-        self.horizontalSpacer_4 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.horizontalLayout_3.addItem(self.horizontalSpacer_4)
-
-        self.horizontalLayout_3.setStretch(0, 3)
-        self.horizontalLayout_3.setStretch(1, 10)
-        self.horizontalLayout_3.setStretch(2, 3)
-
-        self.verticalLayout_14.addWidget(self.frame_3)
-
-
-        self.verticalLayout_4.addWidget(self.c_skin_part_to_duplicate)
-
-
-        self.verticalLayout_6.addWidget(self.c_skin_parts)
+        self.c_skin_lesions = QFrame(self.c_skin_parts_scroll_area)
+        self.c_skin_lesions.setObjectName(u"c_skin_lesions")
+        self.c_skin_lesions.setFrameShape(QFrame.StyledPanel)
+        self.c_skin_lesions.setFrameShadow(QFrame.Raised)
+
+        self.verticalLayout_6.addWidget(self.c_skin_lesions)
 
         self.verticalSpacer_4 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
@@ -553,28 +270,5 @@ class Ui_check_patient(object):
         self.lb_medical_information.setText(QCoreApplication.translate("check_patient", u"Madical information", None))
         self.bt_edit_patient_info.setText(QCoreApplication.translate("check_patient", u"Edit patient information", None))
         self.label.setText(QCoreApplication.translate("check_patient", u"Parts of the sking under study", None))
-        self.lb_image.setText("")
-        self.lb_annotations.setText(QCoreApplication.translate("check_patient", u"Annotations", None))
-        self.lb_annotation_risk.setText(QCoreApplication.translate("check_patient", u"Risk", None))
-        self.label_7.setText(QCoreApplication.translate("check_patient", u"BENIGN", None))
-        self.lb_annotation_type.setText(QCoreApplication.translate("check_patient", u"Type", None))
-        self.label_8.setText(QCoreApplication.translate("check_patient", u"Mole", None))
-        self.lb_annotation_notes.setText(QCoreApplication.translate("check_patient", u"Notes", None))
-        self.label_9.setText(QCoreApplication.translate("check_patient", u"...", None))
-        self.lb_read_more_annotations.setText(QCoreApplication.translate("check_patient", u"Read more", None))
-        self.label_3.setText(QCoreApplication.translate("check_patient", u"AI results", None))
-        self.lb_ai_type_ai.setText(QCoreApplication.translate("check_patient", u"IA:", None))
-        self.label_13.setText(QCoreApplication.translate("check_patient", u"IA - 1", None))
-        self.lb_ai_risk.setText(QCoreApplication.translate("check_patient", u"Risk", None))
-        self.label_14.setText(QCoreApplication.translate("check_patient", u"BENIGN", None))
-        self.lb_ai_accurance.setText(QCoreApplication.translate("check_patient", u"Accurance", None))
-        self.label_15.setText(QCoreApplication.translate("check_patient", u"93 %", None))
-        self.lb_ai_type.setText(QCoreApplication.translate("check_patient", u"Type", None))
-        self.label_4.setText(QCoreApplication.translate("check_patient", u"Mole", None))
-        self.lb_read_more_ai_results.setText(QCoreApplication.translate("check_patient", u"Read more", None))
-        self.bt_see_time_line.setText(QCoreApplication.translate("check_patient", u"Time line", None))
-        self.bt_see_images.setText(QCoreApplication.translate("check_patient", u"Images", None))
-        self.bt_more_options.setText(QCoreApplication.translate("check_patient", u"More", None))
-        self.bt_update.setText(QCoreApplication.translate("check_patient", u"Update", None))
     # retranslateUi
 

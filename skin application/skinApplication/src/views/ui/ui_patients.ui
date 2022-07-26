@@ -371,9 +371,9 @@
                    <number>0</number>
                   </property>
                   <item>
-                   <widget class="QLabel" name="lb_age_rangue">
+                   <widget class="QLabel" name="lb_age_range">
                     <property name="text">
-                     <string>Rangue</string>
+                     <string>Range</string>
                     </property>
                    </widget>
                   </item>
@@ -417,7 +417,7 @@
                          <number>0</number>
                         </property>
                         <item>
-                         <widget class="CheckButton" name="bt_age_rangue_1">
+                         <widget class="CheckButton" name="bt_age_range_1">
                           <property name="minimumSize">
                            <size>
                             <width>80</width>
@@ -436,7 +436,7 @@
                          </widget>
                         </item>
                         <item>
-                         <widget class="CheckButton" name="bt_age_rangue_2">
+                         <widget class="CheckButton" name="bt_age_range_2">
                           <property name="minimumSize">
                            <size>
                             <width>80</width>
@@ -455,7 +455,7 @@
                          </widget>
                         </item>
                         <item>
-                         <widget class="CheckButton" name="bt_age_rangue_3">
+                         <widget class="CheckButton" name="bt_age_range_3">
                           <property name="minimumSize">
                            <size>
                             <width>80</width>
@@ -490,7 +490,7 @@
                       </widget>
                      </item>
                      <item>
-                      <widget class="LineEdit" name="i_age_rangue">
+                      <widget class="LineEdit" name="i_age_range">
                        <property name="maximumSize">
                         <size>
                          <width>150</width>

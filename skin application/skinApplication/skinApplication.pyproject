@@ -47,7 +47,7 @@
         "src/views/ui/ui_check_patient.ui",
         "src/views/ui/ui_check_patient.py",
         "src/views/ui/promoted/button.py",
-        "src/views/ui/promoted/skin_part_preview.py",
+        "src/views/ui/promoted/skin_lesion_preview.py",
         "src/views/ui/promoted/annotation_preview.py",
         "src/views/ui/promoted/check_button.py",
         "src/views/ui/promoted/navigator_button.py",

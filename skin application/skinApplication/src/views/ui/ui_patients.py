@@ -195,10 +195,10 @@ class Ui_patients(object):
         self.verticalLayout_11 = QVBoxLayout(self.frame_19)
         self.verticalLayout_11.setObjectName(u"verticalLayout_11")
         self.verticalLayout_11.setContentsMargins(-1, 0, 0, 0)
-        self.lb_age_rangue = QLabel(self.frame_19)
-        self.lb_age_rangue.setObjectName(u"lb_age_rangue")
+        self.lb_age_range = QLabel(self.frame_19)
+        self.lb_age_range.setObjectName(u"lb_age_range")
 
-        self.verticalLayout_11.addWidget(self.lb_age_rangue)
+        self.verticalLayout_11.addWidget(self.lb_age_range)
 
         self.frame_21 = QFrame(self.frame_19)
         self.frame_21.setObjectName(u"frame_21")
@@ -214,26 +214,26 @@ class Ui_patients(object):
         self.horizontalLayout_7 = QHBoxLayout(self.frame_17)
         self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
         self.horizontalLayout_7.setContentsMargins(0, 0, 0, 0)
-        self.bt_age_rangue_1 = CheckButton(self.frame_17)
-        self.bt_age_rangue_1.setObjectName(u"bt_age_rangue_1")
-        self.bt_age_rangue_1.setMinimumSize(QSize(80, 20))
-        self.bt_age_rangue_1.setMaximumSize(QSize(90, 16777215))
+        self.bt_age_range_1 = CheckButton(self.frame_17)
+        self.bt_age_range_1.setObjectName(u"bt_age_range_1")
+        self.bt_age_range_1.setMinimumSize(QSize(80, 20))
+        self.bt_age_range_1.setMaximumSize(QSize(90, 16777215))
 
-        self.horizontalLayout_7.addWidget(self.bt_age_rangue_1)
+        self.horizontalLayout_7.addWidget(self.bt_age_range_1)
 
-        self.bt_age_rangue_2 = CheckButton(self.frame_17)
-        self.bt_age_rangue_2.setObjectName(u"bt_age_rangue_2")
-        self.bt_age_rangue_2.setMinimumSize(QSize(80, 20))
-        self.bt_age_rangue_2.setMaximumSize(QSize(90, 16777215))
+        self.bt_age_range_2 = CheckButton(self.frame_17)
+        self.bt_age_range_2.setObjectName(u"bt_age_range_2")
+        self.bt_age_range_2.setMinimumSize(QSize(80, 20))
+        self.bt_age_range_2.setMaximumSize(QSize(90, 16777215))
 
-        self.horizontalLayout_7.addWidget(self.bt_age_rangue_2)
+        self.horizontalLayout_7.addWidget(self.bt_age_range_2)
 
-        self.bt_age_rangue_3 = CheckButton(self.frame_17)
-        self.bt_age_rangue_3.setObjectName(u"bt_age_rangue_3")
-        self.bt_age_rangue_3.setMinimumSize(QSize(80, 20))
-        self.bt_age_rangue_3.setMaximumSize(QSize(90, 16777215))
+        self.bt_age_range_3 = CheckButton(self.frame_17)
+        self.bt_age_range_3.setObjectName(u"bt_age_range_3")
+        self.bt_age_range_3.setMinimumSize(QSize(80, 20))
+        self.bt_age_range_3.setMaximumSize(QSize(90, 16777215))
 
-        self.horizontalLayout_7.addWidget(self.bt_age_rangue_3)
+        self.horizontalLayout_7.addWidget(self.bt_age_range_3)
 
         self.horizontalSpacer_8 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
@@ -242,11 +242,11 @@ class Ui_patients(object):
 
         self.verticalLayout_12.addWidget(self.frame_17)
 
-        self.i_age_rangue = LineEdit(self.frame_21)
-        self.i_age_rangue.setObjectName(u"i_age_rangue")
-        self.i_age_rangue.setMaximumSize(QSize(150, 16777215))
+        self.i_age_range = LineEdit(self.frame_21)
+        self.i_age_range.setObjectName(u"i_age_range")
+        self.i_age_range.setMaximumSize(QSize(150, 16777215))
 
-        self.verticalLayout_12.addWidget(self.i_age_rangue)
+        self.verticalLayout_12.addWidget(self.i_age_range)
 
 
         self.verticalLayout_11.addWidget(self.frame_21)
@@ -484,11 +484,11 @@ class Ui_patients(object):
         self.lb_filter_age.setText(QCoreApplication.translate("patients", u"Age", None))
         self.lb_filter_age_precise.setText(QCoreApplication.translate("patients", u"Precise", None))
         self.i_agre_precise.setPlaceholderText(QCoreApplication.translate("patients", u"E.g: 43", None))
-        self.lb_age_rangue.setText(QCoreApplication.translate("patients", u"Rangue", None))
-        self.bt_age_rangue_1.setText(QCoreApplication.translate("patients", u"0 - 20", None))
-        self.bt_age_rangue_2.setText(QCoreApplication.translate("patients", u"20 - 50", None))
-        self.bt_age_rangue_3.setText(QCoreApplication.translate("patients", u"50 +", None))
-        self.i_age_rangue.setPlaceholderText(QCoreApplication.translate("patients", u"E.g: 17 - 32", None))
+        self.lb_age_range.setText(QCoreApplication.translate("patients", u"Range", None))
+        self.bt_age_range_1.setText(QCoreApplication.translate("patients", u"0 - 20", None))
+        self.bt_age_range_2.setText(QCoreApplication.translate("patients", u"20 - 50", None))
+        self.bt_age_range_3.setText(QCoreApplication.translate("patients", u"50 +", None))
+        self.i_age_range.setPlaceholderText(QCoreApplication.translate("patients", u"E.g: 17 - 32", None))
         self.lb_filter_diagnostic_attributes.setText(QCoreApplication.translate("patients", u"DIAGNOSTIC ATTRIBUTES", None))
         self.i_bening.setText(QCoreApplication.translate("patients", u"Bening (120 / 300)", None))
         self.i_malignant.setText(QCoreApplication.translate("patients", u"Malignant (150 / 300)", None))
