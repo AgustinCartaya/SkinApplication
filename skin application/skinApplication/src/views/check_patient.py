@@ -24,6 +24,10 @@ class CheckPatientView(ViewObject):
         self.ui = Ui_check_patient()
         self.ui.setupUi(self)
 
+        #label
+        self.ui.lb_title.set_title(1)
+        self.ui.lb_patient_information.set_title(2)
+
         # basic information
         self.ui.i_first_name.setText(self.patient.first_name)
         self.ui.i_last_name.setText(self.patient.last_name)
@@ -78,7 +82,7 @@ class CheckPatientView(ViewObject):
     def connect_ui_signals(self):
         # navigator
         self.ui.bt_back.clicked.connect(self.back)
-#        self.ui.bt_add_new_patient.clicked.connect(self.add_new_patient)
+        self.ui.bt_edit_patient_info.clicked.connect(self.edit_patient_info)
 
         # created signals
         self.s_change_view.connect(self.MW.change_view)
@@ -86,3 +90,7 @@ class CheckPatientView(ViewObject):
     @Slot()
     def back(self):
         self.s_change_view.emit(cfg.CHECK_PATIENT_VIEW, cfg.PATIENTS_VIEW, None)
+
+    @Slot()
+    def edit_patient_info(self):
+        self.s_change_view.emit(cfg.CHECK_PATIENT_VIEW, cfg.ADD_PATIENT_VIEW, self.patient)

@@ -75,6 +75,8 @@ class MainWindow(QtWidgets.QMainWindow):
                 self._add_patient_view.p_info = atts
             elif view_from == cfg.ADD_PATIENT_PREVIEW_VIEW:
                 self._layers.removeWidget(self._layers.currentWidget())
+            elif view_from == cfg.CHECK_PATIENT_VIEW:
+                self._add_patient_view = AddPatientView(self)
             self.set_view(self._add_patient_view)
 
         elif view_to == cfg.ADD_PATIENT_MI_VIEW:

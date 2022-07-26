@@ -195,10 +195,10 @@ class Ui_check_patient(object):
 
         self.verticalLayout.addItem(self.verticalSpacer)
 
-        self.pushButton_2 = Button(self.c_patient_information)
-        self.pushButton_2.setObjectName(u"pushButton_2")
+        self.bt_edit_patient_info = Button(self.c_patient_information)
+        self.bt_edit_patient_info.setObjectName(u"bt_edit_patient_info")
 
-        self.verticalLayout.addWidget(self.pushButton_2, 0, Qt.AlignHCenter)
+        self.verticalLayout.addWidget(self.bt_edit_patient_info, 0, Qt.AlignHCenter)
 
 
         self.horizontalLayout_2.addWidget(self.c_patient_information)
@@ -551,7 +551,7 @@ class Ui_check_patient(object):
         self.leb_age.setText(QCoreApplication.translate("check_patient", u"Age :", None))
         self.i_age.setText(QCoreApplication.translate("check_patient", u"...", None))
         self.lb_medical_information.setText(QCoreApplication.translate("check_patient", u"Madical information", None))
-        self.pushButton_2.setText(QCoreApplication.translate("check_patient", u"Edit patient information", None))
+        self.bt_edit_patient_info.setText(QCoreApplication.translate("check_patient", u"Edit patient information", None))
         self.label.setText(QCoreApplication.translate("check_patient", u"Parts of the sking under study", None))
         self.lb_image.setText("")
         self.lb_annotations.setText(QCoreApplication.translate("check_patient", u"Annotations", None))
