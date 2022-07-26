@@ -21,8 +21,12 @@ class AddPatientView(ViewObject):
         self.ui.setupUi(self)
         self.ui.bt_cancel.set_type(Button.BT_CANCEL)
 
+        # inputs
         self.ui.i_first_name.setValidator(self.create_text_validator(data_cleaner.regex_name))
         self.ui.i_last_name.setValidator(self.create_text_validator(data_cleaner.regex_name))
+
+        #buttons
+        self.ui.bt_cancel.set_type(Button.BT_CANCEL)
 
         # labels
         self.ui.lb_title.set_title(1)

@@ -4,25 +4,26 @@ from .ui.ui_add_patient_mi import Ui_add_patient_mi
 from src.objects.patient import Patient
 
 from PySide6.QtWidgets import (QFrame, QVBoxLayout, QHBoxLayout,
-        QLineEdit,QGridLayout, QLabel, QComboBox)
+        QLineEdit,QGridLayout, QLabel, QComboBox, QInputDialog)
 
 from .ui.promoted.line_edit import LineEdit
-
+from .ui.promoted.medical_information_input import MedicalInformationInput
 
 
 class AddPatientMiView(ViewObject):
     def __init__(self, mw, p_info):
         super().__init__(mw)
         self.p_info = p_info
-        self.medical_info_select = {}
+        self.mi_inputs = {}
 
         self.load_ui()
         self.connect_ui_signals()
 
-
     def load_ui(self):
         self.ui = Ui_add_patient_mi()
         self.ui.setupUi(self)
+
+        #buttons
         self.ui.bt_cancel.set_type(Button.BT_CANCEL)
 
         # labels
@@ -42,42 +43,17 @@ class AddPatientMiView(ViewObject):
 
     def charge_medical_information(self):
         for file_name in util.get_file_list(cfg.FILES_MEDICAL_INFORMATION_PATH):
-            mi = file_name.split(".")
-            (mi_file_name, mi_type) = (mi[0], mi[1])
 
-            mi_title = util.file_name_to_title(mi_file_name)
+            mi_id = file_name.split(".")[0]
+
+            mi_title = util.file_name_to_title(mi_id)
             mi_values = util.read_file_list(file_name, path=cfg.FILES_MEDICAL_INFORMATION_PATH)
+            mi_values.insert(0, "")
 
-            self.show_single_medica_information(mi_title, mi_values)
+            mi_input = MedicalInformationInput(mi_title, mi_values, self, mi_id)
+            self.c_medical_information_layout.addWidget(mi_input)
+            self.mi_inputs[mi_id] = mi_input
 
-#            elif mi_type == "text":
-#                mi_text = LineEdit(mi_frame)
-#                mi_text.setValidator(self.create_text_validator(data_cleaner.regex_plain_text))
-#                mi_frame_layout.addWidget(mi_text)
-
-#            elif mi_type == "number":
-#                mi_number = LineEdit(mi_frame)
-#                mi_number.setValidator(self.create_text_validator(data_cleaner.regex_number))
-#                mi_frame_layout.addWidget(mi_number)
-
-
-
-    def show_single_medica_information(self, title, items, mi_type="options"):
-        mi_frame = QFrame(self.ui.c_medical_information)
-        mi_frame_layout = QVBoxLayout(mi_frame)
-        mi_frame_layout.setContentsMargins(0, 0, 0, 0)
-
-        mi_label = QLabel(mi_frame)
-        mi_label.setText(title)
-        mi_frame_layout.addWidget(mi_label)
-
-        if mi_type == "options":
-            mi_options = QComboBox(mi_frame)
-            mi_options.addItems(items)
-            mi_frame_layout.addWidget(mi_options)
-            self.medical_info_select[util.title_to_file_name(title)] = mi_options
-
-        self.c_medical_information_layout.addWidget(mi_frame)
 
     s_change_view = Signal(str,str,dict)
     def connect_ui_signals(self):
@@ -107,8 +83,8 @@ class AddPatientMiView(ViewObject):
 
     def catch_medical_info(self):
         medical_info = {}
-        for mi in self.medical_info_select:
-            medical_info[mi] = self.medical_info_select[mi].currentText()
+        for mi in self.mi_inputs:
+            medical_info[mi] = self.mi_inputs[mi].selected_item()
 
         self.p_info["medical_info"] = medical_info
 
@@ -155,5 +131,13 @@ class AddPatientMiView(ViewObject):
         self.ui.i_new_mi_value.setText("")
         self.ui.c_new_mi.hide()
 
+    @Slot()
     def scroll_down(self, min, maxi):
         self.ui.scrollArea.verticalScrollBar().setValue(maxi)
+
+    @Slot(str, str)
+    def add_new_mi_item(self, mi_input_id, new_item):
+        new_item = new_item.strip()
+        if len(new_item) > 0:
+            util.apped_to_file(mi_input_id+".options", "\n" + new_item, cfg.FILES_MEDICAL_INFORMATION_PATH)
+            self.mi_inputs[mi_input_id].append_item(new_item)

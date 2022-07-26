@@ -173,6 +173,17 @@ Button[bt_icon=mosaico]
     image: url(assets/icons/mosaico.png);
 }
 
+Button[bt_icon=plus]
+{
+    padding: 5px 5px;
+    background-color: #cf9988;
+    image: url(assets/icons/plus.png);
+}
+
+Button[bt_icon=plus]::hover
+{
+    background-color: #916c5f;
+}
 
 /*-----CheckButton-----*/
 CheckButton[selected=true]

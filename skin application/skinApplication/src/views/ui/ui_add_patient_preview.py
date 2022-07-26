@@ -33,21 +33,21 @@ class Ui_add_patient_preview(object):
         self.verticalLayout = QVBoxLayout(add_patient_preview)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout.setContentsMargins(0, 0, 0, 7)
-        self.frame_5 = QFrame(add_patient_preview)
-        self.frame_5.setObjectName(u"frame_5")
-        self.frame_5.setFrameShape(QFrame.StyledPanel)
-        self.frame_5.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout = QHBoxLayout(self.frame_5)
+        self.c_navigator = QFrame(add_patient_preview)
+        self.c_navigator.setObjectName(u"c_navigator")
+        self.c_navigator.setFrameShape(QFrame.StyledPanel)
+        self.c_navigator.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout = QHBoxLayout(self.c_navigator)
         self.horizontalLayout.setSpacing(0)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
-        self.bt_back = NavigatorButton(self.frame_5)
-        self.bt_back.setObjectName(u"bt_back")
+        self.bt_cancel = NavigatorButton(self.c_navigator)
+        self.bt_cancel.setObjectName(u"bt_cancel")
 
-        self.horizontalLayout.addWidget(self.bt_back)
+        self.horizontalLayout.addWidget(self.bt_cancel)
 
 
-        self.verticalLayout.addWidget(self.frame_5, 0, Qt.AlignLeft|Qt.AlignTop)
+        self.verticalLayout.addWidget(self.c_navigator, 0, Qt.AlignLeft|Qt.AlignTop)
 
         self.verticalSpacer_3 = QSpacerItem(20, 20, QSizePolicy.Minimum, QSizePolicy.Fixed)
 
@@ -75,7 +75,7 @@ class Ui_add_patient_preview(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 496, 327))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 496, 318))
         self.verticalLayout_3 = QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_3.setSpacing(20)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
@@ -262,10 +262,10 @@ class Ui_add_patient_preview(object):
         self.horizontalLayout_3 = QHBoxLayout(self.c_buttons)
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
         self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
-        self.bt_cancel = Button(self.c_buttons)
-        self.bt_cancel.setObjectName(u"bt_cancel")
+        self.bt_back = Button(self.c_buttons)
+        self.bt_back.setObjectName(u"bt_back")
 
-        self.horizontalLayout_3.addWidget(self.bt_cancel)
+        self.horizontalLayout_3.addWidget(self.bt_back)
 
         self.bt_add = Button(self.c_buttons)
         self.bt_add.setObjectName(u"bt_add")
@@ -282,31 +282,31 @@ class Ui_add_patient_preview(object):
 
         self.verticalLayout.addItem(self.verticalSpacer_4)
 
-        self.frame_3 = QFrame(add_patient_preview)
-        self.frame_3.setObjectName(u"frame_3")
-        self.frame_3.setFrameShape(QFrame.StyledPanel)
-        self.frame_3.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_4 = QHBoxLayout(self.frame_3)
+        self.c_rb_views = QFrame(add_patient_preview)
+        self.c_rb_views.setObjectName(u"c_rb_views")
+        self.c_rb_views.setFrameShape(QFrame.StyledPanel)
+        self.c_rb_views.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_4 = QHBoxLayout(self.c_rb_views)
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
-        self.i_add_patient_view = QRadioButton(self.frame_3)
+        self.i_add_patient_view = QRadioButton(self.c_rb_views)
         self.i_add_patient_view.setObjectName(u"i_add_patient_view")
 
         self.horizontalLayout_4.addWidget(self.i_add_patient_view)
 
-        self.i_add_patient_mi_view = QRadioButton(self.frame_3)
+        self.i_add_patient_mi_view = QRadioButton(self.c_rb_views)
         self.i_add_patient_mi_view.setObjectName(u"i_add_patient_mi_view")
         self.i_add_patient_mi_view.setChecked(False)
 
         self.horizontalLayout_4.addWidget(self.i_add_patient_mi_view)
 
-        self.i_add_patient_preview_view = QRadioButton(self.frame_3)
+        self.i_add_patient_preview_view = QRadioButton(self.c_rb_views)
         self.i_add_patient_preview_view.setObjectName(u"i_add_patient_preview_view")
         self.i_add_patient_preview_view.setChecked(True)
 
         self.horizontalLayout_4.addWidget(self.i_add_patient_preview_view)
 
 
-        self.verticalLayout.addWidget(self.frame_3, 0, Qt.AlignHCenter|Qt.AlignVCenter)
+        self.verticalLayout.addWidget(self.c_rb_views, 0, Qt.AlignHCenter|Qt.AlignVCenter)
 
 
         self.retranslateUi(add_patient_preview)
@@ -316,7 +316,7 @@ class Ui_add_patient_preview(object):
 
     def retranslateUi(self, add_patient_preview):
         add_patient_preview.setWindowTitle(QCoreApplication.translate("add_patient_preview", u"Loggin", None))
-        self.bt_back.setText(QCoreApplication.translate("add_patient_preview", u"Back", None))
+        self.bt_cancel.setText(QCoreApplication.translate("add_patient_preview", u"Cancel", None))
         self.lb_title.setText(QCoreApplication.translate("add_patient_preview", u"Patient preview", None))
         self.lb_basic_information_title.setText(QCoreApplication.translate("add_patient_preview", u"Basic information", None))
         self.lb_first_name.setText(QCoreApplication.translate("add_patient_preview", u"First name :", None))
@@ -328,7 +328,7 @@ class Ui_add_patient_preview(object):
         self.lb_gender.setText(QCoreApplication.translate("add_patient_preview", u"Gender :", None))
         self.i_gender.setText(QCoreApplication.translate("add_patient_preview", u"...", None))
         self.lb_medical_information_title.setText(QCoreApplication.translate("add_patient_preview", u"Medical information", None))
-        self.bt_cancel.setText(QCoreApplication.translate("add_patient_preview", u"Cancel", None))
+        self.bt_back.setText(QCoreApplication.translate("add_patient_preview", u"Back", None))
         self.bt_add.setText(QCoreApplication.translate("add_patient_preview", u"Add", None))
         self.i_add_patient_view.setText("")
         self.i_add_patient_mi_view.setText("")

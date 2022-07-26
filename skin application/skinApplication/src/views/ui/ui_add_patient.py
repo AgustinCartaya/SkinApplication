@@ -22,6 +22,7 @@ from PySide6.QtWidgets import (QApplication, QDateEdit, QFrame, QHBoxLayout,
 from .promoted.button import Button
 from .promoted.label import Label
 from .promoted.line_edit import LineEdit
+from .promoted.navigator_button import NavigatorButton
 
 class Ui_add_patient(object):
     def setupUi(self, add_patient):
@@ -32,7 +33,22 @@ class Ui_add_patient(object):
         self.verticalLayout = QVBoxLayout(add_patient)
         self.verticalLayout.setSpacing(16)
         self.verticalLayout.setObjectName(u"verticalLayout")
-        self.verticalLayout.setContentsMargins(-1, -1, -1, 7)
+        self.verticalLayout.setContentsMargins(0, 0, 0, 10)
+        self.c_navigator = QFrame(add_patient)
+        self.c_navigator.setObjectName(u"c_navigator")
+        self.c_navigator.setFrameShape(QFrame.StyledPanel)
+        self.c_navigator.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_9 = QVBoxLayout(self.c_navigator)
+        self.verticalLayout_9.setObjectName(u"verticalLayout_9")
+        self.verticalLayout_9.setContentsMargins(0, 0, 0, 0)
+        self.bt_cancel = NavigatorButton(self.c_navigator)
+        self.bt_cancel.setObjectName(u"bt_cancel")
+
+        self.verticalLayout_9.addWidget(self.bt_cancel)
+
+
+        self.verticalLayout.addWidget(self.c_navigator, 0, Qt.AlignLeft)
+
         self.verticalSpacer_3 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.verticalLayout.addItem(self.verticalSpacer_3)
@@ -201,11 +217,6 @@ class Ui_add_patient(object):
         self.horizontalLayout_3 = QHBoxLayout(self.c_buttons)
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
         self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
-        self.bt_cancel = Button(self.c_buttons)
-        self.bt_cancel.setObjectName(u"bt_cancel")
-
-        self.horizontalLayout_3.addWidget(self.bt_cancel)
-
         self.bt_next = Button(self.c_buttons)
         self.bt_next.setObjectName(u"bt_next")
 
@@ -254,6 +265,7 @@ class Ui_add_patient(object):
 
     def retranslateUi(self, add_patient):
         add_patient.setWindowTitle(QCoreApplication.translate("add_patient", u"Loggin", None))
+        self.bt_cancel.setText(QCoreApplication.translate("add_patient", u"Cancel", None))
         self.lb_title.setText(QCoreApplication.translate("add_patient", u"Add patient", None))
         self.lb_first_name.setText(QCoreApplication.translate("add_patient", u"First name", None))
         self.lb_birth_date.setText(QCoreApplication.translate("add_patient", u"Date of birth", None))
@@ -262,7 +274,6 @@ class Ui_add_patient(object):
         self.lb_gender.setText(QCoreApplication.translate("add_patient", u"Gender", None))
         self.i_gender_f.setText(QCoreApplication.translate("add_patient", u"Female", None))
         self.i_gender_m.setText(QCoreApplication.translate("add_patient", u"Male", None))
-        self.bt_cancel.setText(QCoreApplication.translate("add_patient", u"Cancel", None))
         self.bt_next.setText(QCoreApplication.translate("add_patient", u"Next", None))
         self.i_add_patient_view.setText("")
         self.i_add_patient_mi_view.setText("")

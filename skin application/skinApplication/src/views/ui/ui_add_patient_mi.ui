@@ -30,10 +30,10 @@
     <number>0</number>
    </property>
    <property name="bottomMargin">
-    <number>7</number>
+    <number>10</number>
    </property>
    <item alignment="Qt::AlignLeft|Qt::AlignTop">
-    <widget class="QFrame" name="frame_5">
+    <widget class="QFrame" name="c_navigator2">
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
      </property>
@@ -57,9 +57,9 @@
        <number>0</number>
       </property>
       <item>
-       <widget class="NavigatorButton" name="bt_back">
+       <widget class="NavigatorButton" name="bt_cancel">
         <property name="text">
-         <string>Back</string>
+         <string>Cancel</string>
         </property>
        </widget>
       </item>
@@ -143,7 +143,7 @@
            <x>0</x>
            <y>0</y>
            <width>496</width>
-           <height>327</height>
+           <height>315</height>
           </rect>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -378,9 +378,9 @@
           <number>0</number>
          </property>
          <item>
-          <widget class="Button" name="bt_cancel">
+          <widget class="Button" name="bt_back">
            <property name="text">
-            <string>Cancel</string>
+            <string>Back</string>
            </property>
           </widget>
          </item>
@@ -414,7 +414,7 @@
     </spacer>
    </item>
    <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
-    <widget class="QFrame" name="frame_3">
+    <widget class="QFrame" name="c_rb_views">
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
      </property>
