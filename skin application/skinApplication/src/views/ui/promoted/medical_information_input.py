@@ -68,3 +68,12 @@ class MedicalInformationInput(QFrame):
 
     def append_item(self, item):
         self.mi_combo_box.addItem(item)
+
+    def select_item(self, item):
+        index = self.mi_combo_box.findText(item)
+        if index != -1:
+            self.mi_combo_box.setCurrentIndex(index)
+        else:
+            print("error finding " + item)
+
+

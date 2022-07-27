@@ -71,29 +71,25 @@ class MainWindow(QtWidgets.QMainWindow):
         elif view_to == cfg.ADD_PATIENT_VIEW:
             if view_from == cfg.PATIENTS_VIEW:
                 self._add_patient_view = AddPatientView(self)
-            elif view_from == cfg.ADD_PATIENT_MI_VIEW:
-                self._add_patient_view.p_info = atts
             elif view_from == cfg.ADD_PATIENT_PREVIEW_VIEW:
                 self._layers.removeWidget(self._layers.currentWidget())
             elif view_from == cfg.CHECK_PATIENT_VIEW:
-                self._add_patient_view = AddPatientView(self)
+                self._add_patient_view = AddPatientView(self, atts["patient"], "edit")
             self.set_view(self._add_patient_view)
 
         elif view_to == cfg.ADD_PATIENT_MI_VIEW:
             if (view_from == cfg.ADD_PATIENT_VIEW and
                 self.add_patient_mi_view is None):
-                self.add_patient_mi_view = AddPatientMiView(self, atts)
-            elif view_from == cfg.ADD_PATIENT_VIEW:
-                self.add_patient_mi_view.p_info = atts
+                self.add_patient_mi_view = AddPatientMiView(self, atts["patient"], atts["mode"])
             elif view_from == cfg.ADD_PATIENT_PREVIEW_VIEW:
                 self._layers.removeWidget(self._layers.currentWidget())
             self.set_view(self.add_patient_mi_view)
 
         elif view_to == cfg.ADD_PATIENT_PREVIEW_VIEW:
-            self.set_view(AddPatientPreiewView(self, atts))
+            self.set_view(AddPatientPreiewView(self, atts["patient"], atts["mode"]))
 
         elif view_to == cfg.CHECK_PATIENT_VIEW:
-            self.set_view(CheckPatientView(self, atts))
+            self.set_view(CheckPatientView(self, atts["patient_id"]))
 #        print(self._layers.count())
 
     def clean_views(self):
@@ -102,39 +98,3 @@ class MainWindow(QtWidgets.QMainWindow):
             self._layers.removeWidget(self._layers.currentWidget())
         self._add_patient_view = None
         self.add_patient_mi_view = None
-
-#    @property
-#    def actual_view(self):
-#        return self._actual_view
-
-#    @actual_view.setter
-#    def actual_view(self, view):
-#        self._actual_view = view
-#        self.setCentralWidget(self._actual_view)
-
-#    @Slot(str,str,dict)
-#    def change_view(self, view_from, view_to, atts):
-#        if view_to == cfg.CREATE_ACCOUNT_VIEW:
-#            self.actual_view = CreateAccountView(self)
-
-#        elif view_to == cfg.LOGIN_VIEW:
-#            self.actual_view = LoginView(self)
-
-#        elif view_to == cfg.PATIENTS_VIEW:
-#            self.actual_view = Patients(self)
-
-#        elif view_to == cfg.ADD_PATIENT_VIEW:
-#            if view_from == cfg.PATIENTS_VIEW:
-#                self._add_patient_view = AddPatientView(self)
-#            elif view_from == cfg.ADD_PATIENT_MI_VIEW:
-#                self._add_patient_view.append_medical_information(atts)
-#            self.actual_view = self._add_patient_view
-
-#        elif view_to == cfg.ADD_PATIENT_MI_VIEW:
-#            if (view_from == cfg.ADD_PATIENT_VIEW and
-#                len(self._add_patient_view.p_info['medical_info']) == 0):
-#                self.add_patient_mi_view = AddPatientMiView(self, atts)
-#            self.actual_view = self.add_patient_mi_view
-
-#        elif view_to == cfg.ADD_PATIENT_PREVIEW_VIEW:
-#            self.actual_view = AddPatientPreiewView(self, atts)

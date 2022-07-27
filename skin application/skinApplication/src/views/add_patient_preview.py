@@ -10,16 +10,18 @@ from PySide6.QtWidgets import (QFrame, QVBoxLayout, QHBoxLayout,
 from .ui.promoted.label import Label
 
 class AddPatientPreiewView(ViewObject):
-    def __init__(self, mw, p_info):
+    def __init__(self, mw, patient, mode="add"):
         super().__init__(mw)
-        self.p_info = p_info
+
+        self.p = patient
+        self.mode = mode
 
         self.load_ui()
         self.connect_ui_signals()
         self.show_information()
 
-        #test
-#        self.fill_default_test()
+        if mode == "edit":
+            self.charge_edit_mode()
 
     def load_ui(self):
         self.ui = Ui_add_patient_preview()
@@ -51,17 +53,17 @@ class AddPatientPreiewView(ViewObject):
         self.show_medical_information()
 
     def show_basic_information(self):
-        self.ui.i_first_name.setText(self.p_info["basic_info"]["first_name"])
-        self.ui.i_last_name.setText(self.p_info["basic_info"]["last_name"])
-        self.ui.i_birth_date.setText(self.p_info["basic_info"]["birth_date"])
-        if self.p_info["basic_info"]["gender"]:
+        self.ui.i_first_name.setText(self.p.first_name)
+        self.ui.i_last_name.setText(self.p.last_name)
+        self.ui.i_birth_date.setText(self.p.birth_date.strftime('%d-%m-%Y'))
+        if self.p.gender:
             self.ui.i_gender.setText("Male")
         else:
             self.ui.i_gender.setText("Female")
 
 
     def show_medical_information(self):
-        for medical_info in self.p_info["medical_info"]:
+        for medical_info in self.p.mi:
             mi_frame = QFrame(self.ui.c_medical_information)
             mi_frame_layout = QVBoxLayout(mi_frame)
             mi_frame_layout.setContentsMargins(0, 0, 0, 0)
@@ -71,7 +73,7 @@ class AddPatientPreiewView(ViewObject):
             mi_frame_layout.addWidget(mi_title)
 
             mi_content = Label(mi_frame)
-            mi_content.setText(self.p_info["medical_info"][medical_info])
+            mi_content.setText(self.p.mi[medical_info])
             mi_content.set_decoration("mi_content")
             mi_frame_layout.addWidget(mi_content)
 
@@ -80,7 +82,7 @@ class AddPatientPreiewView(ViewObject):
     s_change_view = Signal(str,str,dict)
     def connect_ui_signals(self):
         #ui signals
-        self.ui.bt_add.clicked.connect(self.add_patient)
+        self.ui.bt_add.clicked.connect(lambda: self.update_patient() if (self.mode ==  "edit") else self.add_patient() )
         self.ui.bt_cancel.clicked.connect(self.cancel)
         self.ui.bt_back.clicked.connect(self.back)
 
@@ -99,31 +101,38 @@ class AddPatientPreiewView(ViewObject):
 
     def __change_to_add_patient_view(self, view):
         if view == 1:
-            self.s_change_view.emit(cfg.ADD_PATIENT_PREVIEW_VIEW, cfg.ADD_PATIENT_VIEW, self.p_info)
+            self.s_change_view.emit(cfg.ADD_PATIENT_PREVIEW_VIEW, cfg.ADD_PATIENT_VIEW, None)
         else:
-            self.s_change_view.emit(cfg.ADD_PATIENT_PREVIEW_VIEW, cfg.ADD_PATIENT_MI_VIEW, self.p_info)
+            self.s_change_view.emit(cfg.ADD_PATIENT_PREVIEW_VIEW, cfg.ADD_PATIENT_MI_VIEW, None)
 
 
 
     #no pulido
     def add_patient(self):
         try:  
-            print(self.p_info)
-            patient = Patient(self.p_info["basic_info"]["first_name"],
-                self.p_info["basic_info"]["last_name"],
-                self.p_info["basic_info"]["birth_date"],
-                self.p_info["basic_info"]["gender"],
-                self.p_info["medical_info"])
-            patient.save_data()
+            self.p.save_data()
             self.s_change_view.emit(cfg.ADD_PATIENT_PREVIEW_VIEW, cfg.PATIENTS_VIEW, None)
         except ValueError as err:
             print(err.args)
         
-
     def cancel(self):
-        self.s_change_view.emit(cfg.ADD_PATIENT_PREVIEW_VIEW, cfg.PATIENTS_VIEW, None)
+        if self.mode == "edit":
+            self.s_change_view.emit(cfg.ADD_PATIENT_PREVIEW_VIEW, cfg.CHECK_PATIENT_VIEW,  {"patient_id": self.p.id})
+        else:
+            self.s_change_view.emit(cfg.ADD_PATIENT_PREVIEW_VIEW, cfg.PATIENTS_VIEW, None)
+
+    def update_patient(self):
+        try:
+            self.p.update_data()
+            self.s_change_view.emit(cfg.ADD_PATIENT_PREVIEW_VIEW, cfg.CHECK_PATIENT_VIEW, {"patient_id": self.p.id})
+        except ValueError as err:
+            print(err.args)
+
 
     @Slot()
     def back(self):
         self.__change_to_add_patient_view(2)
 
+    def charge_edit_mode(self):
+        self.ui.lb_title.setText("Edit patient preview")
+        self.ui.bt_add.setText("Save")

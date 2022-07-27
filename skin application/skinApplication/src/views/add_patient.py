@@ -2,19 +2,24 @@ from .view_object import *
 from .ui.ui_add_patient import Ui_add_patient
 
 from src.objects.patient import Patient
+from datetime import datetime
 
 
 class AddPatientView(ViewObject):
-    def __init__(self, mw):
+    def __init__(self, mw, patient = Patient(), mode="add"):
         super().__init__(mw)
 
-        self.p_info = {"basic_info":{}, "medical_info":{} }
-
+        self.p = patient
+        self.mode = mode
         self.load_ui()
         self.connect_ui_signals()
 
+        if mode == "edit":
+            self.charge_edit_mode()
         #test
-        self.fill_default_test()
+        else:
+            self.fill_default_test()
+
 
     def load_ui(self):
         self.ui = Ui_add_patient()
@@ -31,7 +36,6 @@ class AddPatientView(ViewObject):
         # labels
         self.ui.lb_title.set_title(1)
 
-        
 
     s_change_view = Signal(str,str,dict)
     def connect_ui_signals(self):
@@ -49,16 +53,24 @@ class AddPatientView(ViewObject):
         if self.ui.i_add_patient_mi_view.isChecked():
             self.next()
         elif (self.ui.i_add_patient_preview_view.isChecked() and
-            len(self.p_info["medical_info"]) > 0):
+            len(self.p.mi) > 0):
             self.__change_to_add_patient_view(3)
         self.ui.i_add_patient_view.setChecked(True)
 
-
     def catch_basic_info(self):
-        self.p_info["basic_info"]["first_name"] = self.ui.i_first_name.text()
-        self.p_info["basic_info"]["last_name"] = self.ui.i_last_name.text()
-        self.p_info["basic_info"]["birth_date"] = self.ui.i_birth_date.date().toString("dd-MM-yyyy")
-        self.p_info["basic_info"]["gender"] = int(self.ui.i_gender_m.isChecked())
+        # if patient exists setting id = old id, else id = ""
+        # if patient exists setting mi = old mi, else mi = {}
+        self.p.initialize(self.p.id,
+            self.ui.i_first_name.text(),
+            self.ui.i_last_name.text(),
+            self.ui.i_birth_date.date().toString("dd-MM-yyyy"),
+            int(self.ui.i_gender_m.isChecked()),
+            self.p.mi
+            )
+#        self.p_info["basic_info"]["first_name"] = self.ui.i_first_name.text()
+#        self.p_info["basic_info"]["last_name"] = self.ui.i_last_name.text()
+#        self.p_info["basic_info"]["birth_date"] = self.ui.i_birth_date.date().toString("dd-MM-yyyy")
+#        self.p_info["basic_info"]["gender"] = int(self.ui.i_gender_m.isChecked())
 
     def next(self):
         self.__change_to_add_patient_view(2)
@@ -66,13 +78,26 @@ class AddPatientView(ViewObject):
     def __change_to_add_patient_view(self, view):
         self.catch_basic_info()
         if view == 2:
-            self.s_change_view.emit(cfg.ADD_PATIENT_VIEW, cfg.ADD_PATIENT_MI_VIEW, self.p_info)
+            self.s_change_view.emit(cfg.ADD_PATIENT_VIEW, cfg.ADD_PATIENT_MI_VIEW, {"patient":self.p, "mode":self.mode})
         else:
-            self.s_change_view.emit(cfg.ADD_PATIENT_VIEW, cfg.ADD_PATIENT_PREVIEW_VIEW, self.p_info)
-
+            self.s_change_view.emit(cfg.ADD_PATIENT_VIEW, cfg.ADD_PATIENT_PREVIEW_VIEW, {"patient":self.p, "mode":self.mode})
 
     def cancel(self):
-        self.s_change_view.emit(cfg.ADD_PATIENT_VIEW, cfg.PATIENTS_VIEW, None)
+        if self.mode == "edit":
+            self.s_change_view.emit(cfg.ADD_PATIENT_VIEW, cfg.CHECK_PATIENT_VIEW, {"patient_id": self.p.id})
+        else:
+            self.s_change_view.emit(cfg.ADD_PATIENT_VIEW, cfg.PATIENTS_VIEW, None)
+
+    def charge_edit_mode(self):
+        self.ui.lb_title.setText("Edit patient")
+
+        self.ui.i_first_name.setText(self.p.first_name)
+        self.ui.i_last_name.setText(self.p.last_name)
+        self.ui.i_birth_date.setDate(QDate.fromString(self.p.birth_date.strftime('%d-%m-%Y'), "dd-MM-yyyy"))
+        if self.p.gender:
+            self.ui.i_gender_m.setChecked(True)
+        else:
+            self.ui.i_gender_f.setChecked(True)
 
     def fill_default_test(self):
         self.ui.i_first_name.setText('Agustin')

@@ -11,13 +11,18 @@ from .ui.promoted.medical_information_input import MedicalInformationInput
 
 
 class AddPatientMiView(ViewObject):
-    def __init__(self, mw, p_info):
+    def __init__(self, mw, patient, mode="add"):
         super().__init__(mw)
-        self.p_info = p_info
+
+        self.p = patient
+        self.mode = mode
         self.mi_inputs = {}
 
         self.load_ui()
         self.connect_ui_signals()
+
+        if mode == "edit":
+            self.charge_edit_mode()
 
     def load_ui(self):
         self.ui = Ui_add_patient_mi()
@@ -86,14 +91,16 @@ class AddPatientMiView(ViewObject):
         for mi in self.mi_inputs:
             medical_info[mi] = self.mi_inputs[mi].selected_item()
 
-        self.p_info["medical_info"] = medical_info
+        self.p.mi = medical_info
 
     def next(self):
         self.__change_to_add_patient_view(3)
 
-    @Slot()
     def cancel(self):
-        self.s_change_view.emit(cfg.ADD_PATIENT_MI_VIEW, cfg.PATIENTS_VIEW, None)
+        if self.mode == "edit":
+            self.s_change_view.emit(cfg.ADD_PATIENT_MI_VIEW, cfg.CHECK_PATIENT_VIEW,  {"patient_id": self.p.id})
+        else:
+            self.s_change_view.emit(cfg.ADD_PATIENT_MI_VIEW, cfg.PATIENTS_VIEW, None)
 
     @Slot()
     def back(self):
@@ -120,9 +127,9 @@ class AddPatientMiView(ViewObject):
     def __change_to_add_patient_view(self, view):
         self.catch_medical_info()
         if view == 1:
-            self.s_change_view.emit(cfg.ADD_PATIENT_MI_VIEW, cfg.ADD_PATIENT_VIEW, self.p_info)
+            self.s_change_view.emit(cfg.ADD_PATIENT_MI_VIEW, cfg.ADD_PATIENT_VIEW, {"patient":self.p, "mode":self.mode})
         else:
-            self.s_change_view.emit(cfg.ADD_PATIENT_MI_VIEW, cfg.ADD_PATIENT_PREVIEW_VIEW, self.p_info)
+            self.s_change_view.emit(cfg.ADD_PATIENT_MI_VIEW, cfg.ADD_PATIENT_PREVIEW_VIEW, {"patient":self.p, "mode":self.mode})
 
 
     @Slot()
@@ -141,3 +148,8 @@ class AddPatientMiView(ViewObject):
         if len(new_item) > 0:
             util.apped_to_file(mi_input_id+".options", "\n" + new_item, cfg.FILES_MEDICAL_INFORMATION_PATH)
             self.mi_inputs[mi_input_id].append_item(new_item)
+
+    def charge_edit_mode(self):
+        self.ui.lb_title.setText("Edit medical information")
+        for p_mi in self.p.mi:
+            self.mi_inputs[p_mi].select_item(self.p.mi[p_mi])

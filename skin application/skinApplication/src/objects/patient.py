@@ -65,14 +65,30 @@ class Patient(DataObject):
                 # If doctor already exists
                 print(err.args)
 
-    def get_patient_by_id(self, id):
+    def update_data(self):
+        if self.verify_data():
+            try:
+                dbc = DBController()
+                dbc.update(cfg.TABLE_PATIENTS,
+                    (self.first_name,
+                    self.last_name,
+                    self.birth_date.strftime('%d-%m-%Y'),
+                    self.gender,
+                    json.dumps(self.mi)),
+                    {"id":self.id}
+                    )
+            except ValueError as err:
+                # If doctor already exists
+                print(err.args)
+
+    @classmethod
+    def get_patient_by_id(cls, patient_id):
         dbc = DBController()
-        obj =  dbc.select(cfg.TABLE_PATIENTS,
-            id = '1')[0]
+        obj =  dbc.select(cfg.TABLE_PATIENTS, id = patient_id)
 
         if len(obj) > 0:
             obj = obj[0]
-            self.initialize(obj[0], obj[1], obj[2], obj[3], obj[4], obj[5])
+            return Patient(obj[0], obj[1], obj[2], obj[3], obj[4], obj[5])
         else:
             raise ValueError('No object found', "DOCTOR", "NOT_FOUND")
 

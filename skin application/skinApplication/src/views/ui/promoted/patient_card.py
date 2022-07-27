@@ -10,7 +10,7 @@ from PySide6.QtCore import Signal
 
 class PatientCard(QFrame):
 
-    s_check_patient = Signal(Patient)
+    s_check_patient = Signal(str)
     def __init__(self, patient, receaver, *args, **kwards):
         QFrame.__init__(self, *args, **kwards)
 #        self.clicked.connect(self.switch)
@@ -18,13 +18,13 @@ class PatientCard(QFrame):
 #        self.__group = None
         self.layout = QVBoxLayout(self)
 
-        self.patient = patient
+        self.p = patient
         self.s_check_patient.connect(receaver.check_patient)
 
     def setTitle(self, type_info):
         # a modificar
         lb_text = Label(self)
-        lb_text.setText(getattr(self.patient,type_info))
+        lb_text.setText(getattr(self.p, type_info))
 #            if len(text) > 10:
 #                bt.setText(text[:10] + "...")
 #            else:
@@ -41,4 +41,4 @@ class PatientCard(QFrame):
 #        print("leaveEvent")
 
     def mousePressEvent(self, arg):
-        self.s_check_patient.emit(self.patient)
+        self.s_check_patient.emit(self.p.id)

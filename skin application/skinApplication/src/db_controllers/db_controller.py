@@ -11,9 +11,17 @@ class DBController:
     def insert(self, table, data):
         self.db.connect()
         if table == cfg.TABLE_DOCTORS:
-            self.db.cursor.execute("INSERT INTO DOCTORS VALUES (NULL,?,?,?,?)", data)
+            self.db.cursor.execute(("INSERT INTO %s VALUES (NULL,?,?,?,?)" % cfg.TABLE_DOCTORS), data)
         if table == cfg.TABLE_PATIENTS:
             self.db.cursor.execute( ("INSERT INTO  %s VALUES (?,?,?,?,?,?)" % cfg.TABLE_PATIENTS), data)
+        self.db.connection.commit()
+        self.db.connection.close()
+
+    def update(self, table, data, conditions):
+        self.db.connect()
+        conditions_str = self.conditions_to_str(conditions)
+        if table == cfg.TABLE_PATIENTS:
+            self.db.cursor.execute( ( "UPDATE %s SET first_name = ?, last_name = ?, birth_date = ?, gender = ?, medical_information = ? WHERE %s" % (cfg.TABLE_PATIENTS, conditions_str)), data)
         self.db.connection.commit()
         self.db.connection.close()
 
@@ -50,7 +58,6 @@ class DBController:
             conditions_str = "WHERE " + self.conditions_to_str(conditions)
 
         text_query = "SELECT %s FROM %s %s" % (columns_str, table, conditions_str)
-
         self.db.cursor.execute(text_query)
         rows = self.db.cursor.fetchall()
         self.db.connection.close()
