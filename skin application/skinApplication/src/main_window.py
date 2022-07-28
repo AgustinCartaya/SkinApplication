@@ -89,6 +89,7 @@ class MainWindow(QtWidgets.QMainWindow):
             self.set_view(AddPatientPreiewView(self, atts["patient"], atts["mode"]))
 
         elif view_to == cfg.CHECK_PATIENT_VIEW:
+            self.clean_views()
             self.set_view(CheckPatientView(self, atts["patient_id"]))
 #        print(self._layers.count())
 

@@ -17,7 +17,7 @@
         "src/objects/image_list.py",
         "src/objects/patient.py",
         "src/objects/patient_list.py",
-        "src/objects/skin_part.py",
+        "src/objects/skin_lesion.py",
         "src/objects/time_line.py",
         "src/objects/time_line_point.py",
         "src/views/view_object.py",

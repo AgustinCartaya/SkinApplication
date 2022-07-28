@@ -1,6 +1,8 @@
 # This Python file uses the following encoding: utf-8
 from .data_object import *
 
+from .skin_lesion import SkinLesion
+
 class Patient(DataObject):
     def __init__(self, *args):
         if len(args) > 0:
@@ -21,6 +23,9 @@ class Patient(DataObject):
 
             # medical information
             self.mi = {}
+
+        # skin lesions
+        self.skin_lesions = []
 
 
     def verify_data(self):
@@ -101,3 +106,9 @@ class Patient(DataObject):
             str(self.age) + ", " +
             json.dumps(self.mi) + ", " +
             ")")
+
+    def load_skin_lesions(self):
+        dbc = DBController()
+        for skl in dbc.select(cfg.TABLE_SKIN_LESIONS, id_patient = self.id):
+            self.skin_lesions.append(SkinLesion(skl[0], skl[2], skl[3], skl[4], skl[5], skl[6]))
+

@@ -23,6 +23,7 @@ class CheckPatientView(ViewObject):
 
     def load_patient(self, patient_id):
         self.p = Patient.get_patient_by_id(patient_id)
+        self.p.load_skin_lesions()
 #        print(self.p.to_string())
 
     def load_ui(self):

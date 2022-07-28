@@ -16,6 +16,16 @@ CREATE TABLE PATIENTS (
     medical_information TEXT
 );
 
+CREATE TABLE SKIN_LESIONS (
+    number INTEGER NOT NULL,
+    id_patient TEXT NOT NULL,
+    name TEXT NOT NULL,
+    diameter INTEGER NOT NULL,
+    type INTEGER NOT NULL,
+    risk DATE NOT NULL,
+    notes TEXT
+);
+
 
 INSERT INTO PATIENTS (id, first_name, last_name, birth_date, gender, medical_information) VALUES ("AG3526CA", "Agustin", "Cartaya", '10-11-2000', 1, '{"eye_color":"Hazel","hair_color":"Blonde"}');
 INSERT INTO PATIENTS (id, first_name, last_name, birth_date, gender, medical_information) VALUES ("PI3526RD", "Pierre", "Bernard", '21-02-1970', 1, '{"eye_color":"Hazel","hair_color":"Blonde"}');
@@ -37,3 +47,8 @@ INSERT INTO PATIENTS (id, first_name, last_name, birth_date, gender, medical_inf
 INSERT INTO PATIENTS (id, first_name, last_name, birth_date, gender, medical_information) VALUES ("PA3524ND", "Pascal", "Durand", '03-03-1975', 1, '{"eye_color":"Hazel","hair_color":"Blonde"}');
 INSERT INTO PATIENTS (id, first_name, last_name, birth_date, gender, medical_information) VALUES ("TH3590IS", "Thierry", "Dubois", '10-11-1974', 1, '{"eye_color":"Hazel","hair_color":"Blonde"}');
 
+
+
+INSERT INTO SKIN_LESIONS (number, id_patient, name, diameter, type, risk, notes) VALUES (1, "AG3526CA", "Ear lesion", 2, 'Mole', 'INDETERMINATE', '{"Note 1":" comment 1","Note 2":" comment 2"}');
+INSERT INTO SKIN_LESIONS (number, id_patient, name, diameter, type, risk, notes) VALUES (2, "AG3526CA", "Ear lesion", 2, 'Mole', 'INDETERMINATE', '{"Note 1":" comment 1","Note 2":" comment 2"}');
+INSERT INTO SKIN_LESIONS (number, id_patient, name, diameter, type, risk, notes) VALUES (1, "PI3526RD", "Ear lesion", 2, 'Mole', 'INDETERMINATE', '{"Note 1":" comment 1","Note 2":" comment 2"}');
