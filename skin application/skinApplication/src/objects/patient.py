@@ -107,8 +107,8 @@ class Patient(DataObject):
             json.dumps(self.mi) + ", " +
             ")")
 
-    def load_skin_lesions(self):
-        dbc = DBController()
-        for skl in dbc.select(cfg.TABLE_SKIN_LESIONS, id_patient = self.id):
-            self.skin_lesions.append(SkinLesion(skl[0], skl[2], skl[3], skl[4], skl[5], skl[6]))
+#    def load_skin_lesions(self):
+#        dbc = DBController()
+#        for skl in dbc.select(cfg.TABLE_SKIN_LESIONS, id_patient = self.id):
+#            self.skin_lesions.append(SkinLesion(skl[0], skl[2], skl[3], skl[4], skl[5], skl[6]))
 

@@ -4,7 +4,7 @@ from PySide6.QtWidgets import QApplication
 from PySide6.QtCore import QSize, Qt
 from PySide6.QtWidgets import QFormLayout, QFrame, QHBoxLayout, QVBoxLayout, QLabel
 
-class AnnotationPreview(QFrame):
+class ResultPreview(QFrame):
 
     def __init__(self, ann, title, read_more,  *args, **kwards):
         QFrame.__init__(self, *args, **kwards)

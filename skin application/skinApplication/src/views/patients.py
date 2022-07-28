@@ -110,7 +110,7 @@ class PatientsView(ViewObject):
 
     @Slot()
     def add_new_patient(self):
-        self.s_change_view.emit(cfg.PATIENTS_VIEW, cfg.ADD_PATIENT_VIEW, None)
+        self.s_change_view.emit(cfg.PATIENTS_VIEW, cfg.UPSERT_PATIENT_VIEW, None)
 
     @Slot(str)
     def check_patient(self, patient_id):

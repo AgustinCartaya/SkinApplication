@@ -2,7 +2,7 @@
 from .data_object import *
 
 class SkinLesion(DataObject):
-    def __init__(self, number, name, diameter, type, risk, notes, *args):
+    def __init__(self, number, caracteristics, *args):
 
         self.number = number
         self.name = name

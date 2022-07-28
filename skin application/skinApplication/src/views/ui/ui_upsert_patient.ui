@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>add_patient</class>
- <widget class="QWidget" name="add_patient">
+ <class>upsert_patient</class>
+ <widget class="QWidget" name="upsert_patient">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -477,7 +477,7 @@
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_4">
       <item>
-       <widget class="QRadioButton" name="i_add_patient_view">
+       <widget class="QRadioButton" name="i_upsert_patient_view">
         <property name="text">
          <string/>
         </property>
@@ -487,14 +487,14 @@
        </widget>
       </item>
       <item>
-       <widget class="QRadioButton" name="i_add_patient_mi_view">
+       <widget class="QRadioButton" name="i_upsert_patient_mi_view">
         <property name="text">
          <string/>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QRadioButton" name="i_add_patient_preview_view">
+       <widget class="QRadioButton" name="i_upsert_patient_preview_view">
         <property name="text">
          <string/>
         </property>
@@ -506,11 +506,6 @@
   </layout>
  </widget>
  <customwidgets>
-  <customwidget>
-   <class>LineEdit</class>
-   <extends>QLineEdit</extends>
-   <header>.promoted.line_edit</header>
-  </customwidget>
   <customwidget>
    <class>Label</class>
    <extends>QLabel</extends>
@@ -525,6 +520,11 @@
    <class>Button</class>
    <extends>QPushButton</extends>
    <header>.promoted.button</header>
+  </customwidget>
+  <customwidget>
+   <class>LineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>.promoted.line_edit</header>
   </customwidget>
  </customwidgets>
  <resources/>

@@ -3,6 +3,6 @@ from PySide6.QtCore import QFile
 from PySide6.QtUiTools import QUiLoader
 
 
-class AddSkinPartView(QWidget):
+class UpsertSkinLesion(QWidget):
     def __init__(self):
         pass

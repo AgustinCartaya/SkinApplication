@@ -1,11 +1,11 @@
 from .view_object import *
-from .ui.ui_add_patient import Ui_add_patient
+from .ui.ui_upsert_patient import Ui_upsert_patient
 
 from src.objects.patient import Patient
 from datetime import datetime
 
 
-class AddPatientView(ViewObject):
+class UpsertPatientView(ViewObject):
     def __init__(self, mw, patient = Patient(), mode="add"):
         super().__init__(mw)
 
@@ -22,7 +22,7 @@ class AddPatientView(ViewObject):
 
 
     def load_ui(self):
-        self.ui = Ui_add_patient()
+        self.ui = Ui_upsert_patient()
         self.ui.setupUi(self)
         self.ui.bt_cancel.set_type(Button.BT_CANCEL)
 
@@ -43,19 +43,19 @@ class AddPatientView(ViewObject):
         self.ui.bt_next.clicked.connect(self.next)
         self.ui.bt_cancel.clicked.connect(self.cancel)
 
-        self.ui.i_add_patient_mi_view.toggled.connect(self.rb_view)
-        self.ui.i_add_patient_preview_view.toggled.connect(self.rb_view)
+        self.ui.i_upsert_patient_mi_view.toggled.connect(self.rb_view)
+        self.ui.i_upsert_patient_preview_view.toggled.connect(self.rb_view)
 
         # created signals
         self.s_change_view.connect(self.MW.change_view)
 
     def rb_view(self):
-        if self.ui.i_add_patient_mi_view.isChecked():
+        if self.ui.i_upsert_patient_mi_view.isChecked():
             self.next()
-        elif (self.ui.i_add_patient_preview_view.isChecked() and
+        elif (self.ui.i_upsert_patient_preview_view.isChecked() and
             len(self.p.mi) > 0):
-            self.__change_to_add_patient_view(3)
-        self.ui.i_add_patient_view.setChecked(True)
+            self.__change_to_upsert_patient_view(3)
+        self.ui.i_upsert_patient_view.setChecked(True)
 
     def catch_basic_info(self):
         # if patient exists setting id = old id, else id = ""
@@ -73,20 +73,20 @@ class AddPatientView(ViewObject):
 #        self.p_info["basic_info"]["gender"] = int(self.ui.i_gender_m.isChecked())
 
     def next(self):
-        self.__change_to_add_patient_view(2)
+        self.__change_to_upsert_patient_view(2)
 
-    def __change_to_add_patient_view(self, view):
+    def __change_to_upsert_patient_view(self, view):
         self.catch_basic_info()
         if view == 2:
-            self.s_change_view.emit(cfg.ADD_PATIENT_VIEW, cfg.ADD_PATIENT_MI_VIEW, {"patient":self.p, "mode":self.mode})
+            self.s_change_view.emit(cfg.UPSERT_PATIENT_VIEW, cfg.UPSERT_PATIENT_MI_VIEW, {"patient":self.p, "mode":self.mode})
         else:
-            self.s_change_view.emit(cfg.ADD_PATIENT_VIEW, cfg.ADD_PATIENT_PREVIEW_VIEW, {"patient":self.p, "mode":self.mode})
+            self.s_change_view.emit(cfg.UPSERT_PATIENT_VIEW, cfg.UPSERT_PATIENT_PREVIEW_VIEW, {"patient":self.p, "mode":self.mode})
 
     def cancel(self):
         if self.mode == "edit":
-            self.s_change_view.emit(cfg.ADD_PATIENT_VIEW, cfg.CHECK_PATIENT_VIEW, {"patient_id": self.p.id})
+            self.s_change_view.emit(cfg.UPSERT_PATIENT_VIEW, cfg.CHECK_PATIENT_VIEW, {"patient_id": self.p.id})
         else:
-            self.s_change_view.emit(cfg.ADD_PATIENT_VIEW, cfg.PATIENTS_VIEW, None)
+            self.s_change_view.emit(cfg.UPSERT_PATIENT_VIEW, cfg.PATIENTS_VIEW, None)
 
     def charge_edit_mode(self):
         self.ui.lb_title.setText("Edit patient")

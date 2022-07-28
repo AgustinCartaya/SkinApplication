@@ -23,7 +23,7 @@ class CheckPatientView(ViewObject):
 
     def load_patient(self, patient_id):
         self.p = Patient.get_patient_by_id(patient_id)
-        self.p.load_skin_lesions()
+#        self.p.load_skin_lesions()
 #        print(self.p.to_string())
 
     def load_ui(self):
@@ -102,4 +102,4 @@ class CheckPatientView(ViewObject):
 
     @Slot()
     def edit_patient_info(self):
-        self.s_change_view.emit(cfg.CHECK_PATIENT_VIEW, cfg.ADD_PATIENT_VIEW, {"patient" : self.p})
+        self.s_change_view.emit(cfg.CHECK_PATIENT_VIEW, cfg.UPSERT_PATIENT_VIEW, {"patient" : self.p})

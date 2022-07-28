@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>add_patient_preview</class>
- <widget class="QWidget" name="add_patient_preview">
+ <class>upsert_patient_preview</class>
+ <widget class="QWidget" name="upsert_patient_preview">
   <property name="enabled">
    <bool>true</bool>
   </property>
@@ -556,7 +556,7 @@
           </widget>
          </item>
          <item>
-          <widget class="Button" name="bt_add">
+          <widget class="Button" name="bt_upsert">
            <property name="text">
             <string>Add</string>
            </property>
@@ -594,14 +594,14 @@
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_4">
       <item>
-       <widget class="QRadioButton" name="i_add_patient_view">
+       <widget class="QRadioButton" name="i_upsert_patient_view">
         <property name="text">
          <string/>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QRadioButton" name="i_add_patient_mi_view">
+       <widget class="QRadioButton" name="i_upsert_patient_mi_view">
         <property name="text">
          <string/>
         </property>
@@ -611,7 +611,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QRadioButton" name="i_add_patient_preview_view">
+       <widget class="QRadioButton" name="i_upsert_patient_preview_view">
         <property name="text">
          <string/>
         </property>

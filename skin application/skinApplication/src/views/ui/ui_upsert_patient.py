@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'ui_add_patient.ui'
+## Form generated from reading UI file 'ui_upsert_patient.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.3.1
 ##
@@ -24,17 +24,17 @@ from .promoted.label import Label
 from .promoted.line_edit import LineEdit
 from .promoted.navigator_button import NavigatorButton
 
-class Ui_add_patient(object):
-    def setupUi(self, add_patient):
-        if not add_patient.objectName():
-            add_patient.setObjectName(u"add_patient")
-        add_patient.resize(800, 600)
-        add_patient.setStyleSheet(u"")
-        self.verticalLayout = QVBoxLayout(add_patient)
+class Ui_upsert_patient(object):
+    def setupUi(self, upsert_patient):
+        if not upsert_patient.objectName():
+            upsert_patient.setObjectName(u"upsert_patient")
+        upsert_patient.resize(800, 600)
+        upsert_patient.setStyleSheet(u"")
+        self.verticalLayout = QVBoxLayout(upsert_patient)
         self.verticalLayout.setSpacing(16)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout.setContentsMargins(0, 0, 0, 10)
-        self.c_navigator = QFrame(add_patient)
+        self.c_navigator = QFrame(upsert_patient)
         self.c_navigator.setObjectName(u"c_navigator")
         self.c_navigator.setFrameShape(QFrame.StyledPanel)
         self.c_navigator.setFrameShadow(QFrame.Raised)
@@ -53,7 +53,7 @@ class Ui_add_patient(object):
 
         self.verticalLayout.addItem(self.verticalSpacer_3)
 
-        self.c_center = QFrame(add_patient)
+        self.c_center = QFrame(upsert_patient)
         self.c_center.setObjectName(u"c_center")
         self.c_center.setFrameShape(QFrame.StyledPanel)
         self.c_center.setFrameShadow(QFrame.Raised)
@@ -232,51 +232,51 @@ class Ui_add_patient(object):
 
         self.verticalLayout.addItem(self.verticalSpacer_4)
 
-        self.c_rb_views = QFrame(add_patient)
+        self.c_rb_views = QFrame(upsert_patient)
         self.c_rb_views.setObjectName(u"c_rb_views")
         self.c_rb_views.setFrameShape(QFrame.StyledPanel)
         self.c_rb_views.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_4 = QHBoxLayout(self.c_rb_views)
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
-        self.i_add_patient_view = QRadioButton(self.c_rb_views)
-        self.i_add_patient_view.setObjectName(u"i_add_patient_view")
-        self.i_add_patient_view.setChecked(True)
+        self.i_upsert_patient_view = QRadioButton(self.c_rb_views)
+        self.i_upsert_patient_view.setObjectName(u"i_upsert_patient_view")
+        self.i_upsert_patient_view.setChecked(True)
 
-        self.horizontalLayout_4.addWidget(self.i_add_patient_view)
+        self.horizontalLayout_4.addWidget(self.i_upsert_patient_view)
 
-        self.i_add_patient_mi_view = QRadioButton(self.c_rb_views)
-        self.i_add_patient_mi_view.setObjectName(u"i_add_patient_mi_view")
+        self.i_upsert_patient_mi_view = QRadioButton(self.c_rb_views)
+        self.i_upsert_patient_mi_view.setObjectName(u"i_upsert_patient_mi_view")
 
-        self.horizontalLayout_4.addWidget(self.i_add_patient_mi_view)
+        self.horizontalLayout_4.addWidget(self.i_upsert_patient_mi_view)
 
-        self.i_add_patient_preview_view = QRadioButton(self.c_rb_views)
-        self.i_add_patient_preview_view.setObjectName(u"i_add_patient_preview_view")
+        self.i_upsert_patient_preview_view = QRadioButton(self.c_rb_views)
+        self.i_upsert_patient_preview_view.setObjectName(u"i_upsert_patient_preview_view")
 
-        self.horizontalLayout_4.addWidget(self.i_add_patient_preview_view)
+        self.horizontalLayout_4.addWidget(self.i_upsert_patient_preview_view)
 
 
         self.verticalLayout.addWidget(self.c_rb_views, 0, Qt.AlignHCenter|Qt.AlignVCenter)
 
 
-        self.retranslateUi(add_patient)
+        self.retranslateUi(upsert_patient)
 
-        QMetaObject.connectSlotsByName(add_patient)
+        QMetaObject.connectSlotsByName(upsert_patient)
     # setupUi
 
-    def retranslateUi(self, add_patient):
-        add_patient.setWindowTitle(QCoreApplication.translate("add_patient", u"Loggin", None))
-        self.bt_cancel.setText(QCoreApplication.translate("add_patient", u"Cancel", None))
-        self.lb_title.setText(QCoreApplication.translate("add_patient", u"Add patient", None))
-        self.lb_first_name.setText(QCoreApplication.translate("add_patient", u"First name", None))
-        self.lb_birth_date.setText(QCoreApplication.translate("add_patient", u"Date of birth", None))
-        self.i_birth_date.setDisplayFormat(QCoreApplication.translate("add_patient", u"d/M/yyyy", None))
-        self.lb_last_name.setText(QCoreApplication.translate("add_patient", u"Last name", None))
-        self.lb_gender.setText(QCoreApplication.translate("add_patient", u"Gender", None))
-        self.i_gender_f.setText(QCoreApplication.translate("add_patient", u"Female", None))
-        self.i_gender_m.setText(QCoreApplication.translate("add_patient", u"Male", None))
-        self.bt_next.setText(QCoreApplication.translate("add_patient", u"Next", None))
-        self.i_add_patient_view.setText("")
-        self.i_add_patient_mi_view.setText("")
-        self.i_add_patient_preview_view.setText("")
+    def retranslateUi(self, upsert_patient):
+        upsert_patient.setWindowTitle(QCoreApplication.translate("upsert_patient", u"Loggin", None))
+        self.bt_cancel.setText(QCoreApplication.translate("upsert_patient", u"Cancel", None))
+        self.lb_title.setText(QCoreApplication.translate("upsert_patient", u"Add patient", None))
+        self.lb_first_name.setText(QCoreApplication.translate("upsert_patient", u"First name", None))
+        self.lb_birth_date.setText(QCoreApplication.translate("upsert_patient", u"Date of birth", None))
+        self.i_birth_date.setDisplayFormat(QCoreApplication.translate("upsert_patient", u"d/M/yyyy", None))
+        self.lb_last_name.setText(QCoreApplication.translate("upsert_patient", u"Last name", None))
+        self.lb_gender.setText(QCoreApplication.translate("upsert_patient", u"Gender", None))
+        self.i_gender_f.setText(QCoreApplication.translate("upsert_patient", u"Female", None))
+        self.i_gender_m.setText(QCoreApplication.translate("upsert_patient", u"Male", None))
+        self.bt_next.setText(QCoreApplication.translate("upsert_patient", u"Next", None))
+        self.i_upsert_patient_view.setText("")
+        self.i_upsert_patient_mi_view.setText("")
+        self.i_upsert_patient_preview_view.setText("")
     # retranslateUi
 

@@ -11,7 +11,7 @@ from PySide6.QtWidgets import (QApplication, QFormLayout, QFrame, QHBoxLayout,
 
 
 from .button import Button
-from .annotation_preview import AnnotationPreview
+from .result_preview import ResultPreview
 
 from .line_edit import LineEdit
 
@@ -89,8 +89,8 @@ class SkinLesionPreview(QFrame):
 #        ann_dc = {"Risk":"BENIGN", "Type":"Mole", "Notes":"..."}
 #        ai_r_dc = {"AI":"AI - 1", "Risk":"BENIGN", "Type":"Mole", "Accurance":"93%"}
 
-#        annotations = AnnotationPreview(ann_dc, "Annotations", "Read more")
-#        ai_results = AnnotationPreview(ai_r_dc, "AI results", "Read more")
+#        annotations = ResultPreview(ann_dc, "Annotations", "Read more")
+#        ai_results = ResultPreview(ai_r_dc, "AI results", "Read more")
 
 #        self.c_n2_layout.addWidget(annotations)
 #        self.c_n2_layout.addWidget(ai_results)
@@ -113,11 +113,11 @@ class SkinLesionPreview(QFrame):
         self.c_n2_up_layout.setContentsMargins(0, 0, 0, 0)
 
         # Anotations
-        ann_dc = {"Risk":"BENIGN", "Type":"Mole", "Notes":"..."}
+        ann_dc = {"Diameter":"2mm", "Apparition":"2 days ago"}
         ai_r_dc = {"AI":"AI - 1", "Risk":"BENIGN", "Type":"Mole", "Accurance":"93%"}
 
-        annotations = AnnotationPreview(ann_dc, "Annotations", "Read more")
-        ai_results = AnnotationPreview(ai_r_dc, "AI results", "Read more")
+        annotations = ResultPreview(ann_dc, "Caracteristics", "Read more")
+        ai_results = ResultPreview(ai_r_dc, "AI results", "Read more")
 
         self.c_n2_up_layout.addWidget(annotations)
         self.c_n2_up_layout.addWidget(ai_results)

@@ -16,9 +16,9 @@ import src.config as cfg
 from .views.patients import PatientsView
 from .views.create_account import CreateAccountView
 from .views.login import LoginView
-from .views.add_patient import AddPatientView 
-from .views.add_patient_mi import AddPatientMiView
-from .views.add_patient_preview import AddPatientPreiewView
+from .views.upsert_patient import UpsertPatientView
+from .views.upsert_patient_mi import UpsertPatientMiView
+from .views.upsert_patient_preview import UpsertPatientPreiewView
 from .views.check_patient import CheckPatientView
 
 class MainWindow(QtWidgets.QMainWindow):
@@ -28,8 +28,8 @@ class MainWindow(QtWidgets.QMainWindow):
         self._layers = QStackedWidget()
         self.setCentralWidget(self._layers)
 
-        self._add_patient_view = None
-        self.add_patient_mi_view = None
+        self._upsert_patient_view = None
+        self.upsert_patient_mi_view = None
 
 
     def set_initial_state(self):
@@ -68,25 +68,24 @@ class MainWindow(QtWidgets.QMainWindow):
             self.clean_views()
             self.set_view(PatientsView(self))
 
-        elif view_to == cfg.ADD_PATIENT_VIEW:
+        elif view_to == cfg.UPSERT_PATIENT_VIEW:
             if view_from == cfg.PATIENTS_VIEW:
-                self._add_patient_view = AddPatientView(self)
-            elif view_from == cfg.ADD_PATIENT_PREVIEW_VIEW:
+                self._upsert_patient_view = UpsertPatientView(self)
+            elif view_from == cfg.UPSERT_PATIENT_PREVIEW_VIEW:
                 self._layers.removeWidget(self._layers.currentWidget())
             elif view_from == cfg.CHECK_PATIENT_VIEW:
-                self._add_patient_view = AddPatientView(self, atts["patient"], "edit")
-            self.set_view(self._add_patient_view)
+                self._upsert_patient_view = UpsertPatientView(self, atts["patient"], "edit")
+            self.set_view(self._upsert_patient_view)
 
-        elif view_to == cfg.ADD_PATIENT_MI_VIEW:
-            if (view_from == cfg.ADD_PATIENT_VIEW and
-                self.add_patient_mi_view is None):
-                self.add_patient_mi_view = AddPatientMiView(self, atts["patient"], atts["mode"])
-            elif view_from == cfg.ADD_PATIENT_PREVIEW_VIEW:
+        elif view_to == cfg.UPSERT_PATIENT_MI_VIEW:
+            if self.upsert_patient_mi_view is None:
+                self.upsert_patient_mi_view = UpsertPatientMiView(self, atts["patient"], atts["mode"])
+            elif view_from == cfg.UPSERT_PATIENT_PREVIEW_VIEW:
                 self._layers.removeWidget(self._layers.currentWidget())
-            self.set_view(self.add_patient_mi_view)
+            self.set_view(self.upsert_patient_mi_view)
 
-        elif view_to == cfg.ADD_PATIENT_PREVIEW_VIEW:
-            self.set_view(AddPatientPreiewView(self, atts["patient"], atts["mode"]))
+        elif view_to == cfg.UPSERT_PATIENT_PREVIEW_VIEW:
+            self.set_view(UpsertPatientPreiewView(self, atts["patient"], atts["mode"]))
 
         elif view_to == cfg.CHECK_PATIENT_VIEW:
             self.clean_views()
@@ -97,5 +96,5 @@ class MainWindow(QtWidgets.QMainWindow):
         nb = self._layers.count()
         for i in range(nb):
             self._layers.removeWidget(self._layers.currentWidget())
-        self._add_patient_view = None
-        self.add_patient_mi_view = None
+        self._upsert_patient_view = None
+        self.upsert_patient_mi_view = None

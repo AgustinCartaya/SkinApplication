@@ -1,5 +1,5 @@
 from .view_object import *
-from .ui.ui_add_patient_mi import Ui_add_patient_mi
+from .ui.ui_upsert_patient_mi import Ui_upsert_patient_mi
 
 from src.objects.patient import Patient
 
@@ -10,7 +10,7 @@ from .ui.promoted.line_edit import LineEdit
 from .ui.promoted.medical_information_input import MedicalInformationInput
 
 
-class AddPatientMiView(ViewObject):
+class UpsertPatientMiView(ViewObject):
     def __init__(self, mw, patient, mode="add"):
         super().__init__(mw)
 
@@ -25,7 +25,7 @@ class AddPatientMiView(ViewObject):
             self.charge_edit_mode()
 
     def load_ui(self):
-        self.ui = Ui_add_patient_mi()
+        self.ui = Ui_upsert_patient_mi()
         self.ui.setupUi(self)
 
         #buttons
@@ -73,18 +73,18 @@ class AddPatientMiView(ViewObject):
 
         self.ui.scrollArea.verticalScrollBar().rangeChanged.connect(self.scroll_down)
 
-        self.ui.i_add_patient_view.toggled.connect(self.rb_view)
-        self.ui.i_add_patient_preview_view.toggled.connect(self.rb_view)
+        self.ui.i_upsert_patient_view.toggled.connect(self.rb_view)
+        self.ui.i_upsert_patient_preview_view.toggled.connect(self.rb_view)
 
         # created signals
         self.s_change_view.connect(self.MW.change_view)
 
     def rb_view(self):
-        if self.ui.i_add_patient_view.isChecked():
+        if self.ui.i_upsert_patient_view.isChecked():
             self.back()
-        elif self.ui.i_add_patient_preview_view.isChecked():
+        elif self.ui.i_upsert_patient_preview_view.isChecked():
             self.next()
-        self.ui.i_add_patient_mi_view.setChecked(True)
+        self.ui.i_upsert_patient_mi_view.setChecked(True)
 
     def catch_medical_info(self):
         medical_info = {}
@@ -94,17 +94,17 @@ class AddPatientMiView(ViewObject):
         self.p.mi = medical_info
 
     def next(self):
-        self.__change_to_add_patient_view(3)
+        self.__change_to_upsert_patient_view(3)
 
     def cancel(self):
         if self.mode == "edit":
-            self.s_change_view.emit(cfg.ADD_PATIENT_MI_VIEW, cfg.CHECK_PATIENT_VIEW,  {"patient_id": self.p.id})
+            self.s_change_view.emit(cfg.UPSERT_PATIENT_MI_VIEW, cfg.CHECK_PATIENT_VIEW,  {"patient_id": self.p.id})
         else:
-            self.s_change_view.emit(cfg.ADD_PATIENT_MI_VIEW, cfg.PATIENTS_VIEW, None)
+            self.s_change_view.emit(cfg.UPSERT_PATIENT_MI_VIEW, cfg.PATIENTS_VIEW, None)
 
     @Slot()
     def back(self):
-        self.__change_to_add_patient_view(1)
+        self.__change_to_upsert_patient_view(1)
 
     @Slot()
     def show_add_new_mi_c(self):
@@ -124,12 +124,12 @@ class AddPatientMiView(ViewObject):
         self.show_single_medica_information(mi_title, mi_values)
         self.cancel_new_mi()
 
-    def __change_to_add_patient_view(self, view):
+    def __change_to_upsert_patient_view(self, view):
         self.catch_medical_info()
         if view == 1:
-            self.s_change_view.emit(cfg.ADD_PATIENT_MI_VIEW, cfg.ADD_PATIENT_VIEW, {"patient":self.p, "mode":self.mode})
+            self.s_change_view.emit(cfg.UPSERT_PATIENT_MI_VIEW, cfg.UPSERT_PATIENT_VIEW, {"patient":self.p, "mode":self.mode})
         else:
-            self.s_change_view.emit(cfg.ADD_PATIENT_MI_VIEW, cfg.ADD_PATIENT_PREVIEW_VIEW, {"patient":self.p, "mode":self.mode})
+            self.s_change_view.emit(cfg.UPSERT_PATIENT_MI_VIEW, cfg.UPSERT_PATIENT_PREVIEW_VIEW, {"patient":self.p, "mode":self.mode})
 
 
     @Slot()

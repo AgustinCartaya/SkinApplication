@@ -1,5 +1,5 @@
 from .view_object import *
-from .ui.ui_add_patient_preview import Ui_add_patient_preview
+from .ui.ui_upsert_patient_preview import Ui_upsert_patient_preview
 
 from src.objects.patient import Patient
 
@@ -9,7 +9,7 @@ from PySide6.QtWidgets import (QFrame, QVBoxLayout, QHBoxLayout,
 
 from .ui.promoted.label import Label
 
-class AddPatientPreiewView(ViewObject):
+class UpsertPatientPreiewView(ViewObject):
     def __init__(self, mw, patient, mode="add"):
         super().__init__(mw)
 
@@ -24,7 +24,7 @@ class AddPatientPreiewView(ViewObject):
             self.charge_edit_mode()
 
     def load_ui(self):
-        self.ui = Ui_add_patient_preview()
+        self.ui = Ui_upsert_patient_preview()
         self.ui.setupUi(self)
         self.ui.bt_cancel.set_type(Button.BT_CANCEL)
 
@@ -82,28 +82,28 @@ class AddPatientPreiewView(ViewObject):
     s_change_view = Signal(str,str,dict)
     def connect_ui_signals(self):
         #ui signals
-        self.ui.bt_add.clicked.connect(lambda: self.update_patient() if (self.mode ==  "edit") else self.add_patient() )
+        self.ui.bt_upsert.clicked.connect(lambda: self.update_patient() if (self.mode ==  "edit") else self.add_patient() )
         self.ui.bt_cancel.clicked.connect(self.cancel)
         self.ui.bt_back.clicked.connect(self.back)
 
-        self.ui.i_add_patient_view.toggled.connect(self.rb_view)
-        self.ui.i_add_patient_mi_view.toggled.connect(self.rb_view)
+        self.ui.i_upsert_patient_view.toggled.connect(self.rb_view)
+        self.ui.i_upsert_patient_mi_view.toggled.connect(self.rb_view)
         # created signals
         self.s_change_view.connect(self.MW.change_view)
 
 
     def rb_view(self):
-        if self.ui.i_add_patient_view.isChecked():
-            self.__change_to_add_patient_view(1)
-        elif self.ui.i_add_patient_mi_view.isChecked():
+        if self.ui.i_upsert_patient_view.isChecked():
+            self.__change_to_upsert_patient_view(1)
+        elif self.ui.i_upsert_patient_mi_view.isChecked():
             self.back()
-        self.ui.i_add_patient_preview_view.setChecked(True)
+        self.ui.i_upsert_patient_preview_view.setChecked(True)
 
-    def __change_to_add_patient_view(self, view):
+    def __change_to_upsert_patient_view(self, view):
         if view == 1:
-            self.s_change_view.emit(cfg.ADD_PATIENT_PREVIEW_VIEW, cfg.ADD_PATIENT_VIEW, None)
+            self.s_change_view.emit(cfg.UPSERT_PATIENT_PREVIEW_VIEW, cfg.UPSERT_PATIENT_VIEW, None)
         else:
-            self.s_change_view.emit(cfg.ADD_PATIENT_PREVIEW_VIEW, cfg.ADD_PATIENT_MI_VIEW, None)
+            self.s_change_view.emit(cfg.UPSERT_PATIENT_PREVIEW_VIEW, cfg.UPSERT_PATIENT_MI_VIEW, {"patient":self.p, "mode":self.mode})
 
 
 
@@ -111,28 +111,28 @@ class AddPatientPreiewView(ViewObject):
     def add_patient(self):
         try:  
             self.p.save_data()
-            self.s_change_view.emit(cfg.ADD_PATIENT_PREVIEW_VIEW, cfg.PATIENTS_VIEW, None)
+            self.s_change_view.emit(cfg.UPSERT_PATIENT_PREVIEW_VIEW, cfg.PATIENTS_VIEW, None)
         except ValueError as err:
             print(err.args)
         
     def cancel(self):
         if self.mode == "edit":
-            self.s_change_view.emit(cfg.ADD_PATIENT_PREVIEW_VIEW, cfg.CHECK_PATIENT_VIEW,  {"patient_id": self.p.id})
+            self.s_change_view.emit(cfg.UPSERT_PATIENT_PREVIEW_VIEW, cfg.CHECK_PATIENT_VIEW,  {"patient_id": self.p.id})
         else:
-            self.s_change_view.emit(cfg.ADD_PATIENT_PREVIEW_VIEW, cfg.PATIENTS_VIEW, None)
+            self.s_change_view.emit(cfg.UPSERT_PATIENT_PREVIEW_VIEW, cfg.PATIENTS_VIEW, None)
 
     def update_patient(self):
         try:
             self.p.update_data()
-            self.s_change_view.emit(cfg.ADD_PATIENT_PREVIEW_VIEW, cfg.CHECK_PATIENT_VIEW, {"patient_id": self.p.id})
+            self.s_change_view.emit(cfg.UPSERT_PATIENT_PREVIEW_VIEW, cfg.CHECK_PATIENT_VIEW, {"patient_id": self.p.id})
         except ValueError as err:
             print(err.args)
 
 
     @Slot()
     def back(self):
-        self.__change_to_add_patient_view(2)
+        self.__change_to_upsert_patient_view(2)
 
     def charge_edit_mode(self):
         self.ui.lb_title.setText("Edit patient preview")
-        self.ui.bt_add.setText("Save")
+        self.ui.bt_upsert.setText("Save")
