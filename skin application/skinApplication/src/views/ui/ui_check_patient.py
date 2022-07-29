@@ -59,10 +59,10 @@ class Ui_check_patient(object):
 
         self.horizontalLayout.addItem(self.horizontalSpacer_2)
 
-        self.bt_add_new_skin_part = NavigatorButton(self.frame_6)
-        self.bt_add_new_skin_part.setObjectName(u"bt_add_new_skin_part")
+        self.bt_add_lesion = NavigatorButton(self.frame_6)
+        self.bt_add_lesion.setObjectName(u"bt_add_lesion")
 
-        self.horizontalLayout.addWidget(self.bt_add_new_skin_part)
+        self.horizontalLayout.addWidget(self.bt_add_lesion)
 
         self.horizontalLayout.setStretch(1, 4)
         self.horizontalLayout.setStretch(3, 3)
@@ -96,7 +96,7 @@ class Ui_check_patient(object):
         self.scrollArea.setWidgetResizable(True)
         self.c_basic_information_scroll_area = QWidget()
         self.c_basic_information_scroll_area.setObjectName(u"c_basic_information_scroll_area")
-        self.c_basic_information_scroll_area.setGeometry(QRect(0, 0, 258, 335))
+        self.c_basic_information_scroll_area.setGeometry(QRect(0, 0, 258, 339))
         self.verticalLayout_5 = QVBoxLayout(self.c_basic_information_scroll_area)
         self.verticalLayout_5.setObjectName(u"verticalLayout_5")
         self.c_basic_information = QFrame(self.c_basic_information_scroll_area)
@@ -222,7 +222,7 @@ class Ui_check_patient(object):
         self.scrollArea_2.setWidgetResizable(True)
         self.c_skin_parts_scroll_area = QWidget()
         self.c_skin_parts_scroll_area.setObjectName(u"c_skin_parts_scroll_area")
-        self.c_skin_parts_scroll_area.setGeometry(QRect(0, 0, 872, 702))
+        self.c_skin_parts_scroll_area.setGeometry(QRect(0, 0, 872, 708))
         self.verticalLayout_6 = QVBoxLayout(self.c_skin_parts_scroll_area)
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
         self.c_skin_lesions = QFrame(self.c_skin_parts_scroll_area)
@@ -256,7 +256,7 @@ class Ui_check_patient(object):
         check_patient.setWindowTitle(QCoreApplication.translate("check_patient", u"Loggin", None))
         self.bt_back.setText(QCoreApplication.translate("check_patient", u"Back", None))
         self.lb_title.setText(QCoreApplication.translate("check_patient", u"Check patient", None))
-        self.bt_add_new_skin_part.setText(QCoreApplication.translate("check_patient", u"Add skin part", None))
+        self.bt_add_lesion.setText(QCoreApplication.translate("check_patient", u"Add lesion", None))
         self.lb_patient_information.setText(QCoreApplication.translate("check_patient", u"Patient information", None))
         self.lb_basic_information.setText(QCoreApplication.translate("check_patient", u"Basic information", None))
         self.lb_first_name.setText(QCoreApplication.translate("check_patient", u"First name :", None))

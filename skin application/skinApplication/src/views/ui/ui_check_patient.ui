@@ -103,9 +103,9 @@
        </spacer>
       </item>
       <item>
-       <widget class="NavigatorButton" name="bt_add_new_skin_part">
+       <widget class="NavigatorButton" name="bt_add_lesion">
         <property name="text">
-         <string>Add skin part</string>
+         <string>Add lesion</string>
         </property>
        </widget>
       </item>
@@ -181,7 +181,7 @@
               <x>0</x>
               <y>0</y>
               <width>258</width>
-              <height>335</height>
+              <height>339</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -403,7 +403,7 @@
               <x>0</x>
               <y>0</y>
               <width>872</width>
-              <height>702</height>
+              <height>708</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_6">

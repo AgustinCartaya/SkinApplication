@@ -48,9 +48,10 @@ class MedicalInformationInput(QFrame):
 
         # Edit button
         self.bt_add = Button(self.c_input)
-        self.bt_add.set_icon("plus")
-        self.bt_add.setMinimumSize(QSize(30, 0))
-        self.bt_add.setMaximumSize(QSize(30, 16777215))
+        self.bt_add.setText("+")
+#        self.bt_add.set_icon("plus")
+        self.bt_add.setMinimumSize(QSize(0, 0))
+        self.bt_add.setMaximumSize(QSize(25, 25))
         self.input_layout.addWidget(self.bt_add)
         self.bt_add.clicked.connect(self.add_new_mi_item)
 

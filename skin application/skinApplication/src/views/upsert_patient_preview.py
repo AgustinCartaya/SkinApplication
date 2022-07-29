@@ -42,9 +42,9 @@ class UpsertPatientPreiewView(ViewObject):
         self.ui.i_gender.set_decoration("mi_content")
 
         # medical information frame
-        self.c_medical_information_layout = QVBoxLayout(self.ui.c_medical_information)
-        self.c_medical_information_layout.setSpacing(16)
-        self.c_medical_information_layout.setContentsMargins(0, 0, 0, 0)
+#        self.mi_content_layout = QVBoxLayout(self.ui.c_medical_information)
+#        self.mi_content_layout.setSpacing(16)
+#        self.mi_content_layout.setContentsMargins(0, 0, 0, 0)
 
 
 
@@ -64,20 +64,23 @@ class UpsertPatientPreiewView(ViewObject):
 
     def show_medical_information(self):
         for medical_info in self.p.mi:
-            mi_frame = QFrame(self.ui.c_medical_information)
-            mi_frame_layout = QVBoxLayout(mi_frame)
-            mi_frame_layout.setContentsMargins(0, 0, 0, 0)
+            if self.p.mi[medical_info] != "":
+    #            mi_frame = QFrame(self.ui.scc_patient_information)
+                mi_frame_layout = QVBoxLayout()
+                mi_frame_layout.setContentsMargins(0, 0, 0, 0)
+                mi_frame_layout.setSpacing(2)
 
-            mi_title = Label(mi_frame)
-            mi_title.setText(util.file_name_to_title(medical_info) + " :")
-            mi_frame_layout.addWidget(mi_title)
+                mi_title = Label(self.ui.c_spacing_layout)
+                mi_title.setText(util.file_name_to_title(medical_info) + " :")
+                mi_frame_layout.addWidget(mi_title)
 
-            mi_content = Label(mi_frame)
-            mi_content.setText(self.p.mi[medical_info])
-            mi_content.set_decoration("mi_content")
-            mi_frame_layout.addWidget(mi_content)
+                mi_content = Label(self.ui.c_spacing_layout)
+                mi_content.setText(self.p.mi[medical_info])
+                mi_content.set_decoration("mi_content")
+                mi_frame_layout.addWidget(mi_content)
 
-            self.c_medical_information_layout.addWidget(mi_frame,0, Qt.AlignLeft)
+                self.ui.mi_content_layout.addLayout(mi_frame_layout)
+
 
     s_change_view = Signal(str,str,dict)
     def connect_ui_signals(self):

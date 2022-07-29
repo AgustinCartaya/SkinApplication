@@ -20,6 +20,7 @@ from .views.upsert_patient import UpsertPatientView
 from .views.upsert_patient_mi import UpsertPatientMiView
 from .views.upsert_patient_preview import UpsertPatientPreiewView
 from .views.check_patient import CheckPatientView
+from .views.upsert_skin_lesion import UpsertSkinLesion
 
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
@@ -90,6 +91,10 @@ class MainWindow(QtWidgets.QMainWindow):
         elif view_to == cfg.CHECK_PATIENT_VIEW:
             self.clean_views()
             self.set_view(CheckPatientView(self, atts["patient_id"]))
+
+        elif view_to == cfg.UPSERT_SKIN_LESION_VIEW:
+            self.set_view(UpsertSkinLesion(self))
+
 #        print(self._layers.count())
 
     def clean_views(self):

@@ -45,7 +45,7 @@ class CheckPatientView(ViewObject):
             self.ui.i_gender.setText("Female")
 
         # navigator
-        self.ui.bt_add_new_skin_part.set_position(2)
+        self.ui.bt_add_lesion.set_position(2)
 
         # medical information
         self.c_mi_content_layout = QFormLayout(self.ui.c_mi_content)
@@ -60,41 +60,31 @@ class CheckPatientView(ViewObject):
             skp = SkinLesionPreview()
             self.skin_lesions_layout.addWidget(skp)
 
-
-    def show_medical_information(self):
-        form_index = 0
-        for mi in self.p.mi:
-
-
-            mi_title = Label(self.ui.c_mi_content)
-            mi_title.setText(util.file_name_to_title(mi) + " :")
-            self.c_mi_content_layout.setWidget(form_index, QFormLayout.LabelRole, mi_title)
-
-#            mi_frame = QFrame(self.ui.c_mi_content)
-#            mi_frame_layout = QVBoxLayout(mi_frame)
-#            mi_frame_layout.setContentsMargins(0, 0, 0, 0)
-#            self.c_mi_content_layout.setWidget(form_index, QFormLayout.FieldRole, mi_frame)
-
-#            mi_content = Label(self.ui.c_mi_content)
-#            mi_content.setText(self.p.mi[mi])
-#            mi_content.set_decoration("mi_content")
-#            mi_frame_layout.addWidget(mi_content,0, Qt.AlignLeft)
-
-            mi_content = Label(self.ui.c_mi_content)
-            mi_content.setText(self.p.mi[mi])
-            self.c_mi_content_layout.setWidget(form_index, QFormLayout.FieldRole, mi_content)
-
-
-            form_index = form_index + 1
-
     s_change_view = Signal(str,str,dict)
     def connect_ui_signals(self):
         # navigator
         self.ui.bt_back.clicked.connect(self.back)
         self.ui.bt_edit_patient_info.clicked.connect(self.edit_patient_info)
 
+        self.ui.bt_add_lesion.clicked.connect(self.add_new_lesion)
+
         # created signals
         self.s_change_view.connect(self.MW.change_view)
+
+
+    def show_medical_information(self):
+        form_index = 0
+        for mi in self.p.mi:
+            mi_title = Label(self.ui.c_mi_content)
+            mi_title.setText(util.file_name_to_title(mi) + " :")
+            self.c_mi_content_layout.setWidget(form_index, QFormLayout.LabelRole, mi_title)
+
+            mi_content = Label(self.ui.c_mi_content)
+            mi_content.setText(self.p.mi[mi])
+            self.c_mi_content_layout.setWidget(form_index, QFormLayout.FieldRole, mi_content)
+
+            form_index = form_index + 1
+
 
     @Slot()
     def back(self):
@@ -103,3 +93,8 @@ class CheckPatientView(ViewObject):
     @Slot()
     def edit_patient_info(self):
         self.s_change_view.emit(cfg.CHECK_PATIENT_VIEW, cfg.UPSERT_PATIENT_VIEW, {"patient" : self.p})
+
+    @Slot()
+    def add_new_lesion(self):
+        self.s_change_view.emit(cfg.CHECK_PATIENT_VIEW, cfg.UPSERT_SKIN_LESION_VIEW, None)
+

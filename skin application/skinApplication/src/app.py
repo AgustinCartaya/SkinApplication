@@ -23,8 +23,9 @@ def run():
 
     mainWindow = MainWindow()
 
-    mainWindow.change_view(None, cfg.PATIENTS_VIEW, [])
     first_time()
+    mainWindow.change_view(None, cfg.PATIENTS_VIEW, [])
+
 
 #    if first_time():
 #        mainWindow.change_view(None, cfg.CREATE_ACCOUNT_VIEW, [])

@@ -42,6 +42,8 @@
         "src/views/ui/ui_upsert_patient_mi.py",
         "src/views/ui/ui_upsert_patient_preview.ui",
         "src/views/ui/ui_upsert_patient_preview.py",
+        "src/views/ui/ui_upsert_skin_lesion.ui",
+        "src/views/ui/ui_upsert_skin_lesion.py",
         "src/views/ui/ui_patients.ui",
         "src/views/ui/ui_patients.py",
         "src/views/ui/ui_check_patient.ui",

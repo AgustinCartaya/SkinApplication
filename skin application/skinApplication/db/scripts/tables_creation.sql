@@ -19,11 +19,7 @@ CREATE TABLE PATIENTS (
 CREATE TABLE SKIN_LESIONS (
     number INTEGER NOT NULL,
     id_patient TEXT NOT NULL,
-    name TEXT NOT NULL,
-    diameter INTEGER NOT NULL,
-    type INTEGER NOT NULL,
-    risk DATE NOT NULL,
-    notes TEXT
+    caracteristics TEXT NOT NULL
 );
 
 
@@ -49,6 +45,6 @@ INSERT INTO PATIENTS (id, first_name, last_name, birth_date, gender, medical_inf
 
 
 
-INSERT INTO SKIN_LESIONS (number, id_patient, name, diameter, type, risk, notes) VALUES (1, "AG3526CA", "Ear lesion", 2, 'Mole', 'INDETERMINATE', '{"Note 1":" comment 1","Note 2":" comment 2"}');
-INSERT INTO SKIN_LESIONS (number, id_patient, name, diameter, type, risk, notes) VALUES (2, "AG3526CA", "Ear lesion", 2, 'Mole', 'INDETERMINATE', '{"Note 1":" comment 1","Note 2":" comment 2"}');
-INSERT INTO SKIN_LESIONS (number, id_patient, name, diameter, type, risk, notes) VALUES (1, "PI3526RD", "Ear lesion", 2, 'Mole', 'INDETERMINATE', '{"Note 1":" comment 1","Note 2":" comment 2"}');
+INSERT INTO SKIN_LESIONS (number, id_patient, caracteristics) VALUES (1, "AG3526CA", '{"diameter":1, "apparition_date":"10-11-2000"}');
+INSERT INTO SKIN_LESIONS (number, id_patient, caracteristics) VALUES (2, "AG3526CA", '{"diameter":1, "apparition_date":"10-11-2000"}');
+INSERT INTO SKIN_LESIONS (number, id_patient, caracteristics) VALUES (1, "PI3526RD", '{"diameter":1, "apparition_date":"10-11-2000"}');

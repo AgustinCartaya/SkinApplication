@@ -52,6 +52,23 @@ AnnotationPreview[c_title=true]{
     border: None;
     border-radius: 0px;
 }
+
+/*select add images*/
+#c_medical_image,
+#c_microscopy,
+#c_dermatoscopy{
+    border-top: 1px solid @c_gray_ultra_light;
+    padding: 10px 5px;
+
+}
+
+#c_medical_image::hover,
+#c_microscopy::hover,
+#c_dermatoscopy::hover{
+
+    background-color: @c_blue_light;
+}
+
 /*-----QLabel-----*/
 Label
 {
