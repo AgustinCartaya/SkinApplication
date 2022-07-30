@@ -32,23 +32,24 @@ class Ui_upsert_patient_mi(object):
         upsert_patient_mi.resize(800, 600)
         upsert_patient_mi.setStyleSheet(u"")
         self.verticalLayout = QVBoxLayout(upsert_patient_mi)
+        self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName(u"verticalLayout")
-        self.verticalLayout.setContentsMargins(0, 0, 0, 10)
-        self.c_navigator2 = QFrame(upsert_patient_mi)
-        self.c_navigator2.setObjectName(u"c_navigator2")
-        self.c_navigator2.setFrameShape(QFrame.StyledPanel)
-        self.c_navigator2.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout = QHBoxLayout(self.c_navigator2)
-        self.horizontalLayout.setSpacing(0)
-        self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
-        self.bt_cancel = NavigatorButton(self.c_navigator2)
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.ly_navigator = QHBoxLayout()
+        self.ly_navigator.setSpacing(0)
+        self.ly_navigator.setObjectName(u"ly_navigator")
+        self.ly_navigator.setContentsMargins(-1, 0, -1, -1)
+        self.bt_cancel = NavigatorButton(upsert_patient_mi)
         self.bt_cancel.setObjectName(u"bt_cancel")
 
-        self.horizontalLayout.addWidget(self.bt_cancel)
+        self.ly_navigator.addWidget(self.bt_cancel)
+
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.ly_navigator.addItem(self.horizontalSpacer)
 
 
-        self.verticalLayout.addWidget(self.c_navigator2, 0, Qt.AlignLeft|Qt.AlignTop)
+        self.verticalLayout.addLayout(self.ly_navigator)
 
         self.verticalSpacer_3 = QSpacerItem(20, 20, QSizePolicy.Minimum, QSizePolicy.Fixed)
 
@@ -74,101 +75,98 @@ class Ui_upsert_patient_mi(object):
         self.scrollArea = QScrollArea(self.c_center)
         self.scrollArea.setObjectName(u"scrollArea")
         self.scrollArea.setWidgetResizable(True)
-        self.scrollAreaWidgetContents = QWidget()
-        self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 496, 315))
-        self.verticalLayout_3 = QVBoxLayout(self.scrollAreaWidgetContents)
-        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
-        self.c_medical_information = QFrame(self.scrollAreaWidgetContents)
+        self.c_medical_information = QWidget()
         self.c_medical_information.setObjectName(u"c_medical_information")
-        self.c_medical_information.setFrameShape(QFrame.StyledPanel)
-        self.c_medical_information.setFrameShadow(QFrame.Raised)
+        self.c_medical_information.setGeometry(QRect(0, 0, 496, 343))
+        self.verticalLayout_3 = QVBoxLayout(self.c_medical_information)
+        self.verticalLayout_3.setSpacing(30)
+        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
+        self.ly_medical_information = QVBoxLayout()
+        self.ly_medical_information.setSpacing(16)
+        self.ly_medical_information.setObjectName(u"ly_medical_information")
 
-        self.verticalLayout_3.addWidget(self.c_medical_information)
+        self.verticalLayout_3.addLayout(self.ly_medical_information)
 
-        self.c_create_new_mi = QFrame(self.scrollAreaWidgetContents)
+        self.c_create_new_mi = QFrame(self.c_medical_information)
         self.c_create_new_mi.setObjectName(u"c_create_new_mi")
         self.c_create_new_mi.setFrameShape(QFrame.StyledPanel)
         self.c_create_new_mi.setFrameShadow(QFrame.Raised)
         self.verticalLayout_4 = QVBoxLayout(self.c_create_new_mi)
+        self.verticalLayout_4.setSpacing(16)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
-        self.verticalLayout_4.setContentsMargins(-1, 30, -1, -1)
         self.bt_create_new_mi = Button(self.c_create_new_mi)
         self.bt_create_new_mi.setObjectName(u"bt_create_new_mi")
 
         self.verticalLayout_4.addWidget(self.bt_create_new_mi)
 
-        self.c_new_mi = QFrame(self.c_create_new_mi)
-        self.c_new_mi.setObjectName(u"c_new_mi")
-        self.c_new_mi.setEnabled(True)
-        self.c_new_mi.setFrameShape(QFrame.StyledPanel)
-        self.c_new_mi.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_5 = QVBoxLayout(self.c_new_mi)
+        self.c_new_mi_content = QFrame(self.c_create_new_mi)
+        self.c_new_mi_content.setObjectName(u"c_new_mi_content")
+        self.c_new_mi_content.setFrameShape(QFrame.StyledPanel)
+        self.c_new_mi_content.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_5 = QVBoxLayout(self.c_new_mi_content)
         self.verticalLayout_5.setSpacing(16)
         self.verticalLayout_5.setObjectName(u"verticalLayout_5")
-        self.verticalLayout_5.setContentsMargins(0, 0, 0, 10)
-        self.c_new_mi_name = QFrame(self.c_new_mi)
-        self.c_new_mi_name.setObjectName(u"c_new_mi_name")
-        self.c_new_mi_name.setFrameShape(QFrame.StyledPanel)
-        self.c_new_mi_name.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_6 = QVBoxLayout(self.c_new_mi_name)
-        self.verticalLayout_6.setObjectName(u"verticalLayout_6")
-        self.verticalLayout_6.setContentsMargins(0, 0, 0, 0)
-        self.lb_new_mi_name = Label(self.c_new_mi_name)
+        self.verticalLayout_5.setContentsMargins(0, 0, 0, 0)
+        self.ly_new_mi_name = QVBoxLayout()
+        self.ly_new_mi_name.setSpacing(4)
+        self.ly_new_mi_name.setObjectName(u"ly_new_mi_name")
+        self.ly_new_mi_name.setContentsMargins(-1, 0, -1, -1)
+        self.lb_new_mi_name = Label(self.c_new_mi_content)
         self.lb_new_mi_name.setObjectName(u"lb_new_mi_name")
 
-        self.verticalLayout_6.addWidget(self.lb_new_mi_name)
+        self.ly_new_mi_name.addWidget(self.lb_new_mi_name)
 
-        self.i_new_mi_name = LineEdit(self.c_new_mi_name)
+        self.i_new_mi_name = LineEdit(self.c_new_mi_content)
         self.i_new_mi_name.setObjectName(u"i_new_mi_name")
 
-        self.verticalLayout_6.addWidget(self.i_new_mi_name)
+        self.ly_new_mi_name.addWidget(self.i_new_mi_name)
 
 
-        self.verticalLayout_5.addWidget(self.c_new_mi_name)
+        self.verticalLayout_5.addLayout(self.ly_new_mi_name)
 
-        self.c_new_mi_value = QFrame(self.c_new_mi)
-        self.c_new_mi_value.setObjectName(u"c_new_mi_value")
-        self.c_new_mi_value.setFrameShape(QFrame.StyledPanel)
-        self.c_new_mi_value.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_7 = QVBoxLayout(self.c_new_mi_value)
-        self.verticalLayout_7.setObjectName(u"verticalLayout_7")
-        self.verticalLayout_7.setContentsMargins(0, 0, 0, 0)
-        self.lb_new_mi_value = Label(self.c_new_mi_value)
+        self.ly_new_mi_value = QVBoxLayout()
+        self.ly_new_mi_value.setSpacing(4)
+        self.ly_new_mi_value.setObjectName(u"ly_new_mi_value")
+        self.ly_new_mi_value.setContentsMargins(-1, 0, -1, -1)
+        self.lb_new_mi_value = Label(self.c_new_mi_content)
         self.lb_new_mi_value.setObjectName(u"lb_new_mi_value")
 
-        self.verticalLayout_7.addWidget(self.lb_new_mi_value)
+        self.ly_new_mi_value.addWidget(self.lb_new_mi_value)
 
-        self.i_new_mi_value = LineEdit(self.c_new_mi_value)
+        self.i_new_mi_value = LineEdit(self.c_new_mi_content)
         self.i_new_mi_value.setObjectName(u"i_new_mi_value")
 
-        self.verticalLayout_7.addWidget(self.i_new_mi_value)
+        self.ly_new_mi_value.addWidget(self.i_new_mi_value)
 
 
-        self.verticalLayout_5.addWidget(self.c_new_mi_value)
+        self.verticalLayout_5.addLayout(self.ly_new_mi_value)
 
-        self.frame = QFrame(self.c_new_mi)
-        self.frame.setObjectName(u"frame")
-        self.frame.setFrameShape(QFrame.StyledPanel)
-        self.frame.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_2 = QHBoxLayout(self.frame)
-        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
-        self.bt_cancel_new_mi = Button(self.frame)
+        self.ly_new_mi_bt = QHBoxLayout()
+        self.ly_new_mi_bt.setObjectName(u"ly_new_mi_bt")
+        self.ly_new_mi_bt.setContentsMargins(-1, 0, -1, -1)
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.ly_new_mi_bt.addItem(self.horizontalSpacer_2)
+
+        self.bt_cancel_new_mi = Button(self.c_new_mi_content)
         self.bt_cancel_new_mi.setObjectName(u"bt_cancel_new_mi")
 
-        self.horizontalLayout_2.addWidget(self.bt_cancel_new_mi)
+        self.ly_new_mi_bt.addWidget(self.bt_cancel_new_mi)
 
-        self.bt_add_new_mi = Button(self.frame)
+        self.bt_add_new_mi = Button(self.c_new_mi_content)
         self.bt_add_new_mi.setObjectName(u"bt_add_new_mi")
 
-        self.horizontalLayout_2.addWidget(self.bt_add_new_mi)
+        self.ly_new_mi_bt.addWidget(self.bt_add_new_mi)
+
+        self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.ly_new_mi_bt.addItem(self.horizontalSpacer_3)
 
 
-        self.verticalLayout_5.addWidget(self.frame, 0, Qt.AlignHCenter|Qt.AlignBottom)
+        self.verticalLayout_5.addLayout(self.ly_new_mi_bt)
 
 
-        self.verticalLayout_4.addWidget(self.c_new_mi)
+        self.verticalLayout_4.addWidget(self.c_new_mi_content)
 
 
         self.verticalLayout_3.addWidget(self.c_create_new_mi, 0, Qt.AlignBottom)
@@ -177,13 +175,37 @@ class Ui_upsert_patient_mi(object):
 
         self.verticalLayout_3.addItem(self.verticalSpacer_5)
 
-        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
+        self.scrollArea.setWidget(self.c_medical_information)
 
         self.verticalLayout_2.addWidget(self.scrollArea)
 
         self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Fixed)
 
         self.verticalLayout_2.addItem(self.verticalSpacer)
+
+        self.horizontalLayout_2 = QHBoxLayout()
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.horizontalLayout_2.setContentsMargins(-1, 0, -1, -1)
+        self.horizontalSpacer_4 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_2.addItem(self.horizontalSpacer_4)
+
+        self.bt_back = Button(self.c_center)
+        self.bt_back.setObjectName(u"bt_back")
+
+        self.horizontalLayout_2.addWidget(self.bt_back)
+
+        self.bt_next = Button(self.c_center)
+        self.bt_next.setObjectName(u"bt_next")
+
+        self.horizontalLayout_2.addWidget(self.bt_next)
+
+        self.horizontalSpacer_5 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_2.addItem(self.horizontalSpacer_5)
+
+
+        self.verticalLayout_2.addLayout(self.horizontalLayout_2)
 
         self.c_buttons = QFrame(self.c_center)
         self.c_buttons.setObjectName(u"c_buttons")
@@ -192,16 +214,6 @@ class Ui_upsert_patient_mi(object):
         self.horizontalLayout_3 = QHBoxLayout(self.c_buttons)
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
         self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
-        self.bt_back = Button(self.c_buttons)
-        self.bt_back.setObjectName(u"bt_back")
-
-        self.horizontalLayout_3.addWidget(self.bt_back)
-
-        self.bt_next = Button(self.c_buttons)
-        self.bt_next.setObjectName(u"bt_next")
-
-        self.horizontalLayout_3.addWidget(self.bt_next)
-
 
         self.verticalLayout_2.addWidget(self.c_buttons, 0, Qt.AlignHCenter)
 
@@ -218,6 +230,7 @@ class Ui_upsert_patient_mi(object):
         self.c_rb_views.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_4 = QHBoxLayout(self.c_rb_views)
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
+        self.horizontalLayout_4.setContentsMargins(-1, -1, -1, 16)
         self.i_upsert_patient_view = QRadioButton(self.c_rb_views)
         self.i_upsert_patient_view.setObjectName(u"i_upsert_patient_view")
 
@@ -251,7 +264,7 @@ class Ui_upsert_patient_mi(object):
         self.lb_new_mi_name.setText(QCoreApplication.translate("upsert_patient_mi", u"Medical information name", None))
         self.i_new_mi_name.setPlaceholderText(QCoreApplication.translate("upsert_patient_mi", u"E.g: Weight", None))
         self.lb_new_mi_value.setText(QCoreApplication.translate("upsert_patient_mi", u"Medical information value", None))
-        self.i_new_mi_value.setPlaceholderText(QCoreApplication.translate("upsert_patient_mi", u"E.g: Value 1; Value 2; Value 3;", None))
+        self.i_new_mi_value.setPlaceholderText(QCoreApplication.translate("upsert_patient_mi", u"E.g: Value 1, Value 2, Value 3", None))
         self.bt_cancel_new_mi.setText(QCoreApplication.translate("upsert_patient_mi", u"Cancel", None))
         self.bt_add_new_mi.setText(QCoreApplication.translate("upsert_patient_mi", u"Add", None))
         self.bt_back.setText(QCoreApplication.translate("upsert_patient_mi", u"Back", None))

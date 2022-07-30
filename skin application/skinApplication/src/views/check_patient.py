@@ -48,17 +48,18 @@ class CheckPatientView(ViewObject):
         self.ui.bt_add_lesion.set_position(2)
 
         # medical information
-        self.c_mi_content_layout = QFormLayout(self.ui.c_mi_content)
-        self.c_mi_content_layout.setVerticalSpacing(16)
+#        self.c_mi_content_layout = QFormLayout(self.ui.c_mi_content)
+#        self.c_mi_content_layout.setVerticalSpacing(16)
         self.show_medical_information()
 
         # skin lesions preview
-        self.skin_lesions_layout = QVBoxLayout(self.ui.c_skin_lesions)
-        self.skin_lesions_layout.setSpacing(40)
-        self.skin_lesions_layout.setContentsMargins(0, 0, 0, 0)
+#        self.skin_lesions_layout = QVBoxLayout(self.ui.c_skin_lesions)
+#        self.skin_lesions_layout.setSpacing(40)
+#        self.skin_lesions_layout.setContentsMargins(0, 0, 0, 0)
+
         for i in range(2):
             skp = SkinLesionPreview()
-            self.skin_lesions_layout.addWidget(skp)
+            self.ui.ly_skin_lesions.addWidget(skp)
 
     s_change_view = Signal(str,str,dict)
     def connect_ui_signals(self):
@@ -75,13 +76,13 @@ class CheckPatientView(ViewObject):
     def show_medical_information(self):
         form_index = 0
         for mi in self.p.mi:
-            mi_title = Label(self.ui.c_mi_content)
+            mi_title = Label(self.ui.c_patient_information_content)
             mi_title.setText(util.file_name_to_title(mi) + " :")
-            self.c_mi_content_layout.setWidget(form_index, QFormLayout.LabelRole, mi_title)
+            self.ui.ly_mi_content.setWidget(form_index, QFormLayout.LabelRole, mi_title)
 
-            mi_content = Label(self.ui.c_mi_content)
+            mi_content = Label(self.ui.c_patient_information_content)
             mi_content.setText(self.p.mi[mi])
-            self.c_mi_content_layout.setWidget(form_index, QFormLayout.FieldRole, mi_content)
+            self.ui.ly_mi_content.setWidget(form_index, QFormLayout.FieldRole, mi_content)
 
             form_index = form_index + 1
 

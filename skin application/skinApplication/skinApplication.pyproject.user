@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 5.0.0, 2022-07-28T23:58:07. -->
+<!-- Written by QtCreator 5.0.0, 2022-07-29T20:38:47. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -139,6 +139,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/label.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/label.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/label.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\views\ui\promoted\label.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -156,6 +157,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/search_line.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/search_line.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/search_line.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\views\ui\promoted\search_line.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -173,6 +175,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/util/util.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/util/util.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/util/util.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\util\util.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -190,6 +193,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/upsert_patient_mi.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/upsert_patient_mi.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/upsert_patient_mi.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\views\upsert_patient_mi.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -207,6 +211,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/line_edit.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/line_edit.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/line_edit.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\views\ui\promoted\line_edit.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -224,6 +229,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/check_button.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/check_button.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/check_button.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\views\ui\promoted\check_button.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -241,6 +247,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/objects/time_line_point.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/objects/time_line_point.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/objects/time_line_point.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\objects\time_line_point.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -258,6 +265,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/objects/doctor.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/objects/doctor.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/objects/doctor.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\objects\doctor.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -275,6 +283,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/ui_upsert_patient_preview.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/ui_upsert_patient_preview.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/ui_upsert_patient_preview.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\views\ui\ui_upsert_patient_preview.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -292,6 +301,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/main.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/main.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/main.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\main.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -309,6 +319,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/main_window.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/main_window.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/main_window.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\main_window.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -326,6 +337,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/db_controllers/db_connection.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/db_controllers/db_connection.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/db_controllers/db_connection.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\db_controllers\db_connection.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -343,6 +355,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/util/data_cleaner.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/util/data_cleaner.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/util/data_cleaner.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\util\data_cleaner.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -360,6 +373,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/pagination.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/pagination.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/pagination.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\views\ui\promoted\pagination.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -377,6 +391,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/styles/raw/colors.css</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/styles/raw/colors.css</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/styles/raw/colors.css</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\views\ui\styles\raw\colors.css</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -394,6 +409,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/objects/data_object.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/objects/data_object.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/objects/data_object.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\objects\data_object.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -411,6 +427,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/objects/annotation.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/objects/annotation.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/objects/annotation.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\objects\annotation.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -428,6 +445,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/create_account.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/create_account.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/create_account.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\views\create_account.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -445,6 +463,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/photos.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/photos.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/photos.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\views\photos.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -462,6 +481,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/ui_login.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/ui_login.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/ui_login.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\views\ui\ui_login.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -479,6 +499,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/ui_upsert_patient.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/ui_upsert_patient.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/ui_upsert_patient.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\views\ui\ui_upsert_patient.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -496,6 +517,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/button.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/button.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/button.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\views\ui\promoted\button.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -513,6 +535,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/ui_upsert_patient_mi.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/ui_upsert_patient_mi.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/ui_upsert_patient_mi.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\views\ui\ui_upsert_patient_mi.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -530,6 +553,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/config.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/config.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/config.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\config.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -547,6 +571,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/objects/body2d.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/objects/body2d.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/objects/body2d.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\objects\body2d.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -564,6 +589,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/patients.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/patients.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/patients.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\views\patients.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -581,6 +607,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/medical_information_input.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/medical_information_input.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/medical_information_input.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\views\ui\promoted\medical_information_input.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -598,6 +625,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/navigator_button.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/navigator_button.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/navigator_button.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\views\ui\promoted\navigator_button.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -615,6 +643,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/patient_card.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/patient_card.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/patient_card.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\views\ui\promoted\patient_card.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -632,6 +661,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/styles/raw/global.css</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/styles/raw/global.css</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/styles/raw/global.css</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\views\ui\styles\raw\global.css</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -649,6 +679,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/styles/raw/compile_styles.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/styles/raw/compile_styles.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/styles/raw/compile_styles.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\views\ui\styles\raw\compile_styles.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -666,6 +697,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/objects/patient.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/objects/patient.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/objects/patient.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\objects\patient.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -683,6 +715,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/result_preview.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/result_preview.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/result_preview.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\views\ui\promoted\result_preview.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -700,6 +733,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/db_controllers/db_controller.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/db_controllers/db_controller.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/db_controllers/db_controller.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\db_controllers\db_controller.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -717,6 +751,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/objects/skin_lesion.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/objects/skin_lesion.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/objects/skin_lesion.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\objects\skin_lesion.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -734,6 +769,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/login.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/login.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/login.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\views\login.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -751,6 +787,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/skin_lesion_preview.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/skin_lesion_preview.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/skin_lesion_preview.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\views\ui\promoted\skin_lesion_preview.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -768,6 +805,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/time_line.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/time_line.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/time_line.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\views\time_line.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -785,6 +823,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/objects/ai.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/objects/ai.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/objects/ai.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\objects\ai.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -802,6 +841,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/upsert_patient_preview.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/upsert_patient_preview.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/upsert_patient_preview.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\views\upsert_patient_preview.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -819,6 +859,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/upsert_patient.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/upsert_patient.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/upsert_patient.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\views\upsert_patient.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -836,6 +877,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/view_object.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/view_object.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/view_object.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\views\view_object.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -853,6 +895,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/ui_check_patient.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/ui_check_patient.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/ui_check_patient.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\views\ui\ui_check_patient.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -870,6 +913,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/objects/patient_list.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/objects/patient_list.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/objects/patient_list.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\objects\patient_list.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -887,6 +931,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/objects/image_list.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/objects/image_list.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/objects/image_list.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\objects\image_list.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -904,6 +949,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/check_patient.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/check_patient.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/check_patient.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\views\check_patient.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -921,6 +967,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/objects/time_line.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/objects/time_line.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/objects/time_line.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\objects\time_line.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -938,6 +985,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/ui_patients.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/ui_patients.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/ui_patients.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\views\ui\ui_patients.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -955,6 +1003,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/ui_upsert_skin_lesion.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/ui_upsert_skin_lesion.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/ui_upsert_skin_lesion.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\views\ui\ui_upsert_skin_lesion.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -972,6 +1021,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/ui_create_account.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/ui_create_account.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/ui_create_account.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\views\ui\ui_create_account.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -989,6 +1039,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/upsert_skin_lesion.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/upsert_skin_lesion.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/upsert_skin_lesion.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\views\upsert_skin_lesion.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -1006,6 +1057,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/objects/image.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/objects/image.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/objects/image.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\objects\image.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -1023,6 +1075,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/app.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/app.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/app.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\app.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>

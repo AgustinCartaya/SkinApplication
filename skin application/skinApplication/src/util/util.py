@@ -57,7 +57,7 @@ def title_to_file_name(txt):
     return txt.strip().replace(" ", "_").lower()
 
 def str_to_list(text, sep="\n"):
-    return [s.strip() for s in list(filter(None, text.split(sep)))]
+    return [s.strip() for s in list(filter(lambda x: len(x.strip()) > 0, text.split(sep)))]
 
 
 def apped_to_file(file_name, text, path=cfg.FILES_PATH):

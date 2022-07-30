@@ -26,7 +26,6 @@ def run():
     first_time()
     mainWindow.change_view(None, cfg.PATIENTS_VIEW, [])
 
-
 #    if first_time():
 #        mainWindow.change_view(None, cfg.CREATE_ACCOUNT_VIEW, [])
 #    else:

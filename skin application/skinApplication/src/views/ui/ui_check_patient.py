@@ -30,61 +30,52 @@ class Ui_check_patient(object):
         check_patient.resize(1200, 800)
         check_patient.setStyleSheet(u"")
         self.verticalLayout_2 = QVBoxLayout(check_patient)
-        self.verticalLayout_2.setSpacing(12)
+        self.verticalLayout_2.setSpacing(0)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
-        self.frame_6 = QFrame(check_patient)
-        self.frame_6.setObjectName(u"frame_6")
-        self.frame_6.setMaximumSize(QSize(16777215, 60))
-        self.frame_6.setFrameShape(QFrame.StyledPanel)
-        self.frame_6.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout = QHBoxLayout(self.frame_6)
-        self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
-        self.bt_back = NavigatorButton(self.frame_6)
+        self.ly_navigator = QHBoxLayout()
+        self.ly_navigator.setObjectName(u"ly_navigator")
+        self.ly_navigator.setContentsMargins(-1, 0, -1, -1)
+        self.bt_back = NavigatorButton(check_patient)
         self.bt_back.setObjectName(u"bt_back")
 
-        self.horizontalLayout.addWidget(self.bt_back)
+        self.ly_navigator.addWidget(self.bt_back)
 
         self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.horizontalLayout.addItem(self.horizontalSpacer)
+        self.ly_navigator.addItem(self.horizontalSpacer)
 
-        self.lb_title = Label(self.frame_6)
+        self.lb_title = Label(check_patient)
         self.lb_title.setObjectName(u"lb_title")
 
-        self.horizontalLayout.addWidget(self.lb_title)
+        self.ly_navigator.addWidget(self.lb_title)
 
         self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.horizontalLayout.addItem(self.horizontalSpacer_2)
+        self.ly_navigator.addItem(self.horizontalSpacer_2)
 
-        self.bt_add_lesion = NavigatorButton(self.frame_6)
+        self.bt_add_lesion = NavigatorButton(check_patient)
         self.bt_add_lesion.setObjectName(u"bt_add_lesion")
 
-        self.horizontalLayout.addWidget(self.bt_add_lesion)
+        self.ly_navigator.addWidget(self.bt_add_lesion)
 
-        self.horizontalLayout.setStretch(1, 4)
-        self.horizontalLayout.setStretch(3, 3)
 
-        self.verticalLayout_2.addWidget(self.frame_6)
+        self.verticalLayout_2.addLayout(self.ly_navigator)
 
-        self.c_center = QFrame(check_patient)
-        self.c_center.setObjectName(u"c_center")
-        self.c_center.setFrameShape(QFrame.StyledPanel)
-        self.c_center.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_2 = QHBoxLayout(self.c_center)
-        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.horizontalLayout_2.setContentsMargins(0, 0, 18, 0)
-        self.c_patient_information = QFrame(self.c_center)
+        self.ly_center = QHBoxLayout()
+        self.ly_center.setSpacing(20)
+        self.ly_center.setObjectName(u"ly_center")
+        self.ly_center.setContentsMargins(-1, 20, -1, -1)
+        self.c_patient_information = QFrame(check_patient)
         self.c_patient_information.setObjectName(u"c_patient_information")
         self.c_patient_information.setMinimumSize(QSize(280, 0))
         self.c_patient_information.setMaximumSize(QSize(280, 16777215))
         self.c_patient_information.setFrameShape(QFrame.StyledPanel)
         self.c_patient_information.setFrameShadow(QFrame.Raised)
         self.verticalLayout = QVBoxLayout(self.c_patient_information)
+        self.verticalLayout.setSpacing(20)
         self.verticalLayout.setObjectName(u"verticalLayout")
-        self.verticalLayout.setContentsMargins(-1, -1, -1, 18)
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.lb_patient_information = Label(self.c_patient_information)
         self.lb_patient_information.setObjectName(u"lb_patient_information")
         self.lb_patient_information.setMaximumSize(QSize(16777215, 20))
@@ -94,143 +85,140 @@ class Ui_check_patient(object):
         self.scrollArea = QScrollArea(self.c_patient_information)
         self.scrollArea.setObjectName(u"scrollArea")
         self.scrollArea.setWidgetResizable(True)
-        self.c_basic_information_scroll_area = QWidget()
-        self.c_basic_information_scroll_area.setObjectName(u"c_basic_information_scroll_area")
-        self.c_basic_information_scroll_area.setGeometry(QRect(0, 0, 258, 339))
-        self.verticalLayout_5 = QVBoxLayout(self.c_basic_information_scroll_area)
+        self.c_patient_information_content = QWidget()
+        self.c_patient_information_content.setObjectName(u"c_patient_information_content")
+        self.c_patient_information_content.setGeometry(QRect(0, 0, 276, 657))
+        self.verticalLayout_5 = QVBoxLayout(self.c_patient_information_content)
         self.verticalLayout_5.setObjectName(u"verticalLayout_5")
-        self.c_basic_information = QFrame(self.c_basic_information_scroll_area)
-        self.c_basic_information.setObjectName(u"c_basic_information")
-        self.c_basic_information.setFrameShape(QFrame.StyledPanel)
-        self.c_basic_information.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_7 = QVBoxLayout(self.c_basic_information)
-        self.verticalLayout_7.setObjectName(u"verticalLayout_7")
-        self.verticalLayout_7.setContentsMargins(0, 0, 0, 0)
-        self.lb_basic_information = Label(self.c_basic_information)
+        self.verticalLayout_5.setContentsMargins(30, 0, 0, -1)
+        self.ly_patient_information = QVBoxLayout()
+        self.ly_patient_information.setSpacing(20)
+        self.ly_patient_information.setObjectName(u"ly_patient_information")
+        self.ly_basic_information = QVBoxLayout()
+        self.ly_basic_information.setSpacing(12)
+        self.ly_basic_information.setObjectName(u"ly_basic_information")
+        self.lb_basic_information = Label(self.c_patient_information_content)
         self.lb_basic_information.setObjectName(u"lb_basic_information")
         self.lb_basic_information.setMaximumSize(QSize(16777215, 20))
 
-        self.verticalLayout_7.addWidget(self.lb_basic_information)
+        self.ly_basic_information.addWidget(self.lb_basic_information)
 
-        self.c_bi_content = QFrame(self.c_basic_information)
-        self.c_bi_content.setObjectName(u"c_bi_content")
-        self.c_bi_content.setFrameShape(QFrame.StyledPanel)
-        self.c_bi_content.setFrameShadow(QFrame.Raised)
-        self.formLayout_2 = QFormLayout(self.c_bi_content)
-        self.formLayout_2.setObjectName(u"formLayout_2")
-        self.formLayout_2.setVerticalSpacing(16)
-        self.lb_first_name = Label(self.c_bi_content)
+        self.ly_bi_content = QFormLayout()
+        self.ly_bi_content.setObjectName(u"ly_bi_content")
+        self.ly_bi_content.setVerticalSpacing(16)
+        self.ly_bi_content.setContentsMargins(9, 0, 0, 0)
+        self.lb_first_name = Label(self.c_patient_information_content)
         self.lb_first_name.setObjectName(u"lb_first_name")
 
-        self.formLayout_2.setWidget(0, QFormLayout.LabelRole, self.lb_first_name)
+        self.ly_bi_content.setWidget(0, QFormLayout.LabelRole, self.lb_first_name)
 
-        self.i_first_name = Label(self.c_bi_content)
+        self.i_first_name = Label(self.c_patient_information_content)
         self.i_first_name.setObjectName(u"i_first_name")
 
-        self.formLayout_2.setWidget(0, QFormLayout.FieldRole, self.i_first_name)
+        self.ly_bi_content.setWidget(0, QFormLayout.FieldRole, self.i_first_name)
 
-        self.lb_last_name = Label(self.c_bi_content)
+        self.lb_last_name = Label(self.c_patient_information_content)
         self.lb_last_name.setObjectName(u"lb_last_name")
 
-        self.formLayout_2.setWidget(1, QFormLayout.LabelRole, self.lb_last_name)
+        self.ly_bi_content.setWidget(1, QFormLayout.LabelRole, self.lb_last_name)
 
-        self.i_last_name = Label(self.c_bi_content)
+        self.i_last_name = Label(self.c_patient_information_content)
         self.i_last_name.setObjectName(u"i_last_name")
 
-        self.formLayout_2.setWidget(1, QFormLayout.FieldRole, self.i_last_name)
+        self.ly_bi_content.setWidget(1, QFormLayout.FieldRole, self.i_last_name)
 
-        self.lb_gender = Label(self.c_bi_content)
+        self.lb_gender = Label(self.c_patient_information_content)
         self.lb_gender.setObjectName(u"lb_gender")
 
-        self.formLayout_2.setWidget(2, QFormLayout.LabelRole, self.lb_gender)
+        self.ly_bi_content.setWidget(2, QFormLayout.LabelRole, self.lb_gender)
 
-        self.i_gender = Label(self.c_bi_content)
+        self.i_gender = Label(self.c_patient_information_content)
         self.i_gender.setObjectName(u"i_gender")
 
-        self.formLayout_2.setWidget(2, QFormLayout.FieldRole, self.i_gender)
+        self.ly_bi_content.setWidget(2, QFormLayout.FieldRole, self.i_gender)
 
-        self.leb_age = Label(self.c_bi_content)
+        self.leb_age = Label(self.c_patient_information_content)
         self.leb_age.setObjectName(u"leb_age")
 
-        self.formLayout_2.setWidget(3, QFormLayout.LabelRole, self.leb_age)
+        self.ly_bi_content.setWidget(3, QFormLayout.LabelRole, self.leb_age)
 
-        self.i_age = Label(self.c_bi_content)
+        self.i_age = Label(self.c_patient_information_content)
         self.i_age.setObjectName(u"i_age")
 
-        self.formLayout_2.setWidget(3, QFormLayout.FieldRole, self.i_age)
+        self.ly_bi_content.setWidget(3, QFormLayout.FieldRole, self.i_age)
 
 
-        self.verticalLayout_7.addWidget(self.c_bi_content)
+        self.ly_basic_information.addLayout(self.ly_bi_content)
 
 
-        self.verticalLayout_5.addWidget(self.c_basic_information)
+        self.ly_patient_information.addLayout(self.ly_basic_information)
 
-        self.c_medical_information = QFrame(self.c_basic_information_scroll_area)
-        self.c_medical_information.setObjectName(u"c_medical_information")
-        self.c_medical_information.setFrameShape(QFrame.StyledPanel)
-        self.c_medical_information.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_8 = QVBoxLayout(self.c_medical_information)
-        self.verticalLayout_8.setObjectName(u"verticalLayout_8")
-        self.verticalLayout_8.setContentsMargins(0, 0, 0, 0)
-        self.lb_medical_information = Label(self.c_medical_information)
+        self.ly_medical_information = QVBoxLayout()
+        self.ly_medical_information.setSpacing(12)
+        self.ly_medical_information.setObjectName(u"ly_medical_information")
+        self.lb_medical_information = Label(self.c_patient_information_content)
         self.lb_medical_information.setObjectName(u"lb_medical_information")
         self.lb_medical_information.setMaximumSize(QSize(16777215, 20))
 
-        self.verticalLayout_8.addWidget(self.lb_medical_information)
+        self.ly_medical_information.addWidget(self.lb_medical_information)
 
-        self.c_mi_content = QFrame(self.c_medical_information)
-        self.c_mi_content.setObjectName(u"c_mi_content")
-        self.c_mi_content.setFrameShape(QFrame.StyledPanel)
-        self.c_mi_content.setFrameShadow(QFrame.Raised)
+        self.ly_mi_content = QFormLayout()
+        self.ly_mi_content.setObjectName(u"ly_mi_content")
+        self.ly_mi_content.setVerticalSpacing(16)
+        self.ly_mi_content.setContentsMargins(9, 9, 9, 9)
 
-        self.verticalLayout_8.addWidget(self.c_mi_content)
+        self.ly_medical_information.addLayout(self.ly_mi_content)
 
 
-        self.verticalLayout_5.addWidget(self.c_medical_information)
+        self.ly_patient_information.addLayout(self.ly_medical_information)
 
-        self.scrollArea.setWidget(self.c_basic_information_scroll_area)
 
-        self.verticalLayout.addWidget(self.scrollArea)
+        self.verticalLayout_5.addLayout(self.ly_patient_information)
 
         self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
-        self.verticalLayout.addItem(self.verticalSpacer)
+        self.verticalLayout_5.addItem(self.verticalSpacer)
 
+        self.scrollArea.setWidget(self.c_patient_information_content)
+
+        self.verticalLayout.addWidget(self.scrollArea)
+
+        self.verticalLayout_3 = QVBoxLayout()
+        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
+        self.verticalLayout_3.setContentsMargins(-1, -1, -1, 20)
         self.bt_edit_patient_info = Button(self.c_patient_information)
         self.bt_edit_patient_info.setObjectName(u"bt_edit_patient_info")
 
-        self.verticalLayout.addWidget(self.bt_edit_patient_info, 0, Qt.AlignHCenter)
+        self.verticalLayout_3.addWidget(self.bt_edit_patient_info, 0, Qt.AlignHCenter)
 
 
-        self.horizontalLayout_2.addWidget(self.c_patient_information)
+        self.verticalLayout.addLayout(self.verticalLayout_3)
 
-        self.frame = QFrame(self.c_center)
-        self.frame.setObjectName(u"frame")
-        self.frame.setFrameShape(QFrame.StyledPanel)
-        self.frame.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_3 = QVBoxLayout(self.frame)
-        self.verticalLayout_3.setSpacing(20)
-        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
-        self.label = Label(self.frame)
-        self.label.setObjectName(u"label")
-        self.label.setMaximumSize(QSize(16777215, 20))
 
-        self.verticalLayout_3.addWidget(self.label, 0, Qt.AlignHCenter)
+        self.ly_center.addWidget(self.c_patient_information)
 
-        self.scrollArea_2 = QScrollArea(self.frame)
+        self.ly_right = QVBoxLayout()
+        self.ly_right.setObjectName(u"ly_right")
+        self.ly_right.setContentsMargins(-1, -1, 20, -1)
+        self.lb_title_2 = Label(check_patient)
+        self.lb_title_2.setObjectName(u"lb_title_2")
+        self.lb_title_2.setMaximumSize(QSize(16777215, 20))
+
+        self.ly_right.addWidget(self.lb_title_2, 0, Qt.AlignHCenter)
+
+        self.scrollArea_2 = QScrollArea(check_patient)
         self.scrollArea_2.setObjectName(u"scrollArea_2")
         self.scrollArea_2.setWidgetResizable(True)
         self.c_skin_parts_scroll_area = QWidget()
         self.c_skin_parts_scroll_area.setObjectName(u"c_skin_parts_scroll_area")
-        self.c_skin_parts_scroll_area.setGeometry(QRect(0, 0, 872, 708))
+        self.c_skin_parts_scroll_area.setGeometry(QRect(0, 0, 875, 733))
         self.verticalLayout_6 = QVBoxLayout(self.c_skin_parts_scroll_area)
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
-        self.c_skin_lesions = QFrame(self.c_skin_parts_scroll_area)
-        self.c_skin_lesions.setObjectName(u"c_skin_lesions")
-        self.c_skin_lesions.setFrameShape(QFrame.StyledPanel)
-        self.c_skin_lesions.setFrameShadow(QFrame.Raised)
+        self.ly_skin_lesions = QVBoxLayout()
+        self.ly_skin_lesions.setSpacing(40)
+        self.ly_skin_lesions.setObjectName(u"ly_skin_lesions")
 
-        self.verticalLayout_6.addWidget(self.c_skin_lesions)
+        self.verticalLayout_6.addLayout(self.ly_skin_lesions)
 
         self.verticalSpacer_4 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
@@ -238,13 +226,13 @@ class Ui_check_patient(object):
 
         self.scrollArea_2.setWidget(self.c_skin_parts_scroll_area)
 
-        self.verticalLayout_3.addWidget(self.scrollArea_2)
+        self.ly_right.addWidget(self.scrollArea_2)
 
 
-        self.horizontalLayout_2.addWidget(self.frame)
+        self.ly_center.addLayout(self.ly_right)
 
 
-        self.verticalLayout_2.addWidget(self.c_center)
+        self.verticalLayout_2.addLayout(self.ly_center)
 
 
         self.retranslateUi(check_patient)
@@ -269,6 +257,6 @@ class Ui_check_patient(object):
         self.i_age.setText(QCoreApplication.translate("check_patient", u"...", None))
         self.lb_medical_information.setText(QCoreApplication.translate("check_patient", u"Madical information", None))
         self.bt_edit_patient_info.setText(QCoreApplication.translate("check_patient", u"Edit patient information", None))
-        self.label.setText(QCoreApplication.translate("check_patient", u"Parts of the sking under study", None))
+        self.lb_title_2.setText(QCoreApplication.translate("check_patient", u"Parts of the sking under study", None))
     # retranslateUi
 

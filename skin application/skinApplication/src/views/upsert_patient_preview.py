@@ -65,21 +65,19 @@ class UpsertPatientPreiewView(ViewObject):
     def show_medical_information(self):
         for medical_info in self.p.mi:
             if self.p.mi[medical_info] != "":
-    #            mi_frame = QFrame(self.ui.scc_patient_information)
-                mi_frame_layout = QVBoxLayout()
-                mi_frame_layout.setContentsMargins(0, 0, 0, 0)
-                mi_frame_layout.setSpacing(2)
+                ly_single_mi = QVBoxLayout()
+                ly_single_mi.setSpacing(4)
 
-                mi_title = Label(self.ui.c_spacing_layout)
-                mi_title.setText(util.file_name_to_title(medical_info) + " :")
-                mi_frame_layout.addWidget(mi_title)
+                lb_mi_title = Label(self.ui.c_patient_information_preview)
+                lb_mi_title.setText(util.file_name_to_title(medical_info) + " :")
+                ly_single_mi.addWidget(lb_mi_title)
 
-                mi_content = Label(self.ui.c_spacing_layout)
-                mi_content.setText(self.p.mi[medical_info])
-                mi_content.set_decoration("mi_content")
-                mi_frame_layout.addWidget(mi_content)
+                i_mi_content = Label(self.ui.c_patient_information_preview)
+                i_mi_content.setText(self.p.mi[medical_info])
+                i_mi_content.set_decoration("mi_content")
+                ly_single_mi.addWidget(i_mi_content)
 
-                self.ui.mi_content_layout.addLayout(mi_frame_layout)
+                self.ui.ly_mi_content.addLayout(ly_single_mi)
 
 
     s_change_view = Signal(str,str,dict)

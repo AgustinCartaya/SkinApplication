@@ -33,7 +33,7 @@ class Ui_upsert_patient_preview(object):
         self.verticalLayout = QVBoxLayout(upsert_patient_preview)
         self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName(u"verticalLayout")
-        self.verticalLayout.setContentsMargins(0, 0, 0, 10)
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.c_navigator = QFrame(upsert_patient_preview)
         self.c_navigator.setObjectName(u"c_navigator")
         self.c_navigator.setFrameShape(QFrame.StyledPanel)
@@ -85,23 +85,19 @@ class Ui_upsert_patient_preview(object):
         self.scrollArea = QScrollArea(self.c_center)
         self.scrollArea.setObjectName(u"scrollArea")
         self.scrollArea.setWidgetResizable(True)
-        self.scc_patient_information = QWidget()
-        self.scc_patient_information.setObjectName(u"scc_patient_information")
-        self.scc_patient_information.setGeometry(QRect(0, 0, 496, 359))
-        self.verticalLayout_3 = QVBoxLayout(self.scc_patient_information)
+        self.c_patient_information_preview = QWidget()
+        self.c_patient_information_preview.setObjectName(u"c_patient_information_preview")
+        self.c_patient_information_preview.setGeometry(QRect(0, 0, 496, 349))
+        self.verticalLayout_3 = QVBoxLayout(self.c_patient_information_preview)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
-        self.c_spacing_layout = QFrame(self.scc_patient_information)
-        self.c_spacing_layout.setObjectName(u"c_spacing_layout")
-        self.c_spacing_layout.setFrameShape(QFrame.StyledPanel)
-        self.c_spacing_layout.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_4 = QVBoxLayout(self.c_spacing_layout)
-        self.verticalLayout_4.setSpacing(30)
-        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
-        self.verticalLayout_4.setContentsMargins(0, 0, 0, 0)
+        self.ly_patient_information_preview = QVBoxLayout()
+        self.ly_patient_information_preview.setSpacing(30)
+        self.ly_patient_information_preview.setObjectName(u"ly_patient_information_preview")
+        self.ly_patient_information_preview.setContentsMargins(-1, -1, 9, -1)
         self.ly_basic_information = QVBoxLayout()
         self.ly_basic_information.setObjectName(u"ly_basic_information")
         self.ly_basic_information.setContentsMargins(-1, 0, -1, -1)
-        self.lb_basic_information_title = Label(self.c_spacing_layout)
+        self.lb_basic_information_title = Label(self.c_patient_information_preview)
         self.lb_basic_information_title.setObjectName(u"lb_basic_information_title")
 
         self.ly_basic_information.addWidget(self.lb_basic_information_title)
@@ -115,15 +111,15 @@ class Ui_upsert_patient_preview(object):
         self.ly_bi_left.setObjectName(u"ly_bi_left")
         self.ly_bi_left.setContentsMargins(-1, 0, -1, -1)
         self.ly_first_name = QVBoxLayout()
-        self.ly_first_name.setSpacing(2)
+        self.ly_first_name.setSpacing(4)
         self.ly_first_name.setObjectName(u"ly_first_name")
         self.ly_first_name.setContentsMargins(-1, 0, -1, -1)
-        self.lb_first_name = Label(self.c_spacing_layout)
+        self.lb_first_name = Label(self.c_patient_information_preview)
         self.lb_first_name.setObjectName(u"lb_first_name")
 
         self.ly_first_name.addWidget(self.lb_first_name)
 
-        self.i_first_name = Label(self.c_spacing_layout)
+        self.i_first_name = Label(self.c_patient_information_preview)
         self.i_first_name.setObjectName(u"i_first_name")
 
         self.ly_first_name.addWidget(self.i_first_name)
@@ -132,15 +128,15 @@ class Ui_upsert_patient_preview(object):
         self.ly_bi_left.addLayout(self.ly_first_name)
 
         self.ly_birth_date = QVBoxLayout()
-        self.ly_birth_date.setSpacing(2)
+        self.ly_birth_date.setSpacing(4)
         self.ly_birth_date.setObjectName(u"ly_birth_date")
         self.ly_birth_date.setContentsMargins(-1, 0, -1, -1)
-        self.lb_birth_date = Label(self.c_spacing_layout)
+        self.lb_birth_date = Label(self.c_patient_information_preview)
         self.lb_birth_date.setObjectName(u"lb_birth_date")
 
         self.ly_birth_date.addWidget(self.lb_birth_date)
 
-        self.i_birth_date = Label(self.c_spacing_layout)
+        self.i_birth_date = Label(self.c_patient_information_preview)
         self.i_birth_date.setObjectName(u"i_birth_date")
 
         self.ly_birth_date.addWidget(self.i_birth_date)
@@ -156,14 +152,14 @@ class Ui_upsert_patient_preview(object):
         self.ly_bi_right.setObjectName(u"ly_bi_right")
         self.ly_bi_right.setContentsMargins(-1, 0, -1, -1)
         self.ly_last_name = QVBoxLayout()
-        self.ly_last_name.setSpacing(2)
+        self.ly_last_name.setSpacing(4)
         self.ly_last_name.setObjectName(u"ly_last_name")
-        self.lb_last_name = Label(self.c_spacing_layout)
+        self.lb_last_name = Label(self.c_patient_information_preview)
         self.lb_last_name.setObjectName(u"lb_last_name")
 
         self.ly_last_name.addWidget(self.lb_last_name)
 
-        self.i_last_name = Label(self.c_spacing_layout)
+        self.i_last_name = Label(self.c_patient_information_preview)
         self.i_last_name.setObjectName(u"i_last_name")
 
         self.ly_last_name.addWidget(self.i_last_name)
@@ -172,15 +168,15 @@ class Ui_upsert_patient_preview(object):
         self.ly_bi_right.addLayout(self.ly_last_name)
 
         self.ly_gender = QVBoxLayout()
-        self.ly_gender.setSpacing(2)
+        self.ly_gender.setSpacing(4)
         self.ly_gender.setObjectName(u"ly_gender")
         self.ly_gender.setContentsMargins(-1, 0, -1, -1)
-        self.lb_gender = Label(self.c_spacing_layout)
+        self.lb_gender = Label(self.c_patient_information_preview)
         self.lb_gender.setObjectName(u"lb_gender")
 
         self.ly_gender.addWidget(self.lb_gender)
 
-        self.i_gender = Label(self.c_spacing_layout)
+        self.i_gender = Label(self.c_patient_information_preview)
         self.i_gender.setObjectName(u"i_gender")
 
         self.ly_gender.addWidget(self.i_gender)
@@ -195,35 +191,35 @@ class Ui_upsert_patient_preview(object):
         self.ly_basic_information.addLayout(self.ly_bi_content)
 
 
-        self.verticalLayout_4.addLayout(self.ly_basic_information)
+        self.ly_patient_information_preview.addLayout(self.ly_basic_information)
 
         self.ly_medical_information = QVBoxLayout()
         self.ly_medical_information.setSpacing(16)
         self.ly_medical_information.setObjectName(u"ly_medical_information")
         self.ly_medical_information.setContentsMargins(-1, 0, -1, -1)
-        self.lb_medical_information_title = Label(self.c_spacing_layout)
+        self.lb_medical_information_title = Label(self.c_patient_information_preview)
         self.lb_medical_information_title.setObjectName(u"lb_medical_information_title")
 
         self.ly_medical_information.addWidget(self.lb_medical_information_title)
 
-        self.mi_content_layout = QVBoxLayout()
-        self.mi_content_layout.setSpacing(16)
-        self.mi_content_layout.setObjectName(u"mi_content_layout")
-        self.mi_content_layout.setContentsMargins(9, -1, -1, -1)
+        self.ly_mi_content = QVBoxLayout()
+        self.ly_mi_content.setSpacing(16)
+        self.ly_mi_content.setObjectName(u"ly_mi_content")
+        self.ly_mi_content.setContentsMargins(9, -1, -1, -1)
 
-        self.ly_medical_information.addLayout(self.mi_content_layout)
-
-
-        self.verticalLayout_4.addLayout(self.ly_medical_information)
+        self.ly_medical_information.addLayout(self.ly_mi_content)
 
 
-        self.verticalLayout_3.addWidget(self.c_spacing_layout)
+        self.ly_patient_information_preview.addLayout(self.ly_medical_information)
+
+
+        self.verticalLayout_3.addLayout(self.ly_patient_information_preview)
 
         self.verticalSpacer_5 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.verticalLayout_3.addItem(self.verticalSpacer_5)
 
-        self.scrollArea.setWidget(self.scc_patient_information)
+        self.scrollArea.setWidget(self.c_patient_information_preview)
 
         self.verticalLayout_2.addWidget(self.scrollArea)
 
@@ -231,25 +227,28 @@ class Ui_upsert_patient_preview(object):
 
         self.verticalLayout_2.addItem(self.verticalSpacer)
 
-        self.c_buttons = QFrame(self.c_center)
-        self.c_buttons.setObjectName(u"c_buttons")
-        self.c_buttons.setFrameShape(QFrame.StyledPanel)
-        self.c_buttons.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_3 = QHBoxLayout(self.c_buttons)
-        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
-        self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
-        self.bt_back = Button(self.c_buttons)
+        self.ly_buttons = QHBoxLayout()
+        self.ly_buttons.setObjectName(u"ly_buttons")
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.ly_buttons.addItem(self.horizontalSpacer)
+
+        self.bt_back = Button(self.c_center)
         self.bt_back.setObjectName(u"bt_back")
 
-        self.horizontalLayout_3.addWidget(self.bt_back)
+        self.ly_buttons.addWidget(self.bt_back)
 
-        self.bt_upsert = Button(self.c_buttons)
+        self.bt_upsert = Button(self.c_center)
         self.bt_upsert.setObjectName(u"bt_upsert")
 
-        self.horizontalLayout_3.addWidget(self.bt_upsert)
+        self.ly_buttons.addWidget(self.bt_upsert)
+
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.ly_buttons.addItem(self.horizontalSpacer_2)
 
 
-        self.verticalLayout_2.addWidget(self.c_buttons, 0, Qt.AlignHCenter)
+        self.verticalLayout_2.addLayout(self.ly_buttons)
 
 
         self.verticalLayout.addWidget(self.c_center, 0, Qt.AlignHCenter)
@@ -258,35 +257,31 @@ class Ui_upsert_patient_preview(object):
 
         self.verticalLayout.addItem(self.verticalSpacer_4)
 
-        self.horizontalLayout_5 = QHBoxLayout()
-        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
-        self.horizontalLayout_5.setContentsMargins(-1, 0, -1, -1)
-        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.horizontalLayout_5.addItem(self.horizontalSpacer_2)
-
-        self.i_upsert_patient_view = QRadioButton(upsert_patient_preview)
+        self.c_rb_upsert_patient_views = QFrame(upsert_patient_preview)
+        self.c_rb_upsert_patient_views.setObjectName(u"c_rb_upsert_patient_views")
+        self.c_rb_upsert_patient_views.setFrameShape(QFrame.StyledPanel)
+        self.c_rb_upsert_patient_views.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_2 = QHBoxLayout(self.c_rb_upsert_patient_views)
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.horizontalLayout_2.setContentsMargins(-1, -1, -1, 16)
+        self.i_upsert_patient_view = QRadioButton(self.c_rb_upsert_patient_views)
         self.i_upsert_patient_view.setObjectName(u"i_upsert_patient_view")
 
-        self.horizontalLayout_5.addWidget(self.i_upsert_patient_view)
+        self.horizontalLayout_2.addWidget(self.i_upsert_patient_view)
 
-        self.i_upsert_patient_mi_view = QRadioButton(upsert_patient_preview)
+        self.i_upsert_patient_mi_view = QRadioButton(self.c_rb_upsert_patient_views)
         self.i_upsert_patient_mi_view.setObjectName(u"i_upsert_patient_mi_view")
 
-        self.horizontalLayout_5.addWidget(self.i_upsert_patient_mi_view)
+        self.horizontalLayout_2.addWidget(self.i_upsert_patient_mi_view)
 
-        self.i_upsert_patient_preview_view = QRadioButton(upsert_patient_preview)
+        self.i_upsert_patient_preview_view = QRadioButton(self.c_rb_upsert_patient_views)
         self.i_upsert_patient_preview_view.setObjectName(u"i_upsert_patient_preview_view")
         self.i_upsert_patient_preview_view.setChecked(True)
 
-        self.horizontalLayout_5.addWidget(self.i_upsert_patient_preview_view)
-
-        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.horizontalLayout_5.addItem(self.horizontalSpacer)
+        self.horizontalLayout_2.addWidget(self.i_upsert_patient_preview_view)
 
 
-        self.verticalLayout.addLayout(self.horizontalLayout_5)
+        self.verticalLayout.addWidget(self.c_rb_upsert_patient_views, 0, Qt.AlignHCenter)
 
 
         self.retranslateUi(upsert_patient_preview)

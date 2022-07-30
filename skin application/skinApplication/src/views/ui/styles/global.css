@@ -10,7 +10,7 @@ QFrame{
 background-color: transparent;
 }
 
-#frame_filters,
+#c_filters,
 #c_patient_information{
     border-right: 1px solid #c5c5c5;
 /*    background-color: #ddd;*/
@@ -96,12 +96,12 @@ Label[title="2"]
 }*/
 Label[decoration="mi_content"]
 {
-    background-color: #cf9988;
-    color: white;
+/*    background-color: #cf9988;*/
+/*    color: white;*/
     font-weight:800;
     margin-left: 10px;
-    padding: 3px 5px;
-    border-radius: 3px;
+/*    padding: 3px 5px;*/
+/*    border-radius: 3px;*/
 }
 
 

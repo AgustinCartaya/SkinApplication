@@ -18,7 +18,7 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">
-    <number>16</number>
+    <number>0</number>
    </property>
    <property name="leftMargin">
     <number>0</number>
@@ -30,38 +30,34 @@
     <number>0</number>
    </property>
    <property name="bottomMargin">
-    <number>10</number>
+    <number>0</number>
    </property>
-   <item alignment="Qt::AlignLeft">
-    <widget class="QFrame" name="c_navigator">
-     <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
+   <item>
+    <layout class="QHBoxLayout" name="ly_navigator">
+     <property name="topMargin">
+      <number>0</number>
      </property>
-     <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
-     </property>
-     <layout class="QVBoxLayout" name="verticalLayout_9">
-      <property name="leftMargin">
-       <number>0</number>
-      </property>
-      <property name="topMargin">
-       <number>0</number>
-      </property>
-      <property name="rightMargin">
-       <number>0</number>
-      </property>
-      <property name="bottomMargin">
-       <number>0</number>
-      </property>
-      <item>
-       <widget class="NavigatorButton" name="bt_cancel">
-        <property name="text">
-         <string>Cancel</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
+     <item>
+      <widget class="NavigatorButton" name="bt_cancel">
+       <property name="text">
+        <string>Cancel</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
    </item>
    <item>
     <spacer name="verticalSpacer_3">
@@ -78,6 +74,12 @@
    </item>
    <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
     <widget class="QFrame" name="c_center">
+     <property name="minimumSize">
+      <size>
+       <width>500</width>
+       <height>0</height>
+      </size>
+     </property>
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
      </property>
@@ -118,294 +120,143 @@
        </spacer>
       </item>
       <item>
-       <widget class="QFrame" name="c_inputs">
-        <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
+       <layout class="QHBoxLayout" name="ly_inputs">
+        <property name="spacing">
+         <number>16</number>
         </property>
-        <property name="frameShadow">
-         <enum>QFrame::Raised</enum>
+        <property name="leftMargin">
+         <number>0</number>
         </property>
-        <layout class="QHBoxLayout" name="horizontalLayout">
-         <property name="spacing">
-          <number>16</number>
-         </property>
-         <property name="leftMargin">
-          <number>0</number>
-         </property>
-         <property name="topMargin">
-          <number>0</number>
-         </property>
-         <property name="rightMargin">
-          <number>0</number>
-         </property>
-         <property name="bottomMargin">
-          <number>0</number>
-         </property>
-         <item>
-          <widget class="QFrame" name="c_left_side">
-           <property name="minimumSize">
-            <size>
-             <width>250</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>250</width>
-             <height>300</height>
-            </size>
-           </property>
-           <property name="frameShape">
-            <enum>QFrame::StyledPanel</enum>
-           </property>
-           <property name="frameShadow">
-            <enum>QFrame::Raised</enum>
-           </property>
-           <layout class="QVBoxLayout" name="verticalLayout_3">
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <layout class="QVBoxLayout" name="ly_left_side">
+          <property name="spacing">
+           <number>16</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <layout class="QVBoxLayout" name="ly_first_name">
             <property name="spacing">
-             <number>16</number>
-            </property>
-            <property name="leftMargin">
-             <number>0</number>
+             <number>4</number>
             </property>
             <property name="topMargin">
              <number>0</number>
             </property>
-            <property name="rightMargin">
-             <number>0</number>
-            </property>
-            <property name="bottomMargin">
-             <number>0</number>
-            </property>
             <item>
-             <widget class="QFrame" name="c_first_name">
-              <property name="frameShape">
-               <enum>QFrame::StyledPanel</enum>
+             <widget class="QLabel" name="lb_first_name">
+              <property name="text">
+               <string>First name</string>
               </property>
-              <property name="frameShadow">
-               <enum>QFrame::Raised</enum>
-              </property>
-              <layout class="QVBoxLayout" name="verticalLayout_5">
-               <property name="leftMargin">
-                <number>0</number>
-               </property>
-               <property name="topMargin">
-                <number>0</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <property name="bottomMargin">
-                <number>0</number>
-               </property>
-               <item>
-                <widget class="QLabel" name="lb_first_name">
-                 <property name="text">
-                  <string>First name</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="LineEdit" name="i_first_name"/>
-               </item>
-              </layout>
              </widget>
             </item>
             <item>
-             <widget class="QFrame" name="c_birth_date">
-              <property name="frameShape">
-               <enum>QFrame::StyledPanel</enum>
-              </property>
-              <property name="frameShadow">
-               <enum>QFrame::Raised</enum>
-              </property>
-              <layout class="QVBoxLayout" name="verticalLayout_4">
-               <property name="leftMargin">
-                <number>0</number>
-               </property>
-               <property name="topMargin">
-                <number>0</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <property name="bottomMargin">
-                <number>0</number>
-               </property>
-               <item>
-                <widget class="QLabel" name="lb_birth_date">
-                 <property name="text">
-                  <string>Date of birth</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QDateEdit" name="i_birth_date">
-                 <property name="displayFormat">
-                  <string>d/M/yyyy</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
+             <widget class="LineEdit" name="i_first_name"/>
             </item>
            </layout>
-          </widget>
-         </item>
-         <item>
-          <widget class="QFrame" name="right_side_container">
-           <property name="minimumSize">
-            <size>
-             <width>250</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>250</width>
-             <height>300</height>
-            </size>
-           </property>
-           <property name="frameShape">
-            <enum>QFrame::StyledPanel</enum>
-           </property>
-           <property name="frameShadow">
-            <enum>QFrame::Raised</enum>
-           </property>
-           <layout class="QVBoxLayout" name="verticalLayout_6">
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="ly_birth_date">
             <property name="spacing">
-             <number>16</number>
-            </property>
-            <property name="leftMargin">
-             <number>0</number>
+             <number>4</number>
             </property>
             <property name="topMargin">
              <number>0</number>
             </property>
-            <property name="rightMargin">
-             <number>0</number>
-            </property>
-            <property name="bottomMargin">
-             <number>0</number>
-            </property>
             <item>
-             <widget class="QFrame" name="c_last_name">
-              <property name="frameShape">
-               <enum>QFrame::StyledPanel</enum>
+             <widget class="QLabel" name="lb_birth_date">
+              <property name="text">
+               <string>Date of birth</string>
               </property>
-              <property name="frameShadow">
-               <enum>QFrame::Raised</enum>
-              </property>
-              <layout class="QVBoxLayout" name="verticalLayout_7">
-               <property name="leftMargin">
-                <number>0</number>
-               </property>
-               <property name="topMargin">
-                <number>0</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <property name="bottomMargin">
-                <number>0</number>
-               </property>
-               <item>
-                <widget class="QLabel" name="lb_last_name">
-                 <property name="text">
-                  <string>Last name</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="LineEdit" name="i_last_name"/>
-               </item>
-              </layout>
              </widget>
             </item>
             <item>
-             <widget class="QFrame" name="c_gender">
-              <property name="frameShape">
-               <enum>QFrame::StyledPanel</enum>
+             <widget class="QDateEdit" name="i_birth_date">
+              <property name="displayFormat">
+               <string>d/M/yyyy</string>
               </property>
-              <property name="frameShadow">
-               <enum>QFrame::Raised</enum>
-              </property>
-              <layout class="QVBoxLayout" name="verticalLayout_8">
-               <property name="leftMargin">
-                <number>0</number>
-               </property>
-               <property name="topMargin">
-                <number>0</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <property name="bottomMargin">
-                <number>0</number>
-               </property>
-               <item>
-                <widget class="QLabel" name="lb_gender">
-                 <property name="text">
-                  <string>Gender</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QFrame" name="c_gender_rb">
-                 <property name="frameShape">
-                  <enum>QFrame::StyledPanel</enum>
-                 </property>
-                 <property name="frameShadow">
-                  <enum>QFrame::Raised</enum>
-                 </property>
-                 <layout class="QHBoxLayout" name="horizontalLayout_2">
-                  <property name="spacing">
-                   <number>20</number>
-                  </property>
-                  <property name="topMargin">
-                   <number>0</number>
-                  </property>
-                  <property name="bottomMargin">
-                   <number>0</number>
-                  </property>
-                  <item>
-                   <widget class="QRadioButton" name="i_gender_f">
-                    <property name="text">
-                     <string>Female</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QRadioButton" name="i_gender_m">
-                    <property name="text">
-                     <string>Male</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <spacer name="horizontalSpacer">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                 </layout>
-                </widget>
-               </item>
-              </layout>
              </widget>
             </item>
            </layout>
-          </widget>
-         </item>
-        </layout>
-       </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="ly_right_side">
+          <property name="spacing">
+           <number>16</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <layout class="QVBoxLayout" name="c_last_name">
+            <property name="spacing">
+             <number>4</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="lb_last_name">
+              <property name="text">
+               <string>Last name</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="LineEdit" name="i_last_name"/>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="ly_gender">
+            <property name="spacing">
+             <number>4</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="lb_gender">
+              <property name="text">
+               <string>Gender</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="ly_gender_rb">
+              <item>
+               <widget class="QRadioButton" name="i_gender_m">
+                <property name="text">
+                 <string>Male</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="i_gender_f">
+                <property name="text">
+                 <string>Female</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="horizontalSpacer">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+       </layout>
       </item>
       <item>
        <spacer name="verticalSpacer">
@@ -421,34 +272,10 @@
        </spacer>
       </item>
       <item alignment="Qt::AlignHCenter">
-       <widget class="QFrame" name="c_buttons">
-        <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
+       <widget class="Button" name="bt_next">
+        <property name="text">
+         <string>Next</string>
         </property>
-        <property name="frameShadow">
-         <enum>QFrame::Raised</enum>
-        </property>
-        <layout class="QHBoxLayout" name="horizontalLayout_3">
-         <property name="leftMargin">
-          <number>0</number>
-         </property>
-         <property name="topMargin">
-          <number>0</number>
-         </property>
-         <property name="rightMargin">
-          <number>0</number>
-         </property>
-         <property name="bottomMargin">
-          <number>0</number>
-         </property>
-         <item>
-          <widget class="Button" name="bt_next">
-           <property name="text">
-            <string>Next</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
        </widget>
       </item>
      </layout>
@@ -467,15 +294,18 @@
      </property>
     </spacer>
    </item>
-   <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
-    <widget class="QFrame" name="c_rb_views">
+   <item alignment="Qt::AlignHCenter">
+    <widget class="QFrame" name="c_rb_upsert_patient_views">
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
      </property>
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <layout class="QHBoxLayout" name="horizontalLayout_4">
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <property name="bottomMargin">
+       <number>16</number>
+      </property>
       <item>
        <widget class="QRadioButton" name="i_upsert_patient_view">
         <property name="text">

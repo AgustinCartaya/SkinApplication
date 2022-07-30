@@ -57,6 +57,7 @@ class UpsertPatientView(ViewObject):
             self.__change_to_upsert_patient_view(3)
         self.ui.i_upsert_patient_view.setChecked(True)
 
+
     def catch_basic_info(self):
         # if patient exists setting id = old id, else id = ""
         # if patient exists setting mi = old mi, else mi = {}

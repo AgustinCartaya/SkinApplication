@@ -138,10 +138,10 @@ class Pagination(QFrame):
         self.go_to_page(int(self.i_actual_page.text()))
 
     def go_to_page(self, page):
-        if page > self.nb_max_pages:
-            page = self.nb_max_pages
-        elif page <= 0:
+        if page <= 0:
             page = 1
+        elif page > self.nb_max_pages:
+            page = self.nb_max_pages
         self.pointer = page - 1
         self.__paint_cards()
 

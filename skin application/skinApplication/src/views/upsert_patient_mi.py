@@ -34,13 +34,9 @@ class UpsertPatientMiView(ViewObject):
         # labels
         self.ui.lb_title.set_title(1)
 
-        # medical information frame
-        self.c_medical_information_layout = QVBoxLayout(self.ui.c_medical_information)
-        self.c_medical_information_layout.setSpacing(16)
-        self.c_medical_information_layout.setContentsMargins(0, 0, 0, 0)
 
         # buttons
-        self.ui.c_new_mi.hide()
+        self.ui.c_new_mi_content.hide()
         self.ui.bt_cancel_new_mi.set_type(Button.BT_CANCEL)
         self.ui.i_new_mi_name.setValidator(self.create_text_validator(data_cleaner.regex_letter_number_space))
 
@@ -53,12 +49,13 @@ class UpsertPatientMiView(ViewObject):
 
             mi_title = util.file_name_to_title(mi_id)
             mi_values = util.read_file_list(file_name, path=cfg.FILES_MEDICAL_INFORMATION_PATH)
-            mi_values.insert(0, "")
 
-            mi_input = MedicalInformationInput(mi_title, mi_values, self, mi_id)
-            self.c_medical_information_layout.addWidget(mi_input)
-            self.mi_inputs[mi_id] = mi_input
+            self.show_single_medica_information(mi_id, mi_title, mi_values)
 
+    def show_single_medica_information(self, mi_id, mi_title, mi_values):
+        mi_input = MedicalInformationInput(mi_id, mi_title, mi_values, self, True)
+        self.ui.ly_medical_information.addWidget(mi_input)
+        self.mi_inputs[mi_id] = mi_input
 
     s_change_view = Signal(str,str,dict)
     def connect_ui_signals(self):
@@ -108,12 +105,12 @@ class UpsertPatientMiView(ViewObject):
 
     @Slot()
     def show_add_new_mi_c(self):
-        self.ui.c_new_mi.show()
+        self.ui.c_new_mi_content.show()
 
     @Slot()
     def add_new_mi(self):
         mi_title = self.ui.i_new_mi_name.text()
-        mi_values = util.str_to_list(self.ui.i_new_mi_value.text(),";")
+        mi_values = util.str_to_list(self.ui.i_new_mi_value.text(),",")
 
         mi_file_name = util.title_to_file_name(mi_title)
         mi_file_content = '\n'.join(mi_values)
@@ -121,7 +118,7 @@ class UpsertPatientMiView(ViewObject):
         with open(cfg.FILES_MEDICAL_INFORMATION_PATH + cfg._S + mi_file_name + ".options", 'w') as f:
             f.write(mi_file_content)
 
-        self.show_single_medica_information(mi_title, mi_values)
+        self.show_single_medica_information(mi_file_name, mi_title, mi_values)
         self.cancel_new_mi()
 
     def __change_to_upsert_patient_view(self, view):
@@ -136,18 +133,22 @@ class UpsertPatientMiView(ViewObject):
     def cancel_new_mi(self):
         self.ui.i_new_mi_name.setText("")
         self.ui.i_new_mi_value.setText("")
-        self.ui.c_new_mi.hide()
+        self.ui.c_new_mi_content.hide()
 
     @Slot()
     def scroll_down(self, min, maxi):
         self.ui.scrollArea.verticalScrollBar().setValue(maxi)
 
-    @Slot(str, str)
-    def add_new_mi_item(self, mi_input_id, new_item):
-        new_item = new_item.strip()
-        if len(new_item) > 0:
-            util.apped_to_file(mi_input_id+".options", "\n" + new_item, cfg.FILES_MEDICAL_INFORMATION_PATH)
-            self.mi_inputs[mi_input_id].append_item(new_item)
+    @Slot(str)
+    def add_new_mi_item(self, mi_input_id):
+        new_item_s, ok = QInputDialog.getText(self.ui.c_medical_information,
+            'Add new "' + self.mi_inputs[mi_input_id].title + '"',
+            "Actual values:\n" + ", ".join(self.mi_inputs[mi_input_id].get_items(False)))
+        if ok:
+            new_item_s = util.str_to_list(new_item_s, ",")
+        if len(new_item_s) > 0:
+            util.apped_to_file(mi_input_id+".options", "\n" + "\n".join(new_item_s), cfg.FILES_MEDICAL_INFORMATION_PATH)
+            self.mi_inputs[mi_input_id].append_items(new_item_s)
 
     def charge_edit_mode(self):
         self.ui.lb_title.setText("Edit medical information")

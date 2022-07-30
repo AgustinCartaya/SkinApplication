@@ -11,13 +11,16 @@ from PySide6.QtCore import Signal
 
 class MedicalInformationInput(QFrame):
 
-    s_add_new_mi_item = Signal(str, str)
-    def __init__(self, title, items, receaver, id, *args, **kwards):
+    s_add_new_mi_item = Signal(str)
+    def __init__(self, id, title, items, receaver, add_null = False, *args, **kwards):
         QFrame.__init__(self, *args, **kwards)
 
+        self.id = id
         self.title = title
         self.items = items
-        self.id = id
+        self.add_null = add_null
+        if add_null:
+            self.items.insert(0, "")
 
         self.__create()
 
@@ -61,14 +64,10 @@ class MedicalInformationInput(QFrame):
         return self.mi_combo_box.currentText()
 
     def add_new_mi_item(self):
-        text, ok = QInputDialog.getText(self,
-            'Add new "' + self.title + '"',
-            "Actual values:\n" + "; ".join(self.items[1:]))
-        if ok:
-            self.s_add_new_mi_item.emit(self.id, text)
+        self.s_add_new_mi_item.emit(self.id)
 
-    def append_item(self, item):
-        self.mi_combo_box.addItem(item)
+    def append_items(self, items):
+        self.mi_combo_box.addItems(items)
 
     def select_item(self, item):
         index = self.mi_combo_box.findText(item)
@@ -77,4 +76,9 @@ class MedicalInformationInput(QFrame):
         else:
             print("error finding " + item)
 
+    def get_items(self, null_item = True):
+        if self.add_null and not null_item:
+            return self.items[1:]
+        else:
+            return self.items
 

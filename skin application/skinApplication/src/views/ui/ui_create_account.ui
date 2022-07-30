@@ -34,6 +34,12 @@
    </property>
    <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
     <widget class="QFrame" name="c_center">
+     <property name="minimumSize">
+      <size>
+       <width>500</width>
+       <height>0</height>
+      </size>
+     </property>
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
      </property>
@@ -74,306 +80,150 @@
        </spacer>
       </item>
       <item>
-       <widget class="QFrame" name="c_inputs">
-        <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
+       <layout class="QVBoxLayout" name="ly_inputs">
+        <property name="spacing">
+         <number>16</number>
         </property>
-        <property name="frameShadow">
-         <enum>QFrame::Raised</enum>
+        <property name="topMargin">
+         <number>0</number>
         </property>
-        <layout class="QVBoxLayout" name="verticalLayout_5">
-         <property name="spacing">
-          <number>16</number>
-         </property>
-         <property name="leftMargin">
-          <number>0</number>
-         </property>
-         <property name="topMargin">
-          <number>0</number>
-         </property>
-         <property name="rightMargin">
-          <number>0</number>
-         </property>
-         <property name="bottomMargin">
-          <number>0</number>
-         </property>
-         <item>
-          <widget class="QFrame" name="frame_2">
-           <property name="frameShape">
-            <enum>QFrame::StyledPanel</enum>
-           </property>
-           <property name="frameShadow">
-            <enum>QFrame::Raised</enum>
-           </property>
-           <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <layout class="QHBoxLayout" name="ly_up">
+          <property name="spacing">
+           <number>16</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <layout class="QVBoxLayout" name="ly_left">
             <property name="spacing">
              <number>16</number>
             </property>
-            <property name="leftMargin">
+            <property name="topMargin">
              <number>0</number>
+            </property>
+            <item>
+             <layout class="QVBoxLayout" name="ly_first_name">
+              <property name="spacing">
+               <number>2</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="lb_first_name">
+                <property name="text">
+                 <string>First name</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="LineEdit" name="i_first_name"/>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QVBoxLayout" name="ly_password">
+              <property name="spacing">
+               <number>2</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="lb_password">
+                <property name="text">
+                 <string>Password</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="LineEdit" name="i_password"/>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="ly_right">
+            <property name="spacing">
+             <number>16</number>
             </property>
             <property name="topMargin">
              <number>0</number>
             </property>
-            <property name="rightMargin">
-             <number>0</number>
-            </property>
-            <property name="bottomMargin">
-             <number>0</number>
-            </property>
             <item>
-             <widget class="QFrame" name="left_side_container">
-              <property name="minimumSize">
-               <size>
-                <width>250</width>
-                <height>0</height>
-               </size>
+             <layout class="QVBoxLayout" name="ly_last_name">
+              <property name="spacing">
+               <number>2</number>
               </property>
-              <property name="maximumSize">
-               <size>
-                <width>250</width>
-                <height>300</height>
-               </size>
+              <property name="topMargin">
+               <number>0</number>
               </property>
-              <property name="frameShape">
-               <enum>QFrame::StyledPanel</enum>
-              </property>
-              <property name="frameShadow">
-               <enum>QFrame::Raised</enum>
-              </property>
-              <layout class="QVBoxLayout" name="verticalLayout_3">
-               <property name="spacing">
-                <number>16</number>
-               </property>
-               <property name="leftMargin">
-                <number>0</number>
-               </property>
-               <property name="topMargin">
-                <number>0</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <property name="bottomMargin">
-                <number>0</number>
-               </property>
-               <item>
-                <widget class="QFrame" name="c_first_name">
-                 <property name="frameShape">
-                  <enum>QFrame::StyledPanel</enum>
-                 </property>
-                 <property name="frameShadow">
-                  <enum>QFrame::Raised</enum>
-                 </property>
-                 <layout class="QVBoxLayout" name="verticalLayout_8">
-                  <property name="leftMargin">
-                   <number>0</number>
-                  </property>
-                  <property name="topMargin">
-                   <number>0</number>
-                  </property>
-                  <property name="rightMargin">
-                   <number>0</number>
-                  </property>
-                  <property name="bottomMargin">
-                   <number>0</number>
-                  </property>
-                  <item>
-                   <widget class="QLabel" name="lb_first_name">
-                    <property name="text">
-                     <string>First name</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="LineEdit" name="i_first_name"/>
-                  </item>
-                 </layout>
-                </widget>
-               </item>
-               <item>
-                <widget class="QFrame" name="c_password">
-                 <property name="frameShape">
-                  <enum>QFrame::StyledPanel</enum>
-                 </property>
-                 <property name="frameShadow">
-                  <enum>QFrame::Raised</enum>
-                 </property>
-                 <layout class="QVBoxLayout" name="verticalLayout_7">
-                  <property name="leftMargin">
-                   <number>0</number>
-                  </property>
-                  <property name="topMargin">
-                   <number>0</number>
-                  </property>
-                  <property name="rightMargin">
-                   <number>0</number>
-                  </property>
-                  <property name="bottomMargin">
-                   <number>0</number>
-                  </property>
-                  <item>
-                   <widget class="QLabel" name="lb_password">
-                    <property name="text">
-                     <string>Password</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="LineEdit" name="i_password"/>
-                  </item>
-                 </layout>
-                </widget>
-               </item>
-              </layout>
-             </widget>
+              <item>
+               <widget class="QLabel" name="lb_last_name">
+                <property name="text">
+                 <string>Last name</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="LineEdit" name="i_last_name"/>
+              </item>
+             </layout>
             </item>
             <item>
-             <widget class="QFrame" name="right_side_container">
-              <property name="minimumSize">
-               <size>
-                <width>250</width>
-                <height>0</height>
-               </size>
+             <layout class="QVBoxLayout" name="ly_repeat_password">
+              <property name="spacing">
+               <number>2</number>
               </property>
-              <property name="maximumSize">
-               <size>
-                <width>250</width>
-                <height>300</height>
-               </size>
+              <property name="topMargin">
+               <number>0</number>
               </property>
-              <property name="frameShape">
-               <enum>QFrame::StyledPanel</enum>
-              </property>
-              <property name="frameShadow">
-               <enum>QFrame::Raised</enum>
-              </property>
-              <layout class="QVBoxLayout" name="verticalLayout_6">
-               <property name="spacing">
-                <number>16</number>
-               </property>
-               <property name="leftMargin">
-                <number>0</number>
-               </property>
-               <property name="topMargin">
-                <number>0</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <property name="bottomMargin">
-                <number>0</number>
-               </property>
-               <item>
-                <widget class="QFrame" name="c_last_name">
-                 <property name="frameShape">
-                  <enum>QFrame::StyledPanel</enum>
-                 </property>
-                 <property name="frameShadow">
-                  <enum>QFrame::Raised</enum>
-                 </property>
-                 <layout class="QVBoxLayout" name="verticalLayout_9">
-                  <property name="leftMargin">
-                   <number>0</number>
-                  </property>
-                  <property name="topMargin">
-                   <number>0</number>
-                  </property>
-                  <property name="rightMargin">
-                   <number>0</number>
-                  </property>
-                  <property name="bottomMargin">
-                   <number>0</number>
-                  </property>
-                  <item>
-                   <widget class="QLabel" name="lb_last_name">
-                    <property name="text">
-                     <string>Last name</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="LineEdit" name="i_last_name"/>
-                  </item>
-                 </layout>
-                </widget>
-               </item>
-               <item>
-                <widget class="QFrame" name="c_repeat_password">
-                 <property name="frameShape">
-                  <enum>QFrame::StyledPanel</enum>
-                 </property>
-                 <property name="frameShadow">
-                  <enum>QFrame::Raised</enum>
-                 </property>
-                 <layout class="QVBoxLayout" name="verticalLayout_10">
-                  <property name="leftMargin">
-                   <number>0</number>
-                  </property>
-                  <property name="topMargin">
-                   <number>0</number>
-                  </property>
-                  <property name="rightMargin">
-                   <number>0</number>
-                  </property>
-                  <property name="bottomMargin">
-                   <number>0</number>
-                  </property>
-                  <item>
-                   <widget class="QLabel" name="lb_repeat_password">
-                    <property name="text">
-                     <string>Repeat password</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="LineEdit" name="i_repeat_password"/>
-                  </item>
-                 </layout>
-                </widget>
-               </item>
-              </layout>
-             </widget>
+              <item>
+               <widget class="QLabel" name="lb_repeat_password">
+                <property name="text">
+                 <string>Repeat password</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="LineEdit" name="i_repeat_password"/>
+              </item>
+             </layout>
             </item>
            </layout>
-          </widget>
-         </item>
-         <item>
-          <widget class="QFrame" name="c_email">
-           <property name="frameShape">
-            <enum>QFrame::StyledPanel</enum>
-           </property>
-           <property name="frameShadow">
-            <enum>QFrame::Raised</enum>
-           </property>
-           <layout class="QVBoxLayout" name="verticalLayout_4">
-            <property name="leftMargin">
-             <number>0</number>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="ly_email">
+          <property name="spacing">
+           <number>2</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="lb_email">
+            <property name="text">
+             <string>E-mail</string>
             </property>
-            <property name="topMargin">
-             <number>0</number>
-            </property>
-            <property name="rightMargin">
-             <number>0</number>
-            </property>
-            <property name="bottomMargin">
-             <number>0</number>
-            </property>
-            <item>
-             <widget class="QLabel" name="lb_email">
-              <property name="text">
-               <string>E-mail</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="LineEdit" name="i_email"/>
-            </item>
-           </layout>
-          </widget>
-         </item>
-        </layout>
-       </widget>
+           </widget>
+          </item>
+          <item>
+           <widget class="LineEdit" name="i_email"/>
+          </item>
+         </layout>
+        </item>
+       </layout>
       </item>
       <item>
        <spacer name="verticalSpacer">
@@ -402,6 +252,11 @@
  </widget>
  <customwidgets>
   <customwidget>
+   <class>Label</class>
+   <extends>QLabel</extends>
+   <header>.promoted.label</header>
+  </customwidget>
+  <customwidget>
    <class>Button</class>
    <extends>QPushButton</extends>
    <header>.promoted.button</header>
@@ -410,11 +265,6 @@
    <class>LineEdit</class>
    <extends>QLineEdit</extends>
    <header>.promoted.line_edit</header>
-  </customwidget>
-  <customwidget>
-   <class>Label</class>
-   <extends>QLabel</extends>
-   <header>.promoted.label</header>
   </customwidget>
  </customwidgets>
  <resources/>
