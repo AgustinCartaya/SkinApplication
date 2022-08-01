@@ -67,8 +67,6 @@ class UpsertPatientMiView(ViewObject):
 
             if mi_value[1] is None:
                 mi_value = mi_value[0]
-#            else:
-#                mi_value = ",".join(mi_value)
             medical_info[mi_name] = mi_value
 
         self.p.mi = medical_info
