@@ -14,6 +14,8 @@ class DBController:
             self.db.cursor.execute(("INSERT INTO %s VALUES (NULL,?,?,?,?)" % cfg.TABLE_DOCTORS), data)
         if table == cfg.TABLE_PATIENTS:
             self.db.cursor.execute( ("INSERT INTO  %s VALUES (?,?,?,?,?,?)" % cfg.TABLE_PATIENTS), data)
+        if table == cfg.TABLE_SKIN_LESIONS:
+            self.db.cursor.execute( ("INSERT INTO  %s VALUES (?,?,?)" % cfg.TABLE_SKIN_LESIONS), data)
         self.db.connection.commit()
         self.db.connection.close()
 

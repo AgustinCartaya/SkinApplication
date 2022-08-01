@@ -193,11 +193,19 @@ class Ui_upsert_patient_preview(object):
 
         self.ly_patient_information_preview.addLayout(self.ly_basic_information)
 
+        self.c_problem = QFrame(self.c_patient_information_preview)
+        self.c_problem.setObjectName(u"c_problem")
+        self.c_problem.setFrameShape(QFrame.StyledPanel)
+        self.c_problem.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_4 = QVBoxLayout(self.c_problem)
+        self.verticalLayout_4.setSpacing(0)
+        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
+        self.verticalLayout_4.setContentsMargins(0, 0, 0, 0)
         self.ly_medical_information = QVBoxLayout()
         self.ly_medical_information.setSpacing(16)
         self.ly_medical_information.setObjectName(u"ly_medical_information")
         self.ly_medical_information.setContentsMargins(-1, 0, -1, -1)
-        self.lb_medical_information_title = Label(self.c_patient_information_preview)
+        self.lb_medical_information_title = Label(self.c_problem)
         self.lb_medical_information_title.setObjectName(u"lb_medical_information_title")
 
         self.ly_medical_information.addWidget(self.lb_medical_information_title)
@@ -210,7 +218,10 @@ class Ui_upsert_patient_preview(object):
         self.ly_medical_information.addLayout(self.ly_mi_content)
 
 
-        self.ly_patient_information_preview.addLayout(self.ly_medical_information)
+        self.verticalLayout_4.addLayout(self.ly_medical_information)
+
+
+        self.ly_patient_information_preview.addWidget(self.c_problem)
 
 
         self.verticalLayout_3.addLayout(self.ly_patient_information_preview)

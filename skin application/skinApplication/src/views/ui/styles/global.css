@@ -40,9 +40,7 @@ PatientCard Label{
 }
 
 /*-----AnnotationPreview-----*/
-AnnotationPreview,
-#c_ai_results,
-#c_annotations{
+ResultPreview{
     border: 1px solid #8c8c8c;
     border-radius: 3px;
 }
@@ -53,18 +51,15 @@ AnnotationPreview[c_title=true]{
     border-radius: 0px;
 }
 
-/*select add images*/
-#c_medical_image,
-#c_microscopy,
-#c_dermatoscopy{
+/*-----ImageType-----*/
+ImageType{
     border-top: 1px solid #c5c5c5;
     padding: 10px 5px;
 
 }
 
-#c_medical_image::hover,
-#c_microscopy::hover,
-#c_dermatoscopy::hover{
+ImageType::hover
+{
 
     background-color: #a3deff;
 }

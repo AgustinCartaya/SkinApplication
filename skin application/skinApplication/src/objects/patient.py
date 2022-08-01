@@ -24,9 +24,12 @@ class Patient(DataObject):
             # medical information
             self.mi = {}
 
+            # patient foler
+            self.folder_path = ""
+
+
         # skin lesions
         self.skin_lesions = []
-
 
     def verify_data(self):
         if (self._verify(self.first_name, "NAME", "FIRST_NAME") and
@@ -36,19 +39,25 @@ class Patient(DataObject):
         return False 
 
     def initialize(self, id, first_name, last_name, birth_date, gender, mi = {}):
+        # basic information
         self.id = id
         self.first_name = first_name
         self.last_name = last_name
         self.birth_date = datetime.strptime(birth_date, '%d-%m-%Y')
         self.gender = gender
         self.mi = mi
+
+        #    calculated
+        self.age = util.calc_age(self.birth_date)
+
+        # medical information
         if type(mi) is str:
             self.mi = json.loads(mi)
 
-
-        self.age = util.calc_age(self.birth_date)
-
-#        (QDate.currentDate().year() - QDate.fromString(birth_date).year())
+        # folders
+        if len(self.id) > 0:
+            self.folder_path  = cfg.PATIENTS_DATA_PATH + cfg._S + self.id
+            self.verify_patient_folder()
 
     def save_data(self):
         if self.verify_data():
@@ -66,9 +75,14 @@ class Patient(DataObject):
                     self.gender,
                     json.dumps(self.mi))
                     )
+                return True
             except ValueError as err:
-                # If doctor already exists
                 print(err.args)
+
+    def create_patient(self):
+        if self.save_data():
+            self.folder_path  = cfg.PATIENTS_DATA_PATH + cfg._S + self.id
+            self.verify_patient_folder()
 
     def update_data(self):
         if self.verify_data():
@@ -83,7 +97,6 @@ class Patient(DataObject):
                     {"id":self.id}
                     )
             except ValueError as err:
-                # If doctor already exists
                 print(err.args)
 
     @classmethod
@@ -95,7 +108,7 @@ class Patient(DataObject):
             obj = obj[0]
             return Patient(obj[0], obj[1], obj[2], obj[3], obj[4], obj[5])
         else:
-            raise ValueError('No object found', "DOCTOR", "NOT_FOUND")
+            raise ValueError('No object found', "PATIENT", "NOT_FOUND")
 
     def to_string(self):
         return  ("(" + self.id + ", " +
@@ -107,8 +120,13 @@ class Patient(DataObject):
             json.dumps(self.mi) + ", " +
             ")")
 
-#    def load_skin_lesions(self):
-#        dbc = DBController()
-#        for skl in dbc.select(cfg.TABLE_SKIN_LESIONS, id_patient = self.id):
-#            self.skin_lesions.append(SkinLesion(skl[0], skl[2], skl[3], skl[4], skl[5], skl[6]))
+    def verify_patient_folder(self):
+        if not os.path.isdir(self.folder_path):
+            os.mkdir(self.folder_path)
+
+
+    def load_skin_lesions(self):
+        dbc = DBController()
+        for skl in dbc.select(cfg.TABLE_SKIN_LESIONS, id_patient = self.id):
+            self.skin_lesions.append(SkinLesion(skl[0], skl[1], skl[2]))
 

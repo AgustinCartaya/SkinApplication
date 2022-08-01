@@ -15,16 +15,38 @@ class CheckPatientView(ViewObject):
         super().__init__(mw)
 
         self.load_patient(patient_id)
+
         self.load_ui()
         self.connect_ui_signals()
 
-#        self.load_patients()
-#        self.show_patients()
+        self.load_skin_lesions()
+
 
     def load_patient(self, patient_id):
         self.p = Patient.get_patient_by_id(patient_id)
-#        self.p.load_skin_lesions()
-#        print(self.p.to_string())
+
+    def load_skin_lesions(self):
+        self.p.load_skin_lesions()
+        for skl in self.p.skin_lesions:
+            skin_lesion_preview = SkinLesionPreview(skl.number,
+                skl.caracteristics,
+                {},
+                self.update_skin_lesion,
+                self.see_time_line,
+                self.see_images)
+            self.ui.ly_skin_lesions.addWidget(skin_lesion_preview)
+
+    Slot(int)
+    def update_skin_lesion(self, skin_lesion_nb):
+        self.s_change_view.emit(cfg.CHECK_PATIENT_VIEW, cfg.UPSERT_SKIN_LESION_VIEW, {"patient" : self.p, "skin_lesion_nb": skin_lesion_nb})
+
+    Slot(int)
+    def see_time_line(self, skin_lesion_nb):
+        pass
+
+    Slot(int)
+    def see_images(self, skin_lesion_nb):
+        pass
 
     def load_ui(self):
         self.ui = Ui_check_patient()
@@ -57,9 +79,6 @@ class CheckPatientView(ViewObject):
 #        self.skin_lesions_layout.setSpacing(40)
 #        self.skin_lesions_layout.setContentsMargins(0, 0, 0, 0)
 
-        for i in range(2):
-            skp = SkinLesionPreview()
-            self.ui.ly_skin_lesions.addWidget(skp)
 
     s_change_view = Signal(str,str,dict)
     def connect_ui_signals(self):
@@ -67,7 +86,7 @@ class CheckPatientView(ViewObject):
         self.ui.bt_back.clicked.connect(self.back)
         self.ui.bt_edit_patient_info.clicked.connect(self.edit_patient_info)
 
-        self.ui.bt_add_lesion.clicked.connect(self.add_new_lesion)
+        self.ui.bt_add_lesion.clicked.connect(self.add_new_skin_lesion)
 
         # created signals
         self.s_change_view.connect(self.MW.change_view)
@@ -80,8 +99,13 @@ class CheckPatientView(ViewObject):
             mi_title.setText(util.file_name_to_title(mi) + " :")
             self.ui.ly_mi_content.setWidget(form_index, QFormLayout.LabelRole, mi_title)
 
+            if type(self.p.mi[mi]) is str:
+                content = self.p.mi[mi]
+            else:
+                content = " ".join(self.p.mi[mi])
+
             mi_content = Label(self.ui.c_patient_information_content)
-            mi_content.setText(self.p.mi[mi])
+            mi_content.setText(content)
             self.ui.ly_mi_content.setWidget(form_index, QFormLayout.FieldRole, mi_content)
 
             form_index = form_index + 1
@@ -96,6 +120,6 @@ class CheckPatientView(ViewObject):
         self.s_change_view.emit(cfg.CHECK_PATIENT_VIEW, cfg.UPSERT_PATIENT_VIEW, {"patient" : self.p})
 
     @Slot()
-    def add_new_lesion(self):
-        self.s_change_view.emit(cfg.CHECK_PATIENT_VIEW, cfg.UPSERT_SKIN_LESION_VIEW, None)
+    def add_new_skin_lesion(self):
+        self.s_change_view.emit(cfg.CHECK_PATIENT_VIEW, cfg.UPSERT_SKIN_LESION_VIEW, {"patient" : self.p, "skin_lesion_nb": -1})
 

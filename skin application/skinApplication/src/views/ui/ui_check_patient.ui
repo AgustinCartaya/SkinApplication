@@ -350,6 +350,9 @@
        <property name="rightMargin">
         <number>20</number>
        </property>
+       <property name="bottomMargin">
+        <number>20</number>
+       </property>
        <item alignment="Qt::AlignHCenter">
         <widget class="Label" name="lb_title_2">
          <property name="maximumSize">
@@ -374,7 +377,7 @@
             <x>0</x>
             <y>0</y>
             <width>875</width>
-            <height>733</height>
+            <height>714</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_6">

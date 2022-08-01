@@ -1,7 +1,7 @@
 import os
 import random
 from datetime import date
-
+import re
 import src.config as cfg
 
 
@@ -44,6 +44,10 @@ def read_file_list(file_name, separator="\n", path=cfg.FILES_PATH):
 #            lst.append(line)
     return lst
 
+def create_file(file_name, file_content="", path=cfg.FILES_PATH):
+    with open(path + cfg._S + file_name, 'w') as f:
+        f.write(file_content)
+
 
 def get_file_list(path):
     return os.listdir(path)
@@ -54,7 +58,7 @@ def file_name_to_title(txt):
 
 
 def title_to_file_name(txt):
-    return txt.strip().replace(" ", "_").lower()
+    return re.sub(' +', ' ', txt.strip()).replace(" ", "_").lower()
 
 def str_to_list(text, sep="\n"):
     return [s.strip() for s in list(filter(lambda x: len(x.strip()) > 0, text.split(sep)))]

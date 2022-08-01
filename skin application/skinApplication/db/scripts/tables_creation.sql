@@ -19,7 +19,8 @@ CREATE TABLE PATIENTS (
 CREATE TABLE SKIN_LESIONS (
     number INTEGER NOT NULL,
     id_patient TEXT NOT NULL,
-    caracteristics TEXT NOT NULL
+    caracteristics TEXT NOT NULL,
+    UNIQUE(number, id_patient)
 );
 
 
@@ -45,6 +46,6 @@ INSERT INTO PATIENTS (id, first_name, last_name, birth_date, gender, medical_inf
 
 
 
-INSERT INTO SKIN_LESIONS (number, id_patient, caracteristics) VALUES (1, "AG3526CA", '{"diameter":1, "apparition_date":"10-11-2000"}');
-INSERT INTO SKIN_LESIONS (number, id_patient, caracteristics) VALUES (2, "AG3526CA", '{"diameter":1, "apparition_date":"10-11-2000"}');
-INSERT INTO SKIN_LESIONS (number, id_patient, caracteristics) VALUES (1, "PI3526RD", '{"diameter":1, "apparition_date":"10-11-2000"}');
+INSERT INTO SKIN_LESIONS (number, id_patient, caracteristics) VALUES (0, "AG3526CA", '{"diameter":["1","mm"], "apparition_date":["1","Years"]}');
+INSERT INTO SKIN_LESIONS (number, id_patient, caracteristics) VALUES (1, "AG3526CA", '{"diameter":["1","mm"], "apparition_date":["1","Years"]}');
+INSERT INTO SKIN_LESIONS (number, id_patient, caracteristics) VALUES (0, "PI3526RD", '{"diameter":["1","mm"], "apparition_date":["1","Years"]}');

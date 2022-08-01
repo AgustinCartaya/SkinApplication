@@ -325,31 +325,58 @@
              </layout>
             </item>
             <item>
-             <layout class="QVBoxLayout" name="ly_medical_information">
-              <property name="spacing">
-               <number>16</number>
+             <widget class="QFrame" name="c_problem">
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
               </property>
-              <property name="topMargin">
-               <number>0</number>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
               </property>
-              <item>
-               <widget class="Label" name="lb_medical_information_title">
-                <property name="text">
-                 <string>Medical information</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <layout class="QVBoxLayout" name="ly_mi_content">
-                <property name="spacing">
-                 <number>16</number>
-                </property>
-                <property name="leftMargin">
-                 <number>9</number>
-                </property>
-               </layout>
-              </item>
-             </layout>
+              <layout class="QVBoxLayout" name="verticalLayout_4">
+               <property name="spacing">
+                <number>0</number>
+               </property>
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <layout class="QVBoxLayout" name="ly_medical_information">
+                 <property name="spacing">
+                  <number>16</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="Label" name="lb_medical_information_title">
+                   <property name="text">
+                    <string>Medical information</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <layout class="QVBoxLayout" name="ly_mi_content">
+                   <property name="spacing">
+                    <number>16</number>
+                   </property>
+                   <property name="leftMargin">
+                    <number>9</number>
+                   </property>
+                  </layout>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </widget>
             </item>
            </layout>
           </item>

@@ -199,7 +199,7 @@ class Ui_check_patient(object):
 
         self.ly_right = QVBoxLayout()
         self.ly_right.setObjectName(u"ly_right")
-        self.ly_right.setContentsMargins(-1, -1, 20, -1)
+        self.ly_right.setContentsMargins(-1, -1, 20, 20)
         self.lb_title_2 = Label(check_patient)
         self.lb_title_2.setObjectName(u"lb_title_2")
         self.lb_title_2.setMaximumSize(QSize(16777215, 20))
@@ -211,7 +211,7 @@ class Ui_check_patient(object):
         self.scrollArea_2.setWidgetResizable(True)
         self.c_skin_parts_scroll_area = QWidget()
         self.c_skin_parts_scroll_area.setObjectName(u"c_skin_parts_scroll_area")
-        self.c_skin_parts_scroll_area.setGeometry(QRect(0, 0, 875, 733))
+        self.c_skin_parts_scroll_area.setGeometry(QRect(0, 0, 875, 714))
         self.verticalLayout_6 = QVBoxLayout(self.c_skin_parts_scroll_area)
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
         self.ly_skin_lesions = QVBoxLayout()

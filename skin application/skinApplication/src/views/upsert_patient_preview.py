@@ -64,20 +64,23 @@ class UpsertPatientPreiewView(ViewObject):
 
     def show_medical_information(self):
         for medical_info in self.p.mi:
-            if self.p.mi[medical_info] != "":
-                ly_single_mi = QVBoxLayout()
-                ly_single_mi.setSpacing(4)
+            ly_single_mi = QVBoxLayout()
+            ly_single_mi.setSpacing(4)
 
-                lb_mi_title = Label(self.ui.c_patient_information_preview)
-                lb_mi_title.setText(util.file_name_to_title(medical_info) + " :")
-                ly_single_mi.addWidget(lb_mi_title)
+            lb_mi_title = Label(self.ui.c_patient_information_preview)
+            lb_mi_title.setText(util.file_name_to_title(medical_info) + " :")
+            ly_single_mi.addWidget(lb_mi_title)
 
-                i_mi_content = Label(self.ui.c_patient_information_preview)
-                i_mi_content.setText(self.p.mi[medical_info])
-                i_mi_content.set_decoration("mi_content")
-                ly_single_mi.addWidget(i_mi_content)
+            i_mi_content = Label(self.ui.c_patient_information_preview)
+            if type(self.p.mi[medical_info]) is str:
+                content = self.p.mi[medical_info]
+            else:
+                content = " ".join(self.p.mi[medical_info])
+            i_mi_content.setText(content)
+            i_mi_content.set_decoration("mi_content")
+            ly_single_mi.addWidget(i_mi_content)
 
-                self.ui.ly_mi_content.addLayout(ly_single_mi)
+            self.ui.ly_mi_content.addLayout(ly_single_mi)
 
 
     s_change_view = Signal(str,str,dict)
@@ -111,7 +114,7 @@ class UpsertPatientPreiewView(ViewObject):
     #no pulido
     def add_patient(self):
         try:  
-            self.p.save_data()
+            self.p.create_patient()
             self.s_change_view.emit(cfg.UPSERT_PATIENT_PREVIEW_VIEW, cfg.PATIENTS_VIEW, None)
         except ValueError as err:
             print(err.args)

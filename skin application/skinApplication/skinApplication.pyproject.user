@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 5.0.0, 2022-07-29T20:38:47. -->
+<!-- Written by QtCreator 5.0.0, 2022-07-31T23:46:45. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -604,24 +604,6 @@
     <valuelist type="QVariantList" key="CustomOutputParsers"/>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/medical_information_input.py</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/medical_information_input.py</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/medical_information_input.py</value>
-    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
-    <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\views\ui\promoted\medical_information_input.py</value>
-    <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
-    <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
-    <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
-    <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted</value>
-   </valuemap>
-   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.34">
-    <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
-    <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
-    <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
-    <valuelist type="QVariantList" key="CustomOutputParsers"/>
-    <value type="int" key="PE.EnvironmentAspect.Base">2</value>
-    <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/navigator_button.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/navigator_button.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/navigator_button.py</value>
@@ -633,7 +615,7 @@
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted</value>
    </valuemap>
-   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.35">
+   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.34">
     <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
     <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
     <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
@@ -651,7 +633,7 @@
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted</value>
    </valuemap>
-   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.36">
+   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.35">
     <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
     <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
     <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
@@ -669,7 +651,7 @@
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/styles/raw</value>
    </valuemap>
-   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.37">
+   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.36">
     <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
     <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
     <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
@@ -687,7 +669,7 @@
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/styles/raw</value>
    </valuemap>
-   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.38">
+   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.37">
     <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
     <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
     <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
@@ -705,7 +687,7 @@
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/objects</value>
    </valuemap>
-   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.39">
+   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.38">
     <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
     <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
     <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
@@ -722,6 +704,24 @@
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted</value>
+   </valuemap>
+   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.39">
+    <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
+    <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
+    <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
+    <valuelist type="QVariantList" key="CustomOutputParsers"/>
+    <value type="int" key="PE.EnvironmentAspect.Base">2</value>
+    <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/objects/skin_lesion.py</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/objects/skin_lesion.py</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/objects/skin_lesion.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\objects\skin_lesion.py</value>
+    <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
+    <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
+    <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
+    <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/objects</value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.4">
     <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
@@ -748,24 +748,6 @@
     <valuelist type="QVariantList" key="CustomOutputParsers"/>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/objects/skin_lesion.py</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/objects/skin_lesion.py</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/objects/skin_lesion.py</value>
-    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
-    <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\objects\skin_lesion.py</value>
-    <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
-    <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
-    <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
-    <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/objects</value>
-   </valuemap>
-   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.41">
-    <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
-    <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
-    <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
-    <valuelist type="QVariantList" key="CustomOutputParsers"/>
-    <value type="int" key="PE.EnvironmentAspect.Base">2</value>
-    <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/login.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/login.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/login.py</value>
@@ -777,7 +759,7 @@
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views</value>
    </valuemap>
-   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.42">
+   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.41">
     <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
     <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
     <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
@@ -795,7 +777,7 @@
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted</value>
    </valuemap>
-   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.43">
+   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.42">
     <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
     <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
     <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
@@ -813,7 +795,7 @@
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views</value>
    </valuemap>
-   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.44">
+   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.43">
     <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
     <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
     <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
@@ -831,7 +813,7 @@
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/objects</value>
    </valuemap>
-   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.45">
+   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.44">
     <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
     <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
     <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
@@ -849,7 +831,7 @@
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views</value>
    </valuemap>
-   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.46">
+   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.45">
     <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
     <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
     <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
@@ -867,7 +849,7 @@
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views</value>
    </valuemap>
-   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.47">
+   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.46">
     <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
     <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
     <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
@@ -885,7 +867,7 @@
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views</value>
    </valuemap>
-   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.48">
+   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.47">
     <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
     <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
     <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
@@ -903,7 +885,7 @@
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui</value>
    </valuemap>
-   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.49">
+   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.48">
     <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
     <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
     <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
@@ -920,6 +902,24 @@
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/objects</value>
+   </valuemap>
+   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.49">
+    <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
+    <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
+    <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
+    <valuelist type="QVariantList" key="CustomOutputParsers"/>
+    <value type="int" key="PE.EnvironmentAspect.Base">2</value>
+    <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/check_patient.py</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/check_patient.py</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/check_patient.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\views\check_patient.py</value>
+    <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
+    <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
+    <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
+    <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views</value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.5">
     <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
@@ -946,24 +946,6 @@
     <valuelist type="QVariantList" key="CustomOutputParsers"/>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/check_patient.py</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/check_patient.py</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/check_patient.py</value>
-    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
-    <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\views\check_patient.py</value>
-    <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
-    <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
-    <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
-    <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views</value>
-   </valuemap>
-   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.51">
-    <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
-    <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
-    <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
-    <valuelist type="QVariantList" key="CustomOutputParsers"/>
-    <value type="int" key="PE.EnvironmentAspect.Base">2</value>
-    <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/objects/time_line.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/objects/time_line.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/objects/time_line.py</value>
@@ -975,7 +957,7 @@
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/objects</value>
    </valuemap>
-   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.52">
+   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.51">
     <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
     <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
     <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
@@ -993,7 +975,7 @@
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui</value>
    </valuemap>
-   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.53">
+   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.52">
     <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
     <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
     <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
@@ -1010,6 +992,111 @@
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui</value>
+   </valuemap>
+   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.53">
+    <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
+    <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
+    <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
+    <valuelist type="QVariantList" key="CustomOutputParsers"/>
+    <value type="int" key="PE.EnvironmentAspect.Base">2</value>
+    <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/variable_input.py</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/variable_input.py</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/variable_input.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\views\ui\promoted\variable_input.py</value>
+    <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
+    <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
+    <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
+    <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted</value>
+   </valuemap>
+   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.54">
+    <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
+    <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
+    <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
+    <valuelist type="QVariantList" key="CustomOutputParsers"/>
+    <value type="int" key="PE.EnvironmentAspect.Base">2</value>
+    <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/variable_input_creator.py</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/variable_input_creator.py</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/variable_input_creator.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\views\ui\promoted\variable_input_creator.py</value>
+    <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
+    <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
+    <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
+    <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted</value>
+   </valuemap>
+   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.55">
+    <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
+    <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
+    <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
+    <valuelist type="QVariantList" key="CustomOutputParsers"/>
+    <value type="int" key="PE.EnvironmentAspect.Base">2</value>
+    <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/variable_input_container.py</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/variable_input_container.py</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/variable_input_container.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\views\ui\promoted\variable_input_container.py</value>
+    <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
+    <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
+    <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
+    <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted</value>
+   </valuemap>
+   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.56">
+    <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
+    <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
+    <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
+    <valuelist type="QVariantList" key="CustomOutputParsers"/>
+    <value type="int" key="PE.EnvironmentAspect.Base">2</value>
+    <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/image_type_creator.py</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/image_type_creator.py</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/image_type_creator.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\views\ui\promoted\image_type_creator.py</value>
+    <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
+    <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
+    <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
+    <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted</value>
+   </valuemap>
+   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.57">
+    <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
+    <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
+    <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
+    <valuelist type="QVariantList" key="CustomOutputParsers"/>
+    <value type="int" key="PE.EnvironmentAspect.Base">2</value>
+    <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/image_type_container.py</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/image_type_container.py</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/image_type_container.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\views\ui\promoted\image_type_container.py</value>
+    <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
+    <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
+    <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
+    <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted</value>
+   </valuemap>
+   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.58">
+    <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
+    <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
+    <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
+    <valuelist type="QVariantList" key="CustomOutputParsers"/>
+    <value type="int" key="PE.EnvironmentAspect.Base">2</value>
+    <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/image_type.py</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/image_type.py</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/image_type.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\views\ui\promoted\image_type.py</value>
+    <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
+    <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
+    <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
+    <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted</value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.6">
     <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
@@ -1083,7 +1170,7 @@
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src</value>
    </valuemap>
-   <value type="int" key="ProjectExplorer.Target.RunConfigurationCount">54</value>
+   <value type="int" key="ProjectExplorer.Target.RunConfigurationCount">59</value>
   </valuemap>
  </data>
  <data>

@@ -2,7 +2,9 @@ from PySide6.QtWidgets import QFrame
 from PySide6.QtWidgets import QApplication
 
 from PySide6.QtCore import QSize, Qt
-from PySide6.QtWidgets import QFormLayout, QFrame, QHBoxLayout, QVBoxLayout, QLabel
+from PySide6.QtWidgets import QFormLayout, QFrame, QHBoxLayout, QVBoxLayout
+
+from .label import Label
 
 class ResultPreview(QFrame):
 
@@ -24,7 +26,7 @@ class ResultPreview(QFrame):
 
 
     def __create_read_more(self):
-        self.lb_read_more = QLabel(self)
+        self.lb_read_more = Label(self)
         self.lb_read_more.setText(self.read_more)
         self.layout.addWidget(self.lb_read_more, 0, Qt.AlignHCenter|Qt.AlignBottom)
 
@@ -35,7 +37,7 @@ class ResultPreview(QFrame):
         self.c_title_layout = QHBoxLayout(self.c_title)
         self.c_title_layout.setContentsMargins(0, 0, 0, 0)
 
-        self.lb_title = QLabel(self.c_title)
+        self.lb_title = Label(self.c_title)
         self.lb_title.setText(self.title)
         self.lb_title.setMaximumSize(QSize(16777215, 20))
 
@@ -53,12 +55,17 @@ class ResultPreview(QFrame):
 
         count = 0
         for key in self.ann:
-            lb_ann_title = QLabel(self.c_content)
-            lb_ann_title.setText(key)
+            lb_ann_title = Label(self.c_content)
+            lb_ann_title.setText(key + " :")
             self.c_content_layout.setWidget(count, QFormLayout.LabelRole, lb_ann_title)
 
-            lb_ann_content = QLabel(self.c_content)
-            lb_ann_content.setText(self.ann[key])
+            if type(self.ann[key]) is str:
+                content = self.ann[key]
+            else:
+                content = " ".join(self.ann[key])
+
+            lb_ann_content = Label(self.c_content)
+            lb_ann_content.setText(content)
             self.c_content_layout.setWidget(count, QFormLayout.FieldRole, lb_ann_content)
 
             count = count +1

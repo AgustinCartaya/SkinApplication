@@ -93,7 +93,8 @@ class MainWindow(QtWidgets.QMainWindow):
             self.set_view(CheckPatientView(self, atts["patient_id"]))
 
         elif view_to == cfg.UPSERT_SKIN_LESION_VIEW:
-            self.set_view(UpsertSkinLesion(self))
+            self.clean_views()
+            self.set_view(UpsertSkinLesion(self, atts["patient"], atts["skin_lesion_nb"]))
 
 #        print(self._layers.count())
 
