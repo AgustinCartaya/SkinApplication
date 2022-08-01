@@ -6,48 +6,64 @@ from .db_connection import DBConnection
 class DBController:
     def __init__(self):
         self.db = DBConnection()
-        # self.test()
+#        self.test()
 
     def insert(self, table, data):
+        if type(data) is not tuple :
+            raise ValueError('Upadte data is not tuple', "INSERT_DATA", "NOT_TUPLE")
+
         self.db.connect()
         if table == cfg.TABLE_DOCTORS:
             self.db.cursor.execute(("INSERT INTO %s VALUES (NULL,?,?,?,?)" % cfg.TABLE_DOCTORS), data)
-        if table == cfg.TABLE_PATIENTS:
-            self.db.cursor.execute( ("INSERT INTO  %s VALUES (?,?,?,?,?,?)" % cfg.TABLE_PATIENTS), data)
-        if table == cfg.TABLE_SKIN_LESIONS:
-            self.db.cursor.execute( ("INSERT INTO  %s VALUES (?,?,?)" % cfg.TABLE_SKIN_LESIONS), data)
+        elif table == cfg.TABLE_PATIENTS:
+            self.db.cursor.execute( ("INSERT INTO %s VALUES (?,?,?,?,?,?)" % cfg.TABLE_PATIENTS), data)
+        elif table == cfg.TABLE_SKIN_LESIONS:
+            self.db.cursor.execute( ("INSERT INTO %s VALUES (?,?,?)" % cfg.TABLE_SKIN_LESIONS), data)
+        else:
+            self.db.connection.close()
+            raise ValueError('Insert table not found', "INSERT_TABLE", "NOT_FOUND")
+
         self.db.connection.commit()
         self.db.connection.close()
 
     def update(self, table, data, conditions):
+        if type(data) is not tuple :
+            raise ValueError('Upadte data is not tuple', "UPDATE_DATA", "NOT_TUPLE")
+        if type(conditions) is not tuple:
+            raise ValueError('Upadte conditions is not tuple', "UPDATE_CONDITIONS", "NOT_TUPLE")
+
         self.db.connect()
-        conditions_str = self.conditions_to_str(conditions)
         if table == cfg.TABLE_PATIENTS:
-            self.db.cursor.execute( ( "UPDATE %s SET first_name = ?, last_name = ?, birth_date = ?, gender = ?, medical_information = ? WHERE %s" % (cfg.TABLE_PATIENTS, conditions_str)), data)
+            self.db.cursor.execute( ("UPDATE %s SET first_name = ?, last_name = ?, birth_date = ?, gender = ?, medical_information = ? WHERE id = ?" % cfg.TABLE_PATIENTS), (data + conditions))
+        elif table == cfg.TABLE_SKIN_LESIONS:
+            self.db.cursor.execute( ("UPDATE %s SET caracteristics = ? WHERE number = ? AND id_patient = ?" % cfg.TABLE_SKIN_LESIONS), (data + conditions) )
+        else:
+            self.db.connection.close()
+            raise ValueError('Upadte table not found', "UPDATE_TABLE", "NOT_FOUND")
+
         self.db.connection.commit()
         self.db.connection.close()
+
 
     def count_all(self, table):
         self.db.connect()
         count = 0
 
-        text_query = "SELECT Count(*) FROM %s" % table
-        self.db.cursor.execute(text_query)
+        if table == cfg.TABLE_DOCTORS:
+            self.db.cursor.execute("SELECT Count(*) FROM %s" % cfg.TABLE_DOCTORS)
+        elif table == cfg.TABLE_PATIENTS:
+            self.db.cursor.execute("SELECT Count(*) FROM %s" % cfg.TABLE_PATIENTS)
+        elif table == cfg.TABLE_SKIN_LESIONS:
+            self.db.cursor.execute("SELECT Count(*) FROM %s" % cfg.TABLE_SKIN_LESIONS)
+        else:
+            self.db.connection.close()
+            raise ValueError('Count all table not found', "COUNT_ALL_TABLE", "NOT_FOUND")
 
         count = self.db.cursor.fetchone()[0]
         self.db.connection.close()
         return count
 
-    def conditions_to_str(self, conditions):
-        dict_len = len(conditions)
-        conditions_str = ""
-        for condition_key in conditions:
-            conditions_str = conditions_str + condition_key + " = \'" + conditions[condition_key] + "\'"
-            if dict_len > 1:
-                conditions_str = conditions_str + " AND "
-            dict_len = dict_len - 1
-        return conditions_str
-
+    # NOT SECURISED !!!
     def select(self, table, *columns, **conditions):
         self.db.connect()
         columns_str = "*"
@@ -65,6 +81,7 @@ class DBController:
         self.db.connection.close()
         return rows
 
+    # NOT SECURISED !!!
     def exists(self, table, **conditions):
         self.db.connect()
         conditions_str = ""
@@ -81,17 +98,26 @@ class DBController:
         return res
 
 
+    def conditions_to_str(self, conditions, sep = "AND"):
+        dict_len = len(conditions)
+        conditions_str = ""
+        for condition_key in conditions:
+            conditions_str = conditions_str + condition_key + " = \'" + conditions[condition_key] + "\'"
+            if dict_len > 1:
+                conditions_str = conditions_str + " " + sep + " "
+            dict_len = dict_len - 1
+        return conditions_str
 
-    def test(self):
-        self.db.connect()
-        many_doctors = [
-            ('Agustin', 'Cartaya', "1234", "ag@gmail.com"),
-            ('Monica', 'Cartaya', "1234", "ag@gmail.com"),
-            ('Miguel', 'Cartaya', "1234", "ag@gmail.com")
-        ]
-        self.db.cursor.executemany("INSERT INTO  DOCTORS VALUES (NULL,?,?,?,?)", many_doctors)
+#    def test(self):
+#        self.db.connect()
+#        many_doctors = [
+#            ('Agustin', 'Cartaya', "1234", "ag@gmail.com"),
+#            ('Monica', 'Cartaya', "1234", "ag@gmail.com"),
+#            ('Miguel', 'Cartaya', "1234", "ag@gmail.com")
+#        ]
+#        self.db.cursor.executemany("INSERT INTO DOCTORS VALUES (NULL,?,?,?,?)", many_doctors)
 
-        self.db.cursor.execute("SELECT * FROM DOCTORS")
-        print(self.db.cursor.fetchall())
-        self.db.connection.commit()
-        self.db.connection.close()
+#        self.db.cursor.execute("SELECT * FROM DOCTORS")
+#        print(self.db.cursor.fetchall())
+#        self.db.connection.commit()
+#        self.db.connection.close()

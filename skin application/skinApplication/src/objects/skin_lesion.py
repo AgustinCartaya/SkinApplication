@@ -32,8 +32,8 @@ class SkinLesion(DataObject):
         try:
             dbc = DBController()
             dbc.update(cfg.TABLE_SKIN_LESIONS,
-                (json.dumps(self.caracteristics)),
-                {"number":str(self.number), "id_patient":self.patient_id}
+                (json.dumps(self.caracteristics),),
+                (str(self.number), self.patient_id)
                 )
         except ValueError as err:
             print(err.args)

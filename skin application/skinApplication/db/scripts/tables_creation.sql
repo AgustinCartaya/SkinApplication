@@ -23,6 +23,7 @@ CREATE TABLE SKIN_LESIONS (
     UNIQUE(number, id_patient)
 );
 
+INSERT INTO DOCTORS (id, first_name, last_name, password, email ) VALUES (NULL, 'Agustin', 'Cartaya', 'Ag.1', 'ag@gmail.com');
 
 INSERT INTO PATIENTS (id, first_name, last_name, birth_date, gender, medical_information) VALUES ("AG3526CA", "Agustin", "Cartaya", '10-11-2000', 1, '{"eye_color":"Hazel","hair_color":"Blonde"}');
 INSERT INTO PATIENTS (id, first_name, last_name, birth_date, gender, medical_information) VALUES ("PI3526RD", "Pierre", "Bernard", '21-02-1970', 1, '{"eye_color":"Hazel","hair_color":"Blonde"}');

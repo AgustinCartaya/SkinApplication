@@ -94,7 +94,7 @@ class Patient(DataObject):
                     self.birth_date.strftime('%d-%m-%Y'),
                     self.gender,
                     json.dumps(self.mi)),
-                    {"id":self.id}
+                    (self.id,)
                     )
             except ValueError as err:
                 print(err.args)
