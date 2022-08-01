@@ -51,6 +51,12 @@ AnnotationPreview[c_title=true]{
     border-radius: 0px;
 }
 
+
+/*-----AIPreview-----*/
+AIPreview{
+    border: 1px solid #8c8c8c;
+    border-radius: 3px;
+}
 /*-----ImageType-----*/
 ImageType{
     border-top: 1px solid #c5c5c5;

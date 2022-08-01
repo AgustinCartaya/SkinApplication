@@ -21,13 +21,12 @@ class AIPreviewsContainer(QFrame):
         self.__create()
 
     def __create(self):
-        self.layout = QHBoxLayout()
+        self.layout = QHBoxLayout(self)
         self.layout.setContentsMargins(0, 0, 10, 10)
         self.__create_ai_previews()
 
     def __create_ai_previews(self):
         for ai_name, ai_content in self.ai_infos.items():
-            print(ai_name)
             ai_preview = AIPreview(ai_name, ai_content['description'], ai_content['results'])
             self.layout.addWidget(ai_preview)
             self.ai_previews[ai_name] = ai_preview

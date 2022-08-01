@@ -8,6 +8,7 @@ from .ui.promoted.variable_input import VariableInput
 from .ui.promoted.images_type_container import ImagesTypeContainer
 
 from .ui.promoted.ai_previews_container import AIPreviewsContainer
+from .ui.promoted.button import Button
 
 from src.objects.skin_lesion import SkinLesion
 
@@ -46,13 +47,10 @@ class UpsertSkinLesion(ViewObject):
         # AI
         ai_tests = {'AI-1':{'description':'desc ai 1', 'results':{'r1':'cr1'}},
             'AI-2':{'description':'desc ai 2', 'results':{'r2':'cr2'}},
-            'AI-3':{'description':'desc ai 3', 'results':{'r3':'cr3'}}
+            'AI-3':{'description':'desc ai 3', 'results':{}}
             }
         self.c_ai_previews = AIPreviewsContainer(ai_tests)
         self.ui.ly_ai_results.addWidget(self.c_ai_previews)
-
-
-
 
     s_change_view = Signal(str,str,dict)
     def connect_ui_signals(self):
