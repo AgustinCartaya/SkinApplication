@@ -2,10 +2,12 @@ from .view_object import *
 from .ui.ui_upsert_skin_lesion import Ui_upsert_skin_lesion
 
 
-from .ui.promoted.variable_input_container import VariableInputContainer
+from .ui.promoted.variable_inputs_container import VariableInputsContainer
 from .ui.promoted.variable_input import VariableInput
 
-from .ui.promoted.image_type_container import ImageTypeContainer
+from .ui.promoted.images_type_container import ImagesTypeContainer
+
+from .ui.promoted.ai_previews_container import AIPreviewsContainer
 
 from src.objects.skin_lesion import SkinLesion
 
@@ -32,14 +34,23 @@ class UpsertSkinLesion(ViewObject):
         self.ui.bt_complete.set_position(2)
 
         # caracteristic
-        self.c_caracteristics = VariableInputContainer(cfg.FILES_SKIN_LESION_CARACTERISTICS_PATH,
+        self.c_caracteristics = VariableInputsContainer(cfg.FILES_SKIN_LESION_CARACTERISTICS_PATH,
             "Create new caracteristic",
             VariableInput.DISPOSITION_H)
         self.ui.ly_caracteristics_content.addWidget(self.c_caracteristics)
 
         # image type
-        self.c_images_type = ImageTypeContainer(cfg.FILES_IMAGES_TYPE_PATH)
+        self.c_images_type = ImagesTypeContainer(cfg.FILES_IMAGES_TYPE_PATH)
         self.ui.ly_images_type_content.addWidget(self.c_images_type)
+
+        # AI
+        ai_tests = {'AI-1':{'description':'desc ai 1', 'results':{'r1':'cr1'}},
+            'AI-2':{'description':'desc ai 2', 'results':{'r2':'cr2'}},
+            'AI-3':{'description':'desc ai 3', 'results':{'r3':'cr3'}}
+            }
+        self.c_ai_previews = AIPreviewsContainer(ai_tests)
+        self.ui.ly_ai_results.addWidget(self.c_ai_previews)
+
 
 
 
@@ -66,6 +77,9 @@ class UpsertSkinLesion(ViewObject):
             self.skl.caracteristics = self.__catch_caracteristics()
             self.skl.update_data()
         self.skl.save_images(self.c_images_type.get_selected_image_path_names())
+
+        # when skin lesion updated without scaping from the view
+#        self.charge_edit_mode()
 
 
     def __catch_caracteristics(self):
@@ -98,6 +112,11 @@ class UpsertSkinLesion(ViewObject):
 
     def charge_edit_mode(self):
         self.ui.lb_title.setText("Edit skin lesion")
+
+        # caracteristics
         self.c_caracteristics.select_default_values(self.skl.caracteristics)
-#        self.ui.lb_title.setText("Edit medical information")
-#        self.c_mi.select_default_values(self.p.mi)
+
+        # images
+        self.c_images_type.set_number_images(self.skl.get_number_images_type())
+
+

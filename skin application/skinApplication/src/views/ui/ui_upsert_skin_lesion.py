@@ -15,11 +15,10 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QFormLayout, QFrame, QHBoxLayout,
-    QLabel, QScrollArea, QSizePolicy, QSpacerItem,
-    QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QApplication, QFrame, QHBoxLayout, QLabel,
+    QScrollArea, QSizePolicy, QSpacerItem, QVBoxLayout,
+    QWidget)
 
-from .promoted.button import Button
 from .promoted.label import Label
 from .promoted.navigator_button import NavigatorButton
 
@@ -107,7 +106,7 @@ class Ui_upsert_skin_lesion(object):
         self.sc_caracteristics.setWidgetResizable(True)
         self.c_caracteristics_content = QWidget()
         self.c_caracteristics_content.setObjectName(u"c_caracteristics_content")
-        self.c_caracteristics_content.setGeometry(QRect(0, 0, 364, 332))
+        self.c_caracteristics_content.setGeometry(QRect(0, 0, 364, 328))
         self.verticalLayout_30 = QVBoxLayout(self.c_caracteristics_content)
         self.verticalLayout_30.setObjectName(u"verticalLayout_30")
         self.ly_caracteristics_content = QVBoxLayout()
@@ -140,7 +139,7 @@ class Ui_upsert_skin_lesion(object):
         self.sc_images.setWidgetResizable(True)
         self.c_images_content = QWidget()
         self.c_images_content.setObjectName(u"c_images_content")
-        self.c_images_content.setGeometry(QRect(0, 0, 364, 332))
+        self.c_images_content.setGeometry(QRect(0, 0, 364, 328))
         self.verticalLayout_10 = QVBoxLayout(self.c_images_content)
         self.verticalLayout_10.setObjectName(u"verticalLayout_10")
         self.ly_images_type_content = QVBoxLayout()
@@ -171,291 +170,6 @@ class Ui_upsert_skin_lesion(object):
 
         self.ly_ai_results.addWidget(self.lb_lauch_ai, 0, Qt.AlignHCenter)
 
-        self.ly_ai_results_content = QHBoxLayout()
-        self.ly_ai_results_content.setObjectName(u"ly_ai_results_content")
-        self.ly_ai_results_content.setContentsMargins(-1, -1, 10, 10)
-        self.c_ai_1 = QFrame(upsert_skin_lesion)
-        self.c_ai_1.setObjectName(u"c_ai_1")
-        self.c_ai_1.setFrameShape(QFrame.StyledPanel)
-        self.c_ai_1.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_15 = QVBoxLayout(self.c_ai_1)
-        self.verticalLayout_15.setSpacing(16)
-        self.verticalLayout_15.setObjectName(u"verticalLayout_15")
-        self.verticalLayout_15.setContentsMargins(0, 0, 0, 0)
-        self.bt_lauch_ai_1 = Button(self.c_ai_1)
-        self.bt_lauch_ai_1.setObjectName(u"bt_lauch_ai_1")
-
-        self.verticalLayout_15.addWidget(self.bt_lauch_ai_1, 0, Qt.AlignHCenter)
-
-        self.c_description_ai_1 = QFrame(self.c_ai_1)
-        self.c_description_ai_1.setObjectName(u"c_description_ai_1")
-        self.c_description_ai_1.setEnabled(True)
-        self.c_description_ai_1.setFrameShape(QFrame.StyledPanel)
-        self.c_description_ai_1.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_6 = QVBoxLayout(self.c_description_ai_1)
-        self.verticalLayout_6.setSpacing(12)
-        self.verticalLayout_6.setObjectName(u"verticalLayout_6")
-        self.verticalLayout_6.setContentsMargins(0, 0, 0, 0)
-        self.lb_description_ai_1 = QLabel(self.c_description_ai_1)
-        self.lb_description_ai_1.setObjectName(u"lb_description_ai_1")
-        self.lb_description_ai_1.setMaximumSize(QSize(16777215, 20))
-
-        self.verticalLayout_6.addWidget(self.lb_description_ai_1, 0, Qt.AlignHCenter)
-
-        self.i_description_ai_1 = Label(self.c_description_ai_1)
-        self.i_description_ai_1.setObjectName(u"i_description_ai_1")
-        self.i_description_ai_1.setAlignment(Qt.AlignCenter)
-        self.i_description_ai_1.setWordWrap(True)
-
-        self.verticalLayout_6.addWidget(self.i_description_ai_1, 0, Qt.AlignTop)
-
-        self.i_read_more_ai_1 = Label(self.c_description_ai_1)
-        self.i_read_more_ai_1.setObjectName(u"i_read_more_ai_1")
-        self.i_read_more_ai_1.setMaximumSize(QSize(16777215, 20))
-
-        self.verticalLayout_6.addWidget(self.i_read_more_ai_1, 0, Qt.AlignHCenter)
-
-
-        self.verticalLayout_15.addWidget(self.c_description_ai_1)
-
-        self.c_results_ai_1 = QFrame(self.c_ai_1)
-        self.c_results_ai_1.setObjectName(u"c_results_ai_1")
-        self.c_results_ai_1.setFrameShape(QFrame.StyledPanel)
-        self.c_results_ai_1.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_19 = QVBoxLayout(self.c_results_ai_1)
-        self.verticalLayout_19.setSpacing(16)
-        self.verticalLayout_19.setObjectName(u"verticalLayout_19")
-        self.verticalLayout_19.setContentsMargins(0, 0, 0, 0)
-        self.lb_results_ai_1 = QLabel(self.c_results_ai_1)
-        self.lb_results_ai_1.setObjectName(u"lb_results_ai_1")
-        self.lb_results_ai_1.setMaximumSize(QSize(16777215, 20))
-
-        self.verticalLayout_19.addWidget(self.lb_results_ai_1, 0, Qt.AlignHCenter)
-
-        self.scrollArea_4 = QScrollArea(self.c_results_ai_1)
-        self.scrollArea_4.setObjectName(u"scrollArea_4")
-        self.scrollArea_4.setWidgetResizable(True)
-        self.scrollAreaWidgetContents_4 = QWidget()
-        self.scrollAreaWidgetContents_4.setObjectName(u"scrollAreaWidgetContents_4")
-        self.scrollAreaWidgetContents_4.setGeometry(QRect(0, 0, 238, 147))
-        self.verticalLayout_26 = QVBoxLayout(self.scrollAreaWidgetContents_4)
-        self.verticalLayout_26.setSpacing(12)
-        self.verticalLayout_26.setObjectName(u"verticalLayout_26")
-        self.verticalLayout_26.setContentsMargins(0, 0, 0, 0)
-        self.layout_results_ai_1 = QFormLayout()
-        self.layout_results_ai_1.setObjectName(u"layout_results_ai_1")
-
-        self.verticalLayout_26.addLayout(self.layout_results_ai_1)
-
-        self.scrollArea_4.setWidget(self.scrollAreaWidgetContents_4)
-
-        self.verticalLayout_19.addWidget(self.scrollArea_4)
-
-
-        self.verticalLayout_15.addWidget(self.c_results_ai_1)
-
-
-        self.ly_ai_results_content.addWidget(self.c_ai_1)
-
-        self.c_ai_2 = QFrame(upsert_skin_lesion)
-        self.c_ai_2.setObjectName(u"c_ai_2")
-        self.c_ai_2.setFrameShape(QFrame.StyledPanel)
-        self.c_ai_2.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_14 = QVBoxLayout(self.c_ai_2)
-        self.verticalLayout_14.setSpacing(16)
-        self.verticalLayout_14.setObjectName(u"verticalLayout_14")
-        self.verticalLayout_14.setContentsMargins(0, 0, 0, 0)
-        self.bt_lauch_ai_2 = Button(self.c_ai_2)
-        self.bt_lauch_ai_2.setObjectName(u"bt_lauch_ai_2")
-
-        self.verticalLayout_14.addWidget(self.bt_lauch_ai_2, 0, Qt.AlignHCenter)
-
-        self.c_description_ai_2 = QFrame(self.c_ai_2)
-        self.c_description_ai_2.setObjectName(u"c_description_ai_2")
-        self.c_description_ai_2.setFrameShape(QFrame.StyledPanel)
-        self.c_description_ai_2.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_27 = QVBoxLayout(self.c_description_ai_2)
-        self.verticalLayout_27.setSpacing(12)
-        self.verticalLayout_27.setObjectName(u"verticalLayout_27")
-        self.verticalLayout_27.setContentsMargins(0, 0, 0, 0)
-        self.lb_description_ai_2 = QLabel(self.c_description_ai_2)
-        self.lb_description_ai_2.setObjectName(u"lb_description_ai_2")
-        self.lb_description_ai_2.setMaximumSize(QSize(16777215, 20))
-
-        self.verticalLayout_27.addWidget(self.lb_description_ai_2, 0, Qt.AlignHCenter)
-
-        self.i_description_ai_2 = Label(self.c_description_ai_2)
-        self.i_description_ai_2.setObjectName(u"i_description_ai_2")
-        self.i_description_ai_2.setAlignment(Qt.AlignCenter)
-        self.i_description_ai_2.setWordWrap(True)
-
-        self.verticalLayout_27.addWidget(self.i_description_ai_2)
-
-        self.i_read_more_ai_2 = QLabel(self.c_description_ai_2)
-        self.i_read_more_ai_2.setObjectName(u"i_read_more_ai_2")
-        self.i_read_more_ai_2.setMaximumSize(QSize(16777215, 20))
-
-        self.verticalLayout_27.addWidget(self.i_read_more_ai_2, 0, Qt.AlignHCenter)
-
-
-        self.verticalLayout_14.addWidget(self.c_description_ai_2)
-
-        self.c_results_ai_2 = QFrame(self.c_ai_2)
-        self.c_results_ai_2.setObjectName(u"c_results_ai_2")
-        self.c_results_ai_2.setFrameShape(QFrame.StyledPanel)
-        self.c_results_ai_2.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_20 = QVBoxLayout(self.c_results_ai_2)
-        self.verticalLayout_20.setSpacing(16)
-        self.verticalLayout_20.setObjectName(u"verticalLayout_20")
-        self.verticalLayout_20.setContentsMargins(0, 0, 0, 0)
-        self.lb_results_ai_2 = QLabel(self.c_results_ai_2)
-        self.lb_results_ai_2.setObjectName(u"lb_results_ai_2")
-        self.lb_results_ai_2.setMaximumSize(QSize(16777215, 20))
-
-        self.verticalLayout_20.addWidget(self.lb_results_ai_2, 0, Qt.AlignHCenter)
-
-        self.scrollArea_5 = QScrollArea(self.c_results_ai_2)
-        self.scrollArea_5.setObjectName(u"scrollArea_5")
-        self.scrollArea_5.setWidgetResizable(True)
-        self.scrollAreaWidgetContents_5 = QWidget()
-        self.scrollAreaWidgetContents_5.setObjectName(u"scrollAreaWidgetContents_5")
-        self.scrollAreaWidgetContents_5.setGeometry(QRect(0, 0, 239, 147))
-        self.verticalLayout_28 = QVBoxLayout(self.scrollAreaWidgetContents_5)
-        self.verticalLayout_28.setSpacing(12)
-        self.verticalLayout_28.setObjectName(u"verticalLayout_28")
-        self.verticalLayout_28.setContentsMargins(0, 0, 0, 0)
-        self.layout_results_ai_2 = QFormLayout()
-        self.layout_results_ai_2.setObjectName(u"layout_results_ai_2")
-        self.layout_results_ai_2.setVerticalSpacing(12)
-        self.layout_results_ai_2.setContentsMargins(0, -1, -1, -1)
-        self.label_6 = QLabel(self.scrollAreaWidgetContents_5)
-        self.label_6.setObjectName(u"label_6")
-
-        self.layout_results_ai_2.setWidget(0, QFormLayout.LabelRole, self.label_6)
-
-        self.label_8 = QLabel(self.scrollAreaWidgetContents_5)
-        self.label_8.setObjectName(u"label_8")
-
-        self.layout_results_ai_2.setWidget(0, QFormLayout.FieldRole, self.label_8)
-
-        self.label_7 = QLabel(self.scrollAreaWidgetContents_5)
-        self.label_7.setObjectName(u"label_7")
-
-        self.layout_results_ai_2.setWidget(1, QFormLayout.LabelRole, self.label_7)
-
-        self.label_9 = QLabel(self.scrollAreaWidgetContents_5)
-        self.label_9.setObjectName(u"label_9")
-
-        self.layout_results_ai_2.setWidget(1, QFormLayout.FieldRole, self.label_9)
-
-        self.label_10 = QLabel(self.scrollAreaWidgetContents_5)
-        self.label_10.setObjectName(u"label_10")
-
-        self.layout_results_ai_2.setWidget(2, QFormLayout.LabelRole, self.label_10)
-
-        self.label_11 = QLabel(self.scrollAreaWidgetContents_5)
-        self.label_11.setObjectName(u"label_11")
-
-        self.layout_results_ai_2.setWidget(2, QFormLayout.FieldRole, self.label_11)
-
-
-        self.verticalLayout_28.addLayout(self.layout_results_ai_2)
-
-        self.scrollArea_5.setWidget(self.scrollAreaWidgetContents_5)
-
-        self.verticalLayout_20.addWidget(self.scrollArea_5)
-
-
-        self.verticalLayout_14.addWidget(self.c_results_ai_2)
-
-
-        self.ly_ai_results_content.addWidget(self.c_ai_2)
-
-        self.c_ai_3 = QFrame(upsert_skin_lesion)
-        self.c_ai_3.setObjectName(u"c_ai_3")
-        self.c_ai_3.setFrameShape(QFrame.StyledPanel)
-        self.c_ai_3.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_13 = QVBoxLayout(self.c_ai_3)
-        self.verticalLayout_13.setSpacing(16)
-        self.verticalLayout_13.setObjectName(u"verticalLayout_13")
-        self.verticalLayout_13.setContentsMargins(0, 0, 0, 0)
-        self.bt_lauch_ai_3 = Button(self.c_ai_3)
-        self.bt_lauch_ai_3.setObjectName(u"bt_lauch_ai_3")
-
-        self.verticalLayout_13.addWidget(self.bt_lauch_ai_3, 0, Qt.AlignHCenter)
-
-        self.c_description_ai_3 = QFrame(self.c_ai_3)
-        self.c_description_ai_3.setObjectName(u"c_description_ai_3")
-        self.c_description_ai_3.setFrameShape(QFrame.StyledPanel)
-        self.c_description_ai_3.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_17 = QVBoxLayout(self.c_description_ai_3)
-        self.verticalLayout_17.setSpacing(12)
-        self.verticalLayout_17.setObjectName(u"verticalLayout_17")
-        self.verticalLayout_17.setContentsMargins(0, 0, 0, 0)
-        self.lb_description_ai_3 = QLabel(self.c_description_ai_3)
-        self.lb_description_ai_3.setObjectName(u"lb_description_ai_3")
-        self.lb_description_ai_3.setMaximumSize(QSize(16777215, 20))
-
-        self.verticalLayout_17.addWidget(self.lb_description_ai_3, 0, Qt.AlignHCenter)
-
-        self.i_description_ai_3 = Label(self.c_description_ai_3)
-        self.i_description_ai_3.setObjectName(u"i_description_ai_3")
-        self.i_description_ai_3.setAlignment(Qt.AlignCenter)
-        self.i_description_ai_3.setWordWrap(True)
-
-        self.verticalLayout_17.addWidget(self.i_description_ai_3, 0, Qt.AlignTop)
-
-        self.i_read_more_ai_3 = Label(self.c_description_ai_3)
-        self.i_read_more_ai_3.setObjectName(u"i_read_more_ai_3")
-        self.i_read_more_ai_3.setMaximumSize(QSize(16777215, 20))
-
-        self.verticalLayout_17.addWidget(self.i_read_more_ai_3, 0, Qt.AlignHCenter)
-
-
-        self.verticalLayout_13.addWidget(self.c_description_ai_3)
-
-        self.lb_results_ai_4 = QFrame(self.c_ai_3)
-        self.lb_results_ai_4.setObjectName(u"lb_results_ai_4")
-        self.lb_results_ai_4.setFrameShape(QFrame.StyledPanel)
-        self.lb_results_ai_4.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_21 = QVBoxLayout(self.lb_results_ai_4)
-        self.verticalLayout_21.setSpacing(16)
-        self.verticalLayout_21.setObjectName(u"verticalLayout_21")
-        self.verticalLayout_21.setContentsMargins(0, 0, 0, 0)
-        self.lb_results_ai_3 = QLabel(self.lb_results_ai_4)
-        self.lb_results_ai_3.setObjectName(u"lb_results_ai_3")
-        self.lb_results_ai_3.setMaximumSize(QSize(16777215, 20))
-
-        self.verticalLayout_21.addWidget(self.lb_results_ai_3, 0, Qt.AlignHCenter)
-
-        self.scrollArea_6 = QScrollArea(self.lb_results_ai_4)
-        self.scrollArea_6.setObjectName(u"scrollArea_6")
-        self.scrollArea_6.setWidgetResizable(True)
-        self.scrollAreaWidgetContents_7 = QWidget()
-        self.scrollAreaWidgetContents_7.setObjectName(u"scrollAreaWidgetContents_7")
-        self.scrollAreaWidgetContents_7.setGeometry(QRect(0, 0, 238, 147))
-        self.verticalLayout_29 = QVBoxLayout(self.scrollAreaWidgetContents_7)
-        self.verticalLayout_29.setSpacing(12)
-        self.verticalLayout_29.setObjectName(u"verticalLayout_29")
-        self.verticalLayout_29.setContentsMargins(0, 0, 0, 0)
-        self.layout_results_ai_3 = QFormLayout()
-        self.layout_results_ai_3.setObjectName(u"layout_results_ai_3")
-
-        self.verticalLayout_29.addLayout(self.layout_results_ai_3)
-
-        self.scrollArea_6.setWidget(self.scrollAreaWidgetContents_7)
-
-        self.verticalLayout_21.addWidget(self.scrollArea_6)
-
-
-        self.verticalLayout_13.addWidget(self.lb_results_ai_4)
-
-
-        self.ly_ai_results_content.addWidget(self.c_ai_3)
-
-
-        self.ly_ai_results.addLayout(self.ly_ai_results_content)
-
 
         self.ly_right.addLayout(self.ly_ai_results)
 
@@ -484,26 +198,5 @@ class Ui_upsert_skin_lesion(object):
         self.lb_caracteristics.setText(QCoreApplication.translate("upsert_skin_lesion", u"Caracteristics", None))
         self.lb_add_images.setText(QCoreApplication.translate("upsert_skin_lesion", u"Add images", None))
         self.lb_lauch_ai.setText(QCoreApplication.translate("upsert_skin_lesion", u"Launch AI", None))
-        self.bt_lauch_ai_1.setText(QCoreApplication.translate("upsert_skin_lesion", u"AI - 1", None))
-        self.lb_description_ai_1.setText(QCoreApplication.translate("upsert_skin_lesion", u"Description", None))
-        self.i_description_ai_1.setText(QCoreApplication.translate("upsert_skin_lesion", u"There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour..", None))
-        self.i_read_more_ai_1.setText(QCoreApplication.translate("upsert_skin_lesion", u"Read more", None))
-        self.lb_results_ai_1.setText(QCoreApplication.translate("upsert_skin_lesion", u"Results", None))
-        self.bt_lauch_ai_2.setText(QCoreApplication.translate("upsert_skin_lesion", u"AI - 2", None))
-        self.lb_description_ai_2.setText(QCoreApplication.translate("upsert_skin_lesion", u"Results", None))
-        self.i_description_ai_2.setText(QCoreApplication.translate("upsert_skin_lesion", u"There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour..", None))
-        self.i_read_more_ai_2.setText(QCoreApplication.translate("upsert_skin_lesion", u"Read more", None))
-        self.lb_results_ai_2.setText(QCoreApplication.translate("upsert_skin_lesion", u"Results", None))
-        self.label_6.setText(QCoreApplication.translate("upsert_skin_lesion", u"Risk :", None))
-        self.label_8.setText(QCoreApplication.translate("upsert_skin_lesion", u"MALIGNAT", None))
-        self.label_7.setText(QCoreApplication.translate("upsert_skin_lesion", u"Type :", None))
-        self.label_9.setText(QCoreApplication.translate("upsert_skin_lesion", u"Melanoma", None))
-        self.label_10.setText(QCoreApplication.translate("upsert_skin_lesion", u"Accurance :", None))
-        self.label_11.setText(QCoreApplication.translate("upsert_skin_lesion", u"87%", None))
-        self.bt_lauch_ai_3.setText(QCoreApplication.translate("upsert_skin_lesion", u"AI - 3", None))
-        self.lb_description_ai_3.setText(QCoreApplication.translate("upsert_skin_lesion", u"Description", None))
-        self.i_description_ai_3.setText(QCoreApplication.translate("upsert_skin_lesion", u"There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour..", None))
-        self.i_read_more_ai_3.setText(QCoreApplication.translate("upsert_skin_lesion", u"Read more", None))
-        self.lb_results_ai_3.setText(QCoreApplication.translate("upsert_skin_lesion", u"Results", None))
     # retranslateUi
 

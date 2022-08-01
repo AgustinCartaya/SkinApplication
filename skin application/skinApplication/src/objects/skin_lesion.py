@@ -2,14 +2,20 @@
 from .data_object import *
 
 class SkinLesion(DataObject):
-    def __init__(self, number, patient_id, caracteristics):
+    def __init__(self, number, patient_id, caracteristics, ai_results = {}):
 
         self.number = number
         self.patient_id = patient_id
+
         if type(caracteristics) is str:
             self.caracteristics = json.loads(caracteristics)
         elif type(caracteristics) is dict:
             self.caracteristics = caracteristics
+
+        if type(ai_results) is str:
+            self.ai_results = json.loads(ai_results)
+        elif type(ai_results) is dict:
+            self.ai_results = ai_results
 
         self.folder_path = cfg.PATIENTS_DATA_PATH + cfg._S + self.patient_id + cfg._S + cfg.SKL_FOLDER_SUFIX +  str(self.number)
 
@@ -22,7 +28,8 @@ class SkinLesion(DataObject):
 
             dbc.insert(cfg.TABLE_SKIN_LESIONS,(self.number,
                 self.patient_id,
-                json.dumps(self.caracteristics)
+                json.dumps(self.caracteristics),
+                json.dumps(self.ai_results)
                 ))
             return True
         except ValueError as err:
@@ -32,7 +39,7 @@ class SkinLesion(DataObject):
         try:
             dbc = DBController()
             dbc.update(cfg.TABLE_SKIN_LESIONS,
-                (json.dumps(self.caracteristics),),
+                (json.dumps(self.caracteristics),json.dumps(self.ai_results)),
                 (str(self.number), self.patient_id)
                 )
         except ValueError as err:
@@ -78,6 +85,20 @@ class SkinLesion(DataObject):
     def get_timeline_folder_path(self):
         return self.folder_path + cfg._S + cfg.SKL_TIMELINE_FOLDER_NAME
 
+    def get_number_image_type(self, image_type):
+        if os.path.isdir(self.get_image_type_folder_path(image_type)):
+            return len(util.get_file_list(self.get_image_type_folder_path(image_type)))
+        else:
+            return 0
+
+    def get_images_type_available(self):
+        return [name for name in os.listdir(self.get_images_folder_path()) if os.path.isdir(self.get_image_type_folder_path(name))]
+
+    def get_number_images_type(self):
+        number_images_type = {}
+        for image_type in self.get_images_type_available():
+            number_images_type[image_type] = self.get_number_image_type(image_type)
+        return number_images_type
 
     def to_string(self):
         return ("(" + str(self.number) + ", " +

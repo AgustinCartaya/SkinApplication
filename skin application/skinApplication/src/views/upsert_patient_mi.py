@@ -3,7 +3,7 @@ from .ui.ui_upsert_patient_mi import Ui_upsert_patient_mi
 
 from src.objects.patient import Patient
 
-from .ui.promoted.variable_input_container import VariableInputContainer
+from .ui.promoted.variable_inputs_container import VariableInputsContainer
 from .ui.promoted.variable_input import VariableInput
 
 class UpsertPatientMiView(ViewObject):
@@ -31,7 +31,7 @@ class UpsertPatientMiView(ViewObject):
         self.ui.lb_title.set_title(1)
 
         # medical information
-        self.c_mi = VariableInputContainer(cfg.FILES_MEDICAL_INFORMATION_PATH,
+        self.c_mi = VariableInputsContainer(cfg.FILES_MEDICAL_INFORMATION_PATH,
             "Create new medical information")
         self.ui.ly_medical_information.addWidget(self.c_mi)
 

@@ -47,7 +47,11 @@ class ImageType(QFrame):
 
     def set_nb_images(self, nb_images):
         self.nb_images = nb_images
-        self.lb_nb_new_images.setText("(" + str(self.nb_images) + ")")
+        self.lb_nb_images.setText("(" + str(self.nb_images) + ")")
+
+    def __update_nb_new_images(self):
+        if len(self.img_path_name) > 0:
+            self.lb_nb_new_images.setText("+" + str(len(self.img_path_name)))
 
     def mousePressEvent(self, arg):
         self.loadFiles()
@@ -56,8 +60,7 @@ class ImageType(QFrame):
         img_path_name, _ = QFileDialog.getOpenFileNames(self, 'Open file',
              'D:\\Documents\\Internship Documents\\Image data\\1AA\\images\\Microscopy\\MALAIRE DTE',"Image files (*.png *.jpg *.gif *.svg *.bmp)")
         self.img_path_name.update(img_path_name)
-        if len(self.img_path_name) > 0:
-            self.lb_nb_new_images.setText("+" + str(len(self.img_path_name)))
+        self.__update_nb_new_images()
 
     def get_image_path_names(self):
         return self.img_path_name

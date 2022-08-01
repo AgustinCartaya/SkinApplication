@@ -20,6 +20,7 @@ CREATE TABLE SKIN_LESIONS (
     number INTEGER NOT NULL,
     id_patient TEXT NOT NULL,
     caracteristics TEXT NOT NULL,
+    ai_results TEXT NOT NULL,
     UNIQUE(number, id_patient)
 );
 
@@ -47,6 +48,6 @@ INSERT INTO PATIENTS (id, first_name, last_name, birth_date, gender, medical_inf
 
 
 
-INSERT INTO SKIN_LESIONS (number, id_patient, caracteristics) VALUES (0, "AG3526CA", '{"diameter":["1","mm"], "apparition_date":["1","Years"]}');
-INSERT INTO SKIN_LESIONS (number, id_patient, caracteristics) VALUES (1, "AG3526CA", '{"diameter":["1","mm"], "apparition_date":["1","Years"]}');
-INSERT INTO SKIN_LESIONS (number, id_patient, caracteristics) VALUES (0, "PI3526RD", '{"diameter":["1","mm"], "apparition_date":["1","Years"]}');
+INSERT INTO SKIN_LESIONS (number, id_patient, caracteristics, ai_results) VALUES (0, "AG3526CA", '{"diameter":["1","mm"], "apparition_date":["1","Years"]}', '{}');
+INSERT INTO SKIN_LESIONS (number, id_patient, caracteristics, ai_results) VALUES (1, "AG3526CA", '{"diameter":["1","mm"], "apparition_date":["1","Years"]}', '{}');
+INSERT INTO SKIN_LESIONS (number, id_patient, caracteristics, ai_results) VALUES (0, "PI3526RD", '{"diameter":["1","mm"], "apparition_date":["1","Years"]}', '{}');
