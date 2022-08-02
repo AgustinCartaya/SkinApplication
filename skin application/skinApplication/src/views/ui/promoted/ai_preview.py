@@ -16,7 +16,6 @@ class AIPreview(QFrame):
 #    s_edit_items = Signal(str)
     def __init__(self, ai_name, ai_description, ai_results = {}, *args, **kwards):
         QFrame.__init__(self, *args, **kwards)
-
         self.ai_name = ai_name
         self.ai_description = ai_description
         self.ai_results = ai_results
@@ -24,18 +23,35 @@ class AIPreview(QFrame):
 
 
     def __create(self):
-        self.layout = QVBoxLayout(self)
-        self.layout.setSpacing(20)
-        self.layout.setContentsMargins(0, 0, 0, 0)
+        self.p_layout = QVBoxLayout(self)
+        self.p_layout.setContentsMargins(0, 0, 0, 0)
 
+        self.__create_scroll_area()
         self.__create_launch_button()
         self.__create_description()
         self.__create_results()
+
+        # spacer
+        self.vs_description_down = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.layout.addItem(self.vs_description_down)
 
         if len(self.ai_results) > 0:
             self.__show_results()
         else:
             self.c_results.hide()
+
+    def __create_scroll_area(self):
+        self.scroll_area = QScrollArea(self)
+        self.scroll_area.setWidgetResizable(True)
+
+        self.c_scroll_area = QWidget(self.scroll_area)
+        self.scroll_area.setWidget(self.c_scroll_area)
+
+        self.layout = QVBoxLayout(self.c_scroll_area)
+        self.layout.setSpacing(20)
+        self.layout.setContentsMargins(0, 0, 0, 0)
+
+        self.p_layout.addWidget(self.scroll_area)
 
     def __create_launch_button(self):
         self.bt_lauch = Button(self)
@@ -64,7 +80,7 @@ class AIPreview(QFrame):
 
         # read more
         self.i_read_more = Button(self.c_description)
-        self.i_read_more.setMaximumSize(QSize(16777215, 20))
+#        self.i_read_more.setMaximumSize(QSize(16777215, 20))
         self.i_read_more.setText("Read more")
         self.ly_description.addWidget(self.i_read_more, 0, Qt.AlignHCenter)
 
@@ -84,29 +100,11 @@ class AIPreview(QFrame):
         self.ly_results.addWidget(self.lb_results, 0, Qt.AlignHCenter)
 
         # content
-        self.sc_results = QScrollArea(self.c_results)
-        self.sc_results.setWidgetResizable(True)
-
-        self.c_results_content = QWidget()
-        self.c_results_content.setGeometry(QRect(0, 0, 238, 147))
-
-        self.ly_results_content = QVBoxLayout(self.c_results_content)
-        self.ly_results_content.setSpacing(12)
-        self.ly_results_content.setContentsMargins(0, 0, 0, 0)
-
-        # Form
         self.ly_form_results = QFormLayout()
         self.ly_form_results.setVerticalSpacing(12)
-        self.ly_results_content.addLayout(self.ly_form_results)
+        self.ly_results.addLayout(self.ly_form_results)
 
-        # spacer
-        self.vs_down = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
-        self.ly_results_content.addItem(self.vs_down)
-
-        self.sc_results.setWidget(self.c_results_content)
-        self.ly_results.addWidget(self.sc_results)
         self.layout.addWidget(self.c_results)
-
 
     def add_results(self, results):
         self.ai_results = results
@@ -118,14 +116,24 @@ class AIPreview(QFrame):
         count = 0
 
         for res_name, res_content in self.ai_results.items():
+
+#            ly_res = QHBoxLayout()
+#            ly_res.setSpacing(12)
+    #        self.ly_form_results.setVerticalSpacing(12)
+
             # Result name
-            lb_res_name = Label(self.c_results_content)
+            lb_res_name = Label(self.c_results)
             lb_res_name.setText(res_name)
+#            ly_res.addWidget(lb_res_name)
             self.ly_form_results.setWidget(count, QFormLayout.LabelRole, lb_res_name)
 
             # Result Content
-            lb_res_content = Label(self.c_results_content)
+            lb_res_content = Label(self.c_results)
             lb_res_content.setText(res_content)
+#            ly_res.addWidget(lb_res_content)
             self.ly_form_results.setWidget(count, QFormLayout.FieldRole, lb_res_content)
+
+#            self.ly_form_results.addLayout(ly_res)
+
 
             count = count +1

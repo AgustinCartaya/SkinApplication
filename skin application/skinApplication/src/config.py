@@ -26,8 +26,11 @@ FILES_PATH = ASSETS_PATH + _S + "files"
 FILES_MEDICAL_INFORMATION_PATH = FILES_PATH + _S + "medical_information"
 FILES_SKIN_LESION_CARACTERISTICS_PATH = FILES_PATH + _S + "skin_lesion_caracteristics"
 FILES_IMAGES_TYPE_PATH = FILES_PATH + _S + "images_type"
+
 # Artificial inteligence
 AI_PATH = PROJECT_FOLDER + _S + "ai"
+AI_INFO_FOLDER_NAME = "info"
+AI_DESCRIPTION_FILE_NAME = "description"
 
 # patients data
 PATIENTS_DATA_PATH = PROJECT_FOLDER + _S + "patients_data"

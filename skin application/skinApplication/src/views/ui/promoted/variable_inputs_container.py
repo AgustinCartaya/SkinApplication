@@ -29,7 +29,7 @@ class VariableInputsContainer(QFrame):
     def __create(self):
         self.layout = QVBoxLayout(self)
         self.layout.setContentsMargins(0, 0, 0, 0)
-        self.layout.setSpacing(30)
+        self.layout.setSpacing(50)
 
         self.__show_inputs()
         self.__create_bt_creator()
@@ -42,7 +42,7 @@ class VariableInputsContainer(QFrame):
         for file_name in util.get_file_list(self.folder):
             (i_id, i_type) = file_name.split(".")
             i_title = util.file_name_to_title(i_id)
-            i_values = util.read_file_list(file_name, path=self.folder)
+            i_values = util.read_file_list(self.folder, file_name)
 
             self.__show_single_input(i_id, i_title, i_values, i_type)
 
@@ -76,7 +76,7 @@ class VariableInputsContainer(QFrame):
             raise ValueError('Caracteristic input already exists', "CARACTERISTIC_INPUT", "REPEATED")
 
         file_content = '\n'.join(input_values)
-        util.create_file(file_name + "." + input_type, file_content, self.folder)
+        util.create_file(file_content, self.folder, file_name + "." + input_type)
 
         self.__show_single_input(file_name, input_title, input_values, input_type)
         self.__cancel_new_input()
@@ -94,9 +94,10 @@ class VariableInputsContainer(QFrame):
         if ok:
             new_item_s = util.str_to_list(new_item_s, ",")
         if len(new_item_s) > 0:
-            util.apped_to_file(input_id + "." + self.inputs[input_id].input_type,
-                "\n" + "\n".join(new_item_s),
-                self.folder)
+            util.apped_to_file("\n" + "\n".join(new_item_s),
+                self.folder,
+                input_id + "." + self.inputs[input_id].input_type,
+                )
             self.inputs[input_id].append_items(new_item_s)
 
     def get_selected_items(self):

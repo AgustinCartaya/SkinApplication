@@ -27,6 +27,8 @@ class UpsertSkinLesion(ViewObject):
             self.skl = self.p.skin_lesions[self.skl_id]
             self.charge_edit_mode()
 
+        self.charge_ai_previews()
+
     def load_ui(self):
         self.ui = Ui_upsert_skin_lesion()
         self.ui.setupUi(self)
@@ -44,13 +46,25 @@ class UpsertSkinLesion(ViewObject):
         self.c_images_type = ImagesTypeContainer(cfg.FILES_IMAGES_TYPE_PATH)
         self.ui.ly_images_type_content.addWidget(self.c_images_type)
 
-        # AI
-        ai_tests = {'AI-1':{'description':'desc ai 1', 'results':{'r1':'cr1'}},
-            'AI-2':{'description':'desc ai 2', 'results':{'r2':'cr2'}},
-            'AI-3':{'description':'desc ai 3', 'results':{}}
-            }
-        self.c_ai_previews = AIPreviewsContainer(ai_tests)
+
+    def charge_ai_previews(self):
+        ai_dict = {}
+        actual_language = "en"
+        for ai_disponible in util.get_dir_list(cfg.AI_PATH):
+            ai_info_folder_path = cfg.AI_PATH + cfg._S + ai_disponible + cfg._S + cfg.AI_INFO_FOLDER_NAME
+            if util.is_dir(ai_info_folder_path):
+
+                # description
+                ai_description = util.read_file(ai_info_folder_path + cfg._S + cfg.AI_DESCRIPTION_FILE_NAME + "." + actual_language)
+                ai_dict[ai_disponible] = {'description': ai_description, 'results':{}}
+
+                # results
+                if self.skl is not None and ai_disponible in self.skl.ai_results:
+                    ai_dict[ai_disponible]['results'] = self.skl.ai_results[ai_disponible]
+
+        self.c_ai_previews = AIPreviewsContainer(ai_dict)
         self.ui.ly_ai_results.addWidget(self.c_ai_previews)
+
 
     s_change_view = Signal(str,str,dict)
     def connect_ui_signals(self):
@@ -58,6 +72,7 @@ class UpsertSkinLesion(ViewObject):
         self.ui.bt_back.clicked.connect(self.__back)
 
         self.ui.sc_caracteristics.verticalScrollBar().rangeChanged.connect(self.__c_caracteristics_scroll_down)
+        self.ui.sc_images.verticalScrollBar().rangeChanged.connect(self.__c_images_scroll_down)
 
 
         # created signals
@@ -102,6 +117,10 @@ class UpsertSkinLesion(ViewObject):
     @Slot()
     def __c_caracteristics_scroll_down(self, min, maxi):
         self.ui.sc_caracteristics.verticalScrollBar().setValue(maxi)
+
+    @Slot()
+    def __c_images_scroll_down(self, min, maxi):
+        self.ui.sc_images.verticalScrollBar().setValue(maxi)
 
     @Slot()
     def __back(self):

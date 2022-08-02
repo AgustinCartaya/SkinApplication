@@ -67,7 +67,7 @@ class ImagesTypeContainer(QFrame):
         if file_name in self.images_type:
             raise ValueError('Caracteristic input already exists', "CARACTERISTIC_INPUT", "REPEATED")
 
-        util.create_file(file_name, "", self.folder)
+        util.create_file("", self.folder, file_name)
 
         self.__show_single_image_type(file_name, image_type_name)
         self.__cancel_new_image_type()

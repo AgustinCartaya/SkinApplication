@@ -46,7 +46,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.move(geo.topLeft())
 
     def load_style_sheet(self):
-        st = util.file_to_string(cfg.GLOBAL_STYLES_PATH_NAME)
+        st = util.read_file(cfg.GLOBAL_STYLES_PATH_NAME)
         self.setStyleSheet(st)
 
 

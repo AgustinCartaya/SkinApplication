@@ -121,8 +121,8 @@ class Patient(DataObject):
             ")")
 
     def verify_patient_folder(self):
-        if not os.path.isdir(self.folder_path):
-            os.mkdir(self.folder_path)
+        if not util.is_dir(self.folder_path):
+            util.create_dir(self.folder_path)
 
 
     def load_skin_lesions(self):

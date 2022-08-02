@@ -5,9 +5,6 @@ import src.util.data_cleaner as dc
 import src.config as cfg
 import src.util.util as util
 import json
-import os
-import shutil
-
 
 from abc import ABC, abstractmethod
 

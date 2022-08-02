@@ -52,29 +52,9 @@ class SkinLesion(DataObject):
     def save_images(self, images_dic):
         for img_type, image_path_names in images_dic.items():
             if len(image_path_names) > 0:
-                self.verify_image_folder(img_type)
+                self.verify_image_type_folder(img_type)
                 for src_image in image_path_names:
-                    shutil.copy(src_image, self.get_image_type_folder_path(img_type))
-
-    def get_image_type_folder_path(self, img_type):
-        return self.get_images_folder_path() + cfg._S + img_type
-
-    def verify_image_folder(self, img_type):
-        if not os.path.isdir(self.get_image_type_folder_path(img_type)):
-            os.mkdir(self.get_image_type_folder_path(img_type))
-
-    def verify_skl_folder(self):
-        if not os.path.isdir(self.folder_path):
-            os.mkdir(self.folder_path)
-
-        if not os.path.isdir(self.get_images_folder_path()):
-            os.mkdir(self.get_images_folder_path())
-
-        if not os.path.isdir(self.get_ai_results_folder_path()):
-            os.mkdir(self.get_ai_results_folder_path())
-
-        if not os.path.isdir(self.get_timeline_folder_path()):
-            os.mkdir(self.get_timeline_folder_path())
+                    util.copy_file(src_image, self.get_image_type_folder_path(img_type))
 
     def get_images_folder_path(self):
         return self.folder_path + cfg._S + cfg.SKL_IMAGES_FOLDER_NAME
@@ -85,14 +65,31 @@ class SkinLesion(DataObject):
     def get_timeline_folder_path(self):
         return self.folder_path + cfg._S + cfg.SKL_TIMELINE_FOLDER_NAME
 
+    def get_image_type_folder_path(self, img_type):
+        return self.get_images_folder_path() + cfg._S + img_type
+
+    def verify_image_type_folder(self, img_type):
+        if not util.is_dir(self.get_image_type_folder_path(img_type)):
+            util.create_dir(self.get_image_type_folder_path(img_type))
+
+    def verify_skl_folder(self):
+        if not util.is_dir(self.folder_path):
+            util.create_dir(self.folder_path)
+
+        if not util.is_dir(self.get_images_folder_path()):
+            util.create_dir(self.get_images_folder_path())
+
+        if not util.is_dir(self.get_timeline_folder_path()):
+            util.create_dir(self.get_timeline_folder_path())
+
     def get_number_image_type(self, image_type):
-        if os.path.isdir(self.get_image_type_folder_path(image_type)):
+        if util.is_dir(self.get_image_type_folder_path(image_type)):
             return len(util.get_file_list(self.get_image_type_folder_path(image_type)))
         else:
             return 0
 
     def get_images_type_available(self):
-        return [name for name in os.listdir(self.get_images_folder_path()) if os.path.isdir(self.get_image_type_folder_path(name))]
+        return util.get_dir_list(self.get_images_folder_path())
 
     def get_number_images_type(self):
         number_images_type = {}
