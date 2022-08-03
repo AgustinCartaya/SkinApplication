@@ -11,8 +11,9 @@ from PySide6.QtCore import Signal
 class PatientCard(QFrame):
 
     s_check_patient = Signal(str)
-    def __init__(self, patient, receaver, *args, **kwards):
-        QFrame.__init__(self, *args, **kwards)
+    def __init__(self, parent, patient, receaver):
+        QFrame.__init__(self, None)
+        # prblems with pagination
 #        self.clicked.connect(self.switch)
 #        self.select(False)
 #        self.__group = None

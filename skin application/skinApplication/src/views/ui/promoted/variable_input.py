@@ -18,6 +18,7 @@ class VariableInput(QFrame):
 
     s_edit_items = Signal(str)
     def __init__(self,
+        parent,
         id,
         title,
         items = [],
@@ -25,9 +26,9 @@ class VariableInput(QFrame):
         input_type = VariableInputCreator.INPUT_OPTIONS,
         add_null = False,
         disposition = DISPOSITION_V,
-        null_value = None,
-        *args, **kwards):
-        QFrame.__init__(self, *args, **kwards)
+        null_value = None
+        ):
+        QFrame.__init__(self, parent)
 
         self.id = id
         self.title = title

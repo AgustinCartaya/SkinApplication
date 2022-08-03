@@ -48,6 +48,6 @@ INSERT INTO PATIENTS (id, first_name, last_name, birth_date, gender, medical_inf
 
 
 
-INSERT INTO SKIN_LESIONS (number, id_patient, caracteristics, ai_results) VALUES (0, "AG3526CA", '{"diameter":["1","mm"], "apparition_date":["1","Years"]}', '{}');
-INSERT INTO SKIN_LESIONS (number, id_patient, caracteristics, ai_results) VALUES (1, "AG3526CA", '{"diameter":["1","mm"], "apparition_date":["1","Years"]}', '{}');
-INSERT INTO SKIN_LESIONS (number, id_patient, caracteristics, ai_results) VALUES (0, "PI3526RD", '{"diameter":["1","mm"], "apparition_date":["1","Years"]}', '{}');
+INSERT INTO SKIN_LESIONS (number, id_patient, caracteristics, ai_results) VALUES (0, "AG3526CA", '{"diameter":["3","cm"], "apparition_date":["4","Months"]}', '{"AI-01":{"Risk": "MALIGNANT", "Type":"Melanoma", "Accurance:":87}}');
+INSERT INTO SKIN_LESIONS (number, id_patient, caracteristics, ai_results) VALUES (1, "AG3526CA", '{"diameter":["1","mm"], "apparition_date":["1","Years"]}', '{"AI-01":{"Risk": "BENIGN", "Type":"Mole", "Accurance:":83}, "AI-02":{"Risk": "BENIGN", "Type":"Mole", "Accurance:":87}, "AI-03":{"Risk": "BENIGN", "Type":"Mole", "Accurance:":90}}');
+INSERT INTO SKIN_LESIONS (number, id_patient, caracteristics, ai_results) VALUES (0, "PI3526RD", '{"diameter":["10","cm"], "apparition_date":["3","Weeks"]}', '{}');

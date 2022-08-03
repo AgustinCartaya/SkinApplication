@@ -12,6 +12,7 @@ from .line_edit import LineEdit
 
 import src.util.data_cleaner as data_cleaner
 
+from src.objects.skin_lesion import SkinLesion
 
 class SkinLesionPreview(QFrame):
 
@@ -19,18 +20,14 @@ class SkinLesionPreview(QFrame):
     s_see_time_line = Signal(int)
     s_see_images = Signal(int)
     def __init__(self,
-        skin_lesion_id,
-        caracteristics,
-        ai_results,
+        parent,
+        skin_lesion,
         update_receaver,
         see_time_line_receaver,
-        see_images_receaver,
-        *args, **kwards):
-        QFrame.__init__(self, *args, **kwards)
+        see_images_receaver):
+        QFrame.__init__(self, parent)
 
-        self.skin_lesion_id = skin_lesion_id
-        self.caracteristics = caracteristics
-        self.ai_results = ai_results
+        self.skl = skin_lesion
 
         self.s_update.connect(update_receaver)
         self.s_see_time_line.connect(see_time_line_receaver)
@@ -57,6 +54,8 @@ class SkinLesionPreview(QFrame):
 
         self.c_n1_layout = QVBoxLayout(self.c_n1)
         self.c_n1_layout.setContentsMargins(0, 0, 0, 0)
+
+
 
         # image
         self.c_image = QFrame(self.c_n1)
@@ -95,8 +94,8 @@ class SkinLesionPreview(QFrame):
         self.c_n2_up_layout.setContentsMargins(0, 0, 0, 0)
 
         # Anotations
-        annotations = ResultPreview(self.caracteristics, "Caracteristics", "Read more")
-        ai_results = ResultPreview(self.ai_results, "AI results", "Read more")
+        annotations = ResultPreview(self.c_n2, self.skl.caracteristics, "Caracteristics")
+        ai_results = ResultPreview(self.c_n2, self.skl.ai_results, "AI results", True)
 
         self.c_n2_up_layout.addWidget(annotations)
         self.c_n2_up_layout.addWidget(ai_results)
@@ -163,10 +162,10 @@ class SkinLesionPreview(QFrame):
         self.layout.addWidget(self.c_n3)
 
     def __update(self):
-        self.s_update.emit(self.skin_lesion_id)
+        self.s_update.emit(self.skl.number)
 
     def __see_time_line(self):
-        self.s_time_line.emit(self.skin_lesion_id)
+        self.s_time_line.emit(self.skl.number)
 
     def __see_images(self):
-        self.s_see_images.emit(self.skin_lesion_id)
+        self.s_see_images.emit(self.skl.number)

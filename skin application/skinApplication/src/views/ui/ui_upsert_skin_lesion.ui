@@ -168,7 +168,7 @@
                 <x>0</x>
                 <y>0</y>
                 <width>364</width>
-                <height>328</height>
+                <height>332</height>
                </rect>
               </property>
               <layout class="QVBoxLayout" name="verticalLayout_30">
@@ -223,7 +223,7 @@
                 <x>0</x>
                 <y>0</y>
                 <width>364</width>
-                <height>328</height>
+                <height>332</height>
                </rect>
               </property>
               <layout class="QVBoxLayout" name="verticalLayout_10">
@@ -252,24 +252,48 @@
         </layout>
        </item>
        <item>
-        <layout class="QVBoxLayout" name="ly_ai_results">
-         <property name="bottomMargin">
-          <number>10</number>
+        <widget class="QFrame" name="c_ai_results">
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
          </property>
-         <item alignment="Qt::AlignHCenter">
-          <widget class="Label" name="lb_lauch_ai">
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>25</height>
-            </size>
-           </property>
-           <property name="text">
-            <string>Launch AI</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item alignment="Qt::AlignHCenter">
+           <widget class="Label" name="lb_lauch_ai">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>25</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Launch AI</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="ly_ai_results">
+            <property name="bottomMargin">
+             <number>10</number>
+            </property>
+           </layout>
+          </item>
+         </layout>
+        </widget>
        </item>
       </layout>
      </item>

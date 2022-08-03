@@ -20,7 +20,8 @@ from .views.upsert_patient import UpsertPatientView
 from .views.upsert_patient_mi import UpsertPatientMiView
 from .views.upsert_patient_preview import UpsertPatientPreiewView
 from .views.check_patient import CheckPatientView
-from .views.upsert_skin_lesion import UpsertSkinLesion
+from .views.upsert_skin_lesion import UpsertSkinLesionView
+from .views.ai_launcher import AILauncherView
 
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
@@ -94,7 +95,11 @@ class MainWindow(QtWidgets.QMainWindow):
 
         elif view_to == cfg.UPSERT_SKIN_LESION_VIEW:
             self.clean_views()
-            self.set_view(UpsertSkinLesion(self, atts["patient"], atts["skin_lesion_nb"]))
+            self.set_view(UpsertSkinLesionView(self, atts["patient"], atts["skin_lesion_nb"]))
+
+        elif view_to == cfg.AI_LAUNCHER_VIEW:
+            self.clean_views()
+            self.set_view(AILauncherView(self, atts["patient"], atts["skin_lesion"], atts["ai_name"]))
 
 #        print(self._layers.count())
 

@@ -25,7 +25,7 @@ class DBConnection:
         self.connection.close()
 
     def create_tables(self):
-        sql_as_string = util.file_to_string(cfg.DB_SCRIPT_PATH_NAME)
+        sql_as_string = util.read_file(cfg.DB_SCRIPT_PATH_NAME)
         self.cursor.executescript(sql_as_string)
 
     

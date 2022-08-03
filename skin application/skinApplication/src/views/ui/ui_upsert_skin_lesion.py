@@ -106,7 +106,7 @@ class Ui_upsert_skin_lesion(object):
         self.sc_caracteristics.setWidgetResizable(True)
         self.c_caracteristics_content = QWidget()
         self.c_caracteristics_content.setObjectName(u"c_caracteristics_content")
-        self.c_caracteristics_content.setGeometry(QRect(0, 0, 364, 328))
+        self.c_caracteristics_content.setGeometry(QRect(0, 0, 364, 332))
         self.verticalLayout_30 = QVBoxLayout(self.c_caracteristics_content)
         self.verticalLayout_30.setObjectName(u"verticalLayout_30")
         self.ly_caracteristics_content = QVBoxLayout()
@@ -139,7 +139,7 @@ class Ui_upsert_skin_lesion(object):
         self.sc_images.setWidgetResizable(True)
         self.c_images_content = QWidget()
         self.c_images_content.setObjectName(u"c_images_content")
-        self.c_images_content.setGeometry(QRect(0, 0, 364, 328))
+        self.c_images_content.setGeometry(QRect(0, 0, 364, 332))
         self.verticalLayout_10 = QVBoxLayout(self.c_images_content)
         self.verticalLayout_10.setObjectName(u"verticalLayout_10")
         self.ly_images_type_content = QVBoxLayout()
@@ -161,17 +161,27 @@ class Ui_upsert_skin_lesion(object):
 
         self.ly_right.addLayout(self.ly_skin_lesion_content)
 
-        self.ly_ai_results = QVBoxLayout()
-        self.ly_ai_results.setObjectName(u"ly_ai_results")
-        self.ly_ai_results.setContentsMargins(-1, -1, -1, 10)
-        self.lb_lauch_ai = Label(upsert_skin_lesion)
+        self.c_ai_results = QFrame(upsert_skin_lesion)
+        self.c_ai_results.setObjectName(u"c_ai_results")
+        self.c_ai_results.setFrameShape(QFrame.StyledPanel)
+        self.c_ai_results.setFrameShadow(QFrame.Raised)
+        self.verticalLayout = QVBoxLayout(self.c_ai_results)
+        self.verticalLayout.setObjectName(u"verticalLayout")
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.lb_lauch_ai = Label(self.c_ai_results)
         self.lb_lauch_ai.setObjectName(u"lb_lauch_ai")
         self.lb_lauch_ai.setMaximumSize(QSize(16777215, 25))
 
-        self.ly_ai_results.addWidget(self.lb_lauch_ai, 0, Qt.AlignHCenter)
+        self.verticalLayout.addWidget(self.lb_lauch_ai, 0, Qt.AlignHCenter)
+
+        self.ly_ai_results = QVBoxLayout()
+        self.ly_ai_results.setObjectName(u"ly_ai_results")
+        self.ly_ai_results.setContentsMargins(-1, -1, -1, 10)
+
+        self.verticalLayout.addLayout(self.ly_ai_results)
 
 
-        self.ly_right.addLayout(self.ly_ai_results)
+        self.ly_right.addWidget(self.c_ai_results)
 
         self.ly_right.setStretch(0, 1)
         self.ly_right.setStretch(1, 1)

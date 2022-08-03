@@ -13,16 +13,19 @@ import src.util.data_cleaner as data_cleaner
 
 class AIPreview(QFrame):
 
-#    s_edit_items = Signal(str)
-    def __init__(self, ai_name, ai_description, ai_results = {}, *args, **kwards):
-        QFrame.__init__(self, *args, **kwards)
+    s_launch_ai = Signal(str)
+    def __init__(self, parent, ai_name, ai_description, ai_results, ai_launch_receaver):
+        QFrame.__init__(self, None)
         self.ai_name = ai_name
         self.ai_description = ai_description
         self.ai_results = ai_results
+
+        self.s_launch_ai.connect(ai_launch_receaver)
         self.__create()
 
-
     def __create(self):
+        self.setMinimumSize(QSize(200, 100))
+
         self.p_layout = QVBoxLayout(self)
         self.p_layout.setContentsMargins(0, 0, 0, 0)
 
@@ -49,7 +52,7 @@ class AIPreview(QFrame):
 
         self.layout = QVBoxLayout(self.c_scroll_area)
         self.layout.setSpacing(20)
-        self.layout.setContentsMargins(0, 0, 0, 0)
+#        self.layout.setContentsMargins(9, 9, 9, 9)
 
         self.p_layout.addWidget(self.scroll_area)
 
@@ -57,6 +60,7 @@ class AIPreview(QFrame):
         self.bt_lauch = Button(self)
         self.bt_lauch.setText(self.ai_name)
         self.layout.addWidget(self.bt_lauch, 0, Qt.AlignHCenter)
+        self.bt_lauch.clicked.connect(self.__launch_ai)
 
     def __create_description(self):
         self.c_description = QFrame(self)
@@ -116,11 +120,6 @@ class AIPreview(QFrame):
         count = 0
 
         for res_name, res_content in self.ai_results.items():
-
-#            ly_res = QHBoxLayout()
-#            ly_res.setSpacing(12)
-    #        self.ly_form_results.setVerticalSpacing(12)
-
             # Result name
             lb_res_name = Label(self.c_results)
             lb_res_name.setText(res_name)
@@ -129,11 +128,15 @@ class AIPreview(QFrame):
 
             # Result Content
             lb_res_content = Label(self.c_results)
+
+            if type(res_content) is int:
+                res_content = str(res_content)
+
             lb_res_content.setText(res_content)
-#            ly_res.addWidget(lb_res_content)
             self.ly_form_results.setWidget(count, QFormLayout.FieldRole, lb_res_content)
 
-#            self.ly_form_results.addLayout(ly_res)
-
-
             count = count +1
+
+    @Slot()
+    def __launch_ai(self):
+        self.s_launch_ai.emit(self.ai_name)

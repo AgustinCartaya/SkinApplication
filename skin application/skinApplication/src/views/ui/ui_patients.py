@@ -282,7 +282,7 @@ class Ui_patients(object):
 
         self.ly_right = QVBoxLayout()
         self.ly_right.setObjectName(u"ly_right")
-        self.ly_right.setContentsMargins(-1, 10, -1, -1)
+        self.ly_right.setContentsMargins(-1, -1, -1, 10)
         self.frame_7 = QFrame(patients)
         self.frame_7.setObjectName(u"frame_7")
         self.frame_7.setMaximumSize(QSize(16777215, 100))

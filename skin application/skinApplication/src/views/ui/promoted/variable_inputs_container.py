@@ -24,6 +24,8 @@ class VariableInputsContainer(QFrame):
         self.bt_text = bt_text
         self.inputs_disposition = inputs_disposition
 
+        self.input_creator = None
+
         self.__create()
 
     def __create(self):
@@ -47,7 +49,8 @@ class VariableInputsContainer(QFrame):
             self.__show_single_input(i_id, i_title, i_values, i_type)
 
     def __show_single_input(self, i_id, i_title, i_values, i_type):
-        input = VariableInput(i_id,
+        input = VariableInput(self,
+            i_id,
             i_title,
             items=i_values,
             edit_receaver=self.__add_new_input_item,
@@ -66,8 +69,9 @@ class VariableInputsContainer(QFrame):
 
     @Slot()
     def __show_input_creator(self):
-        self.input_creator = VariableInputCreator(self.__create_new_input, self.__cancel_new_input)
-        self.layout.addWidget(self.input_creator)
+        if self.input_creator is None:
+            self.input_creator = VariableInputCreator(self, self.__create_new_input, self.__cancel_new_input)
+            self.layout.addWidget(self.input_creator)
 
     Slot(str, list, str)
     def __create_new_input(self, input_title, input_values, input_type):

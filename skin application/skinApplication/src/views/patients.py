@@ -72,6 +72,10 @@ class PatientsView(ViewObject):
         self.ui.bt_sorter_id.add_group(g3)
         self.ui.bt_sorter_name.add_group(g3)
 
+        # pagination
+        self.ui.c_pagination.set_grid_cards_size(3,4)
+
+
 
     s_change_view = Signal(str,str,dict)
     def connect_ui_signals(self):
@@ -223,13 +227,11 @@ class PatientsView(ViewObject):
     def create_patient_cards(self):
         card_patients = []
         for p in self.p_list_sortered.patients:
-            bt = PatientCard(p, self)
+            bt = PatientCard(self.ui.c_pagination, p, self)
 #            bt.setPatient(p)
             # a modificar
             bt.setTitle(self.p_list_sortered.sorted_by)
 
             card_patients.append(bt)
         self.ui.c_pagination.add_cards(card_patients)
-
-
 

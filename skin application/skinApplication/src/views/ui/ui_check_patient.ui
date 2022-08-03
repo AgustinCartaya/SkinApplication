@@ -175,6 +175,33 @@
               <property name="spacing">
                <number>20</number>
               </property>
+              <property name="topMargin">
+               <number>10</number>
+              </property>
+              <item>
+               <layout class="QFormLayout" name="ly_id">
+                <property name="horizontalSpacing">
+                 <number>9</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <item row="0" column="0">
+                 <widget class="Label" name="lb_id">
+                  <property name="text">
+                   <string>ID :</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="Label" name="i_id">
+                  <property name="text">
+                   <string>...</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
               <item>
                <layout class="QVBoxLayout" name="ly_basic_information">
                 <property name="spacing">
@@ -195,6 +222,9 @@
                 </item>
                 <item>
                  <layout class="QFormLayout" name="ly_bi_content">
+                  <property name="horizontalSpacing">
+                   <number>9</number>
+                  </property>
                   <property name="verticalSpacing">
                    <number>16</number>
                   </property>
@@ -284,12 +314,15 @@
                    </size>
                   </property>
                   <property name="text">
-                   <string>Madical information</string>
+                   <string>Medical information</string>
                   </property>
                  </widget>
                 </item>
                 <item>
                  <layout class="QFormLayout" name="ly_mi_content">
+                  <property name="horizontalSpacing">
+                   <number>9</number>
+                  </property>
                   <property name="verticalSpacing">
                    <number>16</number>
                   </property>
@@ -367,11 +400,11 @@
         </widget>
        </item>
        <item>
-        <widget class="QScrollArea" name="scrollArea_2">
+        <widget class="QScrollArea" name="sc_skin_lesions_preview">
          <property name="widgetResizable">
           <bool>true</bool>
          </property>
-         <widget class="QWidget" name="c_skin_parts_scroll_area">
+         <widget class="QWidget" name="c_skin_lesions_preview">
           <property name="geometry">
            <rect>
             <x>0</x>
@@ -382,7 +415,7 @@
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_6">
            <item>
-            <layout class="QVBoxLayout" name="ly_skin_lesions">
+            <layout class="QVBoxLayout" name="ly_skin_lesions_preview">
              <property name="spacing">
               <number>40</number>
              </property>

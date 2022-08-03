@@ -501,7 +501,7 @@
      </item>
      <item>
       <layout class="QVBoxLayout" name="ly_right">
-       <property name="topMargin">
+       <property name="bottomMargin">
         <number>10</number>
        </property>
        <item>

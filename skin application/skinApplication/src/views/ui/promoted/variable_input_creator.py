@@ -21,8 +21,8 @@ class VariableInputCreator(QFrame):
 
     s_cancel = Signal()
     s_add = Signal(str, list, str)
-    def __init__(self, add_receaver, cancel_receaver, *args, **kwards):
-        QFrame.__init__(self, *args, **kwards)
+    def __init__(self, parent, add_receaver, cancel_receaver):
+        QFrame.__init__(self, parent)
 
         self.input_type = ""
 

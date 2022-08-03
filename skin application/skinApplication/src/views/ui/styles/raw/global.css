@@ -113,6 +113,8 @@ Button
     padding: 8px 25px;
 }
 
+
+
 Button[type=add]
 {
     background-color: @c_blue_base;
@@ -201,6 +203,11 @@ Button[bt_icon=plus]
 Button[bt_icon=plus]::hover
 {
     background-color: @c_skin_dark;
+}
+
+Button[padding="small"]
+{
+    padding: 5px 5px;
 }
 
 /*-----CheckButton-----*/

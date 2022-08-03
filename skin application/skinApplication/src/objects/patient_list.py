@@ -52,7 +52,7 @@ class PatientList:
                 filtered.append_patient(patient)
         return filtered
 
-    def get_filtered_rangue(self, key, min, max, include = True):
+    def get_filtered_range(self, key, min, max, include = True):
         filtered = PatientList()
         for patient in self.patients:
             if include:

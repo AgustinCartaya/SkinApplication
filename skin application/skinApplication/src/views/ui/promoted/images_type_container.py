@@ -23,6 +23,8 @@ class ImagesTypeContainer(QFrame):
         self.folder = folder
         self.bt_text = bt_text
 
+        self.image_type_creator = None
+
         self.__create()
 
     def __create(self):
@@ -45,7 +47,7 @@ class ImagesTypeContainer(QFrame):
             self.__show_single_image_type(file_name, image_type_title)
 
     def __show_single_image_type(self, image_type_id, image_type_title):
-        image_type = ImageType(image_type_id, image_type_title)
+        image_type = ImageType(self, image_type_id, image_type_title)
 
         self.image_type_layout.addWidget(image_type)
         self.images_type[image_type_id] = image_type
@@ -58,8 +60,9 @@ class ImagesTypeContainer(QFrame):
 
     @Slot()
     def __show_image_type_creator(self):
-        self.image_type_creator = ImageTypeCreator(self.__create_new_image_type, self.__cancel_new_image_type)
-        self.layout.addWidget(self.image_type_creator)
+        if self.image_type_creator is None:
+            self.image_type_creator = ImageTypeCreator(self, self.__create_new_image_type, self.__cancel_new_image_type)
+            self.layout.addWidget(self.image_type_creator)
 
     Slot(str)
     def __create_new_image_type(self, image_type_name):

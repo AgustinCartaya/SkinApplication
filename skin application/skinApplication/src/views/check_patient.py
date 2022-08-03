@@ -28,13 +28,12 @@ class CheckPatientView(ViewObject):
     def load_skin_lesions(self):
         self.p.load_skin_lesions()
         for skl in self.p.skin_lesions:
-            skin_lesion_preview = SkinLesionPreview(skl.number,
-                skl.caracteristics,
-                {},
+            skin_lesion_preview = SkinLesionPreview(self.ui.c_skin_lesions_preview,
+                skl,
                 self.update_skin_lesion,
                 self.see_time_line,
                 self.see_images)
-            self.ui.ly_skin_lesions.addWidget(skin_lesion_preview)
+            self.ui.ly_skin_lesions_preview.addWidget(skin_lesion_preview)
 
     Slot(int)
     def update_skin_lesion(self, skin_lesion_nb):
@@ -55,6 +54,9 @@ class CheckPatientView(ViewObject):
         #label
         self.ui.lb_title.set_title(1)
         self.ui.lb_patient_information.set_title(2)
+
+        # id
+        self.ui.i_id.setText(self.p.id)
 
         # basic information
         self.ui.i_first_name.setText(self.p.first_name)

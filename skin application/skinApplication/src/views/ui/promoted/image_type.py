@@ -14,8 +14,8 @@ import src.util.data_cleaner as data_cleaner
 class ImageType(QFrame):
 
 #    s_edit_items = Signal(str)
-    def __init__(self, id, name, nb_images = 0, new_images = [], *args, **kwards):
-        QFrame.__init__(self, *args, **kwards)
+    def __init__(self, parent, id, name, nb_images = 0, new_images = []):
+        QFrame.__init__(self, parent)
 
         self.id = id
         self.name = name

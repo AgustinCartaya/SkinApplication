@@ -97,3 +97,10 @@ def calc_age(birthdate):
 
 def generate_id(base_text):
     return base_text[:2].upper() + str(random.randint(1000, 9999)) + base_text[-2:].upper()
+
+def get_in_range_value(val, min, max):
+    if val > max:
+        return max
+    elif val < min:
+        return min
+    return val

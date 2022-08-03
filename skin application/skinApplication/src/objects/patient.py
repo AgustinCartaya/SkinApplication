@@ -128,5 +128,5 @@ class Patient(DataObject):
     def load_skin_lesions(self):
         dbc = DBController()
         for skl in dbc.select(cfg.TABLE_SKIN_LESIONS, id_patient = self.id):
-            self.skin_lesions.append(SkinLesion(skl[0], skl[1], skl[2]))
+            self.skin_lesions.append(SkinLesion(skl[0], skl[1], skl[2], skl[3]))
 

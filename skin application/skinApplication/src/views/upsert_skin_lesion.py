@@ -12,7 +12,7 @@ from .ui.promoted.button import Button
 
 from src.objects.skin_lesion import SkinLesion
 
-class UpsertSkinLesion(ViewObject):
+class UpsertSkinLesionView(ViewObject):
     def __init__(self, mw, patient, skin_lesion_id):
         super().__init__(mw)
 
@@ -62,7 +62,7 @@ class UpsertSkinLesion(ViewObject):
                 if self.skl is not None and ai_disponible in self.skl.ai_results:
                     ai_dict[ai_disponible]['results'] = self.skl.ai_results[ai_disponible]
 
-        self.c_ai_previews = AIPreviewsContainer(ai_dict)
+        self.c_ai_previews = AIPreviewsContainer(self.ui.c_ai_results, ai_dict, self.launch_ai)
         self.ui.ly_ai_results.addWidget(self.c_ai_previews)
 
 
@@ -85,10 +85,12 @@ class UpsertSkinLesion(ViewObject):
             self.skl_id = len(self.p.skin_lesions)
             self.skl = SkinLesion(self.skl_id, self.p.id, self.__catch_caracteristics())
             self.skl.create_skin_lesion()
-#            self.skl.save_images(self.c_images_type.get_selected_image_path_names())
+            self.p.skin_lesions.apped(self.skl)
+
         else:
             self.skl.caracteristics = self.__catch_caracteristics()
             self.skl.update_data()
+
         self.skl.save_images(self.c_images_type.get_selected_image_path_names())
 
         # when skin lesion updated without scaping from the view
@@ -125,6 +127,11 @@ class UpsertSkinLesion(ViewObject):
     @Slot()
     def __back(self):
         self.s_change_view.emit(cfg.UPSERT_SKIN_LESION_VIEW, cfg.CHECK_PATIENT_VIEW, {"patient_id":self.p.id})
+
+    @Slot(str)
+    def launch_ai(self, ai_name):
+        print("launch: " + ai_name)
+        self.s_change_view.emit(cfg.UPSERT_SKIN_LESION_VIEW, cfg.AI_LAUNCHER_VIEW, {"patient":self.p, "skin_lesion":self.skl, "ai_name":ai_name })
 
 
     def charge_edit_mode(self):

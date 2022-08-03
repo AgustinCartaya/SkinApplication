@@ -94,6 +94,24 @@ class Ui_check_patient(object):
         self.ly_patient_information = QVBoxLayout()
         self.ly_patient_information.setSpacing(20)
         self.ly_patient_information.setObjectName(u"ly_patient_information")
+        self.ly_patient_information.setContentsMargins(-1, 10, -1, -1)
+        self.ly_id = QFormLayout()
+        self.ly_id.setObjectName(u"ly_id")
+        self.ly_id.setHorizontalSpacing(9)
+        self.ly_id.setContentsMargins(-1, 0, -1, -1)
+        self.lb_id = Label(self.c_patient_information_content)
+        self.lb_id.setObjectName(u"lb_id")
+
+        self.ly_id.setWidget(0, QFormLayout.LabelRole, self.lb_id)
+
+        self.i_id = Label(self.c_patient_information_content)
+        self.i_id.setObjectName(u"i_id")
+
+        self.ly_id.setWidget(0, QFormLayout.FieldRole, self.i_id)
+
+
+        self.ly_patient_information.addLayout(self.ly_id)
+
         self.ly_basic_information = QVBoxLayout()
         self.ly_basic_information.setSpacing(12)
         self.ly_basic_information.setObjectName(u"ly_basic_information")
@@ -105,6 +123,7 @@ class Ui_check_patient(object):
 
         self.ly_bi_content = QFormLayout()
         self.ly_bi_content.setObjectName(u"ly_bi_content")
+        self.ly_bi_content.setHorizontalSpacing(9)
         self.ly_bi_content.setVerticalSpacing(16)
         self.ly_bi_content.setContentsMargins(9, 0, 0, 0)
         self.lb_first_name = Label(self.c_patient_information_content)
@@ -164,6 +183,7 @@ class Ui_check_patient(object):
 
         self.ly_mi_content = QFormLayout()
         self.ly_mi_content.setObjectName(u"ly_mi_content")
+        self.ly_mi_content.setHorizontalSpacing(9)
         self.ly_mi_content.setVerticalSpacing(16)
         self.ly_mi_content.setContentsMargins(9, 9, 9, 9)
 
@@ -206,27 +226,27 @@ class Ui_check_patient(object):
 
         self.ly_right.addWidget(self.lb_title_2, 0, Qt.AlignHCenter)
 
-        self.scrollArea_2 = QScrollArea(check_patient)
-        self.scrollArea_2.setObjectName(u"scrollArea_2")
-        self.scrollArea_2.setWidgetResizable(True)
-        self.c_skin_parts_scroll_area = QWidget()
-        self.c_skin_parts_scroll_area.setObjectName(u"c_skin_parts_scroll_area")
-        self.c_skin_parts_scroll_area.setGeometry(QRect(0, 0, 875, 714))
-        self.verticalLayout_6 = QVBoxLayout(self.c_skin_parts_scroll_area)
+        self.sc_skin_lesions_preview = QScrollArea(check_patient)
+        self.sc_skin_lesions_preview.setObjectName(u"sc_skin_lesions_preview")
+        self.sc_skin_lesions_preview.setWidgetResizable(True)
+        self.c_skin_lesions_preview = QWidget()
+        self.c_skin_lesions_preview.setObjectName(u"c_skin_lesions_preview")
+        self.c_skin_lesions_preview.setGeometry(QRect(0, 0, 875, 714))
+        self.verticalLayout_6 = QVBoxLayout(self.c_skin_lesions_preview)
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
-        self.ly_skin_lesions = QVBoxLayout()
-        self.ly_skin_lesions.setSpacing(40)
-        self.ly_skin_lesions.setObjectName(u"ly_skin_lesions")
+        self.ly_skin_lesions_preview = QVBoxLayout()
+        self.ly_skin_lesions_preview.setSpacing(40)
+        self.ly_skin_lesions_preview.setObjectName(u"ly_skin_lesions_preview")
 
-        self.verticalLayout_6.addLayout(self.ly_skin_lesions)
+        self.verticalLayout_6.addLayout(self.ly_skin_lesions_preview)
 
         self.verticalSpacer_4 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.verticalLayout_6.addItem(self.verticalSpacer_4)
 
-        self.scrollArea_2.setWidget(self.c_skin_parts_scroll_area)
+        self.sc_skin_lesions_preview.setWidget(self.c_skin_lesions_preview)
 
-        self.ly_right.addWidget(self.scrollArea_2)
+        self.ly_right.addWidget(self.sc_skin_lesions_preview)
 
 
         self.ly_center.addLayout(self.ly_right)
@@ -246,6 +266,8 @@ class Ui_check_patient(object):
         self.lb_title.setText(QCoreApplication.translate("check_patient", u"Check patient", None))
         self.bt_add_lesion.setText(QCoreApplication.translate("check_patient", u"Add lesion", None))
         self.lb_patient_information.setText(QCoreApplication.translate("check_patient", u"Patient information", None))
+        self.lb_id.setText(QCoreApplication.translate("check_patient", u"ID :", None))
+        self.i_id.setText(QCoreApplication.translate("check_patient", u"...", None))
         self.lb_basic_information.setText(QCoreApplication.translate("check_patient", u"Basic information", None))
         self.lb_first_name.setText(QCoreApplication.translate("check_patient", u"First name :", None))
         self.i_first_name.setText(QCoreApplication.translate("check_patient", u"...", None))
@@ -255,7 +277,7 @@ class Ui_check_patient(object):
         self.i_gender.setText(QCoreApplication.translate("check_patient", u"...", None))
         self.leb_age.setText(QCoreApplication.translate("check_patient", u"Age :", None))
         self.i_age.setText(QCoreApplication.translate("check_patient", u"...", None))
-        self.lb_medical_information.setText(QCoreApplication.translate("check_patient", u"Madical information", None))
+        self.lb_medical_information.setText(QCoreApplication.translate("check_patient", u"Medical information", None))
         self.bt_edit_patient_info.setText(QCoreApplication.translate("check_patient", u"Edit patient information", None))
         self.lb_title_2.setText(QCoreApplication.translate("check_patient", u"Parts of the sking under study", None))
     # retranslateUi
