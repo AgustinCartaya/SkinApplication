@@ -59,6 +59,7 @@ class Pagination(QFrame):
     def __crete_cards_container(self):
         self.c_cards = QFrame(self)
         self.ly_cards = QGridLayout(self.c_cards)
+        self.ly_cards.setContentsMargins(0, 0, 0, 0)
 
         self.layout.addWidget(self.c_cards)
 
@@ -102,6 +103,7 @@ class Pagination(QFrame):
 
         self.i_actual_page = LineEdit(self.c_pagination_controllers)
         self.i_actual_page.setMaximumSize(QSize(40, 16777215))
+        self.i_actual_page.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
         self.ly_pagination_controllers.addWidget(self.i_actual_page)
         self.i_actual_page.returnPressed.connect(self.__change_page_manually)
         self.i_actual_page.setValidator(data_cleaner.create_text_validator(data_cleaner.regex_not_null_4_number))
@@ -131,6 +133,7 @@ class Pagination(QFrame):
         self.i_nb_rows = LineEdit(self.c_size_controllers)
         self.i_nb_rows.setMaximumSize(QSize(40, 16777215))
         self.i_nb_rows.setText(str(self.nb_rows))
+        self.i_nb_rows.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
         self.ly_size_controllers.addWidget(self.i_nb_rows)
         self.i_nb_rows.returnPressed.connect(self.__change_size)
         self.i_nb_rows.setValidator(data_cleaner.create_text_validator(data_cleaner.regex_not_null_4_number))

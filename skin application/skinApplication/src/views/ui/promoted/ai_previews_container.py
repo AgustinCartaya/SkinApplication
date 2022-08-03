@@ -31,6 +31,7 @@ class AIPreviewsContainer(QFrame):
     def __create_ai_previews(self):
 
         self.c_pagination = Pagination(self, (1,1), (1,3), forced_empty_spaces = True)
+        self.c_pagination.set_grid_cards_size(1,3)
 
         self.layout.addWidget(self.c_pagination)
         ls = []

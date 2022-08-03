@@ -33,6 +33,7 @@ class CheckPatientView(ViewObject):
                 self.update_skin_lesion,
                 self.see_time_line,
                 self.see_images)
+            skin_lesion_preview.set_image(cfg.IMAGES_PATH + cfg._S +  "logo.png")
             self.ui.ly_skin_lesions_preview.addWidget(skin_lesion_preview)
 
     Slot(int)

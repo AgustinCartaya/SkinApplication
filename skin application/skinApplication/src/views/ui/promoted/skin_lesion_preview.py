@@ -65,7 +65,6 @@ class SkinLesionPreview(QFrame):
 
         self.lb_image = QLabel(self.c_image)
         self.lb_image.setMaximumSize(QSize(150, 150))
-        self.lb_image.setPixmap(QPixmap("assets/img/Screenshot 2022-07-25 180616.png"))
         self.lb_image.setScaledContents(True)
 
         self.c_image_layout.addWidget(self.lb_image)
@@ -169,3 +168,7 @@ class SkinLesionPreview(QFrame):
 
     def __see_images(self):
         self.s_see_images.emit(self.skl.number)
+
+    def set_image(self, image_path):
+        self.lb_image.setPixmap(QPixmap(image_path))
+
