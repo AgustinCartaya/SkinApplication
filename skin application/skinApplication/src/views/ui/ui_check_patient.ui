@@ -33,54 +33,25 @@
     <number>0</number>
    </property>
    <item>
-    <layout class="QHBoxLayout" name="ly_navigator">
+    <layout class="QHBoxLayout" name="ly_navigator" stretch="1,1,1">
      <property name="topMargin">
       <number>0</number>
      </property>
-     <item>
+     <item alignment="Qt::AlignLeft">
       <widget class="NavigatorButton" name="bt_back">
        <property name="text">
         <string>Back</string>
        </property>
       </widget>
      </item>
-     <item>
-      <spacer name="horizontalSpacer">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
+     <item alignment="Qt::AlignHCenter">
       <widget class="Label" name="lb_title">
        <property name="text">
         <string>Check patient</string>
        </property>
       </widget>
      </item>
-     <item>
-      <spacer name="horizontalSpacer_2">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType">
-        <enum>QSizePolicy::Expanding</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
+     <item alignment="Qt::AlignRight">
       <widget class="NavigatorButton" name="bt_add_lesion">
        <property name="text">
         <string>Add lesion</string>
@@ -157,7 +128,7 @@
              <x>0</x>
              <y>0</y>
              <width>276</width>
-             <height>657</height>
+             <height>648</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -410,7 +381,7 @@
             <x>0</x>
             <y>0</y>
             <width>875</width>
-            <height>714</height>
+            <height>708</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -453,7 +424,7 @@
   <customwidget>
    <class>NavigatorButton</class>
    <extends>QPushButton</extends>
-   <header location="global">.promoted.navigator_button</header>
+   <header>.promoted.navigator_button</header>
   </customwidget>
   <customwidget>
    <class>Button</class>

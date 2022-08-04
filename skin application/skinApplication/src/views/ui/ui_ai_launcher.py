@@ -42,26 +42,21 @@ class Ui_ai_launcher(object):
         self.bt_back = NavigatorButton(ai_launcher)
         self.bt_back.setObjectName(u"bt_back")
 
-        self.ly_navigator.addWidget(self.bt_back)
-
-        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.ly_navigator.addItem(self.horizontalSpacer)
+        self.ly_navigator.addWidget(self.bt_back, 0, Qt.AlignLeft)
 
         self.lb_title = Label(ai_launcher)
         self.lb_title.setObjectName(u"lb_title")
 
-        self.ly_navigator.addWidget(self.lb_title)
-
-        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.ly_navigator.addItem(self.horizontalSpacer_2)
+        self.ly_navigator.addWidget(self.lb_title, 0, Qt.AlignHCenter)
 
         self.bt_learn_more = NavigatorButton(ai_launcher)
         self.bt_learn_more.setObjectName(u"bt_learn_more")
 
-        self.ly_navigator.addWidget(self.bt_learn_more)
+        self.ly_navigator.addWidget(self.bt_learn_more, 0, Qt.AlignRight)
 
+        self.ly_navigator.setStretch(0, 1)
+        self.ly_navigator.setStretch(1, 1)
+        self.ly_navigator.setStretch(2, 1)
 
         self.verticalLayout_2.addLayout(self.ly_navigator)
 
@@ -104,7 +99,7 @@ class Ui_ai_launcher(object):
         self.sc_patient_required_info.setWidgetResizable(True)
         self.c_patient_required_info_content = QWidget()
         self.c_patient_required_info_content.setObjectName(u"c_patient_required_info_content")
-        self.c_patient_required_info_content.setGeometry(QRect(0, 0, 402, 260))
+        self.c_patient_required_info_content.setGeometry(QRect(0, 0, 402, 251))
         self.verticalLayout_12 = QVBoxLayout(self.c_patient_required_info_content)
         self.verticalLayout_12.setObjectName(u"verticalLayout_12")
         self.c_patient_required_info_list = RequiredElementsContainer(self.c_patient_required_info_content)
@@ -147,7 +142,7 @@ class Ui_ai_launcher(object):
         self.sc_skl_required_info_content.setWidgetResizable(True)
         self.c_skl_required_info_content = QWidget()
         self.c_skl_required_info_content.setObjectName(u"c_skl_required_info_content")
-        self.c_skl_required_info_content.setGeometry(QRect(0, 0, 402, 260))
+        self.c_skl_required_info_content.setGeometry(QRect(0, 0, 402, 251))
         self.verticalLayout_14 = QVBoxLayout(self.c_skl_required_info_content)
         self.verticalLayout_14.setObjectName(u"verticalLayout_14")
         self.c_skl_required_info_list = RequiredElementsContainer(self.c_skl_required_info_content)
@@ -231,7 +226,7 @@ class Ui_ai_launcher(object):
         self.sc_required_images_table.setWidgetResizable(True)
         self.c_required_images_table = QWidget()
         self.c_required_images_table.setObjectName(u"c_required_images_table")
-        self.c_required_images_table.setGeometry(QRect(0, 0, 881, 257))
+        self.c_required_images_table.setGeometry(QRect(0, 0, 881, 248))
         self.verticalLayout_8 = QVBoxLayout(self.c_required_images_table)
         self.verticalLayout_8.setObjectName(u"verticalLayout_8")
         self.verticalLayout_8.setContentsMargins(0, 0, 0, 0)

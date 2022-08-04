@@ -38,7 +38,7 @@ class CheckPatientView(ViewObject):
 
     Slot(int)
     def update_skin_lesion(self, skin_lesion_nb):
-        self.s_change_view.emit(cfg.CHECK_PATIENT_VIEW, cfg.UPSERT_SKIN_LESION_VIEW, {"patient" : self.p, "skin_lesion_nb": skin_lesion_nb})
+        self.s_change_view.emit(cfg.CHECK_PATIENT_VIEW, cfg.UPSERT_SKIN_LESION_VIEW, {"patient" : self.p, "skin_lesion": self.p.skin_lesions[skin_lesion_nb]})
 
     Slot(int)
     def see_time_line(self, skin_lesion_nb):
@@ -46,7 +46,7 @@ class CheckPatientView(ViewObject):
 
     Slot(int)
     def see_images(self, skin_lesion_nb):
-        pass
+        self.s_change_view.emit(cfg.CHECK_PATIENT_VIEW, cfg.IMAGES_VIEW, {})
 
     def load_ui(self):
         self.ui = Ui_check_patient()
@@ -124,5 +124,5 @@ class CheckPatientView(ViewObject):
 
     @Slot()
     def add_new_skin_lesion(self):
-        self.s_change_view.emit(cfg.CHECK_PATIENT_VIEW, cfg.UPSERT_SKIN_LESION_VIEW, {"patient" : self.p, "skin_lesion_nb": -1})
+        self.s_change_view.emit(cfg.CHECK_PATIENT_VIEW, cfg.UPSERT_SKIN_LESION_VIEW, {"patient" : self.p, "skin_lesion": None})
 

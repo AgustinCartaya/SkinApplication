@@ -7,10 +7,11 @@ from .required_image_type import  RequiredImageType
 class RequiredImagesTypeContainer(QFrame):
 
 #    s_edit_items = Signal(str)
-    def __init__(self, parent, required_images_type = None):
+    def __init__(self, parent, req_images_type_data = None):
         QFrame.__init__(self, parent)
 
-        self.required_images_type = required_images_type
+        self.req_images_type_data = req_images_type_data
+        self.req_images_type = {}
         self.__create()
 
 
@@ -20,14 +21,21 @@ class RequiredImagesTypeContainer(QFrame):
         self.layout.setContentsMargins(0, 0, 0, 0)
 
 
-    def set_required_images_type(self, required_images_type):
-        if len(required_images_type) > 0:
-            self.required_images_type = required_images_type
-            for img_name, img_data in required_images_type.items():
+    def create_required_images_type(self, req_images_type_data):
+        if len(req_images_type_data) > 0:
+            self.req_images_type_data = req_images_type_data
+            for img_name, img_data in req_images_type_data.items():
                 rk_img = RequiredImageType(self, img_name, img_data["min"], img_data["max"])
                 self.layout.addWidget(rk_img)
+                self.req_images_type[img_name] = rk_img
         else:
             lb_no_required_info = Label(self)
             lb_no_required_info.setText("No required information")
             self.layout.addWidget(lb_no_required_info,0, Qt.AlignHCenter)
+
+    def set_selected_number(self, image_type, number):
+        if image_type in self.req_images_type:
+            self.req_images_type[image_type].set_selected_number(number)
+
+
 

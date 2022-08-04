@@ -13,20 +13,18 @@ from .ui.promoted.button import Button
 from src.objects.skin_lesion import SkinLesion
 
 class UpsertSkinLesionView(ViewObject):
-    def __init__(self, mw, ai_dict, patient, skin_lesion_id):
+    def __init__(self, mw, ai_dict, patient, skin_lesion):
         super().__init__(mw)
 
         self.ai_dict = ai_dict
 
         self.p = patient
-        self.skl_id = skin_lesion_id
-        self.skl = None
+        self.skl = skin_lesion
 
         self.load_ui()
         self.connect_ui_signals()
 
-        if self.skl_id >= 0:
-            self.skl = self.p.skin_lesions[self.skl_id]
+        if self.skl is not None:
             self.charge_edit_mode()
 
         self.charge_ai_previews()
@@ -78,9 +76,8 @@ class UpsertSkinLesionView(ViewObject):
 #    def __catch_information(self):
 
     def __save_information(self):
-        if self.skl_id < 0:
-            self.skl_id = len(self.p.skin_lesions)
-            self.skl = SkinLesion(self.skl_id, self.p.id, self.__catch_characteristics())
+        if self.skl is None:
+            self.skl = SkinLesion(len(self.p.skin_lesions), self.p.id, self.__catch_characteristics())
             self.skl.create_skin_lesion()
             self.p.skin_lesions.append(self.skl)
 

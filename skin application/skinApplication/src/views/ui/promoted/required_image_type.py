@@ -7,13 +7,13 @@ from PySide6.QtCore import Signal, Slot
 class RequiredImageType(QFrame):
 
 #    s_edit_items = Signal(str)
-    def __init__(self, parent, img_name, min, max):
+    def __init__(self, parent, img_name, min, max, selected=0):
         QFrame.__init__(self, parent)
 
         self.img_name = img_name
         self.min = min
         self.max = max
-
+        self.selected = selected
         self.__create()
 
 
@@ -30,13 +30,16 @@ class RequiredImageType(QFrame):
         self.layout.addWidget(self.lb_img_name)
 
         self.lb_min = Label(self)
-        self.lb_min.setText(str(self.min))
+        self.lb_min.setText(self.min)
         self.layout.addWidget(self.lb_min, 0, Qt.AlignHCenter)
 
         self.lb_max = Label(self)
-        self.lb_max.setText(str(self.max))
+        self.lb_max.setText(self.max)
         self.layout.addWidget(self.lb_max, 0, Qt.AlignHCenter)
 
         self.lb_selected = Label(self)
-#        self.lb_selected.setText(self.img_name)
+        self.lb_selected.setText(self.selected)
         self.layout.addWidget(self.lb_selected, 0, Qt.AlignHCenter)
+
+    def set_selected_number(self, number):
+        self.lb_selected.setText(number)

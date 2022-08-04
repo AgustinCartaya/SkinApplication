@@ -33,57 +33,28 @@
     <number>0</number>
    </property>
    <item>
-    <layout class="QHBoxLayout" name="ly_navigator">
+    <layout class="QHBoxLayout" name="ly_navigator" stretch="1,1,1">
      <property name="spacing">
       <number>0</number>
      </property>
      <property name="topMargin">
       <number>0</number>
      </property>
-     <item>
+     <item alignment="Qt::AlignLeft">
       <widget class="NavigatorButton" name="bt_back">
        <property name="text">
         <string>Back</string>
        </property>
       </widget>
      </item>
-     <item>
-      <spacer name="horizontalSpacer">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
+     <item alignment="Qt::AlignHCenter">
       <widget class="Label" name="lb_title">
        <property name="text">
         <string>List of patients</string>
        </property>
       </widget>
      </item>
-     <item>
-      <spacer name="horizontalSpacer_2">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType">
-        <enum>QSizePolicy::Expanding</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
+     <item alignment="Qt::AlignRight">
       <widget class="NavigatorButton" name="bt_add_new_patient">
        <property name="text">
         <string>Add new patient</string>
@@ -169,7 +140,7 @@
              <x>0</x>
              <y>0</y>
              <width>326</width>
-             <height>709</height>
+             <height>703</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_3">

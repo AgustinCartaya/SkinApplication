@@ -43,26 +43,21 @@ class Ui_patients(object):
         self.bt_back = NavigatorButton(patients)
         self.bt_back.setObjectName(u"bt_back")
 
-        self.ly_navigator.addWidget(self.bt_back)
-
-        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.ly_navigator.addItem(self.horizontalSpacer)
+        self.ly_navigator.addWidget(self.bt_back, 0, Qt.AlignLeft)
 
         self.lb_title = Label(patients)
         self.lb_title.setObjectName(u"lb_title")
 
-        self.ly_navigator.addWidget(self.lb_title)
-
-        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.ly_navigator.addItem(self.horizontalSpacer_2)
+        self.ly_navigator.addWidget(self.lb_title, 0, Qt.AlignHCenter)
 
         self.bt_add_new_patient = NavigatorButton(patients)
         self.bt_add_new_patient.setObjectName(u"bt_add_new_patient")
 
-        self.ly_navigator.addWidget(self.bt_add_new_patient)
+        self.ly_navigator.addWidget(self.bt_add_new_patient, 0, Qt.AlignRight)
 
+        self.ly_navigator.setStretch(0, 1)
+        self.ly_navigator.setStretch(1, 1)
+        self.ly_navigator.setStretch(2, 1)
 
         self.verticalLayout_2.addLayout(self.ly_navigator)
 
@@ -91,7 +86,7 @@ class Ui_patients(object):
         self.scrollArea.setWidgetResizable(True)
         self.c_filters_content = QWidget()
         self.c_filters_content.setObjectName(u"c_filters_content")
-        self.c_filters_content.setGeometry(QRect(0, 0, 326, 709))
+        self.c_filters_content.setGeometry(QRect(0, 0, 326, 703))
         self.verticalLayout_3 = QVBoxLayout(self.c_filters_content)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.verticalLayout_3.setContentsMargins(16, 0, 0, -1)

@@ -82,6 +82,12 @@ class SkinLesion(DataObject):
         if not util.is_dir(self.get_timeline_folder_path()):
             util.create_dir(self.get_timeline_folder_path())
 
+    def get_images_type_path_name(self, image_type, nb_of_images=-1, filtered_by="name"):
+        img_list = []
+        if util.is_dir(self.get_image_type_folder_path(image_type)):
+            img_list = util.get_file_list(self.get_image_type_folder_path(image_type))[0:nb_of_images]
+        return img_list
+
     def get_number_image_type(self, image_type):
         if util.is_dir(self.get_image_type_folder_path(image_type)):
             return len(util.get_file_list(self.get_image_type_folder_path(image_type)))

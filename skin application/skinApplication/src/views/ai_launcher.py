@@ -11,14 +11,14 @@ class AILauncherView(ViewObject):
         super().__init__(mv)
 
         self.ai = ai
+        self.ai.set_actual_patient_and_skin_lesion(patient, skin_lesion)
         self.p = patient
         self.skl = skin_lesion
 
         self.load_ui()
         self.connect_ui_signals()
 
-        self.__charge_required_info()
-        self.__carge_required_images()
+
 
 
 
@@ -29,6 +29,12 @@ class AILauncherView(ViewObject):
         # navigator
         self.ui.bt_learn_more.set_position(2)
 
+        # required info
+        self.ui.c_skl_required_info_list.set_required_elements(self.ai.actual_skl_charac)
+        self.ui.c_patient_required_info_list.set_required_elements(self.ai.actual_mi)
+        self.ui.c_images_required_list.create_required_images_type(self.ai.req_images)
+        self.__carge_selected_images()
+
 
     s_change_view = Signal(str,str,dict)
     def connect_ui_signals(self):
@@ -37,36 +43,13 @@ class AILauncherView(ViewObject):
         # created signals
         self.s_change_view.connect(self.MW.change_view)
 
-
-    def __charge_required_info(self):
-        self.__charge_skl_required_info()
-        self.__charge_patient_required_info()
-
-    def __charge_skl_required_info(self):
-        req_skl_charac = []
-        for req in self.ai.req_skl_charac:
-            if req in self.skl.characteristics:
-                req_skl_charac.append([req, self.skl.characteristics[req]])
-            else:
-                req_skl_charac.append([req, None])
-        self.ui.c_skl_required_info_list.set_required_elements(req_skl_charac)
-
-
-    def __charge_patient_required_info(self):
-        req_mi = []
-        for req in self.ai.req_mi:
-            if req in self.p.mi:
-                req_mi.append([req, self.p.mi[req]])
-            else:
-                req_mi.append([req, None])
-        self.ui.c_patient_required_info_list.set_required_elements(req_mi)
-
-
-    def __carge_required_images(self):
-        self.ui.c_images_required_list.set_required_images_type(self.ai.req_images)
+    def __carge_selected_images(self):
+        for img_name, img_list in self.ai.actual_images.items():
+            self.ui.c_images_required_list.set_selected_number(img_name, len(img_list))
 
 
     @Slot()
     def __back(self):
-        self.s_change_view.emit(cfg.AI_LAUNCHER_VIEW, cfg.UPSERT_SKIN_LESION_VIEW, {"patient" : self.p, "skin_lesion_nb": self.skl.number})
+        self.ai.reset_actual_patient_and_skin_lesion()
+        self.s_change_view.emit(cfg.AI_LAUNCHER_VIEW, cfg.UPSERT_SKIN_LESION_VIEW, {"patient" : self.p, "skin_lesion": self.skl})
 

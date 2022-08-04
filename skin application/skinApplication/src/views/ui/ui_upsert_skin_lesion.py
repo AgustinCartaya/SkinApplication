@@ -39,26 +39,21 @@ class Ui_upsert_skin_lesion(object):
         self.bt_back = NavigatorButton(upsert_skin_lesion)
         self.bt_back.setObjectName(u"bt_back")
 
-        self.ly_navigator.addWidget(self.bt_back)
-
-        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.ly_navigator.addItem(self.horizontalSpacer)
+        self.ly_navigator.addWidget(self.bt_back, 0, Qt.AlignLeft)
 
         self.lb_title = Label(upsert_skin_lesion)
         self.lb_title.setObjectName(u"lb_title")
 
-        self.ly_navigator.addWidget(self.lb_title)
-
-        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.ly_navigator.addItem(self.horizontalSpacer_2)
+        self.ly_navigator.addWidget(self.lb_title, 0, Qt.AlignHCenter)
 
         self.bt_complete = NavigatorButton(upsert_skin_lesion)
         self.bt_complete.setObjectName(u"bt_complete")
 
-        self.ly_navigator.addWidget(self.bt_complete)
+        self.ly_navigator.addWidget(self.bt_complete, 0, Qt.AlignRight)
 
+        self.ly_navigator.setStretch(0, 1)
+        self.ly_navigator.setStretch(1, 1)
+        self.ly_navigator.setStretch(2, 1)
 
         self.verticalLayout_2.addLayout(self.ly_navigator)
 
@@ -106,7 +101,7 @@ class Ui_upsert_skin_lesion(object):
         self.sc_characteristics.setWidgetResizable(True)
         self.c_characteristics_content = QWidget()
         self.c_characteristics_content.setObjectName(u"c_characteristics_content")
-        self.c_characteristics_content.setGeometry(QRect(0, 0, 364, 332))
+        self.c_characteristics_content.setGeometry(QRect(0, 0, 364, 328))
         self.verticalLayout_30 = QVBoxLayout(self.c_characteristics_content)
         self.verticalLayout_30.setObjectName(u"verticalLayout_30")
         self.ly_characteristics_content = QVBoxLayout()
@@ -139,7 +134,7 @@ class Ui_upsert_skin_lesion(object):
         self.sc_images.setWidgetResizable(True)
         self.c_images_content = QWidget()
         self.c_images_content.setObjectName(u"c_images_content")
-        self.c_images_content.setGeometry(QRect(0, 0, 364, 332))
+        self.c_images_content.setGeometry(QRect(0, 0, 364, 328))
         self.verticalLayout_10 = QVBoxLayout(self.c_images_content)
         self.verticalLayout_10.setObjectName(u"verticalLayout_10")
         self.ly_images_type_content = QVBoxLayout()

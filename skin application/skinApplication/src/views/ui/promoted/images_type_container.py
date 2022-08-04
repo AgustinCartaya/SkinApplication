@@ -16,7 +16,7 @@ class ImagesTypeContainer(QFrame):
     def __init__(self,
         parent,
         folder,
-        bt_text = "Add new image type",
+        bt_text = "Create new image type",
         ):
         QFrame.__init__(self, parent)
 
