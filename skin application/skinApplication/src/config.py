@@ -6,6 +6,9 @@ PROJECT_FOLDER = os.sep.join(__file__.split(os.sep)[:-2])
 # system folder separator
 _S = os.sep
 
+# language
+ACTUAL_LANGUAGE = "en"
+
 # data base
 DB_PATH = PROJECT_FOLDER + _S + "db"
 DB_NAME = "skin_application.sqlite"
@@ -24,14 +27,17 @@ COLUMN_DOCTORS_PASSWORD = "password"
 ASSETS_PATH = PROJECT_FOLDER + _S + "assets"
 FILES_PATH = ASSETS_PATH + _S + "files"
 IMAGES_PATH = ASSETS_PATH + _S + "images"
-FILES_MEDICAL_INFORMATION_PATH = FILES_PATH + _S + "medical_information"
-FILES_SKIN_LESION_CARACTERISTICS_PATH = FILES_PATH + _S + "skin_lesion_caracteristics"
 FILES_IMAGES_TYPE_PATH = FILES_PATH + _S + "images_type"
+FILES_MEDICAL_INFORMATION_PATH = FILES_PATH + _S + "medical_information"
+FILES_SKIN_LESION_CHARACTERISTICS_PATH = FILES_PATH + _S + "skin_lesion_characteristics"
 
 # Artificial inteligence
 AI_PATH = PROJECT_FOLDER + _S + "ai"
 AI_INFO_FOLDER_NAME = "info"
 AI_DESCRIPTION_FILE_NAME = "description"
+AI_REQUIRED_IMAGES_FOLDER_NAME = "required_images"
+AI_REQUIRED_MEDICAL_INFORMATION_FOLDER_NAME = "required_medical_information"
+AI_REQUIRED_SKIN_LESION_CHARACTERISTICS_FOLDER_NAME = "required_skin_lesion_characteristics"
 
 # patients data
 PATIENTS_DATA_PATH = PROJECT_FOLDER + _S + "patients_data"

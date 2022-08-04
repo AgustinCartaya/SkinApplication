@@ -92,38 +92,38 @@ class Ui_upsert_skin_lesion(object):
         self.ly_skin_lesion_content = QHBoxLayout()
         self.ly_skin_lesion_content.setSpacing(20)
         self.ly_skin_lesion_content.setObjectName(u"ly_skin_lesion_content")
-        self.ly_caracteristics = QVBoxLayout()
-        self.ly_caracteristics.setSpacing(16)
-        self.ly_caracteristics.setObjectName(u"ly_caracteristics")
-        self.lb_caracteristics = Label(upsert_skin_lesion)
-        self.lb_caracteristics.setObjectName(u"lb_caracteristics")
-        self.lb_caracteristics.setMaximumSize(QSize(16777215, 20))
+        self.ly_characteristics = QVBoxLayout()
+        self.ly_characteristics.setSpacing(16)
+        self.ly_characteristics.setObjectName(u"ly_characteristics")
+        self.lb_characteristics = Label(upsert_skin_lesion)
+        self.lb_characteristics.setObjectName(u"lb_characteristics")
+        self.lb_characteristics.setMaximumSize(QSize(16777215, 20))
 
-        self.ly_caracteristics.addWidget(self.lb_caracteristics, 0, Qt.AlignHCenter)
+        self.ly_characteristics.addWidget(self.lb_characteristics, 0, Qt.AlignHCenter)
 
-        self.sc_caracteristics = QScrollArea(upsert_skin_lesion)
-        self.sc_caracteristics.setObjectName(u"sc_caracteristics")
-        self.sc_caracteristics.setWidgetResizable(True)
-        self.c_caracteristics_content = QWidget()
-        self.c_caracteristics_content.setObjectName(u"c_caracteristics_content")
-        self.c_caracteristics_content.setGeometry(QRect(0, 0, 364, 332))
-        self.verticalLayout_30 = QVBoxLayout(self.c_caracteristics_content)
+        self.sc_characteristics = QScrollArea(upsert_skin_lesion)
+        self.sc_characteristics.setObjectName(u"sc_characteristics")
+        self.sc_characteristics.setWidgetResizable(True)
+        self.c_characteristics_content = QWidget()
+        self.c_characteristics_content.setObjectName(u"c_characteristics_content")
+        self.c_characteristics_content.setGeometry(QRect(0, 0, 364, 332))
+        self.verticalLayout_30 = QVBoxLayout(self.c_characteristics_content)
         self.verticalLayout_30.setObjectName(u"verticalLayout_30")
-        self.ly_caracteristics_content = QVBoxLayout()
-        self.ly_caracteristics_content.setObjectName(u"ly_caracteristics_content")
+        self.ly_characteristics_content = QVBoxLayout()
+        self.ly_characteristics_content.setObjectName(u"ly_characteristics_content")
 
-        self.verticalLayout_30.addLayout(self.ly_caracteristics_content)
+        self.verticalLayout_30.addLayout(self.ly_characteristics_content)
 
         self.verticalSpacer_3 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.verticalLayout_30.addItem(self.verticalSpacer_3)
 
-        self.sc_caracteristics.setWidget(self.c_caracteristics_content)
+        self.sc_characteristics.setWidget(self.c_characteristics_content)
 
-        self.ly_caracteristics.addWidget(self.sc_caracteristics)
+        self.ly_characteristics.addWidget(self.sc_characteristics)
 
 
-        self.ly_skin_lesion_content.addLayout(self.ly_caracteristics)
+        self.ly_skin_lesion_content.addLayout(self.ly_characteristics)
 
         self.ly_images = QVBoxLayout()
         self.ly_images.setSpacing(16)
@@ -205,7 +205,7 @@ class Ui_upsert_skin_lesion(object):
         self.lb_title.setText(QCoreApplication.translate("upsert_skin_lesion", u"Add skin lesion", None))
         self.bt_complete.setText(QCoreApplication.translate("upsert_skin_lesion", u"Completed", None))
         self.label_4.setText(QCoreApplication.translate("upsert_skin_lesion", u"Indisponible", None))
-        self.lb_caracteristics.setText(QCoreApplication.translate("upsert_skin_lesion", u"Caracteristics", None))
+        self.lb_characteristics.setText(QCoreApplication.translate("upsert_skin_lesion", u"Characteristics", None))
         self.lb_add_images.setText(QCoreApplication.translate("upsert_skin_lesion", u"Add images", None))
         self.lb_lauch_ai.setText(QCoreApplication.translate("upsert_skin_lesion", u"Launch AI", None))
     # retranslateUi

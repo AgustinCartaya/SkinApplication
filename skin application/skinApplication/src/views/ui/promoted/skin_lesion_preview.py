@@ -93,7 +93,7 @@ class SkinLesionPreview(QFrame):
         self.c_n2_up_layout.setContentsMargins(0, 0, 0, 0)
 
         # Anotations
-        annotations = ResultPreview(self.c_n2, self.skl.caracteristics, "Caracteristics")
+        annotations = ResultPreview(self.c_n2, self.skl.characteristics, "characteristics")
         ai_results = ResultPreview(self.c_n2, self.skl.ai_results, "AI results", True)
 
         self.c_n2_up_layout.addWidget(annotations)

@@ -72,11 +72,7 @@ class UpsertPatientPreiewView(ViewObject):
             ly_single_mi.addWidget(lb_mi_title)
 
             i_mi_content = Label(self.ui.c_patient_information_preview)
-            if type(self.p.mi[medical_info]) is str:
-                content = self.p.mi[medical_info]
-            else:
-                content = " ".join(self.p.mi[medical_info])
-            i_mi_content.setText(content)
+            i_mi_content.setText(self.p.mi[medical_info])
             i_mi_content.set_decoration("mi_content")
             ly_single_mi.addWidget(i_mi_content)
 

@@ -57,13 +57,16 @@ AIPreview{
     border: 1px solid @c_gray_light;
     border-radius: 3px;
 }
+
+/*-----RequiredImageType-----*/
 /*-----ImageType-----*/
+RequiredImageType,
 ImageType{
     border-top: 1px solid @c_gray_ultra_light;
     padding: 10px 5px;
 
 }
-
+RequiredImageType::hover,
 ImageType::hover
 {
 

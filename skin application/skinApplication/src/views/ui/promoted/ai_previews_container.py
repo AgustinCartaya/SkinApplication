@@ -19,7 +19,7 @@ class AIPreviewsContainer(QFrame):
         QFrame.__init__(self, parent)
 
         self.ai_infos = ai_infos
-        self.ai_previews = {}
+#        self.ai_previews = {}
         self.ai_launch_receaver =ai_launch_receaver
         self.__create()
 
@@ -31,16 +31,18 @@ class AIPreviewsContainer(QFrame):
     def __create_ai_previews(self):
 
         self.c_pagination = Pagination(self, (1,1), (1,3), forced_empty_spaces = True)
-        self.c_pagination.set_grid_cards_size(1,3)
+        if len(self.ai_infos) < 3:
+            self.c_pagination.set_grid_cards_size(1,len(self.ai_infos))
+        else:
+            self.c_pagination.set_grid_cards_size(1,3)
+
 
         self.layout.addWidget(self.c_pagination)
-        ls = []
+        ai_cards = []
         for ai_name, ai_content in self.ai_infos.items():
             ai_preview = AIPreview(self, ai_name, ai_content['description'], ai_content['results'], self.ai_launch_receaver)
-
-#            self.layout.addWidget(ai_preview)
-            self.ai_previews[ai_name] = ai_preview
-            ls.append(ai_preview)
-        self.c_pagination.add_cards(ls)
+#            self.ai_previews[ai_name] = ai_preview
+            ai_cards.append(ai_preview)
+        self.c_pagination.add_cards(ai_cards)
 
 

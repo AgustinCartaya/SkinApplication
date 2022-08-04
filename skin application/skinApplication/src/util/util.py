@@ -8,36 +8,45 @@ import shutil
 def uppath(_path, n):
     return os.sep.join(_path.split(os.sep)[:-n])
 
+def gen_path(*args):
+    path = ""
+    nb = len(args)
+    for i in range(nb):
+        if i < nb-1:
+            path = path + args[i] + cfg._S
+        else:
+            path = path + args[i]
+    return path
+
+def _get_file_path_name(path, name):
+    if name is None:
+        return path
+    else:
+        return gen_path(path,name)
 
 #def file_to_string(file_path_name):
 #    _file = open(file_path_name)
 #    return _file.read()
 
 # verification
-def is_dir(path):
-    return os.path.isdir(path)
+def is_dir(path, name=None):
+    return os.path.isdir(_get_file_path_name(path,name))
 
-def is_file(path):
-    return os.path.isfile(path)
+def is_file(path, name=None):
+    return os.path.isfile(_get_file_path_name(path,name))
 
 # obtaining list
 def get_file_dir_list(path):
     return os.listdir(path)
 
 def get_file_list(path):
-    return [name for name in get_file_dir_list(path) if os.path.isfile(path  + cfg._S + name)]
+    return [name for name in get_file_dir_list(path) if os.path.isfile(gen_path(path,name))]
 
 def get_dir_list(path):
-    return [name for name in get_file_dir_list(path) if os.path.isdir(path  + cfg._S + name)]
+    return [name for name in get_file_dir_list(path) if os.path.isdir(gen_path(path,name))]
 
 
 # file traitement
-def _get_file_path_name(path, name):
-    if name is None:
-        return path
-    else:
-        return path + cfg._S + name
-
 def read_file(path, name=None):
     file_path_name = _get_file_path_name(path, name)
 
@@ -68,7 +77,7 @@ def create_dir(path, name=None):
     if name is None:
         os.mkdir(path)
     else:
-        os.mkdir(path + cfg._S + name)
+        os.mkdir(gen_path(path,name))
 
 # copy
 def copy_file(src, target):
@@ -104,3 +113,5 @@ def get_in_range_value(val, min, max):
     elif val < min:
         return min
     return val
+
+

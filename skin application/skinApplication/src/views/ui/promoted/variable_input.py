@@ -63,7 +63,7 @@ class VariableInput(QFrame):
 
     def __create_title(self):
         self.lb_title = Label(self)
-        self.lb_title.setText(self.title + " :")
+        self.lb_title.setText(self.title, colon=True)
         self.layout.addWidget(self.lb_title)
 
     def __create_input(self):

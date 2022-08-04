@@ -2,22 +2,22 @@
 from .data_object import *
 
 class SkinLesion(DataObject):
-    def __init__(self, number, patient_id, caracteristics, ai_results = {}):
+    def __init__(self, number, patient_id, characteristics, ai_results = {}):
 
         self.number = number
         self.patient_id = patient_id
 
-        if type(caracteristics) is str:
-            self.caracteristics = json.loads(caracteristics)
-        elif type(caracteristics) is dict:
-            self.caracteristics = caracteristics
+        if type(characteristics) is str:
+            self.characteristics = json.loads(characteristics)
+        elif type(characteristics) is dict:
+            self.characteristics = characteristics
 
         if type(ai_results) is str:
             self.ai_results = json.loads(ai_results)
         elif type(ai_results) is dict:
             self.ai_results = ai_results
 
-        self.folder_path = cfg.PATIENTS_DATA_PATH + cfg._S + self.patient_id + cfg._S + cfg.SKL_FOLDER_SUFIX +  str(self.number)
+        self.folder_path = util.gen_path(cfg.PATIENTS_DATA_PATH, self.patient_id, cfg.SKL_FOLDER_SUFIX +  str(self.number))
 
         self.verify_skl_folder()
 
@@ -28,7 +28,7 @@ class SkinLesion(DataObject):
 
             dbc.insert(cfg.TABLE_SKIN_LESIONS,(self.number,
                 self.patient_id,
-                json.dumps(self.caracteristics),
+                json.dumps(self.characteristics),
                 json.dumps(self.ai_results)
                 ))
             return True
@@ -39,7 +39,7 @@ class SkinLesion(DataObject):
         try:
             dbc = DBController()
             dbc.update(cfg.TABLE_SKIN_LESIONS,
-                (json.dumps(self.caracteristics),json.dumps(self.ai_results)),
+                (json.dumps(self.characteristics),json.dumps(self.ai_results)),
                 (str(self.number), self.patient_id)
                 )
         except ValueError as err:
@@ -57,16 +57,16 @@ class SkinLesion(DataObject):
                     util.copy_file(src_image, self.get_image_type_folder_path(img_type))
 
     def get_images_folder_path(self):
-        return self.folder_path + cfg._S + cfg.SKL_IMAGES_FOLDER_NAME
+        return util.gen_path(self.folder_path, cfg.SKL_IMAGES_FOLDER_NAME)
 
     def get_ai_results_folder_path(self):
-        return self.folder_path + cfg._S + cfg.SKL_AI_RESULTS_FOLDER_NAME
+        return util.gen_path(self.folder_path, cfg.SKL_AI_RESULTS_FOLDER_NAME)
 
     def get_timeline_folder_path(self):
-        return self.folder_path + cfg._S + cfg.SKL_TIMELINE_FOLDER_NAME
+        return util.gen_path(self.folder_path, cfg.SKL_TIMELINE_FOLDER_NAME)
 
     def get_image_type_folder_path(self, img_type):
-        return self.get_images_folder_path() + cfg._S + img_type
+        return util.gen_path(self.get_images_folder_path(), img_type)
 
     def verify_image_type_folder(self, img_type):
         if not util.is_dir(self.get_image_type_folder_path(img_type)):
@@ -100,5 +100,5 @@ class SkinLesion(DataObject):
     def to_string(self):
         return ("(" + str(self.number) + ", " +
             self.patient_id + ", " +
-            json.dumps(self.caracteristics) +
+            json.dumps(self.characteristics) +
             ")")

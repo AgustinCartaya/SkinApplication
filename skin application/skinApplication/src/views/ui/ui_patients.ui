@@ -501,8 +501,11 @@
      </item>
      <item>
       <layout class="QVBoxLayout" name="ly_right">
+       <property name="rightMargin">
+        <number>20</number>
+       </property>
        <property name="bottomMargin">
-        <number>10</number>
+        <number>20</number>
        </property>
        <item>
         <widget class="QFrame" name="frame_7">
@@ -837,7 +840,7 @@
   <customwidget>
    <class>NavigatorButton</class>
    <extends>QPushButton</extends>
-   <header location="global">.promoted.navigator_button</header>
+   <header>.promoted.navigator_button</header>
   </customwidget>
   <customwidget>
    <class>LineEdit</class>

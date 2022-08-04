@@ -14,10 +14,11 @@ class ImagesTypeContainer(QFrame):
 
 #    s_edit_items = Signal(str)
     def __init__(self,
+        parent,
         folder,
         bt_text = "Add new image type",
-        *args, **kwards):
-        QFrame.__init__(self, *args, **kwards)
+        ):
+        QFrame.__init__(self, parent)
 
         self.images_type = {}
         self.folder = folder

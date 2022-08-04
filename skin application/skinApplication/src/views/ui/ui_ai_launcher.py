@@ -22,6 +22,8 @@ from PySide6.QtWidgets import (QApplication, QFrame, QHBoxLayout, QLabel,
 from .promoted.button import Button
 from .promoted.label import Label
 from .promoted.navigator_button import NavigatorButton
+from .promoted.required_elements_container import RequiredElementsContainer
+from .promoted.required_images_type_container import RequiredImagesTypeContainer
 
 class Ui_ai_launcher(object):
     def setupUi(self, ai_launcher):
@@ -30,9 +32,9 @@ class Ui_ai_launcher(object):
         ai_launcher.resize(1200, 800)
         ai_launcher.setStyleSheet(u"")
         self.verticalLayout_2 = QVBoxLayout(ai_launcher)
-        self.verticalLayout_2.setSpacing(0)
+        self.verticalLayout_2.setSpacing(20)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
-        self.verticalLayout_2.setContentsMargins(0, 0, 0, 20)
+        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.ly_navigator = QHBoxLayout()
         self.ly_navigator.setSpacing(0)
         self.ly_navigator.setObjectName(u"ly_navigator")
@@ -63,406 +65,220 @@ class Ui_ai_launcher(object):
 
         self.verticalLayout_2.addLayout(self.ly_navigator)
 
-        self.verticalLayout = QVBoxLayout()
-        self.verticalLayout.setSpacing(30)
-        self.verticalLayout.setObjectName(u"verticalLayout")
-        self.verticalLayout.setContentsMargins(-1, 40, -1, 10)
-        self.verticalLayout_13 = QVBoxLayout()
-        self.verticalLayout_13.setSpacing(20)
-        self.verticalLayout_13.setObjectName(u"verticalLayout_13")
-        self.label = Label(ai_launcher)
-        self.label.setObjectName(u"label")
+        self.ly_center = QVBoxLayout()
+        self.ly_center.setObjectName(u"ly_center")
+        self.ly_center.setContentsMargins(-1, -1, -1, 30)
+        self.ly_center_content = QVBoxLayout()
+        self.ly_center_content.setSpacing(30)
+        self.ly_center_content.setObjectName(u"ly_center_content")
+        self.ly_required_information = QVBoxLayout()
+        self.ly_required_information.setSpacing(20)
+        self.ly_required_information.setObjectName(u"ly_required_information")
+        self.lb_required_information = Label(ai_launcher)
+        self.lb_required_information.setObjectName(u"lb_required_information")
 
-        self.verticalLayout_13.addWidget(self.label, 0, Qt.AlignHCenter)
+        self.ly_required_information.addWidget(self.lb_required_information, 0, Qt.AlignHCenter)
 
-        self.horizontalLayout = QHBoxLayout()
-        self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.horizontalLayout.setContentsMargins(10, -1, 10, -1)
+        self.ly_required_information_content = QHBoxLayout()
+        self.ly_required_information_content.setObjectName(u"ly_required_information_content")
+        self.ly_required_information_content.setContentsMargins(10, -1, 10, -1)
         self.horizontalSpacer_5 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.horizontalLayout.addItem(self.horizontalSpacer_5)
+        self.ly_required_information_content.addItem(self.horizontalSpacer_5)
 
-        self.frame_2 = QFrame(ai_launcher)
-        self.frame_2.setObjectName(u"frame_2")
-        self.frame_2.setFrameShape(QFrame.StyledPanel)
-        self.frame_2.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_6 = QVBoxLayout(self.frame_2)
+        self.c_patient_required_info = QFrame(ai_launcher)
+        self.c_patient_required_info.setObjectName(u"c_patient_required_info")
+        self.c_patient_required_info.setFrameShape(QFrame.StyledPanel)
+        self.c_patient_required_info.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_6 = QVBoxLayout(self.c_patient_required_info)
         self.verticalLayout_6.setSpacing(20)
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
         self.verticalLayout_6.setContentsMargins(0, 0, 0, 0)
-        self.label_3 = Label(self.frame_2)
-        self.label_3.setObjectName(u"label_3")
+        self.lb_patient_required_info = Label(self.c_patient_required_info)
+        self.lb_patient_required_info.setObjectName(u"lb_patient_required_info")
 
-        self.verticalLayout_6.addWidget(self.label_3, 0, Qt.AlignHCenter)
+        self.verticalLayout_6.addWidget(self.lb_patient_required_info, 0, Qt.AlignHCenter)
 
-        self.scrollArea = QScrollArea(self.frame_2)
-        self.scrollArea.setObjectName(u"scrollArea")
-        self.scrollArea.setWidgetResizable(True)
-        self.scrollAreaWidgetContents = QWidget()
-        self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 402, 237))
-        self.verticalLayout_12 = QVBoxLayout(self.scrollAreaWidgetContents)
+        self.sc_patient_required_info = QScrollArea(self.c_patient_required_info)
+        self.sc_patient_required_info.setObjectName(u"sc_patient_required_info")
+        self.sc_patient_required_info.setWidgetResizable(True)
+        self.c_patient_required_info_content = QWidget()
+        self.c_patient_required_info_content.setObjectName(u"c_patient_required_info_content")
+        self.c_patient_required_info_content.setGeometry(QRect(0, 0, 402, 260))
+        self.verticalLayout_12 = QVBoxLayout(self.c_patient_required_info_content)
         self.verticalLayout_12.setObjectName(u"verticalLayout_12")
-        self.verticalLayout_11 = QVBoxLayout()
-        self.verticalLayout_11.setSpacing(12)
-        self.verticalLayout_11.setObjectName(u"verticalLayout_11")
-        self.frame_5 = QFrame(self.scrollAreaWidgetContents)
-        self.frame_5.setObjectName(u"frame_5")
-        self.frame_5.setFrameShape(QFrame.StyledPanel)
-        self.frame_5.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_5 = QHBoxLayout(self.frame_5)
-        self.horizontalLayout_5.setSpacing(12)
-        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
-        self.horizontalLayout_5.setContentsMargins(0, 0, 0, 0)
-        self.pushButton = Button(self.frame_5)
-        self.pushButton.setObjectName(u"pushButton")
-        self.pushButton.setMaximumSize(QSize(28, 28))
+        self.c_patient_required_info_list = RequiredElementsContainer(self.c_patient_required_info_content)
+        self.c_patient_required_info_list.setObjectName(u"c_patient_required_info_list")
+        self.c_patient_required_info_list.setFrameShape(QFrame.StyledPanel)
+        self.c_patient_required_info_list.setFrameShadow(QFrame.Raised)
 
-        self.horizontalLayout_5.addWidget(self.pushButton)
-
-        self.label_17 = Label(self.frame_5)
-        self.label_17.setObjectName(u"label_17")
-
-        self.horizontalLayout_5.addWidget(self.label_17)
-
-        self.label_18 = Label(self.frame_5)
-        self.label_18.setObjectName(u"label_18")
-
-        self.horizontalLayout_5.addWidget(self.label_18)
-
-        self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.horizontalLayout_5.addItem(self.horizontalSpacer_3)
-
-
-        self.verticalLayout_11.addWidget(self.frame_5)
-
-        self.frame_6 = QFrame(self.scrollAreaWidgetContents)
-        self.frame_6.setObjectName(u"frame_6")
-        self.frame_6.setFrameShape(QFrame.StyledPanel)
-        self.frame_6.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_6 = QHBoxLayout(self.frame_6)
-        self.horizontalLayout_6.setSpacing(12)
-        self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
-        self.horizontalLayout_6.setContentsMargins(0, 0, 0, 0)
-        self.pushButton_2 = Button(self.frame_6)
-        self.pushButton_2.setObjectName(u"pushButton_2")
-        self.pushButton_2.setMaximumSize(QSize(28, 28))
-
-        self.horizontalLayout_6.addWidget(self.pushButton_2)
-
-        self.label_19 = Label(self.frame_6)
-        self.label_19.setObjectName(u"label_19")
-
-        self.horizontalLayout_6.addWidget(self.label_19)
-
-        self.label_20 = Label(self.frame_6)
-        self.label_20.setObjectName(u"label_20")
-
-        self.horizontalLayout_6.addWidget(self.label_20)
-
-        self.horizontalSpacer_4 = QSpacerItem(373, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.horizontalLayout_6.addItem(self.horizontalSpacer_4)
-
-
-        self.verticalLayout_11.addWidget(self.frame_6)
-
-
-        self.verticalLayout_12.addLayout(self.verticalLayout_11)
+        self.verticalLayout_12.addWidget(self.c_patient_required_info_list)
 
         self.verticalSpacer_2 = QSpacerItem(20, 147, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.verticalLayout_12.addItem(self.verticalSpacer_2)
 
-        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
+        self.sc_patient_required_info.setWidget(self.c_patient_required_info_content)
 
-        self.verticalLayout_6.addWidget(self.scrollArea)
+        self.verticalLayout_6.addWidget(self.sc_patient_required_info)
 
 
-        self.horizontalLayout.addWidget(self.frame_2)
+        self.ly_required_information_content.addWidget(self.c_patient_required_info)
 
         self.horizontalSpacer_7 = QSpacerItem(40, 20, QSizePolicy.MinimumExpanding, QSizePolicy.Minimum)
 
-        self.horizontalLayout.addItem(self.horizontalSpacer_7)
+        self.ly_required_information_content.addItem(self.horizontalSpacer_7)
 
-        self.frame = QFrame(ai_launcher)
-        self.frame.setObjectName(u"frame")
-        self.frame.setFrameShape(QFrame.StyledPanel)
-        self.frame.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_5 = QVBoxLayout(self.frame)
+        self.c_skl_required_info = QFrame(ai_launcher)
+        self.c_skl_required_info.setObjectName(u"c_skl_required_info")
+        self.c_skl_required_info.setFrameShape(QFrame.StyledPanel)
+        self.c_skl_required_info.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_5 = QVBoxLayout(self.c_skl_required_info)
         self.verticalLayout_5.setSpacing(20)
         self.verticalLayout_5.setObjectName(u"verticalLayout_5")
         self.verticalLayout_5.setContentsMargins(0, 0, 0, 0)
-        self.label_4 = QLabel(self.frame)
-        self.label_4.setObjectName(u"label_4")
+        self.lb_skl_required_info = QLabel(self.c_skl_required_info)
+        self.lb_skl_required_info.setObjectName(u"lb_skl_required_info")
 
-        self.verticalLayout_5.addWidget(self.label_4, 0, Qt.AlignHCenter)
+        self.verticalLayout_5.addWidget(self.lb_skl_required_info, 0, Qt.AlignHCenter)
 
-        self.scrollArea_2 = QScrollArea(self.frame)
-        self.scrollArea_2.setObjectName(u"scrollArea_2")
-        self.scrollArea_2.setWidgetResizable(True)
-        self.scrollAreaWidgetContents_2 = QWidget()
-        self.scrollAreaWidgetContents_2.setObjectName(u"scrollAreaWidgetContents_2")
-        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 402, 237))
-        self.verticalLayout_14 = QVBoxLayout(self.scrollAreaWidgetContents_2)
+        self.sc_skl_required_info_content = QScrollArea(self.c_skl_required_info)
+        self.sc_skl_required_info_content.setObjectName(u"sc_skl_required_info_content")
+        self.sc_skl_required_info_content.setWidgetResizable(True)
+        self.c_skl_required_info_content = QWidget()
+        self.c_skl_required_info_content.setObjectName(u"c_skl_required_info_content")
+        self.c_skl_required_info_content.setGeometry(QRect(0, 0, 402, 260))
+        self.verticalLayout_14 = QVBoxLayout(self.c_skl_required_info_content)
         self.verticalLayout_14.setObjectName(u"verticalLayout_14")
-        self.verticalLayout_10 = QVBoxLayout()
-        self.verticalLayout_10.setObjectName(u"verticalLayout_10")
-        self.frame_8 = QFrame(self.scrollAreaWidgetContents_2)
-        self.frame_8.setObjectName(u"frame_8")
-        self.frame_8.setFrameShape(QFrame.StyledPanel)
-        self.frame_8.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_8 = QHBoxLayout(self.frame_8)
-        self.horizontalLayout_8.setSpacing(12)
-        self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
-        self.horizontalLayout_8.setContentsMargins(0, 0, 0, 0)
-        self.pushButton_3 = Button(self.frame_8)
-        self.pushButton_3.setObjectName(u"pushButton_3")
-        self.pushButton_3.setMaximumSize(QSize(28, 28))
+        self.c_skl_required_info_list = RequiredElementsContainer(self.c_skl_required_info_content)
+        self.c_skl_required_info_list.setObjectName(u"c_skl_required_info_list")
+        self.c_skl_required_info_list.setFrameShape(QFrame.StyledPanel)
+        self.c_skl_required_info_list.setFrameShadow(QFrame.Raised)
 
-        self.horizontalLayout_8.addWidget(self.pushButton_3)
-
-        self.label_21 = Label(self.frame_8)
-        self.label_21.setObjectName(u"label_21")
-
-        self.horizontalLayout_8.addWidget(self.label_21)
-
-        self.label_22 = Label(self.frame_8)
-        self.label_22.setObjectName(u"label_22")
-
-        self.horizontalLayout_8.addWidget(self.label_22)
-
-        self.horizontalSpacer_10 = QSpacerItem(228, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.horizontalLayout_8.addItem(self.horizontalSpacer_10)
-
-
-        self.verticalLayout_10.addWidget(self.frame_8)
-
-        self.frame_9 = QFrame(self.scrollAreaWidgetContents_2)
-        self.frame_9.setObjectName(u"frame_9")
-        self.frame_9.setFrameShape(QFrame.StyledPanel)
-        self.frame_9.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_9 = QHBoxLayout(self.frame_9)
-        self.horizontalLayout_9.setSpacing(12)
-        self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
-        self.horizontalLayout_9.setContentsMargins(0, 0, 0, 0)
-        self.pushButton_4 = Button(self.frame_9)
-        self.pushButton_4.setObjectName(u"pushButton_4")
-        self.pushButton_4.setMaximumSize(QSize(28, 28))
-
-        self.horizontalLayout_9.addWidget(self.pushButton_4)
-
-        self.label_23 = Label(self.frame_9)
-        self.label_23.setObjectName(u"label_23")
-
-        self.horizontalLayout_9.addWidget(self.label_23)
-
-        self.label_24 = Label(self.frame_9)
-        self.label_24.setObjectName(u"label_24")
-
-        self.horizontalLayout_9.addWidget(self.label_24)
-
-        self.horizontalSpacer_11 = QSpacerItem(186, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.horizontalLayout_9.addItem(self.horizontalSpacer_11)
-
-
-        self.verticalLayout_10.addWidget(self.frame_9)
-
-
-        self.verticalLayout_14.addLayout(self.verticalLayout_10)
+        self.verticalLayout_14.addWidget(self.c_skl_required_info_list)
 
         self.verticalSpacer_3 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.verticalLayout_14.addItem(self.verticalSpacer_3)
 
-        self.scrollArea_2.setWidget(self.scrollAreaWidgetContents_2)
+        self.sc_skl_required_info_content.setWidget(self.c_skl_required_info_content)
 
-        self.verticalLayout_5.addWidget(self.scrollArea_2)
+        self.verticalLayout_5.addWidget(self.sc_skl_required_info_content)
 
 
-        self.horizontalLayout.addWidget(self.frame)
+        self.ly_required_information_content.addWidget(self.c_skl_required_info)
 
         self.horizontalSpacer_6 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.horizontalLayout.addItem(self.horizontalSpacer_6)
+        self.ly_required_information_content.addItem(self.horizontalSpacer_6)
 
-        self.horizontalLayout.setStretch(0, 2)
-        self.horizontalLayout.setStretch(1, 6)
-        self.horizontalLayout.setStretch(2, 1)
-        self.horizontalLayout.setStretch(3, 6)
-        self.horizontalLayout.setStretch(4, 2)
+        self.ly_required_information_content.setStretch(0, 2)
+        self.ly_required_information_content.setStretch(1, 6)
+        self.ly_required_information_content.setStretch(2, 1)
+        self.ly_required_information_content.setStretch(3, 6)
+        self.ly_required_information_content.setStretch(4, 2)
 
-        self.verticalLayout_13.addLayout(self.horizontalLayout)
+        self.ly_required_information.addLayout(self.ly_required_information_content)
 
 
-        self.verticalLayout.addLayout(self.verticalLayout_13)
+        self.ly_center_content.addLayout(self.ly_required_information)
 
-        self.verticalLayout_4 = QVBoxLayout()
-        self.verticalLayout_4.setSpacing(20)
-        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
-        self.label_2 = Label(ai_launcher)
-        self.label_2.setObjectName(u"label_2")
+        self.ly_required_images = QVBoxLayout()
+        self.ly_required_images.setSpacing(20)
+        self.ly_required_images.setObjectName(u"ly_required_images")
+        self.lb_required_images = Label(ai_launcher)
+        self.lb_required_images.setObjectName(u"lb_required_images")
 
-        self.verticalLayout_4.addWidget(self.label_2, 0, Qt.AlignHCenter)
+        self.ly_required_images.addWidget(self.lb_required_images, 0, Qt.AlignHCenter)
 
-        self.horizontalLayout_7 = QHBoxLayout()
-        self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
-        self.horizontalLayout_7.setContentsMargins(10, 10, 10, 10)
+        self.ly_required_images_content = QHBoxLayout()
+        self.ly_required_images_content.setObjectName(u"ly_required_images_content")
         self.horizontalSpacer_8 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.horizontalLayout_7.addItem(self.horizontalSpacer_8)
+        self.ly_required_images_content.addItem(self.horizontalSpacer_8)
 
-        self.verticalLayout_3 = QVBoxLayout()
-        self.verticalLayout_3.setSpacing(12)
-        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
-        self.horizontalLayout_2 = QHBoxLayout()
-        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.label_7 = Label(ai_launcher)
-        self.label_7.setObjectName(u"label_7")
+        self.ly_required_images_table = QVBoxLayout()
+        self.ly_required_images_table.setSpacing(20)
+        self.ly_required_images_table.setObjectName(u"ly_required_images_table")
+        self.ly_required_images_ttitles = QHBoxLayout()
+        self.ly_required_images_ttitles.setObjectName(u"ly_required_images_ttitles")
+        self.ly_required_images_ttitles.setContentsMargins(9, -1, -1, -1)
+        self.lb_image_name = Label(ai_launcher)
+        self.lb_image_name.setObjectName(u"lb_image_name")
 
-        self.horizontalLayout_2.addWidget(self.label_7)
+        self.ly_required_images_ttitles.addWidget(self.lb_image_name)
 
-        self.label_6 = Label(ai_launcher)
-        self.label_6.setObjectName(u"label_6")
+        self.lb_min_images = Label(ai_launcher)
+        self.lb_min_images.setObjectName(u"lb_min_images")
 
-        self.horizontalLayout_2.addWidget(self.label_6, 0, Qt.AlignHCenter)
+        self.ly_required_images_ttitles.addWidget(self.lb_min_images, 0, Qt.AlignHCenter)
 
-        self.label_5 = Label(ai_launcher)
-        self.label_5.setObjectName(u"label_5")
+        self.lb_max_images = Label(ai_launcher)
+        self.lb_max_images.setObjectName(u"lb_max_images")
 
-        self.horizontalLayout_2.addWidget(self.label_5, 0, Qt.AlignHCenter)
+        self.ly_required_images_ttitles.addWidget(self.lb_max_images, 0, Qt.AlignHCenter)
 
-        self.label_8 = Label(ai_launcher)
-        self.label_8.setObjectName(u"label_8")
+        self.lb_selected_images = Label(ai_launcher)
+        self.lb_selected_images.setObjectName(u"lb_selected_images")
 
-        self.horizontalLayout_2.addWidget(self.label_8, 0, Qt.AlignHCenter)
+        self.ly_required_images_ttitles.addWidget(self.lb_selected_images, 0, Qt.AlignHCenter)
 
 
-        self.verticalLayout_3.addLayout(self.horizontalLayout_2)
+        self.ly_required_images_table.addLayout(self.ly_required_images_ttitles)
 
-        self.frame_7 = QFrame(ai_launcher)
-        self.frame_7.setObjectName(u"frame_7")
-        self.frame_7.setFrameShape(QFrame.StyledPanel)
-        self.frame_7.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_9 = QVBoxLayout(self.frame_7)
-        self.verticalLayout_9.setObjectName(u"verticalLayout_9")
-        self.verticalLayout_9.setContentsMargins(0, 0, 0, 0)
-        self.scrollArea_3 = QScrollArea(self.frame_7)
-        self.scrollArea_3.setObjectName(u"scrollArea_3")
-        self.scrollArea_3.setWidgetResizable(True)
-        self.scrollAreaWidgetContents_4 = QWidget()
-        self.scrollAreaWidgetContents_4.setObjectName(u"scrollAreaWidgetContents_4")
-        self.scrollAreaWidgetContents_4.setGeometry(QRect(0, 0, 867, 209))
-        self.verticalLayout_8 = QVBoxLayout(self.scrollAreaWidgetContents_4)
+        self.sc_required_images_table = QScrollArea(ai_launcher)
+        self.sc_required_images_table.setObjectName(u"sc_required_images_table")
+        self.sc_required_images_table.setWidgetResizable(True)
+        self.c_required_images_table = QWidget()
+        self.c_required_images_table.setObjectName(u"c_required_images_table")
+        self.c_required_images_table.setGeometry(QRect(0, 0, 881, 257))
+        self.verticalLayout_8 = QVBoxLayout(self.c_required_images_table)
         self.verticalLayout_8.setObjectName(u"verticalLayout_8")
         self.verticalLayout_8.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout_7 = QVBoxLayout()
-        self.verticalLayout_7.setSpacing(0)
-        self.verticalLayout_7.setObjectName(u"verticalLayout_7")
-        self.verticalLayout_7.setContentsMargins(-1, -1, 0, 0)
-        self.frame_3 = QFrame(self.scrollAreaWidgetContents_4)
-        self.frame_3.setObjectName(u"frame_3")
-        self.frame_3.setMinimumSize(QSize(0, 30))
-        self.frame_3.setFrameShape(QFrame.StyledPanel)
-        self.frame_3.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_3 = QHBoxLayout(self.frame_3)
-        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
-        self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
-        self.label_12 = Label(self.frame_3)
-        self.label_12.setObjectName(u"label_12")
+        self.c_images_required_list = RequiredImagesTypeContainer(self.c_required_images_table)
+        self.c_images_required_list.setObjectName(u"c_images_required_list")
+        self.c_images_required_list.setFrameShape(QFrame.StyledPanel)
+        self.c_images_required_list.setFrameShadow(QFrame.Raised)
 
-        self.horizontalLayout_3.addWidget(self.label_12)
-
-        self.label_11 = Label(self.frame_3)
-        self.label_11.setObjectName(u"label_11")
-
-        self.horizontalLayout_3.addWidget(self.label_11, 0, Qt.AlignHCenter)
-
-        self.label_9 = Label(self.frame_3)
-        self.label_9.setObjectName(u"label_9")
-
-        self.horizontalLayout_3.addWidget(self.label_9, 0, Qt.AlignHCenter)
-
-        self.label_10 = Label(self.frame_3)
-        self.label_10.setObjectName(u"label_10")
-
-        self.horizontalLayout_3.addWidget(self.label_10, 0, Qt.AlignHCenter)
-
-
-        self.verticalLayout_7.addWidget(self.frame_3)
-
-        self.frame_4 = QFrame(self.scrollAreaWidgetContents_4)
-        self.frame_4.setObjectName(u"frame_4")
-        self.frame_4.setMinimumSize(QSize(0, 30))
-        self.frame_4.setFrameShape(QFrame.StyledPanel)
-        self.frame_4.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_4 = QHBoxLayout(self.frame_4)
-        self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
-        self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
-        self.label_13 = QLabel(self.frame_4)
-        self.label_13.setObjectName(u"label_13")
-
-        self.horizontalLayout_4.addWidget(self.label_13)
-
-        self.label_14 = QLabel(self.frame_4)
-        self.label_14.setObjectName(u"label_14")
-
-        self.horizontalLayout_4.addWidget(self.label_14, 0, Qt.AlignHCenter)
-
-        self.label_15 = QLabel(self.frame_4)
-        self.label_15.setObjectName(u"label_15")
-
-        self.horizontalLayout_4.addWidget(self.label_15, 0, Qt.AlignHCenter)
-
-        self.label_16 = QLabel(self.frame_4)
-        self.label_16.setObjectName(u"label_16")
-
-        self.horizontalLayout_4.addWidget(self.label_16, 0, Qt.AlignHCenter)
-
-
-        self.verticalLayout_7.addWidget(self.frame_4)
-
-
-        self.verticalLayout_8.addLayout(self.verticalLayout_7)
+        self.verticalLayout_8.addWidget(self.c_images_required_list)
 
         self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.verticalLayout_8.addItem(self.verticalSpacer)
 
-        self.scrollArea_3.setWidget(self.scrollAreaWidgetContents_4)
+        self.sc_required_images_table.setWidget(self.c_required_images_table)
 
-        self.verticalLayout_9.addWidget(self.scrollArea_3)
-
-
-        self.verticalLayout_3.addWidget(self.frame_7)
+        self.ly_required_images_table.addWidget(self.sc_required_images_table)
 
 
-        self.horizontalLayout_7.addLayout(self.verticalLayout_3)
+        self.ly_required_images_content.addLayout(self.ly_required_images_table)
 
         self.horizontalSpacer_9 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.horizontalLayout_7.addItem(self.horizontalSpacer_9)
+        self.ly_required_images_content.addItem(self.horizontalSpacer_9)
 
-        self.horizontalLayout_7.setStretch(0, 1)
-        self.horizontalLayout_7.setStretch(1, 6)
-        self.horizontalLayout_7.setStretch(2, 1)
+        self.ly_required_images_content.setStretch(0, 1)
+        self.ly_required_images_content.setStretch(1, 6)
+        self.ly_required_images_content.setStretch(2, 1)
 
-        self.verticalLayout_4.addLayout(self.horizontalLayout_7)
+        self.ly_required_images.addLayout(self.ly_required_images_content)
 
 
-        self.verticalLayout.addLayout(self.verticalLayout_4)
+        self.ly_center_content.addLayout(self.ly_required_images)
+
+        self.ly_center_content.setStretch(0, 1)
+        self.ly_center_content.setStretch(1, 1)
+
+        self.ly_center.addLayout(self.ly_center_content)
 
         self.bt_launch = Button(ai_launcher)
         self.bt_launch.setObjectName(u"bt_launch")
         self.bt_launch.setMinimumSize(QSize(100, 0))
 
-        self.verticalLayout.addWidget(self.bt_launch, 0, Qt.AlignHCenter)
+        self.ly_center.addWidget(self.bt_launch, 0, Qt.AlignHCenter)
 
 
-        self.verticalLayout_2.addLayout(self.verticalLayout)
+        self.verticalLayout_2.addLayout(self.ly_center)
 
 
         self.retranslateUi(ai_launcher)
@@ -475,34 +291,14 @@ class Ui_ai_launcher(object):
         self.bt_back.setText(QCoreApplication.translate("ai_launcher", u"Back", None))
         self.lb_title.setText(QCoreApplication.translate("ai_launcher", u"Ai launcher", None))
         self.bt_learn_more.setText(QCoreApplication.translate("ai_launcher", u"Learn more", None))
-        self.label.setText(QCoreApplication.translate("ai_launcher", u"Required information", None))
-        self.label_3.setText(QCoreApplication.translate("ai_launcher", u"Patient", None))
-        self.pushButton.setText(QCoreApplication.translate("ai_launcher", u"M", None))
-        self.label_17.setText(QCoreApplication.translate("ai_launcher", u"Eye color :", None))
-        self.label_18.setText(QCoreApplication.translate("ai_launcher", u"Black", None))
-        self.pushButton_2.setText(QCoreApplication.translate("ai_launcher", u"M", None))
-        self.label_19.setText(QCoreApplication.translate("ai_launcher", u"Hair color :", None))
-        self.label_20.setText(QCoreApplication.translate("ai_launcher", u"Withe", None))
-        self.label_4.setText(QCoreApplication.translate("ai_launcher", u"Skin lesion", None))
-        self.pushButton_3.setText(QCoreApplication.translate("ai_launcher", u"M", None))
-        self.label_21.setText(QCoreApplication.translate("ai_launcher", u"Diameter :", None))
-        self.label_22.setText(QCoreApplication.translate("ai_launcher", u"2 mm", None))
-        self.pushButton_4.setText(QCoreApplication.translate("ai_launcher", u"M", None))
-        self.label_23.setText(QCoreApplication.translate("ai_launcher", u"Apparition Date :", None))
-        self.label_24.setText(QCoreApplication.translate("ai_launcher", u"1 Week", None))
-        self.label_2.setText(QCoreApplication.translate("ai_launcher", u"Required images", None))
-        self.label_7.setText(QCoreApplication.translate("ai_launcher", u"Name image", None))
-        self.label_6.setText(QCoreApplication.translate("ai_launcher", u"Min required", None))
-        self.label_5.setText(QCoreApplication.translate("ai_launcher", u"Max", None))
-        self.label_8.setText(QCoreApplication.translate("ai_launcher", u"Selected", None))
-        self.label_12.setText(QCoreApplication.translate("ai_launcher", u"Dermatoscopy", None))
-        self.label_11.setText(QCoreApplication.translate("ai_launcher", u"2", None))
-        self.label_9.setText(QCoreApplication.translate("ai_launcher", u"4", None))
-        self.label_10.setText(QCoreApplication.translate("ai_launcher", u"1", None))
-        self.label_13.setText(QCoreApplication.translate("ai_launcher", u"Microscopy", None))
-        self.label_14.setText(QCoreApplication.translate("ai_launcher", u"5", None))
-        self.label_15.setText(QCoreApplication.translate("ai_launcher", u"10", None))
-        self.label_16.setText(QCoreApplication.translate("ai_launcher", u"3", None))
+        self.lb_required_information.setText(QCoreApplication.translate("ai_launcher", u"Required information", None))
+        self.lb_patient_required_info.setText(QCoreApplication.translate("ai_launcher", u"Patient", None))
+        self.lb_skl_required_info.setText(QCoreApplication.translate("ai_launcher", u"Skin lesion", None))
+        self.lb_required_images.setText(QCoreApplication.translate("ai_launcher", u"Required images", None))
+        self.lb_image_name.setText(QCoreApplication.translate("ai_launcher", u"Image Name", None))
+        self.lb_min_images.setText(QCoreApplication.translate("ai_launcher", u"Min", None))
+        self.lb_max_images.setText(QCoreApplication.translate("ai_launcher", u"Max", None))
+        self.lb_selected_images.setText(QCoreApplication.translate("ai_launcher", u"Selected", None))
         self.bt_launch.setText(QCoreApplication.translate("ai_launcher", u"Launch", None))
     # retranslateUi
 

@@ -36,7 +36,7 @@ class DBController:
         if table == cfg.TABLE_PATIENTS:
             self.db.cursor.execute( ("UPDATE %s SET first_name = ?, last_name = ?, birth_date = ?, gender = ?, medical_information = ? WHERE id = ?" % cfg.TABLE_PATIENTS), (data + conditions))
         elif table == cfg.TABLE_SKIN_LESIONS:
-            self.db.cursor.execute( ("UPDATE %s SET caracteristics = ?, ai_results = ? WHERE number = ? AND id_patient = ?" % cfg.TABLE_SKIN_LESIONS), (data + conditions) )
+            self.db.cursor.execute( ("UPDATE %s SET characteristics = ?, ai_results = ? WHERE number = ? AND id_patient = ?" % cfg.TABLE_SKIN_LESIONS), (data + conditions) )
         else:
             self.db.connection.close()
             raise ValueError('Upadte table not found', "UPDATE_TABLE", "NOT_FOUND")

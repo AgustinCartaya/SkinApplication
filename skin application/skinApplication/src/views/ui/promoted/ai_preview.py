@@ -128,10 +128,6 @@ class AIPreview(QFrame):
 
             # Result Content
             lb_res_content = Label(self.c_results)
-
-            if type(res_content) is int:
-                res_content = str(res_content)
-
             lb_res_content.setText(res_content)
             self.ly_form_results.setWidget(count, QFormLayout.FieldRole, lb_res_content)
 

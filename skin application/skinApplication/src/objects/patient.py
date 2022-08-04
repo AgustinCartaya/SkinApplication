@@ -56,7 +56,7 @@ class Patient(DataObject):
 
         # folders
         if len(self.id) > 0:
-            self.folder_path  = cfg.PATIENTS_DATA_PATH + cfg._S + self.id
+            self.folder_path  = util.gen_path(cfg.PATIENTS_DATA_PATH,self.id)
             self.verify_patient_folder()
 
     def save_data(self):
@@ -81,7 +81,7 @@ class Patient(DataObject):
 
     def create_patient(self):
         if self.save_data():
-            self.folder_path  = cfg.PATIENTS_DATA_PATH + cfg._S + self.id
+            self.folder_path  = util.gen_path(cfg.PATIENTS_DATA_PATH, self.id)
             self.verify_patient_folder()
 
     def update_data(self):

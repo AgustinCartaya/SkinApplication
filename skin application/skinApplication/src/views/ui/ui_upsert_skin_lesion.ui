@@ -140,12 +140,12 @@
           <number>20</number>
          </property>
          <item>
-          <layout class="QVBoxLayout" name="ly_caracteristics">
+          <layout class="QVBoxLayout" name="ly_characteristics">
            <property name="spacing">
             <number>16</number>
            </property>
            <item alignment="Qt::AlignHCenter">
-            <widget class="Label" name="lb_caracteristics">
+            <widget class="Label" name="lb_characteristics">
              <property name="maximumSize">
               <size>
                <width>16777215</width>
@@ -153,16 +153,16 @@
               </size>
              </property>
              <property name="text">
-              <string>Caracteristics</string>
+              <string>Characteristics</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QScrollArea" name="sc_caracteristics">
+            <widget class="QScrollArea" name="sc_characteristics">
              <property name="widgetResizable">
               <bool>true</bool>
              </property>
-             <widget class="QWidget" name="c_caracteristics_content">
+             <widget class="QWidget" name="c_characteristics_content">
               <property name="geometry">
                <rect>
                 <x>0</x>
@@ -173,7 +173,7 @@
               </property>
               <layout class="QVBoxLayout" name="verticalLayout_30">
                <item>
-                <layout class="QVBoxLayout" name="ly_caracteristics_content"/>
+                <layout class="QVBoxLayout" name="ly_characteristics_content"/>
                </item>
                <item>
                 <spacer name="verticalSpacer_3">
@@ -310,7 +310,7 @@
   <customwidget>
    <class>NavigatorButton</class>
    <extends>QPushButton</extends>
-   <header location="global">.promoted.navigator_button</header>
+   <header>.promoted.navigator_button</header>
   </customwidget>
  </customwidgets>
  <resources/>

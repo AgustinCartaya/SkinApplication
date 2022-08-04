@@ -99,7 +99,7 @@ class CheckPatientView(ViewObject):
         form_index = 0
         for mi in self.p.mi:
             mi_title = Label(self.ui.c_patient_information_content)
-            mi_title.setText(util.file_name_to_title(mi) + " :")
+            mi_title.setText(mi, colon=True)
             self.ui.ly_mi_content.setWidget(form_index, QFormLayout.LabelRole, mi_title)
 
             if type(self.p.mi[mi]) is str:
