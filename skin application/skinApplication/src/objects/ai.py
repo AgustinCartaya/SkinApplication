@@ -38,8 +38,8 @@ class AI(DataObject):
     def __charge_required_images_dict(self):
         if util.is_dir(self.required_images_folder_path_name()):
             self.req_images = {}
-            for image_type in util.get_file_list(self.required_images_folder_path_name()):
-                self.req_images[image_type] = json.loads(util.read_file(self.required_images_folder_path_name(), image_type))
+            for skl_img in util.get_file_list(self.required_images_folder_path_name()):
+                self.req_images[skl_img] = json.loads(util.read_file(self.required_images_folder_path_name(), skl_img))
         else:
             raise RuntimeError('FAILED TO OPEN REQUIRED IMAGES FOLDER FOR: ' + self.name)
 
@@ -87,7 +87,7 @@ class AI(DataObject):
 
     def __charge_actual_req_images(self):
         for img_name, img_info in self.req_images.items():
-            self.actual_images[img_name] = self.actual_skl.get_images_type_path_name(img_name, img_info["max"])
+            self.actual_images[img_name] = self.actual_skl.get_skl_imgs(img_name, img_info["max"])
 
     def __charge_actual_req_mi(self):
         for mi_name in self.req_mi:

@@ -101,7 +101,7 @@ class Ui_upsert_skin_lesion(object):
         self.sc_characteristics.setWidgetResizable(True)
         self.c_characteristics_content = QWidget()
         self.c_characteristics_content.setObjectName(u"c_characteristics_content")
-        self.c_characteristics_content.setGeometry(QRect(0, 0, 364, 328))
+        self.c_characteristics_content.setGeometry(QRect(0, 0, 364, 332))
         self.verticalLayout_30 = QVBoxLayout(self.c_characteristics_content)
         self.verticalLayout_30.setObjectName(u"verticalLayout_30")
         self.ly_characteristics_content = QVBoxLayout()
@@ -134,13 +134,13 @@ class Ui_upsert_skin_lesion(object):
         self.sc_images.setWidgetResizable(True)
         self.c_images_content = QWidget()
         self.c_images_content.setObjectName(u"c_images_content")
-        self.c_images_content.setGeometry(QRect(0, 0, 364, 328))
+        self.c_images_content.setGeometry(QRect(0, 0, 364, 332))
         self.verticalLayout_10 = QVBoxLayout(self.c_images_content)
         self.verticalLayout_10.setObjectName(u"verticalLayout_10")
-        self.ly_images_type_content = QVBoxLayout()
-        self.ly_images_type_content.setObjectName(u"ly_images_type_content")
+        self.ly_add_skl_img = QVBoxLayout()
+        self.ly_add_skl_img.setObjectName(u"ly_add_skl_img")
 
-        self.verticalLayout_10.addLayout(self.ly_images_type_content)
+        self.verticalLayout_10.addLayout(self.ly_add_skl_img)
 
         self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 

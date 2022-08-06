@@ -16,7 +16,7 @@ import src.util.util as util
 
 class Pagination(QFrame):
 
-    def __init__(self, parent, min=(1,1), max=(10,10), min_sep = 5, min_element_size = (50,50), forced_empty_spaces = False):
+    def __init__(self, parent, min=(1,1), max=(10,10), sep = 6, min_element_size = (50,50), forced_empty_spaces = False):
         QFrame.__init__(self, parent)
 
         # No usado por el momento
@@ -29,7 +29,7 @@ class Pagination(QFrame):
         self.nb_rows = self.min_rows
         self.nb_cols = self.min_cols
 
-        self.min_sep = min_sep
+        self.sep = sep
 
         self.min_card_width = min_element_size[0]
         self.min_card_height = min_element_size[1]
@@ -60,6 +60,7 @@ class Pagination(QFrame):
         self.c_cards = QFrame(self)
         self.ly_cards = QGridLayout(self.c_cards)
         self.ly_cards.setContentsMargins(0, 0, 0, 0)
+        self.ly_cards.setSpacing(self.sep)
 
         self.layout.addWidget(self.c_cards)
 
@@ -199,7 +200,8 @@ class Pagination(QFrame):
                         self.ly_cards.addWidget(Label(self), i, j, 1, 1)
 
         self.i_actual_page.setText(str(self.pointer+1))
-        self.ly_cards.update()
+        self.c_cards.update()
+        self.__calc_elem_size()
 
     @Slot()
     def next_page(self):
@@ -243,4 +245,24 @@ class Pagination(QFrame):
 
         self.__refresh_controllers()
         self.go_to_page(1)
+
+    def resizeEvent(self, event):
+        self.__calc_elem_size()
+
+    def __calc_elem_size(self):
+        w = int((self.c_cards.size().width() - self.sep * (self.nb_cols - 1))/self.nb_cols)
+        h = int((self.c_cards.size().height() - self.sep * (self.nb_rows - 1))/self.nb_rows)
+
+        if w > 0 and h > 0:
+            for i in reversed(range(self.ly_cards.count())):
+                self.ly_cards.itemAt(i).widget().setMinimumSize(QSize(w,h))
+                self.ly_cards.itemAt(i).widget().setMaximumSize(QSize(w,h))
+
+        self.s_card_size_changed.emit(w,h)
+#        print([w,h])
+
+    s_card_size_changed = Signal(int, int)
+    def add_card_size_changed_receaver(self, receaver):
+        self.s_card_size_changed.connect(receaver)
+
 

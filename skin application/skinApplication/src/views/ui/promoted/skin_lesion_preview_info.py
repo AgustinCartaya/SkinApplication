@@ -3,7 +3,7 @@ from PySide6.QtWidgets import QFormLayout, QWidget, QFrame, QHBoxLayout, QVBoxLa
 
 from .label import Label
 
-class ResultPreview(QFrame):
+class SkinLesionPreviewInfo(QFrame):
 
     def __init__(self, parent, results, title, is_ai_result = False,  *args, **kwards):
         QFrame.__init__(self, parent)

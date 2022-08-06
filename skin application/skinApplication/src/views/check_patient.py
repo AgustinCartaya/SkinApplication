@@ -46,7 +46,7 @@ class CheckPatientView(ViewObject):
 
     Slot(int)
     def see_images(self, skin_lesion_nb):
-        self.s_change_view.emit(cfg.CHECK_PATIENT_VIEW, cfg.IMAGES_VIEW, {})
+        self.s_change_view.emit(cfg.CHECK_PATIENT_VIEW, cfg.IMAGES_VIEW, {"patient" : self.p, "skin_lesion": self.p.skin_lesions[skin_lesion_nb]})
 
     def load_ui(self):
         self.ui = Ui_check_patient()

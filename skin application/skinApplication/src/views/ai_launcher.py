@@ -2,7 +2,7 @@ from .view_object import *
 from .ui.ui_ai_launcher import Ui_ai_launcher
 
 from .ui.promoted.required_elements_container import  RequiredElementsContainer
-from .ui.promoted.required_images_type_container import  RequiredImagesTypeContainer
+from .ui.promoted.required_skl_img_container import  RequiredSklImgContainer
 
 from src.objects.ai import AI
 
@@ -32,7 +32,7 @@ class AILauncherView(ViewObject):
         # required info
         self.ui.c_skl_required_info_list.set_required_elements(self.ai.actual_skl_charac)
         self.ui.c_patient_required_info_list.set_required_elements(self.ai.actual_mi)
-        self.ui.c_images_required_list.create_required_images_type(self.ai.req_images)
+        self.ui.c_required_skl_imgs.create_required_skl_imgs(self.ai.req_images)
         self.__carge_selected_images()
 
 
@@ -45,7 +45,7 @@ class AILauncherView(ViewObject):
 
     def __carge_selected_images(self):
         for img_name, img_list in self.ai.actual_images.items():
-            self.ui.c_images_required_list.set_selected_number(img_name, len(img_list))
+            self.ui.c_required_skl_imgs.set_selected_number(img_name, len(img_list))
 
 
     @Slot()

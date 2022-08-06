@@ -3,8 +3,7 @@ from PySide6.QtCore import Signal, Slot, Qt
 from PySide6.QtWidgets import QInputDialog, QFrame, QVBoxLayout,QHBoxLayout
 
 from .button import Button
-from .image_type import ImageType
-from .image_type_creator import ImageTypeCreator
+
 from .ai_preview import AIPreview
 
 from .pagination import Pagination

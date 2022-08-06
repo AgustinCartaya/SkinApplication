@@ -139,7 +139,7 @@
                 <x>0</x>
                 <y>0</y>
                 <width>364</width>
-                <height>328</height>
+                <height>332</height>
                </rect>
               </property>
               <layout class="QVBoxLayout" name="verticalLayout_30">
@@ -194,12 +194,12 @@
                 <x>0</x>
                 <y>0</y>
                 <width>364</width>
-                <height>328</height>
+                <height>332</height>
                </rect>
               </property>
               <layout class="QVBoxLayout" name="verticalLayout_10">
                <item>
-                <layout class="QVBoxLayout" name="ly_images_type_content"/>
+                <layout class="QVBoxLayout" name="ly_add_skl_img"/>
                </item>
                <item>
                 <spacer name="verticalSpacer_2">

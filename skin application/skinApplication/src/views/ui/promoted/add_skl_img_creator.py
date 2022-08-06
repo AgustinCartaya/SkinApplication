@@ -10,14 +10,12 @@ from PySide6.QtCore import Signal, Slot
 
 import src.util.data_cleaner as data_cleaner
 
-class ImageTypeCreator(QFrame):
+class AddSklImgCreator(QFrame):
 
     s_cancel = Signal()
     s_add = Signal(str)
     def __init__(self, parent, add_receaver, cancel_receaver):
         QFrame.__init__(self, parent)
-
-        self.input_type = ""
 
         self.s_add.connect(add_receaver)
         self.s_cancel.connect(cancel_receaver)
@@ -77,5 +75,5 @@ class ImageTypeCreator(QFrame):
     def __add(self):
         name = self.i_name.text().strip()
         if name == "":
-            raise ValueError('New image type name empty', "IMAGE_TYPE_NAME", "EMPTY")
+            raise ValueError('New skin lesion image name empty', "SKL_IMG_NAME", "EMPTY")
         self.s_add.emit(name)

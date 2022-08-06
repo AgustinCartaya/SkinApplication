@@ -5,13 +5,13 @@ from PySide6.QtCore import Qt, QSize
 from .label import Label
 from .button import Button
 from .line_edit import LineEdit
-from .image_type_creator import ImageTypeCreator
+from .add_skl_img_creator import AddSklImgCreator
 
 from PySide6.QtCore import Signal, Slot
 
 import src.util.data_cleaner as data_cleaner
 
-class ImageType(QFrame):
+class AddSklImgItem(QFrame):
 
 #    s_edit_items = Signal(str)
     def __init__(self, parent, id, name, nb_images = 0, new_images = []):

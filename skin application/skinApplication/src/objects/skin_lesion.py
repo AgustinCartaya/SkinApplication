@@ -1,6 +1,8 @@
 # This Python file uses the following encoding: utf-8
 from .data_object import *
 
+from .image import Image
+
 class SkinLesion(DataObject):
     def __init__(self, number, patient_id, characteristics, ai_results = {}):
 
@@ -50,11 +52,11 @@ class SkinLesion(DataObject):
             raise ValueError('Skin lesion not created', "SKIN_LESION", "NO_CREATED")
 
     def save_images(self, images_dic):
-        for img_type, image_path_names in images_dic.items():
+        for skl_img, image_path_names in images_dic.items():
             if len(image_path_names) > 0:
-                self.verify_image_type_folder(img_type)
+                self.verify_skl_img_folder(skl_img)
                 for src_image in image_path_names:
-                    util.copy_file(src_image, self.get_image_type_folder_path(img_type))
+                    util.copy_file(src_image, self.get_skl_img_folder_path(skl_img))
 
     def get_images_folder_path(self):
         return util.gen_path(self.folder_path, cfg.SKL_IMAGES_FOLDER_NAME)
@@ -65,12 +67,12 @@ class SkinLesion(DataObject):
     def get_timeline_folder_path(self):
         return util.gen_path(self.folder_path, cfg.SKL_TIMELINE_FOLDER_NAME)
 
-    def get_image_type_folder_path(self, img_type):
-        return util.gen_path(self.get_images_folder_path(), img_type)
+    def get_skl_img_folder_path(self, skl_img):
+        return util.gen_path(self.get_images_folder_path(), skl_img)
 
-    def verify_image_type_folder(self, img_type):
-        if not util.is_dir(self.get_image_type_folder_path(img_type)):
-            util.create_dir(self.get_image_type_folder_path(img_type))
+    def verify_skl_img_folder(self, skl_img):
+        if not util.is_dir(self.get_skl_img_folder_path(skl_img)):
+            util.create_dir(self.get_skl_img_folder_path(skl_img))
 
     def verify_skl_folder(self):
         if not util.is_dir(self.folder_path):
@@ -82,26 +84,35 @@ class SkinLesion(DataObject):
         if not util.is_dir(self.get_timeline_folder_path()):
             util.create_dir(self.get_timeline_folder_path())
 
-    def get_images_type_path_name(self, image_type, nb_of_images=-1, filtered_by="name"):
+    def get_available_skl_img_names(self):
+        return util.get_dir_list(self.get_images_folder_path())
+
+    def get_all_skl_imgs(self):
+        skl_imgs_dict = {}
+        for name in self.get_available_skl_img_names():
+            skl_imgs_dict[name] = self.get_skl_imgs(name)
+        return skl_imgs_dict
+
+    def get_skl_imgs(self, name, nb_of_images=0, filtered_by="name"):
         img_list = []
-        if util.is_dir(self.get_image_type_folder_path(image_type)):
-            img_list = util.get_file_list(self.get_image_type_folder_path(image_type))[0:nb_of_images]
+        if util.is_dir(self.get_skl_img_folder_path(name)):
+            if nb_of_images == 0:
+                img_list = [Image(util.gen_path(self.get_skl_img_folder_path(name), src)) for src in util.get_file_list(self.get_skl_img_folder_path(name))]
+            else:
+                img_list = [Image(util.gen_path(self.get_skl_img_folder_path(name), src)) for src in util.get_file_list(self.get_skl_img_folder_path(name))[:nb_of_images]]
         return img_list
 
-    def get_number_image_type(self, image_type):
-        if util.is_dir(self.get_image_type_folder_path(image_type)):
-            return len(util.get_file_list(self.get_image_type_folder_path(image_type)))
+    def get_skl_img_number(self, skl_img):
+        if util.is_dir(self.get_skl_img_folder_path(skl_img)):
+            return len(util.get_file_list(self.get_skl_img_folder_path(skl_img)))
         else:
             return 0
 
-    def get_images_type_available(self):
-        return util.get_dir_list(self.get_images_folder_path())
-
-    def get_number_images_type(self):
-        number_images_type = {}
-        for image_type in self.get_images_type_available():
-            number_images_type[image_type] = self.get_number_image_type(image_type)
-        return number_images_type
+    def get_skl_img_numbers(self):
+        number_skl_imgs = []
+        for skl_img in self.get_available_skl_img_names():
+            number_skl_imgs.append([skl_img, self.get_skl_img_number(skl_img)])
+        return number_skl_imgs
 
     def to_string(self):
         return ("(" + str(self.number) + ", " +

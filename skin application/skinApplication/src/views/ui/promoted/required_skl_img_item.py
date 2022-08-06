@@ -4,7 +4,7 @@ from .label import Label
 
 from PySide6.QtCore import Signal, Slot
 
-class RequiredImageType(QFrame):
+class RequiredSklImgItem(QFrame):
 
 #    s_edit_items = Signal(str)
     def __init__(self, parent, img_name, min, max, selected=0):
@@ -15,7 +15,6 @@ class RequiredImageType(QFrame):
         self.max = max
         self.selected = selected
         self.__create()
-
 
     def __create(self):
         self.layout = QHBoxLayout(self)

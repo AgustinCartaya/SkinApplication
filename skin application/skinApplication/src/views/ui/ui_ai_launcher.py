@@ -23,7 +23,7 @@ from .promoted.button import Button
 from .promoted.label import Label
 from .promoted.navigator_button import NavigatorButton
 from .promoted.required_elements_container import RequiredElementsContainer
-from .promoted.required_images_type_container import RequiredImagesTypeContainer
+from .promoted.required_skl_img_container import RequiredSklImgContainer
 
 class Ui_ai_launcher(object):
     def setupUi(self, ai_launcher):
@@ -99,7 +99,7 @@ class Ui_ai_launcher(object):
         self.sc_patient_required_info.setWidgetResizable(True)
         self.c_patient_required_info_content = QWidget()
         self.c_patient_required_info_content.setObjectName(u"c_patient_required_info_content")
-        self.c_patient_required_info_content.setGeometry(QRect(0, 0, 402, 251))
+        self.c_patient_required_info_content.setGeometry(QRect(0, 0, 402, 260))
         self.verticalLayout_12 = QVBoxLayout(self.c_patient_required_info_content)
         self.verticalLayout_12.setObjectName(u"verticalLayout_12")
         self.c_patient_required_info_list = RequiredElementsContainer(self.c_patient_required_info_content)
@@ -142,7 +142,7 @@ class Ui_ai_launcher(object):
         self.sc_skl_required_info_content.setWidgetResizable(True)
         self.c_skl_required_info_content = QWidget()
         self.c_skl_required_info_content.setObjectName(u"c_skl_required_info_content")
-        self.c_skl_required_info_content.setGeometry(QRect(0, 0, 402, 251))
+        self.c_skl_required_info_content.setGeometry(QRect(0, 0, 402, 260))
         self.verticalLayout_14 = QVBoxLayout(self.c_skl_required_info_content)
         self.verticalLayout_14.setObjectName(u"verticalLayout_14")
         self.c_skl_required_info_list = RequiredElementsContainer(self.c_skl_required_info_content)
@@ -226,16 +226,16 @@ class Ui_ai_launcher(object):
         self.sc_required_images_table.setWidgetResizable(True)
         self.c_required_images_table = QWidget()
         self.c_required_images_table.setObjectName(u"c_required_images_table")
-        self.c_required_images_table.setGeometry(QRect(0, 0, 881, 248))
+        self.c_required_images_table.setGeometry(QRect(0, 0, 881, 257))
         self.verticalLayout_8 = QVBoxLayout(self.c_required_images_table)
         self.verticalLayout_8.setObjectName(u"verticalLayout_8")
         self.verticalLayout_8.setContentsMargins(0, 0, 0, 0)
-        self.c_images_required_list = RequiredImagesTypeContainer(self.c_required_images_table)
-        self.c_images_required_list.setObjectName(u"c_images_required_list")
-        self.c_images_required_list.setFrameShape(QFrame.StyledPanel)
-        self.c_images_required_list.setFrameShadow(QFrame.Raised)
+        self.c_required_skl_imgs = RequiredSklImgContainer(self.c_required_images_table)
+        self.c_required_skl_imgs.setObjectName(u"c_required_skl_imgs")
+        self.c_required_skl_imgs.setFrameShape(QFrame.StyledPanel)
+        self.c_required_skl_imgs.setFrameShadow(QFrame.Raised)
 
-        self.verticalLayout_8.addWidget(self.c_images_required_list)
+        self.verticalLayout_8.addWidget(self.c_required_skl_imgs)
 
         self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 

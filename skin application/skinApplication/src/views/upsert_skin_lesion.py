@@ -5,7 +5,7 @@ from .ui.ui_upsert_skin_lesion import Ui_upsert_skin_lesion
 from .ui.promoted.variable_inputs_container import VariableInputsContainer
 from .ui.promoted.variable_input import VariableInput
 
-from .ui.promoted.images_type_container import ImagesTypeContainer
+from .ui.promoted.add_skl_img_container import AddSklImgContainer
 
 from .ui.promoted.ai_previews_container import AIPreviewsContainer
 from .ui.promoted.button import Button
@@ -42,9 +42,9 @@ class UpsertSkinLesionView(ViewObject):
             VariableInput.DISPOSITION_H)
         self.ui.ly_characteristics_content.addWidget(self.c_characteristics)
 
-        # image type
-        self.c_images_type = ImagesTypeContainer(self.ui.c_images_content, cfg.FILES_IMAGES_TYPE_PATH)
-        self.ui.ly_images_type_content.addWidget(self.c_images_type)
+        # skin lesion images
+        self.c_add_skl_img = AddSklImgContainer(self.ui.c_images_content, cfg.FILES_SKIN_LESION_IMAGES_PATH)
+        self.ui.ly_add_skl_img.addWidget(self.c_add_skl_img)
 
 
     def charge_ai_previews(self):
@@ -85,7 +85,7 @@ class UpsertSkinLesionView(ViewObject):
             self.skl.characteristics = self.__catch_characteristics()
             self.skl.update_data()
 
-        self.skl.save_images(self.c_images_type.get_selected_image_path_names())
+        self.skl.save_images(self.c_add_skl_img.get_selected_image_path_names())
 
         # when skin lesion updated without scaping from the view
 #        self.charge_edit_mode()
@@ -108,7 +108,7 @@ class UpsertSkinLesionView(ViewObject):
         self.__save_information()
         self.__back()
 #        print(self.c_characteristics.get_selected_items())
-#        print(self.c_images_type.get_selected_image_path_names())
+#        print(self.c_add_skl_img.get_selected_image_path_names())
 
     @Slot()
     def __c_characteristics_scroll_down(self, min, maxi):
@@ -135,6 +135,6 @@ class UpsertSkinLesionView(ViewObject):
         self.c_characteristics.select_default_values(self.skl.characteristics)
 
         # images
-        self.c_images_type.set_number_images(self.skl.get_number_images_type())
+        self.c_add_skl_img.set_number_images(self.skl.get_skl_img_numbers())
 
 

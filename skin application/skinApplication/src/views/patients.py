@@ -8,6 +8,7 @@ from PySide6.QtCore import QSize
 from .ui.promoted.patient_card import PatientCard
 
 class PatientsView(ViewObject):
+
     def __init__(self, mw):
         super().__init__(mw)
         self.load_ui()

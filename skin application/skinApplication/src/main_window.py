@@ -110,7 +110,7 @@ class MainWindow(QtWidgets.QMainWindow):
             self.set_view(AILauncherView(self, atts["ai"], atts["patient"], atts["skin_lesion"]))
 
         elif view_to == cfg.IMAGES_VIEW:
-            self.set_view(ImagesView(self))
+            self.set_view(ImagesView(self, atts["patient"], atts["skin_lesion"]))
 
 
 #        print(self._layers.count())

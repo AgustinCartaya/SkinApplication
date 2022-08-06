@@ -20,8 +20,8 @@ def check_directories():
     if not util.is_dir(cfg.FILES_PATH):
         util.create_dir(cfg.FILES_PATH)
 
-    if not util.is_dir(cfg.FILES_IMAGES_TYPE_PATH):
-        util.create_dir(cfg.FILES_IMAGES_TYPE_PATH)
+    if not util.is_dir(cfg.FILES_SKIN_LESION_IMAGES_PATH):
+        util.create_dir(cfg.FILES_SKIN_LESION_IMAGES_PATH)
 
     if not util.is_dir(cfg.FILES_MEDICAL_INFORMATION_PATH):
         util.create_dir(cfg.FILES_MEDICAL_INFORMATION_PATH)

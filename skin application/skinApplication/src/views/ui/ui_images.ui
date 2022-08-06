@@ -81,13 +81,13 @@
       <number>30</number>
      </property>
      <property name="rightMargin">
-      <number>0</number>
+      <number>10</number>
      </property>
      <property name="bottomMargin">
       <number>0</number>
      </property>
      <item>
-      <widget class="QFrame" name="c_filters">
+      <widget class="QFrame" name="c_left">
        <property name="minimumSize">
         <size>
          <width>300</width>
@@ -128,7 +128,7 @@
            <number>20</number>
           </property>
           <item>
-           <widget class="QFrame" name="frame_3">
+           <widget class="QFrame" name="c_filters">
             <property name="frameShape">
              <enum>QFrame::StyledPanel</enum>
             </property>
@@ -165,21 +165,54 @@
               </widget>
              </item>
              <item>
-              <layout class="QVBoxLayout" name="verticalLayout_8">
+              <layout class="QVBoxLayout" name="ly_filters">
+               <property name="spacing">
+                <number>20</number>
+               </property>
                <item>
-                <layout class="QVBoxLayout" name="verticalLayout_5">
+                <layout class="QVBoxLayout" name="ly_filter_image_type">
+                 <property name="spacing">
+                  <number>9</number>
+                 </property>
+                 <item>
+                  <widget class="QLabel" name="lb_filter_diagnostic_attributes">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string>DIAGNOSTIC ATTRIBUTES</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="FilterSklImgContainer" name="c_filter_skl_imgs">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QVBoxLayout" name="ly_filter_date">
                  <property name="spacing">
                   <number>12</number>
                  </property>
                  <item>
-                  <widget class="QLabel" name="label_2">
+                  <widget class="QLabel" name="lb_filter_date">
                    <property name="text">
                     <string>DATE</string>
                    </property>
                   </widget>
                  </item>
                  <item>
-                  <layout class="QVBoxLayout" name="verticalLayout_6">
+                  <layout class="QVBoxLayout" name="ly_filter_date_precise">
                    <property name="spacing">
                     <number>4</number>
                    </property>
@@ -187,16 +220,16 @@
                     <number>9</number>
                    </property>
                    <item>
-                    <widget class="QLabel" name="label_3">
+                    <widget class="QLabel" name="lb_filter_date_precise">
                      <property name="text">
-                      <string>Precice</string>
+                      <string>Precise</string>
                      </property>
                     </widget>
                    </item>
                    <item>
-                    <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0">
+                    <layout class="QHBoxLayout" name="ly_filter_date_precise_inputs" stretch="0,0">
                      <item>
-                      <widget class="QDateEdit" name="dateEdit">
+                      <widget class="QDateEdit" name="i_date_precise">
                        <property name="minimumSize">
                         <size>
                          <width>110</width>
@@ -229,7 +262,7 @@
                   </layout>
                  </item>
                  <item>
-                  <layout class="QVBoxLayout" name="verticalLayout_7">
+                  <layout class="QVBoxLayout" name="ly_filter_date_range">
                    <property name="spacing">
                     <number>4</number>
                    </property>
@@ -237,16 +270,16 @@
                     <number>9</number>
                    </property>
                    <item>
-                    <widget class="QLabel" name="label_4">
+                    <widget class="QLabel" name="lb_filter_date_range">
                      <property name="text">
                       <string>Range</string>
                      </property>
                     </widget>
                    </item>
                    <item>
-                    <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="0,0,0,0">
+                    <layout class="QHBoxLayout" name="ly_filter_date_range_inputs" stretch="0,0,0,0">
                      <item>
-                      <widget class="QDateEdit" name="dateEdit_2">
+                      <widget class="QDateEdit" name="i_date_range_min">
                        <property name="minimumSize">
                         <size>
                          <width>110</width>
@@ -262,14 +295,14 @@
                       </widget>
                      </item>
                      <item alignment="Qt::AlignHCenter">
-                      <widget class="QLabel" name="label_5">
+                      <widget class="QLabel" name="lb_date_range_to">
                        <property name="text">
                         <string>to</string>
                        </property>
                       </widget>
                      </item>
                      <item>
-                      <widget class="QDateEdit" name="dateEdit_3">
+                      <widget class="QDateEdit" name="i_date_range_max">
                        <property name="minimumSize">
                         <size>
                          <width>110</width>
@@ -285,7 +318,7 @@
                       </widget>
                      </item>
                      <item>
-                      <spacer name="horizontalSpacer_3">
+                      <spacer name="spacer">
                        <property name="orientation">
                         <enum>Qt::Horizontal</enum>
                        </property>
@@ -306,64 +339,13 @@
                  </item>
                 </layout>
                </item>
-               <item>
-                <layout class="QVBoxLayout" name="ly_filter_diagnostic_attributes">
-                 <property name="spacing">
-                  <number>9</number>
-                 </property>
-                 <item>
-                  <widget class="QLabel" name="lb_filter_diagnostic_attributes">
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>20</height>
-                    </size>
-                   </property>
-                   <property name="text">
-                    <string>DIAGNOSTIC ATTRIBUTES</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <layout class="QVBoxLayout" name="ly_filter_diagnostic_attributes_content">
-                   <property name="spacing">
-                    <number>4</number>
-                   </property>
-                   <property name="leftMargin">
-                    <number>9</number>
-                   </property>
-                   <item>
-                    <widget class="QCheckBox" name="i_bening">
-                     <property name="text">
-                      <string>Photo (120 / 300)</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QCheckBox" name="i_malignant">
-                     <property name="text">
-                      <string>Dermatology (150 / 300)</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QCheckBox" name="i_indeterminate">
-                     <property name="text">
-                      <string>Microscopy (30 / 300)</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </item>
-                </layout>
-               </item>
               </layout>
              </item>
             </layout>
            </widget>
           </item>
           <item>
-           <widget class="QFrame" name="frame_2">
+           <widget class="QFrame" name="c_description">
             <property name="frameShape">
              <enum>QFrame::StyledPanel</enum>
             </property>
@@ -387,24 +369,24 @@
               <number>0</number>
              </property>
              <item alignment="Qt::AlignHCenter">
-              <widget class="QLabel" name="label">
+              <widget class="QLabel" name="lb_description">
                <property name="text">
                 <string>Description</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QScrollArea" name="scrollArea">
+              <widget class="QScrollArea" name="sc_description_content">
                <property name="widgetResizable">
                 <bool>true</bool>
                </property>
-               <widget class="QWidget" name="c_filters_content">
+               <widget class="QWidget" name="c_description_content">
                 <property name="geometry">
                  <rect>
                   <x>0</x>
                   <y>0</y>
                   <width>303</width>
-                  <height>370</height>
+                  <height>457</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -418,7 +400,7 @@
                   <number>0</number>
                  </property>
                  <item>
-                  <layout class="QVBoxLayout" name="ly_filters">
+                  <layout class="QVBoxLayout" name="ly_description_content">
                    <property name="spacing">
                     <number>20</number>
                    </property>
@@ -458,7 +440,7 @@
         <number>20</number>
        </property>
        <item>
-        <widget class="QFrame" name="frame">
+        <widget class="QFrame" name="c_organizer">
          <property name="maximumSize">
           <size>
            <width>16777215</width>
@@ -498,7 +480,7 @@
            </widget>
           </item>
           <item alignment="Qt::AlignHCenter">
-           <widget class="QFrame" name="frame_12">
+           <widget class="QFrame" name="ly_organizer_controllers">
             <property name="maximumSize">
              <size>
               <width>16777215</width>
@@ -512,7 +494,13 @@
              <enum>QFrame::Raised</enum>
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="0,0,0,0,0">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
              <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
               <number>0</number>
              </property>
              <property name="bottomMargin">
@@ -570,7 +558,7 @@
               </spacer>
              </item>
              <item>
-              <widget class="CheckButton" name="bt_sorter_id">
+              <widget class="CheckButton" name="bt_sorter_date">
                <property name="minimumSize">
                 <size>
                  <width>40</width>
@@ -649,6 +637,12 @@
    <class>Pagination</class>
    <extends>QFrame</extends>
    <header>.promoted.pagination</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>FilterSklImgContainer</class>
+   <extends>QFrame</extends>
+   <header>.promoted.filter_skl_img_container</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

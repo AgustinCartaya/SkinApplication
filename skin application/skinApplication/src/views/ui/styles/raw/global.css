@@ -10,8 +10,9 @@ QFrame{
 background-color: transparent;
 }
 
-#c_filters,
-#c_patient_information{
+#patients #c_filters,
+#c_patient_information,
+#images #c_left{
     border-right: 1px solid @c_gray_ultra_light;
 /*    background-color: #ddd;*/
 }
@@ -39,16 +40,10 @@ PatientCard Label{
     color: white;
 }
 
-/*-----AnnotationPreview-----*/
-ResultPreview{
+/*-----SkinLesionPreviewInfo-----*/
+SkinLesionPreviewInfo{
     border: 1px solid @c_gray_light;
     border-radius: 3px;
-}
-
-AnnotationPreview[c_title=true]{
-    background-color: @c_skin_base;
-    border: None;
-    border-radius: 0px;
 }
 
 
@@ -59,15 +54,15 @@ AIPreview{
 }
 
 /*-----RequiredImageType-----*/
-/*-----ImageType-----*/
-RequiredImageType,
-ImageType{
+/*-----AddSklImgItem-----*/
+RequiredSklImgItem,
+AddSklImgItem{
     border-top: 1px solid @c_gray_ultra_light;
     padding: 10px 5px;
 
 }
-RequiredImageType::hover,
-ImageType::hover
+RequiredSklImgItem::hover,
+AddSklImgItem::hover
 {
 
     background-color: @c_blue_light;

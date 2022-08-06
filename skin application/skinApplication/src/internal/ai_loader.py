@@ -7,8 +7,8 @@ import src.util.util as util
 def load_ai_requirements(ai):
     # load required images
     for img_name in util.get_file_list(ai.required_images_folder_path_name()):
-        if not util.is_file(cfg.FILES_IMAGES_TYPE_PATH, img_name):
-            util.create_file("", cfg.FILES_IMAGES_TYPE_PATH, img_name)
+        if not util.is_file(cfg.FILES_SKIN_LESION_IMAGES_PATH, img_name):
+            util.create_file("", cfg.FILES_SKIN_LESION_IMAGES_PATH, img_name)
             print(img_name + " file created")
 
     # load required medical information

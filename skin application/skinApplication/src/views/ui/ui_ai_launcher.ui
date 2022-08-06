@@ -151,7 +151,7 @@
                    <x>0</x>
                    <y>0</y>
                    <width>402</width>
-                   <height>251</height>
+                   <height>260</height>
                   </rect>
                  </property>
                  <layout class="QVBoxLayout" name="verticalLayout_12">
@@ -243,7 +243,7 @@
                    <x>0</x>
                    <y>0</y>
                    <width>402</width>
-                   <height>251</height>
+                   <height>260</height>
                   </rect>
                  </property>
                  <layout class="QVBoxLayout" name="verticalLayout_14">
@@ -372,7 +372,7 @@
                   <x>0</x>
                   <y>0</y>
                   <width>881</width>
-                  <height>248</height>
+                  <height>257</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_8">
@@ -389,7 +389,7 @@
                   <number>0</number>
                  </property>
                  <item>
-                  <widget class="RequiredImagesTypeContainer" name="c_images_required_list">
+                  <widget class="RequiredSklImgContainer" name="c_required_skl_imgs">
                    <property name="frameShape">
                     <enum>QFrame::StyledPanel</enum>
                    </property>
@@ -476,9 +476,9 @@
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>RequiredImagesTypeContainer</class>
+   <class>RequiredSklImgContainer</class>
    <extends>QFrame</extends>
-   <header location="global">.promoted.required_images_type_container</header>
+   <header location="global">.promoted.required_skl_img_container</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

@@ -27,7 +27,7 @@ COLUMN_DOCTORS_PASSWORD = "password"
 ASSETS_PATH = PROJECT_FOLDER + _S + "assets"
 FILES_PATH = ASSETS_PATH + _S + "files"
 IMAGES_PATH = ASSETS_PATH + _S + "images"
-FILES_IMAGES_TYPE_PATH = FILES_PATH + _S + "images_type"
+FILES_SKIN_LESION_IMAGES_PATH = FILES_PATH + _S + "skin_lesion_images"
 FILES_MEDICAL_INFORMATION_PATH = FILES_PATH + _S + "medical_information"
 FILES_SKIN_LESION_CHARACTERISTICS_PATH = FILES_PATH + _S + "skin_lesion_characteristics"
 

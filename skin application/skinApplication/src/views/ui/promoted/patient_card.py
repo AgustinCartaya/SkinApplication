@@ -13,14 +13,16 @@ class PatientCard(QFrame):
     s_check_patient = Signal(str)
     def __init__(self, parent, patient, receaver):
         QFrame.__init__(self, None)
-        # prblems with pagination
-#        self.clicked.connect(self.switch)
-#        self.select(False)
-#        self.__group = None
-        self.layout = QVBoxLayout(self)
 
         self.p = patient
         self.s_check_patient.connect(receaver.check_patient)
+
+        self.__create()
+
+    def __create(self):
+        self.layout = QVBoxLayout(self)
+        self.layout.setContentsMargins(0, 0, 0, 0)
+        self.layout.setSpacing(0)
 
     def setTitle(self, type_info):
         # a modificar

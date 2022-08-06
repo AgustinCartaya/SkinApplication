@@ -5,7 +5,7 @@ from PySide6.QtCore import Qt, QSize, QRect
 from .label import Label
 from .button import Button
 from .line_edit import LineEdit
-from .image_type_creator import ImageTypeCreator
+
 
 from PySide6.QtCore import Signal, Slot
 

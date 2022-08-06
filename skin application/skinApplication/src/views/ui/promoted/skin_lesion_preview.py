@@ -6,7 +6,7 @@ QSpacerItem, QVBoxLayout, QWidget)
 from PySide6.QtCore import Signal, Slot
 
 from .button import Button
-from .result_preview import ResultPreview
+from .skin_lesion_preview_info import SkinLesionPreviewInfo
 
 from .line_edit import LineEdit
 
@@ -93,8 +93,8 @@ class SkinLesionPreview(QFrame):
         self.c_n2_up_layout.setContentsMargins(0, 0, 0, 0)
 
         # Anotations
-        annotations = ResultPreview(self.c_n2, self.skl.characteristics, "characteristics")
-        ai_results = ResultPreview(self.c_n2, self.skl.ai_results, "AI results", True)
+        annotations = SkinLesionPreviewInfo(self.c_n2, self.skl.characteristics, "characteristics")
+        ai_results = SkinLesionPreviewInfo(self.c_n2, self.skl.ai_results, "AI results", True)
 
         self.c_n2_up_layout.addWidget(annotations)
         self.c_n2_up_layout.addWidget(ai_results)
