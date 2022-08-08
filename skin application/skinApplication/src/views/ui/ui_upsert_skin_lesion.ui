@@ -139,7 +139,7 @@
                 <x>0</x>
                 <y>0</y>
                 <width>364</width>
-                <height>332</height>
+                <height>328</height>
                </rect>
               </property>
               <layout class="QVBoxLayout" name="verticalLayout_30">
@@ -170,18 +170,54 @@
            <property name="spacing">
             <number>16</number>
            </property>
-           <item alignment="Qt::AlignHCenter">
-            <widget class="Label" name="lb_add_images">
-             <property name="maximumSize">
-              <size>
-               <width>16777215</width>
-               <height>20</height>
-              </size>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,1,1">
+             <property name="leftMargin">
+              <number>0</number>
              </property>
-             <property name="text">
-              <string>Add images</string>
+             <property name="topMargin">
+              <number>0</number>
              </property>
-            </widget>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <spacer name="horizontalSpacer">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item alignment="Qt::AlignHCenter">
+              <widget class="Label" name="lb_add_images">
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>Add images</string>
+               </property>
+              </widget>
+             </item>
+             <item alignment="Qt::AlignLeft">
+              <widget class="Button" name="bt_see_images">
+               <property name="text">
+                <string>See images</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
            </item>
            <item>
             <widget class="QScrollArea" name="sc_images">
@@ -194,7 +230,7 @@
                 <x>0</x>
                 <y>0</y>
                 <width>364</width>
-                <height>332</height>
+                <height>318</height>
                </rect>
               </property>
               <layout class="QVBoxLayout" name="verticalLayout_10">
@@ -282,6 +318,11 @@
    <class>NavigatorButton</class>
    <extends>QPushButton</extends>
    <header>.promoted.navigator_button</header>
+  </customwidget>
+  <customwidget>
+   <class>Button</class>
+   <extends>QPushButton</extends>
+   <header>.promoted.button</header>
   </customwidget>
  </customwidgets>
  <resources/>

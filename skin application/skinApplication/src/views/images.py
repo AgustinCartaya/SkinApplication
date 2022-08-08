@@ -14,19 +14,22 @@ from src.objects.ai import AI
 from .image_viewer import ImageViewer
 
 class ImagesView(ViewObject):
-    def __init__(self, mv, images, patient, skin_lesion):
+    def __init__(self, mv, images, patient, skin_lesion, collet_mode, selected_images=[]):
         super().__init__(mv)
 
+        self.img_list = images
         self.p = patient
         self.skl = skin_lesion
-        self.img_list = images
+        self.collet_mode = collet_mode
+        self.selected_imgs = selected_images
+
+
         self.img_list_filtered = ImageList(self.img_list)
-        self.img_list_sorted = self.img_list_filtered
+        self.img_list_sorted = None
+
 
         # modify when window type stablished
 #        self.img_list = self.skl.get_all_skl_imgs()
-
-        self.selected_imgs = []
         self.bt_command_text = ""
         self.image_viewers = []
 
@@ -34,6 +37,10 @@ class ImagesView(ViewObject):
         self.connect_ui_signals()
 
         self.__show_images()
+
+        if collet_mode:
+            self.__collet_mode()
+
 
     def load_ui(self):
         self.ui = Ui_images()
@@ -49,6 +56,21 @@ class ImagesView(ViewObject):
 
         self.ui.c_filter_date.hide()
 
+        # organizer
+        self.ui.bt_sorter_name.select(True)
+        self.ui.bt_sorter_asc.select(True)
+
+        g1 = [self.ui.bt_sorter_name, self.ui.bt_sorter_date]
+        g2 = [self.ui.bt_sorter_asc, self.ui.bt_sorter_dsc]
+
+        self.ui.bt_sorter_name.add_group(g1)
+        self.ui.bt_sorter_date.add_group(g1)
+        self.ui.bt_sorter_asc.add_group(g2)
+        self.ui.bt_sorter_dsc.add_group(g2)
+
+#        self.ui.c_sorter_name.hide()
+        self.ui.bt_sorter_date.setEnabled(False)
+
         # pagination
         self.ui.c_pagination.set_grid_cards_size(4,6)
 #        self.ui.c_pagination.set_cards_sep(0,5)
@@ -62,7 +84,16 @@ class ImagesView(ViewObject):
     s_change_view = Signal(str,str,dict)
     def connect_ui_signals(self):
         self.ui.bt_back.clicked.connect(self.__back)
-        self.ui.bt_command.clicked.connect(self.__view_images)
+        if self.collet_mode:
+            self.ui.bt_command.clicked.connect(self.__collet_images)
+        else:
+            self.ui.bt_command.clicked.connect(self.__view_images)
+
+        # organizer
+        self.ui.bt_sorter_name.clicked.connect(self.__show_images)
+        self.ui.bt_sorter_asc.clicked.connect(self.__show_images)
+        self.ui.bt_sorter_dsc.clicked.connect(self.__show_images)
+
 
         # created signals
         self.s_change_view.connect(self.MW.change_view)
@@ -92,11 +123,7 @@ class ImagesView(ViewObject):
             self.__clean_image_descriptions()
 
         # show selected images number
-        nb_selected = len(self.selected_imgs)
-        if nb_selected > 0:
-            self.ui.bt_command.setText(self.bt_command_text + " (" + str(nb_selected) + ")")
-        else:
-            self.ui.bt_command.setText(self.bt_command_text)
+        self.__refresh_command_bt_text()
 
     # You may put it in a separeted file call skl_img_description_container
     def __clean_image_descriptions(self):
@@ -146,16 +173,42 @@ class ImagesView(ViewObject):
 
         self.__show_images()
 
+    # from here img_list_sorted is a single list
     def __sort_images(self):
-        self.img_list_sorted = self.img_list_filtered
+#        self.img_list_sorted = self.img_list_filtered
+        if self.ui.bt_sorter_name.is_selected():
+            sort_by = "name"
+        else:
+            sort_by = "ceartion_date"
+        self.img_list_sorted = self.img_list_filtered.get_all_images(sort_by, self.ui.bt_sorter_dsc.is_selected())
 
     def __create_img_cards(self):
         self.images_cards = []
-
-        for img_name, imgs in self.img_list_sorted.imgs_dict.items():
-            for img in imgs:
-                card = SklImgCard(self.ui.c_pagination, img, self.image_clicked)
-                self.ui.c_pagination.add_card_size_changed_receaver(card.size_changed)
-                self.images_cards.append(card)
+        for img in self.img_list_sorted:
+            card = SklImgCard(self.ui.c_pagination, img, self.image_clicked)
+#            if img.src in self.__get_selected_src():
+            if img in self.selected_imgs:
+                card.set_selected(True)
+            self.ui.c_pagination.add_card_size_changed_receaver(card.size_changed)
+            self.images_cards.append(card)
         self.ui.c_pagination.add_cards(self.images_cards)
 
+    def __collet_mode(self):
+        self.ui.bt_command.setText("Select")
+        self.bt_command_text = self.ui.bt_command.text()
+        self.__refresh_command_bt_text()
+
+
+    def __collet_images(self):
+#        print(self.img_list.get_types()[0])
+        self.s_change_view.emit(cfg.IMAGES_VIEW, cfg.AI_LAUNCHER_VIEW, {"selected_images_name": self.img_list.get_types()[0], "selected_images":self.selected_imgs})
+
+#    def __get_selected_src(self):
+#        return [img.src for img in self.selected_imgs]
+
+    def __refresh_command_bt_text(self):
+        nb_selected = len(self.selected_imgs)
+        if nb_selected > 0:
+            self.ui.bt_command.setText(self.bt_command_text + " (" + str(nb_selected) + ")")
+        else:
+            self.ui.bt_command.setText(self.bt_command_text)

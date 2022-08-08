@@ -46,11 +46,10 @@ class RequiredElement(QFrame):
 
     def __create_content(self):
         self.lb_info_name = Label(self)
-        self.lb_info_name.setText(self.info_name, colon=True)
+        self.lb_info_name.setText(self.info_name, colon=True, format=True)
         self.layout.addWidget(self.lb_info_name)
 
         self.lb_info_content = Label(self)
-        print(self.info_content)
         self.lb_info_content.setText(self.info_content)
         self.layout.addWidget(self.lb_info_content)
 

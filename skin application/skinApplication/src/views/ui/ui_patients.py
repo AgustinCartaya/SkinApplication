@@ -328,68 +328,95 @@ class Ui_patients(object):
         self.horizontalLayout_3 = QHBoxLayout(self.frame_12)
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
         self.horizontalLayout_3.setContentsMargins(-1, 0, -1, 0)
-        self.horizontalSpacer_5 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.hs_sorter_1 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.horizontalLayout_3.addItem(self.horizontalSpacer_5)
+        self.horizontalLayout_3.addItem(self.hs_sorter_1)
 
-        self.bt_sorter_mosaico = CheckButton(self.frame_12)
+        self.horizontalLayout = QHBoxLayout()
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.horizontalLayout.setContentsMargins(10, -1, 10, -1)
+        self.c_sorter_mosaico = QFrame(self.frame_12)
+        self.c_sorter_mosaico.setObjectName(u"c_sorter_mosaico")
+        self.c_sorter_mosaico.setFrameShape(QFrame.StyledPanel)
+        self.c_sorter_mosaico.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_2 = QHBoxLayout(self.c_sorter_mosaico)
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.bt_sorter_mosaico = CheckButton(self.c_sorter_mosaico)
         self.bt_sorter_mosaico.setObjectName(u"bt_sorter_mosaico")
         self.bt_sorter_mosaico.setMinimumSize(QSize(25, 25))
         self.bt_sorter_mosaico.setMaximumSize(QSize(25, 25))
 
-        self.horizontalLayout_3.addWidget(self.bt_sorter_mosaico)
+        self.horizontalLayout_2.addWidget(self.bt_sorter_mosaico)
 
-        self.bt_sorter_list = CheckButton(self.frame_12)
+        self.bt_sorter_list = CheckButton(self.c_sorter_mosaico)
         self.bt_sorter_list.setObjectName(u"bt_sorter_list")
         self.bt_sorter_list.setMinimumSize(QSize(25, 25))
         self.bt_sorter_list.setMaximumSize(QSize(25, 25))
 
-        self.horizontalLayout_3.addWidget(self.bt_sorter_list)
+        self.horizontalLayout_2.addWidget(self.bt_sorter_list)
 
-        self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.horizontalLayout_3.addItem(self.horizontalSpacer_3)
+        self.horizontalLayout.addWidget(self.c_sorter_mosaico, 0, Qt.AlignHCenter)
 
-        self.bt_sorter_asc = CheckButton(self.frame_12)
+        self.c_sorter_asc = QFrame(self.frame_12)
+        self.c_sorter_asc.setObjectName(u"c_sorter_asc")
+        self.c_sorter_asc.setFrameShape(QFrame.StyledPanel)
+        self.c_sorter_asc.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_5 = QHBoxLayout(self.c_sorter_asc)
+        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
+        self.horizontalLayout_5.setContentsMargins(0, 0, 0, 0)
+        self.bt_sorter_asc = CheckButton(self.c_sorter_asc)
         self.bt_sorter_asc.setObjectName(u"bt_sorter_asc")
         self.bt_sorter_asc.setMinimumSize(QSize(40, 25))
         self.bt_sorter_asc.setMaximumSize(QSize(40, 25))
 
-        self.horizontalLayout_3.addWidget(self.bt_sorter_asc)
+        self.horizontalLayout_5.addWidget(self.bt_sorter_asc)
 
-        self.bt_sorter_dsc = CheckButton(self.frame_12)
+        self.bt_sorter_dsc = CheckButton(self.c_sorter_asc)
         self.bt_sorter_dsc.setObjectName(u"bt_sorter_dsc")
         self.bt_sorter_dsc.setMinimumSize(QSize(40, 25))
         self.bt_sorter_dsc.setMaximumSize(QSize(40, 25))
 
-        self.horizontalLayout_3.addWidget(self.bt_sorter_dsc)
+        self.horizontalLayout_5.addWidget(self.bt_sorter_dsc)
 
-        self.horizontalSpacer_4 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.horizontalLayout_3.addItem(self.horizontalSpacer_4)
+        self.horizontalLayout.addWidget(self.c_sorter_asc, 0, Qt.AlignHCenter)
 
-        self.bt_sorter_id = CheckButton(self.frame_12)
+        self.c_sorter_id = QFrame(self.frame_12)
+        self.c_sorter_id.setObjectName(u"c_sorter_id")
+        self.c_sorter_id.setFrameShape(QFrame.StyledPanel)
+        self.c_sorter_id.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_6 = QHBoxLayout(self.c_sorter_id)
+        self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
+        self.horizontalLayout_6.setContentsMargins(0, 0, 0, 0)
+        self.bt_sorter_id = CheckButton(self.c_sorter_id)
         self.bt_sorter_id.setObjectName(u"bt_sorter_id")
         self.bt_sorter_id.setMinimumSize(QSize(40, 25))
         self.bt_sorter_id.setMaximumSize(QSize(40, 25))
 
-        self.horizontalLayout_3.addWidget(self.bt_sorter_id)
+        self.horizontalLayout_6.addWidget(self.bt_sorter_id)
 
-        self.bt_sorter_name = CheckButton(self.frame_12)
+        self.bt_sorter_name = CheckButton(self.c_sorter_id)
         self.bt_sorter_name.setObjectName(u"bt_sorter_name")
         self.bt_sorter_name.setMinimumSize(QSize(50, 25))
         self.bt_sorter_name.setMaximumSize(QSize(50, 25))
 
-        self.horizontalLayout_3.addWidget(self.bt_sorter_name)
+        self.horizontalLayout_6.addWidget(self.bt_sorter_name)
 
-        self.horizontalSpacer_6 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.horizontalLayout_3.addItem(self.horizontalSpacer_6)
+        self.horizontalLayout.addWidget(self.c_sorter_id, 0, Qt.AlignHCenter)
 
-        self.horizontalLayout_3.setStretch(0, 4)
-        self.horizontalLayout_3.setStretch(3, 2)
-        self.horizontalLayout_3.setStretch(6, 2)
-        self.horizontalLayout_3.setStretch(9, 3)
+
+        self.horizontalLayout_3.addLayout(self.horizontalLayout)
+
+        self.hs_sorter_4 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_3.addItem(self.hs_sorter_4)
+
+        self.horizontalLayout_3.setStretch(0, 1)
+        self.horizontalLayout_3.setStretch(1, 3)
+        self.horizontalLayout_3.setStretch(2, 1)
 
         self.verticalLayout_7.addWidget(self.frame_12)
 

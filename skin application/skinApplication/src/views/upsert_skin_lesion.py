@@ -65,6 +65,7 @@ class UpsertSkinLesionView(ViewObject):
     def connect_ui_signals(self):
         self.ui.bt_complete.clicked.connect(self.__complete)
         self.ui.bt_back.clicked.connect(self.__back)
+        self.ui.bt_see_images.clicked.connect(self.__see_images)
 
         self.ui.sc_characteristics.verticalScrollBar().rangeChanged.connect(self.__c_characteristics_scroll_down)
         self.ui.sc_images.verticalScrollBar().rangeChanged.connect(self.__c_images_scroll_down)
@@ -137,4 +138,5 @@ class UpsertSkinLesionView(ViewObject):
         # images
         self.c_add_skl_img.set_number_images(self.skl.get_skl_img_numbers())
 
-
+    def __see_images(self):
+        self.s_change_view.emit(cfg.UPSERT_SKIN_LESION_VIEW, cfg.IMAGES_VIEW, {"images":self.skl.get_all_skl_imgs(), "patient" : self.p, "skin_lesion": self.skl, 'collet_mode':False})

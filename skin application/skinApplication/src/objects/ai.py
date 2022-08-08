@@ -1,6 +1,7 @@
 # This Python file uses the following encoding: utf-8
 from .data_object import *
 
+from .image_list import ImageList
 
 class AI(DataObject):
     def __init__(self, name):
@@ -15,7 +16,7 @@ class AI(DataObject):
         # actual patient_skin_lesion = (patient, skin_lesion, images_dict, mi_list, req_skl_charac_list)
         self.actual_p = None
         self.actual_skl = None
-        self.actual_images = {}
+        self.actual_images = None
         self.actual_mi = []
         self.actual_skl_charac = []
 
@@ -86,8 +87,9 @@ class AI(DataObject):
         self.__charge_actual_skl_charac()
 
     def __charge_actual_req_images(self):
+        self.actual_images = ImageList()
         for img_name, img_info in self.req_images.items():
-            self.actual_images[img_name] = self.actual_skl.get_skl_imgs(img_name, img_info["max"])
+            self.actual_images.append_images(img_name, self.actual_skl.get_skl_imgs(img_name, img_info["max"]))
 
     def __charge_actual_req_mi(self):
         for mi_name in self.req_mi:
@@ -106,6 +108,6 @@ class AI(DataObject):
     def reset_actual_patient_and_skin_lesion(self):
         self.actual_p = None
         self.actual_skl = None
-        self.actual_images = {}
+        self.actual_images = None
         self.actual_mi = []
         self.actual_skl_charac = []

@@ -47,7 +47,7 @@ class CheckPatientView(ViewObject):
     Slot(int)
     def see_images(self, skin_lesion_nb):
         skl = self.p.skin_lesions[skin_lesion_nb]
-        self.s_change_view.emit(cfg.CHECK_PATIENT_VIEW, cfg.IMAGES_VIEW, {"images":skl.get_all_skl_imgs(), "patient" : self.p, "skin_lesion": skl})
+        self.s_change_view.emit(cfg.CHECK_PATIENT_VIEW, cfg.IMAGES_VIEW, {"images":skl.get_all_skl_imgs(), "patient" : self.p, "skin_lesion": skl, 'collet_mode':False})
 
     def load_ui(self):
         self.ui = Ui_check_patient()
@@ -100,7 +100,7 @@ class CheckPatientView(ViewObject):
         form_index = 0
         for mi in self.p.mi:
             mi_title = Label(self.ui.c_patient_information_content)
-            mi_title.setText(mi, colon=True)
+            mi_title.setText(mi, colon=True, format=True)
             self.ui.ly_mi_content.setWidget(form_index, QFormLayout.LabelRole, mi_title)
 
             if type(self.p.mi[mi]) is str:

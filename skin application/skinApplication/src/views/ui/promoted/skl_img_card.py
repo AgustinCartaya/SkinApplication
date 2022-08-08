@@ -56,10 +56,14 @@ class SklImgCard(QFrame):
         self.show_image()
 
     def mousePressEvent(self, arg):
-        self.setProperty("selected", not self.property("selected"))
-        self.repaint()
-
+        self.set_selected(not self.property("selected"))
         self.s_clicked.emit(self.img, self.property("selected"))
 
     def repaint(self):
         self.setStyle(QApplication.style())
+
+    def set_selected(self, selected):
+        self.setProperty("selected", selected)
+        self.repaint()
+
+

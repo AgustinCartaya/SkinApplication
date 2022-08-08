@@ -6,14 +6,17 @@ from PySide6.QtCore import Signal, Slot
 
 class RequiredSklImgItem(QFrame):
 
-#    s_edit_items = Signal(str)
-    def __init__(self, parent, img_name, min, max, selected=0):
+    s_clicked = Signal(str)
+    def __init__(self, parent, img_name, min, max, selected=0, click_receaver=None):
         QFrame.__init__(self, parent)
 
         self.img_name = img_name
         self.min = min
         self.max = max
         self.selected = selected
+
+        self.s_clicked.connect(click_receaver)
+
         self.__create()
 
     def __create(self):
@@ -25,7 +28,7 @@ class RequiredSklImgItem(QFrame):
 
     def __create_labels(self):
         self.lb_img_name = Label(self)
-        self.lb_img_name.setText(self.img_name)
+        self.lb_img_name.setText(self.img_name, format=True)
         self.layout.addWidget(self.lb_img_name)
 
         self.lb_min = Label(self)
@@ -42,3 +45,6 @@ class RequiredSklImgItem(QFrame):
 
     def set_selected_number(self, number):
         self.lb_selected.setText(number)
+
+    def mousePressEvent(self, arg):
+        self.s_clicked.emit(self.img_name)

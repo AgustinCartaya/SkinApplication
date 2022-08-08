@@ -19,6 +19,7 @@ from PySide6.QtWidgets import (QApplication, QFrame, QHBoxLayout, QLabel,
     QScrollArea, QSizePolicy, QSpacerItem, QVBoxLayout,
     QWidget)
 
+from .promoted.button import Button
 from .promoted.label import Label
 from .promoted.navigator_button import NavigatorButton
 
@@ -101,7 +102,7 @@ class Ui_upsert_skin_lesion(object):
         self.sc_characteristics.setWidgetResizable(True)
         self.c_characteristics_content = QWidget()
         self.c_characteristics_content.setObjectName(u"c_characteristics_content")
-        self.c_characteristics_content.setGeometry(QRect(0, 0, 364, 332))
+        self.c_characteristics_content.setGeometry(QRect(0, 0, 364, 328))
         self.verticalLayout_30 = QVBoxLayout(self.c_characteristics_content)
         self.verticalLayout_30.setObjectName(u"verticalLayout_30")
         self.ly_characteristics_content = QVBoxLayout()
@@ -123,18 +124,36 @@ class Ui_upsert_skin_lesion(object):
         self.ly_images = QVBoxLayout()
         self.ly_images.setSpacing(16)
         self.ly_images.setObjectName(u"ly_images")
+        self.horizontalLayout = QHBoxLayout()
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout.addItem(self.horizontalSpacer)
+
         self.lb_add_images = Label(upsert_skin_lesion)
         self.lb_add_images.setObjectName(u"lb_add_images")
         self.lb_add_images.setMaximumSize(QSize(16777215, 20))
 
-        self.ly_images.addWidget(self.lb_add_images, 0, Qt.AlignHCenter)
+        self.horizontalLayout.addWidget(self.lb_add_images, 0, Qt.AlignHCenter)
+
+        self.bt_see_images = Button(upsert_skin_lesion)
+        self.bt_see_images.setObjectName(u"bt_see_images")
+
+        self.horizontalLayout.addWidget(self.bt_see_images, 0, Qt.AlignLeft)
+
+        self.horizontalLayout.setStretch(0, 1)
+        self.horizontalLayout.setStretch(1, 1)
+        self.horizontalLayout.setStretch(2, 1)
+
+        self.ly_images.addLayout(self.horizontalLayout)
 
         self.sc_images = QScrollArea(upsert_skin_lesion)
         self.sc_images.setObjectName(u"sc_images")
         self.sc_images.setWidgetResizable(True)
         self.c_images_content = QWidget()
         self.c_images_content.setObjectName(u"c_images_content")
-        self.c_images_content.setGeometry(QRect(0, 0, 364, 332))
+        self.c_images_content.setGeometry(QRect(0, 0, 364, 318))
         self.verticalLayout_10 = QVBoxLayout(self.c_images_content)
         self.verticalLayout_10.setObjectName(u"verticalLayout_10")
         self.ly_add_skl_img = QVBoxLayout()
@@ -202,6 +221,7 @@ class Ui_upsert_skin_lesion(object):
         self.label_4.setText(QCoreApplication.translate("upsert_skin_lesion", u"Indisponible", None))
         self.lb_characteristics.setText(QCoreApplication.translate("upsert_skin_lesion", u"Characteristics", None))
         self.lb_add_images.setText(QCoreApplication.translate("upsert_skin_lesion", u"Add images", None))
+        self.bt_see_images.setText(QCoreApplication.translate("upsert_skin_lesion", u"See images", None))
         self.lb_lauch_ai.setText(QCoreApplication.translate("upsert_skin_lesion", u"Launch AI", None))
     # retranslateUi
 

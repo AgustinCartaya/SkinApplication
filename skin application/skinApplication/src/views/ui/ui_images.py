@@ -218,7 +218,7 @@ class Ui_images(object):
         self.sc_description_content.setWidgetResizable(True)
         self.c_description_content = QWidget()
         self.c_description_content.setObjectName(u"c_description_content")
-        self.c_description_content.setGeometry(QRect(0, 0, 303, 457))
+        self.c_description_content.setGeometry(QRect(0, 0, 303, 416))
         self.verticalLayout_3 = QVBoxLayout(self.c_description_content)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.verticalLayout_3.setContentsMargins(16, 0, 0, -1)
@@ -268,41 +268,73 @@ class Ui_images(object):
         self.ly_organizer_controllers.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_3 = QHBoxLayout(self.ly_organizer_controllers)
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
-        self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
-        self.bt_sorter_asc = CheckButton(self.ly_organizer_controllers)
-        self.bt_sorter_asc.setObjectName(u"bt_sorter_asc")
-        self.bt_sorter_asc.setMinimumSize(QSize(40, 25))
-        self.bt_sorter_asc.setMaximumSize(QSize(40, 25))
+        self.horizontalLayout_3.setContentsMargins(10, 0, 10, 0)
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.horizontalLayout_3.addWidget(self.bt_sorter_asc)
+        self.horizontalLayout_3.addItem(self.horizontalSpacer)
 
-        self.bt_sorter_dsc = CheckButton(self.ly_organizer_controllers)
+        self.horizontalLayout = QHBoxLayout()
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.c_sorter_asc = QFrame(self.ly_organizer_controllers)
+        self.c_sorter_asc.setObjectName(u"c_sorter_asc")
+        self.c_sorter_asc.setFrameShape(QFrame.StyledPanel)
+        self.c_sorter_asc.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_2 = QHBoxLayout(self.c_sorter_asc)
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.bt_sorter_dsc = CheckButton(self.c_sorter_asc)
         self.bt_sorter_dsc.setObjectName(u"bt_sorter_dsc")
         self.bt_sorter_dsc.setMinimumSize(QSize(40, 25))
         self.bt_sorter_dsc.setMaximumSize(QSize(40, 25))
 
-        self.horizontalLayout_3.addWidget(self.bt_sorter_dsc)
+        self.horizontalLayout_2.addWidget(self.bt_sorter_dsc)
+
+        self.bt_sorter_asc = CheckButton(self.c_sorter_asc)
+        self.bt_sorter_asc.setObjectName(u"bt_sorter_asc")
+        self.bt_sorter_asc.setMinimumSize(QSize(40, 25))
+        self.bt_sorter_asc.setMaximumSize(QSize(40, 25))
+
+        self.horizontalLayout_2.addWidget(self.bt_sorter_asc)
+
+
+        self.horizontalLayout.addWidget(self.c_sorter_asc, 0, Qt.AlignHCenter)
+
+        self.c_sorter_name = QFrame(self.ly_organizer_controllers)
+        self.c_sorter_name.setObjectName(u"c_sorter_name")
+        self.c_sorter_name.setFrameShape(QFrame.StyledPanel)
+        self.c_sorter_name.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_4 = QHBoxLayout(self.c_sorter_name)
+        self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
+        self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
+        self.bt_sorter_name = CheckButton(self.c_sorter_name)
+        self.bt_sorter_name.setObjectName(u"bt_sorter_name")
+        self.bt_sorter_name.setMinimumSize(QSize(50, 25))
+        self.bt_sorter_name.setMaximumSize(QSize(50, 25))
+
+        self.horizontalLayout_4.addWidget(self.bt_sorter_name)
+
+        self.bt_sorter_date = CheckButton(self.c_sorter_name)
+        self.bt_sorter_date.setObjectName(u"bt_sorter_date")
+        self.bt_sorter_date.setMinimumSize(QSize(40, 25))
+        self.bt_sorter_date.setMaximumSize(QSize(40, 25))
+
+        self.horizontalLayout_4.addWidget(self.bt_sorter_date)
+
+
+        self.horizontalLayout.addWidget(self.c_sorter_name, 0, Qt.AlignHCenter)
+
+
+        self.horizontalLayout_3.addLayout(self.horizontalLayout)
 
         self.horizontalSpacer_4 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout_3.addItem(self.horizontalSpacer_4)
 
-        self.bt_sorter_date = CheckButton(self.ly_organizer_controllers)
-        self.bt_sorter_date.setObjectName(u"bt_sorter_date")
-        self.bt_sorter_date.setMinimumSize(QSize(40, 25))
-        self.bt_sorter_date.setMaximumSize(QSize(40, 25))
+        self.horizontalLayout_3.setStretch(0, 1)
+        self.horizontalLayout_3.setStretch(1, 2)
+        self.horizontalLayout_3.setStretch(2, 1)
 
-        self.horizontalLayout_3.addWidget(self.bt_sorter_date)
-
-        self.bt_sorter_name = CheckButton(self.ly_organizer_controllers)
-        self.bt_sorter_name.setObjectName(u"bt_sorter_name")
-        self.bt_sorter_name.setMinimumSize(QSize(50, 25))
-        self.bt_sorter_name.setMaximumSize(QSize(50, 25))
-
-        self.horizontalLayout_3.addWidget(self.bt_sorter_name)
-
-
-        self.verticalLayout.addWidget(self.ly_organizer_controllers, 0, Qt.AlignHCenter)
+        self.verticalLayout.addWidget(self.ly_organizer_controllers)
 
 
         self.ly_right.addWidget(self.c_organizer)
@@ -339,9 +371,9 @@ class Ui_images(object):
         self.lb_date_range_to.setText(QCoreApplication.translate("images", u"to", None))
         self.lb_description.setText(QCoreApplication.translate("images", u"Description", None))
         self.lb_organizer_titles.setText(QCoreApplication.translate("images", u"Organizer", None))
-        self.bt_sorter_asc.setText(QCoreApplication.translate("images", u"A-z", None))
         self.bt_sorter_dsc.setText(QCoreApplication.translate("images", u"z-A", None))
-        self.bt_sorter_date.setText(QCoreApplication.translate("images", u"Date", None))
+        self.bt_sorter_asc.setText(QCoreApplication.translate("images", u"A-z", None))
         self.bt_sorter_name.setText(QCoreApplication.translate("images", u"Name", None))
+        self.bt_sorter_date.setText(QCoreApplication.translate("images", u"Date", None))
     # retranslateUi
 

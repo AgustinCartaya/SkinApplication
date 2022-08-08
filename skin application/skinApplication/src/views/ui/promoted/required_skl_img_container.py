@@ -21,11 +21,11 @@ class RequiredSklImgContainer(QFrame):
         self.layout.setContentsMargins(0, 0, 0, 0)
 
 
-    def create_required_skl_imgs(self, req_skl_imgs_data):
+    def create_required_skl_imgs(self, req_skl_imgs_data, click_receaver):
         if len(req_skl_imgs_data) > 0:
             self.req_skl_imgs_data = req_skl_imgs_data
             for img_name, img_data in req_skl_imgs_data.items():
-                rk_img = RequiredSklImgItem(self, img_name, img_data["min"], img_data["max"])
+                rk_img = RequiredSklImgItem(self, img_name, img_data["min"], img_data["max"], 0, click_receaver)
                 self.layout.addWidget(rk_img)
                 self.req_skl_img_items[img_name] = rk_img
         else:

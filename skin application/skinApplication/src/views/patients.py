@@ -73,7 +73,13 @@ class PatientsView(ViewObject):
         self.ui.bt_sorter_id.add_group(g3)
         self.ui.bt_sorter_name.add_group(g3)
 
-        # paginai_maletion
+        self.ui.c_sorter_mosaico.hide()
+        self.ui.bt_sorter_list.setEnabled(False)
+
+#        self.ui.bt_sorter_list.hide()
+#        self.ui.hs_sorter_2.changeSize(0,0)
+
+        # pagination
         self.ui.c_pagination.set_grid_cards_size(3,4)
 
 
@@ -84,7 +90,7 @@ class PatientsView(ViewObject):
         self.ui.bt_back.clicked.connect(self.back)
         self.ui.bt_add_new_patient.clicked.connect(self.add_new_patient)
 
-        # organizer
+        # sorter
         self.ui.bt_sorter_mosaico.clicked.connect(self.show_patients)
         self.ui.bt_sorter_list.clicked.connect(self.show_patients)
         self.ui.bt_sorter_asc.clicked.connect(self.show_patients)
@@ -173,12 +179,15 @@ class PatientsView(ViewObject):
 
         # Clinical attributes
         # ---- gender
-        if self.ui.i_female.isChecked() and not self.ui.i_male.isChecked():
-            self.p_list_filtered = self.p_list_filtered.get_filtered("gender",0)
-#            print("just females")
-        elif self.ui.i_male.isChecked() and not self.ui.i_female.isChecked():
-            self.p_list_filtered = self.p_list_filtered.get_filtered("gender",1)
-#            print("just males")
+        if not (self.ui.i_female.isChecked() and self.ui.i_male.isChecked()):
+            if self.ui.i_female.isChecked() and not self.ui.i_male.isChecked():
+                self.p_list_filtered = self.p_list_filtered.get_filtered("gender",0)
+    #            print("just females")
+            elif self.ui.i_male.isChecked() and not self.ui.i_female.isChecked():
+                self.p_list_filtered = self.p_list_filtered.get_filtered("gender",1)
+    #            print("just males")
+            else:
+                self.p_list_filtered = PatientList()
 
         # ---- age
         if len(self.ui.i_agre_precise.text()) > 0:

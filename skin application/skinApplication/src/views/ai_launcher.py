@@ -5,6 +5,8 @@ from .ui.promoted.required_elements_container import  RequiredElementsContainer
 from .ui.promoted.required_skl_img_container import  RequiredSklImgContainer
 
 from src.objects.ai import AI
+from src.objects.image_list import ImageList
+
 
 class AILauncherView(ViewObject):
     def __init__(self, mv, ai, patient, skin_lesion):
@@ -18,10 +20,6 @@ class AILauncherView(ViewObject):
         self.load_ui()
         self.connect_ui_signals()
 
-
-
-
-
     def load_ui(self):
         self.ui = Ui_ai_launcher()
         self.ui.setupUi(self)
@@ -32,7 +30,7 @@ class AILauncherView(ViewObject):
         # required info
         self.ui.c_skl_required_info_list.set_required_elements(self.ai.actual_skl_charac)
         self.ui.c_patient_required_info_list.set_required_elements(self.ai.actual_mi)
-        self.ui.c_required_skl_imgs.create_required_skl_imgs(self.ai.req_images)
+        self.ui.c_required_skl_imgs.create_required_skl_imgs(self.ai.req_images, self.edit_selected_images)
         self.__carge_selected_images()
 
 
@@ -44,12 +42,22 @@ class AILauncherView(ViewObject):
         self.s_change_view.connect(self.MW.change_view)
 
     def __carge_selected_images(self):
-        for img_name, img_list in self.ai.actual_images.items():
+        for img_name, img_list in self.ai.actual_images.imgs_dict.items():
             self.ui.c_required_skl_imgs.set_selected_number(img_name, len(img_list))
-
 
     @Slot()
     def __back(self):
         self.ai.reset_actual_patient_and_skin_lesion()
         self.s_change_view.emit(cfg.AI_LAUNCHER_VIEW, cfg.UPSERT_SKIN_LESION_VIEW, {"patient" : self.p, "skin_lesion": self.skl})
+
+    @Slot(str)
+    def edit_selected_images(self, image_type):
+        images_to_show = ImageList()
+        images_to_show.append_images(image_type, self.skl.get_skl_imgs(image_type))
+        selected_images = self.ai.actual_images.imgs_dict[image_type]
+        self.s_change_view.emit(cfg.AI_LAUNCHER_VIEW, cfg.IMAGES_VIEW, {"images":images_to_show, "patient" : self.p, "skin_lesion": self.skl, 'collet_mode':True, 'selected_images':selected_images})
+
+    def set_selected_images(self, name, imgs):
+        self.ai.actual_images.imgs_dict[name] = imgs
+        self.ui.c_required_skl_imgs.set_selected_number(name, len(imgs))
 

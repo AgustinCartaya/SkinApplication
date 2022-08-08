@@ -27,8 +27,8 @@ class ImageList:
         img_list = []
         for _, imgs in self.imgs_dict.items():
             img_list = img_list + imgs
-
-        return img_list.sort(key=attrgetter(sorted_by), reverse=dsc)
+        img_list.sort(key=attrgetter(sorted_by), reverse=dsc)
+        return img_list
 
     def get_filtered_by_types(self, types, inverse=False):
         filtered = ImageList()
@@ -37,6 +37,10 @@ class ImageList:
                 filtered.append_images(img_type, imgs)
         return filtered
 
-#    def get_types(self):
-#        return self.imgs_dict.keys()
+#    def get_list_sorted_by(self, by="id", dsc=True):
+#        self.patients.sort(key=attrgetter(by), reverse=dsc)
+#        self.sorted_by = by
+
+    def get_types(self):
+        return list(self.imgs_dict.keys())
 

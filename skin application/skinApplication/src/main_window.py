@@ -35,6 +35,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.setCentralWidget(self._layers)
 
         self.images_view = None
+        self.ai_laucher_view = None
 
         self.upsert_patient_view = None
         self.upsert_patient_mi_view = None
@@ -108,11 +109,19 @@ class MainWindow(QtWidgets.QMainWindow):
             self.set_view(UpsertSkinLesionView(self, self.ai_dict, atts["patient"], atts["skin_lesion"]))
 
         elif view_to == cfg.AI_LAUNCHER_VIEW:
-            self.clean_views()
-            self.set_view(AILauncherView(self, atts["ai"], atts["patient"], atts["skin_lesion"]))
+            if view_from == cfg.IMAGES_VIEW:
+                self.set_view(self.ai_laucher_view)
+                self.ai_laucher_view.set_selected_images(atts["selected_images_name"], atts["selected_images"])
+            else:
+                self.clean_views()
+                self.ai_laucher_view = AILauncherView(self, atts["ai"], atts["patient"], atts["skin_lesion"])
+                self.set_view(self.ai_laucher_view)
 
         elif view_to == cfg.IMAGES_VIEW:
-            self.images_view = ImagesView(self, atts["images"], atts["patient"], atts["skin_lesion"])
+            if atts["collet_mode"]:
+                self.images_view = ImagesView(self, atts["images"], atts["patient"], atts["skin_lesion"], atts["collet_mode"], atts["selected_images"])
+            else:
+                self.images_view = ImagesView(self, atts["images"], atts["patient"], atts["skin_lesion"], atts["collet_mode"])
             self.set_view(self.images_view)
 
 
@@ -128,6 +137,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.upsert_patient_view = None
         self.upsert_patient_mi_view = None
         self.images_view = None
+        self.ai_laucher_view = None
 
     def closeEvent(self, event):
         if self.images_view is not None:

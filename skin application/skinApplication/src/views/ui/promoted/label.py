@@ -14,7 +14,7 @@ class Label(QLabel):
     def set_decoration(self, decoration):
         self.setProperty("decoration", decoration)
 
-    def setText(self, text, colon = False, format=True, parenthesis=False):
+    def setText(self, text, colon = False, format=False, parenthesis=False):
         if type(text) in (list, tuple):
             text = " ".join(text)
         elif type(text) in (int, float):
