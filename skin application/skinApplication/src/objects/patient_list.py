@@ -1,6 +1,5 @@
 # This Python file uses the following encoding: utf-8
 from src.db_controllers.db_controller import DBController
-import src.util.data_cleaner as dc
 import src.config as cfg
 import src.util.util as util
 

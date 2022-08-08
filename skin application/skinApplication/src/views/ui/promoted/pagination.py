@@ -16,7 +16,7 @@ import src.util.util as util
 
 class Pagination(QFrame):
 
-    def __init__(self, parent, min=(1,1), max=(10,10), sep = 6, min_element_size = (50,50), forced_empty_spaces = False):
+    def __init__(self, parent, min=(1,1), max=(10,10), sep = (6,6), min_element_size = (50,50), forced_empty_spaces = False):
         QFrame.__init__(self, parent)
 
         # No usado por el momento
@@ -29,7 +29,8 @@ class Pagination(QFrame):
         self.nb_rows = self.min_rows
         self.nb_cols = self.min_cols
 
-        self.sep = sep
+        self.v_sep = sep[0]
+        self.h_sep = sep[1]
 
         self.min_card_width = min_element_size[0]
         self.min_card_height = min_element_size[1]
@@ -60,7 +61,8 @@ class Pagination(QFrame):
         self.c_cards = QFrame(self)
         self.ly_cards = QGridLayout(self.c_cards)
         self.ly_cards.setContentsMargins(0, 0, 0, 0)
-        self.ly_cards.setSpacing(self.sep)
+        self.ly_cards.setHorizontalSpacing(self.h_sep)
+        self.ly_cards.setVerticalSpacing(self.v_sep)
 
         self.layout.addWidget(self.c_cards)
 
@@ -239,6 +241,13 @@ class Pagination(QFrame):
         else:
             self.c_size_controllers.show()
 
+    def set_cards_sep(self, v_sep, h_sep):
+        self.v_sep = v_sep
+        self.h_sep = h_sep
+        self.ly_cards.setHorizontalSpacing(self.h_sep)
+        self.ly_cards.setVerticalSpacing(self.v_sep)
+        self.__calc_elem_size()
+
     def set_grid_cards_size(self, nb_rows, nb_cols):
         self.nb_rows = util.get_in_range_value(int(nb_rows), self.min_rows, self.max_rows)
         self.nb_cols = util.get_in_range_value(int(nb_cols), self.min_cols, self.max_cols)
@@ -250,13 +259,13 @@ class Pagination(QFrame):
         self.__calc_elem_size()
 
     def __calc_elem_size(self):
-        w = int((self.c_cards.size().width() - self.sep * (self.nb_cols - 1))/self.nb_cols)
-        h = int((self.c_cards.size().height() - self.sep * (self.nb_rows - 1))/self.nb_rows)
+        w = int((self.c_cards.size().width() - self.v_sep * (self.nb_cols - 1))/self.nb_cols)
+        h = int((self.c_cards.size().height() - self.h_sep * (self.nb_rows - 1))/self.nb_rows)
 
-        if w > 0 and h > 0:
-            for i in reversed(range(self.ly_cards.count())):
-                self.ly_cards.itemAt(i).widget().setMinimumSize(QSize(w,h))
-                self.ly_cards.itemAt(i).widget().setMaximumSize(QSize(w,h))
+#        if w > 0 and h > 0:
+#            for i in reversed(range(self.ly_cards.count())):
+#                self.ly_cards.itemAt(i).widget().setMinimumSize(QSize(w,h))
+#                self.ly_cards.itemAt(i).widget().setMaximumSize(QSize(w,h))
 
         self.s_card_size_changed.emit(w,h)
 #        print([w,h])

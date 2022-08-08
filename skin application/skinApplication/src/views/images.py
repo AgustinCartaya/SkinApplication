@@ -2,17 +2,33 @@ from .view_object import *
 from .ui.ui_images import Ui_images
 
 from .ui.promoted.skl_img_card import  SklImgCard
+from .ui.promoted.label import Label
+
+from PySide6.QtWidgets import QHBoxLayout, QVBoxLayout, QSpacerItem, QSizePolicy, QFrame
+
 from src.objects.image import Image
-from PySide6.QtCore import QTimer
+from src.objects.image_list import ImageList
+
 from src.objects.ai import AI
 
+from .image_viewer import ImageViewer
+
 class ImagesView(ViewObject):
-    def __init__(self, mv, patient, skin_lesion):
+    def __init__(self, mv, images, patient, skin_lesion):
         super().__init__(mv)
 
         self.p = patient
         self.skl = skin_lesion
-        self.imgs = self.skl.get_all_skl_imgs()
+        self.img_list = images
+        self.img_list_filtered = ImageList(self.img_list)
+        self.img_list_sorted = self.img_list_filtered
+
+        # modify when window type stablished
+#        self.img_list = self.skl.get_all_skl_imgs()
+
+        self.selected_imgs = []
+        self.bt_command_text = ""
+        self.image_viewers = []
 
         self.load_ui()
         self.connect_ui_signals()
@@ -23,41 +39,123 @@ class ImagesView(ViewObject):
         self.ui = Ui_images()
         self.ui.setupUi(self)
 
+        # navigator
+        self.ui.bt_command.set_position(2)
+        self.bt_command_text = self.ui.bt_command.text()
+
         # filters
-        self.ui.c_filter_skl_imgs.create_filters([["medical_image",1], ["dermatoscopy",5], ["microscopy",15]])
+        self.__create_image_type_filter()
+        self.ui.c_filter_image_type.check_all()
+
+        self.ui.c_filter_date.hide()
 
         # pagination
-        self.ui.c_pagination.set_grid_cards_size(5,5)
+        self.ui.c_pagination.set_grid_cards_size(4,6)
+#        self.ui.c_pagination.set_cards_sep(0,5)
 
+    def __create_image_type_filter(self):
+        image_type_list = []
+        for img_name, imgs in self.img_list.imgs_dict.items():
+            image_type_list.append([img_name, len(imgs)])
+        self.ui.c_filter_image_type.create_filters(image_type_list, self.filter_img_type_slot)
 
     s_change_view = Signal(str,str,dict)
     def connect_ui_signals(self):
         self.ui.bt_back.clicked.connect(self.__back)
+        self.ui.bt_command.clicked.connect(self.__view_images)
 
         # created signals
         self.s_change_view.connect(self.MW.change_view)
 
-    def __show_images(self):
+    Slot()
+    def filter_img_type_slot(self):
+        self.__filter_images()
 
-        self.images_cards = []
-        for img_name, imgs in self.imgs.items():
-            for img in imgs:
-                card = SklImgCard(self.ui.c_pagination, img, self.open_image)
-                self.ui.c_pagination.add_card_size_changed_receaver(card.show_image)
-                self.images_cards.append(card)
-        self.ui.c_pagination.add_cards(self.images_cards)
+    Slot()
+    def __view_images(self):
+        self.close_image_viewers()
+        for img in self.selected_imgs:
+            self.image_viewers.append(ImageViewer(img))
+            self.image_viewers[-1].show()
 
-#        QTimer.singleShot(500, self.__load_images)
+    def close_image_viewers(self):
+        self.image_viewers = []
 
-#    def __load_images(self):
-#        for img_card in self.images_cards:
-#            img_card.show_image()
+    Slot(Image, bool)
+    def image_clicked(self, img, selected):
+        if selected:
+            self.selected_imgs.append(img)
+            # show image description
+            self.__show_image_description(img)
+        else:
+            self.selected_imgs.remove(img)
+            self.__clean_image_descriptions()
 
-    Slot(Image)
-    def open_image(self, img):
-        pass
+        # show selected images number
+        nb_selected = len(self.selected_imgs)
+        if nb_selected > 0:
+            self.ui.bt_command.setText(self.bt_command_text + " (" + str(nb_selected) + ")")
+        else:
+            self.ui.bt_command.setText(self.bt_command_text)
+
+    # You may put it in a separeted file call skl_img_description_container
+    def __clean_image_descriptions(self):
+        for i in reversed(range(self.ui.ly_description_content.count())):
+           self.ui.ly_description_content.itemAt(i).widget().setParent(None)
+
+    def __show_image_description(self, img):
+        self.__clean_image_descriptions()
+        for info_name, info_value in img.info_dict.items():
+            c_single_img_info = QFrame(self.ui.c_description_content)
+            ly_single_img_info = QHBoxLayout(c_single_img_info)
+            ly_single_img_info.setContentsMargins(0, 0, 0, 0)
+            ly_single_img_info.setSpacing(4)
+
+            lb_info_name = Label(c_single_img_info)
+            lb_info_name.setText(info_name, colon=True)
+            ly_single_img_info.addWidget(lb_info_name)
+
+            i_info_value = Label(c_single_img_info)
+            if info_name == "type":
+                i_info_value.setText(info_value)
+            else:
+                i_info_value.setText(info_value, format=False)
+#            i_info_value.set_decoration("mi_content")
+            ly_single_img_info.addWidget(i_info_value)
+
+
+            # spacer
+            hs = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Expanding)
+            ly_single_img_info.addItem(hs)
+
+            self.ui.ly_description_content.addWidget(c_single_img_info)
 
     @Slot()
     def __back(self):
+        self.close_image_viewers()
         self.s_change_view.emit(cfg.IMAGES_VIEW, cfg.ANCIENT_VIEW, {})
+
+    def __show_images(self):
+        self.__sort_images()
+        self.__create_img_cards()
+
+    def __filter_images(self):
+        self.img_list_filtered = ImageList(self.img_list)
+        # filter image type
+        self.img_list_filtered = self.img_list_filtered.get_filtered_by_types(self.ui.c_filter_image_type.get_checked_list())
+
+        self.__show_images()
+
+    def __sort_images(self):
+        self.img_list_sorted = self.img_list_filtered
+
+    def __create_img_cards(self):
+        self.images_cards = []
+
+        for img_name, imgs in self.img_list_sorted.imgs_dict.items():
+            for img in imgs:
+                card = SklImgCard(self.ui.c_pagination, img, self.image_clicked)
+                self.ui.c_pagination.add_card_size_changed_receaver(card.size_changed)
+                self.images_cards.append(card)
+        self.ui.c_pagination.add_cards(self.images_cards)
 

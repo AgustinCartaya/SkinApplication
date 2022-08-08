@@ -49,9 +49,10 @@ class Ui_images(object):
 
         self.ly_navigator.addWidget(self.lb_title, 0, Qt.AlignHCenter)
 
-        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.bt_command = NavigatorButton(images)
+        self.bt_command.setObjectName(u"bt_command")
 
-        self.ly_navigator.addItem(self.horizontalSpacer)
+        self.ly_navigator.addWidget(self.bt_command, 0, Qt.AlignRight)
 
         self.ly_navigator.setStretch(0, 1)
         self.ly_navigator.setStretch(1, 1)
@@ -96,26 +97,28 @@ class Ui_images(object):
         self.ly_filter_image_type = QVBoxLayout()
         self.ly_filter_image_type.setSpacing(9)
         self.ly_filter_image_type.setObjectName(u"ly_filter_image_type")
-        self.lb_filter_diagnostic_attributes = QLabel(self.c_filters)
-        self.lb_filter_diagnostic_attributes.setObjectName(u"lb_filter_diagnostic_attributes")
-        self.lb_filter_diagnostic_attributes.setMaximumSize(QSize(16777215, 20))
+        self.lb_filter_image_type = QLabel(self.c_filters)
+        self.lb_filter_image_type.setObjectName(u"lb_filter_image_type")
+        self.lb_filter_image_type.setMaximumSize(QSize(16777215, 20))
 
-        self.ly_filter_image_type.addWidget(self.lb_filter_diagnostic_attributes)
+        self.ly_filter_image_type.addWidget(self.lb_filter_image_type)
 
-        self.c_filter_skl_imgs = FilterSklImgContainer(self.c_filters)
-        self.c_filter_skl_imgs.setObjectName(u"c_filter_skl_imgs")
-        self.c_filter_skl_imgs.setFrameShape(QFrame.StyledPanel)
-        self.c_filter_skl_imgs.setFrameShadow(QFrame.Raised)
+        self.c_filter_image_type = FilterSklImgContainer(self.c_filters)
+        self.c_filter_image_type.setObjectName(u"c_filter_image_type")
+        self.c_filter_image_type.setFrameShape(QFrame.StyledPanel)
+        self.c_filter_image_type.setFrameShadow(QFrame.Raised)
 
-        self.ly_filter_image_type.addWidget(self.c_filter_skl_imgs)
+        self.ly_filter_image_type.addWidget(self.c_filter_image_type)
 
 
         self.ly_filters.addLayout(self.ly_filter_image_type)
 
-        self.ly_filter_date = QVBoxLayout()
+        self.c_filter_date = QFrame(self.c_filters)
+        self.c_filter_date.setObjectName(u"c_filter_date")
+        self.ly_filter_date = QVBoxLayout(self.c_filter_date)
         self.ly_filter_date.setSpacing(12)
         self.ly_filter_date.setObjectName(u"ly_filter_date")
-        self.lb_filter_date = QLabel(self.c_filters)
+        self.lb_filter_date = QLabel(self.c_filter_date)
         self.lb_filter_date.setObjectName(u"lb_filter_date")
 
         self.ly_filter_date.addWidget(self.lb_filter_date)
@@ -124,14 +127,14 @@ class Ui_images(object):
         self.ly_filter_date_precise.setSpacing(4)
         self.ly_filter_date_precise.setObjectName(u"ly_filter_date_precise")
         self.ly_filter_date_precise.setContentsMargins(9, -1, -1, -1)
-        self.lb_filter_date_precise = QLabel(self.c_filters)
+        self.lb_filter_date_precise = QLabel(self.c_filter_date)
         self.lb_filter_date_precise.setObjectName(u"lb_filter_date_precise")
 
         self.ly_filter_date_precise.addWidget(self.lb_filter_date_precise)
 
         self.ly_filter_date_precise_inputs = QHBoxLayout()
         self.ly_filter_date_precise_inputs.setObjectName(u"ly_filter_date_precise_inputs")
-        self.i_date_precise = QDateEdit(self.c_filters)
+        self.i_date_precise = QDateEdit(self.c_filter_date)
         self.i_date_precise.setObjectName(u"i_date_precise")
         self.i_date_precise.setMinimumSize(QSize(110, 0))
         self.i_date_precise.setMaximumSize(QSize(130, 16777215))
@@ -152,26 +155,26 @@ class Ui_images(object):
         self.ly_filter_date_range.setSpacing(4)
         self.ly_filter_date_range.setObjectName(u"ly_filter_date_range")
         self.ly_filter_date_range.setContentsMargins(9, -1, -1, -1)
-        self.lb_filter_date_range = QLabel(self.c_filters)
+        self.lb_filter_date_range = QLabel(self.c_filter_date)
         self.lb_filter_date_range.setObjectName(u"lb_filter_date_range")
 
         self.ly_filter_date_range.addWidget(self.lb_filter_date_range)
 
         self.ly_filter_date_range_inputs = QHBoxLayout()
         self.ly_filter_date_range_inputs.setObjectName(u"ly_filter_date_range_inputs")
-        self.i_date_range_min = QDateEdit(self.c_filters)
+        self.i_date_range_min = QDateEdit(self.c_filter_date)
         self.i_date_range_min.setObjectName(u"i_date_range_min")
         self.i_date_range_min.setMinimumSize(QSize(110, 0))
         self.i_date_range_min.setMaximumSize(QSize(110, 16777215))
 
         self.ly_filter_date_range_inputs.addWidget(self.i_date_range_min)
 
-        self.lb_date_range_to = QLabel(self.c_filters)
+        self.lb_date_range_to = QLabel(self.c_filter_date)
         self.lb_date_range_to.setObjectName(u"lb_date_range_to")
 
         self.ly_filter_date_range_inputs.addWidget(self.lb_date_range_to, 0, Qt.AlignHCenter)
 
-        self.i_date_range_max = QDateEdit(self.c_filters)
+        self.i_date_range_max = QDateEdit(self.c_filter_date)
         self.i_date_range_max.setObjectName(u"i_date_range_max")
         self.i_date_range_max.setMinimumSize(QSize(110, 0))
         self.i_date_range_max.setMaximumSize(QSize(110, 16777215))
@@ -189,7 +192,7 @@ class Ui_images(object):
         self.ly_filter_date.addLayout(self.ly_filter_date_range)
 
 
-        self.ly_filters.addLayout(self.ly_filter_date)
+        self.ly_filters.addWidget(self.c_filter_date)
 
 
         self.verticalLayout_11.addLayout(self.ly_filters)
@@ -220,7 +223,6 @@ class Ui_images(object):
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.verticalLayout_3.setContentsMargins(16, 0, 0, -1)
         self.ly_description_content = QVBoxLayout()
-        self.ly_description_content.setSpacing(20)
         self.ly_description_content.setObjectName(u"ly_description_content")
 
         self.verticalLayout_3.addLayout(self.ly_description_content)
@@ -328,8 +330,9 @@ class Ui_images(object):
         images.setWindowTitle(QCoreApplication.translate("images", u"Loggin", None))
         self.bt_back.setText(QCoreApplication.translate("images", u"Back", None))
         self.lb_title.setText(QCoreApplication.translate("images", u"Images", None))
+        self.bt_command.setText(QCoreApplication.translate("images", u"View", None))
         self.lb_filters_title.setText(QCoreApplication.translate("images", u"Filters", None))
-        self.lb_filter_diagnostic_attributes.setText(QCoreApplication.translate("images", u"DIAGNOSTIC ATTRIBUTES", None))
+        self.lb_filter_image_type.setText(QCoreApplication.translate("images", u"TYPE IMAGE", None))
         self.lb_filter_date.setText(QCoreApplication.translate("images", u"DATE", None))
         self.lb_filter_date_precise.setText(QCoreApplication.translate("images", u"Precise", None))
         self.lb_filter_date_range.setText(QCoreApplication.translate("images", u"Range", None))

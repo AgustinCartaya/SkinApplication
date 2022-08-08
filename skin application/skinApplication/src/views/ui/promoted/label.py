@@ -14,11 +14,22 @@ class Label(QLabel):
     def set_decoration(self, decoration):
         self.setProperty("decoration", decoration)
 
-    def setText(self, text, colon = False):
+    def setText(self, text, colon = False, format=True, parenthesis=False):
         if type(text) in (list, tuple):
             text = " ".join(text)
         elif type(text) in (int, float):
             text = str(text)
+
+        # formatting
+        if format:
+            text = util.file_name_to_title(text)
+
+        # parenthesis
+        if parenthesis:
+            text = "(" + text + ")"
+
+        # colon
         if colon:
             text = text + " :"
-        super().setText(util.file_name_to_title(text))
+
+        super().setText(text)

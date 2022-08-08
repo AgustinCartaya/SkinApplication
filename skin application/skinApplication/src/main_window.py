@@ -34,7 +34,9 @@ class MainWindow(QtWidgets.QMainWindow):
         self._layers = QStackedWidget()
         self.setCentralWidget(self._layers)
 
-        self._upsert_patient_view = None
+        self.images_view = None
+
+        self.upsert_patient_view = None
         self.upsert_patient_mi_view = None
 
 
@@ -80,12 +82,12 @@ class MainWindow(QtWidgets.QMainWindow):
 
         elif view_to == cfg.UPSERT_PATIENT_VIEW:
             if view_from == cfg.PATIENTS_VIEW:
-                self._upsert_patient_view = UpsertPatientView(self)
+                self.upsert_patient_view = UpsertPatientView(self)
             elif view_from == cfg.UPSERT_PATIENT_PREVIEW_VIEW:
                 self._layers.removeWidget(self._layers.currentWidget())
             elif view_from == cfg.CHECK_PATIENT_VIEW:
-                self._upsert_patient_view = UpsertPatientView(self, atts["patient"], "edit")
-            self.set_view(self._upsert_patient_view)
+                self.upsert_patient_view = UpsertPatientView(self, atts["patient"], "edit")
+            self.set_view(self.upsert_patient_view)
 
         elif view_to == cfg.UPSERT_PATIENT_MI_VIEW:
             if self.upsert_patient_mi_view is None:
@@ -110,7 +112,8 @@ class MainWindow(QtWidgets.QMainWindow):
             self.set_view(AILauncherView(self, atts["ai"], atts["patient"], atts["skin_lesion"]))
 
         elif view_to == cfg.IMAGES_VIEW:
-            self.set_view(ImagesView(self, atts["patient"], atts["skin_lesion"]))
+            self.images_view = ImagesView(self, atts["images"], atts["patient"], atts["skin_lesion"])
+            self.set_view(self.images_view)
 
 
 #        print(self._layers.count())
@@ -122,5 +125,10 @@ class MainWindow(QtWidgets.QMainWindow):
         nb = self._layers.count()
         for i in range(nb):
             self._layers.removeWidget(self._layers.currentWidget())
-        self._upsert_patient_view = None
+        self.upsert_patient_view = None
         self.upsert_patient_mi_view = None
+        self.images_view = None
+
+    def closeEvent(self, event):
+        if self.images_view is not None:
+            self.images_view.close_image_viewers()

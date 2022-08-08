@@ -114,4 +114,5 @@ def get_in_range_value(val, min, max):
         return min
     return val
 
-
+def get_file_name(path):
+    return os.path.basename(path)

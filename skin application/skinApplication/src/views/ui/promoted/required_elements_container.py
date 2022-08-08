@@ -24,6 +24,7 @@ class RequiredElementsContainer(QFrame):
         if len(required_elements) > 0:
             self.required_elements = required_elements
             for rk in required_elements:
+#                print(type( rk[1]))
                 rk_e = RequiredElement(self, rk[0], rk[1])
                 self.layout.addWidget(rk_e)
         else:

@@ -40,6 +40,24 @@ PatientCard Label{
     color: white;
 }
 
+/*-----SklImgCard-----*/
+SklImgCard Label{
+    border: 3px solid transparent;
+    border-radius: 3px;
+}
+
+SklImgCard[selected=true] Label{
+    border-color: #4696fd;
+/*    background-color: #4696fd;*/
+}
+
+SklImgCard Label::hover{
+    border-color: #a3deff;
+/*    background-color: #4696fd;*/
+}
+
+
+
 /*-----SkinLesionPreviewInfo-----*/
 SkinLesionPreviewInfo{
     border: 1px solid #8c8c8c;

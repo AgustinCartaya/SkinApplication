@@ -50,6 +50,7 @@ class RequiredElement(QFrame):
         self.layout.addWidget(self.lb_info_name)
 
         self.lb_info_content = Label(self)
+        print(self.info_content)
         self.lb_info_content.setText(self.info_content)
         self.layout.addWidget(self.lb_info_content)
 

@@ -73,7 +73,7 @@ class PatientsView(ViewObject):
         self.ui.bt_sorter_id.add_group(g3)
         self.ui.bt_sorter_name.add_group(g3)
 
-        # pagination
+        # paginai_maletion
         self.ui.c_pagination.set_grid_cards_size(3,4)
 
 

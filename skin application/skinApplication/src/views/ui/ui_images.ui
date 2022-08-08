@@ -54,18 +54,12 @@
        </property>
       </widget>
      </item>
-     <item>
-      <spacer name="horizontalSpacer">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
+     <item alignment="Qt::AlignRight">
+      <widget class="NavigatorButton" name="bt_command">
+       <property name="text">
+        <string>View</string>
        </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
+      </widget>
      </item>
     </layout>
    </item>
@@ -175,7 +169,7 @@
                   <number>9</number>
                  </property>
                  <item>
-                  <widget class="QLabel" name="lb_filter_diagnostic_attributes">
+                  <widget class="QLabel" name="lb_filter_image_type">
                    <property name="maximumSize">
                     <size>
                      <width>16777215</width>
@@ -183,12 +177,12 @@
                     </size>
                    </property>
                    <property name="text">
-                    <string>DIAGNOSTIC ATTRIBUTES</string>
+                    <string>TYPE IMAGE</string>
                    </property>
                   </widget>
                  </item>
                  <item>
-                  <widget class="FilterSklImgContainer" name="c_filter_skl_imgs">
+                  <widget class="FilterSklImgContainer" name="c_filter_image_type">
                    <property name="frameShape">
                     <enum>QFrame::StyledPanel</enum>
                    </property>
@@ -200,144 +194,146 @@
                 </layout>
                </item>
                <item>
-                <layout class="QVBoxLayout" name="ly_filter_date">
-                 <property name="spacing">
-                  <number>12</number>
-                 </property>
-                 <item>
-                  <widget class="QLabel" name="lb_filter_date">
-                   <property name="text">
-                    <string>DATE</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <layout class="QVBoxLayout" name="ly_filter_date_precise">
-                   <property name="spacing">
-                    <number>4</number>
-                   </property>
-                   <property name="leftMargin">
-                    <number>9</number>
-                   </property>
-                   <item>
-                    <widget class="QLabel" name="lb_filter_date_precise">
-                     <property name="text">
-                      <string>Precise</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <layout class="QHBoxLayout" name="ly_filter_date_precise_inputs" stretch="0,0">
-                     <item>
-                      <widget class="QDateEdit" name="i_date_precise">
-                       <property name="minimumSize">
-                        <size>
-                         <width>110</width>
-                         <height>0</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>130</width>
-                         <height>16777215</height>
-                        </size>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <spacer name="horizontalSpacer_2">
-                       <property name="orientation">
-                        <enum>Qt::Horizontal</enum>
-                       </property>
-                       <property name="sizeHint" stdset="0">
-                        <size>
-                         <width>40</width>
-                         <height>20</height>
-                        </size>
-                       </property>
-                      </spacer>
-                     </item>
-                    </layout>
-                   </item>
-                  </layout>
-                 </item>
-                 <item>
-                  <layout class="QVBoxLayout" name="ly_filter_date_range">
-                   <property name="spacing">
-                    <number>4</number>
-                   </property>
-                   <property name="leftMargin">
-                    <number>9</number>
-                   </property>
-                   <item>
-                    <widget class="QLabel" name="lb_filter_date_range">
-                     <property name="text">
-                      <string>Range</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <layout class="QHBoxLayout" name="ly_filter_date_range_inputs" stretch="0,0,0,0">
-                     <item>
-                      <widget class="QDateEdit" name="i_date_range_min">
-                       <property name="minimumSize">
-                        <size>
-                         <width>110</width>
-                         <height>0</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>110</width>
-                         <height>16777215</height>
-                        </size>
-                       </property>
-                      </widget>
-                     </item>
-                     <item alignment="Qt::AlignHCenter">
-                      <widget class="QLabel" name="lb_date_range_to">
-                       <property name="text">
-                        <string>to</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QDateEdit" name="i_date_range_max">
-                       <property name="minimumSize">
-                        <size>
-                         <width>110</width>
-                         <height>0</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>110</width>
-                         <height>16777215</height>
-                        </size>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <spacer name="spacer">
-                       <property name="orientation">
-                        <enum>Qt::Horizontal</enum>
-                       </property>
-                       <property name="sizeType">
-                        <enum>QSizePolicy::Expanding</enum>
-                       </property>
-                       <property name="sizeHint" stdset="0">
-                        <size>
-                         <width>40</width>
-                         <height>20</height>
-                        </size>
-                       </property>
-                      </spacer>
-                     </item>
-                    </layout>
-                   </item>
-                  </layout>
-                 </item>
-                </layout>
+                <widget class="QFrame" name="c_filter_date">
+                 <layout class="QVBoxLayout" name="ly_filter_date">
+                  <property name="spacing">
+                   <number>12</number>
+                  </property>
+                  <item>
+                   <widget class="QLabel" name="lb_filter_date">
+                    <property name="text">
+                     <string>DATE</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <layout class="QVBoxLayout" name="ly_filter_date_precise">
+                    <property name="spacing">
+                     <number>4</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>9</number>
+                    </property>
+                    <item>
+                     <widget class="QLabel" name="lb_filter_date_precise">
+                      <property name="text">
+                       <string>Precise</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <layout class="QHBoxLayout" name="ly_filter_date_precise_inputs" stretch="0,0">
+                      <item>
+                       <widget class="QDateEdit" name="i_date_precise">
+                        <property name="minimumSize">
+                         <size>
+                          <width>110</width>
+                          <height>0</height>
+                         </size>
+                        </property>
+                        <property name="maximumSize">
+                         <size>
+                          <width>130</width>
+                          <height>16777215</height>
+                         </size>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <spacer name="horizontalSpacer_2">
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>40</width>
+                          <height>20</height>
+                         </size>
+                        </property>
+                       </spacer>
+                      </item>
+                     </layout>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <layout class="QVBoxLayout" name="ly_filter_date_range">
+                    <property name="spacing">
+                     <number>4</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>9</number>
+                    </property>
+                    <item>
+                     <widget class="QLabel" name="lb_filter_date_range">
+                      <property name="text">
+                       <string>Range</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <layout class="QHBoxLayout" name="ly_filter_date_range_inputs" stretch="0,0,0,0">
+                      <item>
+                       <widget class="QDateEdit" name="i_date_range_min">
+                        <property name="minimumSize">
+                         <size>
+                          <width>110</width>
+                          <height>0</height>
+                         </size>
+                        </property>
+                        <property name="maximumSize">
+                         <size>
+                          <width>110</width>
+                          <height>16777215</height>
+                         </size>
+                        </property>
+                       </widget>
+                      </item>
+                      <item alignment="Qt::AlignHCenter">
+                       <widget class="QLabel" name="lb_date_range_to">
+                        <property name="text">
+                         <string>to</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QDateEdit" name="i_date_range_max">
+                        <property name="minimumSize">
+                         <size>
+                          <width>110</width>
+                          <height>0</height>
+                         </size>
+                        </property>
+                        <property name="maximumSize">
+                         <size>
+                          <width>110</width>
+                          <height>16777215</height>
+                         </size>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <spacer name="spacer">
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                        <property name="sizeType">
+                         <enum>QSizePolicy::Expanding</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>40</width>
+                          <height>20</height>
+                         </size>
+                        </property>
+                       </spacer>
+                      </item>
+                     </layout>
+                    </item>
+                   </layout>
+                  </item>
+                 </layout>
+                </widget>
                </item>
               </layout>
              </item>
@@ -400,11 +396,7 @@
                   <number>0</number>
                  </property>
                  <item>
-                  <layout class="QVBoxLayout" name="ly_description_content">
-                   <property name="spacing">
-                    <number>20</number>
-                   </property>
-                  </layout>
+                  <layout class="QVBoxLayout" name="ly_description_content"/>
                  </item>
                  <item>
                   <spacer name="verticalSpacer">

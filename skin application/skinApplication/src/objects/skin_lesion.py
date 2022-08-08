@@ -2,6 +2,7 @@
 from .data_object import *
 
 from .image import Image
+from .image_list import ImageList
 
 class SkinLesion(DataObject):
     def __init__(self, number, patient_id, characteristics, ai_results = {}):
@@ -88,18 +89,18 @@ class SkinLesion(DataObject):
         return util.get_dir_list(self.get_images_folder_path())
 
     def get_all_skl_imgs(self):
-        skl_imgs_dict = {}
+        image_list = ImageList()
         for name in self.get_available_skl_img_names():
-            skl_imgs_dict[name] = self.get_skl_imgs(name)
-        return skl_imgs_dict
+            image_list.append_images(name, self.get_skl_imgs(name))
+        return image_list
 
     def get_skl_imgs(self, name, nb_of_images=0, filtered_by="name"):
         img_list = []
         if util.is_dir(self.get_skl_img_folder_path(name)):
             if nb_of_images == 0:
-                img_list = [Image(util.gen_path(self.get_skl_img_folder_path(name), src)) for src in util.get_file_list(self.get_skl_img_folder_path(name))]
+                img_list = [Image(util.gen_path(self.get_skl_img_folder_path(name), src), name) for src in util.get_file_list(self.get_skl_img_folder_path(name))]
             else:
-                img_list = [Image(util.gen_path(self.get_skl_img_folder_path(name), src)) for src in util.get_file_list(self.get_skl_img_folder_path(name))[:nb_of_images]]
+                img_list = [Image(util.gen_path(self.get_skl_img_folder_path(name), src), name) for src in util.get_file_list(self.get_skl_img_folder_path(name))[:nb_of_images]]
         return img_list
 
     def get_skl_img_number(self, skl_img):

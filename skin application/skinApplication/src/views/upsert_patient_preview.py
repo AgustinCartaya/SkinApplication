@@ -68,7 +68,7 @@ class UpsertPatientPreiewView(ViewObject):
             ly_single_mi.setSpacing(4)
 
             lb_mi_title = Label(self.ui.c_patient_information_preview)
-            lb_mi_title.setText(util.file_name_to_title(medical_info) + " :")
+            lb_mi_title.setText(medical_info, colon=True)
             ly_single_mi.addWidget(lb_mi_title)
 
             i_mi_content = Label(self.ui.c_patient_information_preview)
