@@ -1,4 +1,4 @@
-from PySide6.QtWidgets import QFrame, QHBoxLayout
+from PySide6.QtWidgets import QFrame, QHBoxLayout, QApplication
 from PySide6.QtCore import Qt
 from .label import Label
 
@@ -40,11 +40,21 @@ class RequiredSklImgItem(QFrame):
         self.layout.addWidget(self.lb_max, 0, Qt.AlignHCenter)
 
         self.lb_selected = Label(self)
-        self.lb_selected.setText(self.selected)
+        self.set_selected_number(self.selected)
         self.layout.addWidget(self.lb_selected, 0, Qt.AlignHCenter)
 
     def set_selected_number(self, number):
         self.lb_selected.setText(number)
+
+        if number < self.min:
+            self.setProperty("satisfied", False)
+        else:
+            self.setProperty("satisfied", True)
+
+        self.repaint()
+
+    def repaint(self):
+        self.setStyle(QApplication.style())
 
     def mousePressEvent(self, arg):
         self.s_clicked.emit(self.img_name)

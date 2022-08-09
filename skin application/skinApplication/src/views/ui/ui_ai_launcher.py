@@ -268,6 +268,7 @@ class Ui_ai_launcher(object):
 
         self.bt_launch = Button(ai_launcher)
         self.bt_launch.setObjectName(u"bt_launch")
+        self.bt_launch.setEnabled(False)
         self.bt_launch.setMinimumSize(QSize(100, 0))
 
         self.ly_center.addWidget(self.bt_launch, 0, Qt.AlignHCenter)

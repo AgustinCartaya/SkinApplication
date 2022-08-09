@@ -19,6 +19,7 @@ class AILauncherView(ViewObject):
 
         self.load_ui()
         self.connect_ui_signals()
+        self.__activate_bt_launch()
 
     def load_ui(self):
         self.ui = Ui_ai_launcher()
@@ -37,6 +38,7 @@ class AILauncherView(ViewObject):
     s_change_view = Signal(str,str,dict)
     def connect_ui_signals(self):
         self.ui.bt_back.clicked.connect(self.__back)
+        self.ui.bt_launch.clicked.connect(self.__launch)
 
         # created signals
         self.s_change_view.connect(self.MW.change_view)
@@ -60,4 +62,19 @@ class AILauncherView(ViewObject):
     def set_selected_images(self, name, imgs):
         self.ai.actual_images.imgs_dict[name] = imgs
         self.ui.c_required_skl_imgs.set_selected_number(name, len(imgs))
+        self.__activate_bt_launch()
+
+
+    def __activate_bt_launch(self):
+        if self.ai.is_ready_to_launch():
+            self.ui.bt_launch.setEnabled(True)
+        else:
+            self.ui.bt_launch.setEnabled(False)
+
+    def __launch(self):
+        results = self.ai.launch()
+        if results:
+            self.s_change_view.emit(cfg.AI_LAUNCHER_VIEW, cfg.AI_RESULTS_VIEW, {"results":results, "ai":self.ai,  "patient" : self.p, "skin_lesion": self.skl})
+
+
 

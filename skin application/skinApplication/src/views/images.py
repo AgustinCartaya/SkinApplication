@@ -4,7 +4,7 @@ from .ui.ui_images import Ui_images
 from .ui.promoted.skl_img_card import  SklImgCard
 from .ui.promoted.label import Label
 
-from PySide6.QtWidgets import QHBoxLayout, QVBoxLayout, QSpacerItem, QSizePolicy, QFrame
+from PySide6.QtWidgets import QHBoxLayout, QVBoxLayout, QSpacerItem, QSizePolicy, QFrame, QFileDialog
 
 from src.objects.image import Image
 from src.objects.image_list import ImageList
@@ -74,6 +74,7 @@ class ImagesView(ViewObject):
         # pagination
         self.ui.c_pagination.set_grid_cards_size(4,6)
 #        self.ui.c_pagination.set_cards_sep(0,5)
+
 
     def __create_image_type_filter(self):
         image_type_list = []
@@ -197,7 +198,6 @@ class ImagesView(ViewObject):
         self.ui.bt_command.setText("Select")
         self.bt_command_text = self.ui.bt_command.text()
         self.__refresh_command_bt_text()
-
 
     def __collet_images(self):
 #        print(self.img_list.get_types()[0])

@@ -23,6 +23,7 @@ from .views.check_patient import CheckPatientView
 from .views.upsert_skin_lesion import UpsertSkinLesionView
 from .views.ai_launcher import AILauncherView
 from .views.images import ImagesView
+from .views.ai_results import AIResultsView
 
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self, ai_dict):
@@ -112,6 +113,10 @@ class MainWindow(QtWidgets.QMainWindow):
             if view_from == cfg.IMAGES_VIEW:
                 self.set_view(self.ai_laucher_view)
                 self.ai_laucher_view.set_selected_images(atts["selected_images_name"], atts["selected_images"])
+
+            elif view_from == cfg.AI_RESULTS_VIEW:
+                self.remove_last_view()
+
             else:
                 self.clean_views()
                 self.ai_laucher_view = AILauncherView(self, atts["ai"], atts["patient"], atts["skin_lesion"])
@@ -124,8 +129,10 @@ class MainWindow(QtWidgets.QMainWindow):
                 self.images_view = ImagesView(self, atts["images"], atts["patient"], atts["skin_lesion"], atts["collet_mode"])
             self.set_view(self.images_view)
 
+        elif view_to == cfg.AI_RESULTS_VIEW:
+            self.set_view(AIResultsView(self, atts["results"], atts["ai"], atts["patient"], atts["skin_lesion"]))
 
-#        print(self._layers.count())
+        print(self._layers.count())
 
     def remove_last_view(self):
         self._layers.removeWidget(self._layers.currentWidget())

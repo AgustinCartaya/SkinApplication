@@ -28,13 +28,14 @@ def load_ai_requirements(ai):
 def load_ai():
     ai_dict = {}
     for ai_name in util.get_dir_list(cfg.AI_PATH):
-        try:
-            ai = AI(ai_name)
-            load_ai_requirements(ai)
-            ai_dict[ai_name] = ai
-        except RuntimeError as rr:
-            print(ai_name + " upload aborted")
-            print(rr.args)
+        if ai_name != "__pycache__":
+            try:
+                ai = AI(ai_name)
+                load_ai_requirements(ai)
+                ai_dict[ai_name] = ai
+            except RuntimeError as rr:
+                print(ai_name + " upload aborted")
+                print(rr.args)
     return ai_dict
 
 

@@ -218,7 +218,7 @@ class Ui_images(object):
         self.sc_description_content.setWidgetResizable(True)
         self.c_description_content = QWidget()
         self.c_description_content.setObjectName(u"c_description_content")
-        self.c_description_content.setGeometry(QRect(0, 0, 303, 416))
+        self.c_description_content.setGeometry(QRect(0, 0, 303, 441))
         self.verticalLayout_3 = QVBoxLayout(self.c_description_content)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.verticalLayout_3.setContentsMargins(16, 0, 0, -1)

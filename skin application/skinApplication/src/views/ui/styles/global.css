@@ -79,12 +79,19 @@ AddSklImgItem{
     padding: 10px 5px;
 
 }
+RequiredSklImgItem[satisfied=false]
+{
+    background-color: #ff8080;
+}
+
 RequiredSklImgItem::hover,
 AddSklImgItem::hover
 {
 
     background-color: #a3deff;
 }
+
+
 
 /*-----QLabel-----*/
 Label

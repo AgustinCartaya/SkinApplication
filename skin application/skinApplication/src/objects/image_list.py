@@ -44,3 +44,9 @@ class ImageList:
     def get_types(self):
         return list(self.imgs_dict.keys())
 
+    def get_src_dict(self):
+        src_dict = {}
+        for img_name, imgs in self.imgs_dict.items():
+            src_dict[img_name] = [img.src for img in imgs]
+        return src_dict
+

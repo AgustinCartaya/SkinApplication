@@ -62,9 +62,6 @@ class SkinLesion(DataObject):
     def get_images_folder_path(self):
         return util.gen_path(self.folder_path, cfg.SKL_IMAGES_FOLDER_NAME)
 
-    def get_ai_results_folder_path(self):
-        return util.gen_path(self.folder_path, cfg.SKL_AI_RESULTS_FOLDER_NAME)
-
     def get_timeline_folder_path(self):
         return util.gen_path(self.folder_path, cfg.SKL_TIMELINE_FOLDER_NAME)
 
