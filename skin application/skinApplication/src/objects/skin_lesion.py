@@ -117,3 +117,13 @@ class SkinLesion(DataObject):
             self.patient_id + ", " +
             json.dumps(self.characteristics) +
             ")")
+
+    def get_photography(self):
+        img_dirs = [dir_name.lower() for dir_name in self.get_available_skl_img_names()]
+        if "photography" in img_dirs:
+            return self.get_skl_imgs("photography", 1)[0]
+        elif "medical_image" in img_dirs:
+            return self.get_skl_imgs("medical_image", 1)[0]
+        else:
+            return None
+

@@ -15,6 +15,9 @@ class ImageList:
         if len(args) >= 1:
             self.__duplicate(args)
 
+    def __len__(self):
+         return len(self.get_all_images())
+
     def __duplicate(self, image_list_list):
         for image_list in image_list_list:
             for img_type, imgs in image_list.imgs_dict.items():

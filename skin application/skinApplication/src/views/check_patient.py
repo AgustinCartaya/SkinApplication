@@ -9,6 +9,8 @@ from .ui.promoted.label import Label
 from .ui.promoted.skin_lesion_preview import SkinLesionPreview
 
 from src.objects.patient import Patient
+from src.objects.image import Image
+
 
 class CheckPatientView(ViewObject):
     def __init__(self, mw, patient_id):
@@ -33,7 +35,13 @@ class CheckPatientView(ViewObject):
                 self.update_skin_lesion,
                 self.see_time_line,
                 self.see_images)
-            skin_lesion_preview.set_image(cfg.IMAGES_PATH + cfg._S +  "logo.png")
+
+            skl_photography = skl.get_photography()
+            if skl_photography is not None:
+                skin_lesion_preview.set_image(skl_photography)
+            else:
+                skin_lesion_preview.set_image(Image(cfg.IMG_LOGO_PATH_NAME, "logo"))
+
             self.ui.ly_skin_lesions_preview.addWidget(skin_lesion_preview)
 
     Slot(int)

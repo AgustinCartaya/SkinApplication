@@ -1,5 +1,7 @@
+from PySide6.QtCore import Qt
+
 from PySide6.QtWidgets import QLabel
-from PySide6.QtWidgets import QApplication
+#from PySide6.QtWidgets import QApplication
 
 import src.util.util as util
 class Label(QLabel):
@@ -14,7 +16,7 @@ class Label(QLabel):
     def set_decoration(self, decoration):
         self.setProperty("decoration", decoration)
 
-    def setText(self, text, colon = False, format=False, parenthesis=False):
+    def setText(self, text, colon = False, format=False, parenthesis=False, center=False):
         if type(text) in (list, tuple):
             text = " ".join(text)
         elif type(text) in (int, float):
@@ -31,5 +33,9 @@ class Label(QLabel):
         # colon
         if colon:
             text = text + " :"
+
+        # center
+        if center:
+            self.setAlignment(Qt.AlignCenter)
 
         super().setText(text)

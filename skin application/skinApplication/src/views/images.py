@@ -36,10 +36,20 @@ class ImagesView(ViewObject):
         self.load_ui()
         self.connect_ui_signals()
 
-        self.__show_images()
+        # no images
+        if len(images) == 0:
+            self.ui.c_left.hide()
+            self.ui.c_pagination.set_grid_cards_size(1,1)
+            lb_no_images = Label()
+            lb_no_images.setText("No images to show", center=True)
+            self.ui.c_pagination.add_cards([lb_no_images])
+        else:
+            self.__show_images()
+            self.__create_image_type_filter()
 
-        if collet_mode:
-            self.__collet_mode()
+            if collet_mode:
+                self.__collet_mode()
+
 
 
     def load_ui(self):
@@ -51,9 +61,7 @@ class ImagesView(ViewObject):
         self.bt_command_text = self.ui.bt_command.text()
 
         # filters
-        self.__create_image_type_filter()
         self.ui.c_filter_image_type.check_all()
-
         self.ui.c_filter_date.hide()
 
         # organizer
@@ -74,6 +82,8 @@ class ImagesView(ViewObject):
         # pagination
         self.ui.c_pagination.set_grid_cards_size(4,6)
 #        self.ui.c_pagination.set_cards_sep(0,5)
+
+
 
 
     def __create_image_type_filter(self):

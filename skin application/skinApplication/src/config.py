@@ -31,6 +31,10 @@ FILES_SKIN_LESION_IMAGES_PATH = FILES_PATH + _S + "skin_lesion_images"
 FILES_MEDICAL_INFORMATION_PATH = FILES_PATH + _S + "medical_information"
 FILES_SKIN_LESION_CHARACTERISTICS_PATH = FILES_PATH + _S + "skin_lesion_characteristics"
 
+# images
+IMG_LOGO_NAME = "logo.png"
+IMG_LOGO_PATH_NAME = IMAGES_PATH + _S + IMG_LOGO_NAME
+
 # Artificial inteligence
 AI_PATH = PROJECT_FOLDER + _S + "ai"
 AI_INFO_FOLDER_NAME = "info"

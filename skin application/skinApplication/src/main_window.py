@@ -132,7 +132,7 @@ class MainWindow(QtWidgets.QMainWindow):
         elif view_to == cfg.AI_RESULTS_VIEW:
             self.set_view(AIResultsView(self, atts["results"], atts["ai"], atts["patient"], atts["skin_lesion"]))
 
-        print(self._layers.count())
+#        print(self._layers.count())
 
     def remove_last_view(self):
         self._layers.removeWidget(self._layers.currentWidget())

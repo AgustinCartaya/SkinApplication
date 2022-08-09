@@ -44,7 +44,7 @@ class SkinLesionPreview(QFrame):
         self.__create_c_n2()
         self.__create_c_n3()
 
-        self.layout.setStretch(0, 2)
+        self.layout.setStretch(0, 1)
         self.layout.setStretch(1, 6)
         self.layout.setStretch(2, 1)
 
@@ -64,8 +64,10 @@ class SkinLesionPreview(QFrame):
         self.c_image_layout.setContentsMargins(0, 0, 0, 0)
 
         self.lb_image = QLabel(self.c_image)
-        self.lb_image.setMaximumSize(QSize(150, 150))
-        self.lb_image.setScaledContents(True)
+        self.lb_image.setMinimumSize(QSize(150, 0))
+        self.lb_image.setAlignment(Qt.AlignCenter)
+#        self.lb_image.setScaledContents(True)
+#        self.lb_image.setStyleSheet("background-color: yellow;")
 
         self.c_image_layout.addWidget(self.lb_image)
         self.c_n1_layout.addWidget(self.c_image)
@@ -169,6 +171,23 @@ class SkinLesionPreview(QFrame):
     def __see_images(self):
         self.s_see_images.emit(self.skl.number)
 
-    def set_image(self, image_path):
-        self.lb_image.setPixmap(QPixmap(image_path))
+#    def set_image(self, img):
+#        self.lb_image.setMinimumSize(QSize(150, 150))
 
+#        resized_size = img.get_resized_size(150)
+#        pxm_image = QPixmap(img.src).scaled(resized_size[0], resized_size[1], mode=Qt.SmoothTransformation)
+#        self.lb_image.setPixmap(pxm_image)
+
+    def set_image(self, img):
+        self.pxm_image = QPixmap(img.src)
+        self.lb_image.setPixmap(self.pxm_image)
+
+#        resized_size = img.get_resized_size(150)
+#        pxm_image = QPixmap(img.src).scaled(resized_size[0], resized_size[1], mode=Qt.SmoothTransformation)
+
+    def __show_image(self):
+        myScaledPixmap = self.pxm_image.scaled(self.lb_image.size().width(), self.lb_image.size().width(), aspectMode=Qt.KeepAspectRatio, mode=Qt.SmoothTransformation)
+        self.lb_image.setPixmap(myScaledPixmap)
+
+    def resizeEvent(self, event):
+        self.__show_image()

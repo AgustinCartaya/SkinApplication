@@ -33,3 +33,11 @@ class Image(DataObject):
 #            if isinstance(data, bytes):
 #                data = data.decode()
 #            print(f"{tag:25}: {data}")
+    def get_size(self):
+        return (self.info_dict["image_width"], self.info_dict["image_height"])
+
+    def get_resized_size(self, maxWidth, maxHeight=0):
+        if maxHeight == 0:
+            maxHeight = maxWidth
+        ratio = min(maxWidth / self.get_size()[0], maxHeight / self.get_size()[1])
+        return (self.get_size()[0]*ratio, self.get_size()[1]*ratio)

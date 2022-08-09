@@ -107,7 +107,7 @@ class SkinLesionPreviewInfo(QFrame):
         count = 0
         for name, value in result.items():
             lb_result_title = Label(c_single_content)
-            lb_result_title.setText(name + " :")
+            lb_result_title.setText(name, colon=True, format=True)
             ly_single_content.setWidget(count, QFormLayout.LabelRole, lb_result_title)
 
             if type(value) in (tuple, list):

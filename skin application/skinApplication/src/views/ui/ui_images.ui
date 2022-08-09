@@ -195,7 +195,13 @@
                </item>
                <item>
                 <widget class="QFrame" name="c_filter_date">
-                 <layout class="QVBoxLayout" name="ly_filter_date">
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_5">
                   <property name="spacing">
                    <number>12</number>
                   </property>
@@ -382,7 +388,7 @@
                   <x>0</x>
                   <y>0</y>
                   <width>303</width>
-                  <height>441</height>
+                  <height>414</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_3">

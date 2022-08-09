@@ -37,7 +37,7 @@ class SklImgCard(QFrame):
     def mousePressEvent(self, arg):
         self.s_open_image.emit(self.img)
 
-    def show_image(self):
+    def __show_image(self):
 #        print(self.size())
 
 #        self.lb_image.setScaledContents(True)
@@ -53,7 +53,7 @@ class SklImgCard(QFrame):
         self.setMinimumSize(QSize(w,h))
         self.setMaximumSize(QSize(w,h))
 
-        self.show_image()
+        self.__show_image()
 
     def mousePressEvent(self, arg):
         self.set_selected(not self.property("selected"))
