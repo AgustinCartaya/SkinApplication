@@ -16,12 +16,22 @@ class ImageList:
             self.__duplicate(args)
 
     def __len__(self):
-         return len(self.get_all_images())
+        return len(self.get_all_images())
+
+#    def __iter__(self):
+#        return iter(self.imgs_dict)
 
     def __duplicate(self, image_list_list):
+        _imgs_dict = {}
         for image_list in image_list_list:
             for img_type, imgs in image_list.imgs_dict.items():
-                self.imgs_dict[img_type] = imgs
+                if img_type in _imgs_dict:
+                    _imgs_dict[img_type].union(set(imgs))
+                else:
+                    _imgs_dict[img_type] = (set(imgs))
+
+        for img_type, imgs in _imgs_dict.items():
+            self.imgs_dict[img_type] = list(imgs)
 
     def append_images(self, img_type, lst):
         self.imgs_dict[img_type] = lst

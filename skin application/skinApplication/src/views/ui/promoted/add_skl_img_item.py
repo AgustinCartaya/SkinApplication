@@ -11,14 +11,15 @@ from PySide6.QtCore import Signal, Slot
 
 import src.util.data_cleaner as data_cleaner
 
+from src.objects.image import Image
+
 class AddSklImgItem(QFrame):
 
 #    s_edit_items = Signal(str)
-    def __init__(self, parent, id, name, nb_images = 0, new_images = []):
+    def __init__(self, parent, id, nb_images = 0, new_images = []):
         QFrame.__init__(self, parent)
 
         self.id = id
-        self.name = name
         self.nb_images = nb_images
         self.new_images = new_images
         self.img_path_name = set()
@@ -32,7 +33,7 @@ class AddSklImgItem(QFrame):
 
         # title
         self.lb_name = Label(self)
-        self.lb_name.setText(self.name)
+        self.lb_name.setText(self.id, format=True)
         self.lb_name.setMinimumSize(QSize(125, 0))
         self.lb_name.setMaximumSize(QSize(100, 16777215))
         self.layout.addWidget(self.lb_name)
@@ -59,7 +60,8 @@ class AddSklImgItem(QFrame):
     def loadFiles(self):
         img_path_name, _ = QFileDialog.getOpenFileNames(self, 'Open file',
              'D:\\Documents\\Internship Documents\\Image data\\1AA\\images\\Microscopy\\MALAIRE DTE',"Image files (*.png *.jpg *.gif *.svg *.bmp)")
-        self.img_path_name.update(img_path_name)
+
+        self.img_path_name.update([Image(src, self.id) for src in img_path_name])
         self.__update_nb_new_images()
 
     def get_image_path_names(self):

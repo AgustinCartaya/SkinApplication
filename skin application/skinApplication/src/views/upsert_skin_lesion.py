@@ -86,7 +86,7 @@ class UpsertSkinLesionView(ViewObject):
             self.skl.characteristics = self.__catch_characteristics()
             self.skl.update_data()
 
-        self.skl.save_images(self.c_add_skl_img.get_selected_image_path_names())
+        self.skl.save_images(self.c_add_skl_img.get_selected_images())
 
         # when skin lesion updated without scaping from the view
 #        self.charge_edit_mode()

@@ -3,6 +3,7 @@ from .data_object import *
 
 from .image import Image
 from .image_list import ImageList
+from .time_line_point import TimeLinePoint
 
 class SkinLesion(DataObject):
     def __init__(self, number, patient_id, characteristics, ai_results = {}):
@@ -24,6 +25,8 @@ class SkinLesion(DataObject):
 
         self.verify_skl_folder()
 
+        self.time_line_point = TimeLinePoint(self)
+
 
     def save_data(self):
         try:
@@ -34,6 +37,7 @@ class SkinLesion(DataObject):
                 json.dumps(self.characteristics),
                 json.dumps(self.ai_results)
                 ))
+            self.time_line_point.upsert()
             return True
         except ValueError as err:
             print(err.args)
@@ -45,6 +49,8 @@ class SkinLesion(DataObject):
                 (json.dumps(self.characteristics),json.dumps(self.ai_results)),
                 (str(self.number), self.patient_id)
                 )
+            self.time_line_point.upsert()
+            return True
         except ValueError as err:
             print(err.args)
 
@@ -52,12 +58,13 @@ class SkinLesion(DataObject):
         if not self.save_data():
             raise ValueError('Skin lesion not created', "SKIN_LESION", "NO_CREATED")
 
-    def save_images(self, images_dic):
-        for skl_img, image_path_names in images_dic.items():
-            if len(image_path_names) > 0:
-                self.verify_skl_img_folder(skl_img)
-                for src_image in image_path_names:
-                    util.copy_file(src_image, self.get_skl_img_folder_path(skl_img))
+    def save_images(self, images):
+        for img_type, imgs in images.imgs_dict.items():
+            if len(imgs) > 0:
+                self.verify_skl_img_folder(img_type)
+                for img in imgs:
+                    util.copy_file(img.src, self.get_skl_img_folder_path(img_type))
+        self.time_line_point.upsert(images)
 
     def get_images_folder_path(self):
         return util.gen_path(self.folder_path, cfg.SKL_IMAGES_FOLDER_NAME)

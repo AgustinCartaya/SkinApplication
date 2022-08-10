@@ -10,6 +10,8 @@ from .add_skl_img_creator import AddSklImgCreator
 import src.util.data_cleaner as data_cleaner
 import src.util.util as util
 
+from src.objects.image_list import ImageList
+
 class AddSklImgContainer(QFrame):
 
 #    s_edit_items = Signal(str)
@@ -43,12 +45,10 @@ class AddSklImgContainer(QFrame):
         self.layout.addLayout(self.skl_img_layout)
 
         for file_name in util.get_file_list(self.folder):
-            skl_img_title = util.file_name_to_title(file_name)
+            self.__show_single_skl_img(file_name)
 
-            self.__show_single_skl_img(file_name, skl_img_title)
-
-    def __show_single_skl_img(self, skl_img_id, skl_img_title):
-        skl_img = AddSklImgItem(self, skl_img_id, skl_img_title)
+    def __show_single_skl_img(self, skl_img_id):
+        skl_img = AddSklImgItem(self, skl_img_id)
 
         self.skl_img_layout.addWidget(skl_img)
         self.skl_img_items[skl_img_id] = skl_img
@@ -81,11 +81,11 @@ class AddSklImgContainer(QFrame):
         self.skl_img_creator.setParent(None)
         self.skl_img_creator = None
 
-    def get_selected_image_path_names(self):
-        selected_images = {}
+    def get_selected_images(self):
+        images = ImageList()
         for id, item in self.skl_img_items.items():
-            selected_images[id] = item.get_image_path_names()
-        return selected_images
+            images.append_images(id, list(item.get_image_path_names()))
+        return images
 
 #    def get_skl_img_ids(self):
 #        return list(self.skl_img_items.keys())

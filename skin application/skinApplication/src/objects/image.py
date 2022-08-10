@@ -8,7 +8,7 @@ class Image(DataObject):
         self.src = src
         self.image = PImage.open(src)
 
-        self.name = util.get_file_name(self.image.filename)
+        self.name = util.get_file_name(self.src)
         self.ceartion_date = "0"
         self.info_dict = {
             "filename": self.name,
@@ -20,6 +20,10 @@ class Image(DataObject):
 #            "image_is_animated": getattr(self.image, "is_animated", False),
 #            "frames_in_image": getattr(self.image, "n_frames", 1)
         }
+
+    def __hash__(self):
+        return hash(self.src)
+
     def __eq__(self, obj):
         return obj.src == self.src
 #        exifdata = self.image.getexif()
