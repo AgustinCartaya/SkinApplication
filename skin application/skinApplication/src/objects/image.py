@@ -8,24 +8,24 @@ class Image(DataObject):
         self.src = src
         self.image = PImage.open(src)
 
-        self.name = util.get_file_name(self.src)
+        # both parameters are also outside for filtering
+        self.name_extension = util.get_file_name_extension(src)
+        self.name = util.get_file_name(src)
         self.ceartion_date = "0"
+
+
+
         self.info_dict = {
             "filename": self.name,
             "type": img_type,
             "image_height": self.image.height,
             "image_width": self.image.width,
             "image_format": self.image.format,
-            "image_mode": self.image.mode
+            "image_mode": self.image.mode,
+            "ceartion_date": self.ceartion_date
 #            "image_is_animated": getattr(self.image, "is_animated", False),
 #            "frames_in_image": getattr(self.image, "n_frames", 1)
         }
-
-    def __hash__(self):
-        return hash(self.src)
-
-    def __eq__(self, obj):
-        return obj.src == self.src
 #        exifdata = self.image.getexif()
 #        print(exifdata)
 #        for tag_id in exifdata:
@@ -37,6 +37,14 @@ class Image(DataObject):
 #            if isinstance(data, bytes):
 #                data = data.decode()
 #            print(f"{tag:25}: {data}")
+
+    def __hash__(self):
+        return hash(self.src)
+
+    def __eq__(self, obj):
+#        return obj.src == self.src
+        return list(self.image.getdata()) == list(obj.image.getdata())
+
     def get_size(self):
         return (self.info_dict["image_width"], self.info_dict["image_height"])
 

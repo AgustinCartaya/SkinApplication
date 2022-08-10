@@ -11,6 +11,7 @@ from .ui.promoted.ai_previews_container import AIPreviewsContainer
 from .ui.promoted.button import Button
 
 from src.objects.skin_lesion import SkinLesion
+from src.objects.time_line_point import TimeLinePoint
 
 class UpsertSkinLesionView(ViewObject):
     def __init__(self, mw, ai_dict, patient, skin_lesion):
@@ -86,7 +87,12 @@ class UpsertSkinLesionView(ViewObject):
             self.skl.characteristics = self.__catch_characteristics()
             self.skl.update_data()
 
-        self.skl.save_images(self.c_add_skl_img.get_selected_images())
+        selected_images = self.c_add_skl_img.get_selected_images()
+        saved_images = self.skl.save_images(selected_images)
+
+        time_line_point = TimeLinePoint(self.skl, saved_images)
+        time_line_point.upsert()
+
 
         # when skin lesion updated without scaping from the view
 #        self.charge_edit_mode()

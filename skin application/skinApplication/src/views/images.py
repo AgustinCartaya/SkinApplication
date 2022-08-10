@@ -150,14 +150,14 @@ class ImagesView(ViewObject):
             ly_single_img_info.setSpacing(4)
 
             lb_info_name = Label(c_single_img_info)
-            lb_info_name.setText(info_name, colon=True)
+            lb_info_name.setText(info_name, colon=True, format=True)
             ly_single_img_info.addWidget(lb_info_name)
 
             i_info_value = Label(c_single_img_info)
             if info_name == "type":
-                i_info_value.setText(info_value)
+                i_info_value.setText(info_value, format=True)
             else:
-                i_info_value.setText(info_value, format=False)
+                i_info_value.setText(info_value)
 #            i_info_value.set_decoration("mi_content")
             ly_single_img_info.addWidget(i_info_value)
 

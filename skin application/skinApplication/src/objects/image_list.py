@@ -36,6 +36,12 @@ class ImageList:
     def append_images(self, img_type, lst):
         self.imgs_dict[img_type] = lst
 
+    def append_image(self, img_type, img):
+        if img_type in self.imgs_dict:
+            self.imgs_dict[img_type].append(img)
+        else:
+            self.imgs_dict[img_type] = [img]
+
     def get_all_images(self, sorted_by="name", dsc=False ):
         img_list = []
         for _, imgs in self.imgs_dict.items():

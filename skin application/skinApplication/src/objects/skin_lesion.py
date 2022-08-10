@@ -3,7 +3,6 @@ from .data_object import *
 
 from .image import Image
 from .image_list import ImageList
-from .time_line_point import TimeLinePoint
 
 class SkinLesion(DataObject):
     def __init__(self, number, patient_id, characteristics, ai_results = {}):
@@ -25,7 +24,7 @@ class SkinLesion(DataObject):
 
         self.verify_skl_folder()
 
-        self.time_line_point = TimeLinePoint(self)
+
 
 
     def save_data(self):
@@ -37,7 +36,6 @@ class SkinLesion(DataObject):
                 json.dumps(self.characteristics),
                 json.dumps(self.ai_results)
                 ))
-            self.time_line_point.upsert()
             return True
         except ValueError as err:
             print(err.args)
@@ -49,7 +47,6 @@ class SkinLesion(DataObject):
                 (json.dumps(self.characteristics),json.dumps(self.ai_results)),
                 (str(self.number), self.patient_id)
                 )
-            self.time_line_point.upsert()
             return True
         except ValueError as err:
             print(err.args)
@@ -59,12 +56,40 @@ class SkinLesion(DataObject):
             raise ValueError('Skin lesion not created', "SKIN_LESION", "NO_CREATED")
 
     def save_images(self, images):
+        saved_images = ImageList()
         for img_type, imgs in images.imgs_dict.items():
             if len(imgs) > 0:
                 self.verify_skl_img_folder(img_type)
+                path = self.get_skl_img_folder_path(img_type)
+#                saved_images_list = []
+                # the image will be saved if there is not anothe images with the same content
+                # if alrready exists an image with the same name but with diferent content a new name is created
+                # failure: open an image X called 01.png, opend a diferent image X2 also called 01.png and will be saved with the name 01_2.png
+                #   then open the same last image (X2), this last image will be compared withe the fisrt image (X) and no with se second one (X2)
+                #   so the image X2 will be save twice with the names 01_2.png, 01_3.png
+                # solution: compare each image with all the others, what will take time
                 for img in imgs:
-                    util.copy_file(img.src, self.get_skl_img_folder_path(img_type))
-        self.time_line_point.upsert(images)
+                    if not self.exists_image(img, img_type):
+                        img_src = util.gen_path(path, self.__gen_image_name(img, img_type))
+                        util.copy_file(img.src, img_src)
+                        saved_images.append_image(img_type, Image(img_src, img_type))
+
+#                        saved_images_list.append(Image(img_src, img_type))
+        return saved_images
+
+
+    def exists_image(self, img, img_type):
+        skl_img_src = util.gen_path(self.get_skl_img_folder_path(img_type), img.name_extension)
+        return (util.is_file(skl_img_src) and img == Image(skl_img_src, img_type))
+
+    def __gen_image_name(self, img, img_type):
+        if util.is_file(self.get_skl_img_folder_path(img_type), img.name_extension):
+            nb = 2
+            while util.is_file(util.gen_path(self.get_skl_img_folder_path(img_type), img.name + "_" + str(nb) + "." + img.info_dict["image_format"])):
+                nb = nb+1
+            return img.name + "_" + str(nb) + "." + img.info_dict["image_format"]
+        else:
+            return img.name_extension
 
     def get_images_folder_path(self):
         return util.gen_path(self.folder_path, cfg.SKL_IMAGES_FOLDER_NAME)

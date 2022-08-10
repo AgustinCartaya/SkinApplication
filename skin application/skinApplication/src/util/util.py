@@ -114,5 +114,26 @@ def get_in_range_value(val, min, max):
         return min
     return val
 
-def get_file_name(path):
+def get_file_name_extension(path):
     return os.path.basename(path)
+
+def get_file_name(path):
+    _fe = get_file_name_extension(path).split('.')
+    if len(_fe) > 2:
+        return ".".join(_fe[0:-1])
+    return _fe[0]
+
+#def get_file_location(path):
+#    return path.split(cfg._S)[0:-1]
+
+#def get_file_name_extension(path):
+#    return path.split(cfg._S)[-1]
+
+#def get_file_name(path):
+#    return get_file_name_extension(path).split('.')[0]
+##    return os.path.basename(path)
+
+#def get_file_extesion(path):
+#    _fe = get_file_name_extension(path).split('.')
+#    if len(_fe) > 1:
+#        return _fe[-1]
