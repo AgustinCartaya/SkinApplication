@@ -4,6 +4,10 @@ from PySide6.QtWidgets import (QFrame, QVBoxLayout, QHBoxLayout,QSpacerItem,QSiz
 from PySide6.QtCore import Qt, QSize, QDate
 from .label import Label
 from .button import Button
+from .check_button_group import CheckButtonGroup
+from .check_button import CheckButton
+
+
 from .line_edit import LineEdit
 from .variable_input_creator import VariableInputCreator
 from .filters_header import FiltersHeader
@@ -59,6 +63,8 @@ class FilterVariableInput(QFrame):
                                     ):
             self.range_filter = True
             self.__create_range_filter()
+        elif self.filter_type == VariableInputCreator.INPUT_OPTIONS:
+            self.__create_options_filter()
         else:
             self.__create_simple_filter()
 
@@ -88,6 +94,32 @@ class FilterVariableInput(QFrame):
 
         sp = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
         ly_content.addItem(sp)
+
+    def __create_options_filter(self):
+        ly_content = QVBoxLayout()
+        ly_content.setContentsMargins(9, 0, 0, 0)
+        self.layout.addLayout(ly_content)
+
+        self.i_filter = CheckButtonGroup(True)
+        count = 0
+        ly_line = None
+        nb_items = len(self.items)
+        for item in self.items:
+            if count % 3 == 0:
+                ly_line = QHBoxLayout()
+                ly_content.addLayout(ly_line)
+
+            bt = CheckButton(self)
+            bt.setText(item)
+            bt.action_value = item
+            bt.clicked.connect(self.call_filter)
+            ly_line.addWidget(bt)
+            self.i_filter.add_button(bt)
+            count = count + 1
+
+#            if count > 1 and (count % 3 == 0 or count == nb_items):
+#                sp = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+#                ly_line.addItem(sp)
 
     def __create_range_filter(self):
         self.c_precise_content = QFrame(self)
@@ -214,8 +246,8 @@ class FilterVariableInput(QFrame):
 
     def get_selected_filter(self):
         filter = None
-        if self.filter_type == VariableInputCreator.INPUT_OPTIONS and self.i_filter.currentText() != "":
-            filter = self.i_filter.currentText()
+        if self.filter_type == VariableInputCreator.INPUT_OPTIONS and self.i_filter.get_selected_number() > 0:
+            filter = self.i_filter.get_selected_action_values()
 
         elif self.filter_type == VariableInputCreator.INPUT_TEXT and self.i_filter.text().strip() != "":
             filter = self.i_filter.text().strip()
@@ -258,7 +290,7 @@ class FilterVariableInput(QFrame):
 
     def reset(self):
         if self.filter_type == VariableInputCreator.INPUT_OPTIONS:
-            self.i_filter.setCurrentIndex(0)
+            self.i_filter.unselect_all()
 
         elif self.filter_type == VariableInputCreator.INPUT_TEXT:
             self.i_filter.setText("")

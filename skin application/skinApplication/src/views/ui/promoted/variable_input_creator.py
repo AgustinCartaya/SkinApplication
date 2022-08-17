@@ -12,6 +12,8 @@ from PySide6.QtCore import Signal, Slot
 import src.util.data_cleaner as data_cleaner
 import src.util.util as util
 
+from .check_button_group import CheckButtonGroup
+
 class VariableInputCreator(QFrame):
 
     INPUT_OPTIONS = "options"
@@ -87,12 +89,8 @@ class VariableInputCreator(QFrame):
         ly_type_down.addWidget(self.bt_date)
         self.bt_date.clicked.connect( lambda: self.__type_selected(self.INPUT_DATE) )
 
-        g = [self.bt_options, self.bt_number, self.bt_text, self.bt_bool, self.bt_date]
-        self.bt_options.add_group(g)
-        self.bt_number.add_group(g)
-        self.bt_text.add_group(g)
-        self.bt_bool.add_group(g)
-        self.bt_date.add_group(g)
+        self.g_bt_type = CheckButtonGroup()
+        self.g_bt_type.add_buttons(self.bt_options, self.bt_number, self.bt_text, self.bt_bool, self.bt_date)
 
         vs_right = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
         ly_type.addItem(vs_right)

@@ -5,19 +5,22 @@ from .button import *
 
 class CheckButton(Button):
 
+    s_switch = Signal(Button)
     def __init__(self, *args, **kwards):
         Button.__init__(self, *args, **kwards)
-        self.clicked.connect(self.switch)
+        self.clicked.connect(self.__switch_attempt)
         self.select(False)
-        self.__group = None
+        self.has_group = False
+
+    @Slot()
+    def __switch_attempt(self):
+        if self.has_group:
+            self.s_switch.emit(self)
+        else:
+            self.switch()
 
     def switch(self):
-        if self.__group is None:
-            self.select(not self.property("selected"))
-        else:
-            if not self.property("selected"):
-                self.deselect_others()
-                self.select(True)
+        self.select(not self.property("selected"))
 
     def is_selected(self):
         return self.property("selected")
@@ -27,9 +30,15 @@ class CheckButton(Button):
         self.repaint()
 #        self.setStyle(QApplication.style())
 
-    def add_group(self, group):
-        self.__group = group
+#    def add_group(self, group):
+#        self.__group = group
 
-    def deselect_others(self):
-        for bt in self.__group:
-            bt.select(False)
+
+#    def deselect_others(self):
+#        for bt in self.__group:
+#            bt.select(False)
+
+
+    def add_group(self, group_receaver):
+        self.s_switch.connect(group_receaver)
+        self.has_group = True

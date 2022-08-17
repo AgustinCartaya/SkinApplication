@@ -8,6 +8,9 @@ from PySide6.QtCore import QSize
 from .ui.promoted.patient_card import PatientCard
 from .ui.promoted.variable_input_creator import VariableInputCreator
 
+from .ui.promoted.check_button_group import CheckButtonGroup
+
+
 class PatientsView(ViewObject):
 
     def __init__(self, mw):
@@ -71,16 +74,15 @@ class PatientsView(ViewObject):
         self.ui.bt_sorter_asc.select(True)
         self.ui.bt_sorter_id.select(True)
 
-        g1 = [self.ui.bt_sorter_mosaico, self.ui.bt_sorter_list]
-        g2 = [self.ui.bt_sorter_asc, self.ui.bt_sorter_dsc]
-        g3 = [self.ui.bt_sorter_id, self.ui.bt_sorter_name]
+        self.g_sorter_mosaico = CheckButtonGroup()
+        self.g_sorter_mosaico.add_buttons(self.ui.bt_sorter_mosaico, self.ui.bt_sorter_list)
 
-        self.ui.bt_sorter_mosaico.add_group(g1)
-        self.ui.bt_sorter_list.add_group(g1)
-        self.ui.bt_sorter_asc.add_group(g2)
-        self.ui.bt_sorter_dsc.add_group(g2)
-        self.ui.bt_sorter_id.add_group(g3)
-        self.ui.bt_sorter_name.add_group(g3)
+        self.g_sorter_asc = CheckButtonGroup()
+        self.g_sorter_asc.add_buttons(self.ui.bt_sorter_asc, self.ui.bt_sorter_dsc)
+
+        self.g_sorter_id = CheckButtonGroup()
+        self.g_sorter_id.add_buttons(self.ui.bt_sorter_id, self.ui.bt_sorter_name)
+
 
         self.ui.c_sorter_mosaico.hide()
         self.ui.bt_sorter_list.setEnabled(False)
@@ -105,11 +107,8 @@ class PatientsView(ViewObject):
         self.ui.bt_sorter_list.clicked.connect(self.show_patients)
         self.ui.bt_sorter_asc.clicked.connect(self.show_patients)
         self.ui.bt_sorter_dsc.clicked.connect(self.show_patients)
-#        self.ui.bt_sorter_id.clicked.connect(self.show_patients)
-#        self.ui.bt_sorter_name.clicked.connect(self.show_patients)
         self.ui.bt_sorter_id.clicked.connect(lambda: (self.slot_organizer_id_name("id") ) )
         self.ui.bt_sorter_name.clicked.connect(lambda: (self.slot_organizer_id_name("name") ) )
-
         # filters
 
         #   search
@@ -198,13 +197,15 @@ class PatientsView(ViewObject):
 
     @Slot()
     def filter_patients(self):
-        print(self.ui.c_filter_mi_content.get_selected_filters())
+#        print()
         print(self.ui.c_filter_skl_charac_content.get_selected_filters())
 
         self.p_list_filtered = PatientList.duplicate_list(self.p_list)
         self.__filter_search()
         if self.ui.c_filter_bi_header.open:
             self.__filter_basic_information()
+        if self.ui.c_filter_mi_header.open:
+            self.__filter_medical_information()
         if self.ui.c_filter_ai_results_header.open:
             self.__filter_ai_results()
 
@@ -262,6 +263,15 @@ class PatientsView(ViewObject):
         if self.ui.i_air_indeterminate.isChecked():
             risks.append(2)
         self.p_list_filtered = self.p_list_filtered.get_filtered_skl_risks(risks)
+
+    def __filter_medical_information(self):
+        for mi_name, mi_value in self.ui.c_filter_mi_content.get_selected_filters().items():
+            if type(mi_value) is list:
+                self.p_list_filtered = self.p_list_filtered.get_filtered_conains(mi_name, mi_value, info="mi")
+            elif type(mi_value) is tuple:
+                self.p_list_filtered = self.p_list_filtered.get_filtered_range(mi_name, mi_value[0], mi_value[1], info="mi")
+            else:
+                self.p_list_filtered = self.p_list_filtered.get_filtered(mi_name, mi_value, info="mi")
 
     def sort_patients(self):
         if self.ui.bt_sorter_id.is_selected():

@@ -61,22 +61,41 @@ class PatientList:
     def append_patient(self, patient):
         self.patients.append(patient)
 
-    def get_filtered(self, key, value):
+    def get_filtered(self, key, value, info = "bi"):
         filtered = PatientList()
         for patient in self:
-            if getattr(patient, key) == value:
-                filtered.append_patient(patient)
+            # search in basic information
+            if info == "bi":
+                if getattr(patient, key) == value:
+                    filtered.append_patient(patient)
+
+            # search in medical information
+            elif info == "mi":
+                if patient.mi[key] == value:
+                    filtered.append_patient(patient)
+
         return filtered
 
-    def get_filtered_range(self, key, min, max, include = True):
+    def get_filtered_range(self, key, min, max, include = True, info = "bi"):
         filtered = PatientList()
         for patient in self:
-            if include:
-                if getattr(patient, key) >= min and getattr(patient, key) <= max:
-                    filtered.append_patient(patient)
-            else:
-                if getattr(patient, key) > min and getattr(patient, key) < max:
-                    filtered.append_patient(patient)
+            # search in basic information
+            if info == "bi":
+                if include:
+                    if getattr(patient, key) >= min and getattr(patient, key) <= max:
+                        filtered.append_patient(patient)
+                else:
+                    if getattr(patient, key) > min and getattr(patient, key) < max:
+                        filtered.append_patient(patient)
+            # search in medical information
+            elif info == "mi":
+                if include:
+                    if patient.mi[key] >= min and patient.mi[key] <= max:
+                        filtered.append_patient(patient)
+                else:
+                    if patient.mi[key] > min and patient.mi[key] < max:
+                        filtered.append_patient(patient)
+
         return filtered
 
     def get_filtered_lower_than(self, key, base, include = True):
@@ -101,15 +120,36 @@ class PatientList:
                     filtered.append_patient(patient)
         return filtered
 
-    def get_filtered_conains(self, key, value, case_sensitive =  True):
+    def get_filtered_conains(self, key, values, case_sensitive =  True, info = "bi"):
         filtered = PatientList()
         for patient in self:
-            if case_sensitive:
-                if value in getattr(patient, key):
-                    filtered.append_patient(patient)
-            else:
-                if value.lower() in getattr(patient, key).lower():
-                    filtered.append_patient(patient)
+            # search in basic information
+            if info == "bi":
+                if case_sensitive:
+                    if values in getattr(patient, key):
+                        filtered.append_patient(patient)
+                else:
+                    if values.lower() in getattr(patient, key).lower():
+                        filtered.append_patient(patient)
+            # search in medical information
+            elif info == "mi":
+                if type(values) == str:
+                    if case_sensitive:
+                        if values in patient.mi[key]:
+                            filtered.append_patient(patient)
+                    else:
+                        if values.lower() in patient.mi[key].lower():
+                            filtered.append_patient(patient)
+
+                elif type(values) == list:
+                    contains = False
+                    count = 0
+                    while not contains and count < len(values):
+                        if values[count] in patient.mi[key]:
+                            contains = True
+                        count = count +1
+                    if contains:
+                        filtered.append_patient(patient)
         return filtered
 
     def get_filtered_starts_with(self, key, value, case_sensitive =  True):
