@@ -97,34 +97,47 @@ class FilterVariableInput(QFrame):
         if self.filter_type == VariableInputCreator.INPUT_INT:
             self.i_precise = QSpinBox(self.c_precise_content)
             self.i_precise.setMinimumSize(QSize(80, 0))
+            self.i_precise.editingFinished.connect(self.call_filter)
 
             self.i_range_min = QSpinBox(self.c_range_content)
             self.i_range_min.setMinimumSize(QSize(80, 0))
+            self.i_range_min.editingFinished.connect(self.call_filter)
 
             self.i_range_max = QSpinBox(self.c_range_content)
             self.i_range_max.setMinimumSize(QSize(80, 0))
+            self.i_range_max.editingFinished.connect(self.call_filter)
 
         # NUMBER WITH DECIMALS
         elif self.filter_type == VariableInputCreator.INPUT_FLOAT:
             self.i_precise = QDoubleSpinBox(self.c_precise_content)
             self.i_precise.setMinimumSize(QSize(80, 0))
+            self.i_precise.editingFinished.connect(self.call_filter)
 
             self.i_range_min = QDoubleSpinBox(self.c_range_content)
             self.i_range_min.setMinimumSize(QSize(80, 0))
+            self.i_range_min.editingFinished.connect(self.call_filter)
 
             self.i_range_max = QDoubleSpinBox(self.c_range_content)
             self.i_range_max.setMinimumSize(QSize(80, 0))
+            self.i_range_max.editingFinished.connect(self.call_filter)
 
         # DATE
         elif self.filter_type == VariableInputCreator.INPUT_DATE:
             self.i_precise = QDateEdit(self.c_precise_content)
             self.i_precise.setMinimumSize(QSize(100, 0))
+            self.i_precise.setDate(QDate.fromString('01-01-1900', "dd-MM-yyyy"))
+            self.i_precise.editingFinished.connect(self.call_filter)
 
             self.i_range_min = QDateEdit(self.c_range_content)
             self.i_range_min.setMinimumSize(QSize(100, 0))
+            self.i_range_min.setDate(QDate.fromString('01-01-1900', "dd-MM-yyyy"))
+            self.i_range_min.editingFinished.connect(self.call_filter)
 
             self.i_range_max = QDateEdit(self.c_range_content)
             self.i_range_max.setMinimumSize(QSize(100, 0))
+            self.i_range_max.setDate(QDate.fromString('01-01-1900', "dd-MM-yyyy"))
+            self.i_range_max.editingFinished.connect(self.call_filter)
+
 
         ly_content = QVBoxLayout()
         ly_content.setContentsMargins(9, 0, 0, 0)
@@ -140,6 +153,7 @@ class FilterVariableInput(QFrame):
         self.c_precise_header = FiltersHeader(self)
         ly_precise.addWidget(self.c_precise_header)
         self.c_precise_header.add_filters_content(self.c_precise_content)
+        self.c_precise_header.add_open_receaver(self.close_range)
 
         ly_precise_header = QHBoxLayout(self.c_precise_header)
         ly_precise_header.setContentsMargins(5, 5, 5, 5)
@@ -170,6 +184,7 @@ class FilterVariableInput(QFrame):
         self.c_range_header = FiltersHeader(self)
         ly_range.addWidget(self.c_range_header)
         self.c_range_header.add_filters_content(self.c_range_content)
+        self.c_range_header.add_open_receaver(self.close_precise)
 
         ly_precise_header = QHBoxLayout(self.c_range_header)
         ly_precise_header.setContentsMargins(5, 5, 5, 5)
@@ -232,3 +247,31 @@ class FilterVariableInput(QFrame):
     @Slot()
     def call_filter(self):
         self.s_filter.emit()
+
+    @Slot()
+    def close_precise(self):
+        self.c_precise_header.close_content()
+
+    @Slot()
+    def close_range(self):
+        self.c_range_header.close_content()
+
+    def reset(self):
+        if self.filter_type == VariableInputCreator.INPUT_OPTIONS:
+            self.i_filter.setCurrentIndex(0)
+
+        elif self.filter_type == VariableInputCreator.INPUT_TEXT:
+            self.i_filter.setText("")
+
+        elif self.filter_type == VariableInputCreator.INPUT_BOOL:
+            self.i_filter.setCurrentIndex(0)
+
+        elif self.filter_type in (VariableInputCreator.INPUT_INT, VariableInputCreator.INPUT_FLOAT):
+            self.i_precise.setValue(0)
+            self.i_range_min.setValue(0)
+            self.i_range_max.setValue(0)
+
+        elif self.filter_type == VariableInputCreator.INPUT_DATE:
+            self.i_precise.setDate(QDate.fromString('01-01-1900', "dd-MM-yyyy"))
+            self.i_range_min.setDate(QDate.fromString('01-01-1900', "dd-MM-yyyy"))
+            self.i_range_max.setDate(QDate.fromString('01-01-1900', "dd-MM-yyyy"))

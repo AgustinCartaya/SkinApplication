@@ -178,21 +178,20 @@ class VariableInput(QFrame):
                     print("error finding scale unit: " + values[1])
 
                 if self.input_type == VariableInputCreator.INPUT_INT:
-                    self.input.setValue(int(values[0]))
+                    self.input.setValue(values[0])
                 else:
-                    self.input.setValue(float(values[0]))
+                    self.input.setValue(values[0])
 
         elif self.input_type == VariableInputCreator.INPUT_INT:
-            self.input.setValue(int(item))
+            self.input.setValue(item)
         elif self.input_type == VariableInputCreator.INPUT_FLOAT:
-            self.input.setValue(float(item))
+            self.input.setValue(item)
 
         elif self.input_type == VariableInputCreator.INPUT_BOOL:
             self.input.setCurrentIndex(int(item)+1)
 
         elif self.input_type == VariableInputCreator.INPUT_DATE:
             self.input.setDate(QDate.fromString(item, "dd-MM-yyyy"))
-
 
     def get_items(self, null_item = True):
         return self.items

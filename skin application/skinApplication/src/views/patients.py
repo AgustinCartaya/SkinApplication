@@ -22,7 +22,6 @@ class PatientsView(ViewObject):
         self.connect_ui_signals()
 
         self.show_patients()
-        self.__show_mi_filters()
 
     def __load_patients(self):
         self.p_list.search_all_patients()
@@ -61,6 +60,8 @@ class PatientsView(ViewObject):
 
         # AQUI TE QUEDASTE
         self.ui.c_filter_mi_content.show_filters(cfg.FILES_MEDICAL_INFORMATION_PATH, self.filter_patients)
+        self.ui.c_filter_skl_charac_content.show_filters(cfg.FILES_SKIN_LESION_CHARACTERISTICS_PATH, self.filter_patients)
+
 
         # organizer
         self.ui.bt_sorter_mosaico.set_icon(Button.IC_MOSAICO)
@@ -92,18 +93,6 @@ class PatientsView(ViewObject):
 
         # Number of Patients
         self.ui.i_number_of_patients.setText(len(self.p_list))
-
-    def __show_mi_filters(self):
-        pass
-        # values filter
-#        for file_name in util.get_file_list(cfg.FILES_MEDICAL_INFORMATION_PATH):
-#            (i_id, i_type) = file_name.split(".")
-#            i_title = util.file_name_to_title(i_id)
-#            i_values = util.read_file_list(cfg.FILES_MEDICAL_INFORMATION_PATH, file_name)
-
-#            if i_type == VariableInputCreator.INPUT_OPTIONS:
-#                print(i_values)
-
 
     s_change_view = Signal(str,str,dict)
     def connect_ui_signals(self):
@@ -174,6 +163,9 @@ class PatientsView(ViewObject):
         self.ui.bt_age_range_2.select(False)
         self.ui.bt_age_range_3.select(False)
 
+        self.ui.c_filter_mi_content.reset_filters()
+        self.ui.c_filter_skl_charac_content.reset_filters()
+
         self.p_list_filtered = PatientList.duplicate_list(self.p_list)
         self.show_patients()
         self.__refresh_number_of_patients()
@@ -207,6 +199,8 @@ class PatientsView(ViewObject):
     @Slot()
     def filter_patients(self):
         print(self.ui.c_filter_mi_content.get_selected_filters())
+        print(self.ui.c_filter_skl_charac_content.get_selected_filters())
+
         self.p_list_filtered = PatientList.duplicate_list(self.p_list)
         self.__filter_search()
         if self.ui.c_filter_bi_header.open:
