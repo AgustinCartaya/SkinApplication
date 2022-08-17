@@ -73,7 +73,9 @@ class AddSklImgContainer(QFrame):
 
         util.create_file("", self.folder, file_name)
 
-        self.__show_single_skl_img(file_name, skl_img_name)
+#        self.__show_single_skl_img(file_name, skl_img_name)
+        self.__show_single_skl_img(file_name)
+
         self.__cancel_new_skl_img()
 
     @Slot()

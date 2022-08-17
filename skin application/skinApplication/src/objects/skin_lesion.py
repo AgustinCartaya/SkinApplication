@@ -159,3 +159,26 @@ class SkinLesion(DataObject):
         else:
             return None
 
+    def get_risk(self):
+        return self.__calc_risk()
+
+    def is_benign(self):
+        return (self.__calc_risk() == 0)
+
+    def is_malignant(self):
+        return (self.__calc_risk() == 1)
+
+    def is_indeterminate(self):
+        return (self.__calc_risk() == 2)
+
+    def __calc_risk(self):
+        for ai_name, ai_content in self.ai_results.items():
+            for label, result in ai_content.items():
+                if type(result) is str and "benign" == result.lower():
+                    return 0
+                elif type(result) is str and "malignant" == result.lower():
+                    return 1
+                elif type(result) is str and "indeterminate" == result.lower():
+                    return 2
+        return -1
+

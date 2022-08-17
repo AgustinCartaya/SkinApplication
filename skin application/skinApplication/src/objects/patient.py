@@ -130,3 +130,23 @@ class Patient(DataObject):
         for skl in dbc.select(cfg.TABLE_SKIN_LESIONS, id_patient = self.id):
             self.skin_lesions.append(SkinLesion(skl[0], skl[1], skl[2], skl[3]))
 
+    def has_benign_skl(self):
+        for skl in self.skin_lesions:
+            if skl.is_benign():
+                return True
+
+    def has_malignant_skl(self):
+        for skl in self.skin_lesions:
+            if skl.is_malignant():
+                return True
+
+    def has_indeterminate_skl(self):
+        for skl in self.skin_lesions:
+            if skl.is_indeterminate():
+                return True
+
+    def get_skl_risks(self):
+        risks = []
+        for skl in self.skin_lesions:
+            risks.append(skl.get_risk())
+        return risks

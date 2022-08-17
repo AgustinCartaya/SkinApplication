@@ -3,6 +3,9 @@ from .ui.ui_ai_results import Ui_ai_results
 from PySide6.QtWidgets import QHBoxLayout, QVBoxLayout, QSpacerItem, QSizePolicy, QFrame, QFileDialog
 from .ui.promoted.label import Label
 
+from src.objects.timeline_point import TimelinePoint
+
+
 class AIResultsView(ViewObject):
     def __init__(self, mv, results, ai, patient, skin_lesion):
         super().__init__(mv)
@@ -70,4 +73,6 @@ class AIResultsView(ViewObject):
     def __save_results(self):
         self.skl.ai_results[self.ai.name] = self.results
         self.skl.update_data()
+
+        TimelinePoint.upsert_point(self.skl)
 

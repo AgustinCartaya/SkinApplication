@@ -5,14 +5,43 @@ from .label import Label
 
 class SkinLesionPreviewInfo(QFrame):
 
-    def __init__(self, parent, results, title, is_ai_result = False,  *args, **kwards):
+    def __init__(self, parent, ):
         QFrame.__init__(self, parent)
+        self.results = None
+        self.title = ""
+        self.is_ai_result = False
+
+        self.__create()
+
+#        self.read_more = read_more
+
+    def show_info(self, results, title, is_ai_result = False):
         self.results = results
         self.title = title
         self.is_ai_result = is_ai_result
-#        self.read_more = read_more
 
-        self.__create()
+        self.__show_title()
+        self.__show_content()
+#        self.__create_read_more()
+
+
+    def __show_title(self):
+        self.lb_title.setText(self.title)
+
+    def __show_content(self):
+        # to refresh
+        if self.results is not None:
+            self.__delete_content()
+
+        if self.is_ai_result:
+            for ai_name, ai_result in self.results.items():
+                self.__create_ai_result(ai_name, ai_result)
+        else:
+            self.__create_single_result(self.results, self.ly_content)
+
+    def __delete_content(self):
+        for i in reversed(range(self.ly_content.count())):
+            self.ly_content.itemAt(i).widget().setParent(None)
 
     def __create(self):
         self.setMaximumSize(QSize(16777215, 200))
@@ -21,13 +50,13 @@ class SkinLesionPreviewInfo(QFrame):
         self.p_layout.setContentsMargins(0, 0, 0, 0)
 
         self.__create_scroll_area()
-        self.__create_title()
-        self.__create_content()
-#        self.__create_read_more()
+        self.__create_c_title()
+        self.__create_c_content()
 
         # spacer
         self.vs_description_down = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
         self.layout.addItem(self.vs_description_down)
+
 
     def __create_scroll_area(self):
         self.scroll_area = QScrollArea(self)
@@ -47,7 +76,7 @@ class SkinLesionPreviewInfo(QFrame):
 #        self.lb_read_more.setText(self.read_more)
 #        self.layout.addWidget(self.lb_read_more, 0, Qt.AlignHCenter|Qt.AlignBottom)
 
-    def __create_title(self):
+    def __create_c_title(self):
         self.c_title = QFrame(self)
         self.c_title.setMaximumSize(QSize(16777215, 20))
 
@@ -55,7 +84,6 @@ class SkinLesionPreviewInfo(QFrame):
         self.c_title_layout.setContentsMargins(0, 0, 0, 0)
 
         self.lb_title = Label(self.c_title)
-        self.lb_title.setText(self.title)
         self.lb_title.setMaximumSize(QSize(16777215, 20))
 
         self.c_title_layout.addWidget(self.lb_title, 0, Qt.AlignHCenter)
@@ -63,19 +91,12 @@ class SkinLesionPreviewInfo(QFrame):
         self.layout.addWidget(self.c_title)
 
 
-    def __create_content(self):
+    def __create_c_content(self):
         self.c_content = QFrame(self)
 
         self.ly_content = QVBoxLayout(self.c_content)
         self.ly_content.setSpacing(20)
 #        self.ly_content.setContentsMargins(9, 9, 9, 9)
-
-        if self.is_ai_result:
-            for ai_name, ai_result in self.results.items():
-                self.__create_ai_result(ai_name, ai_result)
-        else:
-            self.__create_single_result(self.results, self.ly_content)
-
 
         self.layout.addWidget(self.c_content)
 
@@ -87,12 +108,12 @@ class SkinLesionPreviewInfo(QFrame):
         ly_ai_result.setSpacing(12)
         ly_ai_result.setContentsMargins(0, 0, 0, 0)
 
-        # title
+        # AI title
         lb_ai_result_title = Label(c_ai_result)
         lb_ai_result_title.setText(ai_name)
         ly_ai_result.addWidget(lb_ai_result_title)
 
-        # content
+        # AI content
         self.__create_single_result(ai_result, ly_ai_result)
 
         self.ly_content.addWidget(c_ai_result)

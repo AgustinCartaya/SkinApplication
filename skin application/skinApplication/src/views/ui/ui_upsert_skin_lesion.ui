@@ -139,7 +139,7 @@
                 <x>0</x>
                 <y>0</y>
                 <width>364</width>
-                <height>328</height>
+                <height>332</height>
                </rect>
               </property>
               <layout class="QVBoxLayout" name="verticalLayout_30">
@@ -210,8 +210,11 @@
                </property>
               </widget>
              </item>
-             <item alignment="Qt::AlignLeft">
+             <item alignment="Qt::AlignRight">
               <widget class="Button" name="bt_see_images">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
                <property name="text">
                 <string>See images</string>
                </property>
@@ -230,7 +233,7 @@
                 <x>0</x>
                 <y>0</y>
                 <width>364</width>
-                <height>318</height>
+                <height>322</height>
                </rect>
               </property>
               <layout class="QVBoxLayout" name="verticalLayout_10">

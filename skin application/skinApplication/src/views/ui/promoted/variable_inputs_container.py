@@ -6,14 +6,13 @@ from .button import Button
 from .variable_input import VariableInput
 from .variable_input_creator import VariableInputCreator
 
-
-import src.util.data_cleaner as data_cleaner
 import src.util.util as util
 
 class VariableInputsContainer(QFrame):
 
 #    s_edit_items = Signal(str)
-    def __init__(self, folder,
+    def __init__(self,
+        folder,
         bt_text = "Add new Input",
         inputs_disposition = VariableInput.DISPOSITION_V,
         *args, **kwards):
@@ -46,9 +45,16 @@ class VariableInputsContainer(QFrame):
             i_title = util.file_name_to_title(i_id)
             i_values = util.read_file_list(self.folder, file_name)
 
+
             self.__show_single_input(i_id, i_title, i_values, i_type)
 
     def __show_single_input(self, i_id, i_title, i_values, i_type):
+        if i_type ==  VariableInputCreator.INPUT_OPTIONS and i_values[0].startswith("--e"):
+            editable = True
+            i_values = i_values[1:]
+        else:
+            editable = False
+
         input = VariableInput(self,
             i_id,
             i_title,
@@ -56,7 +62,8 @@ class VariableInputsContainer(QFrame):
             edit_receaver=self.__add_new_input_item,
             input_type=i_type,
             disposition=self.inputs_disposition,
-            add_null=True)
+            add_null=True,
+            editable=editable)
 
         self.inputs_layout.addWidget(input)
         self.inputs[i_id] = input
@@ -79,7 +86,9 @@ class VariableInputsContainer(QFrame):
         if file_name in self.inputs:
             raise ValueError('Caracteristic input already exists', "CARACTERISTIC_INPUT", "REPEATED")
 
-        file_content = '\n'.join(input_values)
+        file_content = ""
+        if len(input_values) > 0:
+            file_content = '\n'.join(input_values)
         util.create_file(file_content, self.folder, file_name + "." + input_type)
 
         self.__show_single_input(file_name, input_title, input_values, input_type)
@@ -107,7 +116,7 @@ class VariableInputsContainer(QFrame):
     def get_selected_items(self):
         selected_items = {}
         for selected_item in self.inputs:
-            selected_items[selected_item] = self.inputs[selected_item].get_selected_items()
+            selected_items[selected_item] = self.inputs[selected_item].get_selected_item()
         return selected_items
 
     def select_default_values(self, default):

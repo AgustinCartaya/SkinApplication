@@ -175,8 +175,15 @@
             </item>
             <item>
              <widget class="QDateEdit" name="i_birth_date">
+              <property name="minimumDate">
+               <date>
+                <year>1892</year>
+                <month>1</month>
+                <day>1</day>
+               </date>
+              </property>
               <property name="displayFormat">
-               <string>d/M/yyyy</string>
+               <string>dd-MM-yyyy</string>
               </property>
              </widget>
             </item>

@@ -17,20 +17,20 @@ from src.objects.skin_lesion import SkinLesion
 class SkinLesionPreview(QFrame):
 
     s_update = Signal(int)
-    s_see_time_line = Signal(int)
+    s_see_timeline = Signal(int)
     s_see_images = Signal(int)
     def __init__(self,
         parent,
         skin_lesion,
         update_receaver,
-        see_time_line_receaver,
+        see_timeline_receaver,
         see_images_receaver):
         QFrame.__init__(self, parent)
 
         self.skl = skin_lesion
 
         self.s_update.connect(update_receaver)
-        self.s_see_time_line.connect(see_time_line_receaver)
+        self.s_see_timeline.connect(see_timeline_receaver)
         self.s_see_images.connect(see_images_receaver)
         self.__create()
 
@@ -95,8 +95,11 @@ class SkinLesionPreview(QFrame):
         self.c_n2_up_layout.setContentsMargins(0, 0, 0, 0)
 
         # Anotations
-        annotations = SkinLesionPreviewInfo(self.c_n2, self.skl.characteristics, "characteristics")
-        ai_results = SkinLesionPreviewInfo(self.c_n2, self.skl.ai_results, "AI results", True)
+        annotations = SkinLesionPreviewInfo(self.c_n2)
+        ai_results = SkinLesionPreviewInfo(self.c_n2)
+
+        annotations.show_info(self.skl.characteristics, "characteristics")
+        ai_results.show_info(self.skl.ai_results, "AI results", True)
 
         self.c_n2_up_layout.addWidget(annotations)
         self.c_n2_up_layout.addWidget(ai_results)
@@ -130,12 +133,12 @@ class SkinLesionPreview(QFrame):
         self.c_buttons_layout.setContentsMargins(0, 0, 0, 0)
 
         # bt see time line
-        self.bt_see_time_line = Button(self.c_buttons)
-        self.bt_see_time_line.setText("Time line")
-        self.bt_see_time_line.setMinimumSize(QSize(100, 0))
-        self.bt_see_time_line.setMaximumSize(QSize(100, 16777215))
-        self.c_buttons_layout.addWidget(self.bt_see_time_line)
-        self.bt_see_time_line.clicked.connect(self.__see_time_line)
+        self.bt_see_timeline = Button(self.c_buttons)
+        self.bt_see_timeline.setText("Time line")
+        self.bt_see_timeline.setMinimumSize(QSize(100, 0))
+        self.bt_see_timeline.setMaximumSize(QSize(100, 16777215))
+        self.c_buttons_layout.addWidget(self.bt_see_timeline)
+        self.bt_see_timeline.clicked.connect(self.__see_timeline)
 
         # bt see imgaes
         self.bt_see_images = Button(self.c_buttons)
@@ -165,8 +168,8 @@ class SkinLesionPreview(QFrame):
     def __update(self):
         self.s_update.emit(self.skl.number)
 
-    def __see_time_line(self):
-        self.s_time_line.emit(self.skl.number)
+    def __see_timeline(self):
+        self.s_see_timeline.emit(self.skl.number)
 
     def __see_images(self):
         self.s_see_images.emit(self.skl.number)

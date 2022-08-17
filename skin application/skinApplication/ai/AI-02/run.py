@@ -15,7 +15,7 @@ def run(images, info):
     print("Calculating results...")
 
     results = {
-        "risk":"malignat",
+        "risk":"malignant",
         "type":"melanoma",
         "Accurance":87
     }

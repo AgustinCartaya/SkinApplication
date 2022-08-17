@@ -24,7 +24,8 @@ class ImagesView(ViewObject):
         self.selected_imgs = selected_images
 
 
-        self.img_list_filtered = ImageList(self.img_list)
+        self.img_list_filtered = ImageList()
+        self.img_list_filtered.join(self.img_list)
         self.img_list_sorted = None
 
 
@@ -35,6 +36,8 @@ class ImagesView(ViewObject):
 
         self.load_ui()
         self.connect_ui_signals()
+
+
 
         # no images
         if len(images) == 0:
@@ -61,7 +64,6 @@ class ImagesView(ViewObject):
         self.bt_command_text = self.ui.bt_command.text()
 
         # filters
-        self.ui.c_filter_image_type.check_all()
         self.ui.c_filter_date.hide()
 
         # organizer
@@ -84,13 +86,13 @@ class ImagesView(ViewObject):
 #        self.ui.c_pagination.set_cards_sep(0,5)
 
 
-
-
     def __create_image_type_filter(self):
         image_type_list = []
         for img_name, imgs in self.img_list.imgs_dict.items():
             image_type_list.append([img_name, len(imgs)])
         self.ui.c_filter_image_type.create_filters(image_type_list, self.filter_img_type_slot)
+        self.ui.c_filter_image_type.check_all()
+
 
     s_change_view = Signal(str,str,dict)
     def connect_ui_signals(self):
@@ -178,7 +180,8 @@ class ImagesView(ViewObject):
         self.__create_img_cards()
 
     def __filter_images(self):
-        self.img_list_filtered = ImageList(self.img_list)
+        self.img_list_filtered = ImageList()
+        self.img_list_filtered.join(self.img_list)
         # filter image type
         self.img_list_filtered = self.img_list_filtered.get_filtered_by_types(self.ui.c_filter_image_type.get_checked_list())
 
@@ -195,10 +198,11 @@ class ImagesView(ViewObject):
 
     def __create_img_cards(self):
         self.images_cards = []
+        selected_src = [img.src for img in self.selected_imgs]
         for img in self.img_list_sorted:
             card = SklImgCard(self.ui.c_pagination, img, self.image_clicked)
 #            if img.src in self.__get_selected_src():
-            if img in self.selected_imgs:
+            if img.src in selected_src:
                 card.set_selected(True)
             self.ui.c_pagination.add_card_size_changed_receaver(card.size_changed)
             self.images_cards.append(card)

@@ -115,13 +115,15 @@ class Ui_images(object):
 
         self.c_filter_date = QFrame(self.c_filters)
         self.c_filter_date.setObjectName(u"c_filter_date")
-        self.ly_filter_date = QVBoxLayout(self.c_filter_date)
-        self.ly_filter_date.setSpacing(12)
-        self.ly_filter_date.setObjectName(u"ly_filter_date")
+        self.c_filter_date.setFrameShape(QFrame.StyledPanel)
+        self.c_filter_date.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_5 = QVBoxLayout(self.c_filter_date)
+        self.verticalLayout_5.setSpacing(12)
+        self.verticalLayout_5.setObjectName(u"verticalLayout_5")
         self.lb_filter_date = QLabel(self.c_filter_date)
         self.lb_filter_date.setObjectName(u"lb_filter_date")
 
-        self.ly_filter_date.addWidget(self.lb_filter_date)
+        self.verticalLayout_5.addWidget(self.lb_filter_date)
 
         self.ly_filter_date_precise = QVBoxLayout()
         self.ly_filter_date_precise.setSpacing(4)
@@ -149,7 +151,7 @@ class Ui_images(object):
         self.ly_filter_date_precise.addLayout(self.ly_filter_date_precise_inputs)
 
 
-        self.ly_filter_date.addLayout(self.ly_filter_date_precise)
+        self.verticalLayout_5.addLayout(self.ly_filter_date_precise)
 
         self.ly_filter_date_range = QVBoxLayout()
         self.ly_filter_date_range.setSpacing(4)
@@ -189,7 +191,7 @@ class Ui_images(object):
         self.ly_filter_date_range.addLayout(self.ly_filter_date_range_inputs)
 
 
-        self.ly_filter_date.addLayout(self.ly_filter_date_range)
+        self.verticalLayout_5.addLayout(self.ly_filter_date_range)
 
 
         self.ly_filters.addWidget(self.c_filter_date)
@@ -218,7 +220,7 @@ class Ui_images(object):
         self.sc_description_content.setWidgetResizable(True)
         self.c_description_content = QWidget()
         self.c_description_content.setObjectName(u"c_description_content")
-        self.c_description_content.setGeometry(QRect(0, 0, 303, 441))
+        self.c_description_content.setGeometry(QRect(0, 0, 303, 414))
         self.verticalLayout_3 = QVBoxLayout(self.c_description_content)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.verticalLayout_3.setContentsMargins(16, 0, 0, -1)

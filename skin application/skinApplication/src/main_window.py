@@ -24,6 +24,7 @@ from .views.upsert_skin_lesion import UpsertSkinLesionView
 from .views.ai_launcher import AILauncherView
 from .views.images import ImagesView
 from .views.ai_results import AIResultsView
+from .views.timeline import TimelineView
 
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self, ai_dict):
@@ -131,6 +132,10 @@ class MainWindow(QtWidgets.QMainWindow):
 
         elif view_to == cfg.AI_RESULTS_VIEW:
             self.set_view(AIResultsView(self, atts["results"], atts["ai"], atts["patient"], atts["skin_lesion"]))
+
+        elif view_to == cfg.TIMELINE_VIEW:
+            self.set_view(TimelineView(self, atts["patient"], atts["skin_lesion"]))
+
 
 #        print(self._layers.count())
 

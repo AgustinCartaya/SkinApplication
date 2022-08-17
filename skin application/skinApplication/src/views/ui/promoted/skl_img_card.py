@@ -16,7 +16,10 @@ class SklImgCard(QFrame):
         QFrame.__init__(self, None)
 
         self.img = image
-        self.s_clicked.connect(click_receaver)
+        self.click_receaver = click_receaver
+
+        if self.click_receaver is not None:
+            self.s_clicked.connect(self.click_receaver)
 
         self.__create()
 
@@ -56,8 +59,9 @@ class SklImgCard(QFrame):
         self.__show_image()
 
     def mousePressEvent(self, arg):
-        self.set_selected(not self.property("selected"))
-        self.s_clicked.emit(self.img, self.property("selected"))
+        if self.click_receaver is not None:
+            self.set_selected(not self.property("selected"))
+            self.s_clicked.emit(self.img, self.property("selected"))
 
     def repaint(self):
         self.setStyle(QApplication.style())

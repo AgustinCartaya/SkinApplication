@@ -33,7 +33,7 @@ class CheckPatientView(ViewObject):
             skin_lesion_preview = SkinLesionPreview(self.ui.c_skin_lesions_preview,
                 skl,
                 self.update_skin_lesion,
-                self.see_time_line,
+                self.see_timeline,
                 self.see_images)
 
             skl_photography = skl.get_photography()
@@ -49,8 +49,8 @@ class CheckPatientView(ViewObject):
         self.s_change_view.emit(cfg.CHECK_PATIENT_VIEW, cfg.UPSERT_SKIN_LESION_VIEW, {"patient" : self.p, "skin_lesion": self.p.skin_lesions[skin_lesion_nb]})
 
     Slot(int)
-    def see_time_line(self, skin_lesion_nb):
-        pass
+    def see_timeline(self, skin_lesion_nb):
+        self.s_change_view.emit(cfg.CHECK_PATIENT_VIEW, cfg.TIMELINE_VIEW, {"patient" : self.p, "skin_lesion": self.p.skin_lesions[skin_lesion_nb]})
 
     Slot(int)
     def see_images(self, skin_lesion_nb):
@@ -106,19 +106,14 @@ class CheckPatientView(ViewObject):
 
     def show_medical_information(self):
         form_index = 0
-        for mi in self.p.mi:
-            mi_title = Label(self.ui.c_patient_information_content)
-            mi_title.setText(mi, colon=True, format=True)
-            self.ui.ly_mi_content.setWidget(form_index, QFormLayout.LabelRole, mi_title)
+        for mi_name, mi_content in self.p.mi.items():
+            lb_mi_title = Label(self.ui.c_patient_information_content)
+            lb_mi_title.setText(mi_name, colon=True, format=True)
+            self.ui.ly_mi_content.setWidget(form_index, QFormLayout.LabelRole, lb_mi_title)
 
-            if type(self.p.mi[mi]) is str:
-                content = self.p.mi[mi]
-            else:
-                content = " ".join(self.p.mi[mi])
-
-            mi_content = Label(self.ui.c_patient_information_content)
-            mi_content.setText(content)
-            self.ui.ly_mi_content.setWidget(form_index, QFormLayout.FieldRole, mi_content)
+            lb_mi_content = Label(self.ui.c_patient_information_content)
+            lb_mi_content.setText(mi_content)
+            self.ui.ly_mi_content.setWidget(form_index, QFormLayout.FieldRole, lb_mi_content)
 
             form_index = form_index + 1
 

@@ -92,6 +92,16 @@ AddSklImgItem::hover
 }
 
 
+/*-----FiltersHeader-----*/
+FiltersHeader{
+    border-top: 1px solid @c_gray_ultra_light;
+    border-bottom: 1px solid @c_gray_ultra_light;
+}
+FiltersHeader::hover{
+
+    background-color: @c_blue_light;
+}
+
 
 /*-----QLabel-----*/
 Label

@@ -106,6 +106,7 @@ class Ui_upsert_patient(object):
 
         self.i_birth_date = QDateEdit(self.c_center)
         self.i_birth_date.setObjectName(u"i_birth_date")
+        self.i_birth_date.setMinimumDate(QDate(1892, 1, 1))
 
         self.ly_birth_date.addWidget(self.i_birth_date)
 
@@ -225,7 +226,7 @@ class Ui_upsert_patient(object):
         self.lb_title.setText(QCoreApplication.translate("upsert_patient", u"Add patient", None))
         self.lb_first_name.setText(QCoreApplication.translate("upsert_patient", u"First name", None))
         self.lb_birth_date.setText(QCoreApplication.translate("upsert_patient", u"Date of birth", None))
-        self.i_birth_date.setDisplayFormat(QCoreApplication.translate("upsert_patient", u"d/M/yyyy", None))
+        self.i_birth_date.setDisplayFormat(QCoreApplication.translate("upsert_patient", u"dd-MM-yyyy", None))
         self.lb_last_name.setText(QCoreApplication.translate("upsert_patient", u"Last name", None))
         self.lb_gender.setText(QCoreApplication.translate("upsert_patient", u"Gender", None))
         self.i_gender_m.setText(QCoreApplication.translate("upsert_patient", u"Male", None))

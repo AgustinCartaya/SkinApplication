@@ -9,7 +9,7 @@ from .add_skl_img_creator import AddSklImgCreator
 
 from PySide6.QtCore import Signal, Slot
 
-import src.util.data_cleaner as data_cleaner
+import src.util.util as util
 
 from src.objects.image import Image
 
@@ -58,8 +58,8 @@ class AddSklImgItem(QFrame):
         self.loadFiles()
 
     def loadFiles(self):
-        img_path_name, _ = QFileDialog.getOpenFileNames(self, 'Open file',
-             'D:\\Documents\\Internship Documents\\Image data\\1AA\\images\\Microscopy\\MALAIRE DTE',"Image files (*.png *.jpg *.gif *.svg *.bmp)")
+        img_path_name, _ = QFileDialog.getOpenFileNames(self, 'Open ' + util.file_name_to_title(self.id) ,
+             'D:\\Documents\\Internship Documents\\Image data\\2AO\\images',"Image files (*.png *.jpg *.gif *.svg *.bmp)")
 
         self.img_path_name.update([Image(src, self.id) for src in img_path_name])
         self.__update_nb_new_images()

@@ -9,11 +9,8 @@ from .image import Image
 
 
 class ImageList:
-    def __init__(self, *args):
+    def __init__(self):
         self.imgs_dict ={}
-
-        if len(args) >= 1:
-            self.__duplicate(args)
 
     def __len__(self):
         return len(self.get_all_images())
@@ -21,17 +18,16 @@ class ImageList:
 #    def __iter__(self):
 #        return iter(self.imgs_dict)
 
-    def __duplicate(self, image_list_list):
-        _imgs_dict = {}
-        for image_list in image_list_list:
+    # maybe this fusction is not fast enough
+    def join(self, *args):
+        for image_list in args:
             for img_type, imgs in image_list.imgs_dict.items():
-                if img_type in _imgs_dict:
-                    _imgs_dict[img_type].union(set(imgs))
+                if img_type in self.imgs_dict:
+                    for img in imgs:
+                        if img not in self.imgs_dict[img_type]:
+                            self.append_image(img_type, img)
                 else:
-                    _imgs_dict[img_type] = (set(imgs))
-
-        for img_type, imgs in _imgs_dict.items():
-            self.imgs_dict[img_type] = list(imgs)
+                    self.append_images(img_type, imgs)
 
     def append_images(self, img_type, lst):
         self.imgs_dict[img_type] = lst
@@ -65,7 +61,12 @@ class ImageList:
 
     def get_src_dict(self):
         src_dict = {}
-        for img_name, imgs in self.imgs_dict.items():
-            src_dict[img_name] = [img.src for img in imgs]
+        for img_type, imgs in self.imgs_dict.items():
+            src_dict[img_type] = [img.src for img in imgs]
         return src_dict
 
+    def get_name_extension_dict(self):
+        src_dict = {}
+        for img_type, imgs in self.imgs_dict.items():
+            src_dict[img_type] = [img.name_extension for img in imgs]
+        return src_dict

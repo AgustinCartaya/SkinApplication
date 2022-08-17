@@ -11,7 +11,7 @@ from .ui.promoted.ai_previews_container import AIPreviewsContainer
 from .ui.promoted.button import Button
 
 from src.objects.skin_lesion import SkinLesion
-from src.objects.time_line_point import TimeLinePoint
+from src.objects.timeline_point import TimelinePoint
 
 class UpsertSkinLesionView(ViewObject):
     def __init__(self, mw, ai_dict, patient, skin_lesion):
@@ -90,8 +90,8 @@ class UpsertSkinLesionView(ViewObject):
         selected_images = self.c_add_skl_img.get_selected_images()
         saved_images = self.skl.save_images(selected_images)
 
-        time_line_point = TimeLinePoint(self.skl, saved_images)
-        time_line_point.upsert()
+        TimelinePoint.upsert_point(self.skl, saved_images)
+
 
 
         # when skin lesion updated without scaping from the view
@@ -101,14 +101,9 @@ class UpsertSkinLesionView(ViewObject):
     def __catch_characteristics(self):
         characteristics = {}
         for charac_name, charac_value in self.c_characteristics.get_selected_items().items():
-            if ((charac_value[1] is None and charac_value[0] == "") or
-                charac_value[1] == ""):
+            if charac_value is None:
                     continue
-
-            if charac_value[1] is None:
-                charac_value = charac_value[0]
             characteristics[charac_name] = charac_value
-
         return characteristics
     @Slot()
     def __complete(self):
@@ -143,6 +138,7 @@ class UpsertSkinLesionView(ViewObject):
 
         # images
         self.c_add_skl_img.set_number_images(self.skl.get_skl_img_numbers())
+        self.ui.bt_see_images.setEnabled(True)
 
     def __see_images(self):
         self.s_change_view.emit(cfg.UPSERT_SKIN_LESION_VIEW, cfg.IMAGES_VIEW, {"images":self.skl.get_all_skl_imgs(), "patient" : self.p, "skin_lesion": self.skl, 'collet_mode':False})

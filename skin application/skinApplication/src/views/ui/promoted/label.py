@@ -21,6 +21,11 @@ class Label(QLabel):
             text = " ".join(text)
         elif type(text) in (int, float):
             text = str(text)
+        elif type(text) is bool:
+            if text:
+                text = "Yes"
+            else:
+                text = "No"
 
         # formatting
         if format:

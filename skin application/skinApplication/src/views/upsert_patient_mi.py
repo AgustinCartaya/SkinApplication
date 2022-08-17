@@ -4,7 +4,6 @@ from .ui.ui_upsert_patient_mi import Ui_upsert_patient_mi
 from src.objects.patient import Patient
 
 from .ui.promoted.variable_inputs_container import VariableInputsContainer
-from .ui.promoted.variable_input import VariableInput
 
 class UpsertPatientMiView(ViewObject):
     def __init__(self, mw, patient, mode="add"):
@@ -61,12 +60,8 @@ class UpsertPatientMiView(ViewObject):
     def catch_medical_info(self):
         medical_info = {}
         for mi_name, mi_value in self.c_mi.get_selected_items().items():
-            if ((mi_value[1] is None and mi_value[0] == "") or
-                mi_value[1] == ""):
+            if mi_value is None:
                     continue
-
-            if mi_value[1] is None:
-                mi_value = mi_value[0]
             medical_info[mi_name] = mi_value
 
         self.p.mi = medical_info
