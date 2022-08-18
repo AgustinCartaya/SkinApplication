@@ -26,7 +26,8 @@ class FilterSklImgContainer(QFrame):
 
     def create_filters(self, images, state_changed_receaver):
         for img in images:
-            image_type_cb = FilterSklImgItem(self, util.file_name_to_title(img[0]), img[1], state_changed_receaver)
+            image_type_cb = FilterSklImgItem(self)
+            image_type_cb.create_contet(util.file_name_to_title(img[0]), img[1], state_changed_receaver)
             self.layout.addWidget(image_type_cb)
             self.inputs[img[0]] = image_type_cb
 
@@ -40,3 +41,7 @@ class FilterSklImgContainer(QFrame):
             if input.is_checked():
                 lst.append(image_type)
         return lst
+
+    def refrsh_lb_numbers(self, lst):
+        for ele in lst:
+            self.inputs[ele[0]].refresh_lb_number(ele[1])

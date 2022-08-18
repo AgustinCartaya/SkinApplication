@@ -81,6 +81,7 @@ class PatientsView(ViewObject):
 
         # pagination
         self.ui.c_pagination.set_grid_cards_size(3,4)
+#        self.ui.c_pagination.forced_empty_spaces = True
 
         # Number of Patients
         self.ui.i_number_of_patients.setText(len(self.p_list))
@@ -223,7 +224,7 @@ class PatientsView(ViewObject):
         if self.ui.bt_sorter_id.is_selected():
             sort_by = "id"
         else:
-            sort_by = "first_name"
+            sort_by = "last_name"
         self.p_list_filtered.sort_by(sort_by, self.ui.bt_sorter_dsc.is_selected())
         self.p_list_sortered = self.p_list_filtered
 
@@ -233,7 +234,7 @@ class PatientsView(ViewObject):
             bt = PatientCard(self.ui.c_pagination, p, self)
 #            bt.setPatient(p)
             # a modificar
-            bt.setTitle(self.p_list_sortered.sorted_by)
+#            bt.setTitle(self.p_list_sortered.sorted_by)
 
             card_patients.append(bt)
         self.ui.c_pagination.add_cards(card_patients)

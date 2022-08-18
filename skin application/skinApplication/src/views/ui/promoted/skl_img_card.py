@@ -12,14 +12,19 @@ from PySide6.QtCore import Signal, Slot
 class SklImgCard(QFrame):
 
     s_clicked = Signal(Image, bool)
-    def __init__(self, parent, image, click_receaver):
+    s_double_click = Signal(Image)
+    def __init__(self, parent, image, click_receaver, double_click_receaver=None):
         QFrame.__init__(self, None)
 
         self.img = image
         self.click_receaver = click_receaver
+        self.double_click_receaver = double_click_receaver
 
         if self.click_receaver is not None:
             self.s_clicked.connect(self.click_receaver)
+
+        if self.double_click_receaver is not None:
+            self.s_double_click.connect(self.double_click_receaver)
 
         self.__create()
 
@@ -37,8 +42,6 @@ class SklImgCard(QFrame):
         self.pxm_image = QPixmap(self.img.src)
         self.layout.addWidget(self.lb_image, 0, Qt.AlignHCenter|Qt.AlignVCenter)
 
-    def mousePressEvent(self, arg):
-        self.s_open_image.emit(self.img)
 
     def __show_image(self):
 #        print(self.size())
@@ -62,6 +65,10 @@ class SklImgCard(QFrame):
         if self.click_receaver is not None:
             self.set_selected(not self.property("selected"))
             self.s_clicked.emit(self.img, self.property("selected"))
+
+    def mouseDoubleClickEvent(self, event):
+        if self.double_click_receaver is not None:
+            self.s_double_click.emit(self.img)
 
     def repaint(self):
         self.setStyle(QApplication.style())

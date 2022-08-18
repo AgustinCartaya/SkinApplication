@@ -27,7 +27,7 @@ class TimelinePoint(DataObject):
                     images_to_save = tlp.images
                     for img_type, img_nes in images.get_name_extension_dict().items():
                         if img_type in images_to_save:
-                            images_to_save[img_type] = images_to_save[img_type] + img_nes
+                            images_to_save[img_type] = list(set(images_to_save[img_type] + img_nes))
                         else:
                             images_to_save[img_type] = img_nes
             # create time line point
@@ -48,7 +48,10 @@ class TimelinePoint(DataObject):
             img_name_extension_dict = data.images
             data.images = ImageList()
             for img_type, img_nes in img_name_extension_dict.items():
-                data.images.append_images(img_type, [Image(util.gen_path(data.skl.get_skl_img_folder_path(img_type),img_ne), img_type) for img_ne in img_nes])
+                for img_ne in img_nes:
+                    img_src = util.gen_path(data.skl.get_skl_img_folder_path(img_type),img_ne)
+                    if util.is_file(img_src):
+                        data.images.append_image(img_type, Image(img_src, img_type))
         return data
 
     # for test

@@ -19,6 +19,7 @@ from PySide6.QtWidgets import (QApplication, QDateEdit, QFrame, QHBoxLayout,
     QLabel, QScrollArea, QSizePolicy, QSpacerItem,
     QVBoxLayout, QWidget)
 
+from .promoted.button import Button
 from .promoted.check_button import CheckButton
 from .promoted.filter_skl_img_container import FilterSklImgContainer
 from .promoted.label import Label
@@ -76,7 +77,7 @@ class Ui_images(object):
         self.verticalLayout_10 = QVBoxLayout()
         self.verticalLayout_10.setSpacing(0)
         self.verticalLayout_10.setObjectName(u"verticalLayout_10")
-        self.verticalLayout_10.setContentsMargins(20, -1, -1, -1)
+        self.verticalLayout_10.setContentsMargins(20, -1, -1, 10)
         self.c_filters = QFrame(self.c_left)
         self.c_filters.setObjectName(u"c_filters")
         self.c_filters.setFrameShape(QFrame.StyledPanel)
@@ -220,7 +221,7 @@ class Ui_images(object):
         self.sc_description_content.setWidgetResizable(True)
         self.c_description_content = QWidget()
         self.c_description_content.setObjectName(u"c_description_content")
-        self.c_description_content.setGeometry(QRect(0, 0, 303, 414))
+        self.c_description_content.setGeometry(QRect(0, 0, 303, 351))
         self.verticalLayout_3 = QVBoxLayout(self.c_description_content)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.verticalLayout_3.setContentsMargins(16, 0, 0, -1)
@@ -239,6 +240,16 @@ class Ui_images(object):
 
 
         self.verticalLayout_10.addWidget(self.c_description)
+
+        self.verticalSpacer_2 = QSpacerItem(20, 30, QSizePolicy.Minimum, QSizePolicy.Fixed)
+
+        self.verticalLayout_10.addItem(self.verticalSpacer_2)
+
+        self.bt_delete_image = Button(self.c_left)
+        self.bt_delete_image.setObjectName(u"bt_delete_image")
+        self.bt_delete_image.setMinimumSize(QSize(150, 0))
+
+        self.verticalLayout_10.addWidget(self.bt_delete_image, 0, Qt.AlignHCenter)
 
 
         self.verticalLayout_18.addLayout(self.verticalLayout_10)
@@ -372,6 +383,7 @@ class Ui_images(object):
         self.lb_filter_date_range.setText(QCoreApplication.translate("images", u"Range", None))
         self.lb_date_range_to.setText(QCoreApplication.translate("images", u"to", None))
         self.lb_description.setText(QCoreApplication.translate("images", u"Description", None))
+        self.bt_delete_image.setText(QCoreApplication.translate("images", u"Delete image", None))
         self.lb_organizer_titles.setText(QCoreApplication.translate("images", u"Organizer", None))
         self.bt_sorter_dsc.setText(QCoreApplication.translate("images", u"z-A", None))
         self.bt_sorter_asc.setText(QCoreApplication.translate("images", u"A-z", None))

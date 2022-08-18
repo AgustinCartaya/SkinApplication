@@ -149,9 +149,9 @@ class SkinLesion(DataObject):
 
     def get_photography(self):
         img_dirs = [dir_name.lower() for dir_name in self.get_available_skl_img_names()]
-        if "photography" in img_dirs:
+        if "photography" in img_dirs and self.get_skl_img_number("photography") > 0:
             return self.get_skl_imgs("photography", 1)[0]
-        elif "medical_image" in img_dirs:
+        elif "medical_image" in img_dirs and self.get_skl_img_number("medical_image") > 0:
             return self.get_skl_imgs("medical_image", 1)[0]
         else:
             return None

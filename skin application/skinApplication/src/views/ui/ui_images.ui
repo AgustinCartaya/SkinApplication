@@ -121,6 +121,9 @@
           <property name="leftMargin">
            <number>20</number>
           </property>
+          <property name="bottomMargin">
+           <number>10</number>
+          </property>
           <item>
            <widget class="QFrame" name="c_filters">
             <property name="frameShape">
@@ -388,7 +391,7 @@
                   <x>0</x>
                   <y>0</y>
                   <width>303</width>
-                  <height>414</height>
+                  <height>351</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -422,6 +425,35 @@
               </widget>
              </item>
             </layout>
+           </widget>
+          </item>
+          <item>
+           <spacer name="verticalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>30</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item alignment="Qt::AlignHCenter">
+           <widget class="Button" name="bt_delete_image">
+            <property name="minimumSize">
+             <size>
+              <width>150</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Delete image</string>
+            </property>
            </widget>
           </item>
          </layout>
@@ -707,6 +739,11 @@
    <extends>QFrame</extends>
    <header>.promoted.filter_skl_img_container</header>
    <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>Button</class>
+   <extends>QPushButton</extends>
+   <header>.promoted.button</header>
   </customwidget>
  </customwidgets>
  <resources/>

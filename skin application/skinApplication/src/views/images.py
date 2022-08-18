@@ -3,6 +3,8 @@ from .ui.ui_images import Ui_images
 
 from .ui.promoted.skl_img_card import  SklImgCard
 from .ui.promoted.label import Label
+from .ui.promoted.check_button_group import CheckButtonGroup
+
 
 from PySide6.QtWidgets import QHBoxLayout, QVBoxLayout, QSpacerItem, QSizePolicy, QFrame, QFileDialog
 
@@ -70,13 +72,11 @@ class ImagesView(ViewObject):
         self.ui.bt_sorter_name.select(True)
         self.ui.bt_sorter_asc.select(True)
 
-        g1 = [self.ui.bt_sorter_name, self.ui.bt_sorter_date]
-        g2 = [self.ui.bt_sorter_asc, self.ui.bt_sorter_dsc]
+        self.g_sorter_name = CheckButtonGroup()
+        self.g_sorter_name.add_buttons(self.ui.bt_sorter_name, self.ui.bt_sorter_date)
 
-        self.ui.bt_sorter_name.add_group(g1)
-        self.ui.bt_sorter_date.add_group(g1)
-        self.ui.bt_sorter_asc.add_group(g2)
-        self.ui.bt_sorter_dsc.add_group(g2)
+        self.g_sorter_asc = CheckButtonGroup()
+        self.g_sorter_asc.add_buttons(self.ui.bt_sorter_asc, self.ui.bt_sorter_dsc)
 
 #        self.ui.c_sorter_name.hide()
         self.ui.bt_sorter_date.setEnabled(False)
@@ -84,6 +84,10 @@ class ImagesView(ViewObject):
         # pagination
         self.ui.c_pagination.set_grid_cards_size(4,6)
 #        self.ui.c_pagination.set_cards_sep(0,5)
+
+        # button delete
+        self.ui.bt_delete_image.set_type(Button.BT_DELETE)
+        self.ui.bt_delete_image.hide()
 
 
     def __create_image_type_filter(self):
@@ -93,6 +97,11 @@ class ImagesView(ViewObject):
         self.ui.c_filter_image_type.create_filters(image_type_list, self.filter_img_type_slot)
         self.ui.c_filter_image_type.check_all()
 
+    def __refresh_image_type_filter_numbers(self):
+        image_type_list = []
+        for img_name, imgs in self.img_list.imgs_dict.items():
+            image_type_list.append([img_name, len(imgs)])
+        self.ui.c_filter_image_type.refrsh_lb_numbers(image_type_list)
 
     s_change_view = Signal(str,str,dict)
     def connect_ui_signals(self):
@@ -100,13 +109,15 @@ class ImagesView(ViewObject):
         if self.collet_mode:
             self.ui.bt_command.clicked.connect(self.__collet_images)
         else:
-            self.ui.bt_command.clicked.connect(self.__view_images)
+            self.ui.bt_command.clicked.connect(self.__open_images)
 
         # organizer
         self.ui.bt_sorter_name.clicked.connect(self.__show_images)
         self.ui.bt_sorter_asc.clicked.connect(self.__show_images)
         self.ui.bt_sorter_dsc.clicked.connect(self.__show_images)
 
+        # delete image
+        self.ui.bt_delete_image.clicked.connect(self.__delete_image)
 
         # created signals
         self.s_change_view.connect(self.MW.change_view)
@@ -116,7 +127,7 @@ class ImagesView(ViewObject):
         self.__filter_images()
 
     Slot()
-    def __view_images(self):
+    def __open_images(self):
         self.close_image_viewers()
         for img in self.selected_imgs:
             self.image_viewers.append(ImageViewer(img))
@@ -125,15 +136,28 @@ class ImagesView(ViewObject):
     def close_image_viewers(self):
         self.image_viewers = []
 
+    Slot(Image)
+    def open_single_image(self, img):
+        self.image_viewers.append(ImageViewer(img))
+        self.image_viewers[-1].show()
+
     Slot(Image, bool)
     def image_clicked(self, img, selected):
         if selected:
             self.selected_imgs.append(img)
             # show image description
             self.__show_image_description(img)
+
+            # show delete button
+            self.ui.bt_delete_image.show()
+
         else:
             self.selected_imgs.remove(img)
             self.__clean_image_descriptions()
+
+            # hide delete button
+            self.ui.bt_delete_image.hide()
+
 
         # show selected images number
         self.__refresh_command_bt_text()
@@ -200,7 +224,7 @@ class ImagesView(ViewObject):
         self.images_cards = []
         selected_src = [img.src for img in self.selected_imgs]
         for img in self.img_list_sorted:
-            card = SklImgCard(self.ui.c_pagination, img, self.image_clicked)
+            card = SklImgCard(self.ui.c_pagination, img, self.image_clicked, self.open_single_image)
 #            if img.src in self.__get_selected_src():
             if img.src in selected_src:
                 card.set_selected(True)
@@ -226,3 +250,18 @@ class ImagesView(ViewObject):
             self.ui.bt_command.setText(self.bt_command_text + " (" + str(nb_selected) + ")")
         else:
             self.ui.bt_command.setText(self.bt_command_text)
+
+    def __delete_image(self):
+        # ask if wats delete the image
+        img = self.selected_imgs.pop()
+        self.img_list.remove_image(img)
+        self.__filter_images()
+        src = img.src
+        del(img.image)
+        del(img)
+#        self.selected_imgs[-1]
+        util.delete_file(src)
+
+        if len(self.selected_imgs) == 0:
+            self.ui.bt_delete_image.hide()
+        self.__refresh_image_type_filter_numbers()

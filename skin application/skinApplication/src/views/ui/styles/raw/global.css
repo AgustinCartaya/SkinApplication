@@ -19,7 +19,7 @@ background-color: transparent;
 
 /*-----PatientCard-----*/
 
-PatientCard{
+/*PatientCard{
     background-color: @c_skin_base;
     border-radius: 3px;
     color: white;
@@ -38,7 +38,55 @@ PatientCard::hover{
 
 PatientCard Label{
     color: white;
+}*/
+
+PatientCard{
+    border-radius: 2px;
 }
+
+PatientCard #c_center{
+    background-color: @c_blue_light;
+/*    color: white;*/
+}
+
+
+
+PatientCard #c_bottom{
+    background-color: @c_gray_light;
+/*    color: white;*/
+}
+
+
+PatientCard #c_center[hover=true]{
+    background-color: @c_blue_dark;
+/*    color: white;*/
+}
+
+PatientCard #c_bottom[hover=true]
+{
+    background-color: @c_gray_dark;
+/*    color: white;*/
+}
+
+PatientCard #lb_id{
+    color: white;
+}
+
+/*PatientCard{
+    background-color: @c_skin_base;
+    border-radius: 3px;
+    color: white;
+}
+
+PatientCard::hover{
+    background-color: @c_skin_dark;
+}
+
+
+PatientCard Label{
+    color: white;
+}*/
+
 
 /*-----SklImgCard-----*/
 SklImgCard Label{
@@ -181,6 +229,23 @@ Button[type=cancel]::hover
 Button[type=cancel]::pressed
 {
         background-color: @c_gray_base;
+}
+
+Button[type=delete]
+{
+    background-color: @c_red_base;
+    color: white;
+}
+
+Button[type=delete]::hover
+{
+        background-color: @c_red_dark;
+}
+
+
+Button[type=delete]::pressed
+{
+        background-color: @c_red_base;
 }
 
 Button::disabled

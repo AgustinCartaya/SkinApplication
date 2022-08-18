@@ -79,6 +79,10 @@ def apped_to_file(text, path, name=None):
     with open(file_path_name, 'a') as f:
         f.write(text)
 
+def delete_file(path, name=None):
+    file_path_name = _get_file_path_name(path, name)
+    if is_file(file_path_name):
+        os.remove(file_path_name)
 
 # create dir
 def create_dir(path, name=None):

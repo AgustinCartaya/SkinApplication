@@ -70,3 +70,6 @@ class ImageList:
         for img_type, imgs in self.imgs_dict.items():
             src_dict[img_type] = [img.name_extension for img in imgs]
         return src_dict
+
+    def remove_image(self, img):
+        self.imgs_dict[img.info_dict["type"]].remove(img)

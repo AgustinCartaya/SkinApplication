@@ -1,6 +1,5 @@
 # This Python file uses the following encoding: utf-8
-from PySide6.QtWidgets import QPushButton
-from PySide6.QtWidgets import QApplication
+from PySide6.QtWidgets import QPushButton, QApplication
 from PySide6.QtCore import Signal, Slot, Qt
 
 class Button(QPushButton):
