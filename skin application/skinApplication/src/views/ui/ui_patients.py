@@ -17,7 +17,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QCheckBox, QFrame, QHBoxLayout,
     QLabel, QPushButton, QScrollArea, QSizePolicy,
-    QSpacerItem, QSpinBox, QVBoxLayout, QWidget)
+    QSpacerItem, QVBoxLayout, QWidget)
 
 from .promoted.button import Button
 from .promoted.check_button import CheckButton
@@ -81,9 +81,10 @@ class Ui_patients(object):
         self.verticalLayout_18.setContentsMargins(0, 0, 0, 0)
         self.ly_filters_title = QHBoxLayout()
         self.ly_filters_title.setObjectName(u"ly_filters_title")
-        self.spacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.bt_reset_filters = Button(self.c_filters)
+        self.bt_reset_filters.setObjectName(u"bt_reset_filters")
 
-        self.ly_filters_title.addItem(self.spacer)
+        self.ly_filters_title.addWidget(self.bt_reset_filters, 0, Qt.AlignHCenter)
 
         self.lb_filters_title = Label(self.c_filters)
         self.lb_filters_title.setObjectName(u"lb_filters_title")
@@ -91,10 +92,10 @@ class Ui_patients(object):
 
         self.ly_filters_title.addWidget(self.lb_filters_title, 0, Qt.AlignHCenter)
 
-        self.bt_reset_filters = Button(self.c_filters)
-        self.bt_reset_filters.setObjectName(u"bt_reset_filters")
+        self.bt_filter = Button(self.c_filters)
+        self.bt_filter.setObjectName(u"bt_filter")
 
-        self.ly_filters_title.addWidget(self.bt_reset_filters, 0, Qt.AlignRight)
+        self.ly_filters_title.addWidget(self.bt_filter, 0, Qt.AlignHCenter)
 
         self.ly_filters_title.setStretch(0, 1)
         self.ly_filters_title.setStretch(1, 1)
@@ -122,198 +123,20 @@ class Ui_patients(object):
         self.c_filter_bi_header.setObjectName(u"c_filter_bi_header")
         self.c_filter_bi_header.setFrameShape(QFrame.StyledPanel)
         self.c_filter_bi_header.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_7 = QHBoxLayout(self.c_filter_bi_header)
-        self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
-        self.lb_filter_clinical_attributes = Label(self.c_filter_bi_header)
-        self.lb_filter_clinical_attributes.setObjectName(u"lb_filter_clinical_attributes")
-        self.lb_filter_clinical_attributes.setMaximumSize(QSize(16777215, 20))
+        self.horizontalLayout_15 = QHBoxLayout(self.c_filter_bi_header)
+        self.horizontalLayout_15.setObjectName(u"horizontalLayout_15")
+        self.lb_filter_bi_header = QLabel(self.c_filter_bi_header)
+        self.lb_filter_bi_header.setObjectName(u"lb_filter_bi_header")
 
-        self.horizontalLayout_7.addWidget(self.lb_filter_clinical_attributes, 0, Qt.AlignLeft)
+        self.horizontalLayout_15.addWidget(self.lb_filter_bi_header)
 
 
         self.ly_filter_basic_information.addWidget(self.c_filter_bi_header)
 
-        self.c_filter_bi_content = FiltersContent(self.c_filters_content)
+        self.c_filter_bi_content = FilterVariableInputsContainer(self.c_filters_content)
         self.c_filter_bi_content.setObjectName(u"c_filter_bi_content")
         self.c_filter_bi_content.setFrameShape(QFrame.StyledPanel)
         self.c_filter_bi_content.setFrameShadow(QFrame.Raised)
-        self.verticalLayout = QVBoxLayout(self.c_filter_bi_content)
-        self.verticalLayout.setSpacing(12)
-        self.verticalLayout.setObjectName(u"verticalLayout")
-        self.ly_filter_gender = QVBoxLayout()
-        self.ly_filter_gender.setSpacing(4)
-        self.ly_filter_gender.setObjectName(u"ly_filter_gender")
-        self.ly_filter_gender.setContentsMargins(9, -1, -1, -1)
-        self.lb_filter_gender = Label(self.c_filter_bi_content)
-        self.lb_filter_gender.setObjectName(u"lb_filter_gender")
-
-        self.ly_filter_gender.addWidget(self.lb_filter_gender)
-
-        self.ly_filter_gender_i = QHBoxLayout()
-        self.ly_filter_gender_i.setObjectName(u"ly_filter_gender_i")
-        self.ly_filter_gender_i.setContentsMargins(9, -1, -1, -1)
-        self.i_male = QCheckBox(self.c_filter_bi_content)
-        self.i_male.setObjectName(u"i_male")
-
-        self.ly_filter_gender_i.addWidget(self.i_male)
-
-        self.i_female = QCheckBox(self.c_filter_bi_content)
-        self.i_female.setObjectName(u"i_female")
-
-        self.ly_filter_gender_i.addWidget(self.i_female)
-
-        self.horizontalSpacer_7 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.ly_filter_gender_i.addItem(self.horizontalSpacer_7)
-
-
-        self.ly_filter_gender.addLayout(self.ly_filter_gender_i)
-
-
-        self.verticalLayout.addLayout(self.ly_filter_gender)
-
-        self.ly_filter_age = QVBoxLayout()
-        self.ly_filter_age.setSpacing(9)
-        self.ly_filter_age.setObjectName(u"ly_filter_age")
-        self.ly_filter_age.setContentsMargins(9, -1, -1, 0)
-        self.lb_filter_age = Label(self.c_filter_bi_content)
-        self.lb_filter_age.setObjectName(u"lb_filter_age")
-
-        self.ly_filter_age.addWidget(self.lb_filter_age)
-
-        self.ly_filter_age_precise = QVBoxLayout()
-        self.ly_filter_age_precise.setSpacing(0)
-        self.ly_filter_age_precise.setObjectName(u"ly_filter_age_precise")
-        self.ly_filter_age_precise.setContentsMargins(10, -1, -1, -1)
-        self.c_filter_age_precise_header = FiltersHeader(self.c_filter_bi_content)
-        self.c_filter_age_precise_header.setObjectName(u"c_filter_age_precise_header")
-        self.c_filter_age_precise_header.setFrameShape(QFrame.StyledPanel)
-        self.c_filter_age_precise_header.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_12 = QHBoxLayout(self.c_filter_age_precise_header)
-        self.horizontalLayout_12.setObjectName(u"horizontalLayout_12")
-        self.horizontalLayout_12.setContentsMargins(5, 5, 5, 5)
-        self.lb_filter_age_precise = Label(self.c_filter_age_precise_header)
-        self.lb_filter_age_precise.setObjectName(u"lb_filter_age_precise")
-
-        self.horizontalLayout_12.addWidget(self.lb_filter_age_precise)
-
-
-        self.ly_filter_age_precise.addWidget(self.c_filter_age_precise_header)
-
-        self.c_filter_age_precise_content = QFrame(self.c_filter_bi_content)
-        self.c_filter_age_precise_content.setObjectName(u"c_filter_age_precise_content")
-        self.c_filter_age_precise_content.setFrameShape(QFrame.StyledPanel)
-        self.c_filter_age_precise_content.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_7 = QVBoxLayout(self.c_filter_age_precise_content)
-        self.verticalLayout_7.setObjectName(u"verticalLayout_7")
-        self.verticalLayout_7.setContentsMargins(5, 5, 5, 5)
-        self.i_agre_precise = QSpinBox(self.c_filter_age_precise_content)
-        self.i_agre_precise.setObjectName(u"i_agre_precise")
-        self.i_agre_precise.setMaximumSize(QSize(80, 16777215))
-
-        self.verticalLayout_7.addWidget(self.i_agre_precise)
-
-
-        self.ly_filter_age_precise.addWidget(self.c_filter_age_precise_content)
-
-
-        self.ly_filter_age.addLayout(self.ly_filter_age_precise)
-
-        self.ly_filter_age_range = QVBoxLayout()
-        self.ly_filter_age_range.setSpacing(0)
-        self.ly_filter_age_range.setObjectName(u"ly_filter_age_range")
-        self.ly_filter_age_range.setContentsMargins(9, -1, -1, -1)
-        self.c_filter_age_range_header = FiltersHeader(self.c_filter_bi_content)
-        self.c_filter_age_range_header.setObjectName(u"c_filter_age_range_header")
-        self.c_filter_age_range_header.setFrameShape(QFrame.StyledPanel)
-        self.c_filter_age_range_header.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_13 = QHBoxLayout(self.c_filter_age_range_header)
-        self.horizontalLayout_13.setObjectName(u"horizontalLayout_13")
-        self.horizontalLayout_13.setContentsMargins(5, 5, 5, 5)
-        self.lb_age_range = Label(self.c_filter_age_range_header)
-        self.lb_age_range.setObjectName(u"lb_age_range")
-
-        self.horizontalLayout_13.addWidget(self.lb_age_range)
-
-
-        self.ly_filter_age_range.addWidget(self.c_filter_age_range_header)
-
-        self.c_filter_age_range_content = QFrame(self.c_filter_bi_content)
-        self.c_filter_age_range_content.setObjectName(u"c_filter_age_range_content")
-        self.c_filter_age_range_content.setFrameShape(QFrame.StyledPanel)
-        self.c_filter_age_range_content.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_8 = QVBoxLayout(self.c_filter_age_range_content)
-        self.verticalLayout_8.setObjectName(u"verticalLayout_8")
-        self.verticalLayout_8.setContentsMargins(5, 5, 5, 5)
-        self.ly_filter_age_range_bt = QHBoxLayout()
-        self.ly_filter_age_range_bt.setObjectName(u"ly_filter_age_range_bt")
-        self.bt_age_range_1 = CheckButton(self.c_filter_age_range_content)
-        self.bt_age_range_1.setObjectName(u"bt_age_range_1")
-        self.bt_age_range_1.setMinimumSize(QSize(80, 20))
-        self.bt_age_range_1.setMaximumSize(QSize(90, 16777215))
-
-        self.ly_filter_age_range_bt.addWidget(self.bt_age_range_1)
-
-        self.bt_age_range_2 = CheckButton(self.c_filter_age_range_content)
-        self.bt_age_range_2.setObjectName(u"bt_age_range_2")
-        self.bt_age_range_2.setMinimumSize(QSize(80, 20))
-        self.bt_age_range_2.setMaximumSize(QSize(90, 16777215))
-
-        self.ly_filter_age_range_bt.addWidget(self.bt_age_range_2)
-
-        self.bt_age_range_3 = CheckButton(self.c_filter_age_range_content)
-        self.bt_age_range_3.setObjectName(u"bt_age_range_3")
-        self.bt_age_range_3.setMinimumSize(QSize(80, 20))
-        self.bt_age_range_3.setMaximumSize(QSize(90, 16777215))
-
-        self.ly_filter_age_range_bt.addWidget(self.bt_age_range_3)
-
-        self.horizontalSpacer_8 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.ly_filter_age_range_bt.addItem(self.horizontalSpacer_8)
-
-
-        self.verticalLayout_8.addLayout(self.ly_filter_age_range_bt)
-
-        self.horizontalLayout_14 = QHBoxLayout()
-        self.horizontalLayout_14.setObjectName(u"horizontalLayout_14")
-        self.i_age_range_min = QSpinBox(self.c_filter_age_range_content)
-        self.i_age_range_min.setObjectName(u"i_age_range_min")
-        self.i_age_range_min.setMinimumSize(QSize(80, 0))
-        self.i_age_range_min.setMaximumSize(QSize(80, 16777215))
-        self.i_age_range_min.setMaximum(130)
-
-        self.horizontalLayout_14.addWidget(self.i_age_range_min)
-
-        self.lb_age_range_separator = QLabel(self.c_filter_age_range_content)
-        self.lb_age_range_separator.setObjectName(u"lb_age_range_separator")
-
-        self.horizontalLayout_14.addWidget(self.lb_age_range_separator, 0, Qt.AlignHCenter)
-
-        self.i_age_range_max = QSpinBox(self.c_filter_age_range_content)
-        self.i_age_range_max.setObjectName(u"i_age_range_max")
-        self.i_age_range_max.setMinimumSize(QSize(80, 0))
-        self.i_age_range_max.setMaximumSize(QSize(80, 16777215))
-        self.i_age_range_max.setMaximum(130)
-
-        self.horizontalLayout_14.addWidget(self.i_age_range_max)
-
-        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.horizontalLayout_14.addItem(self.horizontalSpacer_2)
-
-
-        self.verticalLayout_8.addLayout(self.horizontalLayout_14)
-
-
-        self.ly_filter_age_range.addWidget(self.c_filter_age_range_content)
-
-
-        self.ly_filter_age.addLayout(self.ly_filter_age_range)
-
-
-        self.verticalLayout.addLayout(self.ly_filter_age)
-
 
         self.ly_filter_basic_information.addWidget(self.c_filter_bi_content)
 
@@ -329,10 +152,10 @@ class Ui_patients(object):
         self.c_filter_mi_header.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_9 = QHBoxLayout(self.c_filter_mi_header)
         self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
-        self.lb_filter_mi = Label(self.c_filter_mi_header)
-        self.lb_filter_mi.setObjectName(u"lb_filter_mi")
+        self.lb_filter_mi_header = Label(self.c_filter_mi_header)
+        self.lb_filter_mi_header.setObjectName(u"lb_filter_mi_header")
 
-        self.horizontalLayout_9.addWidget(self.lb_filter_mi)
+        self.horizontalLayout_9.addWidget(self.lb_filter_mi_header)
 
 
         self.ly_filter_medical_information.addWidget(self.c_filter_mi_header)
@@ -408,10 +231,10 @@ class Ui_patients(object):
         self.c_filter_skl_charac_header.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_11 = QHBoxLayout(self.c_filter_skl_charac_header)
         self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
-        self.label = Label(self.c_filter_skl_charac_header)
-        self.label.setObjectName(u"label")
+        self.lb_filter_skl_charac_header = Label(self.c_filter_skl_charac_header)
+        self.lb_filter_skl_charac_header.setObjectName(u"lb_filter_skl_charac_header")
 
-        self.horizontalLayout_11.addWidget(self.label)
+        self.horizontalLayout_11.addWidget(self.lb_filter_skl_charac_header)
 
 
         self.ly_filter_skin_lesion_characteristics.addWidget(self.c_filter_skl_charac_header)
@@ -644,25 +467,16 @@ class Ui_patients(object):
         self.bt_back.setText(QCoreApplication.translate("patients", u"Back", None))
         self.lb_title.setText(QCoreApplication.translate("patients", u"List of patients", None))
         self.bt_add_new_patient.setText(QCoreApplication.translate("patients", u"Add new patient", None))
-        self.lb_filters_title.setText(QCoreApplication.translate("patients", u"Filters", None))
         self.bt_reset_filters.setText(QCoreApplication.translate("patients", u"Reset", None))
-        self.lb_filter_clinical_attributes.setText(QCoreApplication.translate("patients", u"BASIC INFORMATION", None))
-        self.lb_filter_gender.setText(QCoreApplication.translate("patients", u"Gender", None))
-        self.i_male.setText(QCoreApplication.translate("patients", u"Male", None))
-        self.i_female.setText(QCoreApplication.translate("patients", u"Female", None))
-        self.lb_filter_age.setText(QCoreApplication.translate("patients", u"Age", None))
-        self.lb_filter_age_precise.setText(QCoreApplication.translate("patients", u"Precise", None))
-        self.lb_age_range.setText(QCoreApplication.translate("patients", u"Range", None))
-        self.bt_age_range_1.setText(QCoreApplication.translate("patients", u"0 - 20", None))
-        self.bt_age_range_2.setText(QCoreApplication.translate("patients", u"20 - 50", None))
-        self.bt_age_range_3.setText(QCoreApplication.translate("patients", u"50 +", None))
-        self.lb_age_range_separator.setText(QCoreApplication.translate("patients", u"-", None))
-        self.lb_filter_mi.setText(QCoreApplication.translate("patients", u"MEDICAL INFORMATION", None))
+        self.lb_filters_title.setText(QCoreApplication.translate("patients", u"Filters", None))
+        self.bt_filter.setText(QCoreApplication.translate("patients", u"Filter", None))
+        self.lb_filter_bi_header.setText(QCoreApplication.translate("patients", u"BASIC INFORMATION", None))
+        self.lb_filter_mi_header.setText(QCoreApplication.translate("patients", u"MEDICAL INFORMATION", None))
         self.lb_filter_diagnostic_attributes.setText(QCoreApplication.translate("patients", u"AI RESULTS", None))
         self.i_air_benign.setText(QCoreApplication.translate("patients", u"Benign", None))
         self.i_air_malignant.setText(QCoreApplication.translate("patients", u"Malignant", None))
         self.i_air_indeterminate.setText(QCoreApplication.translate("patients", u"Indeterminate", None))
-        self.label.setText(QCoreApplication.translate("patients", u"SKIN LESION CHARACTERISTICS", None))
+        self.lb_filter_skl_charac_header.setText(QCoreApplication.translate("patients", u"SKIN LESION CHARACTERISTICS", None))
         self.bt_search.setText("")
         self.i_search.setPlaceholderText(QCoreApplication.translate("patients", u"E.g: AG4432YA", None))
         self.lb_organizer_titles.setText(QCoreApplication.translate("patients", u"Organizer", None))

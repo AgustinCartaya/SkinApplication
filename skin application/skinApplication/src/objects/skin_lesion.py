@@ -24,9 +24,6 @@ class SkinLesion(DataObject):
 
         self.verify_skl_folder()
 
-
-
-
     def save_data(self):
         try:
             dbc = DBController()
@@ -182,3 +179,14 @@ class SkinLesion(DataObject):
                     return 2
         return -1
 
+    def has_carach_value(self, charac_name, charac_value):
+        if charac_name in self.characteristics:
+            return util.compare_with_dates(charac_value, self.characteristics[charac_name])
+
+    def has_carach_value_in_range(self, charac_name, min, max, include=True):
+        if charac_name in self.characteristics:
+            return util.in_range_with_dates(self.characteristics[charac_name], min, max, include)
+
+    def has_charach_value_containing_one(self, charac_name, charac_values, case_sensitive=True):
+        if charac_name in self.characteristics:
+            return util.contains_one(self.characteristics[charac_name], charac_values, case_sensitive)

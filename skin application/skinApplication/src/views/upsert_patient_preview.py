@@ -8,6 +8,8 @@ from PySide6.QtWidgets import (QFrame, QVBoxLayout, QHBoxLayout,
         QLineEdit,QGridLayout, QComboBox)
 
 from .ui.promoted.label import Label
+from .ui.promoted.variable_input_creator import VariableInputCreator
+
 
 class UpsertPatientPreiewView(ViewObject):
     def __init__(self, mw, patient, mode="add"):
@@ -56,23 +58,37 @@ class UpsertPatientPreiewView(ViewObject):
         self.ui.i_first_name.setText(self.p.first_name)
         self.ui.i_last_name.setText(self.p.last_name)
         self.ui.i_birth_date.setText(self.p.birth_date.strftime('%d-%m-%Y'))
-        if self.p.gender:
-            self.ui.i_gender.setText("Male")
+        if self.p.gender == 0:
+            self.ui.i_gender.setText("Woman")
+        elif self.p.gender == 1:
+            self.ui.i_gender.setText("Man")
         else:
-            self.ui.i_gender.setText("Female")
+            self.ui.i_gender.setText("Other")
 
 
     def show_medical_information(self):
-        for medical_info in self.p.mi:
+        for mi_name, mi_content in self.p.mi.items():
             ly_single_mi = QVBoxLayout()
             ly_single_mi.setSpacing(4)
 
             lb_mi_title = Label(self.ui.c_patient_information_preview)
-            lb_mi_title.setText(medical_info, colon=True, format=True)
+            lb_mi_title.setText(mi_name, colon=True, format=True)
             ly_single_mi.addWidget(lb_mi_title)
 
+            # scales to modify if possible
+            if type(mi_content) in (int, float):
+                if type(mi_content) == int:
+                    mi_fine_name = mi_name + "." + VariableInputCreator.INPUT_INT
+                else:
+                    mi_fine_name = mi_name + "." + VariableInputCreator.INPUT_FLOAT
+                scale = util.get_mi_mesure(mi_fine_name)
+                if scale != "":
+                    mi_content = util.to_sub_unit(mi_content, util.get_scale_units_and_multipliers(scale))
+                    mi_content = " ".join([str(mi_content[0]), mi_content[1]])
+            # ----------------------
+
             i_mi_content = Label(self.ui.c_patient_information_preview)
-            i_mi_content.setText(self.p.mi[medical_info])
+            i_mi_content.setText(mi_content)
             i_mi_content.set_decoration("mi_content")
             ly_single_mi.addWidget(i_mi_content)
 

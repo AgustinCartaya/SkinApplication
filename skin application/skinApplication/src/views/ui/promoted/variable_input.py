@@ -40,7 +40,6 @@ class VariableInput(QFrame):
         self.edit_receaver = edit_receaver
         self.editable = editable
 
-        self.scale_input = None
         self.units_and_multipliers = None
 
         if self.editable and self.edit_receaver is not None:
@@ -84,12 +83,12 @@ class VariableInput(QFrame):
         # NUMBER
         elif self.input_type == VariableInputCreator.INPUT_INT:
             self.input = QSpinBox(self.c_input)
-            self.input.setMaximum(1000000);
+            self.input.setMaximum(1000000)
 
         # NUMBER WITH DECIMALS
         elif self.input_type == VariableInputCreator.INPUT_FLOAT:
             self.input = QDoubleSpinBox(self.c_input)
-            self.input.setMaximum(1000000);
+            self.input.setMaximum(1000000)
 
         # TEXT
         elif self.input_type == VariableInputCreator.INPUT_TEXT:
@@ -99,8 +98,9 @@ class VariableInput(QFrame):
         # DATE
         elif self.input_type == VariableInputCreator.INPUT_DATE:
             self.input = QDateEdit(self.c_input)
+            self.input.setMinimumDate(QDate(1900, 1, 1))
+            self.input.setDate(QDate(1900, 1, 1))
             self.input.setDisplayFormat("dd-MM-yyyy")
-            self.input.setDate(QDate.fromString('01-01-1900', "dd-MM-yyyy"))
 
         self.input_layout.addWidget(self.input)
 
@@ -143,7 +143,10 @@ class VariableInput(QFrame):
             item = bool(self.input.currentIndex()-1)
 
         elif self.input_type in (VariableInputCreator.INPUT_INT, VariableInputCreator.INPUT_FLOAT) and self.input.value() != 0:
-            item = util.to_basic_unit(self.input.value(), self.scale_input.currentText(), self.units_and_multipliers)
+            if self.units_and_multipliers is not None:
+                item = util.to_basic_unit(self.input.value(), self.scale_input.currentText(), self.units_and_multipliers)
+            else:
+                item = self.input.value()
 
         elif self.input_type == VariableInputCreator.INPUT_TEXT and self.input.text().strip() != "":
             item = self.input.text().strip()
@@ -168,7 +171,7 @@ class VariableInput(QFrame):
         elif self.input_type == VariableInputCreator.INPUT_TEXT:
             self.input.setText(item)
         elif (self.input_type in (VariableInputCreator.INPUT_INT, VariableInputCreator.INPUT_FLOAT) and
-                self.scale_input is not None):
+                self.units_and_multipliers is not None):
                 values = util.to_sub_unit(item, self.units_and_multipliers)
 
                 index = self.scale_input.findText(values[1])

@@ -7,6 +7,7 @@ from .button import Button
 from .check_button_group import CheckButtonGroup
 from .check_button import CheckButton
 
+from datetime import datetime, timedelta
 
 from .line_edit import LineEdit
 from .variable_input_creator import VariableInputCreator
@@ -14,7 +15,7 @@ from .filters_header import FiltersHeader
 
 from PySide6.QtCore import Signal, Slot
 
-import src.util.data_cleaner as data_cleaner
+import src.util.util as util
 
 class FilterVariableInput(QFrame):
 
@@ -28,6 +29,8 @@ class FilterVariableInput(QFrame):
         self.items = []
 
         self.range_filter = False
+
+        self.units_and_multipliers = None
 
         self.__create()
 
@@ -73,18 +76,18 @@ class FilterVariableInput(QFrame):
         if self.filter_type == VariableInputCreator.INPUT_OPTIONS:
             self.i_filter = QComboBox(self)
             self.i_filter.addItems([""]+self.items)
-            self.i_filter.currentIndexChanged.connect(self.call_filter)
+#            self.i_filter.currentIndexChanged.connect(self.call_filter)
 
         # BOOL
         elif self.filter_type == VariableInputCreator.INPUT_BOOL:
             self.i_filter = QComboBox(self)
             self.i_filter.addItems(["","No","Yes"])
-            self.i_filter.currentIndexChanged.connect(self.call_filter)
+#            self.i_filter.currentIndexChanged.connect(self.call_filter)
 
         # TEXT
         elif self.filter_type == VariableInputCreator.INPUT_TEXT:
             self.i_filter = LineEdit(self)
-            self.i_filter.returnPressed.connect(self.call_filter)
+#            self.i_filter.returnPressed.connect(self.call_filter)
 
         ly_content = QHBoxLayout()
         ly_content.setContentsMargins(9, 0, 0, 0)
@@ -111,8 +114,8 @@ class FilterVariableInput(QFrame):
 
             bt = CheckButton(self)
             bt.setText(item)
-            bt.action_value = item
-            bt.clicked.connect(self.call_filter)
+            bt.set_action_value(item)
+#            bt.clicked.connect(self.call_filter)
             ly_line.addWidget(bt)
             self.i_filter.add_button(bt)
             count = count + 1
@@ -126,50 +129,53 @@ class FilterVariableInput(QFrame):
         self.c_range_content = QFrame(self)
 
         # NUMBER
-        if self.filter_type == VariableInputCreator.INPUT_INT:
-            self.i_precise = QSpinBox(self.c_precise_content)
-            self.i_precise.setMinimumSize(QSize(80, 0))
-            self.i_precise.editingFinished.connect(self.call_filter)
+        if self.filter_type in (VariableInputCreator.INPUT_INT, VariableInputCreator.INPUT_FLOAT):
+            # INT
+            if self.filter_type == VariableInputCreator.INPUT_INT:
+                self.i_precise = QSpinBox(self.c_precise_content)
+                self.i_range_min = QSpinBox(self.c_range_content)
+                self.i_range_max = QSpinBox(self.c_range_content)
 
-            self.i_range_min = QSpinBox(self.c_range_content)
-            self.i_range_min.setMinimumSize(QSize(80, 0))
-            self.i_range_min.editingFinished.connect(self.call_filter)
+            # FLOAT
+            elif self.filter_type == VariableInputCreator.INPUT_FLOAT:
+                self.i_precise = QDoubleSpinBox(self.c_precise_content)
+                self.i_range_min = QDoubleSpinBox(self.c_range_content)
+                self.i_range_max = QDoubleSpinBox(self.c_range_content)
 
-            self.i_range_max = QSpinBox(self.c_range_content)
-            self.i_range_max.setMinimumSize(QSize(80, 0))
-            self.i_range_max.editingFinished.connect(self.call_filter)
+            self.i_precise.setMinimumSize(QSize(80 , 0))
+            self.i_precise.setMaximum(1000000)
+#            self.i_precise.editingFinished.connect(self.call_filter)
 
-        # NUMBER WITH DECIMALS
-        elif self.filter_type == VariableInputCreator.INPUT_FLOAT:
-            self.i_precise = QDoubleSpinBox(self.c_precise_content)
-            self.i_precise.setMinimumSize(QSize(80, 0))
-            self.i_precise.editingFinished.connect(self.call_filter)
+            self.i_range_min.setMinimumSize(QSize(60, 0))
+            self.i_range_min.setMaximum(1000000)
+#            self.i_range_min.editingFinished.connect(self.call_filter)
 
-            self.i_range_min = QDoubleSpinBox(self.c_range_content)
-            self.i_range_min.setMinimumSize(QSize(80, 0))
-            self.i_range_min.editingFinished.connect(self.call_filter)
-
-            self.i_range_max = QDoubleSpinBox(self.c_range_content)
-            self.i_range_max.setMinimumSize(QSize(80, 0))
-            self.i_range_max.editingFinished.connect(self.call_filter)
+            self.i_range_max.setMinimumSize(QSize(60, 0))
+            self.i_range_max.setMaximum(1000000)
+#            self.i_range_max.editingFinished.connect(self.call_filter)
 
         # DATE
         elif self.filter_type == VariableInputCreator.INPUT_DATE:
             self.i_precise = QDateEdit(self.c_precise_content)
             self.i_precise.setMinimumSize(QSize(100, 0))
-            self.i_precise.setDate(QDate.fromString('01-01-1900', "dd-MM-yyyy"))
-            self.i_precise.editingFinished.connect(self.call_filter)
+            self.i_precise.setMinimumDate(QDate(1900, 1, 1))
+            self.i_precise.setDate(QDate(1900, 1, 1))
+            self.i_precise.setDisplayFormat("dd-MM-yyyy")
+#            self.i_precise.editingFinished.connect(self.call_filter)
 
             self.i_range_min = QDateEdit(self.c_range_content)
             self.i_range_min.setMinimumSize(QSize(100, 0))
-            self.i_range_min.setDate(QDate.fromString('01-01-1900', "dd-MM-yyyy"))
-            self.i_range_min.editingFinished.connect(self.call_filter)
+            self.i_range_min.setMinimumDate(QDate(1900, 1, 1))
+            self.i_range_min.setDate(QDate(1900, 1, 1))
+            self.i_range_min.setDisplayFormat("dd-MM-yyyy")
+#            self.i_range_min.editingFinished.connect(self.call_filter)
 
             self.i_range_max = QDateEdit(self.c_range_content)
             self.i_range_max.setMinimumSize(QSize(100, 0))
-            self.i_range_max.setDate(QDate.fromString('01-01-1900', "dd-MM-yyyy"))
-            self.i_range_max.editingFinished.connect(self.call_filter)
-
+            self.i_range_max.setMinimumDate(QDate(1900, 1, 1))
+            self.i_range_max.setDate(QDate(1900, 1, 1))
+            self.i_range_max.setDisplayFormat("dd-MM-yyyy")
+#            self.i_range_max.editingFinished.connect(self.call_filter)
 
         ly_content = QVBoxLayout()
         ly_content.setContentsMargins(9, 0, 0, 0)
@@ -244,6 +250,29 @@ class FilterVariableInput(QFrame):
         sp_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
         ly_range_content.addItem(sp_2)
 
+
+        # scales
+        if (len(self.items) > 0 and
+                self.filter_type in (VariableInputCreator.INPUT_INT, VariableInputCreator.INPUT_FLOAT)):
+            self.__create_scale_input(ly_precise_content, ly_range_content)
+
+
+    def __create_scale_input(self, ly_precise_content, ly_range_content):
+        self.units_and_multipliers = util.get_scale_units_and_multipliers(self.items[0])
+
+        self.i_precise_scale = QComboBox(self.c_precise_content)
+        self.i_precise_scale.addItems([ele[0] for ele in self.units_and_multipliers])
+        ly_precise_content.insertWidget(1,self.i_precise_scale)
+
+        self.i_range_min_scale = QComboBox(self.c_range_content)
+        self.i_range_min_scale.addItems([ele[0] for ele in self.units_and_multipliers])
+        ly_range_content.insertWidget(1,self.i_range_min_scale)
+
+        self.i_range_max_scale = QComboBox(self.c_range_content)
+        self.i_range_max_scale.addItems([ele[0] for ele in self.units_and_multipliers])
+        ly_range_content.insertWidget(4,self.i_range_max_scale)
+
+
     def get_selected_filter(self):
         filter = None
         if self.filter_type == VariableInputCreator.INPUT_OPTIONS and self.i_filter.get_selected_number() > 0:
@@ -261,19 +290,28 @@ class FilterVariableInput(QFrame):
                                     ):
             if self.c_precise_header.open:
                 if self.filter_type in (VariableInputCreator.INPUT_INT, VariableInputCreator.INPUT_FLOAT) and self.i_precise.value() != 0:
-                    filter = self.i_precise.value()
+                    if self.units_and_multipliers is not None:
+                        filter = util.to_basic_unit(self.i_precise.value(), self.i_precise_scale.currentText(), self.units_and_multipliers)
+                    else:
+                        filter = self.i_precise.value()
+
                 elif self.filter_type == VariableInputCreator.INPUT_DATE and self.i_precise.date() > QDate.fromString('01-01-1900', "dd-MM-yyyy"):
-                    filter = self.i_precise.date().toString("dd-MM-yyyy")
-#                   filter = util.to_basic_unit(self.i_precise.value(), self.scale_input.currentText())
+                    filter = datetime.strptime(self.i_precise.date().toString("dd-MM-yyyy"), '%d-%m-%Y')
             elif self.c_range_header.open:
                 if (self.filter_type in (VariableInputCreator.INPUT_INT, VariableInputCreator.INPUT_FLOAT) and
                         (self.i_range_min.value() != 0 or self.i_range_max.value() != 0)):
-                    filter = (self.i_range_min.value(), self.i_range_max.value())
+                    if self.units_and_multipliers is not None:
+                        filter = (util.to_basic_unit(self.i_range_min.value(), self.i_range_min_scale.currentText(), self.units_and_multipliers),
+                                util.to_basic_unit(self.i_range_max.value(), self.i_range_max_scale.currentText(), self.units_and_multipliers))
+                    else:
+                        filter = (self.i_range_min.value(), self.i_range_max.value())
 
                 elif (self.filter_type == VariableInputCreator.INPUT_DATE and
                         (self.i_range_min.date() > QDate.fromString('01-01-1900', "dd-MM-yyyy") or
                         self.i_range_max.date() > QDate.fromString('01-01-1900', "dd-MM-yyyy") )):
-                    filter = (self.i_range_min.date().toString("dd-MM-yyyy"), self.i_range_max.date().toString("dd-MM-yyyy"))
+                    filter = (datetime.strptime(self.i_range_min.date().toString("dd-MM-yyyy"), '%d-%m-%Y'),
+                                datetime.strptime(self.i_range_max.date().toString("dd-MM-yyyy"), '%d-%m-%Y'))
+
         return filter
 
     @Slot()
@@ -307,3 +345,7 @@ class FilterVariableInput(QFrame):
             self.i_precise.setDate(QDate.fromString('01-01-1900', "dd-MM-yyyy"))
             self.i_range_min.setDate(QDate.fromString('01-01-1900', "dd-MM-yyyy"))
             self.i_range_max.setDate(QDate.fromString('01-01-1900', "dd-MM-yyyy"))
+
+    def set_action_values(self, action_values):
+        if self.filter_type == VariableInputCreator.INPUT_OPTIONS:
+            self.i_filter.set_action_values(action_values)

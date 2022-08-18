@@ -4,7 +4,7 @@ from datetime import date
 import re
 import src.config as cfg
 import shutil
-
+from datetime import datetime, timedelta
 
 def uppath(_path, n):
     return os.sep.join(_path.split(os.sep)[:-n])
@@ -124,6 +124,60 @@ def generate_id(base_text):
     return base_text[:2].upper() + str(random.randint(1000, 9999)) + base_text[-2:].upper()
 
 
+def in_range(val, min, max, include=True):
+    if include:
+        if val >= min and val <= max:
+            return True
+    else:
+        if val > min and val < max:
+            return True
+    return False
+
+
+def str_to_date(text):
+    return datetime.strptime(text, '%d-%m-%Y')
+
+
+def strs_to_dates(*args):
+    lst = []
+    for t in args:
+        if type(t) == datetime:
+            lst.append(t)
+        else:
+            lst.append(str_to_date(t))
+    return lst
+
+
+def compare_with_dates(val_1, val_2):
+    if type(val_1) == datetime and type(val_2) == str:
+        val_2 = str_to_date(val_2)
+    elif type(val_2) == datetime and type(val_1) == str:
+        val_1 = str_to_date(val_1)
+    return val_1 == val_2
+
+
+def in_range_with_dates(val, min, max, include=True):
+    if type(max) == datetime or type(min) == datetime or type(val) == datetime:
+        (val, min, max) = strs_to_dates(val, min, max)
+    return in_range(val, min, max, include)
+
+
+def contains_one(src, values, case_sensitive = True):
+    if type(values) == str:
+        if case_sensitive:
+            if values in src:
+                return True
+        else:
+            if values.lower() in src.lower():
+                return True
+
+    elif type(values) == list:
+        for val in values:
+            if val in src:
+                return True
+    return False
+
+
 def get_in_range_value(val, min, max):
     if val > max:
         return max
@@ -184,3 +238,10 @@ def to_sub_unit(value, units_and_multipliers):
     if index > 0:
         index = index -1
     return (value/units_and_multipliers[index][1], units_and_multipliers[index][0])
+
+
+def get_skl_charac_mesure(skl_charac_name):
+    return read_file(cfg.FILES_SKIN_LESION_CHARACTERISTICS_PATH, skl_charac_name)
+
+def get_mi_mesure(skl_charac_name):
+    return read_file(cfg.FILES_MEDICAL_INFORMATION_PATH, skl_charac_name)

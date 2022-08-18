@@ -25,12 +25,24 @@ class FilterVariableInputsContainer(FiltersContent):
 #        self.layout.setSpacing(50)
 
     def show_filters(self, folder, filter_receaver):
-        for file_name in util.get_file_list(folder):
-            (f_id, f_type) = file_name.split(".")
-            f_title = util.file_name_to_title(f_id)
-            f_values = util.read_file_list(folder, file_name)
+        if type(folder) is list:
+            for filter in folder:
+                f_id = filter[0]
+                f_type = filter[1]
+                f_title = util.file_name_to_title(f_id)
+                f_values = filter[2]
+                self.__show_single_filter(f_id, f_type, filter_receaver, f_title, f_values)
 
-            self.__show_single_filter(f_id, f_type, filter_receaver, f_title, f_values)
+                if len(filter) == 4:
+                    self.filters[f_id].set_action_values(filter[3])
+
+        else:
+            for file_name in util.get_file_list(folder):
+                (f_id, f_type) = file_name.split(".")
+                f_title = util.file_name_to_title(f_id)
+                f_values = util.read_file_list(folder, file_name)
+
+                self.__show_single_filter(f_id, f_type, filter_receaver, f_title, f_values)
 
     def __show_single_filter(self, f_id, f_type, filter_receaver, f_title, f_values):
         if f_type ==  VariableInputCreator.INPUT_OPTIONS and f_values[0].startswith("--e"):

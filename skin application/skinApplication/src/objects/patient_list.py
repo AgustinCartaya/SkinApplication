@@ -2,6 +2,8 @@
 from src.db_controllers.db_controller import DBController
 import src.config as cfg
 import src.util.util as util
+from datetime import datetime, timedelta
+
 
 from operator import attrgetter
 from .patient import Patient
@@ -71,9 +73,13 @@ class PatientList:
 
             # search in medical information
             elif info == "mi":
-                if patient.mi[key] == value:
+                if patient.has_mi_value(key, value):
                     filtered.append_patient(patient)
 
+            # search in skin lesion characteristics
+            elif info == "skl_charac":
+                if patient.has_one_skl_with_charac_value(key, value):
+                    filtered.append_patient(patient)
         return filtered
 
     def get_filtered_range(self, key, min, max, include = True, info = "bi"):
@@ -81,20 +87,18 @@ class PatientList:
         for patient in self:
             # search in basic information
             if info == "bi":
-                if include:
-                    if getattr(patient, key) >= min and getattr(patient, key) <= max:
-                        filtered.append_patient(patient)
-                else:
-                    if getattr(patient, key) > min and getattr(patient, key) < max:
-                        filtered.append_patient(patient)
+                if util.in_range(getattr(patient, key), min, max, include):
+                    filtered.append_patient(patient)
+
             # search in medical information
             elif info == "mi":
-                if include:
-                    if patient.mi[key] >= min and patient.mi[key] <= max:
-                        filtered.append_patient(patient)
-                else:
-                    if patient.mi[key] > min and patient.mi[key] < max:
-                        filtered.append_patient(patient)
+                if patient.has_mi_value_in_range(key, min, max, include):
+                    filtered.append_patient(patient)
+
+            # search in skin lesion characteristics
+            elif info == "skl_charac":
+                if patient.has_one_skl_with_charac_value_in_range(key, min, max, include):
+                    filtered.append_patient(patient)
 
         return filtered
 
@@ -125,31 +129,21 @@ class PatientList:
         for patient in self:
             # search in basic information
             if info == "bi":
-                if case_sensitive:
-                    if values in getattr(patient, key):
-                        filtered.append_patient(patient)
-                else:
-                    if values.lower() in getattr(patient, key).lower():
-                        filtered.append_patient(patient)
+                att = getattr(patient, key)
+                if type(att) != str:
+                    att = [att]
+                if util.contains_one(att, values, case_sensitive):
+                    filtered.append_patient(patient)
+
             # search in medical information
             elif info == "mi":
-                if type(values) == str:
-                    if case_sensitive:
-                        if values in patient.mi[key]:
-                            filtered.append_patient(patient)
-                    else:
-                        if values.lower() in patient.mi[key].lower():
-                            filtered.append_patient(patient)
+                if patient.has_mi_containing_one_value(key, values, case_sensitive):
+                    filtered.append_patient(patient)
 
-                elif type(values) == list:
-                    contains = False
-                    count = 0
-                    while not contains and count < len(values):
-                        if values[count] in patient.mi[key]:
-                            contains = True
-                        count = count +1
-                    if contains:
-                        filtered.append_patient(patient)
+            # search in skin lesion characteristics
+            elif info == "skl_charac":
+                if patient.has_one_skl_with_charac_value_containing_one(key, values, case_sensitive):
+                    filtered.append_patient(patient)
         return filtered
 
     def get_filtered_starts_with(self, key, value, case_sensitive =  True):

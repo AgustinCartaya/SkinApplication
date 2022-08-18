@@ -7,6 +7,7 @@ from PySide6.QtCore import Qt
 
 from .ui.promoted.label import Label
 from .ui.promoted.skin_lesion_preview import SkinLesionPreview
+from .ui.promoted.variable_input_creator import VariableInputCreator
 
 from src.objects.patient import Patient
 from src.objects.image import Image
@@ -73,10 +74,12 @@ class CheckPatientView(ViewObject):
         self.ui.i_last_name.setText(self.p.last_name)
         self.ui.i_age.setText(str(self.p.age))
 
-        if self.p.gender:
-            self.ui.i_gender.setText("Male")
+        if self.p.gender == 0:
+            self.ui.i_gender.setText("Woman")
+        elif self.p.gender == 1:
+            self.ui.i_gender.setText("Man")
         else:
-            self.ui.i_gender.setText("Female")
+            self.ui.i_gender.setText("Other")
 
         # navigator
         self.ui.bt_add_lesion.set_position(2)
@@ -110,6 +113,18 @@ class CheckPatientView(ViewObject):
             lb_mi_title = Label(self.ui.c_patient_information_content)
             lb_mi_title.setText(mi_name, colon=True, format=True)
             self.ui.ly_mi_content.setWidget(form_index, QFormLayout.LabelRole, lb_mi_title)
+
+            # scales to modify if possible
+            if type(mi_content) in (int, float):
+                if type(mi_content) == int:
+                    mi_fine_name = mi_name + "." + VariableInputCreator.INPUT_INT
+                else:
+                    mi_fine_name = mi_name + "." + VariableInputCreator.INPUT_FLOAT
+                scale = util.get_mi_mesure(mi_fine_name)
+                if scale != "":
+                    mi_content = util.to_sub_unit(mi_content, util.get_scale_units_and_multipliers(scale))
+                    mi_content = " ".join([str(mi_content[0]), mi_content[1]])
+            # ----------------------
 
             lb_mi_content = Label(self.ui.c_patient_information_content)
             lb_mi_content.setText(mi_content)

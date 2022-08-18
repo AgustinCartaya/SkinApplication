@@ -120,7 +120,7 @@
        </spacer>
       </item>
       <item>
-       <layout class="QHBoxLayout" name="ly_inputs">
+       <layout class="QHBoxLayout" name="ly_inputs" stretch="1,1">
         <property name="spacing">
          <number>16</number>
         </property>
@@ -131,7 +131,7 @@
          <number>0</number>
         </property>
         <item>
-         <layout class="QVBoxLayout" name="ly_left_side">
+         <layout class="QVBoxLayout" name="ly_left_side" stretch="1,1">
           <property name="spacing">
            <number>16</number>
           </property>
@@ -177,7 +177,7 @@
              <widget class="QDateEdit" name="i_birth_date">
               <property name="minimumDate">
                <date>
-                <year>1892</year>
+                <year>1900</year>
                 <month>1</month>
                 <day>1</day>
                </date>
@@ -192,7 +192,7 @@
          </layout>
         </item>
         <item>
-         <layout class="QVBoxLayout" name="ly_right_side">
+         <layout class="QVBoxLayout" name="ly_right_side" stretch="1,1">
           <property name="spacing">
            <number>16</number>
           </property>
@@ -231,16 +231,36 @@
             <item>
              <layout class="QHBoxLayout" name="ly_gender_rb">
               <item>
-               <widget class="QRadioButton" name="i_gender_m">
-                <property name="text">
-                 <string>Male</string>
+               <spacer name="horizontalSpacer_3">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
                 </property>
-               </widget>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
               </item>
               <item>
                <widget class="QRadioButton" name="i_gender_f">
                 <property name="text">
-                 <string>Female</string>
+                 <string>Woman</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="i_gender_m">
+                <property name="text">
+                 <string>Man</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="i_gender_o">
+                <property name="text">
+                 <string>Other</string>
                 </property>
                </widget>
               </item>

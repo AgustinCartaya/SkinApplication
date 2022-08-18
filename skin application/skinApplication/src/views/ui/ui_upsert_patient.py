@@ -106,13 +106,15 @@ class Ui_upsert_patient(object):
 
         self.i_birth_date = QDateEdit(self.c_center)
         self.i_birth_date.setObjectName(u"i_birth_date")
-        self.i_birth_date.setMinimumDate(QDate(1892, 1, 1))
+        self.i_birth_date.setMinimumDate(QDate(1900, 1, 1))
 
         self.ly_birth_date.addWidget(self.i_birth_date)
 
 
         self.ly_left_side.addLayout(self.ly_birth_date)
 
+        self.ly_left_side.setStretch(0, 1)
+        self.ly_left_side.setStretch(1, 1)
 
         self.ly_inputs.addLayout(self.ly_left_side)
 
@@ -146,15 +148,24 @@ class Ui_upsert_patient(object):
 
         self.ly_gender_rb = QHBoxLayout()
         self.ly_gender_rb.setObjectName(u"ly_gender_rb")
-        self.i_gender_m = QRadioButton(self.c_center)
-        self.i_gender_m.setObjectName(u"i_gender_m")
+        self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.ly_gender_rb.addWidget(self.i_gender_m)
+        self.ly_gender_rb.addItem(self.horizontalSpacer_3)
 
         self.i_gender_f = QRadioButton(self.c_center)
         self.i_gender_f.setObjectName(u"i_gender_f")
 
         self.ly_gender_rb.addWidget(self.i_gender_f)
+
+        self.i_gender_m = QRadioButton(self.c_center)
+        self.i_gender_m.setObjectName(u"i_gender_m")
+
+        self.ly_gender_rb.addWidget(self.i_gender_m)
+
+        self.i_gender_o = QRadioButton(self.c_center)
+        self.i_gender_o.setObjectName(u"i_gender_o")
+
+        self.ly_gender_rb.addWidget(self.i_gender_o)
 
         self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
@@ -166,9 +177,13 @@ class Ui_upsert_patient(object):
 
         self.ly_right_side.addLayout(self.ly_gender)
 
+        self.ly_right_side.setStretch(0, 1)
+        self.ly_right_side.setStretch(1, 1)
 
         self.ly_inputs.addLayout(self.ly_right_side)
 
+        self.ly_inputs.setStretch(0, 1)
+        self.ly_inputs.setStretch(1, 1)
 
         self.verticalLayout_2.addLayout(self.ly_inputs)
 
@@ -229,8 +244,9 @@ class Ui_upsert_patient(object):
         self.i_birth_date.setDisplayFormat(QCoreApplication.translate("upsert_patient", u"dd-MM-yyyy", None))
         self.lb_last_name.setText(QCoreApplication.translate("upsert_patient", u"Last name", None))
         self.lb_gender.setText(QCoreApplication.translate("upsert_patient", u"Gender", None))
-        self.i_gender_m.setText(QCoreApplication.translate("upsert_patient", u"Male", None))
-        self.i_gender_f.setText(QCoreApplication.translate("upsert_patient", u"Female", None))
+        self.i_gender_f.setText(QCoreApplication.translate("upsert_patient", u"Woman", None))
+        self.i_gender_m.setText(QCoreApplication.translate("upsert_patient", u"Man", None))
+        self.i_gender_o.setText(QCoreApplication.translate("upsert_patient", u"Other", None))
         self.bt_next.setText(QCoreApplication.translate("upsert_patient", u"Next", None))
         self.i_upsert_patient_view.setText("")
         self.i_upsert_patient_mi_view.setText("")

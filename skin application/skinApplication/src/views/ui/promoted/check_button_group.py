@@ -50,6 +50,12 @@ class CheckButtonGroup:
     def get_selected_action_values(self):
         return [bt.action_value for bt in self.get_selected_buttons()]
 
+    def set_action_values(self, action_values):
+        bt_len = len(self.buttons)
+        if len(action_values) == bt_len:
+            for i in range(bt_len):
+                self.buttons[i].set_action_value(action_values[i])
+
     def get_selected_number(self):
         return len(self.get_selected_buttons())
 

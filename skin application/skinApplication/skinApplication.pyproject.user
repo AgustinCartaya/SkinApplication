@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 5.0.0, 2022-08-16T02:00:23. -->
+<!-- Written by QtCreator 5.0.0, 2022-08-17T23:32:45. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -1623,6 +1623,24 @@
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted</value>
    </valuemap>
+   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.85">
+    <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
+    <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
+    <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
+    <valuelist type="QVariantList" key="CustomOutputParsers"/>
+    <value type="int" key="PE.EnvironmentAspect.Base">2</value>
+    <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/check_button_group.py</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/check_button_group.py</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted/check_button_group.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{14d91294-92df-4074-85f8-967a4d5a83af}</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\Documents\Internship Documents\Internship\SkinApplication\skin application\skinApplication\src\views\ui\promoted\check_button_group.py</value>
+    <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
+    <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
+    <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
+    <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/views/ui/promoted</value>
+   </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.9">
     <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
     <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
@@ -1641,7 +1659,7 @@
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">D:/Documents/Internship Documents/Internship/SkinApplication/skin application/skinApplication/src/objects</value>
    </valuemap>
-   <value type="int" key="ProjectExplorer.Target.RunConfigurationCount">85</value>
+   <value type="int" key="ProjectExplorer.Target.RunConfigurationCount">86</value>
   </valuemap>
  </data>
  <data>

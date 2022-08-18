@@ -150,3 +150,30 @@ class Patient(DataObject):
         for skl in self.skin_lesions:
             risks.append(skl.get_risk())
         return risks
+
+    def has_mi_value(self, mi_name, mi_value):
+        if mi_name in self.mi:
+            return util.compare_with_dates(mi_value, self.mi[mi_name])
+
+    def has_mi_value_in_range(self, mi_name, min, max, include=True):
+        if mi_name in self.mi:
+            return util.in_range_with_dates(self.mi[mi_name], min, max, include)
+
+    def has_mi_value_containing_one(self, mi_name, mi_values, case_sensitive=True):
+        if mi_name in self.mi:
+            return util.contains_one(self.mi[key], values, case_sensitive)
+
+    def has_one_skl_with_charac_value(self, charac_name, charac_value):
+        for skl in self.skin_lesions:
+            if skl.has_carach_value(charac_name, charac_value):
+                return True
+
+    def has_one_skl_with_charac_value_in_range(self, charac_name, min, max, include=True):
+        for skl in self.skin_lesions:
+            if skl.has_carach_value_in_range(charac_name, min, max, include):
+                return True
+
+    def has_one_skl_with_charac_value_containing_one(self, charac_name, charac_values, case_sensitive=True):
+        for skl in self.skin_lesions:
+            if skl.has_charach_value_containing_one(charac_name, charac_values, case_sensitive):
+                return True

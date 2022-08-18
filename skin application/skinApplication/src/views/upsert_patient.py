@@ -61,11 +61,18 @@ class UpsertPatientView(ViewObject):
     def catch_basic_info(self):
         # if patient exists setting id = old id, else id = ""
         # if patient exists setting mi = old mi, else mi = {}
+        if self.ui.i_gender_f.isChecked():
+            gender = 0
+        elif self.ui.i_gender_m.isChecked():
+            gender = 1
+        else:
+            gender = 2
+
         self.p.initialize(self.p.id,
             self.ui.i_first_name.text(),
             self.ui.i_last_name.text(),
             self.ui.i_birth_date.date().toString("dd-MM-yyyy"),
-            int(self.ui.i_gender_m.isChecked()),
+            gender,
             self.p.mi
             )
 #        self.p_info["basic_info"]["first_name"] = self.ui.i_first_name.text()
@@ -95,10 +102,12 @@ class UpsertPatientView(ViewObject):
         self.ui.i_first_name.setText(self.p.first_name)
         self.ui.i_last_name.setText(self.p.last_name)
         self.ui.i_birth_date.setDate(QDate.fromString(self.p.birth_date.strftime('%d-%m-%Y'), "dd-MM-yyyy"))
-        if self.p.gender:
+        if self.p.gender == 0:
+            self.ui.i_gender_f.setChecked(True)
+        elif self.p.gender == 1:
             self.ui.i_gender_m.setChecked(True)
         else:
-            self.ui.i_gender_f.setChecked(True)
+            self.ui.i_gender_o.setChecked(True)
 
     def fill_default_test(self):
         self.ui.i_first_name.setText('Agustin')

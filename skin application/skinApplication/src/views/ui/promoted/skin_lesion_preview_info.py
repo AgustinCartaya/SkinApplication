@@ -1,7 +1,9 @@
 from PySide6.QtCore import QSize, Qt
 from PySide6.QtWidgets import QFormLayout, QWidget, QFrame, QHBoxLayout, QVBoxLayout, QSpacerItem, QScrollArea, QSizePolicy
+from .variable_input_creator import VariableInputCreator
 
 from .label import Label
+import src.util.util as util
 
 class SkinLesionPreviewInfo(QFrame):
 
@@ -131,10 +133,17 @@ class SkinLesionPreviewInfo(QFrame):
             lb_result_title.setText(name, colon=True, format=True)
             ly_single_content.setWidget(count, QFormLayout.LabelRole, lb_result_title)
 
-            if type(value) in (tuple, list):
-                value = " ".join(value)
-            elif type(value) in (int, float):
-                value = str(value)
+           # scales to modify if possible
+            if type(value) in (int, float):
+                if type(value) == int:
+                    skl_fine_name = name + "." + VariableInputCreator.INPUT_INT
+                else:
+                    skl_fine_name = name + "." + VariableInputCreator.INPUT_FLOAT
+                scale = util.get_skl_charac_mesure(skl_fine_name)
+                if scale != "":
+                    value = util.to_sub_unit(value, util.get_scale_units_and_multipliers(scale))
+                    value = " ".join([str(value[0]), value[1]])
+            # ----------------------
 
             lb_result_content = Label(c_single_content)
             lb_result_content.setText(value)
