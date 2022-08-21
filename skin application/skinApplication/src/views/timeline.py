@@ -5,6 +5,7 @@ from src.objects.timeline import Timeline
 from src.objects.image import Image
 from .ui.promoted.skin_lesion_preview_info import SkinLesionPreviewInfo
 from .ui.promoted.timeline_skl_img_block import TimelineSklImgBlock
+from .image_viewer import ImageViewer
 
 class TimelineView(ViewObject):
     def __init__(self, mv, patient, skin_lesion):
@@ -13,7 +14,7 @@ class TimelineView(ViewObject):
         self.p = patient
         self.skl = skin_lesion
         self.timeline = Timeline(self.skl)
-
+        self.image_viewers = []
 
         self.load_ui()
         self.connect_ui_signals()
@@ -27,16 +28,14 @@ class TimelineView(ViewObject):
         # timeline points
         self.ui.c_timeline_points.create_points(self.timeline, self.switch_point)
 
-    s_change_view = Signal(str,str,dict)
     def connect_ui_signals(self):
         self.ui.bt_back.clicked.connect(self.__back)
 #        self.ui.bt_relaunch.clicked.connect(self.__relaunch)
 
-        # created signals
-        self.s_change_view.connect(self.MW.change_view)
 
     @Slot()
     def __back(self):
+        self.close_image_viewers()
         self.s_change_view.emit(cfg.IMAGES_VIEW, cfg.ANCIENT_VIEW, {})
 
     @Slot(int)
@@ -54,10 +53,16 @@ class TimelineView(ViewObject):
 
         for img_type, imgs in tlp.images.imgs_dict.items():
             img_block = TimelineSklImgBlock(self.ui.c_images)
-            img_block.add_images(img_type, imgs, None)
+            img_block.add_images(img_type, imgs, double_click_receaver=self.open_single_image)
             self.ui.ly_images.addWidget(img_block)
 
+    Slot(Image)
+    def open_single_image(self, img):
+        self.image_viewers.append(ImageViewer(img))
+        self.image_viewers[-1].show()
 
+    def close_image_viewers(self):
+        self.image_viewers = []
 
     def __charge_patient_info_line(self):
         info_line = []

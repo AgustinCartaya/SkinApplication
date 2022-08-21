@@ -8,7 +8,7 @@ from PySide6.QtWidgets import (QFrame, QVBoxLayout, QHBoxLayout,
         QLineEdit,QGridLayout, QComboBox)
 
 from .ui.promoted.label import Label
-from .ui.promoted.variable_input_creator import VariableInputCreator
+import src.util.variable_inputs as var_inputs
 
 
 class UpsertPatientPreiewView(ViewObject):
@@ -76,26 +76,14 @@ class UpsertPatientPreiewView(ViewObject):
             ly_single_mi.addWidget(lb_mi_title)
 
             # scales to modify if possible
-            if type(mi_content) in (int, float):
-                if type(mi_content) == int:
-                    mi_fine_name = mi_name + "." + VariableInputCreator.INPUT_INT
-                else:
-                    mi_fine_name = mi_name + "." + VariableInputCreator.INPUT_FLOAT
-                scale = util.get_mi_mesure(mi_fine_name)
-                if scale != "":
-                    mi_content = util.to_sub_unit(mi_content, util.get_scale_units_and_multipliers(scale))
-                    mi_content = " ".join([str(mi_content[0]), mi_content[1]])
-            # ----------------------
 
             i_mi_content = Label(self.ui.c_patient_information_preview)
-            i_mi_content.setText(mi_content)
+            i_mi_content.setText(mi_content, scale_input=[mi_name, var_inputs.MI_INPUT])
             i_mi_content.set_decoration("mi_content")
             ly_single_mi.addWidget(i_mi_content)
 
             self.ui.ly_mi_content.addLayout(ly_single_mi)
 
-
-    s_change_view = Signal(str,str,dict)
     def connect_ui_signals(self):
         #ui signals
         self.ui.bt_upsert.clicked.connect(lambda: self.update_patient() if (self.mode ==  "edit") else self.add_patient() )
@@ -104,8 +92,7 @@ class UpsertPatientPreiewView(ViewObject):
 
         self.ui.i_upsert_patient_view.toggled.connect(self.rb_view)
         self.ui.i_upsert_patient_mi_view.toggled.connect(self.rb_view)
-        # created signals
-        self.s_change_view.connect(self.MW.change_view)
+
 
 
     def rb_view(self):

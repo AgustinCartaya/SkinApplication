@@ -4,6 +4,8 @@ from PySide6.QtWidgets import QLabel
 #from PySide6.QtWidgets import QApplication
 
 import src.util.util as util
+import src.util.variable_inputs as var_inputs
+
 class Label(QLabel):
 
     def __init__(self, *args, **kwards):
@@ -16,11 +18,15 @@ class Label(QLabel):
     def set_decoration(self, decoration):
         self.setProperty("decoration", decoration)
 
-    def setText(self, text, colon = False, format=False, parenthesis=False, center=False):
+    def setText(self, text, colon = False, format=False, parenthesis=False, center=False, scale_input=None, before=None):
         if type(text) in (list, tuple):
             text = " ".join(text)
         elif type(text) in (int, float):
-            text = str(text)
+            # scaled values
+            if scale_input is not None:
+                text = var_inputs.get_scalized_str(scale_input[0], text, scale_input[1])
+            else:
+                text = str(text)
         elif type(text) is bool:
             if text:
                 text = "Yes"
@@ -42,5 +48,9 @@ class Label(QLabel):
         # center
         if center:
             self.setAlignment(Qt.AlignCenter)
+
+        # before
+        if before:
+            text = before + text
 
         super().setText(text)

@@ -18,9 +18,9 @@ class AI(DataObject):
         self.actual_p = None
         self.actual_skl = None
         self.actual_images = None
-        self.actual_bi = []
-        self.actual_mi = []
-        self.actual_skl_charac = []
+        self.actual_bi = {}
+        self.actual_mi = {}
+        self.actual_skl_charac = {}
 
         self.__charge_required_images_dict()
         self.__charge_description()
@@ -97,30 +97,30 @@ class AI(DataObject):
             self.actual_images.append_images(img_name, self.actual_skl.get_skl_imgs(img_name, img_info["max"]))
 
     def __charge_actual_req_bi(self):
-        self.actual_bi.append(["gender", self.actual_p.gender])
-        self.actual_bi.append(["age", self.actual_p.age])
+        self.actual_bi["gender"] = self.actual_p.gender
+        self.actual_bi["age"] = self.actual_p.age
 
     def __charge_actual_req_mi(self):
         for mi_name in self.req_mi:
             if mi_name in self.actual_p.mi:
-                self.actual_mi.append([mi_name, self.actual_p.mi[mi_name]])
+                self.actual_mi[mi_name] = self.actual_p.mi[mi_name]
             else:
-                self.actual_mi.append([mi_name, None])
+                self.actual_mi[mi_name] = None
 
     def __charge_actual_skl_charac(self):
         for skl_charac in self.req_skl_charac:
             if skl_charac in self.actual_skl.characteristics:
-                self.actual_skl_charac.append([skl_charac, self.actual_skl.characteristics[skl_charac]])
+                self.actual_skl_charac[skl_charac] = self.actual_skl.characteristics[skl_charac]
             else:
-                self.actual_skl_charac.append([skl_charac, None])
+                self.actual_skl_charac[skl_charac] = None
 
     def reset_actual_patient_and_skin_lesion(self):
         self.actual_p = None
         self.actual_skl = None
         self.actual_images = None
-        self.actual_bi = []
-        self.actual_mi = []
-        self.actual_skl_charac = []
+        self.actual_bi = {}
+        self.actual_mi = {}
+        self.actual_skl_charac = {}
 
     def is_ready_to_launch(self):
         # verifying existence of data
@@ -137,13 +137,13 @@ class AI(DataObject):
                 return False
 
         # verify medical information
-        for mi in self.actual_mi:
-            if mi[1] is None:
+        for mi_name, mi_value in self.actual_mi.items():
+            if mi_value is None:
                 return False
 
-        # verify skin lesion characteristics
-        for skl_charac in self.actual_skl_charac:
-            if skl_charac[1] is None:
+        # verify medical information
+        for skl_charac_name, skl_charac_value in self.actual_skl_charac.items():
+            if skl_charac_value is None:
                 return False
 
         return True

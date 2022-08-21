@@ -7,8 +7,8 @@ from PySide6.QtCore import Signal, Slot, Qt
 from PySide6.QtWidgets import QInputDialog, QFrame, QVBoxLayout
 
 from .button import Button
-from .variable_input_creator import VariableInputCreator
 import src.util.util as util
+import src.util.variable_inputs as var_inputs
 
 
 class FilterVariableInputsContainer(FiltersContent):
@@ -45,7 +45,7 @@ class FilterVariableInputsContainer(FiltersContent):
                 self.__show_single_filter(f_id, f_type, filter_receaver, f_title, f_values)
 
     def __show_single_filter(self, f_id, f_type, filter_receaver, f_title, f_values):
-        if f_type ==  VariableInputCreator.INPUT_OPTIONS and f_values[0].startswith("--e"):
+        if f_type ==  var_inputs.INPUT_OPTIONS and f_values[0].startswith("--e"):
             f_values = f_values[1:]
 
         filter = FilterVariableInput(self)

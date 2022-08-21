@@ -25,12 +25,9 @@ class CreateAccountView(ViewObject):
         self.ui.lb_title.set_title(1)
 
 
-    s_change_view = Signal(str,str,dict)
     def connect_ui_signals(self):
         #ui signals
         self.ui.bt_create.clicked.connect(self.create_account)
-        # created signals
-        self.s_change_view.connect(self.MW.change_view)
 
     # connecting click to the main window
     def create_account(self):

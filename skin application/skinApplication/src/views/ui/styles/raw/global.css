@@ -2,8 +2,8 @@
 /*-----QWidget-----*/
 QWidget
 {
-        background-color: #fff;
-        color: @c_gray_dark;
+    background-color: white;
+    color: @c_gray_dark;
 }
 
 QFrame{
@@ -17,6 +17,19 @@ background-color: transparent;
 /*    background-color: #ddd;*/
 }
 
+
+/*-----QStatusBar-----*/
+.QStatusBar{
+    background-color: white;
+}
+
+.QStatusBar Label{
+    background-color: red;
+    color: white;
+    padding: 10px 5px;
+    border-radius: 2px;
+    margin: 2px;
+}
 /*-----PatientCard-----*/
 
 /*PatientCard{
@@ -91,7 +104,7 @@ PatientCard Label{
 /*-----SklImgCard-----*/
 SklImgCard Label{
     border: 3px solid transparent;
-    border-radius: 3px;
+    border-radius: 2px;
 }
 
 SklImgCard[selected=true] Label{
@@ -109,14 +122,14 @@ SklImgCard Label::hover{
 /*-----SkinLesionPreviewInfo-----*/
 SkinLesionPreviewInfo{
     border: 1px solid @c_gray_light;
-    border-radius: 3px;
+    border-radius: 2px;
 }
 
 
 /*-----AIPreview-----*/
 AIPreview{
     border: 1px solid @c_gray_light;
-    border-radius: 3px;
+    border-radius: 2px;
 }
 
 /*-----RequiredImageType-----*/
@@ -190,10 +203,13 @@ Label[decoration="mi_content"]
 /*-----QPushButton-----*/
 Button
 {
-    border-radius: 3px;
-    padding: 8px 25px;
+    border-radius: 2px;
+
 }
 
+.Button[padding=s] {padding: 2px 2px;}
+.Button[padding=m] {padding: 5px 15px;}
+.Button[padding=l] {padding: 8px 25px;}
 
 
 Button[type=add]
@@ -313,7 +329,6 @@ CheckButton[selected=true]
 {
         background-color: @c_blue_base;
         color: white;
-        border-radius: 3px;
         padding: 5px 5px;
 }
 
@@ -321,7 +336,6 @@ CheckButton[selected=false]
 {
         background-color: @c_gray_white;
         color: @c_gray_light;
-        border-radius: 3px;
         padding: 5px 5px;
 }
 

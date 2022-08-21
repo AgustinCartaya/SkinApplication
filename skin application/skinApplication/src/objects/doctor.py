@@ -47,13 +47,11 @@ class Doctor(DataObject):
             
     def obtain_doctors_name(self):
         dbc = DBController()
-        return dbc.select(cfg.TABLE_DOCTORS,
-            cfg.COLUMN_DOCTORS_LAST_NAME)
+
+        return [dc[0] for dc in dbc.select(cfg.TABLE_DOCTORS, cfg.COLUMN_DOCTORS_LAST_NAME)]
         
     def get_doctor_by_last_name_and_password(self, last_name, password):
-        if (self._verify(last_name, "NAME", "LAST_NAME") and
-           self._verify(password, "PASSWORD", "PASSWORD")
-           ):
+        if self._verify(password, "PASSWORD", "PASSWORD"):
             dbc = DBController()
             obj = dbc.select(cfg.TABLE_DOCTORS,
                 last_name = last_name,

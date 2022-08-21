@@ -21,7 +21,6 @@ class ImageViewer(ViewObject):
     def __show_image(self):
         self.ui.lb_image.setPixmap(QPixmap(self.img.src))
 
-#    s_change_view = Signal(str,str,dict)
     def connect_ui_signals(self):
         pass
 

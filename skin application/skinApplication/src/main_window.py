@@ -8,11 +8,11 @@ from PySide6.QtWidgets import QApplication, QWidget, QStackedWidget
 from PySide6.QtCore import QFile
 from PySide6.QtUiTools import QUiLoader
 from PySide6.QtGui import QScreen
-from PySide6.QtCore import QObject, Signal, Slot
+from PySide6.QtCore import QObject, Signal, Slot, QTimer
 
 import src.util.util as util
 import src.config as cfg
-
+from PySide6.QtWidgets import QStatusBar
 from .views.patients import PatientsView
 from .views.create_account import CreateAccountView
 from .views.login import LoginView
@@ -26,18 +26,31 @@ from .views.images import ImagesView
 from .views.ai_results import AIResultsView
 from .views.timeline import TimelineView
 
+from .views.ui.promoted.label import Label
+
+
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self, ai_dict):
         super(MainWindow, self).__init__()
 
         self.ai_dict = ai_dict
 
-        self.set_initial_state()
         self._layers = QStackedWidget()
+
+        self.statusBar = QStatusBar()
+        self.setStatusBar(self.statusBar)
+        self.statusBar.hide()
+
+        self.set_initial_state()
         self.setCentralWidget(self._layers)
+
+        self.lb_message = Label(self.statusBar)
+        self.statusBar.addWidget(self.lb_message)
+
 
         self.images_view = None
         self.ai_laucher_view = None
+        self.timeline_view = None
 
         self.upsert_patient_view = None
         self.upsert_patient_mi_view = None
@@ -58,6 +71,7 @@ class MainWindow(QtWidgets.QMainWindow):
     def load_style_sheet(self):
         st = util.read_file(cfg.GLOBAL_STYLES_PATH_NAME)
         self.setStyleSheet(st)
+        self.statusBar.setStyleSheet(st)
 
 
     def set_view(self, view):
@@ -134,13 +148,15 @@ class MainWindow(QtWidgets.QMainWindow):
             self.set_view(AIResultsView(self, atts["results"], atts["ai"], atts["patient"], atts["skin_lesion"]))
 
         elif view_to == cfg.TIMELINE_VIEW:
-            self.set_view(TimelineView(self, atts["patient"], atts["skin_lesion"]))
+            self.timeline_view = TimelineView(self, atts["patient"], atts["skin_lesion"])
+            self.set_view(self.timeline_view)
 
 
 #        print(self._layers.count())
 
     def remove_last_view(self):
         self._layers.removeWidget(self._layers.currentWidget())
+        self._layers.currentWidget().refresh()
 
     def clean_views(self):
         nb = self._layers.count()
@@ -150,7 +166,19 @@ class MainWindow(QtWidgets.QMainWindow):
         self.upsert_patient_mi_view = None
         self.images_view = None
         self.ai_laucher_view = None
+        self.timeline_view = None
 
     def closeEvent(self, event):
         if self.images_view is not None:
             self.images_view.close_image_viewers()
+        if self.timeline_view is not None:
+            self.timeline_view.close_image_viewers()
+
+    def show_message(self, text, msg_type):
+        self.lb_message.setText(text)
+        self.statusBar.show()
+        QTimer.singleShot(4000, self.hide_status_bar)
+
+    def hide_status_bar(self):
+        self.statusBar.hide()
+

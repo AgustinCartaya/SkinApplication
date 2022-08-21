@@ -20,31 +20,34 @@ class LoginView(ViewObject):
         # labels
         self.ui.lb_title.set_title(1)
 
+        # create other account
+        self.ui.bt_create_account.hide()
+
+
         
-    s_change_view = Signal(str,str,dict)
     def connect_ui_signals(self):
         #ui signals
         self.ui.bt_login.clicked.connect(self.login)
         self.ui.i_password.returnPressed.connect(self.ui.bt_login.click)
 
-        # created signals
-        self.s_change_view.connect(self.MW.change_view)
+        self.ui.bt_create_account.clicked.connect(self.create_account)
 
     def charge_doctors_name(self):
         dc = Doctor()
         names = dc.obtain_doctors_name()
-        self.ui.i_name.addItems(names[0])
+        self.ui.i_name.addItems(names)
 
-    # connecting click to the main window
+    @Slot()
     def login(self):
         dc = Doctor()
         try:
             dc.get_doctor_by_last_name_and_password(self.ui.i_name.currentText(),self.ui.i_password.text())
             self.s_change_view.emit(cfg.LOGIN_VIEW, cfg.PATIENTS_VIEW, None)
         except ValueError as err:
+            self.show_message(err.args[0], cfg.MSG_ERROR)
             print(err.args)
 
 
-
-
-
+    @Slot()
+    def create_account(self):
+        self.s_change_view.emit(cfg.LOGIN_VIEW, cfg.CREATE_ACCOUNT_VIEW, None)

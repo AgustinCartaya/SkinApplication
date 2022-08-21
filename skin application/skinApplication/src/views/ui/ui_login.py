@@ -85,6 +85,11 @@ class Ui_login(object):
 
         self.ly_inputs.addLayout(self.ly_password)
 
+        self.bt_create_account = Button(self.center_container)
+        self.bt_create_account.setObjectName(u"bt_create_account")
+
+        self.ly_inputs.addWidget(self.bt_create_account, 0, Qt.AlignLeft)
+
 
         self.verticalLayout_2.addLayout(self.ly_inputs)
 
@@ -111,6 +116,7 @@ class Ui_login(object):
         self.lb_title.setText(QCoreApplication.translate("login", u"Login", None))
         self.lb_email.setText(QCoreApplication.translate("login", u"Name", None))
         self.lb_password.setText(QCoreApplication.translate("login", u"Password", None))
+        self.bt_create_account.setText(QCoreApplication.translate("login", u"Create account", None))
         self.bt_login.setText(QCoreApplication.translate("login", u"Login", None))
     # retranslateUi
 

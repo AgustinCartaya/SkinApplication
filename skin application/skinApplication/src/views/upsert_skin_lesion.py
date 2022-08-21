@@ -62,7 +62,6 @@ class UpsertSkinLesionView(ViewObject):
         self.ui.ly_ai_results.addWidget(self.c_ai_previews)
 
 
-    s_change_view = Signal(str,str,dict)
     def connect_ui_signals(self):
         self.ui.bt_complete.clicked.connect(self.__complete)
         self.ui.bt_back.clicked.connect(self.__back)
@@ -71,11 +70,6 @@ class UpsertSkinLesionView(ViewObject):
         self.ui.sc_characteristics.verticalScrollBar().rangeChanged.connect(self.__c_characteristics_scroll_down)
         self.ui.sc_images.verticalScrollBar().rangeChanged.connect(self.__c_images_scroll_down)
 
-
-        # created signals
-        self.s_change_view.connect(self.MW.change_view)
-
-#    def __catch_information(self):
 
     def __save_information(self):
         if self.skl is None:
@@ -92,10 +86,8 @@ class UpsertSkinLesionView(ViewObject):
 
         TimelinePoint.upsert_point(self.skl, saved_images)
 
-
-
         # when skin lesion updated without scaping from the view
-#        self.charge_edit_mode()
+        self.charge_edit_mode()
 
 
     def __catch_characteristics(self):
@@ -141,4 +133,10 @@ class UpsertSkinLesionView(ViewObject):
         self.ui.bt_see_images.setEnabled(True)
 
     def __see_images(self):
+        self.__save_information()
         self.s_change_view.emit(cfg.UPSERT_SKIN_LESION_VIEW, cfg.IMAGES_VIEW, {"images":self.skl.get_all_skl_imgs(), "patient" : self.p, "skin_lesion": self.skl, 'collet_mode':False})
+
+
+    def refresh(self):
+        self.c_add_skl_img.set_number_images(self.skl.get_skl_img_numbers())
+

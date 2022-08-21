@@ -5,6 +5,7 @@ from PySide6.QtWidgets import QInputDialog, QFrame, QVBoxLayout
 from .button import Button
 from .variable_input import VariableInput
 from .variable_input_creator import VariableInputCreator
+import src.util.variable_inputs as var_inputs
 
 import src.util.util as util
 
@@ -49,7 +50,7 @@ class VariableInputsContainer(QFrame):
             self.__show_single_input(i_id, i_title, i_values, i_type)
 
     def __show_single_input(self, i_id, i_title, i_values, i_type):
-        if i_type ==  VariableInputCreator.INPUT_OPTIONS and i_values[0].startswith("--e"):
+        if i_type ==  var_inputs.INPUT_OPTIONS and i_values[0].startswith("--e"):
             editable = True
             i_values = i_values[1:]
         else:

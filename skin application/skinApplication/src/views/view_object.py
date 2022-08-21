@@ -21,10 +21,12 @@ import src.util.data_cleaner as data_cleaner
 import src.util.util as util
 
 class ViewObject(QWidget, QObject):
-
+    s_change_view = Signal(str,str,dict)
     def __init__(self, mw):
         super(ViewObject, self).__init__()
-        self.MW = mw
+        if mw is not None:
+            self.mv = mw
+            self.s_change_view.connect(mw.change_view)
 
     @abstractmethod
     def load_ui(self):
@@ -33,6 +35,12 @@ class ViewObject(QWidget, QObject):
     @abstractmethod
     def connect_ui_signals(self):
         pass
+
+    def refresh(self):
+        pass
+
+    def show_message(self, text, msg_type):
+        self.mv.show_message(text, msg_type)
 
     def load_test_ui(self, ui_file_name):
        loader = QUiLoader()
@@ -44,3 +52,4 @@ class ViewObject(QWidget, QObject):
 
     def create_text_validator(self, regex_text):
         return data_cleaner.create_text_validator(regex_text)
+

@@ -16,7 +16,7 @@ import src.util.util as util
 
 class Pagination(QFrame):
 
-    def __init__(self, parent, min=(1,1), max=(10,10), sep = (6,6), min_element_size = (50,50), forced_empty_spaces = False):
+    def __init__(self, parent, min=(1,1), max=(10,10), sep = (6,6), min_element_size = (50,50)):
         QFrame.__init__(self, parent)
 
         # No usado por el momento
@@ -34,8 +34,6 @@ class Pagination(QFrame):
 
         self.min_card_width = min_element_size[0]
         self.min_card_height = min_element_size[1]
-
-        self.forced_empty_spaces = forced_empty_spaces
         # fin no usado
 
         self.nb_cards = 0
@@ -190,16 +188,7 @@ class Pagination(QFrame):
                     self.ly_cards.addWidget(self.cards[index_card], i, j, 1, 1)
                     index_card = index_card+1
                 else:
-
-                    if self.forced_empty_spaces:
-                        fr = QFrame(self)
-                        ly = QHBoxLayout(fr)
-                        spacer = QSpacerItem(20, 40, QSizePolicy.Expanding, QSizePolicy.Expanding)
-                        ly.addItem(spacer)
-                        self.ly_cards.addWidget(fr, i, j, 1, 1)
-
-                    else:
-                        self.ly_cards.addWidget(Label(self), i, j, 1, 1)
+                    self.ly_cards.addWidget(Label(self), i, j, 1, 1)
 
         self.i_actual_page.setText(str(self.pointer+1))
         self.c_cards.update()
@@ -262,13 +251,12 @@ class Pagination(QFrame):
         w = int((self.c_cards.size().width() - self.v_sep * (self.nb_cols - 1))/self.nb_cols)
         h = int((self.c_cards.size().height() - self.h_sep * (self.nb_rows - 1))/self.nb_rows)
 
-#        if w > 0 and h > 0:
-#            for i in reversed(range(self.ly_cards.count())):
-#                self.ly_cards.itemAt(i).widget().setMinimumSize(QSize(w,h))
-#                self.ly_cards.itemAt(i).widget().setMaximumSize(QSize(w,h))
+        if w > 0 and h > 0:
+            for i in reversed(range(self.ly_cards.count())):
+                self.ly_cards.itemAt(i).widget().setMinimumSize(QSize(w,h))
+                self.ly_cards.itemAt(i).widget().setMaximumSize(QSize(w,h))
 
         self.s_card_size_changed.emit(w,h)
-#        print([w,h])
 
     s_card_size_changed = Signal(int, int)
     def add_card_size_changed_receaver(self, receaver):

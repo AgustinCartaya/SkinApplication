@@ -7,7 +7,7 @@ from PySide6.QtCore import Qt
 
 from .ui.promoted.label import Label
 from .ui.promoted.skin_lesion_preview import SkinLesionPreview
-from .ui.promoted.variable_input_creator import VariableInputCreator
+import src.util.variable_inputs as var_inputs
 
 from src.objects.patient import Patient
 from src.objects.image import Image
@@ -17,6 +17,7 @@ class CheckPatientView(ViewObject):
     def __init__(self, mw, patient_id):
         super().__init__(mw)
 
+        self.skin_lesion_previews = []
         self.load_patient(patient_id)
 
         self.load_ui()
@@ -31,19 +32,19 @@ class CheckPatientView(ViewObject):
     def load_skin_lesions(self):
         self.p.load_skin_lesions()
         for skl in self.p.skin_lesions:
-            skin_lesion_preview = SkinLesionPreview(self.ui.c_skin_lesions_preview,
+            self.skin_lesion_previews.append(SkinLesionPreview(self.ui.c_skin_lesions_preview,
                 skl,
                 self.update_skin_lesion,
                 self.see_timeline,
-                self.see_images)
+                self.see_images))
 
             skl_photography = skl.get_photography()
             if skl_photography is not None:
-                skin_lesion_preview.set_image(skl_photography)
+                self.skin_lesion_previews[-1].set_image(skl_photography)
             else:
-                skin_lesion_preview.set_image(Image(cfg.IMG_LOGO_PATH_NAME, "logo"))
+                self.skin_lesion_previews[-1].set_image(Image(cfg.IMG_LOGO_PATH_NAME, "logo"))
 
-            self.ui.ly_skin_lesions_preview.addWidget(skin_lesion_preview)
+            self.ui.ly_skin_lesions_preview.addWidget(self.skin_lesion_previews[-1])
 
     Slot(int)
     def update_skin_lesion(self, skin_lesion_nb):
@@ -94,18 +95,12 @@ class CheckPatientView(ViewObject):
 #        self.skin_lesions_layout.setSpacing(40)
 #        self.skin_lesions_layout.setContentsMargins(0, 0, 0, 0)
 
-
-    s_change_view = Signal(str,str,dict)
     def connect_ui_signals(self):
         # navigator
         self.ui.bt_back.clicked.connect(self.back)
         self.ui.bt_edit_patient_info.clicked.connect(self.edit_patient_info)
 
         self.ui.bt_add_lesion.clicked.connect(self.add_new_skin_lesion)
-
-        # created signals
-        self.s_change_view.connect(self.MW.change_view)
-
 
     def show_medical_information(self):
         form_index = 0
@@ -115,19 +110,8 @@ class CheckPatientView(ViewObject):
             self.ui.ly_mi_content.setWidget(form_index, QFormLayout.LabelRole, lb_mi_title)
 
             # scales to modify if possible
-            if type(mi_content) in (int, float):
-                if type(mi_content) == int:
-                    mi_fine_name = mi_name + "." + VariableInputCreator.INPUT_INT
-                else:
-                    mi_fine_name = mi_name + "." + VariableInputCreator.INPUT_FLOAT
-                scale = util.get_mi_mesure(mi_fine_name)
-                if scale != "":
-                    mi_content = util.to_sub_unit(mi_content, util.get_scale_units_and_multipliers(scale))
-                    mi_content = " ".join([str(mi_content[0]), mi_content[1]])
-            # ----------------------
-
             lb_mi_content = Label(self.ui.c_patient_information_content)
-            lb_mi_content.setText(mi_content)
+            lb_mi_content.setText(mi_content, scale_input=[mi_name, var_inputs.MI_INPUT])
             self.ui.ly_mi_content.setWidget(form_index, QFormLayout.FieldRole, lb_mi_content)
 
             form_index = form_index + 1
@@ -144,4 +128,12 @@ class CheckPatientView(ViewObject):
     @Slot()
     def add_new_skin_lesion(self):
         self.s_change_view.emit(cfg.CHECK_PATIENT_VIEW, cfg.UPSERT_SKIN_LESION_VIEW, {"patient" : self.p, "skin_lesion": None})
+
+#    def refresh(self):
+#        for skl in self.p.skin_lesions:
+#            skl_photography = skl.get_photography()
+#            if skl_photography is not None:
+#                self.skin_lesion_previews[skl.number].refresh_image(skl_photography)
+#            else:
+#                self.skin_lesion_previews[skl.number].refresh_image(Image(cfg.IMG_LOGO_PATH_NAME, "logo"))
 

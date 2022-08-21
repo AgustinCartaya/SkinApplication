@@ -37,7 +37,6 @@ class UpsertPatientView(ViewObject):
         self.ui.lb_title.set_title(1)
 
 
-    s_change_view = Signal(str,str,dict)
     def connect_ui_signals(self):
         #ui signals
         self.ui.bt_next.clicked.connect(self.next)
@@ -45,9 +44,6 @@ class UpsertPatientView(ViewObject):
 
         self.ui.i_upsert_patient_mi_view.toggled.connect(self.rb_view)
         self.ui.i_upsert_patient_preview_view.toggled.connect(self.rb_view)
-
-        # created signals
-        self.s_change_view.connect(self.MW.change_view)
 
     def rb_view(self):
         if self.ui.i_upsert_patient_mi_view.isChecked():

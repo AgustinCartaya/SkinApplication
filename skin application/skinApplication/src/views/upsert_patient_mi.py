@@ -34,8 +34,6 @@ class UpsertPatientMiView(ViewObject):
             "Create new medical information")
         self.ui.ly_medical_information.addWidget(self.c_mi)
 
-
-    s_change_view = Signal(str,str,dict)
     def connect_ui_signals(self):
         #ui signals
         self.ui.bt_next.clicked.connect(self.__next)
@@ -46,9 +44,6 @@ class UpsertPatientMiView(ViewObject):
 
         self.ui.i_upsert_patient_view.toggled.connect(self.rb_view)
         self.ui.i_upsert_patient_preview_view.toggled.connect(self.rb_view)
-
-        # created signals
-        self.s_change_view.connect(self.MW.change_view)
 
     def rb_view(self):
         if self.ui.i_upsert_patient_view.isChecked():

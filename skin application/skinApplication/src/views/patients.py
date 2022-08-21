@@ -6,9 +6,9 @@ from src.objects.patient import Patient
 
 from PySide6.QtCore import QSize
 from .ui.promoted.patient_card import PatientCard
-from .ui.promoted.variable_input_creator import VariableInputCreator
 
 from .ui.promoted.check_button_group import CheckButtonGroup
+import src.util.variable_inputs as var_inputs
 
 
 class PatientsView(ViewObject):
@@ -48,8 +48,8 @@ class PatientsView(ViewObject):
         self.ui.c_filter_skl_charac_header.add_filters_content(self.ui.c_filter_skl_charac_content)
 
         # filters creation
-        bi_filters = [["gender",VariableInputCreator.INPUT_OPTIONS, ["Women", "Man", "Other"], [0,1,2]],
-                    ["age",VariableInputCreator.INPUT_INT, []]]
+        bi_filters = [["gender",var_inputs.INPUT_OPTIONS, ["Women", "Man", "Other"], [0,1,2]],
+                    ["age",var_inputs.INPUT_INT, []]]
         self.ui.c_filter_bi_content.show_filters(bi_filters, self.filter_patients)
         self.ui.c_filter_mi_content.show_filters(cfg.FILES_MEDICAL_INFORMATION_PATH, self.filter_patients)
         self.ui.c_filter_skl_charac_content.show_filters(cfg.FILES_SKIN_LESION_CHARACTERISTICS_PATH, self.filter_patients)
@@ -86,7 +86,7 @@ class PatientsView(ViewObject):
         # Number of Patients
         self.ui.i_number_of_patients.setText(len(self.p_list))
 
-    s_change_view = Signal(str,str,dict)
+
     def connect_ui_signals(self):
         # navigator
         self.ui.bt_back.clicked.connect(self.back)
@@ -109,14 +109,11 @@ class PatientsView(ViewObject):
         self.ui.i_search.returnPressed.connect(self.filter_patients)
         self.ui.bt_search.clicked.connect(self.filter_patients)
 
-
         # AI results
         self.ui.i_air_benign.stateChanged.connect(self.filter_patients)
         self.ui.i_air_indeterminate.stateChanged.connect(self.filter_patients)
         self.ui.i_air_malignant.stateChanged.connect(self.filter_patients)
 
-        # created signals
-        self.s_change_view.connect(self.MW.change_view)
 
     @Slot()
     def back(self):

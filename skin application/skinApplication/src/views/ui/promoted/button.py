@@ -15,13 +15,21 @@ class Button(QPushButton):
     IC_LIST = "list"
     IC_MOSAICO = "mosaico"
 
+    PADDING_S = "s"
+    PADDING_M = "m"
+    PADDING_L = "l"
+
     def __init__(self, *args, **kwards):
         QPushButton.__init__(self, *args, **kwards)
         self.set_type(Button.BT_ADD)
+        self.set_padding(Button.PADDING_L)
         self.action_value = ""
 
     def repaint(self):
         self.setStyle(QApplication.style())
+
+    def set_padding(self, padding):
+        self.setProperty("padding", padding)
 
     def set_type(self, type):
         self.setProperty("type", type)

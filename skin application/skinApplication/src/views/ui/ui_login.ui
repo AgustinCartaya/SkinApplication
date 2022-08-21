@@ -112,6 +112,13 @@
           </item>
          </layout>
         </item>
+        <item alignment="Qt::AlignLeft">
+         <widget class="Button" name="bt_create_account">
+          <property name="text">
+           <string>Create account</string>
+          </property>
+         </widget>
+        </item>
        </layout>
       </item>
       <item>

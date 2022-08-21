@@ -7,12 +7,9 @@ from .required_element import  RequiredElement
 class RequiredElementsContainer(QFrame):
 
 #    s_edit_items = Signal(str)
-    def __init__(self, parent, required_elements = None):
+    def __init__(self, parent):
         QFrame.__init__(self, parent)
-
-        self.required_elements = required_elements
         self.__create()
-
 
     def __create(self):
         self.layout = QVBoxLayout(self)
@@ -20,12 +17,12 @@ class RequiredElementsContainer(QFrame):
         self.layout.setContentsMargins(0, 0, 0, 0)
 
 
-    def set_required_elements(self, required_elements):
+    def set_required_elements(self, required_elements, scale_input):
         if len(required_elements) > 0:
-            self.required_elements = required_elements
-            for rk in required_elements:
-#                print(type( rk[1]))
-                rk_e = RequiredElement(self, rk[0], rk[1])
+            for req_element_name, req_element_value in required_elements.items():
+                rk_e = RequiredElement(self)
+                satisfied = req_element_value is not None
+                rk_e.fill_content(satisfied, req_element_name, req_element_value, scale_input)
                 self.layout.addWidget(rk_e)
         else:
             lb_no_required_info = Label(self)

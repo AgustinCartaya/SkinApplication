@@ -46,13 +46,35 @@ class AddSklImgItem(QFrame):
         self.lb_nb_new_images = Label(self)
         self.layout.addWidget(self.lb_nb_new_images)
 
+        # cancel images
+        self.bt_cancel_new_images = Button(self)
+        self.bt_cancel_new_images.setText("-")
+        self.bt_cancel_new_images.setMaximumSize(QSize(22, 22))
+        self.bt_cancel_new_images.set_type(Button.BT_CANCEL)
+        self.bt_cancel_new_images.set_padding(Button.PADDING_S)
+        self.layout.addWidget(self.bt_cancel_new_images)
+        self.bt_cancel_new_images.clicked.connect(self.__cancel_new_images)
+
+        self.bt_cancel_new_images.hide()
+
+
     def set_nb_images(self, nb_images):
         self.nb_images = nb_images
-        self.lb_nb_images.setText("(" + str(self.nb_images) + ")")
+        self.lb_nb_images.setText(self.nb_images, parenthesis=True)
+        self.__cancel_new_images()
+
+    @Slot()
+    def __cancel_new_images(self):
+        self.img_path_name = set()
+        self.__update_nb_new_images()
 
     def __update_nb_new_images(self):
         if len(self.img_path_name) > 0:
-            self.lb_nb_new_images.setText("+" + str(len(self.img_path_name)))
+            self.lb_nb_new_images.setText(len(self.img_path_name), before="+")
+            self.bt_cancel_new_images.show()
+        else:
+            self.lb_nb_new_images.setText("")
+            self.bt_cancel_new_images.hide()
 
     def mousePressEvent(self, arg):
         self.loadFiles()

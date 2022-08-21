@@ -8,16 +8,16 @@ def run(images, info):
     print("Other information:")
     for info_name, infos in info.items(): 
         print("\t"+ info_name + ":")
-        for info in infos:
-            print("\t\t" + str(info))
+        for i_name, i_value in infos.items():
+            print("\t\t" + i_name + ": " + str(i_value))
 
     
     print("Calculating results...")
 
     results = {
-        "risk":"malignant",
+        "risk":"benign",
         "type":"melanoma",
-        "Accurance":87
+        "Accurance":55
     }
 
     return results

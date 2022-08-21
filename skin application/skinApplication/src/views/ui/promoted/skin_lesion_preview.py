@@ -182,11 +182,15 @@ class SkinLesionPreview(QFrame):
 #        self.lb_image.setPixmap(pxm_image)
 
     def set_image(self, img):
+#        self.img_src = img.src
         self.pxm_image = QPixmap(img.src)
         self.lb_image.setPixmap(self.pxm_image)
 
-#        resized_size = img.get_resized_size(150)
-#        pxm_image = QPixmap(img.src).scaled(resized_size[0], resized_size[1], mode=Qt.SmoothTransformation)
+    # refresh problem
+#    def refresh_image(self, img):
+#        if self.img_src != img.src:
+#            self.pxm_image = QPixmap(img.src)
+#            self.lb_image.setPixmap(self.pxm_image)
 
     def __show_image(self):
         myScaledPixmap = self.pxm_image.scaled(self.lb_image.size().width(), self.lb_image.size().width(), aspectMode=Qt.KeepAspectRatio, mode=Qt.SmoothTransformation)

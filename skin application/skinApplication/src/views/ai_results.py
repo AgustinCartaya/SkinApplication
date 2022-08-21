@@ -30,14 +30,9 @@ class AIResultsView(ViewObject):
         # title
         self.ui.lb_ai_name.setText(self.ai.name)
 
-
-    s_change_view = Signal(str,str,dict)
     def connect_ui_signals(self):
         self.ui.bt_back.clicked.connect(self.__back)
         self.ui.bt_relaunch.clicked.connect(self.__relaunch)
-
-        # created signals
-        self.s_change_view.connect(self.MW.change_view)
 
     def __carge_results(self):
         for res_name, res_content in self.results.items():

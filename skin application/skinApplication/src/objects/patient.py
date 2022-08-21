@@ -161,7 +161,7 @@ class Patient(DataObject):
 
     def has_mi_value_containing_one(self, mi_name, mi_values, case_sensitive=True):
         if mi_name in self.mi:
-            return util.contains_one(self.mi[key], values, case_sensitive)
+            return util.contains_one(self.mi[mi_name], mi_values, case_sensitive)
 
     def has_one_skl_with_charac_value(self, charac_name, charac_value):
         for skl in self.skin_lesions:

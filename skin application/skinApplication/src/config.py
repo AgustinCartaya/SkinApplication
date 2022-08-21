@@ -30,7 +30,6 @@ IMAGES_PATH = ASSETS_PATH + _S + "images"
 FILES_SKIN_LESION_IMAGES_PATH = FILES_PATH + _S + "skin_lesion_images"
 FILES_MEDICAL_INFORMATION_PATH = FILES_PATH + _S + "medical_information"
 FILES_SKIN_LESION_CHARACTERISTICS_PATH = FILES_PATH + _S + "skin_lesion_characteristics"
-FILES_SCALES = FILES_PATH + _S + "scales"
 
 # images
 IMG_LOGO_NAME = "logo.png"
@@ -72,3 +71,6 @@ STYLES_PATH = PROJECT_FOLDER + "/src/views/ui/styles"
 GLOBAL_STYLES_NAME = "global.css"
 GLOBAL_STYLES_PATH_NAME = STYLES_PATH + _S + GLOBAL_STYLES_NAME
 
+# messages
+MSG_ERROR = "MSG_ERROR"
+MSG_WARNING = "MSG_WARNING"

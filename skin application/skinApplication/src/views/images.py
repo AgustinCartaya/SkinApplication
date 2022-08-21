@@ -103,7 +103,6 @@ class ImagesView(ViewObject):
             image_type_list.append([img_name, len(imgs)])
         self.ui.c_filter_image_type.refrsh_lb_numbers(image_type_list)
 
-    s_change_view = Signal(str,str,dict)
     def connect_ui_signals(self):
         self.ui.bt_back.clicked.connect(self.__back)
         if self.collet_mode:
@@ -118,9 +117,6 @@ class ImagesView(ViewObject):
 
         # delete image
         self.ui.bt_delete_image.clicked.connect(self.__delete_image)
-
-        # created signals
-        self.s_change_view.connect(self.MW.change_view)
 
     Slot()
     def filter_img_type_slot(self):

@@ -153,6 +153,8 @@ class SkinLesion(DataObject):
             return self.get_skl_imgs("photography", 1)[0]
         elif "medical_image" in img_dirs and self.get_skl_img_number("medical_image") > 0:
             return self.get_skl_imgs("medical_image", 1)[0]
+        elif "dermoscopy" in img_dirs and self.get_skl_img_number("dermoscopy") > 0:
+            return self.get_skl_imgs("dermoscopy", 1)[0]
         else:
             return None
 

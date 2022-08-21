@@ -137,7 +137,7 @@ class PatientList:
 
             # search in medical information
             elif info == "mi":
-                if patient.has_mi_containing_one_value(key, values, case_sensitive):
+                if patient.has_mi_value_containing_one(key, values, case_sensitive):
                     filtered.append_patient(patient)
 
             # search in skin lesion characteristics

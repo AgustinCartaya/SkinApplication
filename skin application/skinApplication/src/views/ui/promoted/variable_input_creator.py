@@ -11,17 +11,12 @@ from PySide6.QtCore import Signal, Slot
 
 import src.util.data_cleaner as data_cleaner
 import src.util.util as util
+import src.util.variable_inputs as var_inputs
+
 
 from .check_button_group import CheckButtonGroup
 
 class VariableInputCreator(QFrame):
-
-    INPUT_OPTIONS = "options"
-    INPUT_INT = "int"
-    INPUT_FLOAT = "float"
-    INPUT_TEXT = "text"
-    INPUT_BOOL = "bool"
-    INPUT_DATE = "date"
 
     s_cancel = Signal()
     s_add = Signal(str, list, str)
@@ -67,27 +62,27 @@ class VariableInputCreator(QFrame):
         self.bt_options = CheckButton(self)
         self.bt_options.setText("Options")
         ly_type_up.addWidget(self.bt_options)
-        self.bt_options.clicked.connect( lambda: self.__type_selected(self.INPUT_OPTIONS) )
+        self.bt_options.clicked.connect( lambda: self.__type_selected(var_inputs.INPUT_OPTIONS) )
 
         self.bt_number = CheckButton(self)
         self.bt_number.setText("Number")
         ly_type_up.addWidget(self.bt_number)
-        self.bt_number.clicked.connect( lambda: self.__type_selected(self.INPUT_INT) )
+        self.bt_number.clicked.connect( lambda: self.__type_selected(var_inputs.INPUT_INT) )
 
         self.bt_text = CheckButton(self)
         self.bt_text.setText("Text")
         ly_type_up.addWidget(self.bt_text)
-        self.bt_text.clicked.connect( lambda: self.__type_selected(self.INPUT_TEXT) )
+        self.bt_text.clicked.connect( lambda: self.__type_selected(var_inputs.INPUT_TEXT) )
 
         self.bt_bool = CheckButton(self)
         self.bt_bool.setText("Yes/No")
         ly_type_down.addWidget(self.bt_bool)
-        self.bt_bool.clicked.connect( lambda: self.__type_selected(self.INPUT_BOOL) )
+        self.bt_bool.clicked.connect( lambda: self.__type_selected(var_inputs.INPUT_BOOL) )
 
         self.bt_date = CheckButton(self)
         self.bt_date.setText("Date")
         ly_type_down.addWidget(self.bt_date)
-        self.bt_date.clicked.connect( lambda: self.__type_selected(self.INPUT_DATE) )
+        self.bt_date.clicked.connect( lambda: self.__type_selected(var_inputs.INPUT_DATE) )
 
         self.g_bt_type = CheckButtonGroup()
         self.g_bt_type.add_buttons(self.bt_options, self.bt_number, self.bt_text, self.bt_bool, self.bt_date)
@@ -155,7 +150,7 @@ class VariableInputCreator(QFrame):
         self.qbt_scale_group = QButtonGroup()
         self.scales_index = []
         counter = 0
-        for scale in util.get_availables_scales():
+        for scale in var_inputs.get_availables_scales():
             ly_scale = QVBoxLayout()
             ly_scales.addLayout(ly_scale)
 
@@ -173,7 +168,7 @@ class VariableInputCreator(QFrame):
             ly_scale.addLayout(ly_units_preview)
 
             lb_units = Label(self.c_scales)
-            lb_units.setText(", ".join(util.get_scale_units(scale)), parenthesis=True)
+            lb_units.setText(", ".join(var_inputs.get_scale_units(scale)), parenthesis=True)
             ly_units_preview.addWidget(lb_units)
 
 #            vs_right = QSpacerItem(20, 5, QSizePolicy.Expanding, QSizePolicy.Minimum)
@@ -210,7 +205,7 @@ class VariableInputCreator(QFrame):
     def __type_selected(self, t):
         self.c_name.show()
         self.bt_add.show()
-        if t == self.INPUT_OPTIONS:
+        if t == var_inputs.INPUT_OPTIONS:
             self.i_decimals.hide()
             self.i_add_scales.hide()
             self.c_values.show()
@@ -219,15 +214,15 @@ class VariableInputCreator(QFrame):
 
         else:
             self.c_values.hide()
-            if t == self.INPUT_INT:
+            if t == var_inputs.INPUT_INT:
                 self.i_decimals.show()
                 self.i_add_scales.show()
                 if not self.i_add_scales.isChecked():
                     self.c_scales.hide()
-                if self.input_type != self.INPUT_FLOAT:
+                if self.input_type != var_inputs.INPUT_FLOAT:
                     self.input_type = t
 
-            elif t in (self.INPUT_TEXT, self.INPUT_BOOL, self.INPUT_DATE):
+            elif t in (var_inputs.INPUT_TEXT, var_inputs.INPUT_BOOL, var_inputs.INPUT_DATE):
                 self.i_decimals.hide()
                 self.i_add_scales.hide()
                 if not self.i_add_scales.isChecked():
@@ -237,9 +232,9 @@ class VariableInputCreator(QFrame):
     @Slot()
     def __number_with_decimal(self):
         if self.i_decimals.isChecked():
-            self.input_type = self.INPUT_FLOAT
+            self.input_type = var_inputs.INPUT_FLOAT
         else:
-            self.input_type = self.INPUT_INT
+            self.input_type = var_inputs.INPUT_INT
 
     @Slot()
     def __input_with_scale(self):
@@ -258,13 +253,13 @@ class VariableInputCreator(QFrame):
         values = []
         if title == "":
             raise ValueError('New input title empty', "INPUT TITLE", "EMPTY")
-        if self.input_type == self.INPUT_OPTIONS:
+        if self.input_type == var_inputs.INPUT_OPTIONS:
             values = util.str_to_list(self.i_values.text(),",")
             if len(values) == 0:
                 raise ValueError('New input values empty', "INPUT VALUES", "EMPTY")
             else:
                 values.insert(0,"--e")
-        elif self.input_type in (self.INPUT_INT, self.INPUT_FLOAT) and self.i_add_scales.isChecked():
+        elif self.input_type in (var_inputs.INPUT_INT, var_inputs.INPUT_FLOAT) and self.i_add_scales.isChecked():
             if self.qbt_scale_group.checkedId() == -1:
                 raise ValueError('New input Scale not selected', "INPUT_SCALE", "NOT_SELECTED")
             else:

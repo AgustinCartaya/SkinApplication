@@ -13,7 +13,7 @@ class SklImgCard(QFrame):
 
     s_clicked = Signal(Image, bool)
     s_double_click = Signal(Image)
-    def __init__(self, parent, image, click_receaver, double_click_receaver=None):
+    def __init__(self, parent, image, click_receaver=None, double_click_receaver=None):
         QFrame.__init__(self, None)
 
         self.img = image
@@ -38,28 +38,22 @@ class SklImgCard(QFrame):
 
     def __create_image_container(self):
         self.lb_image = Label()
-#        self.lb_image.setAlignment(Qt.AlignHCenter|Qt.AlignVCenter)
         self.pxm_image = QPixmap(self.img.src)
         self.layout.addWidget(self.lb_image, 0, Qt.AlignHCenter|Qt.AlignVCenter)
 
 
     def __show_image(self):
-#        print(self.size())
-
-#        self.lb_image.setScaledContents(True)
-#        self.lb_image.setPixmap(QPixmap(self.img.src))
-
         myScaledPixmap = self.pxm_image.scaled(self.size(), Qt.KeepAspectRatio)
-#        print(myPixmap.size())
-#        print(myScaledPixmap.size())
         self.lb_image.setPixmap(myScaledPixmap)
 
     Slot(int, int)
     def size_changed(self, w, h):
-        self.setMinimumSize(QSize(w,h))
-        self.setMaximumSize(QSize(w,h))
-
         self.__show_image()
+
+    def change_size(self, w, h):
+        self.setMinimumSize(QSize(w, h))
+        self.setMaximumSize(QSize(w, h))
+        self.size_changed(w, h)
 
     def mousePressEvent(self, arg):
         if self.click_receaver is not None:

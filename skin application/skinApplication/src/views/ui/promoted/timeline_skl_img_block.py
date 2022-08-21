@@ -50,15 +50,15 @@ class TimelineSklImgBlock(QFrame):
         self.ly_sc.addItem(self.vs_description_down)
 
 
-    def add_images(self, img_type, imgs, image_clicked_receaver, img_width = 150):
+    def add_images(self, img_type, imgs, image_clicked_receaver=None, double_click_receaver=None, img_width = 150):
         self.lb_title.setText(img_type, format=True, colon=True)
         max_height = 0
         for img in imgs:
-            card = SklImgCard(self.c_images, img, image_clicked_receaver)
+            card = SklImgCard(self.c_images, img, image_clicked_receaver, double_click_receaver)
             self.ly_images.addWidget(card)
 
             h = img.get_resized_size(img_width, img_width)[1]
-            card.size_changed(img_width,h)
+            card.change_size(img_width,h)
 
             if h > max_height:
                 max_height = h
