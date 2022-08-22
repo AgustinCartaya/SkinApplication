@@ -1,5 +1,5 @@
 from PySide6.QtWidgets import (QFrame, QVBoxLayout, QHBoxLayout,
-        QLineEdit, QGridLayout, QSpacerItem, QSizePolicy)
+        QLineEdit, QGridLayout)
 
 #from PySide6.QtWidgets import QApplication
 
@@ -253,8 +253,7 @@ class Pagination(QFrame):
 
         if w > 0 and h > 0:
             for i in reversed(range(self.ly_cards.count())):
-                self.ly_cards.itemAt(i).widget().setMinimumSize(QSize(w,h))
-                self.ly_cards.itemAt(i).widget().setMaximumSize(QSize(w,h))
+                self.ly_cards.itemAt(i).widget().resize(QSize(w,h))
 
         self.s_card_size_changed.emit(w,h)
 

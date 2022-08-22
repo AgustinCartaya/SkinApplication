@@ -5,11 +5,19 @@ from .image import Image
 from .image_list import ImageList
 
 class SkinLesion(DataObject):
-    def __init__(self, number, patient_id, characteristics, ai_results = {}, location=None):
+    def __init__(self, number, patient_id, location=[], characteristics={}, ai_results = {}):
 
         self.number = number
         self.patient_id = patient_id
-        self.location = location
+
+        if type(location) is str:
+            _lc = util.str_to_list(location, ",")
+            if len(_lc) == 3:
+                self.location = [int(_lc[0]), float(_lc[1]), float(_lc[2])]
+            else:
+                self.location = []
+        elif type(location) is list:
+            self.location = location
 
         if type(characteristics) is str:
             self.characteristics = json.loads(characteristics)
@@ -20,7 +28,6 @@ class SkinLesion(DataObject):
             self.ai_results = json.loads(ai_results)
         elif type(ai_results) is dict:
             self.ai_results = ai_results
-
         self.folder_path = util.gen_path(cfg.PATIENTS_DATA_PATH, self.patient_id, cfg.SKL_FOLDER_SUFIX +  str(self.number))
 
         self.verify_skl_folder()
@@ -31,6 +38,7 @@ class SkinLesion(DataObject):
 
             dbc.insert(cfg.TABLE_SKIN_LESIONS,(self.number,
                 self.patient_id,
+                util.list_to_string(self.location),
                 json.dumps(self.characteristics),
                 json.dumps(self.ai_results)
                 ))
@@ -42,7 +50,10 @@ class SkinLesion(DataObject):
         try:
             dbc = DBController()
             dbc.update(cfg.TABLE_SKIN_LESIONS,
-                (json.dumps(self.characteristics),json.dumps(self.ai_results)),
+                (   util.list_to_string(self.location),
+                    json.dumps(self.characteristics),
+                    json.dumps(self.ai_results)
+                ),
                 (str(self.number), self.patient_id)
                 )
             return True
@@ -74,7 +85,6 @@ class SkinLesion(DataObject):
 
 #                        saved_images_list.append(Image(img_src, img_type))
         return saved_images
-
 
     def exists_image(self, img, img_type):
         skl_img_src = util.gen_path(self.get_skl_img_folder_path(img_type), img.name_extension)

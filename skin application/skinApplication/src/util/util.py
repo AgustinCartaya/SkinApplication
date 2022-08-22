@@ -117,7 +117,6 @@ def title_to_file_name(txt):
 def str_to_list(text, sep="\n"):
     return [s.strip() for s in list(filter(lambda x: len(x.strip()) > 0, text.split(sep)))]
 
-
 def calc_age(birthdate):
     today = date.today()
     age = today.year - birthdate.year - ((today.month, today.day) < (birthdate.month, birthdate.day))
@@ -199,3 +198,18 @@ def get_file_name(path):
     if len(_fe) > 2:
         return ".".join(_fe[0:-1])
     return _fe[0]
+
+
+def list_to_string(lst, sep = ","):
+    text = ""
+    max = len(lst)
+    for i in range(max):
+        itm = lst[i]
+        if type(itm) in (float, int):
+            itm = str(itm)
+        if i < max-1:
+            text = text + itm + sep
+        else:
+            text = text + itm
+
+    return text

@@ -19,6 +19,7 @@ CREATE TABLE PATIENTS (
 CREATE TABLE SKIN_LESIONS (
     number INTEGER NOT NULL,
     id_patient TEXT NOT NULL,
+    location TEXT NOT NULL,
     characteristics TEXT NOT NULL,
     ai_results TEXT NOT NULL,
     UNIQUE(number, id_patient)
@@ -49,6 +50,6 @@ INSERT INTO PATIENTS (id, first_name, last_name, birth_date, gender, medical_inf
 
 
 
-INSERT INTO SKIN_LESIONS (number, id_patient, characteristics, ai_results) VALUES (0, "AG3526CA", '{"diameter":100}', '{"AI-01":{"Risk": "MALIGNANT", "Type":"Melanoma", "Accurance:":87}}');
-INSERT INTO SKIN_LESIONS (number, id_patient, characteristics, ai_results) VALUES (1, "AG3526CA", '{"diameter":100}', '{"AI-01":{"Risk": "BENIGN", "Type":"Mole", "Accurance:":83}, "AI-02":{"Risk": "BENIGN", "Type":"Mole", "Accurance:":87}, "AI-03":{"Risk": "BENIGN", "Type":"Mole", "Accurance:":90}}');
-INSERT INTO SKIN_LESIONS (number, id_patient, characteristics, ai_results) VALUES (0, "PI3526RD", '{"diameter":100}', '{}');
+INSERT INTO SKIN_LESIONS (number, id_patient, location, characteristics, ai_results) VALUES (0, "AG3526CA", "0,0.5,0.5", '{"diameter":100}', '{"AI-01":{"Risk": "MALIGNANT", "Type":"Melanoma", "Accurance:":87}}');
+INSERT INTO SKIN_LESIONS (number, id_patient, location, characteristics, ai_results) VALUES (1, "AG3526CA", "1,0.5,0.5", '{"diameter":100}', '{"AI-01":{"Risk": "BENIGN", "Type":"Mole", "Accurance:":83}, "AI-02":{"Risk": "BENIGN", "Type":"Mole", "Accurance:":87}, "AI-03":{"Risk": "BENIGN", "Type":"Mole", "Accurance:":90}}');
+INSERT INTO SKIN_LESIONS (number, id_patient, location, characteristics, ai_results) VALUES (2, "AG3526CA", "2,0.5,0.5", '{"diameter":100}', '{}');

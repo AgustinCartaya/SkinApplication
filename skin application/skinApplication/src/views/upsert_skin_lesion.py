@@ -34,9 +34,15 @@ class UpsertSkinLesionView(ViewObject):
 
         self.charge_ai_previews()
 
-    def charge_body2d(self, actual_img=0, point=[]):
-        body2d_images = [Image(cfg.IMG_BODY2D_FRONT_PATH_NAME, "body2d"), Image(cfg.IMG_BODY2D_BACK_PATH_NAME, "body2d")]
-        self.ui.c_body2d.set_images(body2d_images, actual_img, point)
+    def charge_body2d(self, skl_location=[]):
+        body2d_images = [Image(cfg.IMG_BODY2D_FRONT_PATH_NAME, cfg.IMG_TYPE_BODY2D),
+                        Image(cfg.IMG_BODY2D_RIGHT_PATH_NAME, cfg.IMG_TYPE_BODY2D),
+                        Image(cfg.IMG_BODY2D_BACK_PATH_NAME, cfg.IMG_TYPE_BODY2D),
+                        Image(cfg.IMG_BODY2D_LEFT_PATH_NAME, cfg.IMG_TYPE_BODY2D)]
+        if len(skl_location) > 0:
+            self.ui.c_body2d.set_images(body2d_images, skl_location[0], skl_location[1], skl_location[2])
+        else:
+            self.ui.c_body2d.set_images(body2d_images)
 
     def load_ui(self):
         self.ui = Ui_upsert_skin_lesion()
@@ -81,12 +87,13 @@ class UpsertSkinLesionView(ViewObject):
 
     def __save_information(self):
         if self.skl is None:
-            self.skl = SkinLesion(len(self.p.skin_lesions), self.p.id, self.__catch_characteristics())
+            self.skl = SkinLesion(len(self.p.skin_lesions), self.p.id, self.ui.c_body2d.get_point_info(), self.__catch_characteristics())
             self.skl.create_skin_lesion()
             self.p.skin_lesions.append(self.skl)
 
         else:
             self.skl.characteristics = self.__catch_characteristics()
+            self.skl.location = self.ui.c_body2d.get_point_info()
             self.skl.update_data()
 
         selected_images = self.c_add_skl_img.get_selected_images()
@@ -142,10 +149,8 @@ class UpsertSkinLesionView(ViewObject):
         self.ui.bt_see_images.setEnabled(True)
 
         # body 2d
-        if self.skl.location is not None :
-            self.charge_body2d(self.skl.body2d_point[0], self.skl.body2d_point[1])
-        else:
-            self.charge_body2d()
+        self.charge_body2d(self.skl.location)
+
 
 
     def __see_images(self):

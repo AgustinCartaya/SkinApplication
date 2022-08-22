@@ -20,16 +20,11 @@ class Body2D(QFrame):
         self.point_radius = 2
         self.point_color = QColor(255,0,0)
         self.point_width = 10
-#        self.__create()
-
-#    def __create(self):
-#        self.layout = QHBoxLayout(self)
-#        self.layout.setSpacing(12)
-#        self.layout.setContentsMargins(0, 0, 0, 0)
 
     def paintEvent(self, paint_event):
         painter = QPainter(self)
         painter.drawPixmap(self.rect(), self.pix_img)
+#        print(self.rect())
         pen = QPen()
         pen.setColor(self.point_color)
         pen.setWidth(self.point_width)
@@ -38,7 +33,6 @@ class Body2D(QFrame):
 
         if self.skl_precise_point is not None:
             painter.drawEllipse(self.skl_precise_point, self.point_radius, self.point_radius);
-
 
     def set_image(self, img):
         self.img = img
@@ -51,8 +45,11 @@ class Body2D(QFrame):
         self.update()
 
     def resizeEvent(self, event):
+        self.resize_container()
+
+    def resize_container(self):
         (w,h) = self.img.get_resized_size(self.size().width(), self.size().height())
-        self.setMaximumSize(QSize(w,h))
+        self.resize(QSize(w,h))
         if self.skl_relative_point is not None:
             self.calc_precise_point(self.skl_relative_point[0], self.skl_relative_point[1])
 
@@ -68,3 +65,8 @@ class Body2D(QFrame):
 
     def get_relative_point(self):
         return self.skl_relative_point
+
+    def clear_point(self):
+        self.skl_relative_point = None
+        self.skl_precise_point = None
+        self.update()

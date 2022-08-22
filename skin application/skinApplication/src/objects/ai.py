@@ -154,9 +154,9 @@ class AI(DataObject):
         try:
             ai_run_file = importlib.import_module("ai." + self.name + ".run")
             results = ai_run_file.run(self.actual_images.get_src_dict(),
-                            {"patient_basic_information":self.actual_bi,
-                            "patient_medical_information":self.actual_mi,
-                            "skin_lesion_characteristics":self.actual_skl_charac})
+                            {"P_BI":self.actual_bi,
+                            "P_MI":self.actual_mi,
+                            "SKL_CHARAC":self.actual_skl_charac})
 
             if (results is not None and type(results) is dict and len(results) > 0):
                 return results
