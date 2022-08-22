@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 7.0.2, 2022-08-22T12:07:30. -->
+<!-- Written by QtCreator 7.0.2, 2022-08-22T17:58:56. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -1633,6 +1633,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/util/variable_inputs.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/util/variable_inputs.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/util/variable_inputs.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{cb1eb092-b461-42a2-a843-47591fc0215f}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\util\variable_inputs.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -1650,6 +1651,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/promoted/body2d.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/promoted/body2d.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/promoted/body2d.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{cb1eb092-b461-42a2-a843-47591fc0215f}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\views\ui\promoted\body2d.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -1667,6 +1669,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/promoted/body2d_container.py</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/promoted/body2d_container.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Agustin/Documents/Internship/skin application/skinApplication/src/views/ui/promoted/body2d_container.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{cb1eb092-b461-42a2-a843-47591fc0215f}</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\Users\Agustin\Documents\Internship\skin application\skinApplication\src\views\ui\promoted\body2d_container.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>

@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>upsert_skin_lesion</class>
+ <widget class="QWidget" name="upsert_skin_lesion">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1200</width>
+    <height>800</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Loggin</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <layout class="QHBoxLayout" name="ly_navigator" stretch="1,1,1">
+     <property name="spacing">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <item alignment="Qt::AlignLeft">
+      <widget class="NavigatorButton" name="bt_back">
+       <property name="text">
+        <string>Back</string>
+       </property>
+      </widget>
+     </item>
+     <item alignment="Qt::AlignHCenter">
+      <widget class="Label" name="lb_title">
+       <property name="text">
+        <string>Add skin lesion</string>
+       </property>
+      </widget>
+     </item>
+     <item alignment="Qt::AlignRight">
+      <widget class="NavigatorButton" name="bt_complete">
+       <property name="text">
+        <string>Completed</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="ly_center" stretch="1,2">
+     <property name="spacing">
+      <number>30</number>
+     </property>
+     <property name="topMargin">
+      <number>20</number>
+     </property>
+     <item>
+      <layout class="QVBoxLayout" name="ly_left">
+       <property name="bottomMargin">
+        <number>20</number>
+       </property>
+       <item>
+        <widget class="Body2DContainer" name="c_body2d">
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="ly_right" stretch="1,1">
+       <property name="spacing">
+        <number>20</number>
+       </property>
+       <property name="rightMargin">
+        <number>20</number>
+       </property>
+       <item>
+        <layout class="QHBoxLayout" name="ly_skin_lesion_content">
+         <property name="spacing">
+          <number>20</number>
+         </property>
+         <item>
+          <layout class="QVBoxLayout" name="ly_characteristics">
+           <property name="spacing">
+            <number>16</number>
+           </property>
+           <item alignment="Qt::AlignHCenter">
+            <widget class="Label" name="lb_characteristics">
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>20</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>Characteristics</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QScrollArea" name="sc_characteristics">
+             <property name="widgetResizable">
+              <bool>true</bool>
+             </property>
+             <widget class="QWidget" name="c_characteristics_content">
+              <property name="geometry">
+               <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>364</width>
+                <height>328</height>
+               </rect>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout_30">
+               <item>
+                <layout class="QVBoxLayout" name="ly_characteristics_content"/>
+               </item>
+               <item>
+                <spacer name="verticalSpacer_3">
+                 <property name="orientation">
+                  <enum>Qt::Vertical</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>20</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </widget>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="ly_images">
+           <property name="spacing">
+            <number>16</number>
+           </property>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,1,1">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <spacer name="horizontalSpacer">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item alignment="Qt::AlignHCenter">
+              <widget class="Label" name="lb_add_images">
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>Add images</string>
+               </property>
+              </widget>
+             </item>
+             <item alignment="Qt::AlignRight">
+              <widget class="Button" name="bt_see_images">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="text">
+                <string>See images</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QScrollArea" name="sc_images">
+             <property name="widgetResizable">
+              <bool>true</bool>
+             </property>
+             <widget class="QWidget" name="c_images_content">
+              <property name="geometry">
+               <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>364</width>
+                <height>318</height>
+               </rect>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout_10">
+               <item>
+                <layout class="QVBoxLayout" name="ly_add_skl_img"/>
+               </item>
+               <item>
+                <spacer name="verticalSpacer_2">
+                 <property name="orientation">
+                  <enum>Qt::Vertical</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>20</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </widget>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QFrame" name="c_ai_results">
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item alignment="Qt::AlignHCenter">
+           <widget class="Label" name="lb_lauch_ai">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>25</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Launch AI</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="ly_ai_results">
+            <property name="bottomMargin">
+             <number>10</number>
+            </property>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>Label</class>
+   <extends>QLabel</extends>
+   <header>.promoted.label</header>
+  </customwidget>
+  <customwidget>
+   <class>NavigatorButton</class>
+   <extends>QPushButton</extends>
+   <header>.promoted.navigator_button</header>
+  </customwidget>
+  <customwidget>
+   <class>Button</class>
+   <extends>QPushButton</extends>
+   <header>.promoted.button</header>
+  </customwidget>
+  <customwidget>
+   <class>Body2DContainer</class>
+   <extends>QFrame</extends>
+   <header>.promoted.body2d_container</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
