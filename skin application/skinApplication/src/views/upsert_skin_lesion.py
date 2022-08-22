@@ -12,6 +12,7 @@ from .ui.promoted.button import Button
 
 from src.objects.skin_lesion import SkinLesion
 from src.objects.timeline_point import TimelinePoint
+from src.objects.image import Image
 
 class UpsertSkinLesionView(ViewObject):
     def __init__(self, mw, ai_dict, patient, skin_lesion):
@@ -25,10 +26,17 @@ class UpsertSkinLesionView(ViewObject):
         self.load_ui()
         self.connect_ui_signals()
 
+
         if self.skl is not None:
             self.charge_edit_mode()
+        else:
+            self.charge_body2d()
 
         self.charge_ai_previews()
+
+    def charge_body2d(self, actual_img=0, point=[]):
+        body2d_images = [Image(cfg.IMG_BODY2D_FRONT_PATH_NAME, "body2d"), Image(cfg.IMG_BODY2D_BACK_PATH_NAME, "body2d")]
+        self.ui.c_body2d.set_images(body2d_images, actual_img, point)
 
     def load_ui(self):
         self.ui = Ui_upsert_skin_lesion()
@@ -97,6 +105,7 @@ class UpsertSkinLesionView(ViewObject):
                     continue
             characteristics[charac_name] = charac_value
         return characteristics
+
     @Slot()
     def __complete(self):
         self.__save_information()
@@ -131,6 +140,13 @@ class UpsertSkinLesionView(ViewObject):
         # images
         self.c_add_skl_img.set_number_images(self.skl.get_skl_img_numbers())
         self.ui.bt_see_images.setEnabled(True)
+
+        # body 2d
+        if self.skl.location is not None :
+            self.charge_body2d(self.skl.body2d_point[0], self.skl.body2d_point[1])
+        else:
+            self.charge_body2d()
+
 
     def __see_images(self):
         self.__save_information()

@@ -76,23 +76,17 @@
      </property>
      <item>
       <layout class="QVBoxLayout" name="ly_left">
+       <property name="bottomMargin">
+        <number>20</number>
+       </property>
        <item>
-        <widget class="QFrame" name="c_body2d">
+        <widget class="Body2DContainer" name="c_body2d">
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
          </property>
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
          </property>
-         <layout class="QVBoxLayout" name="verticalLayout_16">
-          <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
-           <widget class="QLabel" name="label_4">
-            <property name="text">
-             <string>Indisponible</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
         </widget>
        </item>
       </layout>
@@ -139,7 +133,7 @@
                 <x>0</x>
                 <y>0</y>
                 <width>364</width>
-                <height>332</height>
+                <height>328</height>
                </rect>
               </property>
               <layout class="QVBoxLayout" name="verticalLayout_30">
@@ -233,7 +227,7 @@
                 <x>0</x>
                 <y>0</y>
                 <width>364</width>
-                <height>322</height>
+                <height>318</height>
                </rect>
               </property>
               <layout class="QVBoxLayout" name="verticalLayout_10">
@@ -326,6 +320,12 @@
    <class>Button</class>
    <extends>QPushButton</extends>
    <header>.promoted.button</header>
+  </customwidget>
+  <customwidget>
+   <class>Body2DContainer</class>
+   <extends>QFrame</extends>
+   <header>.promoted.body2d_container</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources/>

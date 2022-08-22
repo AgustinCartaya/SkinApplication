@@ -96,6 +96,8 @@
         "src/views/ui/promoted/timeline_points_container.py",
         "src/views/ui/promoted/timeline_skl_img_block.py",
         "src/views/ui/promoted/info_line.py",
+        "src/views/ui/promoted/body2d.py",
+        "src/views/ui/promoted/body2d_container.py",
         "src/views/ui/styles/compile_styles.py",
         "src/views/ui/styles/raw/global.css",
         "src/views/ui/styles/raw/compile_styles.py",

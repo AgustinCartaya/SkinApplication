@@ -15,10 +15,10 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QFrame, QHBoxLayout, QLabel,
-    QScrollArea, QSizePolicy, QSpacerItem, QVBoxLayout,
-    QWidget)
+from PySide6.QtWidgets import (QApplication, QFrame, QHBoxLayout, QScrollArea,
+    QSizePolicy, QSpacerItem, QVBoxLayout, QWidget)
 
+from .promoted.body2d_container import Body2DContainer
 from .promoted.button import Button
 from .promoted.label import Label
 from .promoted.navigator_button import NavigatorButton
@@ -64,17 +64,11 @@ class Ui_upsert_skin_lesion(object):
         self.ly_center.setContentsMargins(-1, 20, -1, -1)
         self.ly_left = QVBoxLayout()
         self.ly_left.setObjectName(u"ly_left")
-        self.c_body2d = QFrame(upsert_skin_lesion)
+        self.ly_left.setContentsMargins(-1, -1, -1, 20)
+        self.c_body2d = Body2DContainer(upsert_skin_lesion)
         self.c_body2d.setObjectName(u"c_body2d")
         self.c_body2d.setFrameShape(QFrame.StyledPanel)
         self.c_body2d.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_16 = QVBoxLayout(self.c_body2d)
-        self.verticalLayout_16.setObjectName(u"verticalLayout_16")
-        self.label_4 = QLabel(self.c_body2d)
-        self.label_4.setObjectName(u"label_4")
-
-        self.verticalLayout_16.addWidget(self.label_4, 0, Qt.AlignHCenter|Qt.AlignVCenter)
-
 
         self.ly_left.addWidget(self.c_body2d)
 
@@ -102,7 +96,7 @@ class Ui_upsert_skin_lesion(object):
         self.sc_characteristics.setWidgetResizable(True)
         self.c_characteristics_content = QWidget()
         self.c_characteristics_content.setObjectName(u"c_characteristics_content")
-        self.c_characteristics_content.setGeometry(QRect(0, 0, 364, 332))
+        self.c_characteristics_content.setGeometry(QRect(0, 0, 364, 328))
         self.verticalLayout_30 = QVBoxLayout(self.c_characteristics_content)
         self.verticalLayout_30.setObjectName(u"verticalLayout_30")
         self.ly_characteristics_content = QVBoxLayout()
@@ -154,7 +148,7 @@ class Ui_upsert_skin_lesion(object):
         self.sc_images.setWidgetResizable(True)
         self.c_images_content = QWidget()
         self.c_images_content.setObjectName(u"c_images_content")
-        self.c_images_content.setGeometry(QRect(0, 0, 364, 322))
+        self.c_images_content.setGeometry(QRect(0, 0, 364, 318))
         self.verticalLayout_10 = QVBoxLayout(self.c_images_content)
         self.verticalLayout_10.setObjectName(u"verticalLayout_10")
         self.ly_add_skl_img = QVBoxLayout()
@@ -219,7 +213,6 @@ class Ui_upsert_skin_lesion(object):
         self.bt_back.setText(QCoreApplication.translate("upsert_skin_lesion", u"Back", None))
         self.lb_title.setText(QCoreApplication.translate("upsert_skin_lesion", u"Add skin lesion", None))
         self.bt_complete.setText(QCoreApplication.translate("upsert_skin_lesion", u"Completed", None))
-        self.label_4.setText(QCoreApplication.translate("upsert_skin_lesion", u"Indisponible", None))
         self.lb_characteristics.setText(QCoreApplication.translate("upsert_skin_lesion", u"Characteristics", None))
         self.lb_add_images.setText(QCoreApplication.translate("upsert_skin_lesion", u"Add images", None))
         self.bt_see_images.setText(QCoreApplication.translate("upsert_skin_lesion", u"See images", None))

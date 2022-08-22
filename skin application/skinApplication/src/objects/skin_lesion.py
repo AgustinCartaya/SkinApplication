@@ -5,10 +5,11 @@ from .image import Image
 from .image_list import ImageList
 
 class SkinLesion(DataObject):
-    def __init__(self, number, patient_id, characteristics, ai_results = {}):
+    def __init__(self, number, patient_id, characteristics, ai_results = {}, location=None):
 
         self.number = number
         self.patient_id = patient_id
+        self.location = location
 
         if type(characteristics) is str:
             self.characteristics = json.loads(characteristics)
