@@ -22,6 +22,7 @@ from PySide6.QtWidgets import (QApplication, QFrame, QHBoxLayout, QRadioButton,
 from .promoted.button import Button
 from .promoted.label import Label
 from .promoted.navigator_button import NavigatorButton
+from .promoted.variable_inputs_container import VariableInputsContainer
 
 class Ui_upsert_patient_mi(object):
     def setupUi(self, upsert_patient_mi):
@@ -76,11 +77,24 @@ class Ui_upsert_patient_mi(object):
         self.scrollArea.setWidgetResizable(True)
         self.c_medical_information = QWidget()
         self.c_medical_information.setObjectName(u"c_medical_information")
-        self.c_medical_information.setGeometry(QRect(0, 0, 496, 343))
+        self.c_medical_information.setGeometry(QRect(0, 0, 496, 334))
         self.verticalLayout_3 = QVBoxLayout(self.c_medical_information)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.ly_medical_information = QVBoxLayout()
+        self.ly_medical_information.setSpacing(30)
         self.ly_medical_information.setObjectName(u"ly_medical_information")
+        self.c_mi = VariableInputsContainer(self.c_medical_information)
+        self.c_mi.setObjectName(u"c_mi")
+        self.c_mi.setFrameShape(QFrame.StyledPanel)
+        self.c_mi.setFrameShadow(QFrame.Raised)
+
+        self.ly_medical_information.addWidget(self.c_mi)
+
+        self.bt_create_new_mi = Button(self.c_medical_information)
+        self.bt_create_new_mi.setObjectName(u"bt_create_new_mi")
+
+        self.ly_medical_information.addWidget(self.bt_create_new_mi, 0, Qt.AlignHCenter)
+
 
         self.verticalLayout_3.addLayout(self.ly_medical_information)
 
@@ -173,6 +187,7 @@ class Ui_upsert_patient_mi(object):
         upsert_patient_mi.setWindowTitle(QCoreApplication.translate("upsert_patient_mi", u"Loggin", None))
         self.bt_cancel.setText(QCoreApplication.translate("upsert_patient_mi", u"Cancel", None))
         self.lb_title.setText(QCoreApplication.translate("upsert_patient_mi", u"Medical information", None))
+        self.bt_create_new_mi.setText(QCoreApplication.translate("upsert_patient_mi", u"Create new medical information type", None))
         self.bt_back.setText(QCoreApplication.translate("upsert_patient_mi", u"Back", None))
         self.bt_next.setText(QCoreApplication.translate("upsert_patient_mi", u"Next", None))
         self.i_upsert_patient_view.setText("")

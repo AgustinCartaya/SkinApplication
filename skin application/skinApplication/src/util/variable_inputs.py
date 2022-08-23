@@ -18,6 +18,46 @@ INPUT_BOOL = "bool"
 INPUT_DATE = "date"
 
 
+def get_availables_ai_variable_inputs(input_type):
+    if input_type == MI_INPUT:
+        return util.get_file_list(cfg.FILES_AI_MEDICAL_INFORMATION_PATH)
+    elif input_type == SKL_INPUT:
+        return util.get_file_list(cfg.FILES_AI_SKIN_LESION_CHARACTERISTICS_PATH)
+
+def get_availables_created_variable_inputs(input_type):
+    if input_type == MI_INPUT:
+        return util.get_file_list(cfg.FILES_CREATED_MEDICAL_INFORMATION_PATH)
+    elif input_type == SKL_INPUT:
+        return util.get_file_list(cfg.FILES_CREATED_SKIN_LESION_CHARACTERISTICS_PATH)
+
+def get_availables_variable_inputs(input_type):
+    return get_availables_ai_variable_inputs(input_type) + get_availables_created_variable_inputs(input_type)
+
+def get_availables_variable_input_names(input_type):
+    return [i.split(".")[0] for i in get_availables_variable_inputs(input_type)]
+
+def create_new_variable_input(input_type, name, type, content):
+    file_content = ""
+    if len(content) > 0:
+        file_content = '\n'.join(content)
+    if input_type == MI_INPUT:
+        util.create_file(file_content, cfg.FILES_CREATED_MEDICAL_INFORMATION_PATH, name + "." + type)
+    elif input_type == SKL_INPUT:
+        util.create_file(file_content, cfg.FILES_CREATED_SKIN_LESION_CHARACTERISTICS_PATH, name + "." + type)
+
+def get_variable_input_content(input_type, file_name):
+    if input_type == MI_INPUT:
+        if util.is_file(cfg.FILES_AI_MEDICAL_INFORMATION_PATH, file_name):
+            return util.read_file_list(cfg.FILES_AI_MEDICAL_INFORMATION_PATH, file_name)
+        elif util.is_file(cfg.FILES_CREATED_MEDICAL_INFORMATION_PATH, file_name):
+            return util.read_file_list(cfg.FILES_CREATED_MEDICAL_INFORMATION_PATH, file_name)
+
+    elif input_type == SKL_INPUT:
+        if util.is_file(cfg.FILES_AI_SKIN_LESION_CHARACTERISTICS_PATH, file_name):
+            return util.read_file_list(cfg.FILES_AI_SKIN_LESION_CHARACTERISTICS_PATH, file_name)
+        elif util.is_file(cfg.FILES_CREATED_SKIN_LESION_CHARACTERISTICS_PATH, file_name):
+            return util.read_file_list(cfg.FILES_CREATED_SKIN_LESION_CHARACTERISTICS_PATH, file_name)
+
 def get_availables_scales():
     return list(scales.keys())
 
@@ -49,10 +89,11 @@ def to_sub_unit(scale, value):
 
 
 def get_scalized_str(file_name, value, input_type):
+    # AI
     if input_type == MI_INPUT:
-        path = cfg.FILES_MEDICAL_INFORMATION_PATH
+        path = cfg.FILES_AI_MEDICAL_INFORMATION_PATH
     elif input_type == SKL_INPUT:
-        path = cfg.FILES_SKIN_LESION_CHARACTERISTICS_PATH
+        path = cfg.FILES_AI_SKIN_LESION_CHARACTERISTICS_PATH
     else:
         return str(value)
 
@@ -63,6 +104,21 @@ def get_scalized_str(file_name, value, input_type):
                 scalized = to_sub_unit(scale, value)
                 return " ".join([str(scalized[0]), scalized[1]])
 
+    # created
+    if input_type == MI_INPUT:
+        path = cfg.FILES_CREATED_MEDICAL_INFORMATION_PATH
+    elif input_type == SKL_INPUT:
+        path = cfg.FILES_CREATED_SKIN_LESION_CHARACTERISTICS_PATH
+    else:
+        return str(value)
+
+    for f_name in util.get_file_list(path):
+        if file_name in f_name:
+            scale = util.read_file(path, f_name).strip()
+            if len(scale) > 0:
+                scalized = to_sub_unit(scale, value)
+                return " ".join([str(scalized[0]), scalized[1]])
+    # not found
     return str(value)
 
 

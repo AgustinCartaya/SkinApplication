@@ -1,5 +1,4 @@
-from PySide6.QtWidgets import (QWidget, QFrame, QVBoxLayout, QHBoxLayout,
-        QSpacerItem, QSizePolicy)
+from PySide6.QtWidgets import (QWidget, QFrame, QVBoxLayout, QHBoxLayout, QSpacerItem, QSizePolicy)
 
 from PySide6.QtCore import Qt, QSize
 from .label import Label
@@ -9,16 +8,22 @@ from .line_edit import LineEdit
 from PySide6.QtCore import Signal, Slot
 
 import src.util.data_cleaner as data_cleaner
+import src.util.skl_imgs as skl_imgs
+import src.util.util as util
 
 class AddSklImgCreator(QWidget):
 
-    s_cancel = Signal()
     s_add = Signal(str)
-    def __init__(self, add_receaver, cancel_receaver):
-        super().__init__(None)
+    def __init__(self, parent, add_receaver):
+        super().__init__(None)      
 
+        self.parent = parent
         self.s_add.connect(add_receaver)
-        self.s_cancel.connect(cancel_receaver)
+
+        self.setWindowModality(Qt.ApplicationModal)
+        if parent is not None:
+            self.setStyleSheet(parent.styleSheet())
+
         self.__create()
 
     def __create(self):
@@ -69,11 +74,26 @@ class AddSklImgCreator(QWidget):
 
     @Slot()
     def __cancel(self):
-        self.s_cancel.emit()
+        self.close()
 
     @Slot()
     def __add(self):
-        name = self.i_name.text().strip()
+        name = util.title_to_file_name(self.i_name.text())
         if name == "":
-            raise ValueError('New skin lesion image name empty', "SKL_IMG_NAME", "EMPTY")
-        self.s_add.emit(name)
+            self.show_error("SKL_IMG_NAME", "EMPTY")
+        elif name in skl_imgs.get_available_skl_imgs():
+            self.show_error("SKL_IMG_NAME", "EXISTS")
+        else:
+            skl_imgs.create_new_image_type(name)
+            self.s_add.emit(name)
+            self.close()
+
+    def show_error(self, error_object, type_error):
+        if error_object == "SKL_IMG_NAME":
+            if type_error == "EMPTY":
+                print(error_object + " " + type_error)
+            elif type_error == "EXISTS":
+                print(error_object + " " + type_error)
+
+
+

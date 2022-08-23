@@ -4,7 +4,6 @@ from .ui.ui_upsert_skin_lesion import Ui_upsert_skin_lesion
 
 from .ui.promoted.variable_inputs_container import VariableInputsContainer
 from .ui.promoted.variable_input_creator import VariableInputCreator
-
 from .ui.promoted.variable_input import VariableInput
 
 
@@ -21,6 +20,8 @@ from src.objects.timeline_point import TimelinePoint
 from src.objects.image import Image
 
 import src.util.skl_imgs as skl_imgs
+import src.util.variable_inputs as var_inputs
+
 
 class UpsertSkinLesionView(ViewObject):
     def __init__(self, mw, ai_dict, patient, skin_lesion):
@@ -62,15 +63,7 @@ class UpsertSkinLesionView(ViewObject):
         self.ui.bt_complete.set_position(2)
 
         # characteristic
-        self.c_characteristics = VariableInputsContainer(cfg.FILES_SKIN_LESION_CHARACTERISTICS_PATH,
-            "Create new characteristic",
-            VariableInput.DISPOSITION_H)
-        self.ui.ly_characteristics_content.addWidget(self.c_characteristics)
-
-        # skin lesion images
-#        self.ui.c_add_skl_img = AddSklImgContainer(self.ui.c_images_content, cfg.FILES_SKIN_LESION_IMAGES_PATH)
-#        self.ui.ly_add_skl_img.addWidget(self.ui.c_add_skl_img)
-#        self.ui.c_add_skl_img.show_skl_imgs()
+        self.ui.c_characteristics.show_inputs(var_inputs.SKL_INPUT, VariableInput.DISPOSITION_H)
 
 
     def charge_ai_previews(self):
@@ -91,9 +84,6 @@ class UpsertSkinLesionView(ViewObject):
         self.ui.bt_complete.clicked.connect(self.__complete)
         self.ui.bt_back.clicked.connect(self.__back)
         self.ui.bt_see_images.clicked.connect(self.__see_images)
-
-        self.ui.sc_characteristics.verticalScrollBar().rangeChanged.connect(self.__c_characteristics_scroll_down)
-        self.ui.sc_images.verticalScrollBar().rangeChanged.connect(self.__c_images_scroll_down)
 
         # add new image type
         self.ui.bt_add_new_skl_image_type.clicked.connect(self.__show_skl_img_creator)
@@ -121,7 +111,7 @@ class UpsertSkinLesionView(ViewObject):
 
     def __catch_characteristics(self):
         characteristics = {}
-        for charac_name, charac_value in self.c_characteristics.get_selected_items().items():
+        for charac_name, charac_value in self.ui.c_characteristics.get_selected_items().items():
             if charac_value is None:
                     continue
             characteristics[charac_name] = charac_value
@@ -131,16 +121,6 @@ class UpsertSkinLesionView(ViewObject):
     def __complete(self):
         self.__save_information()
         self.__back()
-#        print(self.c_characteristics.get_selected_items())
-#        print(self.ui.c_add_skl_img.get_selected_image_path_names())
-
-    @Slot()
-    def __c_characteristics_scroll_down(self, min, maxi):
-        self.ui.sc_characteristics.verticalScrollBar().setValue(maxi)
-
-    @Slot()
-    def __c_images_scroll_down(self, min, maxi):
-        self.ui.sc_images.verticalScrollBar().setValue(maxi)
 
     @Slot()
     def __back(self):
@@ -156,7 +136,7 @@ class UpsertSkinLesionView(ViewObject):
         self.ui.lb_title.setText("Edit skin lesion")
 
         # characteristics
-        self.c_characteristics.select_default_values(self.skl.characteristics)
+        self.ui.c_characteristics.select_default_values(self.skl.characteristics)
 
         # images
         self.ui.c_add_skl_img.set_number_images(self.skl.get_skl_img_numbers())
@@ -175,56 +155,26 @@ class UpsertSkinLesionView(ViewObject):
     def refresh(self):
         self.ui.c_add_skl_img.set_number_images(self.skl.get_skl_img_numbers())
 
-
-    #HACER LOS DOS AUTOMATICOS !!!!!!!!!!!!!!!!!!!!!!!!!!!
-    # UTILIZA LAS CLASES QUE ACOMPANAN A UTIL
     # Add new variable input (skl characteristics)
     @Slot()
     def __show_variable_input_creator(self):
-        if self.variable_input_creator is None:
-            self.variable_input_creator = VariableInputCreator(self.__create_new_variable_input, self.__close_variable_input_creator)
-            self.variable_input_creator.show()
+        self.variable_input_creator = VariableInputCreator(self.mv, var_inputs.SKL_INPUT, self.new_variable_input_created)
+        self.variable_input_creator.show()
 
-    Slot(str, list, str)
-    def __create_new_variable_input(self, input_title, input_values, input_type):
-        file_name = util.title_to_file_name(input_title)
-        if file_name in self.inputs:
-            raise ValueError('Caracteristic input already exists', "CARACTERISTIC_INPUT", "REPEATED")
-
-        file_content = ""
-        if len(input_values) > 0:
-            file_content = '\n'.join(input_values)
-        util.create_file(file_content, self.folder, file_name + "." + input_type)
-
-        self.__show_single_input(file_name, input_title, input_values, input_type)
-        self.__cancel_new_input()
-
-    @Slot()
-    def __close_variable_input_creator(self):
-        self.variable_input_creator = None
-
+    Slot(str, str, list)
+    def new_variable_input_created(self, input_id, input_type, input_values):
+        self.ui.c_characteristics.append_new_variable_input(input_id, input_type, input_values)
 
     # Add new skl image type
     @Slot()
     def __show_skl_img_creator(self):
-        if self.skl_img_creator is None:
-            self.skl_img_creator = AddSklImgCreator(self.__create_new_skl_img, self.__close_new_skl_img_creator)
-            self.skl_img_creator.show()
+        self.skl_img_creator = AddSklImgCreator(self.mv, self.new_skl_img_created)
+        self.skl_img_creator.show()
 
     Slot(str)
-    def __create_new_skl_img(self, skl_img_name):
-        file_name = util.title_to_file_name(skl_img_name)
-        if file_name in skl_imgs.get_available_skl_imgs():
-            raise ValueError('Caracteristic input already exists', "CARACTERISTIC_INPUT", "REPEATED")
-
-        util.create_file("", cfg.FILES_SKIN_LESION_IMAGES_PATH, file_name)
-        self.ui.c_add_skl_img.append_new_skl_img(file_name)
-        self.__close_new_skl_img_creator()
-
-    @Slot()
-    def __close_new_skl_img_creator(self):
-        self.skl_img_creator = None
+    def new_skl_img_created(self, skl_img_name):
+        self.ui.c_add_skl_img.append_new_skl_img(skl_img_name)
 
     def close(self):
-        self.__close_new_skl_img_creator()
-        self.__close_variable_input_creator()
+        self.skl_img_creator = None
+        self.variable_input_creator = None

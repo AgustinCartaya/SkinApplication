@@ -69,7 +69,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.move(geo.topLeft())
 
     def load_style_sheet(self):
-        st = util.read_file(cfg.GLOBAL_STYLES_PATH_NAME)
+        st = util.get_default_style_sheet()
         self.setStyleSheet(st)
         self.statusBar.setStyleSheet(st)
 
@@ -152,7 +152,7 @@ class MainWindow(QtWidgets.QMainWindow):
             self.set_view(self.timeline_view)
 
 
-        print(self._layers.count())
+#        print(self._layers.count())
 
     def remove_last_view(self):
         self._layers.removeWidget(self._layers.currentWidget())

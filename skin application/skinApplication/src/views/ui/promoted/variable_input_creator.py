@@ -1,4 +1,4 @@
-from PySide6.QtWidgets import (QFrame, QVBoxLayout, QHBoxLayout, QButtonGroup, QRadioButton,
+from PySide6.QtWidgets import (QWidget, QFrame, QVBoxLayout, QHBoxLayout, QButtonGroup, QRadioButton,
         QSpacerItem, QSizePolicy, QCheckBox)
 
 from PySide6.QtCore import Qt, QSize
@@ -16,17 +16,23 @@ import src.util.variable_inputs as var_inputs
 
 from .check_button_group import CheckButtonGroup
 
-class VariableInputCreator(QFrame):
+class VariableInputCreator(QWidget):
 
-    s_cancel = Signal()
-    s_add = Signal(str, list, str)
-    def __init__(self, parent, add_receaver, cancel_receaver):
-        QFrame.__init__(self, parent)
+    s_add = Signal(str, str, list)
+    def __init__(self, parent, variable_input_type, add_receaver):
+        super().__init__(None)
 
+        self.variable_input_type = variable_input_type
         self.input_type = ""
-
+        self.parent = parent
         self.s_add.connect(add_receaver)
-        self.s_cancel.connect(cancel_receaver)
+
+        self.setWindowModality(Qt.ApplicationModal)
+        self.setMinimumSize(QSize(300, 400))
+
+        if parent is not None:
+            self.setStyleSheet(parent.styleSheet())
+
         self.__create()
 
 
@@ -41,6 +47,9 @@ class VariableInputCreator(QFrame):
         self.__create_add_scales()
         self.__create_scales()
         self.__create_buttons()
+
+        vs_left = QSpacerItem(2, 40, QSizePolicy.Fixed, QSizePolicy.Expanding)
+        self.layout.addItem(vs_left)
 
         self.c_name.hide()
         self.i_decimals.hide()
@@ -174,10 +183,7 @@ class VariableInputCreator(QFrame):
 #            vs_right = QSpacerItem(20, 5, QSizePolicy.Expanding, QSizePolicy.Minimum)
 #            ly_scale.addItem(vs_right)
 
-
-
         self.layout.addWidget(self.c_scales)
-
 
     def __create_buttons(self):
         ly_bt = QHBoxLayout()
@@ -219,12 +225,15 @@ class VariableInputCreator(QFrame):
                 self.i_add_scales.show()
                 if not self.i_add_scales.isChecked():
                     self.c_scales.hide()
+                else:
+                    self.c_scales.show()
                 if self.input_type != var_inputs.INPUT_FLOAT:
                     self.input_type = t
 
             elif t in (var_inputs.INPUT_TEXT, var_inputs.INPUT_BOOL, var_inputs.INPUT_DATE):
                 self.i_decimals.hide()
                 self.i_add_scales.hide()
+                self.c_scales.hide()
                 if not self.i_add_scales.isChecked():
                     self.c_scales.hide()
                 self.input_type = t
@@ -245,24 +254,43 @@ class VariableInputCreator(QFrame):
 
     @Slot()
     def __cancel(self):
-        self.s_cancel.emit()
+        self.close()
 
     @Slot()
     def __add(self):
-        title = self.i_name.text().strip()
-        values = []
-        if title == "":
-            raise ValueError('New input title empty', "INPUT TITLE", "EMPTY")
-        if self.input_type == var_inputs.INPUT_OPTIONS:
-            values = util.str_to_list(self.i_values.text(),",")
-            if len(values) == 0:
-                raise ValueError('New input values empty', "INPUT VALUES", "EMPTY")
-            else:
-                values.insert(0,"--e")
-        elif self.input_type in (var_inputs.INPUT_INT, var_inputs.INPUT_FLOAT) and self.i_add_scales.isChecked():
-            if self.qbt_scale_group.checkedId() == -1:
-                raise ValueError('New input Scale not selected', "INPUT_SCALE", "NOT_SELECTED")
-            else:
-                values.append(self.scales_index[self.qbt_scale_group.checkedId()])
+        name = util.title_to_file_name(self.i_name.text())
+        if name == "":
+            self.show_error("VARIABLE_INPUT_NAME", "EMPTY")
+        elif name in var_inputs.get_availables_variable_input_names(self.variable_input_type):
+            self.show_error("VARIABLE_INPUT_NAME", "EXISTS")
+        else:
+            values = []
+            add = True
+            if self.input_type == var_inputs.INPUT_OPTIONS:
+                values = util.str_to_list(self.i_values.text(),",")
+                if len(values) == 0:
+                    self.show_error("VARIABLE_INPUT_VALUES", "EMPTY")
+                    add = False
+            elif self.input_type in (var_inputs.INPUT_INT, var_inputs.INPUT_FLOAT) and self.i_add_scales.isChecked():
+                if self.qbt_scale_group.checkedId() >= 0:
+                    values.append(self.scales_index[self.qbt_scale_group.checkedId()])
+                else:
+                    self.show_error("VARIABLE_INPUT_SCALE", "NOT_SELECTED")
+                    add = False
+            if add:
+                var_inputs.create_new_variable_input(self.variable_input_type, name, self.input_type, values)
+                self.s_add.emit(name, self.input_type, values)
+                self.close()
 
-        self.s_add.emit(title, values, self.input_type)
+    def show_error(self, error_object, type_error):
+        if error_object == "VARIABLE_INPUT_NAME":
+            if type_error == "EMPTY":
+                print(error_object + " " + type_error)
+            elif type_error == "EXISTS":
+                print(error_object + " " + type_error)
+        elif error_object == "VARIABLE_INPUT_VALUES":
+            if type_error == "EMPTY":
+                print(error_object + " " + type_error)
+        elif error_object == "VARIABLE_INPUT_SCALE":
+            if type_error == "NOT_SELECTED":
+                print(error_object + " " + type_error)

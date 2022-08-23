@@ -18,11 +18,10 @@ class VariableInput(QFrame):
     DISPOSITION_V = "V"
     DISPOSITION_H = "H"
 
-    s_edit_items = Signal(str)
+    s_edit_input = Signal(str)
     def __init__(self,
         parent,
         id,
-        title,
         items = [],
         edit_receaver = None,
         input_type = var_inputs.INPUT_OPTIONS,
@@ -33,7 +32,6 @@ class VariableInput(QFrame):
         QFrame.__init__(self, parent)
 
         self.id = id
-        self.title = title
         self.items = items
         self.add_null = add_null
         self.input_type = input_type
@@ -42,7 +40,7 @@ class VariableInput(QFrame):
         self.editable = editable
 
         if self.editable and self.edit_receaver is not None:
-            self.s_edit_items.connect(edit_receaver)
+            self.s_edit_input.connect(edit_receaver)
 
         self.__create()
 
@@ -60,7 +58,7 @@ class VariableInput(QFrame):
 
     def __create_title(self):
         self.lb_title = Label(self)
-        self.lb_title.setText(self.title, colon=True)
+        self.lb_title.setText(self.id, format=True, colon=True)
         self.layout.addWidget(self.lb_title)
 
     def __create_input(self):
@@ -108,13 +106,13 @@ class VariableInput(QFrame):
             self.__create_scale_input()
 
         # Edit button
-        if self.editable and self.edit_receaver is not None and self.input_type == var_inputs.INPUT_OPTIONS:
-            self.bt_add = Button(self.c_input)
-            self.bt_add.setText("+")
-            self.bt_add.setMinimumSize(QSize(0, 0))
-            self.bt_add.setMaximumSize(QSize(25, 25))
-            self.input_layout.addWidget(self.bt_add)
-            self.bt_add.clicked.connect(self.__add_items)
+        if self.editable and self.edit_receaver is not None:
+            self.bt_edit = Button(self.c_input)
+            self.bt_edit.setText("Edit")
+#            self.bt_edit.setMinimumSize(QSize(0, 0))
+            self.bt_edit.setMaximumSize(QSize(80, 30))
+            self.input_layout.addWidget(self.bt_edit)
+            self.bt_edit.clicked.connect(self.__edit_input)
 
         self.layout.addWidget(self.c_input)
 
@@ -129,8 +127,8 @@ class VariableInput(QFrame):
 
 
     @Slot()
-    def __add_items(self):
-        self.s_edit_items.emit(self.id)
+    def __edit_input(self):
+        self.s_edit_input.emit(self.id)
 
     def get_selected_item(self):
         item = None

@@ -23,6 +23,7 @@ from .promoted.body2d_container import Body2DContainer
 from .promoted.button import Button
 from .promoted.label import Label
 from .promoted.navigator_button import NavigatorButton
+from .promoted.variable_inputs_container import VariableInputsContainer
 
 class Ui_upsert_skin_lesion(object):
     def setupUi(self, upsert_skin_lesion):
@@ -119,6 +120,13 @@ class Ui_upsert_skin_lesion(object):
         self.verticalLayout_30.setObjectName(u"verticalLayout_30")
         self.ly_characteristics_content = QVBoxLayout()
         self.ly_characteristics_content.setObjectName(u"ly_characteristics_content")
+        self.c_characteristics = VariableInputsContainer(self.c_characteristics_content)
+        self.c_characteristics.setObjectName(u"c_characteristics")
+        self.c_characteristics.setFrameShape(QFrame.StyledPanel)
+        self.c_characteristics.setFrameShadow(QFrame.Raised)
+
+        self.ly_characteristics_content.addWidget(self.c_characteristics)
+
 
         self.verticalLayout_30.addLayout(self.ly_characteristics_content)
 

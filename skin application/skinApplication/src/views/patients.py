@@ -51,8 +51,8 @@ class PatientsView(ViewObject):
         bi_filters = [["gender",var_inputs.INPUT_OPTIONS, ["Women", "Man", "Other"], [0,1,2]],
                     ["age",var_inputs.INPUT_INT, []]]
         self.ui.c_filter_bi_content.show_filters(bi_filters, self.filter_patients)
-        self.ui.c_filter_mi_content.show_filters(cfg.FILES_MEDICAL_INFORMATION_PATH, self.filter_patients)
-        self.ui.c_filter_skl_charac_content.show_filters(cfg.FILES_SKIN_LESION_CHARACTERISTICS_PATH, self.filter_patients)
+        self.ui.c_filter_mi_content.show_filters(var_inputs.MI_INPUT, self.filter_patients)
+        self.ui.c_filter_skl_charac_content.show_filters(var_inputs.SKL_INPUT, self.filter_patients)
 
 
         # organizer

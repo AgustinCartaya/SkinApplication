@@ -142,12 +142,33 @@
            <x>0</x>
            <y>0</y>
            <width>496</width>
-           <height>343</height>
+           <height>334</height>
           </rect>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_3">
           <item>
-           <layout class="QVBoxLayout" name="ly_medical_information"/>
+           <layout class="QVBoxLayout" name="ly_medical_information">
+            <property name="spacing">
+             <number>30</number>
+            </property>
+            <item>
+             <widget class="VariableInputsContainer" name="c_mi">
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+             </widget>
+            </item>
+            <item alignment="Qt::AlignHCenter">
+             <widget class="Button" name="bt_create_new_mi">
+              <property name="text">
+               <string>Create new medical information type</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
           <item>
            <spacer name="verticalSpacer_5">
@@ -328,6 +349,12 @@
    <class>Button</class>
    <extends>QPushButton</extends>
    <header>.promoted.button</header>
+  </customwidget>
+  <customwidget>
+   <class>VariableInputsContainer</class>
+   <extends>QFrame</extends>
+   <header>.promoted.variable_inputs_container</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources/>

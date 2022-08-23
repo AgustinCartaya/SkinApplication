@@ -24,9 +24,9 @@ class FilterVariableInputsContainer(FiltersContent):
 #        self.layout.setContentsMargins(0, 0, 0, 0)
 #        self.layout.setSpacing(50)
 
-    def show_filters(self, folder, filter_receaver):
-        if type(folder) is list:
-            for filter in folder:
+    def show_filters(self, input_type, filter_receaver):
+        if type(input_type) is list:
+            for filter in input_type:
                 f_id = filter[0]
                 f_type = filter[1]
                 f_title = util.file_name_to_title(f_id)
@@ -37,10 +37,10 @@ class FilterVariableInputsContainer(FiltersContent):
                     self.filters[f_id].set_action_values(filter[3])
 
         else:
-            for file_name in util.get_file_list(folder):
+            for file_name in var_inputs.get_availables_variable_inputs(input_type):
                 (f_id, f_type) = file_name.split(".")
                 f_title = util.file_name_to_title(f_id)
-                f_values = util.read_file_list(folder, file_name)
+                f_values = var_inputs.get_variable_input_content(input_type, file_name)
 
                 self.__show_single_filter(f_id, f_type, filter_receaver, f_title, f_values)
 

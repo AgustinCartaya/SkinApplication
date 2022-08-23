@@ -4,6 +4,9 @@ from .ui.ui_upsert_patient_mi import Ui_upsert_patient_mi
 from src.objects.patient import Patient
 
 from .ui.promoted.variable_inputs_container import VariableInputsContainer
+from .ui.promoted.variable_input_creator import VariableInputCreator
+import src.util.variable_inputs as var_inputs
+
 
 class UpsertPatientMiView(ViewObject):
     def __init__(self, mw, patient, mode="add"):
@@ -30,9 +33,8 @@ class UpsertPatientMiView(ViewObject):
         self.ui.lb_title.set_title(1)
 
         # medical information
-        self.c_mi = VariableInputsContainer(cfg.FILES_MEDICAL_INFORMATION_PATH,
-            "Create new medical information")
-        self.ui.ly_medical_information.addWidget(self.c_mi)
+        self.ui.c_mi.show_inputs(var_inputs.MI_INPUT)
+
 
     def connect_ui_signals(self):
         #ui signals
@@ -40,7 +42,7 @@ class UpsertPatientMiView(ViewObject):
         self.ui.bt_cancel.clicked.connect(self.__cancel)
         self.ui.bt_back.clicked.connect(self.__back)
 
-        self.ui.scrollArea.verticalScrollBar().rangeChanged.connect(self.scroll_down)
+        self.ui.bt_create_new_mi.clicked.connect(self.__show_variable_input_creator)
 
         self.ui.i_upsert_patient_view.toggled.connect(self.rb_view)
         self.ui.i_upsert_patient_preview_view.toggled.connect(self.rb_view)
@@ -54,7 +56,7 @@ class UpsertPatientMiView(ViewObject):
 
     def catch_medical_info(self):
         medical_info = {}
-        for mi_name, mi_value in self.c_mi.get_selected_items().items():
+        for mi_name, mi_value in self.ui.c_mi.get_selected_items().items():
             if mi_value is None:
                     continue
             medical_info[mi_name] = mi_value
@@ -81,12 +83,17 @@ class UpsertPatientMiView(ViewObject):
         else:
             self.s_change_view.emit(cfg.UPSERT_PATIENT_MI_VIEW, cfg.UPSERT_PATIENT_PREVIEW_VIEW, {"patient":self.p, "mode":self.mode})
 
-    @Slot()
-    def scroll_down(self, min, maxi):
-        self.ui.scrollArea.verticalScrollBar().setValue(maxi)
 
     def charge_edit_mode(self):
         self.ui.lb_title.setText("Edit medical information")
-        self.c_mi.select_default_values(self.p.mi)
-#        for p_mi in self.p.mi:
-#            self.mi_inputs[p_mi].select_item(self.p.mi[p_mi])
+        self.ui.c_mi.select_default_values(self.p.mi)
+
+    # Add new variable input (skl characteristics)
+    @Slot()
+    def __show_variable_input_creator(self):
+        self.variable_input_creator = VariableInputCreator(self.mv, var_inputs.MI_INPUT, self.new_variable_input_created)
+        self.variable_input_creator.show()
+
+    Slot(str, str, list)
+    def new_variable_input_created(self, input_id, input_type, input_values):
+        self.ui.c_mi.append_new_variable_input(input_id, input_type, input_values)

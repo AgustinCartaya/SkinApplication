@@ -9,7 +9,7 @@ from abc import ABC, abstractmethod
 
 from PySide6.QtGui import QRegularExpressionValidator
 from PySide6.QtCore import QObject, Signal, Slot, QDate, QFile, QRegularExpression
-from PySide6.QtWidgets import QWidget
+from PySide6.QtWidgets import QWidget, QApplication
 from PySide6.QtUiTools import QUiLoader
 
 # My common

@@ -18,7 +18,6 @@ class AddSklImgContainer(QFrame):
         QFrame.__init__(self, parent)
 
         self.skl_img_items = {}
-
         self.__create()
 
     def __create(self):
@@ -57,8 +56,8 @@ class AddSklImgContainer(QFrame):
         for element in skl_imgs_number_list:
             if element[0] in self.skl_img_items:
                 self.skl_img_items[element[0]].set_nb_images(element[1])
-            else:
-                raise ValueError('Image skin lesion image not admited', "skl_img", "NOT_ADMITED")
+#            else:
+#                raise ValueError('Image skin lesion image not admited', "skl_img", "NOT_ADMITED")
 
 
 

@@ -162,7 +162,18 @@
               </property>
               <layout class="QVBoxLayout" name="verticalLayout_30">
                <item>
-                <layout class="QVBoxLayout" name="ly_characteristics_content"/>
+                <layout class="QVBoxLayout" name="ly_characteristics_content">
+                 <item>
+                  <widget class="VariableInputsContainer" name="c_characteristics">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
                </item>
                <item>
                 <spacer name="verticalSpacer_3">
@@ -363,6 +374,12 @@
    <class>AddSklImgContainer</class>
    <extends>QFrame</extends>
    <header>.promoted.add_skl_img_container</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>VariableInputsContainer</class>
+   <extends>QFrame</extends>
+   <header>.promoted.variable_inputs_container</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

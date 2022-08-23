@@ -213,3 +213,7 @@ def list_to_string(lst, sep = ","):
             text = text + itm
 
     return text
+
+# stylesheet
+def get_default_style_sheet():
+    return read_file(cfg.GLOBAL_STYLES_PATH_NAME)
