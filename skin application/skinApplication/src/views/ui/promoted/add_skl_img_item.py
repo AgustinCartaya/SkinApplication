@@ -81,7 +81,7 @@ class AddSklImgItem(QFrame):
 
     def loadFiles(self):
         img_path_name, _ = QFileDialog.getOpenFileNames(self, 'Open ' + util.file_name_to_title(self.id) ,
-             'D:\\Documents\\Internship Documents\\Image data\\2AO\\images',"Image files (*.png *.jpg *.gif *.svg *.bmp)")
+             'D:\\Documents\\Internship Documents\\Image data\\2AO\\images',"Image files (*.png *.jpg *.jpeg *.gif *.tif *.tiff *.raw *. *.svg *.bmp *.)")
 
         self.img_path_name.update([Image(src, self.id) for src in img_path_name])
         self.__update_nb_new_images()

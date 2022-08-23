@@ -489,7 +489,7 @@
                 </size>
                </property>
                <property name="placeholderText">
-                <string>E.g: AG4432YA</string>
+                <string>Type in a name or id</string>
                </property>
               </widget>
              </item>
@@ -616,68 +616,6 @@
                   </widget>
                  </item>
                  <item alignment="Qt::AlignHCenter">
-                  <widget class="QFrame" name="c_sorter_asc">
-                   <property name="frameShape">
-                    <enum>QFrame::StyledPanel</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Raised</enum>
-                   </property>
-                   <layout class="QHBoxLayout" name="horizontalLayout_5">
-                    <property name="leftMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="topMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="rightMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="bottomMargin">
-                     <number>0</number>
-                    </property>
-                    <item>
-                     <widget class="CheckButton" name="bt_sorter_asc">
-                      <property name="minimumSize">
-                       <size>
-                        <width>40</width>
-                        <height>25</height>
-                       </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>40</width>
-                        <height>25</height>
-                       </size>
-                      </property>
-                      <property name="text">
-                       <string>A-z</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="CheckButton" name="bt_sorter_dsc">
-                      <property name="minimumSize">
-                       <size>
-                        <width>40</width>
-                        <height>25</height>
-                       </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>40</width>
-                        <height>25</height>
-                       </size>
-                      </property>
-                      <property name="text">
-                       <string>z-A</string>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item alignment="Qt::AlignHCenter">
                   <widget class="QFrame" name="c_sorter_id">
                    <property name="frameShape">
                     <enum>QFrame::StyledPanel</enum>
@@ -733,6 +671,68 @@
                       </property>
                       <property name="text">
                        <string>Name</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item alignment="Qt::AlignHCenter">
+                  <widget class="QFrame" name="c_sorter_asc">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QHBoxLayout" name="horizontalLayout_5">
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <item>
+                     <widget class="CheckButton" name="bt_sorter_asc">
+                      <property name="minimumSize">
+                       <size>
+                        <width>40</width>
+                        <height>25</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>40</width>
+                        <height>25</height>
+                       </size>
+                      </property>
+                      <property name="text">
+                       <string>A-z</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="CheckButton" name="bt_sorter_dsc">
+                      <property name="minimumSize">
+                       <size>
+                        <width>40</width>
+                        <height>25</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>40</width>
+                        <height>25</height>
+                       </size>
+                      </property>
+                      <property name="text">
+                       <string>z-A</string>
                       </property>
                      </widget>
                     </item>

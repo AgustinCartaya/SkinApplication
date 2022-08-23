@@ -152,7 +152,7 @@ class MainWindow(QtWidgets.QMainWindow):
             self.set_view(self.timeline_view)
 
 
-#        print(self._layers.count())
+        print(self._layers.count())
 
     def remove_last_view(self):
         self._layers.removeWidget(self._layers.currentWidget())
@@ -169,10 +169,9 @@ class MainWindow(QtWidgets.QMainWindow):
         self.timeline_view = None
 
     def closeEvent(self, event):
-        if self.images_view is not None:
-            self.images_view.close_image_viewers()
-        if self.timeline_view is not None:
-            self.timeline_view.close_image_viewers()
+        nb_widgets = self._layers.count()
+        for i in range(nb_widgets):
+            self._layers.widget(i).close()
 
     def show_message(self, text, msg_type):
         self.lb_message.setText(text)

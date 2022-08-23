@@ -26,16 +26,16 @@ class Image(DataObject):
 #            "image_is_animated": getattr(self.image, "is_animated", False),
 #            "frames_in_image": getattr(self.image, "n_frames", 1)
         }
-#        exifdata = self.image.getexif()
-#        print(exifdata)
-#        for tag_id in exifdata:
+        exifdata = self.image.getexif()
+        for tag_id in exifdata:
 #            print(tag_id)
-#            # get the tag name, instead of human unreadable tag id
-#            tag = TAGS.get(tag_id, tag_id)
-#            data = exifdata.get(tag_id)
-#            # decode bytes
-#            if isinstance(data, bytes):
-#                data = data.decode()
+            # get the tag name, instead of human unreadable tag id
+            tag = TAGS.get(tag_id, tag_id)
+            data = exifdata.get(tag_id)
+            # decode bytes
+            if isinstance(data, bytes):
+                data = data.decode()
+            self.info_dict[tag] = data
 #            print(f"{tag:25}: {data}")
 
     def __hash__(self):

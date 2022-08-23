@@ -18,6 +18,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QApplication, QFrame, QHBoxLayout, QScrollArea,
     QSizePolicy, QSpacerItem, QVBoxLayout, QWidget)
 
+from .promoted.add_skl_img_container import AddSklImgContainer
 from .promoted.body2d_container import Body2DContainer
 from .promoted.button import Button
 from .promoted.label import Label
@@ -85,18 +86,35 @@ class Ui_upsert_skin_lesion(object):
         self.ly_characteristics = QVBoxLayout()
         self.ly_characteristics.setSpacing(16)
         self.ly_characteristics.setObjectName(u"ly_characteristics")
+        self.horizontalLayout_2 = QHBoxLayout()
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_2.addItem(self.horizontalSpacer_2)
+
         self.lb_characteristics = Label(upsert_skin_lesion)
         self.lb_characteristics.setObjectName(u"lb_characteristics")
-        self.lb_characteristics.setMaximumSize(QSize(16777215, 20))
 
-        self.ly_characteristics.addWidget(self.lb_characteristics, 0, Qt.AlignHCenter)
+        self.horizontalLayout_2.addWidget(self.lb_characteristics, 0, Qt.AlignHCenter)
+
+        self.bt_add_new_skl_charac = Button(upsert_skin_lesion)
+        self.bt_add_new_skl_charac.setObjectName(u"bt_add_new_skl_charac")
+        self.bt_add_new_skl_charac.setMaximumSize(QSize(30, 30))
+
+        self.horizontalLayout_2.addWidget(self.bt_add_new_skl_charac, 0, Qt.AlignLeft)
+
+        self.horizontalLayout_2.setStretch(0, 1)
+        self.horizontalLayout_2.setStretch(1, 1)
+        self.horizontalLayout_2.setStretch(2, 1)
+
+        self.ly_characteristics.addLayout(self.horizontalLayout_2)
 
         self.sc_characteristics = QScrollArea(upsert_skin_lesion)
         self.sc_characteristics.setObjectName(u"sc_characteristics")
         self.sc_characteristics.setWidgetResizable(True)
         self.c_characteristics_content = QWidget()
         self.c_characteristics_content.setObjectName(u"c_characteristics_content")
-        self.c_characteristics_content.setGeometry(QRect(0, 0, 364, 328))
+        self.c_characteristics_content.setGeometry(QRect(0, 0, 364, 318))
         self.verticalLayout_30 = QVBoxLayout(self.c_characteristics_content)
         self.verticalLayout_30.setObjectName(u"verticalLayout_30")
         self.ly_characteristics_content = QVBoxLayout()
@@ -121,21 +139,22 @@ class Ui_upsert_skin_lesion(object):
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
-        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.horizontalLayout.addItem(self.horizontalSpacer)
-
-        self.lb_add_images = Label(upsert_skin_lesion)
-        self.lb_add_images.setObjectName(u"lb_add_images")
-        self.lb_add_images.setMaximumSize(QSize(16777215, 20))
-
-        self.horizontalLayout.addWidget(self.lb_add_images, 0, Qt.AlignHCenter)
-
         self.bt_see_images = Button(upsert_skin_lesion)
         self.bt_see_images.setObjectName(u"bt_see_images")
         self.bt_see_images.setEnabled(False)
 
         self.horizontalLayout.addWidget(self.bt_see_images, 0, Qt.AlignRight)
+
+        self.lb_add_images = Label(upsert_skin_lesion)
+        self.lb_add_images.setObjectName(u"lb_add_images")
+
+        self.horizontalLayout.addWidget(self.lb_add_images, 0, Qt.AlignHCenter)
+
+        self.bt_add_new_skl_image_type = Button(upsert_skin_lesion)
+        self.bt_add_new_skl_image_type.setObjectName(u"bt_add_new_skl_image_type")
+        self.bt_add_new_skl_image_type.setMaximumSize(QSize(30, 30))
+
+        self.horizontalLayout.addWidget(self.bt_add_new_skl_image_type, 0, Qt.AlignLeft)
 
         self.horizontalLayout.setStretch(0, 1)
         self.horizontalLayout.setStretch(1, 1)
@@ -152,7 +171,15 @@ class Ui_upsert_skin_lesion(object):
         self.verticalLayout_10 = QVBoxLayout(self.c_images_content)
         self.verticalLayout_10.setObjectName(u"verticalLayout_10")
         self.ly_add_skl_img = QVBoxLayout()
+        self.ly_add_skl_img.setSpacing(20)
         self.ly_add_skl_img.setObjectName(u"ly_add_skl_img")
+        self.c_add_skl_img = AddSklImgContainer(self.c_images_content)
+        self.c_add_skl_img.setObjectName(u"c_add_skl_img")
+        self.c_add_skl_img.setFrameShape(QFrame.StyledPanel)
+        self.c_add_skl_img.setFrameShadow(QFrame.Raised)
+
+        self.ly_add_skl_img.addWidget(self.c_add_skl_img)
+
 
         self.verticalLayout_10.addLayout(self.ly_add_skl_img)
 
@@ -184,8 +211,8 @@ class Ui_upsert_skin_lesion(object):
         self.verticalLayout.addWidget(self.lb_lauch_ai, 0, Qt.AlignHCenter)
 
         self.ly_ai_results = QVBoxLayout()
+        self.ly_ai_results.setSpacing(0)
         self.ly_ai_results.setObjectName(u"ly_ai_results")
-        self.ly_ai_results.setContentsMargins(-1, -1, -1, 10)
 
         self.verticalLayout.addLayout(self.ly_ai_results)
 
@@ -214,8 +241,10 @@ class Ui_upsert_skin_lesion(object):
         self.lb_title.setText(QCoreApplication.translate("upsert_skin_lesion", u"Add skin lesion", None))
         self.bt_complete.setText(QCoreApplication.translate("upsert_skin_lesion", u"Completed", None))
         self.lb_characteristics.setText(QCoreApplication.translate("upsert_skin_lesion", u"Characteristics", None))
-        self.lb_add_images.setText(QCoreApplication.translate("upsert_skin_lesion", u"Add images", None))
+        self.bt_add_new_skl_charac.setText(QCoreApplication.translate("upsert_skin_lesion", u"+", None))
         self.bt_see_images.setText(QCoreApplication.translate("upsert_skin_lesion", u"See images", None))
+        self.lb_add_images.setText(QCoreApplication.translate("upsert_skin_lesion", u"Add images", None))
+        self.bt_add_new_skl_image_type.setText(QCoreApplication.translate("upsert_skin_lesion", u"+", None))
         self.lb_lauch_ai.setText(QCoreApplication.translate("upsert_skin_lesion", u"Launch AI", None))
     # retranslateUi
 

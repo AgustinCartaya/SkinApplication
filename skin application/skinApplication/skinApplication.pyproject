@@ -11,6 +11,7 @@
         "src/util/util.py",
         "src/util/data_cleaner.py",
         "src/util/variable_inputs.py",
+        "src/util/skl_imgs.py",
         "src/objects/data_object.py",
         "src/objects/ai.py",
         "src/objects/annotation.py",

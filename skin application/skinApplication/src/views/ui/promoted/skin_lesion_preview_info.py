@@ -116,29 +116,54 @@ class SkinLesionPreviewInfo(QFrame):
         ly_ai_result.addWidget(lb_ai_result_title)
 
         # AI content
-        self.__create_single_result(ai_result, ly_ai_result)
+        self.__create_single_result(ai_result, ly_ai_result, 9)
 
         self.ly_content.addWidget(c_ai_result)
 
-    def __create_single_result(self, result, parent_layout):
+    def __create_single_result(self, result, parent_layout, margin_left = 0):
         c_single_content = QFrame(self)
+        parent_layout.addWidget(c_single_content)
 
-        ly_single_content = QFormLayout(c_single_content)
+        ly_single_content = QVBoxLayout(c_single_content)
 #        ly_single_content.setVerticalSpacing(9)
-        ly_single_content.setContentsMargins(0, 0, 0, 0)
+        ly_single_content.setContentsMargins(margin_left, 0, 0, 0)
 
-        count = 0
         for name, value in result.items():
+            lb_result = QHBoxLayout()
+            ly_single_content.addLayout(lb_result)
+
             lb_result_title = Label(c_single_content)
             lb_result_title.setText(name, colon=True, format=True)
-            ly_single_content.setWidget(count, QFormLayout.LabelRole, lb_result_title)
+            lb_result.addWidget(lb_result_title)
 
 
             lb_result_content = Label(c_single_content)
             lb_result_content.setText(value, scale_input=[name, var_inputs.SKL_INPUT])
-            ly_single_content.setWidget(count, QFormLayout.FieldRole, lb_result_content)
+            lb_result.addWidget(lb_result_content)
 
-            count = count +1
+            # spacer
+            sp = QSpacerItem(20, 2, QSizePolicy.Expanding, QSizePolicy.Fixed)
+            lb_result.addItem(sp)
 
-        parent_layout.addWidget(c_single_content)
 
+#    def __create_single_result(self, result, parent_layout):
+#        c_single_content = QFrame(self)
+
+#        ly_single_content = QFormLayout(c_single_content)
+##        ly_single_content.setVerticalSpacing(9)
+#        ly_single_content.setContentsMargins(0, 0, 0, 0)
+
+#        count = 0
+#        for name, value in result.items():
+#            lb_result_title = Label(c_single_content)
+#            lb_result_title.setText(name, colon=True, format=True)
+#            ly_single_content.setWidget(count, QFormLayout.LabelRole, lb_result_title)
+
+
+#            lb_result_content = Label(c_single_content)
+#            lb_result_content.setText(value, scale_input=[name, var_inputs.SKL_INPUT])
+#            ly_single_content.setWidget(count, QFormLayout.FieldRole, lb_result_content)
+
+#            count = count +1
+
+#        parent_layout.addWidget(c_single_content)

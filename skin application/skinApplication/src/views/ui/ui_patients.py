@@ -348,30 +348,6 @@ class Ui_patients(object):
 
         self.horizontalLayout.addWidget(self.c_sorter_mosaico, 0, Qt.AlignHCenter)
 
-        self.c_sorter_asc = QFrame(self.c_sorter_buttons)
-        self.c_sorter_asc.setObjectName(u"c_sorter_asc")
-        self.c_sorter_asc.setFrameShape(QFrame.StyledPanel)
-        self.c_sorter_asc.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_5 = QHBoxLayout(self.c_sorter_asc)
-        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
-        self.horizontalLayout_5.setContentsMargins(0, 0, 0, 0)
-        self.bt_sorter_asc = CheckButton(self.c_sorter_asc)
-        self.bt_sorter_asc.setObjectName(u"bt_sorter_asc")
-        self.bt_sorter_asc.setMinimumSize(QSize(40, 25))
-        self.bt_sorter_asc.setMaximumSize(QSize(40, 25))
-
-        self.horizontalLayout_5.addWidget(self.bt_sorter_asc)
-
-        self.bt_sorter_dsc = CheckButton(self.c_sorter_asc)
-        self.bt_sorter_dsc.setObjectName(u"bt_sorter_dsc")
-        self.bt_sorter_dsc.setMinimumSize(QSize(40, 25))
-        self.bt_sorter_dsc.setMaximumSize(QSize(40, 25))
-
-        self.horizontalLayout_5.addWidget(self.bt_sorter_dsc)
-
-
-        self.horizontalLayout.addWidget(self.c_sorter_asc, 0, Qt.AlignHCenter)
-
         self.c_sorter_id = QFrame(self.c_sorter_buttons)
         self.c_sorter_id.setObjectName(u"c_sorter_id")
         self.c_sorter_id.setFrameShape(QFrame.StyledPanel)
@@ -395,6 +371,30 @@ class Ui_patients(object):
 
 
         self.horizontalLayout.addWidget(self.c_sorter_id, 0, Qt.AlignHCenter)
+
+        self.c_sorter_asc = QFrame(self.c_sorter_buttons)
+        self.c_sorter_asc.setObjectName(u"c_sorter_asc")
+        self.c_sorter_asc.setFrameShape(QFrame.StyledPanel)
+        self.c_sorter_asc.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_5 = QHBoxLayout(self.c_sorter_asc)
+        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
+        self.horizontalLayout_5.setContentsMargins(0, 0, 0, 0)
+        self.bt_sorter_asc = CheckButton(self.c_sorter_asc)
+        self.bt_sorter_asc.setObjectName(u"bt_sorter_asc")
+        self.bt_sorter_asc.setMinimumSize(QSize(40, 25))
+        self.bt_sorter_asc.setMaximumSize(QSize(40, 25))
+
+        self.horizontalLayout_5.addWidget(self.bt_sorter_asc)
+
+        self.bt_sorter_dsc = CheckButton(self.c_sorter_asc)
+        self.bt_sorter_dsc.setObjectName(u"bt_sorter_dsc")
+        self.bt_sorter_dsc.setMinimumSize(QSize(40, 25))
+        self.bt_sorter_dsc.setMaximumSize(QSize(40, 25))
+
+        self.horizontalLayout_5.addWidget(self.bt_sorter_dsc)
+
+
+        self.horizontalLayout.addWidget(self.c_sorter_asc, 0, Qt.AlignHCenter)
 
 
         self.horizontalLayout_3.addLayout(self.horizontalLayout)
@@ -478,14 +478,14 @@ class Ui_patients(object):
         self.i_air_indeterminate.setText(QCoreApplication.translate("patients", u"Indeterminate", None))
         self.lb_filter_skl_charac_header.setText(QCoreApplication.translate("patients", u"SKIN LESION CHARACTERISTICS", None))
         self.bt_search.setText("")
-        self.i_search.setPlaceholderText(QCoreApplication.translate("patients", u"E.g: AG4432YA", None))
+        self.i_search.setPlaceholderText(QCoreApplication.translate("patients", u"Type in a name or id", None))
         self.lb_organizer_titles.setText(QCoreApplication.translate("patients", u"Organizer", None))
         self.bt_sorter_mosaico.setText("")
         self.bt_sorter_list.setText("")
-        self.bt_sorter_asc.setText(QCoreApplication.translate("patients", u"A-z", None))
-        self.bt_sorter_dsc.setText(QCoreApplication.translate("patients", u"z-A", None))
         self.bt_sorter_id.setText(QCoreApplication.translate("patients", u"ID", None))
         self.bt_sorter_name.setText(QCoreApplication.translate("patients", u"Name", None))
+        self.bt_sorter_asc.setText(QCoreApplication.translate("patients", u"A-z", None))
+        self.bt_sorter_dsc.setText(QCoreApplication.translate("patients", u"z-A", None))
         self.lb_number_of_patients.setText(QCoreApplication.translate("patients", u"Number of patients :", None))
         self.i_number_of_patients.setText(QCoreApplication.translate("patients", u"...", None))
     # retranslateUi

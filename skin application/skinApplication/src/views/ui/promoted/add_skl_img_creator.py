@@ -1,4 +1,4 @@
-from PySide6.QtWidgets import (QFrame, QVBoxLayout, QHBoxLayout,
+from PySide6.QtWidgets import (QWidget, QFrame, QVBoxLayout, QHBoxLayout,
         QSpacerItem, QSizePolicy)
 
 from PySide6.QtCore import Qt, QSize
@@ -10,12 +10,12 @@ from PySide6.QtCore import Signal, Slot
 
 import src.util.data_cleaner as data_cleaner
 
-class AddSklImgCreator(QFrame):
+class AddSklImgCreator(QWidget):
 
     s_cancel = Signal()
     s_add = Signal(str)
-    def __init__(self, parent, add_receaver, cancel_receaver):
-        QFrame.__init__(self, parent)
+    def __init__(self, add_receaver, cancel_receaver):
+        super().__init__(None)
 
         self.s_add.connect(add_receaver)
         self.s_cancel.connect(cancel_receaver)

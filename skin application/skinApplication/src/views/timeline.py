@@ -64,6 +64,9 @@ class TimelineView(ViewObject):
     def close_image_viewers(self):
         self.image_viewers = []
 
+    def close(self):
+        self.close_image_viewers()
+
     def __charge_patient_info_line(self):
         info_line = []
         info_line.append(["Patient ID", self.p.id])

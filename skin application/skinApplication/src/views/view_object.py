@@ -39,6 +39,9 @@ class ViewObject(QWidget, QObject):
     def refresh(self):
         pass
 
+    def close(self):
+        pass
+
     def show_message(self, text, msg_type):
         self.mv.show_message(text, msg_type)
 

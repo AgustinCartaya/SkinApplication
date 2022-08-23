@@ -97,8 +97,10 @@ class PatientsView(ViewObject):
         self.ui.bt_sorter_list.clicked.connect(self.show_patients)
         self.ui.bt_sorter_asc.clicked.connect(self.show_patients)
         self.ui.bt_sorter_dsc.clicked.connect(self.show_patients)
-        self.ui.bt_sorter_id.clicked.connect(lambda: (self.slot_organizer_id_name("id") ) )
-        self.ui.bt_sorter_name.clicked.connect(lambda: (self.slot_organizer_id_name("name") ) )
+        self.ui.bt_sorter_id.clicked.connect(self.show_patients)
+        self.ui.bt_sorter_name.clicked.connect(self.show_patients)
+#        self.ui.bt_sorter_id.clicked.connect(lambda: (self.slot_organizer_id_name("id") ) )
+#        self.ui.bt_sorter_name.clicked.connect(lambda: (self.slot_organizer_id_name("name") ) )
         # filters
 
         # reset filters
@@ -110,9 +112,9 @@ class PatientsView(ViewObject):
         self.ui.bt_search.clicked.connect(self.filter_patients)
 
         # AI results
-        self.ui.i_air_benign.stateChanged.connect(self.filter_patients)
-        self.ui.i_air_indeterminate.stateChanged.connect(self.filter_patients)
-        self.ui.i_air_malignant.stateChanged.connect(self.filter_patients)
+#        self.ui.i_air_benign.stateChanged.connect(self.filter_patients)
+#        self.ui.i_air_indeterminate.stateChanged.connect(self.filter_patients)
+#        self.ui.i_air_malignant.stateChanged.connect(self.filter_patients)
 
 
     @Slot()
@@ -143,17 +145,17 @@ class PatientsView(ViewObject):
         self.sort_patients()
         self.create_patient_cards()
 
-    @Slot(str)
-    def slot_organizer_id_name(self, organizer):
-        place_holder = ""
-#        regex = ""
-        if organizer == "id":
-            place_holder = "E.g: AG4432YA"
-        elif organizer == "name":
-            place_holder = "E.g: Alex"
+#    @Slot(str)
+#    def slot_organizer_id_name(self, organizer):
+#        place_holder = ""
+##        regex = ""
+#        if organizer == "id":
+#            place_holder = "E.g: AG4432YA"
+#        elif organizer == "name":
+#            place_holder = "E.g: Alex"
 
-        self.ui.i_search.setPlaceholderText(place_holder)
-        self.show_patients()
+#        self.ui.i_search.setPlaceholderText(place_holder)
+#        self.show_patients()
 
     @Slot()
     def filter_patients(self):
@@ -174,10 +176,11 @@ class PatientsView(ViewObject):
     def __filter_search(self):
         # search
         if len(self.ui.i_search.text()) > 0:
-            if self.ui.bt_sorter_id.is_selected():
-                self.p_list_filtered = self.p_list_filtered.get_filtered_starts_with("id", self.ui.i_search.text(), False)
-            else:
-                self.p_list_filtered = self.p_list_filtered.get_filtered_conains("first_name", self.ui.i_search.text(), False)
+            p_list_filtered_id = self.p_list_filtered.get_filtered_conains("id", self.ui.i_search.text(), False)
+            p_list_filtered_last_name = self.p_list_filtered.get_filtered_conains("last_name", self.ui.i_search.text(), False)
+            p_list_filtered_first_name = self.p_list_filtered.get_filtered_conains("first_name", self.ui.i_search.text(), False)
+            self.p_list_filtered = PatientList.join_lists(p_list_filtered_id, p_list_filtered_last_name, p_list_filtered_first_name)
+
 
     def __filter_basic_information(self):
         for mi_name, mi_value in self.ui.c_filter_bi_content.get_selected_filters().items():

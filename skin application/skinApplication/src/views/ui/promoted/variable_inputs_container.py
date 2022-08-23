@@ -34,7 +34,7 @@ class VariableInputsContainer(QFrame):
         self.layout.setSpacing(50)
 
         self.__show_inputs()
-        self.__create_bt_creator()
+#        self.__create_bt_creator()
 
     def __show_inputs(self):
         self.inputs_layout = QVBoxLayout()
@@ -69,36 +69,36 @@ class VariableInputsContainer(QFrame):
         self.inputs_layout.addWidget(input)
         self.inputs[i_id] = input
 
-    def __create_bt_creator(self):
-        self.bt_creator = Button(self)
-        self.bt_creator.setText(self.bt_text)
-        self.layout.addWidget(self.bt_creator,0, Qt.AlignHCenter)
-        self.bt_creator.clicked.connect(self.__show_input_creator)
+#    def __create_bt_creator(self):
+#        self.bt_creator = Button(self)
+#        self.bt_creator.setText(self.bt_text)
+#        self.layout.addWidget(self.bt_creator,0, Qt.AlignHCenter)
+#        self.bt_creator.clicked.connect(self.__show_input_creator)
 
-    @Slot()
-    def __show_input_creator(self):
-        if self.input_creator is None:
-            self.input_creator = VariableInputCreator(self, self.__create_new_input, self.__cancel_new_input)
-            self.layout.addWidget(self.input_creator)
+#    @Slot()
+#    def __show_input_creator(self):
+#        if self.input_creator is None:
+#            self.input_creator = VariableInputCreator(self, self.__create_new_input, self.__cancel_new_input)
+#            self.layout.addWidget(self.input_creator)
 
-    Slot(str, list, str)
-    def __create_new_input(self, input_title, input_values, input_type):
-        file_name = util.title_to_file_name(input_title)
-        if file_name in self.inputs:
-            raise ValueError('Caracteristic input already exists', "CARACTERISTIC_INPUT", "REPEATED")
+#    Slot(str, list, str)
+#    def __create_new_input(self, input_title, input_values, input_type):
+#        file_name = util.title_to_file_name(input_title)
+#        if file_name in self.inputs:
+#            raise ValueError('Caracteristic input already exists', "CARACTERISTIC_INPUT", "REPEATED")
 
-        file_content = ""
-        if len(input_values) > 0:
-            file_content = '\n'.join(input_values)
-        util.create_file(file_content, self.folder, file_name + "." + input_type)
+#        file_content = ""
+#        if len(input_values) > 0:
+#            file_content = '\n'.join(input_values)
+#        util.create_file(file_content, self.folder, file_name + "." + input_type)
 
-        self.__show_single_input(file_name, input_title, input_values, input_type)
-        self.__cancel_new_input()
+#        self.__show_single_input(file_name, input_title, input_values, input_type)
+#        self.__cancel_new_input()
 
-    @Slot()
-    def __cancel_new_input(self):
-        self.input_creator.setParent(None)
-        self.input_creator = None
+#    @Slot()
+#    def __cancel_new_input(self):
+#        self.input_creator.setParent(None)
+#        self.input_creator = None
 
     @Slot(str)
     def __add_new_input_item(self, input_id):

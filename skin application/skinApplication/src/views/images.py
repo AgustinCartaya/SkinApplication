@@ -132,6 +132,9 @@ class ImagesView(ViewObject):
     def close_image_viewers(self):
         self.image_viewers = []
 
+    def close(self):
+        self.close_image_viewers()
+
     Slot(Image)
     def open_single_image(self, img):
         self.image_viewers.append(ImageViewer(img))
