@@ -82,7 +82,7 @@ class Ui_check_patient(object):
         self.scrollArea.setWidgetResizable(True)
         self.c_patient_information_content = QWidget()
         self.c_patient_information_content.setObjectName(u"c_patient_information_content")
-        self.c_patient_information_content.setGeometry(QRect(0, 0, 276, 648))
+        self.c_patient_information_content.setGeometry(QRect(0, 0, 276, 657))
         self.verticalLayout_5 = QVBoxLayout(self.c_patient_information_content)
         self.verticalLayout_5.setObjectName(u"verticalLayout_5")
         self.verticalLayout_5.setContentsMargins(30, 0, 0, -1)
@@ -176,10 +176,9 @@ class Ui_check_patient(object):
 
         self.ly_medical_information.addWidget(self.lb_medical_information)
 
-        self.ly_mi_content = QFormLayout()
+        self.ly_mi_content = QVBoxLayout()
+        self.ly_mi_content.setSpacing(16)
         self.ly_mi_content.setObjectName(u"ly_mi_content")
-        self.ly_mi_content.setHorizontalSpacing(9)
-        self.ly_mi_content.setVerticalSpacing(16)
         self.ly_mi_content.setContentsMargins(9, 9, 9, 9)
 
         self.ly_medical_information.addLayout(self.ly_mi_content)
@@ -226,7 +225,7 @@ class Ui_check_patient(object):
         self.sc_skin_lesions_preview.setWidgetResizable(True)
         self.c_skin_lesions_preview = QWidget()
         self.c_skin_lesions_preview.setObjectName(u"c_skin_lesions_preview")
-        self.c_skin_lesions_preview.setGeometry(QRect(0, 0, 875, 708))
+        self.c_skin_lesions_preview.setGeometry(QRect(0, 0, 875, 714))
         self.verticalLayout_6 = QVBoxLayout(self.c_skin_lesions_preview)
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
         self.ly_skin_lesions_preview = QVBoxLayout()

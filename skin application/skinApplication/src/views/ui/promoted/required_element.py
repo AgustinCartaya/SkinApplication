@@ -1,21 +1,27 @@
 from .promoted_container import *
+from .form_item import FormItem
+#from src.objects.variable_input import VariableInput
 
 
 class RequiredElement(PromotedContainer):
 
     def __init__(self, parent):
         super().__init__(parent)
+
+        req_element_family = None
+        self.satisfied = False
+        self.info_name = ""
+        self.info_content = ""
+
         self._pre_charge()
 
-    def initialize(self, satisfied, info_name, info_content, scale_input=None):
-        if satisfied:
-            self.bt_satisfied.setText("/")
-        else:
-            self.bt_satisfied.setText("X")
-            self.bt_satisfied.set_type("cancel")
+    def initialize(self, satisfied, info_name, info_content, req_element_family):
+        self.satisfied = satisfied
+        self.info_name = info_name
+        self.info_content = info_content
+        self.req_element_family = req_element_family
+        self.__fill_content()
 
-        self.lb_info_name.setText(info_name, colon=True, format=True)
-        self.lb_info_content.setText(info_content, scale_input=[info_name,scale_input])
 
     def _pre_charge(self):
         self.layout = QHBoxLayout(self)
@@ -23,19 +29,23 @@ class RequiredElement(PromotedContainer):
         self.layout.setContentsMargins(0, 0, 0, 0)
 
         self.__create_bt_satisfied()
-        self.__create_content()
 
     def __create_bt_satisfied(self):
         self.bt_satisfied = Button(self)
         self.bt_satisfied.setMaximumSize(QSize(28, 28))
         self.layout.addWidget(self.bt_satisfied)
 
-    def __create_content(self):
-        self.lb_info_name = Label(self)
-        self.layout.addWidget(self.lb_info_name)
+    def __fill_content(self):
 
-        self.lb_info_content = Label(self)
-        self.layout.addWidget(self.lb_info_content)
+        if self.satisfied:
+            self.bt_satisfied.setText("/")
+        else:
+            self.bt_satisfied.setText("X")
+            self.bt_satisfied.set_type("cancel")
+
+        req_info = FormItem(self)
+        req_info.initialize(self.info_name, self.info_content, self.req_element_family)
+        self.layout.addWidget(req_info)
 
         # spacer
         self.sp_right = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)

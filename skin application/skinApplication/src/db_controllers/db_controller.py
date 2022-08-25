@@ -40,7 +40,7 @@ class DBController:
         elif table == cfg.TABLE_SKIN_LESIONS:
             self.db.cursor.execute( ("UPDATE %s SET location = ?, characteristics = ?, ai_results = ? WHERE number = ? AND id_patient = ?" % cfg.TABLE_SKIN_LESIONS), (data + conditions) )
         elif table == cfg.TABLE_VARIABLE_INPUTS:
-            self.db.cursor.execute( ("UPDATE %s SET name = ? WHERE id = ?" % cfg.TABLE_SKIN_LESIONS), (data + conditions) )
+            self.db.cursor.execute( ("UPDATE %s SET name = ?, type = ?, items = ?, scale = ? WHERE id = ? AND family = ?" % cfg.TABLE_VARIABLE_INPUTS), (data + conditions) )
 
         else:
             self.db.connection.close()
@@ -49,6 +49,19 @@ class DBController:
         self.db.connection.commit()
         self.db.connection.close()
 
+    def delete(self, table, conditions):
+        if type(conditions) is not tuple:
+            raise ValueError('Upadte conditions is not tuple', "UPDATE_CONDITIONS", "NOT_TUPLE")
+
+        self.db.connect()
+        if table == cfg.TABLE_VARIABLE_INPUTS:
+            self.db.cursor.execute( ("DELETE FROM %s WHERE id = ? AND family = ?" % cfg.TABLE_VARIABLE_INPUTS), conditions )
+        else:
+            self.db.connection.close()
+            raise ValueError('Upadte table not found', "UPDATE_TABLE", "NOT_FOUND")
+
+        self.db.connection.commit()
+        self.db.connection.close()
 
     def count_all(self, table, conditions=None):
         if conditions is not None and type(conditions) is not tuple :

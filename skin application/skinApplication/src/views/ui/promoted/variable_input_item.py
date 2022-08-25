@@ -1,7 +1,7 @@
 from .promoted_container import *
 
 from PySide6.QtWidgets import QButtonGroup, QRadioButton, QDateEdit, QComboBox, QDoubleSpinBox, QSpinBox, QInputDialog
-
+from PySide6.QtCore import QDate
 from src.objects.variable_input import VariableInput
 
 
@@ -10,7 +10,7 @@ class VariableInputItem(PromotedContainer):
     DISPOSITION_V = "V"
     DISPOSITION_H = "H"
 
-    s_edit_input = Signal(str)
+    s_edit_input = Signal(VariableInput)
     def __init__(self, parent):
         super().__init__(parent)
 
@@ -114,7 +114,7 @@ class VariableInputItem(PromotedContainer):
 
     @Slot()
     def __edit_input(self):
-        self.s_edit_input.emit(self.id)
+        self.s_edit_input.emit(self.vi)
 
     def get_selected_item(self):
         item = None

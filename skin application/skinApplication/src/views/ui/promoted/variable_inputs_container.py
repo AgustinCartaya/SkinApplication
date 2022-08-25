@@ -21,9 +21,10 @@ class VariableInputsContainer(PromotedContainer):
         self.layout.setContentsMargins(0, 0, 0, 0)
         self.layout.setSpacing(50)
 
-    def initialize(self, inputs_family, inputs_disposition=VariableInputItem.DISPOSITION_V):
+    def initialize(self, inputs_family, edit_receaver, inputs_disposition=VariableInputItem.DISPOSITION_V):
         self.inputs_family = inputs_family
         self.inputs_disposition = inputs_disposition
+        self.edit_receaver = edit_receaver
 
         self.__create_inputs()
 
@@ -37,13 +38,9 @@ class VariableInputsContainer(PromotedContainer):
 
     def __create_single_input(self, variable_input):
         input = VariableInputItem(self)
-        input.initialize(variable_input, self.__edit_input, self.inputs_disposition)
+        input.initialize(variable_input, self.edit_receaver, self.inputs_disposition)
         self.inputs_layout.addWidget(input)
         self.inputs[variable_input.id] = input
-
-    @Slot(str)
-    def __edit_input(self, input_id):
-        pass
 
     def get_selected_items(self):
         selected_items = {}
@@ -53,6 +50,15 @@ class VariableInputsContainer(PromotedContainer):
 
     def append_new_variable_input(self, variable_input):
         self.__create_single_input(variable_input)
+
+    def variable_input_edited(self, variable_input):
+        self.inputs[variable_input.id].setParent(None)
+        del (self.inputs[variable_input.id])
+        self.__create_single_input(variable_input)
+
+    def variable_input_deleted(self, variable_input):
+        self.inputs[variable_input.id].setParent(None)
+        del (self.inputs[variable_input.id])
 
     def select_default_values(self, default):
         for key, value in default.items():

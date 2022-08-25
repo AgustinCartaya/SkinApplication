@@ -65,7 +65,7 @@ class UpsertSkinLesionView(ViewObject):
         self.ui.bt_complete.set_position(2)
 
         # characteristic
-        self.ui.c_characteristics.initialize(VariableInput.SKL_INPUT, VariableInputItem.DISPOSITION_H)
+        self.ui.c_characteristics.initialize(VariableInput.SKL_INPUT, self.show_variable_input_editor, VariableInputItem.DISPOSITION_H)
 
 
     def charge_ai_previews(self):
@@ -158,14 +158,37 @@ class UpsertSkinLesionView(ViewObject):
     # Add new variable input (skl characteristics)
     @Slot()
     def __show_variable_input_creator(self):
-        self.variable_input_creator = VariableInputCreator(self.mv, VariableInput.SKL_INPUT, self.new_variable_input_created)
+        self.variable_input_creator = VariableInputCreator(self.mv, VariableInput.SKL_INPUT, self.create_new_variable_input)
         self.variable_input_creator.show()
 
     Slot(VariableInput)
-    def new_variable_input_created(self, variable_input):
+    def create_new_variable_input(self, variable_input):
         try:
             variable_input.create()
             self.ui.c_characteristics.append_new_variable_input(variable_input)
+        except ValueError as err:
+            print(err.args)
+
+    # edit variable input (skl characteristics)
+    Slot(VariableInput)
+    def show_variable_input_editor(self, variable_input):
+        self.variable_input_creator = VariableInputCreator(self.mv, VariableInput.SKL_INPUT, self.create_new_variable_input)
+        self.variable_input_creator.activate_edit_mode(variable_input, self.edit_variable_input, self.delete_variable_input)
+        self.variable_input_creator.show()
+
+    Slot(VariableInput)
+    def edit_variable_input(self, variable_input):
+        try:
+            variable_input.update()
+            self.ui.c_characteristics.variable_input_edited(variable_input)
+        except ValueError as err:
+            print(err.args)
+
+    Slot(VariableInput)
+    def delete_variable_input(self, variable_input):
+        try:
+            variable_input.delete()
+            self.ui.c_characteristics.variable_input_deleted(variable_input)
         except ValueError as err:
             print(err.args)
 

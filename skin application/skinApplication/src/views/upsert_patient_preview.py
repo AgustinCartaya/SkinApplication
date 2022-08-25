@@ -1,13 +1,10 @@
 from .view_object import *
 from .ui.ui_upsert_patient_preview import Ui_upsert_patient_preview
 
-from src.objects.patient import Patient
+from .ui.promoted.form_item import FormItem
 
-from PySide6.QtCore import Qt
-from PySide6.QtWidgets import (QFrame, QVBoxLayout, QHBoxLayout,
-        QLineEdit,QGridLayout, QComboBox)
-
-from .ui.promoted.label import Label
+#from src.objects.patient import Patient
+from src.objects.variable_input import VariableInput
 
 
 class UpsertPatientPreiewView(ViewObject):
@@ -29,10 +26,7 @@ class UpsertPatientPreiewView(ViewObject):
         self.ui.setupUi(self)
         self.ui.bt_cancel.set_type(Button.BT_CANCEL)
 
-#        self.ui.i_first_name.setValidator(self.create_text_validator(data_cleaner.regex_name))
-#        self.ui.i_last_name.setValidator(self.create_text_validator(data_cleaner.regex_name))
-
-#        # labels
+        # labels
         self.ui.lb_title.set_title(1)
         self.ui.lb_basic_information_title.set_title(2)
         self.ui.lb_medical_information_title.set_title(2)
@@ -41,13 +35,6 @@ class UpsertPatientPreiewView(ViewObject):
         self.ui.i_last_name.set_decoration("mi_content")
         self.ui.i_birth_date.set_decoration("mi_content")
         self.ui.i_gender.set_decoration("mi_content")
-
-        # medical information frame
-#        self.mi_content_layout = QVBoxLayout(self.ui.c_medical_information)
-#        self.mi_content_layout.setSpacing(16)
-#        self.mi_content_layout.setContentsMargins(0, 0, 0, 0)
-
-
 
     def show_information(self):
         self.show_basic_information()
@@ -64,25 +51,11 @@ class UpsertPatientPreiewView(ViewObject):
         else:
             self.ui.i_gender.setText("Other")
 
-
     def show_medical_information(self):
         for mi_name, mi_content in self.p.mi.items():
-            ly_single_mi = QVBoxLayout()
-            ly_single_mi.setSpacing(4)
-
-            lb_mi_title = Label(self.ui.c_patient_information_preview)
-            lb_mi_title.setText(mi_name, colon=True, format=True)
-            ly_single_mi.addWidget(lb_mi_title)
-
-            # scales to modify if possible
-
-            i_mi_content = Label(self.ui.c_patient_information_preview)
-#            i_mi_content.setText(mi_content, scale_input=[mi_name, var_inputs.MI_INPUT])
-            i_mi_content.setText(mi_content)
-            i_mi_content.set_decoration("mi_content")
-            ly_single_mi.addWidget(i_mi_content)
-
-            self.ui.ly_mi_content.addLayout(ly_single_mi)
+            mi_preview = FormItem(self.ui.c_patient_information_preview)
+            mi_preview.initialize(mi_name, mi_content, VariableInput.MI_INPUT, FormItem.DISPOSITION_V)
+            self.ui.ly_mi_content.addWidget(mi_preview)
 
     def connect_ui_signals(self):
         #ui signals

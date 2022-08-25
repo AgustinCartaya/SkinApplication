@@ -7,9 +7,11 @@ from PySide6.QtCore import Qt
 
 from .ui.promoted.label import Label
 from .ui.promoted.skin_lesion_preview import SkinLesionPreview
+from .ui.promoted.form_item import FormItem
 
 from src.objects.patient import Patient
 from src.objects.image import Image
+from src.objects.variable_input import VariableInput
 
 
 class CheckPatientView(ViewObject):
@@ -98,19 +100,9 @@ class CheckPatientView(ViewObject):
     def show_medical_information(self):
         form_index = 0
         for mi_name, mi_content in self.p.mi.items():
-            lb_mi_title = Label(self.ui.c_patient_information_content)
-            lb_mi_title.setText(mi_name, colon=True, format=True)
-            self.ui.ly_mi_content.setWidget(form_index, QFormLayout.LabelRole, lb_mi_title)
-
-            # scales to modify if possible
-            lb_mi_content = Label(self.ui.c_patient_information_content)
-#            lb_mi_content.setText(mi_content, scale_input=[mi_name, var_inputs.MI_INPUT])
-            lb_mi_content.setText(mi_content)
-
-            self.ui.ly_mi_content.setWidget(form_index, QFormLayout.FieldRole, lb_mi_content)
-
-            form_index = form_index + 1
-
+            mi_preview = FormItem(self.ui.c_patient_information_content)
+            mi_preview.initialize(mi_name, mi_content, VariableInput.MI_INPUT)
+            self.ui.ly_mi_content.addWidget(mi_preview)
 
     @Slot()
     def back(self):

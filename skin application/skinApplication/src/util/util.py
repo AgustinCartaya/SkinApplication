@@ -116,14 +116,14 @@ def sort_list_of_tuples(list, index, asc=True):
 def sort_list(list, asc=True):
     return sorted(list, reverse=(not asc))
 
-
 def file_name_to_title(txt):
     return txt.replace("_", " ").capitalize()
-
 
 def title_to_file_name(txt):
     return re.sub(' +', ' ', txt.strip()).replace(" ", "_").lower()
 
+def clean_title(txt):
+    return re.sub(' +', ' ', txt.strip()).lower()
 
 def str_to_list(text, sep="\n"):
     return [s.strip() for s in list(filter(lambda x: len(x.strip()) > 0, text.split(sep)))]

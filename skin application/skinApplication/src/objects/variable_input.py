@@ -47,37 +47,7 @@ class VariableInput(DataObject):
         # for virtual inputs type options
         self.action_values = self.items
 
-    def set_items(self, items, action_values=None):
-        if self.type == self.TYPE_OPTIONS:
-            self.items = items
-            if action_values is not None and len(items) == len(action_values):
-                self.action_values = action_values
-
-    # creation
-    def create(self):
-        if self.id is None:
-            self.id = self.generate_id()
-        self.__insert()
-        return self.id
-
-    def generate_id(self):
-        vi_number = self.count_available_variable_inputs(self.family, self.OWNER_DOCTOR)
-        return self.family + "_" + str(vi_number)
-
-    def accept_range(self):
-        return (self.is_numeric() or self.type == self.TYPE_DATE)
-
-    def is_numeric(self):
-        return self.type in (self.TYPE_INT, self.TYPE_FLOAT)
-
-    def has_scale(self):
-        return self.scale is not None
-
-    def get_scale_units(self):
-        if self.has_scale():
-            return self.scales[self.scale][0]
-
-    def __insert(self):
+    def __save_data(self):
         try:
             dbc = DBController()
             items = self.items
@@ -99,9 +69,58 @@ class VariableInput(DataObject):
     def update(self):
         try:
             dbc = DBController()
-            dbc.update(cfg.TABLE_VARIABLE_INPUTS,(self.name,))
+            items = self.items
+            if items is not None:
+                items = ",".join(items)
+            dbc.update(cfg.TABLE_VARIABLE_INPUTS, (self.name, self.type, items, self.scale), (self.id, self.family))
         except ValueError as err:
             print(err.args)
+
+    # update
+    def delete(self):
+        try:
+            dbc = DBController()
+            dbc.delete(cfg.TABLE_VARIABLE_INPUTS,(self.id, self.family))
+        except ValueError as err:
+            print(err.args)
+
+    # creation
+    def create(self):
+        if self.id is None:
+            self.id = self.generate_id()
+        self.__save_data()
+        return self.id
+
+    def generate_id(self):
+        vi_number = self.count_available_variable_inputs(self.family, self.OWNER_DOCTOR)
+        return self.family + "_" + str(vi_number)
+
+    def set_items(self, items, action_values=None):
+        if self.type == self.TYPE_OPTIONS:
+            self.items = items
+            if action_values is not None and len(items) == len(action_values):
+                self.action_values = action_values
+
+    def get_scale_units(self):
+        if self.has_scale():
+            return self.scales[self.scale][0]
+
+    def get_scalized_str(self, value):
+        if self.has_scale():
+            scalized = self.to_sub_unit(self.scale, value)
+            return " ".join([str(scalized[0]), scalized[1]])
+        else:
+            return str(value)
+
+
+    def accept_range(self):
+        return (self.is_numeric() or self.type == self.TYPE_DATE)
+
+    def is_numeric(self):
+        return self.type in (self.TYPE_INT, self.TYPE_FLOAT)
+
+    def has_scale(self):
+        return self.scale is not None
 
     def is_editable(self):
         return self.owner != self.OWNER_AI
@@ -113,7 +132,7 @@ class VariableInput(DataObject):
         return dbc.count_all(cfg.TABLE_VARIABLE_INPUTS, (family,owner))
 
     @classmethod
-    def get_variable_input(cls, id):
+    def get_variable_input(cls, id, family):
         dbc = DBController()
         vi = dbc.secure_select(cfg.TABLE_VARIABLE_INPUTS, (id,), False)
         return VariableInput(vi[0], vi[1], vi[2], vi[3], vi[4], vi[5], vi[6])
@@ -135,6 +154,7 @@ class VariableInput(DataObject):
     @classmethod
     def get_available_variable_input_names(cls, family, owner=None):
         return [vi.name for vi in cls.get_available_variable_inputs(family, owner)]
+
 
     # ai creation
     @classmethod
@@ -175,7 +195,8 @@ class VariableInput(DataObject):
 
         dbc = DBController()
         if not dbc.secure_exists(cfg.TABLE_VARIABLE_INPUTS, (data["name"],family)):
-            vi = VariableInput(data["name"], family, cls.OWNER_AI, data["type"], data["name"])
+            name = util.title_to_file_name(data["name"])
+            vi = VariableInput(name, family, cls.OWNER_AI, data["type"], name)
             if "items" in data:
                 vi.items = data["items"]
             elif "scale" in data:
@@ -216,11 +237,11 @@ class VariableInput(DataObject):
             return (value/sc_content[1][index], sc_content[0][index])
         return None
 
-    @classmethod
-    def get_scalized_str(cls, id, value):
-        vi = cls.get_variable_input(id)
-        if vi.scale is not None:
-            scalized = cls.to_sub_unit(vi.scale, value)
-            return " ".join([str(scalized[0]), scalized[1]])
-        else:
-            return str(value)
+#    @classmethod
+#    def get_scalized_str(cls, id, value):
+#        vi = cls.get_variable_input(id)
+#        if vi.scale is not None:
+#            scalized = cls.to_sub_unit(vi.scale, value)
+#            return " ".join([str(scalized[0]), scalized[1]])
+#        else:
+#            return str(value)

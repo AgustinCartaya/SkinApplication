@@ -1,6 +1,7 @@
 from .promoted_container import *
 
 from PySide6.QtWidgets import QDateEdit, QComboBox, QDoubleSpinBox, QSpinBox
+from PySide6.QtCore import QDate
 
 from .check_button_group import CheckButtonGroup
 from .check_button import CheckButton

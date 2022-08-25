@@ -34,7 +34,7 @@ class UpsertPatientMiView(ViewObject):
         self.ui.lb_title.set_title(1)
 
         # medical information
-        self.ui.c_mi.initialize(VariableInput.MI_INPUT)
+        self.ui.c_mi.initialize(VariableInput.MI_INPUT, self.edit_variable_input)
 
 
     def connect_ui_signals(self):
@@ -89,7 +89,7 @@ class UpsertPatientMiView(ViewObject):
         self.ui.lb_title.setText("Edit medical information")
         self.ui.c_mi.select_default_values(self.p.mi)
 
-    # Add new variable input (skl characteristics)
+    # Add new variable input (Medical information)
     @Slot()
     def __show_variable_input_creator(self):
         self.variable_input_creator = VariableInputCreator(self.mv, VariableInput.MI_INPUT, self.new_variable_input_created)
@@ -103,3 +103,7 @@ class UpsertPatientMiView(ViewObject):
         except ValueError as err:
             print(err.args)
 
+    # edit variable input(Medical information)
+    Slot(VariableInput)
+    def edit_variable_input(self, variable_input):
+        print(variable_input)

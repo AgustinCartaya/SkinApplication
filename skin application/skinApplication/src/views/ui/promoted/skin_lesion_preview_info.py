@@ -1,6 +1,10 @@
 from .promoted_container import *
 
 from PySide6.QtWidgets import QScrollArea, QWidget
+from .form_item import FormItem
+
+from src.objects.variable_input import VariableInput
+
 
 class SkinLesionPreviewInfo(PromotedContainer):
 
@@ -120,20 +124,10 @@ class SkinLesionPreviewInfo(PromotedContainer):
         ly_single_content.setContentsMargins(margin_left, 0, 0, 0)
 
         for name, value in result.items():
-            lb_result = QHBoxLayout()
-            ly_single_content.addLayout(lb_result)
+            vi_family = None
+            if not self.is_ai_result:
+                vi_family = VariableInput.SKL_INPUT
 
-            lb_result_title = Label(c_single_content)
-            lb_result_title.setText(name, colon=True, format=True)
-            lb_result.addWidget(lb_result_title)
-
-
-            lb_result_content = Label(c_single_content)
-#            lb_result_content.setText(value, scale_input=[name, var_inputs.SKL_INPUT])
-            lb_result_content.setText(value)
-            lb_result.addWidget(lb_result_content)
-
-            # spacer
-            sp = QSpacerItem(20, 2, QSizePolicy.Expanding, QSizePolicy.Fixed)
-            lb_result.addItem(sp)
-
+            single_content = FormItem(c_single_content)
+            single_content.initialize(name, value, vi_family)
+            ly_single_content.addWidget(single_content)

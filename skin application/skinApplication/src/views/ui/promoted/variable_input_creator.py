@@ -1,5 +1,5 @@
 from PySide6.QtWidgets import (QWidget, QFrame, QVBoxLayout, QHBoxLayout, QButtonGroup, QRadioButton,
-        QSpacerItem, QSizePolicy, QCheckBox)
+        QSpacerItem, QSizePolicy, QCheckBox, QScrollArea, QWidget)
 
 from PySide6.QtCore import Qt, QSize
 from .label import Label
@@ -20,6 +20,8 @@ from src.objects.variable_input import VariableInput
 class VariableInputCreator(QWidget):
 
     s_add = Signal(VariableInput)
+    s_edit = Signal(VariableInput)
+    s_delete = Signal(VariableInput)
     def __init__(self, parent, vi_family, add_receaver):
         super().__init__(None)
 
@@ -27,6 +29,8 @@ class VariableInputCreator(QWidget):
         self.input_type = ""
         self.parent = parent
         self.s_add.connect(add_receaver)
+
+        self.edit_mode = False
 
         self.setWindowModality(Qt.ApplicationModal)
         self.setMinimumSize(QSize(300, 400))
@@ -36,11 +40,11 @@ class VariableInputCreator(QWidget):
 
         self.__create()
 
-
     def __create(self):
-        self.layout = QVBoxLayout(self)
-        self.layout.setSpacing(12)
+        self.p_layout = QVBoxLayout(self)
+        self.p_layout.setSpacing(12)
 
+        self.__create_scroll_area()
         self.__create_bt_type()
         self.__create_input_name()
         self.__create_add_decimals()
@@ -58,6 +62,24 @@ class VariableInputCreator(QWidget):
         self.c_scales.hide()
         self.c_values.hide()
         self.bt_add.hide()
+
+    def __create_scroll_area(self):
+        self.scroll_area = QScrollArea(self)
+        self.scroll_area.setWidgetResizable(True)
+        self.p_layout.addWidget(self.scroll_area)
+
+        self.c_scroll_area = QWidget(self.scroll_area)
+        self.scroll_area.setWidget(self.c_scroll_area)
+        self.ly_scroll_area = QVBoxLayout(self.c_scroll_area)
+
+        # content layout
+        self.layout = QVBoxLayout()
+        self.layout.setSpacing(20)
+        self.ly_scroll_area.addLayout(self.layout)
+
+        # spacer
+        self.vs_description_down = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.ly_scroll_area.addItem(self.vs_description_down)
 
     def __create_bt_type(self):
         ly_type = QVBoxLayout()
@@ -154,7 +176,7 @@ class VariableInputCreator(QWidget):
         self.c_scales = QFrame(self)
 
         ly_scales = QVBoxLayout(self.c_scales)
-        ly_scales.setContentsMargins(0, 0, 0, 0)
+        ly_scales.setContentsMargins(9, 0, 0, 0)
 #        ly_scales.setSpacing(4)
 
         self.qbt_scale_group = QButtonGroup()
@@ -187,26 +209,26 @@ class VariableInputCreator(QWidget):
         self.layout.addWidget(self.c_scales)
 
     def __create_buttons(self):
-        ly_bt = QHBoxLayout()
+        self.ly_bt = QHBoxLayout()
 
         vs_left = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-        ly_bt.addItem(vs_left)
+        self.ly_bt.addItem(vs_left)
 
         self.bt_cancel = Button(self)
         self.bt_cancel.setText("Cancel")
         self.bt_cancel.set_type(Button.BT_CANCEL)
-        ly_bt.addWidget(self.bt_cancel)
+        self.ly_bt.addWidget(self.bt_cancel)
         self.bt_cancel.clicked.connect(self.__cancel)
 
         self.bt_add = Button(self)
         self.bt_add.setText("Add")
-        ly_bt.addWidget(self.bt_add)
+        self.ly_bt.addWidget(self.bt_add)
         self.bt_add.clicked.connect(self.__add)
 
         vs_right = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-        ly_bt.addItem(vs_right)
+        self.ly_bt.addItem(vs_right)
 
-        self.layout.addLayout(ly_bt)
+        self.layout.addLayout(self.ly_bt)
 
     @Slot(str)
     def __type_selected(self, t):
@@ -259,30 +281,64 @@ class VariableInputCreator(QWidget):
 
     @Slot()
     def __add(self):
-        name = util.title_to_file_name(self.i_name.text())
-        if name == "":
+        info_dict = self.__catch_info()
+        available_vi_names = VariableInput.get_available_variable_input_names(self.vi_family)
+#        name = util.title_to_file_name(self.i_name.text())
+        if info_dict["name"] == "":
             self.show_error("VARIABLE_INPUT_NAME", "EMPTY")
-        elif name in VariableInput.get_available_variable_input_names(self.vi_family):
+        elif not self.edit_mode  and info_dict["name"] in available_vi_names:
             self.show_error("VARIABLE_INPUT_NAME", "EXISTS")
+        elif self.edit_mode and info_dict["name"] != self.vi.name and info_dict["name"] in available_vi_names:
+            self.show_error("VARIABLE_INPUT_NAME", "EXISTS")
+        elif self.input_type == VariableInput.TYPE_OPTIONS and info_dict["items"] is None:
+            self.show_error("VARIABLE_INPUT_VALUES", "EMPTY")
+        elif self.input_type in VariableInput.numeric_input() and self.i_add_scales.isChecked() and info_dict["scale"] is None:
+            self.show_error("VARIABLE_INPUT_SCALE", "NOT_SELECTED")
         else:
-            items = None
-            scales = None
-            add = True
-            if self.input_type == VariableInput.TYPE_OPTIONS:
-                items = util.str_to_list(self.i_values.text(),",")
-                if len(items) == 0:
-                    self.show_error("VARIABLE_INPUT_VALUES", "EMPTY")
-                    add = False
-            elif self.input_type in VariableInput.numeric_input() and self.i_add_scales.isChecked():
-                if self.qbt_scale_group.checkedId() >= 0:
-                    scales = self.scales_index[self.qbt_scale_group.checkedId()]
-                else:
-                    self.show_error("VARIABLE_INPUT_SCALE", "NOT_SELECTED")
-                    add = False
-            if add:
-                vi = VariableInput(None, self.vi_family, VariableInput.OWNER_DOCTOR, self.input_type, name, items, scales)
+            if self.edit_mode:
+                self.vi.name = info_dict["name"]
+                self.vi.type = self.input_type
+                self.vi.items = info_dict["items"]
+                self.vi.scale = info_dict["scale"]
+                self.s_edit.emit(self.vi)
+            else:
+                vi = VariableInput(None,
+                                    self.vi_family,
+                                    VariableInput.OWNER_DOCTOR,
+                                    self.input_type,
+                                    info_dict["name"],
+                                    info_dict["items"],
+                                    info_dict["scale"])
                 self.s_add.emit(vi)
-                self.close()
+            self.close()
+
+    def __catch_info(self):
+        info_dict = {}
+        info_dict["name"] = util.title_to_file_name(self.i_name.text())
+        info_dict["items"] = util.str_to_list(self.i_values.text(),",")
+        info_dict["scale"] = None
+
+        if len(info_dict["items"]) == 0:
+            info_dict["items"] = None
+
+        if self.i_add_scales.isChecked() and self.qbt_scale_group.checkedId() >= 0:
+            info_dict["scale"] = self.scales_index[self.qbt_scale_group.checkedId()]
+
+        return info_dict
+
+    @Slot()
+    def __delete(self):
+        self.s_delete.emit(self.vi)
+        self.close()
+
+#    @Slot()
+#    def __edit(self):
+#        name = util.title_to_file_name(self.i_name.text())
+#        if name == "":
+#            self.show_error("VARIABLE_INPUT_NAME", "EMPTY")
+#        elif name in VariableInput.get_available_variable_input_names(self.vi_family):
+#            self.show_error("VARIABLE_INPUT_NAME", "EXISTS")
+
 
     def show_error(self, error_object, type_error):
         if error_object == "VARIABLE_INPUT_NAME":
@@ -296,3 +352,73 @@ class VariableInputCreator(QWidget):
         elif error_object == "VARIABLE_INPUT_SCALE":
             if type_error == "NOT_SELECTED":
                 print(error_object + " " + type_error)
+
+    def activate_edit_mode(self, variable_input, edit_receaver, delete_receaver):
+        self.vi = variable_input
+        self.edit_mode = True
+        self.input_type = self.vi.type
+
+        self.s_edit.connect(edit_receaver)
+        self.s_delete.connect(delete_receaver)
+
+        self.bt_add.setText("Save")
+#        self.bt_add.disconnect()
+#        self.bt_add.clicked.connect(self.__edit)
+
+
+        self.bt_delete = Button(self)
+        self.bt_delete.setText("Delete")
+        self.bt_delete.set_type(Button.BT_DELETE)
+        self.ly_bt.insertWidget(1, self.bt_delete)
+        self.bt_delete.clicked.connect(self.__delete)
+
+        # select type
+        self.__type_selected(self.vi.type)
+
+        # inhabilitate inputs
+        self.bt_options.hide()
+        self.bt_number.hide()
+        self.bt_text.hide()
+        self.bt_bool.hide()
+        self.bt_date.hide()
+
+        if self.vi.type == VariableInput.TYPE_OPTIONS:
+            self.bt_options.select(True)
+            self.bt_options.show()
+
+        elif self.vi.is_numeric():
+            self.bt_number.select(True)
+            self.bt_number.show()
+            self.i_add_scales.show()
+
+            if self.vi.type == VariableInput.TYPE_FLOAT:
+                self.i_decimals.setChecked(True)
+                self.i_decimals.show()
+
+            if self.vi.has_scale():
+                self.i_add_scales.setChecked(True)
+                bt_scale = self.qbt_scale_group.button(self.scales_index.index(self.vi.scale))
+                bt_scale.setChecked(True)
+
+        elif self.vi.type == VariableInput.TYPE_TEXT:
+            self.bt_text.select(True)
+            self.bt_text.show()
+
+        elif self.vi.type == VariableInput.TYPE_BOOL:
+            self.bt_bool.select(True)
+            self.bt_bool.show()
+
+        elif self.vi.type == VariableInput.TYPE_DATE:
+            self.bt_date.select(True)
+            self.bt_date.show()
+
+        # write name
+        self.i_name.setText(self.vi.name)
+
+        # if type options
+        if self.vi.items is not None:
+            self.i_values.setText(", ".join(self.vi.items))
+
+
+
+

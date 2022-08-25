@@ -128,7 +128,7 @@
              <x>0</x>
              <y>0</y>
              <width>276</width>
-             <height>648</height>
+             <height>657</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -290,11 +290,8 @@
                  </widget>
                 </item>
                 <item>
-                 <layout class="QFormLayout" name="ly_mi_content">
-                  <property name="horizontalSpacing">
-                   <number>9</number>
-                  </property>
-                  <property name="verticalSpacing">
+                 <layout class="QVBoxLayout" name="ly_mi_content">
+                  <property name="spacing">
                    <number>16</number>
                   </property>
                   <property name="leftMargin">
@@ -381,7 +378,7 @@
             <x>0</x>
             <y>0</y>
             <width>875</width>
-            <height>708</height>
+            <height>714</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -427,7 +424,7 @@
   <customwidget>
    <class>NavigatorButton</class>
    <extends>QPushButton</extends>
-   <header>.promoted.navigator_button</header>
+   <header location="global">.promoted.navigator_button</header>
   </customwidget>
   <customwidget>
    <class>Button</class>

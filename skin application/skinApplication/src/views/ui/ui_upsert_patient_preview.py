@@ -210,12 +210,23 @@ class Ui_upsert_patient_preview(object):
 
         self.ly_medical_information.addWidget(self.lb_medical_information_title)
 
+        self.frame = QFrame(self.c_problem)
+        self.frame.setObjectName(u"frame")
+        self.frame.setFrameShape(QFrame.StyledPanel)
+        self.frame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_5 = QVBoxLayout(self.frame)
+        self.verticalLayout_5.setSpacing(0)
+        self.verticalLayout_5.setObjectName(u"verticalLayout_5")
+        self.verticalLayout_5.setContentsMargins(0, 0, 0, 0)
         self.ly_mi_content = QVBoxLayout()
         self.ly_mi_content.setSpacing(16)
         self.ly_mi_content.setObjectName(u"ly_mi_content")
         self.ly_mi_content.setContentsMargins(9, -1, -1, -1)
 
-        self.ly_medical_information.addLayout(self.ly_mi_content)
+        self.verticalLayout_5.addLayout(self.ly_mi_content)
+
+
+        self.ly_medical_information.addWidget(self.frame)
 
 
         self.verticalLayout_4.addLayout(self.ly_medical_information)
