@@ -1,23 +1,17 @@
-from PySide6.QtCore import Signal, Slot, Qt
+from .promoted_container import *
 
-from PySide6.QtWidgets import QFrame, QHBoxLayout, QCheckBox, QSpacerItem, QSizePolicy
-
-from .label import Label
-
-import src.util.util as util
-
-class InfoLine(QFrame):
+class InfoLine(PromotedContainer):
 
     def __init__(self, parent):
-        QFrame.__init__(self, parent)
-        self.__create()
+        super().__init__(parent)
+        self._pre_charge()
 
-    def __create(self):
+    def _pre_charge(self):
         self.layout = QHBoxLayout(self)
         self.layout.setContentsMargins(0, 0, 0, 0)
         self.layout.setSpacing(50)
 
-    def add_info(self, info_list):
+    def initialize(self, info_list):
         for info in info_list:
             self.c_info = QFrame(self)
             self.ly_info = QHBoxLayout(self.c_info)

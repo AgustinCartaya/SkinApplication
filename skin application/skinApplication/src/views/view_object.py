@@ -19,14 +19,16 @@ from src.db_controllers.db_connection import DBConnection
 from .ui.promoted.button import Button
 import src.util.data_cleaner as data_cleaner
 import src.util.util as util
+import src.util.text_filter as tf
 
 class ViewObject(QWidget, QObject):
     s_change_view = Signal(str,str,dict)
-    def __init__(self, mw):
+    def __init__(self, mv):
         super(ViewObject, self).__init__()
-        if mw is not None:
-            self.mv = mw
-            self.s_change_view.connect(mw.change_view)
+        if mv is not None:
+            self.mv = mv
+            self.GLOBAL = mv.GLOBAL
+            self.s_change_view.connect(mv.change_view)
 
     @abstractmethod
     def load_ui(self):

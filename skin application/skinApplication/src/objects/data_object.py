@@ -22,7 +22,8 @@ class DataObject:
     def verify_data(self):
         pass
 
-    def _verify(self, var, var_type, error_var_name, verify_empty = True):
+    @classmethod
+    def _verify(cls, var, var_type, error_var_name, verify_empty = True):
         if verify_empty and len(var) == 0:
             raise ValueError('Data Object verification error', error_var_name, "EMPTY")
 

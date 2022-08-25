@@ -6,8 +6,7 @@ from .ui.promoted.required_skl_img_container import  RequiredSklImgContainer
 
 from src.objects.ai import AI
 from src.objects.image_list import ImageList
-import src.util.variable_inputs as var_inputs
-
+from src.objects.variable_input import VariableInput
 
 class AILauncherView(ViewObject):
     def __init__(self, mv, ai, patient, skin_lesion):
@@ -30,9 +29,9 @@ class AILauncherView(ViewObject):
         self.ui.bt_learn_more.set_position(2)
 
         # required info
-        self.ui.c_patient_required_info_list.set_required_elements(self.ai.actual_mi, var_inputs.MI_INPUT)
-        self.ui.c_skl_required_info_list.set_required_elements(self.ai.actual_skl_charac, var_inputs.SKL_INPUT)
-        self.ui.c_required_skl_imgs.create_required_skl_imgs(self.ai.req_images, self.edit_selected_images)
+        self.ui.c_patient_required_info_list.initialize(self.ai.actual_mi, VariableInput.MI_INPUT)
+        self.ui.c_skl_required_info_list.initialize(self.ai.actual_skl_charac, VariableInput.SKL_INPUT)
+        self.ui.c_required_skl_imgs.initialize(self.ai.req_images, self.edit_selected_images)
         self.__carge_selected_images()
 
 

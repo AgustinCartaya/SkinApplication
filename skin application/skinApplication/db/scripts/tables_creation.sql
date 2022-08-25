@@ -25,6 +25,17 @@ CREATE TABLE SKIN_LESIONS (
     UNIQUE(number, id_patient)
 );
 
+CREATE TABLE VARIABLE_INPUTS (
+    id TEXT NOT NULL,
+    family TEXT NOT NULL,
+    owner TEXT NOT NULL,
+    type TEXT NOT NULL,
+    name TEXT NOT NULL,
+    items TEXT,
+    scale TEXT,
+    UNIQUE(name, family)
+);
+
 
 INSERT INTO DOCTORS (id, first_name, last_name, password, email ) VALUES (NULL, 'Agustin', 'Cartaya', 'Ag.1', 'ag@gmail.com');
 

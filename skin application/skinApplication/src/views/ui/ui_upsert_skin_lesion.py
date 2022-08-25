@@ -19,6 +19,7 @@ from PySide6.QtWidgets import (QApplication, QFrame, QHBoxLayout, QScrollArea,
     QSizePolicy, QSpacerItem, QVBoxLayout, QWidget)
 
 from .promoted.add_skl_img_container import AddSklImgContainer
+from .promoted.ai_previews_container import AIPreviewsContainer
 from .promoted.body2d_container import Body2DContainer
 from .promoted.button import Button
 from .promoted.label import Label
@@ -115,7 +116,7 @@ class Ui_upsert_skin_lesion(object):
         self.sc_characteristics.setWidgetResizable(True)
         self.c_characteristics_content = QWidget()
         self.c_characteristics_content.setObjectName(u"c_characteristics_content")
-        self.c_characteristics_content.setGeometry(QRect(0, 0, 364, 318))
+        self.c_characteristics_content.setGeometry(QRect(0, 0, 364, 322))
         self.verticalLayout_30 = QVBoxLayout(self.c_characteristics_content)
         self.verticalLayout_30.setObjectName(u"verticalLayout_30")
         self.ly_characteristics_content = QVBoxLayout()
@@ -175,7 +176,7 @@ class Ui_upsert_skin_lesion(object):
         self.sc_images.setWidgetResizable(True)
         self.c_images_content = QWidget()
         self.c_images_content.setObjectName(u"c_images_content")
-        self.c_images_content.setGeometry(QRect(0, 0, 364, 318))
+        self.c_images_content.setGeometry(QRect(0, 0, 364, 322))
         self.verticalLayout_10 = QVBoxLayout(self.c_images_content)
         self.verticalLayout_10.setObjectName(u"verticalLayout_10")
         self.ly_add_skl_img = QVBoxLayout()
@@ -218,11 +219,12 @@ class Ui_upsert_skin_lesion(object):
 
         self.verticalLayout.addWidget(self.lb_lauch_ai, 0, Qt.AlignHCenter)
 
-        self.ly_ai_results = QVBoxLayout()
-        self.ly_ai_results.setSpacing(0)
-        self.ly_ai_results.setObjectName(u"ly_ai_results")
+        self.c_ai_previews = AIPreviewsContainer(self.c_ai_results)
+        self.c_ai_previews.setObjectName(u"c_ai_previews")
+        self.c_ai_previews.setFrameShape(QFrame.StyledPanel)
+        self.c_ai_previews.setFrameShadow(QFrame.Raised)
 
-        self.verticalLayout.addLayout(self.ly_ai_results)
+        self.verticalLayout.addWidget(self.c_ai_previews)
 
 
         self.ly_right.addWidget(self.c_ai_results)

@@ -2,10 +2,11 @@ from .view_object import *
 from .ui.ui_upsert_patient_mi import Ui_upsert_patient_mi
 
 from src.objects.patient import Patient
+from src.objects.variable_input import VariableInput
+
 
 from .ui.promoted.variable_inputs_container import VariableInputsContainer
 from .ui.promoted.variable_input_creator import VariableInputCreator
-import src.util.variable_inputs as var_inputs
 
 
 class UpsertPatientMiView(ViewObject):
@@ -33,7 +34,7 @@ class UpsertPatientMiView(ViewObject):
         self.ui.lb_title.set_title(1)
 
         # medical information
-        self.ui.c_mi.show_inputs(var_inputs.MI_INPUT)
+        self.ui.c_mi.initialize(VariableInput.MI_INPUT)
 
 
     def connect_ui_signals(self):
@@ -91,9 +92,14 @@ class UpsertPatientMiView(ViewObject):
     # Add new variable input (skl characteristics)
     @Slot()
     def __show_variable_input_creator(self):
-        self.variable_input_creator = VariableInputCreator(self.mv, var_inputs.MI_INPUT, self.new_variable_input_created)
+        self.variable_input_creator = VariableInputCreator(self.mv, VariableInput.MI_INPUT, self.new_variable_input_created)
         self.variable_input_creator.show()
 
-    Slot(str, str, list)
-    def new_variable_input_created(self, input_id, input_type, input_values):
-        self.ui.c_mi.append_new_variable_input(input_id, input_type, input_values)
+    Slot(VariableInput)
+    def new_variable_input_created(self, variable_input):
+        try:
+            variable_input.create()
+            self.ui.c_mi.append_new_variable_input(variable_input)
+        except ValueError as err:
+            print(err.args)
+

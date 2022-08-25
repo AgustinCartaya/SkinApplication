@@ -1,21 +1,34 @@
-from PySide6.QtCore import QSize, Qt
-from PySide6.QtWidgets import QFormLayout, QWidget, QFrame, QHBoxLayout, QVBoxLayout, QSpacerItem, QScrollArea, QSizePolicy
+from .promoted_container import *
 
-from .label import Label
-import src.util.util as util
-import src.util.variable_inputs as var_inputs
+from PySide6.QtWidgets import QScrollArea, QWidget
 
-class SkinLesionPreviewInfo(QFrame):
+class SkinLesionPreviewInfo(PromotedContainer):
 
-    def __init__(self, parent, ):
-        QFrame.__init__(self, parent)
+    def __init__(self, parent):
+        super().__init__(parent)
+
         self.results = None
         self.title = ""
         self.is_ai_result = False
 
-        self.__create()
+        self._pre_charge()
 
-#        self.read_more = read_more
+    def initialize(self):
+        pass
+
+    def _pre_charge(self):
+        self.setMaximumSize(QSize(16777215, 200))
+
+        self.p_layout = QVBoxLayout(self)
+        self.p_layout.setContentsMargins(0, 0, 0, 0)
+
+        self.__create_scroll_area()
+        self.__create_c_title()
+        self.__create_c_content()
+
+        # spacer
+        self.vs_description_down = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.layout.addItem(self.vs_description_down)
 
     def show_info(self, results, title, is_ai_result = False):
         self.results = results
@@ -24,8 +37,6 @@ class SkinLesionPreviewInfo(QFrame):
 
         self.__show_title()
         self.__show_content()
-#        self.__create_read_more()
-
 
     def __show_title(self):
         self.lb_title.setText(self.title)
@@ -45,21 +56,6 @@ class SkinLesionPreviewInfo(QFrame):
         for i in reversed(range(self.ly_content.count())):
             self.ly_content.itemAt(i).widget().setParent(None)
 
-    def __create(self):
-        self.setMaximumSize(QSize(16777215, 200))
-
-        self.p_layout = QVBoxLayout(self)
-        self.p_layout.setContentsMargins(0, 0, 0, 0)
-
-        self.__create_scroll_area()
-        self.__create_c_title()
-        self.__create_c_content()
-
-        # spacer
-        self.vs_description_down = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
-        self.layout.addItem(self.vs_description_down)
-
-
     def __create_scroll_area(self):
         self.scroll_area = QScrollArea(self)
         self.scroll_area.setWidgetResizable(True)
@@ -72,11 +68,6 @@ class SkinLesionPreviewInfo(QFrame):
         self.layout.setContentsMargins(0, 0, 0, 0)
 
         self.p_layout.addWidget(self.scroll_area)
-
-#    def __create_read_more(self):
-#        self.lb_read_more = Label(self)
-#        self.lb_read_more.setText(self.read_more)
-#        self.layout.addWidget(self.lb_read_more, 0, Qt.AlignHCenter|Qt.AlignBottom)
 
     def __create_c_title(self):
         self.c_title = QFrame(self)
@@ -138,32 +129,11 @@ class SkinLesionPreviewInfo(QFrame):
 
 
             lb_result_content = Label(c_single_content)
-            lb_result_content.setText(value, scale_input=[name, var_inputs.SKL_INPUT])
+#            lb_result_content.setText(value, scale_input=[name, var_inputs.SKL_INPUT])
+            lb_result_content.setText(value)
             lb_result.addWidget(lb_result_content)
 
             # spacer
             sp = QSpacerItem(20, 2, QSizePolicy.Expanding, QSizePolicy.Fixed)
             lb_result.addItem(sp)
 
-
-#    def __create_single_result(self, result, parent_layout):
-#        c_single_content = QFrame(self)
-
-#        ly_single_content = QFormLayout(c_single_content)
-##        ly_single_content.setVerticalSpacing(9)
-#        ly_single_content.setContentsMargins(0, 0, 0, 0)
-
-#        count = 0
-#        for name, value in result.items():
-#            lb_result_title = Label(c_single_content)
-#            lb_result_title.setText(name, colon=True, format=True)
-#            ly_single_content.setWidget(count, QFormLayout.LabelRole, lb_result_title)
-
-
-#            lb_result_content = Label(c_single_content)
-#            lb_result_content.setText(value, scale_input=[name, var_inputs.SKL_INPUT])
-#            ly_single_content.setWidget(count, QFormLayout.FieldRole, lb_result_content)
-
-#            count = count +1
-
-#        parent_layout.addWidget(c_single_content)

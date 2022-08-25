@@ -1,6 +1,6 @@
 # This Python file uses the following encoding: utf-8
 from PySide6.QtWidgets import QPushButton, QApplication
-from PySide6.QtCore import Signal, Slot, Qt
+from PySide6.QtCore import Qt, Signal, Slot
 
 class Button(QPushButton):
 
@@ -33,23 +33,9 @@ class Button(QPushButton):
 
     def set_type(self, type):
         self.setProperty("type", type)
-#        if type == Button.BT_ADD:
-#            self.setProperty("type", Button.BT_ADD)
-#        elif type == Button.BT_CANCEL:
-#            self.setProperty("type", Button.BT_ADD)
-#        elif type == Button.BT_DELETE:
-#            self.setProperty("type", Button.BT_ADD)
 
     def set_icon(self, icon):
         self.setProperty("bt_icon", icon)
-#        if icon == Button.IC_UP:
-#            self.setProperty("icon", Button.IC_UP)
-#        elif icon == Button.IC_RIGHT:
-#            self.setProperty("icon", Button.IC_RIGHT)
-#        elif icon == Button.IC_DOWN:
-#            self.setProperty("icon", Button.IC_DOWN)
-#        elif icon == Button.IC_LEFT:
-#            self.setProperty("icon", Button.IC_LEFT)
 
     def set_action_value(self, action_value):
         self.action_value = action_value

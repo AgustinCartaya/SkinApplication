@@ -39,8 +39,6 @@ class ImagesView(ViewObject):
         self.load_ui()
         self.connect_ui_signals()
 
-
-
         # no images
         if len(images) == 0:
             self.ui.c_left.hide()
@@ -54,8 +52,6 @@ class ImagesView(ViewObject):
 
             if collet_mode:
                 self.__collet_mode()
-
-
 
     def load_ui(self):
         self.ui = Ui_images()
@@ -94,7 +90,7 @@ class ImagesView(ViewObject):
         image_type_list = []
         for img_name, imgs in self.img_list.imgs_dict.items():
             image_type_list.append([img_name, len(imgs)])
-        self.ui.c_filter_image_type.create_filters(image_type_list, self.filter_img_type_slot)
+        self.ui.c_filter_image_type.initialize(image_type_list, self.filter_img_type_slot)
         self.ui.c_filter_image_type.check_all()
 
     def __refresh_image_type_filter_numbers(self):
@@ -223,12 +219,12 @@ class ImagesView(ViewObject):
         self.images_cards = []
         selected_src = [img.src for img in self.selected_imgs]
         for img in self.img_list_sorted:
-            card = SklImgCard(self.ui.c_pagination, img, self.image_clicked, self.open_single_image)
-#            if img.src in self.__get_selected_src():
+            img_card = SklImgCard(self.ui.c_pagination)
+            img_card.initialize(img, self.image_clicked, self.open_single_image)
             if img.src in selected_src:
-                card.set_selected(True)
-            self.ui.c_pagination.add_card_size_changed_receaver(card.size_changed)
-            self.images_cards.append(card)
+                img_card.set_selected(True)
+            self.ui.c_pagination.add_card_size_changed_receaver(img_card.size_changed)
+            self.images_cards.append(img_card)
         self.ui.c_pagination.add_cards(self.images_cards)
 
     def __collet_mode(self):

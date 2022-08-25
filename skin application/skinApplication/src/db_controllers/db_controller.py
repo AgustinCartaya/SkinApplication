@@ -19,6 +19,8 @@ class DBController:
             self.db.cursor.execute( ("INSERT INTO %s VALUES (?,?,?,?,?,?)" % cfg.TABLE_PATIENTS), data)
         elif table == cfg.TABLE_SKIN_LESIONS:
             self.db.cursor.execute( ("INSERT INTO %s VALUES (?,?,?,?,?)" % cfg.TABLE_SKIN_LESIONS), data)
+        elif table == cfg.TABLE_VARIABLE_INPUTS:
+            self.db.cursor.execute( ("INSERT INTO %s VALUES (?,?,?,?,?,?,?)" % cfg.TABLE_VARIABLE_INPUTS), data)
         else:
             self.db.connection.close()
             raise ValueError('Insert table not found', "INSERT_TABLE", "NOT_FOUND")
@@ -37,6 +39,9 @@ class DBController:
             self.db.cursor.execute( ("UPDATE %s SET first_name = ?, last_name = ?, birth_date = ?, gender = ?, medical_information = ? WHERE id = ?" % cfg.TABLE_PATIENTS), (data + conditions))
         elif table == cfg.TABLE_SKIN_LESIONS:
             self.db.cursor.execute( ("UPDATE %s SET location = ?, characteristics = ?, ai_results = ? WHERE number = ? AND id_patient = ?" % cfg.TABLE_SKIN_LESIONS), (data + conditions) )
+        elif table == cfg.TABLE_VARIABLE_INPUTS:
+            self.db.cursor.execute( ("UPDATE %s SET name = ? WHERE id = ?" % cfg.TABLE_SKIN_LESIONS), (data + conditions) )
+
         else:
             self.db.connection.close()
             raise ValueError('Upadte table not found', "UPDATE_TABLE", "NOT_FOUND")
@@ -45,7 +50,10 @@ class DBController:
         self.db.connection.close()
 
 
-    def count_all(self, table):
+    def count_all(self, table, conditions=None):
+        if conditions is not None and type(conditions) is not tuple :
+            raise ValueError('Count all conditions is not tuple', "COUNT ALL CONDITIONS", "NOT_TUPLE")
+
         self.db.connect()
         count = 0
 
@@ -55,6 +63,11 @@ class DBController:
             self.db.cursor.execute("SELECT Count(*) FROM %s" % cfg.TABLE_PATIENTS)
         elif table == cfg.TABLE_SKIN_LESIONS:
             self.db.cursor.execute("SELECT Count(*) FROM %s" % cfg.TABLE_SKIN_LESIONS)
+        elif table == cfg.TABLE_VARIABLE_INPUTS:
+            if conditions is None:
+                self.db.cursor.execute("SELECT Count(*) FROM %s" % cfg.TABLE_VARIABLE_INPUTS)
+            else:
+                self.db.cursor.execute(("SELECT Count(*) FROM %s WHERE family = ? AND owner = ?" % cfg.TABLE_VARIABLE_INPUTS), conditions)
         else:
             self.db.connection.close()
             raise ValueError('Count all table not found', "COUNT_ALL_TABLE", "NOT_FOUND")
@@ -97,6 +110,62 @@ class DBController:
         self.db.connection.close()
         return res
 
+
+    def secure_select(self, table, conditions=None, multiples=True):
+        if conditions is not None and type(conditions) is not tuple :
+            raise ValueError('Select conditions is not tuple', "SELECT_CONDITIONS", "NOT_TUPLE")
+
+        self.db.connect()
+#        if table == cfg.TABLE_DOCTORS:
+#            self.db.cursor.execute("SELECT Count(*) FROM %s" % cfg.TABLE_DOCTORS)
+#        elif table == cfg.TABLE_PATIENTS:
+#            self.db.cursor.execute("SELECT Count(*) FROM %s" % cfg.TABLE_PATIENTS)
+#        elif table == cfg.TABLE_SKIN_LESIONS:
+#            self.db.cursor.execute("SELECT Count(*) FROM %s" % cfg.TABLE_SKIN_LESIONS)
+        if table == cfg.TABLE_VARIABLE_INPUTS:
+            if conditions is None:
+                self.db.cursor.execute("SELECT * FROM %s" % cfg.TABLE_VARIABLE_INPUTS)
+            elif len(conditions) == 1:
+                if multiples:
+                    self.db.cursor.execute(("SELECT * FROM %s WHERE family = ?" % cfg.TABLE_VARIABLE_INPUTS), conditions)
+                else:
+                    self.db.cursor.execute(("SELECT * FROM %s WHERE id = ?" % cfg.TABLE_VARIABLE_INPUTS), conditions)
+            elif len(conditions) == 2:
+                self.db.cursor.execute(("SELECT * FROM %s WHERE family = ? AND owner = ?" % cfg.TABLE_VARIABLE_INPUTS), conditions)
+
+        else:
+            self.db.connection.close()
+            raise ValueError('Count all table not found', "COUNT_ALL_TABLE", "NOT_FOUND")
+
+        if multiples:
+            rows = self.db.cursor.fetchall()
+        else:
+            rows = self.db.cursor.fetchone()
+
+        self.db.connection.close()
+        return rows
+
+
+    def secure_exists(self, table, conditions):
+        if type(conditions) is not tuple :
+            raise ValueError('Exists conditions is not tuple', "EXISTS_CONDITIONS", "NOT_TUPLE")
+
+        self.db.connect()
+#        if table == cfg.TABLE_DOCTORS:
+#            self.db.cursor.execute("SELECT Count(*) FROM %s" % cfg.TABLE_DOCTORS)
+#        elif table == cfg.TABLE_PATIENTS:
+#            self.db.cursor.execute("SELECT Count(*) FROM %s" % cfg.TABLE_PATIENTS)
+#        elif table == cfg.TABLE_SKIN_LESIONS:
+#            self.db.cursor.execute("SELECT Count(*) FROM %s" % cfg.TABLE_SKIN_LESIONS)
+        if table == cfg.TABLE_VARIABLE_INPUTS:
+            self.db.cursor.execute(("SELECT EXISTS(SELECT 1 FROM %s WHERE id = ? AND family = ?)" % cfg.TABLE_VARIABLE_INPUTS), conditions)
+        else:
+            self.db.connection.close()
+            raise ValueError('Count all table not found', "COUNT_ALL_TABLE", "NOT_FOUND")
+
+        res = self.db.cursor.fetchone()[0]
+        self.db.connection.close()
+        return res
 
     def conditions_to_str(self, conditions, sep = "AND"):
         dict_len = len(conditions)

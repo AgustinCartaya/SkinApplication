@@ -1,25 +1,31 @@
-from PySide6.QtWidgets import QFrame, QHBoxLayout, QApplication
-from PySide6.QtCore import Qt
-from .label import Label
+from .promoted_container import *
 
-from PySide6.QtCore import Signal, Slot
+from PySide6.QtWidgets import QApplication
 
-class RequiredSklImgItem(QFrame):
+
+class RequiredSklImgItem(PromotedContainer):
 
     s_clicked = Signal(str)
-    def __init__(self, parent, img_name, min, max, selected=0, click_receaver=None):
-        QFrame.__init__(self, parent)
+    def __init__(self, parent):
+        super().__init__(parent)
+        self.img_name = ""
+        self.min = 0
+        self.max = 0
+        self.selected = 0
+        self._pre_charge()
 
+    def initialize(self, img_name, min, max, selected=0, click_receaver=None):
         self.img_name = img_name
         self.min = min
         self.max = max
         self.selected = selected
 
-        self.s_clicked.connect(click_receaver)
+        if click_receaver is not None:
+            self.s_clicked.connect(click_receaver)
 
-        self.__create()
+        self.__fill_content()
 
-    def __create(self):
+    def _pre_charge(self):
         self.layout = QHBoxLayout(self)
         self.layout.setObjectName(u"layout")
         self.layout.setContentsMargins(0, 0, 0, 0)
@@ -28,20 +34,22 @@ class RequiredSklImgItem(QFrame):
 
     def __create_labels(self):
         self.lb_img_name = Label(self)
-        self.lb_img_name.setText(self.img_name, format=True)
         self.layout.addWidget(self.lb_img_name)
 
         self.lb_min = Label(self)
-        self.lb_min.setText(self.min)
         self.layout.addWidget(self.lb_min, 0, Qt.AlignHCenter)
 
         self.lb_max = Label(self)
-        self.lb_max.setText(self.max)
         self.layout.addWidget(self.lb_max, 0, Qt.AlignHCenter)
 
         self.lb_selected = Label(self)
-        self.set_selected_number(self.selected)
         self.layout.addWidget(self.lb_selected, 0, Qt.AlignHCenter)
+
+    def __fill_content(self):
+        self.lb_img_name.setText(self.img_name, format=True)
+        self.lb_min.setText(self.min)
+        self.lb_max.setText(self.max)
+        self.set_selected_number(self.selected)
 
     def set_selected_number(self, number):
         self.lb_selected.setText(number)

@@ -1,21 +1,19 @@
-from PySide6.QtCore import Signal, Slot, Qt
+from .promoted_container import *
 
-from PySide6.QtWidgets import QFrame, QVBoxLayout
-
-#from .label import Label
-
-
-#import src.util.data_cleaner as data_cleaner
-#import src.util.util as util
-
-class FiltersHeader(QFrame):
+class FiltersHeader(PromotedContainer):
 
     s_open = Signal()
     def __init__(self, parent):
-        QFrame.__init__(self, parent)
+        super().__init__(parent)
 
         self.filters_content = None
         self.open = False
+
+    def initialize(self):
+        pass
+
+    def _pre_charge(self):
+        pass
 
     def add_filters_content(self, filters_content):
         self.filters_content = filters_content

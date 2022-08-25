@@ -1,20 +1,23 @@
-from PySide6.QtWidgets import QFrame, QHBoxLayout, QSpacerItem, QSizePolicy
-from PySide6.QtCore import Qt, QSize
-from .label import Label
-from .button import Button
+from .promoted_container import *
 
-from PySide6.QtCore import Signal, Slot
 
-import src.util.data_cleaner as data_cleaner
+class RequiredElement(PromotedContainer):
 
-class RequiredElement(QFrame):
-
-#    s_edit_items = Signal(str)
     def __init__(self, parent):
-        QFrame.__init__(self, parent)
-        self.__create()
+        super().__init__(parent)
+        self._pre_charge()
 
-    def __create(self):
+    def initialize(self, satisfied, info_name, info_content, scale_input=None):
+        if satisfied:
+            self.bt_satisfied.setText("/")
+        else:
+            self.bt_satisfied.setText("X")
+            self.bt_satisfied.set_type("cancel")
+
+        self.lb_info_name.setText(info_name, colon=True, format=True)
+        self.lb_info_content.setText(info_content, scale_input=[info_name,scale_input])
+
+    def _pre_charge(self):
         self.layout = QHBoxLayout(self)
         self.layout.setSpacing(12)
         self.layout.setContentsMargins(0, 0, 0, 0)
@@ -37,16 +40,4 @@ class RequiredElement(QFrame):
         # spacer
         self.sp_right = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
         self.layout.addItem(self.sp_right)
-
-    def fill_content(self, satisfied, info_name, info_content, scale_input=None):
-        if satisfied:
-            self.bt_satisfied.setText("/")
-        else:
-            self.bt_satisfied.setText("X")
-            self.bt_satisfied.set_type("cancel")
-
-        self.lb_info_name.setText(info_name, colon=True, format=True)
-        self.lb_info_content.setText(info_content, scale_input=[info_name,scale_input])
-
-
 

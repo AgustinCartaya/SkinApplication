@@ -1,36 +1,38 @@
-from PySide6.QtWidgets import (QFrame, QVBoxLayout, QHBoxLayout,
-        QGridLayout)
+from .promoted_container import *
+
 from PySide6.QtGui import QPixmap
 from PySide6.QtWidgets import QApplication
-from PySide6.QtCore import Qt, QSize
-from .label import Label
 
 from src.objects.image import Image
-from PySide6.QtCore import Signal, Slot
 
 
-class SklImgCard(QFrame):
+class SklImgCard(PromotedContainer):
 
     s_clicked = Signal(Image, bool)
     s_double_click = Signal(Image)
-    def __init__(self, parent, image, click_receaver=None, double_click_receaver=None):
-        QFrame.__init__(self, None)
+    def __init__(self, parent):
+        super().__init__(None)
 
+        self.img = None
+        self.pxm_image = None
+        self.setProperty("selected", False)
+
+        self._pre_charge()
+
+    def initialize(self, image, click_receaver=None, double_click_receaver=None):
         self.img = image
+        self.pxm_image = QPixmap(self.img.src)
+
         self.click_receaver = click_receaver
         self.double_click_receaver = double_click_receaver
 
-        if self.click_receaver is not None:
-            self.s_clicked.connect(self.click_receaver)
+        if click_receaver is not None:
+            self.s_clicked.connect(click_receaver)
 
-        if self.double_click_receaver is not None:
-            self.s_double_click.connect(self.double_click_receaver)
+        if double_click_receaver is not None:
+            self.s_double_click.connect(double_click_receaver)
 
-        self.__create()
-
-        self.setProperty("selected", False)
-
-    def __create(self):
+    def _pre_charge(self):
         self.layout = QVBoxLayout(self)
         self.layout.setContentsMargins(0, 0, 0, 0)
 
@@ -38,13 +40,12 @@ class SklImgCard(QFrame):
 
     def __create_image_container(self):
         self.lb_image = Label()
-        self.pxm_image = QPixmap(self.img.src)
         self.layout.addWidget(self.lb_image, 0, Qt.AlignHCenter|Qt.AlignVCenter)
 
-
     def __show_image(self):
-        myScaledPixmap = self.pxm_image.scaled(self.size(), Qt.KeepAspectRatio)
-        self.lb_image.setPixmap(myScaledPixmap)
+        if self.pxm_image is not None:
+            myScaledPixmap = self.pxm_image.scaled(self.size(), Qt.KeepAspectRatio)
+            self.lb_image.setPixmap(myScaledPixmap)
 
     Slot(int, int)
     def size_changed(self, w, h):

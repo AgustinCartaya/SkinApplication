@@ -7,7 +7,6 @@ from PySide6.QtCore import Qt
 
 from .ui.promoted.label import Label
 from .ui.promoted.skin_lesion_preview import SkinLesionPreview
-import src.util.variable_inputs as var_inputs
 
 from src.objects.patient import Patient
 from src.objects.image import Image
@@ -17,7 +16,6 @@ class CheckPatientView(ViewObject):
     def __init__(self, mw, patient_id):
         super().__init__(mw)
 
-        self.skin_lesion_previews = []
         self.load_patient(patient_id)
 
         self.load_ui()
@@ -25,26 +23,21 @@ class CheckPatientView(ViewObject):
 
         self.load_skin_lesions()
 
-
     def load_patient(self, patient_id):
         self.p = Patient.get_patient_by_id(patient_id)
 
     def load_skin_lesions(self):
         self.p.load_skin_lesions()
         for skl in self.p.skin_lesions:
-            self.skin_lesion_previews.append(SkinLesionPreview(self.ui.c_skin_lesions_preview,
-                skl,
-                self.update_skin_lesion,
-                self.see_timeline,
-                self.see_images))
-
+            skl_preview = SkinLesionPreview(self.ui.c_skin_lesions_preview)
+            skl_preview.initialize(skl, self.update_skin_lesion, self.see_timeline, self.see_images)
             skl_photography = skl.get_photography()
             if skl_photography is not None:
-                self.skin_lesion_previews[-1].set_image(skl_photography)
+                skl_preview.set_image(skl_photography)
             else:
-                self.skin_lesion_previews[-1].set_image(Image(cfg.IMG_LOGO_PATH_NAME, "logo"))
+                skl_preview.set_image(Image(cfg.IMG_LOGO_PATH_NAME, "logo"))
 
-            self.ui.ly_skin_lesions_preview.addWidget(self.skin_lesion_previews[-1])
+            self.ui.ly_skin_lesions_preview.addWidget(skl_preview)
 
     Slot(int)
     def update_skin_lesion(self, skin_lesion_nb):
@@ -111,7 +104,9 @@ class CheckPatientView(ViewObject):
 
             # scales to modify if possible
             lb_mi_content = Label(self.ui.c_patient_information_content)
-            lb_mi_content.setText(mi_content, scale_input=[mi_name, var_inputs.MI_INPUT])
+#            lb_mi_content.setText(mi_content, scale_input=[mi_name, var_inputs.MI_INPUT])
+            lb_mi_content.setText(mi_content)
+
             self.ui.ly_mi_content.setWidget(form_index, QFormLayout.FieldRole, lb_mi_content)
 
             form_index = form_index + 1

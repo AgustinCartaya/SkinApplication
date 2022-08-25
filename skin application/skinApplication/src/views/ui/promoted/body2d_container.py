@@ -1,38 +1,32 @@
-from PySide6.QtWidgets import QFrame, QVBoxLayout, QHBoxLayout, QSpacerItem, QSizePolicy
-from PySide6.QtCore import Qt, QSize
-from .label import Label
-from .button import Button
+from .promoted_container import *
+
 from .body2d import Body2D
 
-from PySide6.QtCore import Signal, Slot
 
+class Body2DContainer(PromotedContainer):
 
-class Body2DContainer(QFrame):
-
-#    s_edit_items = Signal(str)
     def __init__(self, parent):
-        QFrame.__init__(self, parent)
+        super().__init__(parent)
         self.imgs = []
         self.actual_image = 0
 
-        self.__create()
+        self._pre_charge()
 
-    def __create(self):
+    def initialize(self):
+        pass
+
+    def _pre_charge(self):
         self.layout = QVBoxLayout(self)
         self.layout.setSpacing(12)
         self.layout.setContentsMargins(0, 0, 0, 36)
-
 
         self.__create_up_controllers()
         self.__create_body2d_container()
         self.__create_down_controllers()
 
-
-
     def __create_body2d_container(self):
         self.body2d = Body2D(self)
         self.layout.addWidget(self.body2d)
-
 
     def __create_up_controllers(self):
         c_up_controllers = QFrame(self)
@@ -46,7 +40,6 @@ class Body2DContainer(QFrame):
         self.bt_clear_point.setText("Clear point")
         ly_up_controllers.addWidget(self.bt_clear_point,0, Qt.AlignRight)
         self.bt_clear_point.clicked.connect(self.__clear_point)
-
 
     def __create_down_controllers(self):
         c_down_controllers = QFrame(self)
@@ -66,15 +59,6 @@ class Body2DContainer(QFrame):
         ly_down_controllers.addWidget(self.bt_turn_body_right,0, Qt.AlignCenter)
         self.bt_turn_body_right.clicked.connect(lambda: (self.__turn_image(1)))
 
-
-
-    def set_images(self, imgs, actual_image=0, rel_point_x=-1, rel_point_y=-1):
-        self.imgs = imgs
-        self.actual_image = actual_image
-        self.body2d.set_image(self.imgs[self.actual_image])
-        if rel_point_x > -1 and rel_point_y > -1:
-            self.body2d.set_relative_point(rel_point_x, rel_point_y)
-
     @Slot()
     def __turn_image(self, to=1):
         self.actual_image = self.actual_image + to
@@ -88,6 +72,13 @@ class Body2DContainer(QFrame):
     @Slot()
     def __clear_point(self):
         self.body2d.clear_point()
+
+    def set_images(self, imgs, actual_image=0, rel_point_x=-1, rel_point_y=-1):
+        self.imgs = imgs
+        self.actual_image = actual_image
+        self.body2d.set_image(self.imgs[self.actual_image])
+        if rel_point_x > -1 and rel_point_y > -1:
+            self.body2d.set_relative_point(rel_point_x, rel_point_y)
 
     def get_point_info(self):
         if self.body2d.get_relative_point() is not None:

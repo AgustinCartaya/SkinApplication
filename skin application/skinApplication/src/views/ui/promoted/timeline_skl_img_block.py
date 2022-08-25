@@ -1,28 +1,39 @@
-from PySide6.QtCore import QSize, Qt
-from PySide6.QtWidgets import QFormLayout, QWidget, QFrame, QHBoxLayout, QVBoxLayout, QSpacerItem, QScrollArea, QSizePolicy
+from .promoted_container import *
 
-from .label import Label
 from .skl_img_card import SklImgCard
 
-class TimelineSklImgBlock(QFrame):
+from PySide6.QtWidgets import QScrollArea, QWidget
 
-    def __init__(self, parent, ):
-        QFrame.__init__(self, parent)
 
-        self.__create()
+class TimelineSklImgBlock(PromotedContainer):
 
-#
-    def __create(self):
-#        self.setMaximumSize(QSize(16777215, 200))
+    def __init__(self, parent):
+        super().__init__(parent)
 
+        self._pre_charge()
+
+    def initialize(self, img_type, imgs, image_clicked_receaver=None, double_click_receaver=None, img_width = 150):
+        self.lb_title.setText(img_type, format=True, colon=True)
+        max_height = 0
+        for img in imgs:
+            img_card = SklImgCard(self.c_images)
+            img_card.initialize(img, image_clicked_receaver, double_click_receaver)
+            self.ly_images.addWidget(img_card)
+
+            h = img.get_resized_size(img_width, img_width)[1]
+            img_card.change_size(img_width,h)
+
+            if h > max_height:
+                max_height = h
+
+        self.setMinimumSize(QSize(16777215, max_height + 55))
+
+    def _pre_charge(self):
         self.layout = QVBoxLayout(self)
         self.layout.setContentsMargins(0, 0, 0, 0)
-
-
         self.__create_title()
         self.__create_scroll_area()
         self.__create_c_images()
-
 
     def __create_title(self):
         self.lb_title = Label(self)
@@ -50,20 +61,7 @@ class TimelineSklImgBlock(QFrame):
         self.ly_sc.addItem(self.vs_description_down)
 
 
-    def add_images(self, img_type, imgs, image_clicked_receaver=None, double_click_receaver=None, img_width = 150):
-        self.lb_title.setText(img_type, format=True, colon=True)
-        max_height = 0
-        for img in imgs:
-            card = SklImgCard(self.c_images, img, image_clicked_receaver, double_click_receaver)
-            self.ly_images.addWidget(card)
 
-            h = img.get_resized_size(img_width, img_width)[1]
-            card.change_size(img_width,h)
-
-            if h > max_height:
-                max_height = h
-
-        self.setMinimumSize(QSize(16777215, max_height + 55))
 
 
 

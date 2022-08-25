@@ -10,6 +10,8 @@ from PySide6.QtCore import Signal, Slot
 import src.util.data_cleaner as data_cleaner
 import src.util.skl_imgs as skl_imgs
 import src.util.util as util
+import src.util.text_filter as tf
+
 
 class AddSklImgCreator(QWidget):
 

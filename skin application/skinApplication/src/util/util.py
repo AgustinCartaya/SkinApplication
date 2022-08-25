@@ -50,6 +50,17 @@ def get_dir_list(path):
     return [name for name in get_file_dir_list(path) if os.path.isdir(gen_path(path,name))]
 
 
+def search_file(path, name, ignore_extension=False):
+    if ignore_extension:
+        for file_name in get_file_list(path):
+            if file_name.startswith(name):
+                return file_name
+    else:
+        if is_file(path, name):
+            return name
+    return None
+
+
 # file traitement
 def read_file(path, name=None):
     file_path_name = _get_file_path_name(path, name)

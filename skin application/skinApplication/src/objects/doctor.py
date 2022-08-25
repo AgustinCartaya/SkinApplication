@@ -23,7 +23,6 @@ class Doctor(DataObject):
         self.password = password
         self.email = email
     
-
     def verify_data(self):
         if (self._verify(self.first_name, "NAME", "FIRST_NAME") and
             self._verify(self.last_name, "NAME", "LAST_NAME") and 
@@ -50,8 +49,9 @@ class Doctor(DataObject):
 
         return [dc[0] for dc in dbc.select(cfg.TABLE_DOCTORS, cfg.COLUMN_DOCTORS_LAST_NAME)]
         
-    def get_doctor_by_last_name_and_password(self, last_name, password):
-        if self._verify(password, "PASSWORD", "PASSWORD"):
+    @classmethod
+    def get_doctor(cls, last_name, password):
+        if cls._verify(password, "PASSWORD", "PASSWORD"):
             dbc = DBController()
             obj = dbc.select(cfg.TABLE_DOCTORS,
                 last_name = last_name,
@@ -59,7 +59,7 @@ class Doctor(DataObject):
 
             if len(obj) > 0:
                 obj = obj[0]
-                self.initialize(obj[0], obj[1], obj[2], obj[3], obj[4])
+                return Doctor(obj[0], obj[1], obj[2], obj[3], obj[4])
             else:
                 raise ValueError('No object found', "DOCTOR", "NOT_FOUND")
 

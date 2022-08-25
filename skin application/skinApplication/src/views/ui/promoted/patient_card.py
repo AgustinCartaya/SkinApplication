@@ -1,24 +1,19 @@
-from PySide6.QtWidgets import (QFrame, QVBoxLayout, QHBoxLayout, QApplication)
-
-from PySide6.QtCore import Qt
-from .label import Label
+from .promoted_container import *
+from PySide6.QtWidgets import QApplication
 
 from src.objects.patient import Patient
-from PySide6.QtCore import Signal
 
 
-class PatientCard(QFrame):
+class PatientCard(PromotedContainer):
 
     s_check_patient = Signal(str)
-    def __init__(self, parent, patient, receaver):
-        QFrame.__init__(self, None)
+    def __init__(self, parent):
+        super().__init__(None)
 
-        self.p = patient
-        self.s_check_patient.connect(receaver.check_patient)
+        self.p = None
+        self._pre_charge()
 
-        self.__create()
-
-    def __create(self):
+    def _pre_charge(self):
         self.layout = QVBoxLayout(self)
         self.layout.setContentsMargins(0, 0, 0, 0)
         self.layout.setSpacing(0)
@@ -28,6 +23,11 @@ class PatientCard(QFrame):
 
         self.layout.setStretch(0, 5)
         self.layout.setStretch(1, 1)
+
+    def initialize(self, patient, click_receaver):
+        self.p = patient
+        self.s_check_patient.connect(click_receaver)
+        self.__fill_information()
 
     def __create_content_center(self):
         self.c_center = QFrame(self)
@@ -41,11 +41,9 @@ class PatientCard(QFrame):
         ly_center.addWidget(self.c_center_name, 0, Qt.AlignCenter)
 
         self.lb_last_name = Label(self.c_center)
-        self.lb_last_name.setText(self.p.last_name.upper())
         ly_center_name.addWidget(self.lb_last_name, 0, Qt.AlignCenter)
 
         self.lb_first_name = Label(self.c_center)
-        self.lb_first_name.setText(self.p.first_name)
         ly_center_name.addWidget(self.lb_first_name, 0, Qt.AlignCenter)
 
     def __create_content_bottom(self):
@@ -56,19 +54,12 @@ class PatientCard(QFrame):
 
         self.lb_id = Label(self.c_bottom)
         self.lb_id.setObjectName(u"lb_id")
-        self.lb_id.setText(self.p.id)
         ly_bottom.addWidget(self.lb_id, 0, Qt.AlignCenter)
 
-    def setTitle(self, type_info):
-        # a modificar
-        lb_text = Label(self)
-        lb_text.setText(getattr(self.p, type_info))
-#            if len(text) > 10:
-#                bt.setText(text[:10] + "...")
-#            else:
-#                bt.setText(text)
-#            bt.setMinimumSize(QSize(100, 100))
-        self.layout.addWidget(lb_text, 0, Qt.AlignCenter)
+    def __fill_information(self):
+        self.lb_last_name.setText(self.p.last_name.upper())
+        self.lb_first_name.setText(self.p.first_name)
+        self.lb_id.setText(self.p.id)
 
     def enterEvent(self, event):
         self.c_center.setProperty("hover", True)
@@ -82,7 +73,6 @@ class PatientCard(QFrame):
 
     def repaint(self):
         self.setStyle(QApplication.style())
-
 
     def mousePressEvent(self, arg):
         self.s_check_patient.emit(self.p.id)

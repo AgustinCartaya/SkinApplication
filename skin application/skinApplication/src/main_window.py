@@ -30,10 +30,11 @@ from .views.ui.promoted.label import Label
 
 
 class MainWindow(QtWidgets.QMainWindow):
-    def __init__(self, ai_dict):
+    def __init__(self, GLOBAL):
         super(MainWindow, self).__init__()
 
-        self.ai_dict = ai_dict
+#        self.ai_dict = ai_dict
+        self.GLOBAL = GLOBAL
 
         self._layers = QStackedWidget()
 
@@ -94,6 +95,8 @@ class MainWindow(QtWidgets.QMainWindow):
             self.set_view(LoginView(self))
 
         elif view_to == cfg.PATIENTS_VIEW:
+            if "doctor" in self.GLOBAL:
+                print(self.GLOBAL["doctor"])
             self.clean_views()
             self.set_view(PatientsView(self))
 
@@ -122,7 +125,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
         elif view_to == cfg.UPSERT_SKIN_LESION_VIEW:
             self.clean_views()
-            self.set_view(UpsertSkinLesionView(self, self.ai_dict, atts["patient"], atts["skin_lesion"]))
+            self.set_view(UpsertSkinLesionView(self, self.GLOBAL["ai_dict"], atts["patient"], atts["skin_lesion"]))
 
         elif view_to == cfg.AI_LAUNCHER_VIEW:
             if view_from == cfg.IMAGES_VIEW:

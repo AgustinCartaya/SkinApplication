@@ -4,7 +4,7 @@ from .ui.ui_upsert_skin_lesion import Ui_upsert_skin_lesion
 
 from .ui.promoted.variable_inputs_container import VariableInputsContainer
 from .ui.promoted.variable_input_creator import VariableInputCreator
-from .ui.promoted.variable_input import VariableInput
+from .ui.promoted.variable_input_item import VariableInputItem
 
 
 from .ui.promoted.add_skl_img_container import AddSklImgContainer
@@ -18,9 +18,11 @@ from .ui.promoted.button import Button
 from src.objects.skin_lesion import SkinLesion
 from src.objects.timeline_point import TimelinePoint
 from src.objects.image import Image
+from src.objects.variable_input import VariableInput
+
 
 import src.util.skl_imgs as skl_imgs
-import src.util.variable_inputs as var_inputs
+
 
 
 class UpsertSkinLesionView(ViewObject):
@@ -63,7 +65,7 @@ class UpsertSkinLesionView(ViewObject):
         self.ui.bt_complete.set_position(2)
 
         # characteristic
-        self.ui.c_characteristics.show_inputs(var_inputs.SKL_INPUT, VariableInput.DISPOSITION_H)
+        self.ui.c_characteristics.initialize(VariableInput.SKL_INPUT, VariableInputItem.DISPOSITION_H)
 
 
     def charge_ai_previews(self):
@@ -76,9 +78,7 @@ class UpsertSkinLesionView(ViewObject):
             if self.skl is not None and ai_name in self.skl.ai_results:
                 ai_infos[ai_name]["results"] = self.skl.ai_results[ai_name]
 
-        self.c_ai_previews = AIPreviewsContainer(self.ui.c_ai_results, ai_infos, self.launch_ai)
-        self.ui.ly_ai_results.addWidget(self.c_ai_previews)
-
+        self.ui.c_ai_previews.initialize(ai_infos, self.launch_ai)
 
     def connect_ui_signals(self):
         self.ui.bt_complete.clicked.connect(self.__complete)
@@ -158,12 +158,16 @@ class UpsertSkinLesionView(ViewObject):
     # Add new variable input (skl characteristics)
     @Slot()
     def __show_variable_input_creator(self):
-        self.variable_input_creator = VariableInputCreator(self.mv, var_inputs.SKL_INPUT, self.new_variable_input_created)
+        self.variable_input_creator = VariableInputCreator(self.mv, VariableInput.SKL_INPUT, self.new_variable_input_created)
         self.variable_input_creator.show()
 
-    Slot(str, str, list)
-    def new_variable_input_created(self, input_id, input_type, input_values):
-        self.ui.c_characteristics.append_new_variable_input(input_id, input_type, input_values)
+    Slot(VariableInput)
+    def new_variable_input_created(self, variable_input):
+        try:
+            variable_input.create()
+            self.ui.c_characteristics.append_new_variable_input(variable_input)
+        except ValueError as err:
+            print(err.args)
 
     # Add new skl image type
     @Slot()

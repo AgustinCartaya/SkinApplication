@@ -1,60 +1,59 @@
-from PySide6.QtWidgets import (QFrame, QVBoxLayout, QHBoxLayout,
-        QScrollArea, QWidget, QFormLayout, QSpacerItem, QSizePolicy)
+from .promoted_container import *
 
-from PySide6.QtCore import Qt, QSize, QRect
-from .label import Label
-from .button import Button
-from .line_edit import LineEdit
+from PySide6.QtWidgets import QScrollArea, QWidget
 
-
-from PySide6.QtCore import Signal, Slot
-
-import src.util.data_cleaner as data_cleaner
-
-class AIPreview(QFrame):
+class AIPreview(PromotedContainer):
 
     s_launch_ai = Signal(str)
-    def __init__(self, parent, ai_name, ai_description, ai_results, ai_launch_receaver):
-        QFrame.__init__(self, None)
+    def __init__(self, parent):
+        super().__init__(None)
+
+        self.ai_name = ""
+        self.ai_description = ""
+        self.ai_results = ""
+
+        self._pre_charge()
+
+    def initialize(self, ai_name, ai_description, ai_results, ai_launch_receaver):
         self.ai_name = ai_name
         self.ai_description = ai_description
         self.ai_results = ai_results
-
         self.s_launch_ai.connect(ai_launch_receaver)
-        self.__create()
 
-    def __create(self):
-        self.setMinimumSize(QSize(200, 100))
-
-        self.p_layout = QVBoxLayout(self)
-        self.p_layout.setContentsMargins(0, 0, 0, 0)
-
-        self.__create_scroll_area()
         self.__create_launch_button()
         self.__create_description()
         self.__create_results()
-
-        # spacer
-        self.vs_description_down = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
-        self.layout.addItem(self.vs_description_down)
 
         if len(self.ai_results) > 0:
             self.__show_results()
         else:
             self.c_results.hide()
 
+    def _pre_charge(self):
+        self.setMinimumSize(QSize(200, 100))
+
+        self.p_layout = QVBoxLayout(self)
+        self.p_layout.setContentsMargins(0, 0, 0, 0)
+
+        self.__create_scroll_area()
+
     def __create_scroll_area(self):
         self.scroll_area = QScrollArea(self)
         self.scroll_area.setWidgetResizable(True)
+        self.p_layout.addWidget(self.scroll_area)
 
         self.c_scroll_area = QWidget(self.scroll_area)
         self.scroll_area.setWidget(self.c_scroll_area)
+        self.ly_scroll_area = QVBoxLayout(self.c_scroll_area)
 
-        self.layout = QVBoxLayout(self.c_scroll_area)
+        # content layout
+        self.layout = QVBoxLayout()
         self.layout.setSpacing(20)
-#        self.layout.setContentsMargins(9, 9, 9, 9)
+        self.ly_scroll_area.addLayout(self.layout)
 
-        self.p_layout.addWidget(self.scroll_area)
+        # spacer
+        self.vs_description_down = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.ly_scroll_area.addItem(self.vs_description_down)
 
     def __create_launch_button(self):
         self.bt_lauch = Button(self)
@@ -110,10 +109,6 @@ class AIPreview(QFrame):
 
         self.layout.addWidget(self.c_results)
 
-    def add_results(self, results):
-        self.ai_results = results
-        self.__show_results()
-
     def __show_results(self):
         self.c_description.hide()
         self.c_results.show()
@@ -136,3 +131,7 @@ class AIPreview(QFrame):
     @Slot()
     def __launch_ai(self):
         self.s_launch_ai.emit(self.ai_name)
+
+    def add_results(self, results):
+        self.ai_results = results
+        self.__show_results()

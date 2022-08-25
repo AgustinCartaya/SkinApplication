@@ -1,25 +1,11 @@
-from PySide6.QtWidgets import (QFrame, QVBoxLayout, QHBoxLayout,
-        QLineEdit, QGridLayout)
+from .promoted_container import *
 
-#from PySide6.QtWidgets import QApplication
+class Pagination(PromotedContainer):
 
-from PySide6.QtCore import QCoreApplication, Qt, QSize
-
-from PySide6.QtCore import Signal, Slot
-
-from .button import Button
-from .label import Label
-from .line_edit import LineEdit
-
-import src.util.data_cleaner as data_cleaner
-import src.util.util as util
-
-class Pagination(QFrame):
-
+    s_card_size_changed = Signal(int, int)
     def __init__(self, parent, min=(1,1), max=(10,10), sep = (6,6), min_element_size = (50,50)):
-        QFrame.__init__(self, parent)
+        super().__init__(parent)
 
-        # No usado por el momento
         self.min_rows = min[0]
         self.min_cols = min[1]
 
@@ -34,26 +20,22 @@ class Pagination(QFrame):
 
         self.min_card_width = min_element_size[0]
         self.min_card_height = min_element_size[1]
-        # fin no usado
 
         self.nb_cards = 0
         self.pointer = 0
         self.nb_max_pages = 0
 
-        self.__create()
+        self._pre_charge()
 
-#        cards = []
-#        for i in range(25):
-#            cards.append("C"+str(i))
-#        self.add_cards(cards)
+    def initialize(self):
+        pass
 
-    def __create(self):   
+    def _pre_charge(self):
         self.layout = QVBoxLayout(self)
         self.layout.setContentsMargins(0, 0, 0, 0)
 
         self.__crete_cards_container()
         self.__create_controllers()
-
 
     def __crete_cards_container(self):
         self.c_cards = QFrame(self)
@@ -63,7 +45,6 @@ class Pagination(QFrame):
         self.ly_cards.setVerticalSpacing(self.v_sep)
 
         self.layout.addWidget(self.c_cards)
-
 
     def __create_controllers(self):
         self.c_controllers = QFrame(self)
@@ -84,8 +65,6 @@ class Pagination(QFrame):
         self.ly_controllers.setStretch(2, 1)
 
         self.layout.addWidget(self.c_controllers)
-
-
 
     def __create_pagination_controllers(self):
 
@@ -109,21 +88,23 @@ class Pagination(QFrame):
         self.i_actual_page.returnPressed.connect(self.__change_page_manually)
         self.i_actual_page.setValidator(data_cleaner.create_text_validator(data_cleaner.regex_not_null_4_number))
 
+        lb_of = Label(self.c_pagination_controllers)
+        lb_of.setText("of")
+        self.ly_pagination_controllers.addWidget(lb_of)
+
         self.lb_number_of_pages = Label(self.c_pagination_controllers)
-        self.lb_number_of_pages.setText(QCoreApplication.translate("pagination", u"of ...", None))
+#        self.lb_number_of_pages.setText("Of ...")
         self.ly_pagination_controllers.addWidget(self.lb_number_of_pages)
 
         self.bt_next_page = Button(self.c_pagination_controllers)
         self.bt_next_page.setMinimumSize(QSize(28, 28))
         self.bt_next_page.setMaximumSize(QSize(28, 28))
         self.bt_next_page.setText(">")
-#        self.bt_next_page.setProperty("padding", "small")
-#        self.bt_next_page.set_icon(Button.IC_RIGHT)
+
         self.ly_pagination_controllers.addWidget(self.bt_next_page)
         self.bt_next_page.clicked.connect(self.next_page)
 
         self.ly_controllers.addWidget(self.c_pagination_controllers, 0, Qt.AlignHCenter)
-
 
     def __create_size_controllers(self):
         self.c_size_controllers = QFrame(self.c_controllers)
@@ -152,14 +133,6 @@ class Pagination(QFrame):
 
         self.ly_controllers.addWidget(self.c_size_controllers, 0, Qt.AlignRight)
 
-
-    def add_cards(self, cards):
-        self.cards = cards
-        self.nb_cards = len(cards)
-
-        self.__refresh_controllers()
-        self.go_to_page(self.pointer + 1)
-
     def __refresh_controllers(self):
         if self.nb_cards == 0:
             self.nb_max_pages = 1
@@ -171,12 +144,11 @@ class Pagination(QFrame):
         else:
             self.c_pagination_controllers.show()
 
-        self.lb_number_of_pages.setText("of " + str(self.nb_max_pages))
+        self.lb_number_of_pages.setText(self.nb_max_pages)
         self.i_nb_rows.setText(str(self.nb_rows))
         self.i_nb_cols.setText(str(self.nb_cols))
 
     def __paint_cards(self):
-
         for i in reversed(range(self.ly_cards.count())):
             self.ly_cards.itemAt(i).widget().setParent(None)
 
@@ -194,13 +166,15 @@ class Pagination(QFrame):
         self.c_cards.update()
         self.__calc_elem_size()
 
-    @Slot()
-    def next_page(self):
-        self.go_to_page(self.pointer + 2)
+    def __calc_elem_size(self):
+        w = int((self.c_cards.size().width() - self.v_sep * (self.nb_cols - 1))/self.nb_cols)
+        h = int((self.c_cards.size().height() - self.h_sep * (self.nb_rows - 1))/self.nb_rows)
 
-    @Slot()
-    def back_page(self):
-        self.go_to_page(self.pointer)
+        if w > 0 and h > 0:
+            for i in reversed(range(self.ly_cards.count())):
+                self.ly_cards.itemAt(i).widget().resize(QSize(w,h))
+
+        self.s_card_size_changed.emit(w,h)
 
     @Slot()
     def __change_page_manually(self):
@@ -214,6 +188,13 @@ class Pagination(QFrame):
         self.__refresh_controllers()
         self.go_to_page(1)
 
+    @Slot()
+    def next_page(self):
+        self.go_to_page(self.pointer + 2)
+
+    @Slot()
+    def back_page(self):
+        self.go_to_page(self.pointer)
 
     def go_to_page(self, page):
         if page <= 0:
@@ -222,13 +203,6 @@ class Pagination(QFrame):
             page = self.nb_max_pages
         self.pointer = page - 1
         self.__paint_cards()
-
-
-    def hide_size_controllers(self, hide=True):
-        if hide == True:
-            self.c_size_controllers.hide()
-        else:
-            self.c_size_controllers.show()
 
     def set_cards_sep(self, v_sep, h_sep):
         self.v_sep = v_sep
@@ -244,21 +218,21 @@ class Pagination(QFrame):
         self.__refresh_controllers()
         self.go_to_page(1)
 
-    def resizeEvent(self, event):
-        self.__calc_elem_size()
+    def add_cards(self, cards):
+        self.cards = cards
+        self.nb_cards = len(cards)
 
-    def __calc_elem_size(self):
-        w = int((self.c_cards.size().width() - self.v_sep * (self.nb_cols - 1))/self.nb_cols)
-        h = int((self.c_cards.size().height() - self.h_sep * (self.nb_rows - 1))/self.nb_rows)
+        self.__refresh_controllers()
+        self.go_to_page(self.pointer + 1)
 
-        if w > 0 and h > 0:
-            for i in reversed(range(self.ly_cards.count())):
-                self.ly_cards.itemAt(i).widget().resize(QSize(w,h))
+    def hide_size_controllers(self, hide=True):
+        if hide == True:
+            self.c_size_controllers.hide()
+        else:
+            self.c_size_controllers.show()
 
-        self.s_card_size_changed.emit(w,h)
-
-    s_card_size_changed = Signal(int, int)
     def add_card_size_changed_receaver(self, receaver):
         self.s_card_size_changed.connect(receaver)
 
-
+    def resizeEvent(self, event):
+        self.__calc_elem_size()

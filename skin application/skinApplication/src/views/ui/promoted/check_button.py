@@ -1,6 +1,4 @@
 #from PySide6.QtWidgets import QPushButton
-#from PySide6.QtWidgets import QApplication
-
 from .button import *
 
 class CheckButton(Button):
@@ -28,16 +26,6 @@ class CheckButton(Button):
     def select(self, value):
         self.setProperty("selected", value)
         self.repaint()
-#        self.setStyle(QApplication.style())
-
-#    def add_group(self, group):
-#        self.__group = group
-
-
-#    def deselect_others(self):
-#        for bt in self.__group:
-#            bt.select(False)
-
 
     def add_group(self, group_receaver):
         self.s_switch.connect(group_receaver)

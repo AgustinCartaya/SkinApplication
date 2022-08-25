@@ -8,7 +8,6 @@ from PySide6.QtWidgets import (QFrame, QVBoxLayout, QHBoxLayout,
         QLineEdit,QGridLayout, QComboBox)
 
 from .ui.promoted.label import Label
-import src.util.variable_inputs as var_inputs
 
 
 class UpsertPatientPreiewView(ViewObject):
@@ -78,7 +77,8 @@ class UpsertPatientPreiewView(ViewObject):
             # scales to modify if possible
 
             i_mi_content = Label(self.ui.c_patient_information_preview)
-            i_mi_content.setText(mi_content, scale_input=[mi_name, var_inputs.MI_INPUT])
+#            i_mi_content.setText(mi_content, scale_input=[mi_name, var_inputs.MI_INPUT])
+            i_mi_content.setText(mi_content)
             i_mi_content.set_decoration("mi_content")
             ly_single_mi.addWidget(i_mi_content)
 

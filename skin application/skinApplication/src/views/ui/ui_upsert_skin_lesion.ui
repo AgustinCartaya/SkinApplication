@@ -157,7 +157,7 @@
                 <x>0</x>
                 <y>0</y>
                 <width>364</width>
-                <height>318</height>
+                <height>322</height>
                </rect>
               </property>
               <layout class="QVBoxLayout" name="verticalLayout_30">
@@ -256,7 +256,7 @@
                 <x>0</x>
                 <y>0</y>
                 <width>364</width>
-                <height>318</height>
+                <height>322</height>
                </rect>
               </property>
               <layout class="QVBoxLayout" name="verticalLayout_10">
@@ -333,11 +333,14 @@
            </widget>
           </item>
           <item>
-           <layout class="QVBoxLayout" name="ly_ai_results">
-            <property name="spacing">
-             <number>0</number>
+           <widget class="AIPreviewsContainer" name="c_ai_previews">
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
             </property>
-           </layout>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+           </widget>
           </item>
          </layout>
         </widget>
@@ -380,6 +383,12 @@
    <class>VariableInputsContainer</class>
    <extends>QFrame</extends>
    <header>.promoted.variable_inputs_container</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>AIPreviewsContainer</class>
+   <extends>QFrame</extends>
+   <header>.promoted.ai_previews_container</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

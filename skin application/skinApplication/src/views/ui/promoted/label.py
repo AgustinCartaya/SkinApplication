@@ -3,14 +3,15 @@ from PySide6.QtCore import Qt
 from PySide6.QtWidgets import QLabel
 #from PySide6.QtWidgets import QApplication
 
+# to delete
+from src.objects.variable_input import VariableInput
 import src.util.util as util
-import src.util.variable_inputs as var_inputs
+
 
 class Label(QLabel):
 
     def __init__(self, *args, **kwards):
         QLabel.__init__(self, *args, **kwards)
-
 
     def set_title(self, title):
         self.setProperty("title", title)
@@ -18,15 +19,23 @@ class Label(QLabel):
     def set_decoration(self, decoration):
         self.setProperty("decoration", decoration)
 
-    def setText(self, text, colon = False, format=False, parenthesis=False, center=False, scale_input=None, before=None):
+#    def setText(self, text, center=False):
+#        # center
+#        if center:
+#            self.setAlignment(Qt.AlignCenter)
+
+#        super().setText(text)
+
+    # to delete
+    def setText(self, text, colon=False, format=False, parenthesis=False, before=None, scale_input=None, translate=True, center=False):
         if type(text) in (list, tuple):
             text = " ".join(text)
         elif type(text) in (int, float):
             # scaled values
-            if scale_input is not None:
-                text = var_inputs.get_scalized_str(scale_input[0], text, scale_input[1])
-            else:
-                text = str(text)
+#            if scale_input is not None:
+#                text = VariableInput.get_scalized_str(scale_input[0], text, scale_input[1])
+#            else:
+            text = str(text)
         elif type(text) is bool:
             if text:
                 text = "Yes"
@@ -45,12 +54,12 @@ class Label(QLabel):
         if colon:
             text = text + " :"
 
-        # center
-        if center:
-            self.setAlignment(Qt.AlignCenter)
-
         # before
         if before:
             text = before + text
+
+        if center:
+            self.setAlignment(Qt.AlignCenter)
+
 
         super().setText(text)

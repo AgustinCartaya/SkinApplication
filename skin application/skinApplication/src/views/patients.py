@@ -3,12 +3,13 @@ from .ui.ui_patients import Ui_patients
 
 from src.objects.patient_list import PatientList
 from src.objects.patient import Patient
+from src.objects.variable_input import VariableInput
+
 
 from PySide6.QtCore import QSize
 from .ui.promoted.patient_card import PatientCard
 
 from .ui.promoted.check_button_group import CheckButtonGroup
-import src.util.variable_inputs as var_inputs
 
 
 class PatientsView(ViewObject):
@@ -48,11 +49,12 @@ class PatientsView(ViewObject):
         self.ui.c_filter_skl_charac_header.add_filters_content(self.ui.c_filter_skl_charac_content)
 
         # filters creation
-        bi_filters = [["gender",var_inputs.INPUT_OPTIONS, ["Women", "Man", "Other"], [0,1,2]],
-                    ["age",var_inputs.INPUT_INT, []]]
-        self.ui.c_filter_bi_content.show_filters(bi_filters, self.filter_patients)
-        self.ui.c_filter_mi_content.show_filters(var_inputs.MI_INPUT, self.filter_patients)
-        self.ui.c_filter_skl_charac_content.show_filters(var_inputs.SKL_INPUT, self.filter_patients)
+        f_gender = VariableInput("gender", VariableInput.VIRTUAL_INPUT, VariableInput.OWNER_VIRTUAL, VariableInput.TYPE_OPTIONS, "gender")
+        f_gender.set_items(["Women", "Man", "Other"], [0,1,2])
+        f_age = VariableInput("age", VariableInput.VIRTUAL_INPUT, VariableInput.OWNER_VIRTUAL, VariableInput.TYPE_INT, "age")
+        self.ui.c_filter_bi_content.show_virtual_filters([f_gender, f_age], self.filter_patients)
+        self.ui.c_filter_mi_content.initialize(VariableInput.MI_INPUT, self.filter_patients)
+        self.ui.c_filter_skl_charac_content.initialize(VariableInput.SKL_INPUT, self.filter_patients)
 
 
         # organizer
@@ -99,9 +101,6 @@ class PatientsView(ViewObject):
         self.ui.bt_sorter_dsc.clicked.connect(self.show_patients)
         self.ui.bt_sorter_id.clicked.connect(self.show_patients)
         self.ui.bt_sorter_name.clicked.connect(self.show_patients)
-#        self.ui.bt_sorter_id.clicked.connect(lambda: (self.slot_organizer_id_name("id") ) )
-#        self.ui.bt_sorter_name.clicked.connect(lambda: (self.slot_organizer_id_name("name") ) )
-        # filters
 
         # reset filters
         self.ui.bt_reset_filters.clicked.connect(self.reset_filters)
@@ -110,12 +109,6 @@ class PatientsView(ViewObject):
         #   search
         self.ui.i_search.returnPressed.connect(self.filter_patients)
         self.ui.bt_search.clicked.connect(self.filter_patients)
-
-        # AI results
-#        self.ui.i_air_benign.stateChanged.connect(self.filter_patients)
-#        self.ui.i_air_indeterminate.stateChanged.connect(self.filter_patients)
-#        self.ui.i_air_malignant.stateChanged.connect(self.filter_patients)
-
 
     @Slot()
     def back(self):
@@ -144,18 +137,6 @@ class PatientsView(ViewObject):
     def show_patients(self):
         self.sort_patients()
         self.create_patient_cards()
-
-#    @Slot(str)
-#    def slot_organizer_id_name(self, organizer):
-#        place_holder = ""
-##        regex = ""
-#        if organizer == "id":
-#            place_holder = "E.g: AG4432YA"
-#        elif organizer == "name":
-#            place_holder = "E.g: Alex"
-
-#        self.ui.i_search.setPlaceholderText(place_holder)
-#        self.show_patients()
 
     @Slot()
     def filter_patients(self):
@@ -231,12 +212,9 @@ class PatientsView(ViewObject):
     def create_patient_cards(self):
         card_patients = []
         for p in self.p_list_sortered:
-            bt = PatientCard(self.ui.c_pagination, p, self)
-#            bt.setPatient(p)
-            # a modificar
-#            bt.setTitle(self.p_list_sortered.sorted_by)
-
-            card_patients.append(bt)
+            patient_card = PatientCard(self.ui.c_pagination)
+            patient_card.initialize(p, self.check_patient)
+            card_patients.append(patient_card)
         self.ui.c_pagination.add_cards(card_patients)
 
     def __refresh_number_of_patients(self):

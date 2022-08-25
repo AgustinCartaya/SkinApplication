@@ -3,6 +3,7 @@ from .data_object import *
 import importlib
 
 from .image_list import ImageList
+from .variable_input import VariableInput
 
 class AI(DataObject):
     def __init__(self, name):
@@ -12,7 +13,7 @@ class AI(DataObject):
         self.req_images = None
         self.description = ""
         self.req_mi = []
-        self.req_skl_charac =[]
+        self.req_skl_charac = []
 
         # actual patient_skin_lesion = (patient, skin_lesion, images_dict, mi_list, req_skl_charac_list)
         self.actual_p = None
@@ -55,18 +56,24 @@ class AI(DataObject):
             print("No description file found in " + cfg.ACTUAL_LANGUAGE + " for: " + self.name)
 
     def __charge_required_patient_medical_information_list(self):
-        if util.is_dir(self.required_mi_folder_path_name()):
-            for req in util.get_file_list(self.required_mi_folder_path_name()):
-                self.req_mi.append(req.split(".")[0])
+        p_mi_file_name = util.search_file(self.get_info_folder(), cfg.AI_REQUIRED_MEDICAL_INFORMATION_FILE_NAME, True)
+        if p_mi_file_name is not None:
+            req_mis = json.loads(util.read_file(self.get_info_folder(), p_mi_file_name))
+            for req_mi in req_mis:
+                p_mi_id = VariableInput.create_ai_variable_input(req_mi, VariableInput.MI_INPUT, self.name, p_mi_file_name)
+                self.req_mi.append(p_mi_id)
         else:
-            print("No " + cfg.AI_REQUIRED_MEDICAL_INFORMATION_FOLDER_NAME + " folder for: " + self.name)
+            print("No " + cfg.AI_REQUIRED_MEDICAL_INFORMATION_FILE_NAME + " file for: " + self.name)
 
     def __charge_required_skin_lesion_characteristics_list(self):
-        if util.is_dir(self.required_skl_charac_folder_path_name()):
-            for req in util.get_file_list(self.required_skl_charac_folder_path_name()):
-                self.req_skl_charac.append(req.split(".")[0])
+        skl_charac_file_name = util.search_file(self.get_info_folder(), cfg.AI_REQUIRED_SKIN_LESION_CHARACTERISTICS_FILE_NAME, True)
+        if skl_charac_file_name is not None:
+            req_skl_characs = json.loads(util.read_file(self.get_info_folder(), skl_charac_file_name))
+            for req_skl_charac in req_skl_characs:
+                skl_charac_id = VariableInput.create_ai_variable_input(req_skl_charac, VariableInput.SKL_INPUT, self.name, skl_charac_file_name)
+                self.req_skl_charac.append(skl_charac_id)
         else:
-            print("No " + cfg.AI_REQUIRED_SKIN_LESION_CHARACTERISTICS_FOLDER_NAME + " folder for: " + self.name)
+            print("No " + cfg.AI_REQUIRED_SKIN_LESION_CHARACTERISTICS_FILE_NAME + " file for: " + self.name)
 
     def get_info_folder(self):
         return util.gen_path(self.folder, cfg.AI_INFO_FOLDER_NAME)
@@ -77,11 +84,11 @@ class AI(DataObject):
     def description_file_path_name(self):
         return util.gen_path(self.get_info_folder(), cfg.AI_DESCRIPTION_FILE_NAME + "." + cfg.ACTUAL_LANGUAGE)
 
-    def required_mi_folder_path_name(self):
-        return util.gen_path(self.get_info_folder(), cfg.AI_REQUIRED_MEDICAL_INFORMATION_FOLDER_NAME)
+#    def required_mi_folder_path_name(self):
+#        return util.gen_path(self.get_info_folder(), cfg.AI_REQUIRED_MEDICAL_INFORMATION_FOLDER_NAME)
 
-    def required_skl_charac_folder_path_name(self):
-        return util.gen_path(self.get_info_folder(), cfg.AI_REQUIRED_SKIN_LESION_CHARACTERISTICS_FOLDER_NAME)
+#    def required_skl_charac_folder_path_name(self):
+#        return util.gen_path(self.get_info_folder(), cfg.AI_REQUIRED_SKIN_LESION_CHARACTERISTICS_FOLDER_NAME)
 
     def set_actual_patient_and_skin_lesion(self, patient, skin_lesion):
         self.actual_p = patient

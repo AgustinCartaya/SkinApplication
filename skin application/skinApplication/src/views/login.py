@@ -23,8 +23,6 @@ class LoginView(ViewObject):
         # create other account
         self.ui.bt_create_account.hide()
 
-
-        
     def connect_ui_signals(self):
         #ui signals
         self.ui.bt_login.clicked.connect(self.login)
@@ -39,9 +37,9 @@ class LoginView(ViewObject):
 
     @Slot()
     def login(self):
-        dc = Doctor()
         try:
-            dc.get_doctor_by_last_name_and_password(self.ui.i_name.currentText(),self.ui.i_password.text())
+            doctor = Doctor.get_doctor(self.ui.i_name.currentText(),self.ui.i_password.text())
+            self.GLOBAL["doctor"] = doctor
             self.s_change_view.emit(cfg.LOGIN_VIEW, cfg.PATIENTS_VIEW, None)
         except ValueError as err:
             self.show_message(err.args[0], cfg.MSG_ERROR)

@@ -26,7 +26,7 @@ class TimelineView(ViewObject):
         self.ui.setupUi(self)
 
         # timeline points
-        self.ui.c_timeline_points.create_points(self.timeline, self.switch_point)
+        self.ui.c_timeline_points.initialize(self.timeline, self.switch_point)
 
     def connect_ui_signals(self):
         self.ui.bt_back.clicked.connect(self.__back)
@@ -53,7 +53,7 @@ class TimelineView(ViewObject):
 
         for img_type, imgs in tlp.images.imgs_dict.items():
             img_block = TimelineSklImgBlock(self.ui.c_images)
-            img_block.add_images(img_type, imgs, double_click_receaver=self.open_single_image)
+            img_block.initialize(img_type, imgs, double_click_receaver=self.open_single_image)
             self.ui.ly_images.addWidget(img_block)
 
     Slot(Image)
@@ -72,4 +72,4 @@ class TimelineView(ViewObject):
         info_line.append(["Patient ID", self.p.id])
         info_line.append(["First name", self.p.first_name])
         info_line.append(["Last name", self.p.last_name])
-        self.ui.c_patient_info_line.add_info(info_line)
+        self.ui.c_patient_info_line.initialize(info_line)

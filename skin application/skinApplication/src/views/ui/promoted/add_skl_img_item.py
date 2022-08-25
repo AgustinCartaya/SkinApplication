@@ -1,36 +1,37 @@
-from PySide6.QtWidgets import (QFrame, QVBoxLayout, QHBoxLayout,
-        QComboBox, QDoubleSpinBox, QSpinBox, QFileDialog)
+from .promoted_container import *
 
-from PySide6.QtCore import Qt, QSize
-from .label import Label
-from .button import Button
-from .line_edit import LineEdit
-from .add_skl_img_creator import AddSklImgCreator
-
-from PySide6.QtCore import Signal, Slot
+from PySide6.QtWidgets import QFileDialog
 
 import src.util.util as util
 
 from src.objects.image import Image
 
-class AddSklImgItem(QFrame):
+
+class AddSklImgItem(PromotedContainer):
 
 #    s_edit_items = Signal(str)
-    def __init__(self, parent, id, nb_images = 0, new_images = []):
-        QFrame.__init__(self, parent)
+    def __init__(self, parent):
+        super().__init__(parent)
 
+        self.id = ""
+        self.nb_images = 0
+        self.new_images = 0
+        self.img_path_name = set()
+
+        self._pre_charge()
+
+    def initialize(self, id, nb_images = 0, new_images = []):
         self.id = id
         self.nb_images = nb_images
         self.new_images = new_images
-        self.img_path_name = set()
 
-        self.__create()
+        self.__create_content()
 
-
-    def __create(self):
+    def _pre_charge(self):
         self.layout = QHBoxLayout(self)
         self.layout.setContentsMargins(0, 0, 0, 0)
 
+    def __create_content(self):
         # title
         self.lb_name = Label(self)
         self.lb_name.setText(self.id, format=True)
@@ -57,17 +58,6 @@ class AddSklImgItem(QFrame):
 
         self.bt_cancel_new_images.hide()
 
-
-    def set_nb_images(self, nb_images):
-        self.nb_images = nb_images
-        self.lb_nb_images.setText(self.nb_images, parenthesis=True)
-        self.__cancel_new_images()
-
-    @Slot()
-    def __cancel_new_images(self):
-        self.img_path_name = set()
-        self.__update_nb_new_images()
-
     def __update_nb_new_images(self):
         if len(self.img_path_name) > 0:
             self.lb_nb_new_images.setText(len(self.img_path_name), before="+")
@@ -76,15 +66,25 @@ class AddSklImgItem(QFrame):
             self.lb_nb_new_images.setText("")
             self.bt_cancel_new_images.hide()
 
-    def mousePressEvent(self, arg):
-        self.loadFiles()
-
-    def loadFiles(self):
+    def __loadFiles(self):
         img_path_name, _ = QFileDialog.getOpenFileNames(self, 'Open ' + util.file_name_to_title(self.id) ,
              'D:\\Documents\\Internship Documents\\Image data\\2AO\\images',"Image files (*.png *.jpg *.jpeg *.gif *.tif *.tiff *.raw *. *.svg *.bmp *.)")
 
         self.img_path_name.update([Image(src, self.id) for src in img_path_name])
         self.__update_nb_new_images()
 
+    @Slot()
+    def __cancel_new_images(self):
+        self.img_path_name = set()
+        self.__update_nb_new_images()
+
+    def set_nb_images(self, nb_images):
+        self.nb_images = nb_images
+        self.lb_nb_images.setText(self.nb_images, parenthesis=True)
+        self.__cancel_new_images()
+
     def get_image_path_names(self):
         return self.img_path_name
+
+    def mousePressEvent(self, arg):
+        self.__loadFiles()

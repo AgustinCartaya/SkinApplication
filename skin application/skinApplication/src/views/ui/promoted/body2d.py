@@ -1,10 +1,6 @@
-from PySide6.QtWidgets import QFrame, QHBoxLayout, QSpacerItem, QSizePolicy
+from PySide6.QtWidgets import QFrame
 from PySide6.QtCore import Qt, QSize, QPoint
 from PySide6.QtGui import QPixmap, QPainter, QPen, QCursor, QColor
-from .label import Label
-from .button import Button
-
-from PySide6.QtCore import Signal, Slot
 
 class Body2D(QFrame):
 

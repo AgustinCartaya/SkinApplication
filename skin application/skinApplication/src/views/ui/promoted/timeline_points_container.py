@@ -1,24 +1,21 @@
-from PySide6.QtCore import Signal, Slot, Qt
+from .promoted_container import *
 
-from PySide6.QtWidgets import QFrame, QRadioButton, QGridLayout, QButtonGroup
-
-from .label import Label
-import src.util.util as util
+from PySide6.QtWidgets import QRadioButton, QButtonGroup
 
 from src.objects.timeline import Timeline
 
 
-class TimelinePointsContainer(QFrame):
+class TimelinePointsContainer(PromotedContainer):
 
     s_switch_point = Signal(int)
     def __init__(self, parent):
-        QFrame.__init__(self, parent)
+        super().__init__(parent)
 
         self.timeline = None
         self.points = []
-        self.__create()
+        self._pre_charge()
 
-    def __create(self):
+    def _pre_charge(self):
         self.layout = QGridLayout(self)
         self.layout.setContentsMargins(0, 0, 0, 0)
         self.layout.setHorizontalSpacing(50)
@@ -26,7 +23,7 @@ class TimelinePointsContainer(QFrame):
         self.qbt_group = QButtonGroup()
         self.qbt_group.buttonClicked.connect(self.__switch_point)
 
-    def create_points(self, timeline, switch_poit_receaver):
+    def initialize(self, timeline, switch_poit_receaver):
         self.s_switch_point.connect(switch_poit_receaver)
         self.timeline = timeline
         counter = 0

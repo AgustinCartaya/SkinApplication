@@ -1,0 +1,7 @@
+[
+{
+"name":"diameter",
+"type":"float",
+"scale":"length"
+}
+]

@@ -1,28 +1,21 @@
-from PySide6.QtCore import Signal, Slot, Qt
-
-from PySide6.QtWidgets import QFrame, QHBoxLayout, QCheckBox, QSpacerItem, QSizePolicy
-
-from .label import Label
+from .promoted_container import *
+from PySide6.QtWidgets import QCheckBox
 
 
-import src.util.data_cleaner as data_cleaner
-import src.util.util as util
-
-class FilterSklImgItem(QFrame):
+class FilterSklImgItem(PromotedContainer):
 
     def __init__(self, parent):
         QFrame.__init__(self, parent)
 
         self.img_name = ""
+        self._pre_charge()
 
-        self.__create()
-
-    def __create(self):
+    def _pre_charge(self):
         self.layout = QHBoxLayout(self)
         self.layout.setContentsMargins(0, 0, 0, 0)
         self.layout.setSpacing(2)
 
-    def create_contet(self, img_name, img_number, filter_receaver):
+    def initialize(self, img_name, img_number, filter_receaver):
         self.img_name = img_name
         self.filter_receaver = filter_receaver
 

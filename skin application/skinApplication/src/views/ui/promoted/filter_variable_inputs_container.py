@@ -1,64 +1,43 @@
+from .promoted_container import *
 
 from .filters_content import FiltersContent
 from .filter_variable_input import FilterVariableInput
 
-from PySide6.QtCore import Signal, Slot, Qt
-
-from PySide6.QtWidgets import QInputDialog, QFrame, QVBoxLayout
-
-from .button import Button
-import src.util.util as util
-import src.util.variable_inputs as var_inputs
+from src.objects.variable_input import VariableInput
 
 
 class FilterVariableInputsContainer(FiltersContent):
 
-#    s_edit_items = Signal(str)
     def __init__(self, parent):
-        FiltersContent.__init__(self, parent)
+        super().__init__(parent)
+
         self.filters = {}
-        self.__create()
+        self.filters_family = ""
+        self.filter_receaver = None
+        self._pre_charge()
 
-    def __create(self):
+    def initialize(self, filters_family, filter_receaver):
+        self.filters_family = filters_family
+        self.filter_receaver = filter_receaver
+        self.__create_filters()
+
+    def show_virtual_filters(self, vi_list, filter_receaver):
+        self.filter_receaver = filter_receaver
+        for vi in vi_list:
+            self.__show_single_filter(vi)
+
+    def _pre_charge(self):
         self.layout = QVBoxLayout(self)
-#        self.layout.setContentsMargins(0, 0, 0, 0)
-#        self.layout.setSpacing(50)
 
-    def show_filters(self, input_type, filter_receaver):
-        if type(input_type) is list:
-            for filter in input_type:
-                f_id = filter[0]
-                f_type = filter[1]
-                f_title = util.file_name_to_title(f_id)
-                f_values = filter[2]
-                self.__show_single_filter(f_id, f_type, filter_receaver, f_title, f_values)
+    def __create_filters(self):
+        for vi in VariableInput.get_available_variable_inputs(self.filters_family):
+            self.__show_single_filter(vi)
 
-                if len(filter) == 4:
-                    self.filters[f_id].set_action_values(filter[3])
-
-        else:
-            for file_name in var_inputs.get_availables_variable_inputs(input_type):
-                (f_id, f_type) = file_name.split(".")
-                f_title = util.file_name_to_title(f_id)
-                f_values = var_inputs.get_variable_input_content(input_type, file_name)
-
-                self.__show_single_filter(f_id, f_type, filter_receaver, f_title, f_values)
-
-    def __show_single_filter(self, f_id, f_type, filter_receaver, f_title, f_values):
-        if f_type ==  var_inputs.INPUT_OPTIONS and f_values[0].startswith("--e"):
-            f_values = f_values[1:]
-
+    def __show_single_filter(self, variable_input):
         filter = FilterVariableInput(self)
-        filter.create_filter(
-            f_id,
-            f_type,
-            filter_receaver,
-            f_title,
-            f_values,
-            )
-
+        filter.initialize(variable_input, self.filter_receaver)
         self.layout.addWidget(filter)
-        self.filters[f_id] = filter
+        self.filters[variable_input.id] = filter
 
     def get_selected_filters(self):
         f_selected = {}
