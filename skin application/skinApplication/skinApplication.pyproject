@@ -6,6 +6,7 @@
         "src/config.py",
         "src/internal/boot_checker.py",
         "src/internal/ai_loader.py",
+        "src/internal/errors.py",
         "src/db_controllers/db_connection.py",
         "src/db_controllers/db_controller.py",
         "src/util/util.py",

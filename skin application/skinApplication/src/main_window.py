@@ -95,8 +95,6 @@ class MainWindow(QtWidgets.QMainWindow):
             self.set_view(LoginView(self))
 
         elif view_to == cfg.PATIENTS_VIEW:
-            if "doctor" in self.GLOBAL:
-                print(self.GLOBAL["doctor"])
             self.clean_views()
             self.set_view(PatientsView(self))
 
@@ -184,7 +182,7 @@ class MainWindow(QtWidgets.QMainWindow):
             self._layers.widget(i).close()
 
     def show_message(self, text, msg_type):
-        self.lb_message.setText(text)
+        self.lb_message.setText(tf.f(text))
         self.statusBar.show()
         QTimer.singleShot(4000, self.hide_status_bar)
 

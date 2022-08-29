@@ -151,7 +151,7 @@
                    <x>0</x>
                    <y>0</y>
                    <width>402</width>
-                   <height>260</height>
+                   <height>240</height>
                   </rect>
                  </property>
                  <layout class="QVBoxLayout" name="verticalLayout_12">
@@ -243,7 +243,7 @@
                    <x>0</x>
                    <y>0</y>
                    <width>402</width>
-                   <height>260</height>
+                   <height>240</height>
                   </rect>
                  </property>
                  <layout class="QVBoxLayout" name="verticalLayout_14">
@@ -372,7 +372,7 @@
                   <x>0</x>
                   <y>0</y>
                   <width>881</width>
-                  <height>257</height>
+                  <height>237</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_8">
@@ -437,6 +437,13 @@
       </layout>
      </item>
      <item alignment="Qt::AlignHCenter">
+      <widget class="QLabel" name="lb_error">
+       <property name="text">
+        <string>to use the AI please fill in all the necessary fields</string>
+       </property>
+      </widget>
+     </item>
+     <item alignment="Qt::AlignHCenter">
       <widget class="Button" name="bt_launch">
        <property name="enabled">
         <bool>false</bool>
@@ -463,14 +470,14 @@
    <header>.promoted.label</header>
   </customwidget>
   <customwidget>
-   <class>NavigatorButton</class>
-   <extends>QPushButton</extends>
-   <header>.promoted.navigator_button</header>
-  </customwidget>
-  <customwidget>
    <class>Button</class>
    <extends>QPushButton</extends>
    <header>.promoted.button</header>
+  </customwidget>
+  <customwidget>
+   <class>NavigatorButton</class>
+   <extends>QPushButton</extends>
+   <header>.promoted.navigator_button</header>
   </customwidget>
   <customwidget>
    <class>RequiredElementsContainer</class>

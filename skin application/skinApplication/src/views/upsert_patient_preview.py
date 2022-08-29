@@ -66,8 +66,6 @@ class UpsertPatientPreiewView(ViewObject):
         self.ui.i_upsert_patient_view.toggled.connect(self.rb_view)
         self.ui.i_upsert_patient_mi_view.toggled.connect(self.rb_view)
 
-
-
     def rb_view(self):
         if self.ui.i_upsert_patient_view.isChecked():
             self.__change_to_upsert_patient_view(1)
@@ -86,7 +84,7 @@ class UpsertPatientPreiewView(ViewObject):
     #no pulido
     def add_patient(self):
         try:  
-            self.p.create_patient()
+            self.p.create()
             self.s_change_view.emit(cfg.UPSERT_PATIENT_PREVIEW_VIEW, cfg.PATIENTS_VIEW, None)
         except ValueError as err:
             print(err.args)
@@ -99,7 +97,7 @@ class UpsertPatientPreiewView(ViewObject):
 
     def update_patient(self):
         try:
-            self.p.update_data()
+            self.p.update()
             self.s_change_view.emit(cfg.UPSERT_PATIENT_PREVIEW_VIEW, cfg.CHECK_PATIENT_VIEW, {"patient_id": self.p.id})
         except ValueError as err:
             print(err.args)

@@ -23,57 +23,49 @@ class AI(DataObject):
         self.actual_mi = {}
         self.actual_skl_charac = {}
 
-        self.__charge_required_images_dict()
+        self.__charge_requirements()
         self.__charge_description()
-        self.__charge_required_patient_medical_information_list()
-        self.__charge_required_skin_lesion_characteristics_list()
 
+    def __charge_requirements(self):
+        req_file = util.search_file(self.get_info_folder(), cfg.AI_REQUIREMENTS_FILE_NAME, True)
+        if req_file is not None:
+            req = json.loads(util.read_file(self.get_info_folder(), req_file))
 
+            if cfg.AI_REQUIRED_IMAGES_JSON in req:
+                self.__charge_required_images(req[cfg.AI_REQUIRED_IMAGES_JSON])
 
-#        print(self.name + " charged successfully")
+            if cfg.AI_REQUIRED_MEDICAL_INFORMATION_JSON in req:
+                self.__charge_required_patient_medical_information(req[cfg.AI_REQUIRED_MEDICAL_INFORMATION_JSON])
 
-#        print(self.req_images)
-#        print(self.description)
-#        print(self.req_mi)
-#        print(self.req_skl_charac)
+            if cfg.AI_REQUIRED_SKIN_LESION_CHARACTERISTICS_JSON in req:
+                self.__charge_required_skin_lesion_characteristics(req[cfg.AI_REQUIRED_SKIN_LESION_CHARACTERISTICS_JSON])
 
-
-#    def __charge_required_patient_basic_information(self):
-#        pass
-
-    def __charge_required_images_dict(self):
-        if util.is_dir(self.required_images_folder_path_name()):
-            self.req_images = {}
-            for skl_img in util.get_file_list(self.required_images_folder_path_name()):
-                self.req_images[skl_img] = json.loads(util.read_file(self.required_images_folder_path_name(), skl_img))
         else:
-            raise RuntimeError('FAILED TO OPEN REQUIRED IMAGES FOLDER FOR: ' + self.name)
+            raise RuntimeError("No " + cfg.AI_REQUIREMENTS_FILE_NAME + " file for: " + self.name)
+
+
+    def __charge_required_images(self, img_json):
+        self.req_images = {}
+        for img_name, values in  img_json.items():
+           if "min" not in values or "max" not in values:
+               raise RuntimeError("'min' or 'max' parameter missing for " + img_name + " in: " + self.name)
+        self.req_images = img_json
+
+    def __charge_required_patient_medical_information(self, mi_json):
+        for mi_id, mi_content in mi_json.items():
+            VariableInput.create_ai_variable_input(mi_id, mi_content, VariableInput.MI_INPUT, self.name)
+            self.req_mi.append(mi_id)
+
+    def __charge_required_skin_lesion_characteristics(self, skl_charac_json):
+        for skl_charac_id, skl_charac_content in skl_charac_json.items():
+            VariableInput.create_ai_variable_input(skl_charac_id, skl_charac_content, VariableInput.SKL_INPUT, self.name)
+            self.req_skl_charac.append(skl_charac_id)
 
     def __charge_description(self):
         if util.is_file(self.description_file_path_name()):
             self.description = util.read_file(self.description_file_path_name())
         else:
             print("No description file found in " + cfg.ACTUAL_LANGUAGE + " for: " + self.name)
-
-    def __charge_required_patient_medical_information_list(self):
-        p_mi_file_name = util.search_file(self.get_info_folder(), cfg.AI_REQUIRED_MEDICAL_INFORMATION_FILE_NAME, True)
-        if p_mi_file_name is not None:
-            req_mis = json.loads(util.read_file(self.get_info_folder(), p_mi_file_name))
-            for req_mi in req_mis:
-                p_mi_id = VariableInput.create_ai_variable_input(req_mi, VariableInput.MI_INPUT, self.name, p_mi_file_name)
-                self.req_mi.append(p_mi_id)
-        else:
-            print("No " + cfg.AI_REQUIRED_MEDICAL_INFORMATION_FILE_NAME + " file for: " + self.name)
-
-    def __charge_required_skin_lesion_characteristics_list(self):
-        skl_charac_file_name = util.search_file(self.get_info_folder(), cfg.AI_REQUIRED_SKIN_LESION_CHARACTERISTICS_FILE_NAME, True)
-        if skl_charac_file_name is not None:
-            req_skl_characs = json.loads(util.read_file(self.get_info_folder(), skl_charac_file_name))
-            for req_skl_charac in req_skl_characs:
-                skl_charac_id = VariableInput.create_ai_variable_input(req_skl_charac, VariableInput.SKL_INPUT, self.name, skl_charac_file_name)
-                self.req_skl_charac.append(skl_charac_id)
-        else:
-            print("No " + cfg.AI_REQUIRED_SKIN_LESION_CHARACTERISTICS_FILE_NAME + " file for: " + self.name)
 
     def get_info_folder(self):
         return util.gen_path(self.folder, cfg.AI_INFO_FOLDER_NAME)
@@ -83,12 +75,6 @@ class AI(DataObject):
 
     def description_file_path_name(self):
         return util.gen_path(self.get_info_folder(), cfg.AI_DESCRIPTION_FILE_NAME + "." + cfg.ACTUAL_LANGUAGE)
-
-#    def required_mi_folder_path_name(self):
-#        return util.gen_path(self.get_info_folder(), cfg.AI_REQUIRED_MEDICAL_INFORMATION_FOLDER_NAME)
-
-#    def required_skl_charac_folder_path_name(self):
-#        return util.gen_path(self.get_info_folder(), cfg.AI_REQUIRED_SKIN_LESION_CHARACTERISTICS_FOLDER_NAME)
 
     def set_actual_patient_and_skin_lesion(self, patient, skin_lesion):
         self.actual_p = patient

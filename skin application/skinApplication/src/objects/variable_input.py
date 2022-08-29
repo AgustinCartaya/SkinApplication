@@ -186,9 +186,9 @@ class VariableInput(DataObject):
         return dbc.secure_exists(cfg.TABLE_VARIABLE_INPUTS, (id,family))
 
     @classmethod
-    def create_ai_variable_input(cls, data, family, ai_name, file_name):
-        if "id" not in data:
-            raise ValueError("%s WITHOUT ID (AI: %s FILE: %s)" % (family,ai_name,file_name) )
+    def create_ai_variable_input(cls, id, data, family, ai_name):
+#        if "id" not in data:
+#            raise ValueError("%s WITHOUT ID (AI: %s FILE: %s)" % (family,ai_name,file_name) )
 
         if "name" not in data:
             raise ValueError("%s WITHOUT NAME (AI: %s FILE: %s)" % (family,ai_name,file_name) )
@@ -214,8 +214,8 @@ class VariableInput(DataObject):
         if "scale" in data and "items" in data:
             raise ValueError("%s CAN'T HAVE ITEMS AND SCALE (AI: %s FILE: %s)" % (family,ai_name,file_name) )
 
-        if not cls.exists(data["id"],family):
-            vi = VariableInput(data["id"], family, cls.OWNER_AI, data["type"], util.clean_title(data["name"]))
+        if not cls.exists(id,family):
+            vi = VariableInput(id, family, cls.OWNER_AI, data["type"], util.clean_title(data["name"]))
             if "items" in data:
                 vi.items = data["items"]
             elif "scale" in data:
@@ -223,7 +223,6 @@ class VariableInput(DataObject):
 
             vi.create()
 
-        return data["id"]
 
     # scales
     @classmethod

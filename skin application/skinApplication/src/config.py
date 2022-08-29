@@ -62,10 +62,11 @@ IMG_ACCEPTED_EXTESIONS = "png, jpg, jpeg, gif, tif, tiff, raw, svg, bmp"
 # Artificial inteligence
 AI_PATH = PROJECT_FOLDER + _S + "ai"
 AI_INFO_FOLDER_NAME = "info"
+AI_REQUIREMENTS_FILE_NAME = "requirements"
 AI_DESCRIPTION_FILE_NAME = "description"
-AI_REQUIRED_IMAGES_FOLDER_NAME = "required_images"
-AI_REQUIRED_MEDICAL_INFORMATION_FILE_NAME = "required_medical_information"
-AI_REQUIRED_SKIN_LESION_CHARACTERISTICS_FILE_NAME = "required_skin_lesion_characteristics"
+AI_REQUIRED_IMAGES_JSON = "images"
+AI_REQUIRED_MEDICAL_INFORMATION_JSON = "medical_information"
+AI_REQUIRED_SKIN_LESION_CHARACTERISTICS_JSON = "skin_lesion_characteristics"
 
 # patients data
 PATIENTS_DATA_PATH = PROJECT_FOLDER + _S + "patients_data"

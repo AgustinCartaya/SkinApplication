@@ -25,38 +25,19 @@ def check_directories():
     if not util.is_dir(cfg.FILES_SKIN_LESION_IMAGES_PATH):
         util.create_dir(cfg.FILES_SKIN_LESION_IMAGES_PATH)
 
-#    if not util.is_dir(cfg.FILES_MEDICAL_INFORMATION_PATH):
-#        util.create_dir(cfg.FILES_MEDICAL_INFORMATION_PATH)
-
-#    if not util.is_dir(cfg.FILES_SKIN_LESION_CHARACTERISTICS_PATH):
-#        util.create_dir(cfg.FILES_SKIN_LESION_CHARACTERISTICS_PATH)
-
     # ai
     if not util.is_dir(cfg.FILES_AI_SKIN_LESION_IMAGES_PATH):
         util.create_dir(cfg.FILES_AI_SKIN_LESION_IMAGES_PATH)
-
-#    if not util.is_dir(cfg.FILES_AI_MEDICAL_INFORMATION_PATH):
-#        util.create_dir(cfg.FILES_AI_MEDICAL_INFORMATION_PATH)
-
-#    if not util.is_dir(cfg.FILES_AI_SKIN_LESION_CHARACTERISTICS_PATH):
-#        util.create_dir(cfg.FILES_AI_SKIN_LESION_CHARACTERISTICS_PATH)
 
     # created
     if not util.is_dir(cfg.FILES_CREATED_SKIN_LESION_IMAGES_PATH):
         util.create_dir(cfg.FILES_CREATED_SKIN_LESION_IMAGES_PATH)
 
-#    if not util.is_dir(cfg.FILES_CREATED_MEDICAL_INFORMATION_PATH):
-#        util.create_dir(cfg.FILES_CREATED_MEDICAL_INFORMATION_PATH)
-
-#    if not util.is_dir(cfg.FILES_CREATED_SKIN_LESION_CHARACTERISTICS_PATH):
-#        util.create_dir(cfg.FILES_CREATED_SKIN_LESION_CHARACTERISTICS_PATH)
 
 def chech_db():
     if not util.is_file(cfg.DB_PATH_NAME):
         dbc = DBController()
         dbc.db.verify_db_existence()
-#        raise RuntimeError(cfg.DB_PATH_NAME + " FILE NOT EXISTS", "DB", "NOT_EXISTS")
-
 
 def check():
     check_directories()

@@ -31,12 +31,7 @@ class Patient(DataObject):
         # skin lesions
         self.skin_lesions = []
 
-    def verify_data(self):
-        if (self._verify(self.first_name, "NAME", "FIRST_NAME") and
-            self._verify(self.last_name, "NAME", "LAST_NAME") 
-            ):
-            return True
-        return False 
+
 
     def initialize(self, id, first_name, last_name, birth_date, gender, mi = {}):
         # basic information
@@ -59,45 +54,44 @@ class Patient(DataObject):
             self.folder_path  = util.gen_path(cfg.PATIENTS_DATA_PATH,self.id)
             self.verify_patient_folder()
 
-    def save_data(self):
-        if self.verify_data():
-            try:
-                dbc = DBController()
+    def create(self):
+        # error thrown if data not accepted
+        self.verify_data()
+        self.__save_data()
 
-                self.id = util.generate_id(self.first_name+self.last_name)
-                while dbc.exists(cfg.TABLE_PATIENTS, id=self.id):
-                    self.id = util.generate_id(self.first_name+self.last_name)
+        self.folder_path  = util.gen_path(cfg.PATIENTS_DATA_PATH, self.id)
+        self.verify_patient_folder()
 
-                dbc.insert(cfg.TABLE_PATIENTS,(self.id,
-                    self.first_name,
-                    self.last_name,
-                    self.birth_date.strftime('%d-%m-%Y'),
-                    self.gender,
-                    json.dumps(self.mi))
-                    )
-                return True
-            except ValueError as err:
-                print(err.args)
+    def verify_data(self):
+        self._verify(self.first_name, self.VAR_NAME, err.EO_PATIENT_FIRST_NAME)
+        self._verify(self.last_name, self.VAR_NAME, err.EO_PATIENT_LAST_NAME)
 
-    def create_patient(self):
-        if self.save_data():
-            self.folder_path  = util.gen_path(cfg.PATIENTS_DATA_PATH, self.id)
-            self.verify_patient_folder()
+    def __save_data(self):
+        dbc = DBController()
+        self.id = util.generate_id(self.first_name+self.last_name)
+        while dbc.exists(cfg.TABLE_PATIENTS, id=self.id):
+            self.id = util.generate_id(self.first_name+self.last_name)
 
-    def update_data(self):
-        if self.verify_data():
-            try:
-                dbc = DBController()
-                dbc.update(cfg.TABLE_PATIENTS,
-                    (self.first_name,
-                    self.last_name,
-                    self.birth_date.strftime('%d-%m-%Y'),
-                    self.gender,
-                    json.dumps(self.mi)),
-                    (self.id,)
-                    )
-            except ValueError as err:
-                print(err.args)
+        dbc.insert(cfg.TABLE_PATIENTS,(self.id,
+            self.first_name,
+            self.last_name,
+            self.birth_date.strftime('%d-%m-%Y'),
+            self.gender,
+            json.dumps(self.mi))
+            )
+
+    def update(self):
+        self.verify_data()
+        dbc = DBController()
+        dbc.update(cfg.TABLE_PATIENTS,
+            (self.first_name,
+            self.last_name,
+            self.birth_date.strftime('%d-%m-%Y'),
+            self.gender,
+            json.dumps(self.mi)),
+            (self.id,)
+            )
+
 
     @classmethod
     def get_patient_by_id(cls, patient_id):

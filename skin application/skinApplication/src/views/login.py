@@ -20,8 +20,8 @@ class LoginView(ViewObject):
         # labels
         self.ui.lb_title.set_title(1)
 
-        # create other account
-        self.ui.bt_create_account.hide()
+        # create another account
+#        self.ui.bt_create_account.hide()
 
     def connect_ui_signals(self):
         #ui signals
@@ -37,15 +37,27 @@ class LoginView(ViewObject):
 
     @Slot()
     def login(self):
+        self.reset_inputs_decorators()
         try:
             doctor = Doctor.get_doctor(self.ui.i_name.currentText(),self.ui.i_password.text())
             self.GLOBAL["doctor"] = doctor
             self.s_change_view.emit(cfg.LOGIN_VIEW, cfg.PATIENTS_VIEW, None)
-        except ValueError as err:
-            self.show_message(err.args[0], cfg.MSG_ERROR)
-            print(err.args)
+        except ValueError as ve:
+            err_msg = "ERROR"
+            if ve.args[0] == err.EO_DOCTOR_PASSWORD:
+                self.ui.i_password.set_decorator("error")
+                if ve.args[1] == err.ET_EMPTY:
+                    err_msg = "Please write the password"
+                if ve.args[1] in (err.ET_INCORRECT, err.ET_NOT_VALID):
+                    err_msg = "Incorrect password"
+
+            self.show_message(err_msg, cfg.MSG_ERROR)
 
 
     @Slot()
     def create_account(self):
         self.s_change_view.emit(cfg.LOGIN_VIEW, cfg.CREATE_ACCOUNT_VIEW, None)
+
+    def reset_inputs_decorators(self):
+        self.ui.i_password.set_decorator(None)
+

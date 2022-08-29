@@ -15,6 +15,7 @@ from PySide6.QtUiTools import QUiLoader
 # My common
 import src.config as cfg
 from src.db_controllers.db_connection import DBConnection
+import src.internal.errors as err
 
 from .ui.promoted.button import Button
 import src.util.data_cleaner as data_cleaner

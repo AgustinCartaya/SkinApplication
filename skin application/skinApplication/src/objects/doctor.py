@@ -23,27 +23,25 @@ class Doctor(DataObject):
         self.password = password
         self.email = email
     
+    def create(self):
+        # error thrown if data not accepted
+        self.verify_data()
+
+        self.save_data()
+
     def verify_data(self):
-        if (self._verify(self.first_name, "NAME", "FIRST_NAME") and
-            self._verify(self.last_name, "NAME", "LAST_NAME") and 
-            self._verify(self.email, "EMAIL", "EMAIL") and
-            self._verify(self.password, "PASSWORD", "PASSWORD")
-            ):
-            return True
-        return False 
+        self._verify(self.first_name, self.VAR_NAME, err.EO_DOCTOR_FIRST_NAME)
+        self._verify(self.last_name, self.VAR_NAME, err.EO_DOCTOR_LAST_NAME)
+        self._verify(self.email, self.VAR_EMAIL, err.EO_DOCTOR_EMAIL)
+        self._verify(self.password, self.VAR_PASSWORD, err.EO_DOCTOR_PASSWORD)
 
     def save_data(self):
-        if self.verify_data():
-            try:
-                dbc = DBController()
-                dbc.insert(cfg.TABLE_DOCTORS,(self.first_name,
-                    self.last_name,
-                    self.password,
-                    self.email))
-            except ValueError as err:
-                # If doctor already exists
-                print(err.args)
-            
+        dbc = DBController()
+        dbc.insert(cfg.TABLE_DOCTORS,(self.first_name,
+            self.last_name,
+            self.password,
+            self.email))
+
     def obtain_doctors_name(self):
         dbc = DBController()
 
@@ -51,7 +49,7 @@ class Doctor(DataObject):
         
     @classmethod
     def get_doctor(cls, last_name, password):
-        if cls._verify(password, "PASSWORD", "PASSWORD"):
+        if cls._verify(password, cls.VAR_PASSWORD, err.EO_DOCTOR_PASSWORD):
             dbc = DBController()
             obj = dbc.select(cfg.TABLE_DOCTORS,
                 last_name = last_name,
@@ -61,7 +59,7 @@ class Doctor(DataObject):
                 obj = obj[0]
                 return Doctor(obj[0], obj[1], obj[2], obj[3], obj[4])
             else:
-                raise ValueError('No object found', "DOCTOR", "NOT_FOUND")
+                raise ValueError(err.EO_DOCTOR_PASSWORD, err.ET_INCORRECT)
 
 
         

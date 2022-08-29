@@ -23,7 +23,9 @@ background-color: transparent;
     background-color: white;
 }
 
-.QStatusBar Label{
+.QStatusBar Label,
+#c_errors Label,
+#lb_error{
     background-color: red;
     color: white;
     padding: 10px 5px;
@@ -397,8 +399,10 @@ LineEdit[empty=false][marked_when_filled=true]{
      background-color: @c_blue_light;
 }
 
-
-
+LineEdit[decorator="error"]
+{
+    border: 1px solid @c_red_base;
+}
 
 /*QLineEdit::disabled
 {

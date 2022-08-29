@@ -99,7 +99,7 @@ class Ui_ai_launcher(object):
         self.sc_patient_required_info.setWidgetResizable(True)
         self.c_patient_required_info_content = QWidget()
         self.c_patient_required_info_content.setObjectName(u"c_patient_required_info_content")
-        self.c_patient_required_info_content.setGeometry(QRect(0, 0, 402, 260))
+        self.c_patient_required_info_content.setGeometry(QRect(0, 0, 402, 240))
         self.verticalLayout_12 = QVBoxLayout(self.c_patient_required_info_content)
         self.verticalLayout_12.setObjectName(u"verticalLayout_12")
         self.c_patient_required_info_list = RequiredElementsContainer(self.c_patient_required_info_content)
@@ -142,7 +142,7 @@ class Ui_ai_launcher(object):
         self.sc_skl_required_info_content.setWidgetResizable(True)
         self.c_skl_required_info_content = QWidget()
         self.c_skl_required_info_content.setObjectName(u"c_skl_required_info_content")
-        self.c_skl_required_info_content.setGeometry(QRect(0, 0, 402, 260))
+        self.c_skl_required_info_content.setGeometry(QRect(0, 0, 402, 240))
         self.verticalLayout_14 = QVBoxLayout(self.c_skl_required_info_content)
         self.verticalLayout_14.setObjectName(u"verticalLayout_14")
         self.c_skl_required_info_list = RequiredElementsContainer(self.c_skl_required_info_content)
@@ -226,7 +226,7 @@ class Ui_ai_launcher(object):
         self.sc_required_images_table.setWidgetResizable(True)
         self.c_required_images_table = QWidget()
         self.c_required_images_table.setObjectName(u"c_required_images_table")
-        self.c_required_images_table.setGeometry(QRect(0, 0, 881, 257))
+        self.c_required_images_table.setGeometry(QRect(0, 0, 881, 237))
         self.verticalLayout_8 = QVBoxLayout(self.c_required_images_table)
         self.verticalLayout_8.setObjectName(u"verticalLayout_8")
         self.verticalLayout_8.setContentsMargins(0, 0, 0, 0)
@@ -266,6 +266,11 @@ class Ui_ai_launcher(object):
 
         self.ly_center.addLayout(self.ly_center_content)
 
+        self.lb_error = QLabel(ai_launcher)
+        self.lb_error.setObjectName(u"lb_error")
+
+        self.ly_center.addWidget(self.lb_error, 0, Qt.AlignHCenter)
+
         self.bt_launch = Button(ai_launcher)
         self.bt_launch.setObjectName(u"bt_launch")
         self.bt_launch.setEnabled(False)
@@ -295,6 +300,7 @@ class Ui_ai_launcher(object):
         self.lb_min_images.setText(QCoreApplication.translate("ai_launcher", u"Min", None))
         self.lb_max_images.setText(QCoreApplication.translate("ai_launcher", u"Max", None))
         self.lb_selected_images.setText(QCoreApplication.translate("ai_launcher", u"Selected", None))
+        self.lb_error.setText(QCoreApplication.translate("ai_launcher", u"to use the AI please fill in all the necessary fields", None))
         self.bt_launch.setText(QCoreApplication.translate("ai_launcher", u"Launch", None))
     # retranslateUi
 

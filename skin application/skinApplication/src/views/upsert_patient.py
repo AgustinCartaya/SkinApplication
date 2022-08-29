@@ -55,14 +55,13 @@ class UpsertPatientView(ViewObject):
 
 
     def catch_basic_info(self):
-        # if patient exists setting id = old id, else id = ""
-        # if patient exists setting mi = old mi, else mi = {}
         if self.ui.i_gender_f.isChecked():
             gender = 0
         elif self.ui.i_gender_m.isChecked():
             gender = 1
         else:
             gender = 2
+
 
         self.p.initialize(self.p.id,
             self.ui.i_first_name.text(),
@@ -71,20 +70,36 @@ class UpsertPatientView(ViewObject):
             gender,
             self.p.mi
             )
-#        self.p_info["basic_info"]["first_name"] = self.ui.i_first_name.text()
-#        self.p_info["basic_info"]["last_name"] = self.ui.i_last_name.text()
-#        self.p_info["basic_info"]["birth_date"] = self.ui.i_birth_date.date().toString("dd-MM-yyyy")
-#        self.p_info["basic_info"]["gender"] = int(self.ui.i_gender_m.isChecked())
+
 
     def next(self):
         self.__change_to_upsert_patient_view(2)
 
     def __change_to_upsert_patient_view(self, view):
         self.catch_basic_info()
-        if view == 2:
-            self.s_change_view.emit(cfg.UPSERT_PATIENT_VIEW, cfg.UPSERT_PATIENT_MI_VIEW, {"patient":self.p, "mode":self.mode})
-        else:
-            self.s_change_view.emit(cfg.UPSERT_PATIENT_VIEW, cfg.UPSERT_PATIENT_PREVIEW_VIEW, {"patient":self.p, "mode":self.mode})
+        self.reset_inputs()
+        try:
+            # verify patient data
+            self.p.verify_data()
+
+            if view == 2:
+                self.s_change_view.emit(cfg.UPSERT_PATIENT_VIEW, cfg.UPSERT_PATIENT_MI_VIEW, {"patient":self.p, "mode":self.mode})
+            else:
+                self.s_change_view.emit(cfg.UPSERT_PATIENT_VIEW, cfg.UPSERT_PATIENT_PREVIEW_VIEW, {"patient":self.p, "mode":self.mode})
+
+        except ValueError as ve:
+            err_msg = "ERROR"
+
+            if ve.args[0] == err.EO_PATIENT_FIRST_NAME:
+                self.ui.i_first_name.set_decorator("error")
+                err_msg = "Invalid first name"
+
+            elif ve.args[0] == err.EO_PATIENT_LAST_NAME:
+                self.ui.i_last_name.set_decorator("error")
+                err_msg = "Invalid last name"
+
+            self.show_message(err_msg, cfg.MSG_ERROR)
+            print(ve.args)
 
     def cancel(self):
         if self.mode == "edit":
@@ -104,6 +119,11 @@ class UpsertPatientView(ViewObject):
             self.ui.i_gender_m.setChecked(True)
         else:
             self.ui.i_gender_o.setChecked(True)
+
+
+    def reset_inputs(self):
+        self.ui.i_first_name.set_decorator(None)
+        self.ui.i_last_name.set_decorator(None)
 
     def fill_default_test(self):
         self.ui.i_first_name.setText('Agustin')

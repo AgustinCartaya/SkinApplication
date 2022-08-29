@@ -25,9 +25,6 @@ class Button(QPushButton):
         self.set_padding(Button.PADDING_L)
         self.action_value = ""
 
-    def repaint(self):
-        self.setStyle(QApplication.style())
-
     def set_padding(self, padding):
         self.setProperty("padding", padding)
 
@@ -39,3 +36,12 @@ class Button(QPushButton):
 
     def set_action_value(self, action_value):
         self.action_value = action_value
+
+    def set_decorator(self, decorator):
+        self.setProperty("decorator", decorator)
+
+    def get_decorator(self, decorator):
+        return self.property(decorator)
+
+    def repaint(self):
+        self.setStyle(QApplication.style())

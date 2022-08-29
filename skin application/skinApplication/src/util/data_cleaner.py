@@ -30,14 +30,6 @@ def normalize_password(text):
 def is_only_text(text):
     return text.isalpha()
 
-
-#def is_name(text):
-#    special_characters = '''!@#$%^&*()+?_=,<>/\"\\.'''
-#    if any(c in special_characters for c in text):
-#        return False
-#    else:
-#        return True
-
 def is_name(text):
     regex = regex_name
     if re.search(regex,text):

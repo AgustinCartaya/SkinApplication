@@ -1,16 +1,18 @@
 from PySide6.QtWidgets import (QWidget, QFrame, QVBoxLayout, QHBoxLayout, QButtonGroup, QRadioButton,
         QSpacerItem, QSizePolicy, QCheckBox, QScrollArea, QWidget)
 
-from PySide6.QtCore import Qt, QSize
+from PySide6.QtCore import Qt, QSize, QTimer, Signal, Slot
 from .label import Label
 from .button import Button
 from .line_edit import LineEdit
 from .check_button import CheckButton
 
-from PySide6.QtCore import Signal, Slot
 
 import src.util.data_cleaner as data_cleaner
 import src.util.util as util
+import src.util.text_filter as tf
+
+import src.internal.errors as err
 
 from .check_button_group import CheckButtonGroup
 
@@ -53,6 +55,7 @@ class VariableInputCreator(QWidget):
         self.__create_add_scales()
         self.__create_scales()
         self.__create_buttons()
+        self.__create_erros()
 
         vs_left = QSpacerItem(2, 40, QSizePolicy.Fixed, QSizePolicy.Expanding)
         self.layout.addItem(vs_left)
@@ -204,9 +207,6 @@ class VariableInputCreator(QWidget):
             lb_units.setText(tf.f(", ".join(VariableInput.get_available_scale_units(scale)), translate=False, parenthesis=True))
             ly_units_preview.addWidget(lb_units)
 
-#            vs_right = QSpacerItem(20, 5, QSizePolicy.Expanding, QSizePolicy.Minimum)
-#            ly_scale.addItem(vs_right)
-
         self.layout.addWidget(self.c_scales)
 
     def __create_buttons(self):
@@ -230,6 +230,19 @@ class VariableInputCreator(QWidget):
         self.ly_bt.addItem(vs_right)
 
         self.layout.addLayout(self.ly_bt)
+
+    def __create_erros(self):
+        self.c_errors = QFrame(self)
+        self.c_errors.setObjectName(u"c_errors")
+
+        ly_errors = QVBoxLayout(self.c_errors)
+        ly_errors.setContentsMargins(0, 0, 0, 0)
+
+        self.lb_error = Label(self.c_errors)
+        ly_errors.addWidget(self.lb_error)
+
+        self.p_layout.addWidget(self.c_errors, 0, Qt.AlignLeft)
+        self.c_errors.hide()
 
     @Slot(str)
     def __type_selected(self, t):
@@ -282,36 +295,56 @@ class VariableInputCreator(QWidget):
 
     @Slot()
     def __add(self):
+        self.reset_inputs_decorators()
+
         info_dict = self.__catch_info()
         available_vi_names = VariableInput.get_available_variable_input_names(self.vi_family)
-#        name = util.title_to_file_name(self.i_name.text())
-        if info_dict["name"] == "":
-            self.show_error("VARIABLE_INPUT_NAME", "EMPTY")
-        elif not self.edit_mode  and info_dict["name"] in available_vi_names:
-            self.show_error("VARIABLE_INPUT_NAME", "EXISTS")
-        elif self.edit_mode and info_dict["name"] != self.vi.name and info_dict["name"] in available_vi_names:
-            self.show_error("VARIABLE_INPUT_NAME", "EXISTS")
-        elif self.input_type == VariableInput.TYPE_OPTIONS and info_dict["items"] is None:
-            self.show_error("VARIABLE_INPUT_VALUES", "EMPTY")
-        elif self.input_type in VariableInput.numeric_input() and self.i_add_scales.isChecked() and info_dict["scale"] is None:
-            self.show_error("VARIABLE_INPUT_SCALE", "NOT_SELECTED")
-        else:
-            if self.edit_mode:
-                self.vi.name = info_dict["name"]
-                self.vi.type = self.input_type
-                self.vi.items = info_dict["items"]
-                self.vi.scale = info_dict["scale"]
-#                self.s_edit.emit(self.vi)
+
+        try:
+            if info_dict["name"] == "":
+                raise ValueError(err.EO_VARIABLE_INPUT_NAME, err.ET_EMPTY)
+            elif not self.edit_mode  and info_dict["name"] in available_vi_names:
+                raise ValueError(err.EO_VARIABLE_INPUT_NAME, err.ET_EXISTS)
+            elif self.edit_mode and info_dict["name"] != self.vi.name and info_dict["name"] in available_vi_names:
+                raise ValueError(err.EO_VARIABLE_INPUT_NAME, err.ET_EXISTS)
+            elif self.input_type == VariableInput.TYPE_OPTIONS and info_dict["items"] is None:
+                raise ValueError(err.EO_VARIABLE_INPUT_VALUES, err.ET_EMPTY)
+            elif self.input_type in VariableInput.numeric_input() and self.i_add_scales.isChecked() and info_dict["scale"] is None:
+                raise ValueError(err.EO_VARIABLE_INPUT_SCALE, err.ET_NOT_SELECTED)
             else:
-                self.vi = VariableInput(None,
-                                    self.vi_family,
-                                    VariableInput.OWNER_DOCTOR,
-                                    self.input_type,
-                                    info_dict["name"],
-                                    info_dict["items"],
-                                    info_dict["scale"])
-            self.s_upsert.emit(self.vi)
-            self.close()
+                if self.edit_mode:
+                    self.vi.name = info_dict["name"]
+                    self.vi.type = self.input_type
+                    self.vi.items = info_dict["items"]
+                    self.vi.scale = info_dict["scale"]
+    #                self.s_edit.emit(self.vi)
+                else:
+                    self.vi = VariableInput(None,
+                                        self.vi_family,
+                                        VariableInput.OWNER_DOCTOR,
+                                        self.input_type,
+                                        info_dict["name"],
+                                        info_dict["items"],
+                                        info_dict["scale"])
+                self.s_upsert.emit(self.vi)
+                self.close()
+        except ValueError as ve:
+            err_msg = "ERROR"
+
+            if ve.args[0] == err.EO_VARIABLE_INPUT_NAME:
+                self.i_name.set_decorator("error")
+                if ve.args[1] == err.ET_EMPTY:
+                    err_msg = "Please fill the name"
+                if ve.args[1] == err.ET_EXISTS:
+                    err_msg = "This name is already used"
+
+            elif ve.args[0] == err.EO_VARIABLE_INPUT_VALUES:
+                self.i_values.set_decorator("error")
+                err_msg = "Please fill the values"
+
+            self.__show_error(err_msg)
+            print(ve.args)
+
 
     def __catch_info(self):
         info_dict = {}
@@ -332,40 +365,26 @@ class VariableInputCreator(QWidget):
         self.s_delete.emit(self.vi)
         self.close()
 
-#    @Slot()
-#    def __edit(self):
-#        name = util.title_to_file_name(self.i_name.text())
-#        if name == "":
-#            self.show_error("VARIABLE_INPUT_NAME", "EMPTY")
-#        elif name in VariableInput.get_available_variable_input_names(self.vi_family):
-#            self.show_error("VARIABLE_INPUT_NAME", "EXISTS")
+    def reset_inputs_decorators(self):
+        self.i_name.set_decorator(None)
+        self.i_values.set_decorator(None)
 
+    def __show_error(self, text):
+        self.lb_error.setText(tf.f(text))
+        self.c_errors.show()
+        QTimer.singleShot(4000, self.hide_error)
 
-    def show_error(self, error_object, type_error):
-        if error_object == "VARIABLE_INPUT_NAME":
-            if type_error == "EMPTY":
-                print(error_object + " " + type_error)
-            elif type_error == "EXISTS":
-                print(error_object + " " + type_error)
-        elif error_object == "VARIABLE_INPUT_VALUES":
-            if type_error == "EMPTY":
-                print(error_object + " " + type_error)
-        elif error_object == "VARIABLE_INPUT_SCALE":
-            if type_error == "NOT_SELECTED":
-                print(error_object + " " + type_error)
+    def hide_error(self):
+        self.c_errors.hide()
 
     def activate_edit_mode(self, variable_input, delete_receaver):
         self.vi = variable_input
         self.edit_mode = True
         self.input_type = self.vi.type
 
-#        self.s_edit.connect(edit_receaver)
         self.s_delete.connect(delete_receaver)
 
         self.bt_add.setText(tf.f("Save"))
-#        self.bt_add.disconnect()
-#        self.bt_add.clicked.connect(self.__edit)
-
 
         self.bt_delete = Button(self)
         self.bt_delete.setText(tf.f("Delete"))

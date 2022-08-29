@@ -3,12 +3,17 @@ from datetime import datetime, timedelta
 from src.db_controllers.db_controller import DBController
 import src.util.data_cleaner as dc
 import src.config as cfg
+import src.internal.errors as err
 import src.util.util as util
 import json
 
 from abc import ABC, abstractmethod
 
 class DataObject:
+
+    VAR_PASSWORD = "PASSWORD"
+    VAR_EMAIL = "EMAIL"
+    VAR_NAME = "NAME"
 
     @abstractmethod
     def initialize(self, *args):
@@ -23,25 +28,25 @@ class DataObject:
         pass
 
     @classmethod
-    def _verify(cls, var, var_type, error_var_name, verify_empty = True):
+    def _verify(cls, var, var_type, error_object, verify_empty = True):
         if verify_empty and len(var) == 0:
-            raise ValueError('Data Object verification error', error_var_name, "EMPTY")
+            raise ValueError(error_object, err.ET_EMPTY)
 
         var_type = var_type.upper()
 
-        if var_type == "NAME":
+        if var_type == cls.VAR_NAME:
             var = dc.normalize_name(var)
             if not dc.is_name(var):
-                raise ValueError('Data Object verification error', error_var_name, "NOT_VALID")
+                raise ValueError(error_object, err.ET_NOT_VALID)
 
-        elif var_type == "EMAIL":
+        elif var_type == cls.VAR_EMAIL:
             var = dc.normalize_email(var)
             if not dc.is_email(var):
-                raise ValueError('Data Object verification error', error_var_name, "NOT_VALID")
+                raise ValueError(error_object, err.ET_NOT_VALID)
 
-        elif var_type == "PASSWORD":
+        elif var_type == cls.VAR_PASSWORD:
             var = dc.normalize_password(var)
             if not dc.is_password(var):
-                raise ValueError('Data Object verification error', error_var_name, "NOT_VALID")
+                raise ValueError(error_object, err.ET_NOT_VALID)
 
         return True

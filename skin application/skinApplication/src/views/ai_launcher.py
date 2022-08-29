@@ -61,8 +61,10 @@ class AILauncherView(ViewObject):
     def __activate_bt_launch(self):
         if self.ai.is_ready_to_launch():
             self.ui.bt_launch.setEnabled(True)
+            self.ui.lb_error.hide()
         else:
             self.ui.bt_launch.setEnabled(False)
+            self.ui.lb_error.show()
 
     def __launch(self):
         results = self.ai.launch()
