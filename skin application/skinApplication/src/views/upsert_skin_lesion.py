@@ -172,8 +172,8 @@ class UpsertSkinLesionView(ViewObject):
     # edit variable input (skl characteristics)
     Slot(VariableInput)
     def show_variable_input_editor(self, variable_input):
-        self.variable_input_creator = VariableInputCreator(self.mv, VariableInput.SKL_INPUT, self.create_new_variable_input)
-        self.variable_input_creator.activate_edit_mode(variable_input, self.edit_variable_input, self.delete_variable_input)
+        self.variable_input_creator = VariableInputCreator(self.mv, VariableInput.SKL_INPUT, self.edit_variable_input)
+        self.variable_input_creator.activate_edit_mode(variable_input, self.delete_variable_input)
         self.variable_input_creator.show()
 
     Slot(VariableInput)

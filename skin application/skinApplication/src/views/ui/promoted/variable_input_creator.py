@@ -19,16 +19,17 @@ from src.objects.variable_input import VariableInput
 
 class VariableInputCreator(QWidget):
 
-    s_add = Signal(VariableInput)
-    s_edit = Signal(VariableInput)
+    s_upsert = Signal(VariableInput)
+#    s_edit = Signal(VariableInput)
     s_delete = Signal(VariableInput)
-    def __init__(self, parent, vi_family, add_receaver):
+    def __init__(self, parent, vi_family, upsert_receaver):
         super().__init__(None)
 
         self.vi_family = vi_family
+        self.vi = None
         self.input_type = ""
         self.parent = parent
-        self.s_add.connect(add_receaver)
+        self.s_upsert.connect(upsert_receaver)
 
         self.edit_mode = False
 
@@ -300,21 +301,21 @@ class VariableInputCreator(QWidget):
                 self.vi.type = self.input_type
                 self.vi.items = info_dict["items"]
                 self.vi.scale = info_dict["scale"]
-                self.s_edit.emit(self.vi)
+#                self.s_edit.emit(self.vi)
             else:
-                vi = VariableInput(None,
+                self.vi = VariableInput(None,
                                     self.vi_family,
                                     VariableInput.OWNER_DOCTOR,
                                     self.input_type,
                                     info_dict["name"],
                                     info_dict["items"],
                                     info_dict["scale"])
-                self.s_add.emit(vi)
+            self.s_upsert.emit(self.vi)
             self.close()
 
     def __catch_info(self):
         info_dict = {}
-        info_dict["name"] = util.title_to_file_name(self.i_name.text())
+        info_dict["name"] = util.clean_title(self.i_name.text())
         info_dict["items"] = util.str_to_list(self.i_values.text(),",")
         info_dict["scale"] = None
 
@@ -353,12 +354,12 @@ class VariableInputCreator(QWidget):
             if type_error == "NOT_SELECTED":
                 print(error_object + " " + type_error)
 
-    def activate_edit_mode(self, variable_input, edit_receaver, delete_receaver):
+    def activate_edit_mode(self, variable_input, delete_receaver):
         self.vi = variable_input
         self.edit_mode = True
         self.input_type = self.vi.type
 
-        self.s_edit.connect(edit_receaver)
+#        self.s_edit.connect(edit_receaver)
         self.s_delete.connect(delete_receaver)
 
         self.bt_add.setText("Save")

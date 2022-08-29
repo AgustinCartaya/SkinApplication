@@ -33,7 +33,7 @@ CREATE TABLE VARIABLE_INPUTS (
     name TEXT NOT NULL,
     items TEXT,
     scale TEXT,
-    UNIQUE(name, family)
+    UNIQUE(id, family)
 );
 
 

@@ -34,7 +34,7 @@ class UpsertPatientMiView(ViewObject):
         self.ui.lb_title.set_title(1)
 
         # medical information
-        self.ui.c_mi.initialize(VariableInput.MI_INPUT, self.edit_variable_input)
+        self.ui.c_mi.initialize(VariableInput.MI_INPUT, self.show_variable_input_editor, self.edit_variable_input)
 
 
     def connect_ui_signals(self):
@@ -92,18 +92,36 @@ class UpsertPatientMiView(ViewObject):
     # Add new variable input (Medical information)
     @Slot()
     def __show_variable_input_creator(self):
-        self.variable_input_creator = VariableInputCreator(self.mv, VariableInput.MI_INPUT, self.new_variable_input_created)
+        self.variable_input_creator = VariableInputCreator(self.mv, VariableInput.MI_INPUT, self.create_new_variable_input)
         self.variable_input_creator.show()
 
     Slot(VariableInput)
-    def new_variable_input_created(self, variable_input):
+    def create_new_variable_input(self, variable_input):
         try:
             variable_input.create()
             self.ui.c_mi.append_new_variable_input(variable_input)
         except ValueError as err:
             print(err.args)
 
-    # edit variable input(Medical information)
+    # edit variable input (Medical information)
+    Slot(VariableInput)
+    def show_variable_input_editor(self, variable_input):
+        self.variable_input_creator = VariableInputCreator(self.mv, VariableInput.MI_INPUT, self.edit_variable_input)
+        self.variable_input_creator.activate_edit_mode(variable_input, self.delete_variable_input)
+        self.variable_input_creator.show()
+
     Slot(VariableInput)
     def edit_variable_input(self, variable_input):
-        print(variable_input)
+        try:
+            variable_input.update()
+            self.ui.c_mi.variable_input_edited(variable_input)
+        except ValueError as err:
+            print(err.args)
+
+    Slot(VariableInput)
+    def delete_variable_input(self, variable_input):
+        try:
+            variable_input.delete()
+            self.ui.c_mi.variable_input_deleted(variable_input)
+        except ValueError as err:
+            print(err.args)

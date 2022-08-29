@@ -169,6 +169,9 @@ class VariableInput(DataObject):
 
     @classmethod
     def create_ai_variable_input(cls, data, family, ai_name, file_name):
+        if "id" not in data:
+            raise ValueError("%s WITHOUT ID (AI: %s FILE: %s)" % (family,ai_name,file_name) )
+
         if "name" not in data:
             raise ValueError("%s WITHOUT NAME (AI: %s FILE: %s)" % (family,ai_name,file_name) )
 
@@ -194,9 +197,8 @@ class VariableInput(DataObject):
             raise ValueError("%s CAN'T HAVE ITEMS AND SCALE (AI: %s FILE: %s)" % (family,ai_name,file_name) )
 
         dbc = DBController()
-        if not dbc.secure_exists(cfg.TABLE_VARIABLE_INPUTS, (data["name"],family)):
-            name = util.title_to_file_name(data["name"])
-            vi = VariableInput(name, family, cls.OWNER_AI, data["type"], name)
+        if not dbc.secure_exists(cfg.TABLE_VARIABLE_INPUTS, (data["id"],family)):
+            vi = VariableInput(data["id"], family, cls.OWNER_AI, data["type"], util.clean_title(data["name"]))
             if "items" in data:
                 vi.items = data["items"]
             elif "scale" in data:

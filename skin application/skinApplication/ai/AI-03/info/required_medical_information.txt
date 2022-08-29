@@ -1,16 +1,19 @@
 [
 {
-"name":"eye_color",
+"id":"eye_color",
+"name":"Eye color",
 "type":"options",
 "items":["Black","Brown","Blue","Gray","Green","Hazel"]
 },
 {
-"name":"hair_color",
+"id":"hair_color",
+"name":"Hair color",
 "type":"options",
 "items":["Black","Brown","Blonde","Grey","White"]
 },
 {
-"name":"weight",
+"id":"weight",
+"name":"Weight",
 "type":"float",
 "scale":"weight"
 }

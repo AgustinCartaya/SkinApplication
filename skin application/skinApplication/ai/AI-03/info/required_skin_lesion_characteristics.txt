@@ -1,6 +1,7 @@
 [
 {
-"name":"diameter",
+"id":"diameter",
+"name":"Diameter",
 "type":"float",
 "scale":"length"
 }
