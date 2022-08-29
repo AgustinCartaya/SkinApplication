@@ -57,8 +57,8 @@ class PatientCard(PromotedContainer):
         ly_bottom.addWidget(self.lb_id, 0, Qt.AlignCenter)
 
     def __fill_information(self):
-        self.lb_last_name.setText(self.p.last_name.upper())
-        self.lb_first_name.setText(self.p.first_name)
+        self.lb_last_name.setText(tf.f(self.p.last_name, translate=False, upper=True))
+        self.lb_first_name.setText(tf.f(self.p.first_name, translate=False))
         self.lb_id.setText(self.p.id)
 
     def enterEvent(self, event):

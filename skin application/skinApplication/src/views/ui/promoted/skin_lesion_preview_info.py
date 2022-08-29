@@ -43,7 +43,7 @@ class SkinLesionPreviewInfo(PromotedContainer):
         self.__show_content()
 
     def __show_title(self):
-        self.lb_title.setText(self.title)
+        self.lb_title.setText(tf.f(self.title, translate=False))
 
     def __show_content(self):
         # to refresh
@@ -107,7 +107,7 @@ class SkinLesionPreviewInfo(PromotedContainer):
 
         # AI title
         lb_ai_result_title = Label(c_ai_result)
-        lb_ai_result_title.setText(ai_name)
+        lb_ai_result_title.setText(tf.f(ai_name, translate=False))
         ly_ai_result.addWidget(lb_ai_result_title)
 
         # AI content

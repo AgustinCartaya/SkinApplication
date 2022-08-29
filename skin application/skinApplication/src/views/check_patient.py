@@ -63,19 +63,19 @@ class CheckPatientView(ViewObject):
         self.ui.lb_patient_information.set_title(2)
 
         # id
-        self.ui.i_id.setText(self.p.id)
+        self.ui.i_id.setText(tf.f(self.p.id, translate=False))
 
         # basic information
-        self.ui.i_first_name.setText(self.p.first_name)
-        self.ui.i_last_name.setText(self.p.last_name)
-        self.ui.i_age.setText(str(self.p.age))
+        self.ui.i_first_name.setText(tf.f(self.p.first_name, translate=False))
+        self.ui.i_last_name.setText(tf.f(self.p.last_name, translate=False))
+        self.ui.i_age.setText(tf.f(self.p.age, translate=False))
 
         if self.p.gender == 0:
-            self.ui.i_gender.setText("Woman")
+            self.ui.i_gender.setText(tf.f("Woman"))
         elif self.p.gender == 1:
-            self.ui.i_gender.setText("Man")
+            self.ui.i_gender.setText(tf.f("Man"))
         else:
-            self.ui.i_gender.setText("Other")
+            self.ui.i_gender.setText(tf.f("Other"))
 
         # navigator
         self.ui.bt_add_lesion.set_position(2)

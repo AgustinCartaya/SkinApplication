@@ -29,7 +29,7 @@ class TimelinePointsContainer(PromotedContainer):
         counter = 0
         for tilp in timeline.timeline_points:
             lb_point_date = Label(self)
-            lb_point_date.setText(tilp.date.strftime('%d-%m-%Y'))
+            lb_point_date.setText(tf.f(tilp.date.strftime('%d-%m-%Y'), translate=False))
             self.layout.addWidget(lb_point_date, 0, counter, 1, 1, Qt.AlignHCenter)
 
             i_point = QRadioButton(self)

@@ -93,10 +93,10 @@ class UpsertPatientView(ViewObject):
             self.s_change_view.emit(cfg.UPSERT_PATIENT_VIEW, cfg.PATIENTS_VIEW, None)
 
     def charge_edit_mode(self):
-        self.ui.lb_title.setText("Edit patient")
+        self.ui.lb_title.setText(tf.f("Edit patient"))
 
-        self.ui.i_first_name.setText(self.p.first_name)
-        self.ui.i_last_name.setText(self.p.last_name)
+        self.ui.i_first_name.setText(tf.f(self.p.first_name, translate=False))
+        self.ui.i_last_name.setText(tf.f(self.p.last_name, translate=False))
         self.ui.i_birth_date.setDate(QDate.fromString(self.p.birth_date.strftime('%d-%m-%Y'), "dd-MM-yyyy"))
         if self.p.gender == 0:
             self.ui.i_gender_f.setChecked(True)

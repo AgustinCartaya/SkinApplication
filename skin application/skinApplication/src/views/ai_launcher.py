@@ -1,9 +1,6 @@
 from .view_object import *
 from .ui.ui_ai_launcher import Ui_ai_launcher
 
-from .ui.promoted.required_elements_container import  RequiredElementsContainer
-from .ui.promoted.required_skl_img_container import  RequiredSklImgContainer
-
 from src.objects.ai import AI
 from src.objects.image_list import ImageList
 from src.objects.variable_input import VariableInput

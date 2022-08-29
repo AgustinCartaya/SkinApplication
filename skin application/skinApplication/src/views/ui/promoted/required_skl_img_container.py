@@ -23,7 +23,7 @@ class RequiredSklImgContainer(PromotedContainer):
                 self.req_skl_img_items[img_name] = rk_img
         else:
             lb_no_required_info = Label(self)
-            lb_no_required_info.setText("No required information")
+            lb_no_required_info.setText(tf.f("No required images"))
             self.layout.addWidget(lb_no_required_info,0, Qt.AlignHCenter)
 
     def _pre_charge(self):

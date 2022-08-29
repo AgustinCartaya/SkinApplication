@@ -76,7 +76,7 @@ class Pagination(PromotedContainer):
         self.bt_back_page = Button(self.c_pagination_controllers)
         self.bt_back_page.setMinimumSize(QSize(28, 28))
         self.bt_back_page.setMaximumSize(QSize(28, 28))
-        self.bt_back_page.setText("<")
+        self.bt_back_page.setText(tf.f("<"))
 #        self.bt_back_page.set_icon(Button.IC_LEFT)
         self.ly_pagination_controllers.addWidget(self.bt_back_page)
         self.bt_back_page.clicked.connect(self.back_page)
@@ -89,17 +89,16 @@ class Pagination(PromotedContainer):
         self.i_actual_page.setValidator(data_cleaner.create_text_validator(data_cleaner.regex_not_null_4_number))
 
         lb_of = Label(self.c_pagination_controllers)
-        lb_of.setText("of")
+        lb_of.setText(tf.f("of"))
         self.ly_pagination_controllers.addWidget(lb_of)
 
         self.lb_number_of_pages = Label(self.c_pagination_controllers)
-#        self.lb_number_of_pages.setText("Of ...")
         self.ly_pagination_controllers.addWidget(self.lb_number_of_pages)
 
         self.bt_next_page = Button(self.c_pagination_controllers)
         self.bt_next_page.setMinimumSize(QSize(28, 28))
         self.bt_next_page.setMaximumSize(QSize(28, 28))
-        self.bt_next_page.setText(">")
+        self.bt_next_page.setText(tf.f(">"))
 
         self.ly_pagination_controllers.addWidget(self.bt_next_page)
         self.bt_next_page.clicked.connect(self.next_page)
@@ -114,19 +113,19 @@ class Pagination(PromotedContainer):
 
         self.i_nb_rows = LineEdit(self.c_size_controllers)
         self.i_nb_rows.setMaximumSize(QSize(40, 16777215))
-        self.i_nb_rows.setText(str(self.nb_rows))
+        self.i_nb_rows.setText(tf.f(self.nb_rows))
         self.i_nb_rows.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
         self.ly_size_controllers.addWidget(self.i_nb_rows)
         self.i_nb_rows.returnPressed.connect(self.__change_size)
         self.i_nb_rows.setValidator(data_cleaner.create_text_validator(data_cleaner.regex_not_null_4_number))
 
         self.lb_x_size = Label(self.c_size_controllers)
-        self.lb_x_size.setText("x")
+        self.lb_x_size.setText(tf.f("x"))
         self.ly_size_controllers.addWidget(self.lb_x_size)
 
         self.i_nb_cols = LineEdit(self.c_size_controllers)
         self.i_nb_cols.setMaximumSize(QSize(40, 16777215))
-        self.i_nb_cols.setText(str(self.nb_cols))
+        self.i_nb_cols.setText(tf.f(self.nb_cols))
         self.ly_size_controllers.addWidget(self.i_nb_cols)
         self.i_nb_cols.returnPressed.connect(self.__change_size)
         self.i_nb_cols.setValidator(data_cleaner.create_text_validator(data_cleaner.regex_not_null_4_number))
@@ -144,9 +143,9 @@ class Pagination(PromotedContainer):
         else:
             self.c_pagination_controllers.show()
 
-        self.lb_number_of_pages.setText(self.nb_max_pages)
-        self.i_nb_rows.setText(str(self.nb_rows))
-        self.i_nb_cols.setText(str(self.nb_cols))
+        self.lb_number_of_pages.setText(tf.f(self.nb_max_pages))
+        self.i_nb_rows.setText(tf.f(self.nb_rows))
+        self.i_nb_cols.setText(tf.f(self.nb_cols))
 
     def __paint_cards(self):
         for i in reversed(range(self.ly_cards.count())):
@@ -162,7 +161,7 @@ class Pagination(PromotedContainer):
                 else:
                     self.ly_cards.addWidget(Label(self), i, j, 1, 1)
 
-        self.i_actual_page.setText(str(self.pointer+1))
+        self.i_actual_page.setText(tf.f(self.pointer+1))
         self.c_cards.update()
         self.__calc_elem_size()
 

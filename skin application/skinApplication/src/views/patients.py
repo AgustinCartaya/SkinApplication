@@ -86,7 +86,7 @@ class PatientsView(ViewObject):
 #        self.ui.c_pagination.forced_empty_spaces = True
 
         # Number of Patients
-        self.ui.i_number_of_patients.setText(len(self.p_list))
+        self.ui.i_number_of_patients.setText(tf.f(len(self.p_list)))
 
 
     def connect_ui_signals(self):
@@ -218,5 +218,5 @@ class PatientsView(ViewObject):
         self.ui.c_pagination.add_cards(card_patients)
 
     def __refresh_number_of_patients(self):
-        self.ui.i_number_of_patients.setText(len(self.p_list_filtered))
+        self.ui.i_number_of_patients.setText(tf.f(len(self.p_list_filtered)))
 

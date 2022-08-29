@@ -144,6 +144,7 @@ class MainWindow(QtWidgets.QMainWindow):
             if atts["collet_mode"]:
                 self.images_view = ImagesView(self, atts["images"], atts["patient"], atts["skin_lesion"], atts["collet_mode"], atts["selected_images"])
             else:
+                self.clean_view_objects()
                 self.images_view = ImagesView(self, atts["images"], atts["patient"], atts["skin_lesion"], atts["collet_mode"])
             self.set_view(self.images_view)
 
@@ -160,16 +161,22 @@ class MainWindow(QtWidgets.QMainWindow):
     def remove_last_view(self):
         self._layers.removeWidget(self._layers.currentWidget())
         self._layers.currentWidget().refresh()
+#        self.clean_view_objects()
+
 
     def clean_views(self):
         nb = self._layers.count()
         for i in range(nb):
             self._layers.removeWidget(self._layers.currentWidget())
+        self.clean_view_objects()
+
+    def clean_view_objects(self):
         self.upsert_patient_view = None
         self.upsert_patient_mi_view = None
         self.images_view = None
         self.ai_laucher_view = None
         self.timeline_view = None
+
 
     def closeEvent(self, event):
         nb_widgets = self._layers.count()

@@ -29,13 +29,12 @@ class FilterSklImgItem(PromotedContainer):
 
     def __create_check_box(self):
         self.input = QCheckBox(self)
-        self.input.setText(self.img_name)
+        self.input.setText(tf.f(self.img_name, translate=False))
         self.layout.addWidget(self.input)
         self.input.stateChanged.connect(self.filter_receaver)
 
     def __create_lb_number(self):
         self.lb_number = Label(self)
-#        self.lb_number.setText(self.img_number, parenthesis=True)
         self.layout.addWidget(self.lb_number)
 
     def set_checked(self, checked):
@@ -45,5 +44,5 @@ class FilterSklImgItem(PromotedContainer):
         return self.input.isChecked()
 
     def refresh_lb_number(self, img_number):
-        self.lb_number.setText(img_number, parenthesis=True)
+        self.lb_number.setText(tf.f(img_number, parenthesis=True))
 

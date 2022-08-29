@@ -44,7 +44,7 @@ class ImagesView(ViewObject):
             self.ui.c_left.hide()
             self.ui.c_pagination.set_grid_cards_size(1,1)
             lb_no_images = Label()
-            lb_no_images.setText("No images to show", center=True)
+            lb_no_images.setText(tf.f("No images to show"), center=True)
             self.ui.c_pagination.add_cards([lb_no_images])
         else:
             self.__show_images()
@@ -144,14 +144,16 @@ class ImagesView(ViewObject):
             self.__show_image_description(img)
 
             # show delete button
-            self.ui.bt_delete_image.show()
+            if not self.collet_mode:
+                self.ui.bt_delete_image.show()
 
         else:
             self.selected_imgs.remove(img)
             self.__clean_image_descriptions()
 
             # hide delete button
-            self.ui.bt_delete_image.hide()
+            if not self.collet_mode:
+                self.ui.bt_delete_image.hide()
 
 
         # show selected images number
@@ -171,14 +173,14 @@ class ImagesView(ViewObject):
             ly_single_img_info.setSpacing(4)
 
             lb_info_name = Label(c_single_img_info)
-            lb_info_name.setText(info_name, colon=True, format=True)
+            lb_info_name.setText(tf.f(info_name, translate=False, colon=True, format=True))
             ly_single_img_info.addWidget(lb_info_name)
 
             i_info_value = Label(c_single_img_info)
             if info_name == "type":
-                i_info_value.setText(info_value, format=True)
+                i_info_value.setText(tf.f(info_value, translate=False, format=True))
             else:
-                i_info_value.setText(info_value)
+                i_info_value.setText(tf.f(info_value, translate=False))
 #            i_info_value.set_decoration("mi_content")
             ly_single_img_info.addWidget(i_info_value)
 
@@ -228,7 +230,7 @@ class ImagesView(ViewObject):
         self.ui.c_pagination.add_cards(self.images_cards)
 
     def __collet_mode(self):
-        self.ui.bt_command.setText("Select")
+        self.ui.bt_command.setText(tf.f("Select"))
         self.bt_command_text = self.ui.bt_command.text()
         self.__refresh_command_bt_text()
 
@@ -242,7 +244,7 @@ class ImagesView(ViewObject):
     def __refresh_command_bt_text(self):
         nb_selected = len(self.selected_imgs)
         if nb_selected > 0:
-            self.ui.bt_command.setText(self.bt_command_text + " (" + str(nb_selected) + ")")
+            self.ui.bt_command.setText(self.bt_command_text + tf.f(nb_selected, parenthesis=True))
         else:
             self.ui.bt_command.setText(self.bt_command_text)
 
@@ -252,7 +254,6 @@ class ImagesView(ViewObject):
         self.img_list.remove_image(img)
         self.__filter_images()
         src = img.src
-        del(img.image)
         del(img)
 #        self.selected_imgs[-1]
         util.delete_file(src)

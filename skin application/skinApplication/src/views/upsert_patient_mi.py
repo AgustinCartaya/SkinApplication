@@ -86,7 +86,7 @@ class UpsertPatientMiView(ViewObject):
 
 
     def charge_edit_mode(self):
-        self.ui.lb_title.setText("Edit medical information")
+        self.ui.lb_title.setText(tf.f("Edit medical information"))
         self.ui.c_mi.select_default_values(self.p.mi)
 
     # Add new variable input (Medical information)

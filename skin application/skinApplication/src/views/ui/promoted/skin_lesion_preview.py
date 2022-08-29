@@ -97,7 +97,7 @@ class SkinLesionPreview(PromotedContainer):
 
         # update button
         self.bt_update = Button(self.c_n2)
-        self.bt_update.setText("Update")
+        self.bt_update.setText(tf.f("Update"))
         self.bt_update.setMinimumSize(QSize(300, 16777215))
         self.bt_update.setMaximumSize(QSize(300, 16777215))
         self.c_n2_layout.addWidget(self.bt_update,0, Qt.AlignHCenter)
@@ -121,7 +121,7 @@ class SkinLesionPreview(PromotedContainer):
 
         # bt see imgaes
         self.bt_see_images = Button(self.c_buttons)
-        self.bt_see_images.setText("Images")
+        self.bt_see_images.setText(tf.f("Images"))
         self.bt_see_images.setMinimumSize(QSize(100, 0))
         self.bt_see_images.setMaximumSize(QSize(100, 16777215))
         self.c_buttons_layout.addWidget(self.bt_see_images)
@@ -129,7 +129,7 @@ class SkinLesionPreview(PromotedContainer):
 
         # bt see time line
         self.bt_see_timeline = Button(self.c_buttons)
-        self.bt_see_timeline.setText("Time line")
+        self.bt_see_timeline.setText(tf.f("Time line"))
         self.bt_see_timeline.setMinimumSize(QSize(100, 0))
         self.bt_see_timeline.setMaximumSize(QSize(100, 16777215))
         self.c_buttons_layout.addWidget(self.bt_see_timeline)
@@ -137,7 +137,7 @@ class SkinLesionPreview(PromotedContainer):
 
         # bt more
         self.bt_more_options = Button(self.c_buttons)
-        self.bt_more_options.setText("More")
+        self.bt_more_options.setText(tf.f("More"))
         self.bt_more_options.setMinimumSize(QSize(100, 0))
         self.bt_more_options.setMaximumSize(QSize(100, 16777215))
 

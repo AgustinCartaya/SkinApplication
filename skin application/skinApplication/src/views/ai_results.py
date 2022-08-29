@@ -28,7 +28,7 @@ class AIResultsView(ViewObject):
         self.ui.bt_relaunch.set_position(2)
 
         # title
-        self.ui.lb_ai_name.setText(self.ai.name)
+        self.ui.lb_ai_name.setText(tf.f(self.ai.name, translate=False))
 
     def connect_ui_signals(self):
         self.ui.bt_back.clicked.connect(self.__back)
@@ -41,11 +41,11 @@ class AIResultsView(ViewObject):
             ly_result.setSpacing(4)
 
             lb_result_name = Label(self.ui.c_results)
-            lb_result_name.setText(res_name, colon=True, format=True)
+            lb_result_name.setText(tf.f(res_name, colon=True, format=True))
             ly_result.addWidget(lb_result_name)
 
             lb_result_content = Label(self.ui.c_results)
-            lb_result_content.setText(res_content)
+            lb_result_content.setText(tf.f(res_content, translate=False))
             ly_result.addWidget(lb_result_content)
 
             # spacer

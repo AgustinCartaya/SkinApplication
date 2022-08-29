@@ -36,16 +36,17 @@ class VariableInput(DataObject):
         self.name = name
 
         if input_type == self.TYPE_BOOL:
-            items = [self.BOOL_YES, self.BOOL_NO]
+            self.items = [self.BOOL_NO, self.BOOL_YES]
+            self.action_values = [0,1]
         else:
             if items is not None and type(items) == str:
                 self.items = items.split(",")
             else:
                 self.items = items
+            # for virtual inputs type options
+            self.action_values = self.items
         self.scale = scale
 
-        # for virtual inputs type options
-        self.action_values = self.items
 
     def __save_data(self):
         try:
@@ -87,13 +88,18 @@ class VariableInput(DataObject):
     # creation
     def create(self):
         if self.id is None:
-            self.id = self.generate_id()
+
+            self.id = util.generate_id(self.family.replace("_","")+"VI")
+            while self.exists(self.id, self.family):
+                self.id = util.generate_id(self.family.replace("_","")+"VI")
+
+#            self.id = self.generate_id()
         self.__save_data()
         return self.id
 
-    def generate_id(self):
-        vi_number = self.count_available_variable_inputs(self.family, self.OWNER_DOCTOR)
-        return self.family + "_" + str(vi_number)
+#    def generate_id(self):
+#        vi_number = self.count_available_variable_inputs(self.family, self.OWNER_DOCTOR)
+#        return self.family + "_" + str(vi_number)
 
     def set_items(self, items, action_values=None):
         if self.type == self.TYPE_OPTIONS:
@@ -108,7 +114,14 @@ class VariableInput(DataObject):
     def get_scalized_str(self, value):
         if self.has_scale():
             scalized = self.to_sub_unit(self.scale, value)
+            if self.type == self.TYPE_INT:
+                scalized= (int(scalized[0]),scalized[1])
             return " ".join([str(scalized[0]), scalized[1]])
+        elif self.type == self.TYPE_BOOL:
+            if value:
+                return self.BOOL_YES
+            else:
+                return self.BOOL_NO
         else:
             return str(value)
 
@@ -168,6 +181,11 @@ class VariableInput(DataObject):
         return (cls.TYPE_FLOAT, cls.TYPE_INT)
 
     @classmethod
+    def exists(cls, id, family):
+        dbc = DBController()
+        return dbc.secure_exists(cfg.TABLE_VARIABLE_INPUTS, (id,family))
+
+    @classmethod
     def create_ai_variable_input(cls, data, family, ai_name, file_name):
         if "id" not in data:
             raise ValueError("%s WITHOUT ID (AI: %s FILE: %s)" % (family,ai_name,file_name) )
@@ -196,8 +214,7 @@ class VariableInput(DataObject):
         if "scale" in data and "items" in data:
             raise ValueError("%s CAN'T HAVE ITEMS AND SCALE (AI: %s FILE: %s)" % (family,ai_name,file_name) )
 
-        dbc = DBController()
-        if not dbc.secure_exists(cfg.TABLE_VARIABLE_INPUTS, (data["id"],family)):
+        if not cls.exists(data["id"],family):
             vi = VariableInput(data["id"], family, cls.OWNER_AI, data["type"], util.clean_title(data["name"]))
             if "items" in data:
                 vi.items = data["items"]
@@ -206,7 +223,7 @@ class VariableInput(DataObject):
 
             vi.create()
 
-        return data["name"]
+        return data["id"]
 
     # scales
     @classmethod

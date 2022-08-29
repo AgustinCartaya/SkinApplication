@@ -37,7 +37,7 @@ class FilterVariableInput(PromotedContainer):
 
     def __create_title(self):
         self.lb_title = Label(self)
-        self.lb_title.setText(self.vi.name, format=True)
+        self.lb_title.setText(tf.f(self.vi.name, translate=False, format=True))
         self.layout.addWidget(self.lb_title)
 
     def __create_content(self):
@@ -84,7 +84,7 @@ class FilterVariableInput(PromotedContainer):
                 ly_content.addLayout(ly_line)
 
             bt = CheckButton(self)
-            bt.setText(self.vi.items[i])
+            bt.setText(tf.f(self.vi.items[i], translate=False))
             bt.set_action_value(self.vi.action_values[i])
 #            bt.clicked.connect(self.call_filter)
             ly_line.addWidget(bt)
@@ -167,7 +167,7 @@ class FilterVariableInput(PromotedContainer):
         ly_precise_header.setContentsMargins(5, 5, 5, 5)
 
         lb_precise = Label(self.c_precise_header)
-        lb_precise.setText("Precise", format=True)
+        lb_precise.setText(tf.f("Precise", format=True))
         ly_precise_header.addWidget(lb_precise)
 
         #   content
@@ -198,7 +198,7 @@ class FilterVariableInput(PromotedContainer):
         ly_precise_header.setContentsMargins(5, 5, 5, 5)
 
         lb_range = Label(self.c_range_header)
-        lb_range.setText("Range", format=True)
+        lb_range.setText(tf.f("Range", format=True))
         ly_precise_header.addWidget(lb_range)
 
         #   content
@@ -210,7 +210,7 @@ class FilterVariableInput(PromotedContainer):
         ly_range_content.addWidget(self.i_range_min)
 
         lb_range_sep = Label(self.c_range_content)
-        lb_range_sep.setText("-")
+        lb_range_sep.setText(tf.f("-"))
         ly_range_content.addWidget(lb_range_sep)
 
         #   Filter VARIABLE
@@ -296,7 +296,7 @@ class FilterVariableInput(PromotedContainer):
             self.i_filter.unselect_all()
 
         elif self.vi.type == VariableInput.TYPE_TEXT:
-            self.i_filter.setText("")
+            self.i_filter.setText(tf.f(""))
 
         elif self.vi.type == VariableInput.TYPE_BOOL:
             self.i_filter.setCurrentIndex(0)

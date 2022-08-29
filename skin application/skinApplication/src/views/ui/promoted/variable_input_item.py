@@ -44,7 +44,7 @@ class VariableInputItem(PromotedContainer):
 
     def __create_title(self):
         self.lb_title = Label(self)
-        self.lb_title.setText(self.vi.name, format=True, colon=True)
+        self.lb_title.setText(tf.f(self.vi.name, translate=False, format=True, colon=True))
         self.layout.addWidget(self.lb_title)
 
     def __create_input(self):
@@ -94,7 +94,7 @@ class VariableInputItem(PromotedContainer):
         # Edit button
         if self.vi.is_editable():
             self.bt_edit = Button(self.c_input)
-            self.bt_edit.setText("Edit")
+            self.bt_edit.setText(tf.f("Edit"))
 #            self.bt_edit.setMinimumSize(QSize(0, 0))
             self.bt_edit.setMaximumSize(QSize(80, 30))
             self.TYPE_layout.addWidget(self.bt_edit)
@@ -152,7 +152,7 @@ class VariableInputItem(PromotedContainer):
                 print("error finding " + item)
 
         elif self.vi.type == VariableInput.TYPE_TEXT:
-            self.input.setText(item)
+            self.input.setText(tf.f(item, translate=False))
 
         elif self.vi.is_numeric():
             if self.vi.has_scale():

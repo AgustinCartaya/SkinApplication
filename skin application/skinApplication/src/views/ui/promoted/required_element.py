@@ -38,9 +38,9 @@ class RequiredElement(PromotedContainer):
     def __fill_content(self):
 
         if self.satisfied:
-            self.bt_satisfied.setText("/")
+            self.bt_satisfied.setText(tf.f("/"))
         else:
-            self.bt_satisfied.setText("X")
+            self.bt_satisfied.setText(tf.f("X"))
             self.bt_satisfied.set_type("cancel")
 
         req_info = FormItem(self)

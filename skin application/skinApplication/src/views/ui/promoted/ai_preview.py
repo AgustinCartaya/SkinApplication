@@ -57,7 +57,7 @@ class AIPreview(PromotedContainer):
 
     def __create_launch_button(self):
         self.bt_lauch = Button(self)
-        self.bt_lauch.setText(self.ai_name)
+        self.bt_lauch.setText(tf.f(self.ai_name, translate=False))
         self.layout.addWidget(self.bt_lauch, 0, Qt.AlignHCenter)
         self.bt_lauch.clicked.connect(self.__launch_ai)
 
@@ -70,7 +70,7 @@ class AIPreview(PromotedContainer):
 
         # title
         self.lb_description = Label(self.c_description)
-        self.lb_description.setText("Description")
+        self.lb_description.setText(tf.f("Description"))
         self.lb_description.setMaximumSize(QSize(16777215, 20))
         self.ly_description.addWidget(self.lb_description, 0, Qt.AlignHCenter)
 
@@ -78,13 +78,13 @@ class AIPreview(PromotedContainer):
         self.i_description = Label(self.c_description)
         self.i_description.setAlignment(Qt.AlignCenter)
         self.i_description.setWordWrap(True)
-        self.i_description.setText(self.ai_description)
+        self.i_description.setText(tf.f(self.ai_description, translate=False))
         self.ly_description.addWidget(self.i_description, 0, Qt.AlignTop)
 
         # read more
         self.i_read_more = Button(self.c_description)
 #        self.i_read_more.setMaximumSize(QSize(16777215, 20))
-        self.i_read_more.setText("Read more")
+        self.i_read_more.setText(tf.f("Read more"))
         self.ly_description.addWidget(self.i_read_more, 0, Qt.AlignHCenter)
 
         self.layout.addWidget(self.c_description)
@@ -98,7 +98,7 @@ class AIPreview(PromotedContainer):
 
         # title
         self.lb_results = Label(self.c_results)
-        self.lb_results.setText("Results")
+        self.lb_results.setText(tf.f("Results"))
         self.lb_results.setMaximumSize(QSize(16777215, 20))
         self.ly_results.addWidget(self.lb_results, 0, Qt.AlignHCenter)
 
@@ -117,13 +117,13 @@ class AIPreview(PromotedContainer):
         for res_name, res_content in self.ai_results.items():
             # Result name
             lb_res_name = Label(self.c_results)
-            lb_res_name.setText(res_name)
+            lb_res_name.setText(tf.f(res_name, translate=False))
 #            ly_res.addWidget(lb_res_name)
             self.ly_form_results.setWidget(count, QFormLayout.LabelRole, lb_res_name)
 
             # Result Content
             lb_res_content = Label(self.c_results)
-            lb_res_content.setText(res_content)
+            lb_res_content.setText(tf.f(res_content, translate=False))
             self.ly_form_results.setWidget(count, QFormLayout.FieldRole, lb_res_content)
 
             count = count +1

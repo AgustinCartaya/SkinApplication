@@ -57,6 +57,8 @@ IMG_BODY2D_LEFT_PATH_NAME = IMAGES_PATH + _S + IMG_BODY2D_LEFT_NAME
 IMG_BODY2D_RIGHT_NAME = "body2d_right.png"
 IMG_BODY2D_RIGHT_PATH_NAME = IMAGES_PATH + _S + IMG_BODY2D_RIGHT_NAME
 
+IMG_ACCEPTED_EXTESIONS = "png, jpg, jpeg, gif, tif, tiff, raw, svg, bmp"
+
 # Artificial inteligence
 AI_PATH = PROJECT_FOLDER + _S + "ai"
 AI_INFO_FOLDER_NAME = "info"

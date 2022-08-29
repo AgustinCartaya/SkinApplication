@@ -46,13 +46,13 @@ class RequiredSklImgItem(PromotedContainer):
         self.layout.addWidget(self.lb_selected, 0, Qt.AlignHCenter)
 
     def __fill_content(self):
-        self.lb_img_name.setText(self.img_name, format=True)
-        self.lb_min.setText(self.min)
-        self.lb_max.setText(self.max)
+        self.lb_img_name.setText(tf.f(self.img_name, translate=False, format=True))
+        self.lb_min.setText(tf.f(self.min))
+        self.lb_max.setText(tf.f(self.max))
         self.set_selected_number(self.selected)
 
     def set_selected_number(self, number):
-        self.lb_selected.setText(number)
+        self.lb_selected.setText(tf.f(number))
 
         if number < self.min:
             self.setProperty("satisfied", False)

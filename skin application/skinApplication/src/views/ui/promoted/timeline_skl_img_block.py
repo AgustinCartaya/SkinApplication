@@ -13,7 +13,7 @@ class TimelineSklImgBlock(PromotedContainer):
         self._pre_charge()
 
     def initialize(self, img_type, imgs, image_clicked_receaver=None, double_click_receaver=None, img_width = 150):
-        self.lb_title.setText(img_type, format=True, colon=True)
+        self.lb_title.setText(tf.f(img_type, translate=False, format=True, colon=True))
         max_height = 0
         for img in imgs:
             img_card = SklImgCard(self.c_images)

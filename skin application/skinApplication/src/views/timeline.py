@@ -32,7 +32,6 @@ class TimelineView(ViewObject):
         self.ui.bt_back.clicked.connect(self.__back)
 #        self.ui.bt_relaunch.clicked.connect(self.__relaunch)
 
-
     @Slot()
     def __back(self):
         self.close_image_viewers()

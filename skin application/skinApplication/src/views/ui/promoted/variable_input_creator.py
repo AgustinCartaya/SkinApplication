@@ -93,27 +93,27 @@ class VariableInputCreator(QWidget):
 #        ly_type.addItem(vs_left)
 
         self.bt_options = CheckButton(self)
-        self.bt_options.setText("Options")
+        self.bt_options.setText(tf.f("Options"))
         ly_type_up.addWidget(self.bt_options)
         self.bt_options.clicked.connect( lambda: self.__type_selected(VariableInput.TYPE_OPTIONS) )
 
         self.bt_number = CheckButton(self)
-        self.bt_number.setText("Number")
+        self.bt_number.setText(tf.f("Number"))
         ly_type_up.addWidget(self.bt_number)
         self.bt_number.clicked.connect( lambda: self.__type_selected(VariableInput.TYPE_INT) )
 
         self.bt_text = CheckButton(self)
-        self.bt_text.setText("Text")
+        self.bt_text.setText(tf.f("Text"))
         ly_type_up.addWidget(self.bt_text)
         self.bt_text.clicked.connect( lambda: self.__type_selected(VariableInput.TYPE_TEXT) )
 
         self.bt_bool = CheckButton(self)
-        self.bt_bool.setText("Yes/No")
+        self.bt_bool.setText(tf.f("Yes/No"))
         ly_type_down.addWidget(self.bt_bool)
         self.bt_bool.clicked.connect( lambda: self.__type_selected(VariableInput.TYPE_BOOL) )
 
         self.bt_date = CheckButton(self)
-        self.bt_date.setText("Date")
+        self.bt_date.setText(tf.f("Date"))
         ly_type_down.addWidget(self.bt_date)
         self.bt_date.clicked.connect( lambda: self.__type_selected(VariableInput.TYPE_DATE) )
 
@@ -133,7 +133,7 @@ class VariableInputCreator(QWidget):
         ly_name.setContentsMargins(0, 0, 0, 0)
 
         self.lb_name = Label(self)
-        self.lb_name.setText("Name")
+        self.lb_name.setText(tf.f("Name"))
         ly_name.addWidget(self.lb_name)
 
         self.i_name = LineEdit(self)
@@ -145,7 +145,7 @@ class VariableInputCreator(QWidget):
 
     def __create_add_decimals(self):
         self.i_decimals = QCheckBox(self)
-        self.i_decimals.setText("Number with decimals")
+        self.i_decimals.setText(tf.f("Number with decimals"))
         self.i_decimals.stateChanged.connect(self.__number_with_decimal)
         self.layout.addWidget(self.i_decimals)
 
@@ -158,18 +158,18 @@ class VariableInputCreator(QWidget):
         ly_values.setContentsMargins(0, 0, 0, 0)
 
         self.lb_values = Label(self.c_values)
-        self.lb_values.setText("Values")
+        self.lb_values.setText(tf.f("Values"))
         ly_values.addWidget(self.lb_values)
 
         self.i_values = LineEdit(self.c_values)
-        self.i_values.setPlaceholderText("E.g: Value 1, Value 2, Value 3")
+        self.i_values.setPlaceholderText(tf.f("E.g: Value 1, Value 2, Value 3"))
         ly_values.addWidget(self.i_values)
 
         self.layout.addWidget(self.c_values)
 
     def __create_add_scales(self):
         self.i_add_scales = QCheckBox(self)
-        self.i_add_scales.setText("Add scale")
+        self.i_add_scales.setText(tf.f("Add scale"))
         self.i_add_scales.stateChanged.connect(self.__input_with_scale)
         self.layout.addWidget(self.i_add_scales)
 
@@ -188,7 +188,7 @@ class VariableInputCreator(QWidget):
             ly_scales.addLayout(ly_scale)
 
             i_scale = QRadioButton(self.c_scales)
-            i_scale.setText(util.file_name_to_title(scale))
+            i_scale.setText(tf.f(scale, translate=False, format=True))
             self.qbt_scale_group.addButton(i_scale, counter)
             ly_scale.addWidget(i_scale)
 
@@ -201,7 +201,7 @@ class VariableInputCreator(QWidget):
             ly_scale.addLayout(ly_units_preview)
 
             lb_units = Label(self.c_scales)
-            lb_units.setText(", ".join(VariableInput.get_available_scale_units(scale)), parenthesis=True)
+            lb_units.setText(tf.f(", ".join(VariableInput.get_available_scale_units(scale)), translate=False, parenthesis=True))
             ly_units_preview.addWidget(lb_units)
 
 #            vs_right = QSpacerItem(20, 5, QSizePolicy.Expanding, QSizePolicy.Minimum)
@@ -216,13 +216,13 @@ class VariableInputCreator(QWidget):
         self.ly_bt.addItem(vs_left)
 
         self.bt_cancel = Button(self)
-        self.bt_cancel.setText("Cancel")
+        self.bt_cancel.setText(tf.f("Cancel"))
         self.bt_cancel.set_type(Button.BT_CANCEL)
         self.ly_bt.addWidget(self.bt_cancel)
         self.bt_cancel.clicked.connect(self.__cancel)
 
         self.bt_add = Button(self)
-        self.bt_add.setText("Add")
+        self.bt_add.setText(tf.f("Add"))
         self.ly_bt.addWidget(self.bt_add)
         self.bt_add.clicked.connect(self.__add)
 
@@ -362,13 +362,13 @@ class VariableInputCreator(QWidget):
 #        self.s_edit.connect(edit_receaver)
         self.s_delete.connect(delete_receaver)
 
-        self.bt_add.setText("Save")
+        self.bt_add.setText(tf.f("Save"))
 #        self.bt_add.disconnect()
 #        self.bt_add.clicked.connect(self.__edit)
 
 
         self.bt_delete = Button(self)
-        self.bt_delete.setText("Delete")
+        self.bt_delete.setText(tf.f("Delete"))
         self.bt_delete.set_type(Button.BT_DELETE)
         self.ly_bt.insertWidget(1, self.bt_delete)
         self.bt_delete.clicked.connect(self.__delete)
@@ -414,11 +414,11 @@ class VariableInputCreator(QWidget):
             self.bt_date.show()
 
         # write name
-        self.i_name.setText(self.vi.name)
+        self.i_name.setText(tf.f(self.vi.name, translate=False))
 
         # if type options
         if self.vi.items is not None:
-            self.i_values.setText(", ".join(self.vi.items))
+            self.i_values.setText(tf.f(", ".join(self.vi.items), translate=False))
 
 
 

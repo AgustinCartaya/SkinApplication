@@ -16,20 +16,25 @@ class FormItem(PromotedContainer):
 
     def initialize(self, title, content, vi_family=None, disposition=DISPOSITION_H):
         if vi_family is not None:
-            vi = VariableInput.get_variable_input(title, vi_family)
-            self.title = vi.name
-            if content is not None:
-                self.content = vi.get_scalized_str(content)
+            if VariableInput.exists(title, vi_family):
+                vi = VariableInput.get_variable_input(title, vi_family)
+                self.title = vi.name
+                if content is not None:
+                    self.content = vi.get_scalized_str(content)
+                else:
+                    self.content = ""
             else:
-                self.content = ""
+                self.title = None
+                self.content = None
         else:
             self.title = title
             self.content = content
 
         self.disposition = disposition
 
-        self.__create()
-        self.__fill_content()
+        if self.title is not None:
+            self.__create()
+            self.__fill_content()
 
     def _pre_charge(self):
         pass
@@ -63,8 +68,8 @@ class FormItem(PromotedContainer):
         self.layout.addWidget(self.lb_value)
 
     def __fill_content(self):
-        self.lb_title.setText(self.title, colon=True, format=True)
-        self.lb_value.setText(self.content)
+        self.lb_title.setText(tf.f(self.title, translate=False, colon=True, format=True))
+        self.lb_value.setText(tf.f(self.content, translate=False))
 
 
 

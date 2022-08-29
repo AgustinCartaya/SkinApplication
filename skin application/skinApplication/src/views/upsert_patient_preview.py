@@ -41,15 +41,15 @@ class UpsertPatientPreiewView(ViewObject):
         self.show_medical_information()
 
     def show_basic_information(self):
-        self.ui.i_first_name.setText(self.p.first_name)
-        self.ui.i_last_name.setText(self.p.last_name)
-        self.ui.i_birth_date.setText(self.p.birth_date.strftime('%d-%m-%Y'))
+        self.ui.i_first_name.setText(tf.f(self.p.first_name, translate=False))
+        self.ui.i_last_name.setText(tf.f(self.p.last_name, translate=False))
+        self.ui.i_birth_date.setText(tf.f(self.p.birth_date.strftime('%d-%m-%Y'), translate=False))
         if self.p.gender == 0:
-            self.ui.i_gender.setText("Woman")
+            self.ui.i_gender.setText(tf.f("Woman"))
         elif self.p.gender == 1:
-            self.ui.i_gender.setText("Man")
+            self.ui.i_gender.setText(tf.f("Man"))
         else:
-            self.ui.i_gender.setText("Other")
+            self.ui.i_gender.setText(tf.f("Other"))
 
     def show_medical_information(self):
         for mi_name, mi_content in self.p.mi.items():
@@ -110,5 +110,5 @@ class UpsertPatientPreiewView(ViewObject):
         self.__change_to_upsert_patient_view(2)
 
     def charge_edit_mode(self):
-        self.ui.lb_title.setText("Edit patient preview")
-        self.ui.bt_upsert.setText("Save")
+        self.ui.lb_title.setText(tf.f("Edit patient preview"))
+        self.ui.bt_upsert.setText(tf.f("Save"))

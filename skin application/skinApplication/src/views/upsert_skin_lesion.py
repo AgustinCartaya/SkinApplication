@@ -133,7 +133,7 @@ class UpsertSkinLesionView(ViewObject):
 
 
     def charge_edit_mode(self):
-        self.ui.lb_title.setText("Edit skin lesion")
+        self.ui.lb_title.setText(tf.f("Edit skin lesion"))
 
         # characteristics
         self.ui.c_characteristics.select_default_values(self.skl.characteristics)

@@ -37,7 +37,7 @@ class Body2DContainer(PromotedContainer):
         ly_up_controllers.setContentsMargins(0, 0, 0, 0)
 
         self.bt_clear_point = Button(c_up_controllers)
-        self.bt_clear_point.setText("Clear point")
+        self.bt_clear_point.setText(tf.f("Clear point"))
         ly_up_controllers.addWidget(self.bt_clear_point,0, Qt.AlignRight)
         self.bt_clear_point.clicked.connect(self.__clear_point)
 
@@ -50,12 +50,12 @@ class Body2DContainer(PromotedContainer):
         ly_down_controllers.setContentsMargins(0, 0, 0, 0)
 
         self.bt_turn_body_left = Button(c_down_controllers)
-        self.bt_turn_body_left.setText("<")
+        self.bt_turn_body_left.setText(tf.f("<"))
         ly_down_controllers.addWidget(self.bt_turn_body_left, 0, Qt.AlignCenter)
         self.bt_turn_body_left.clicked.connect(lambda: (self.__turn_image(-1)))
 
         self.bt_turn_body_right = Button(c_down_controllers)
-        self.bt_turn_body_right.setText(">")
+        self.bt_turn_body_right.setText(tf.f(">"))
         ly_down_controllers.addWidget(self.bt_turn_body_right,0, Qt.AlignCenter)
         self.bt_turn_body_right.clicked.connect(lambda: (self.__turn_image(1)))
 

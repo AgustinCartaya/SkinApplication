@@ -17,11 +17,11 @@ class InfoLine(PromotedContainer):
             self.ly_info = QHBoxLayout(self.c_info)
 
             self.lb_info_name = Label(self.c_info)
-            self.lb_info_name.setText(info[0], format=True, colon=True)
+            self.lb_info_name.setText(tf.f(info[0], translate=False, format=True, colon=True))
             self.ly_info.addWidget(self.lb_info_name)
 
             self.i_info_content = Label(self.c_info)
-            self.i_info_content.setText(info[1])
+            self.i_info_content.setText(tf.f(info[1], translate=False))
             self.ly_info.addWidget(self.i_info_content)
 
             self.layout.addWidget(self.c_info, 0, Qt.AlignHCenter)

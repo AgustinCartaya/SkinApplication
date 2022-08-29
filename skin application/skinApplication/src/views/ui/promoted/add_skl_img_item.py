@@ -3,6 +3,7 @@ from .promoted_container import *
 from PySide6.QtWidgets import QFileDialog
 
 import src.util.util as util
+import src.util.skl_imgs as skl_imgs
 
 from src.objects.image import Image
 
@@ -34,7 +35,7 @@ class AddSklImgItem(PromotedContainer):
     def __create_content(self):
         # title
         self.lb_name = Label(self)
-        self.lb_name.setText(self.id, format=True)
+        self.lb_name.setText(tf.f(self.id, translate=False, format=True))
         self.lb_name.setMinimumSize(QSize(125, 0))
         self.lb_name.setMaximumSize(QSize(100, 16777215))
         self.layout.addWidget(self.lb_name)
@@ -49,7 +50,7 @@ class AddSklImgItem(PromotedContainer):
 
         # cancel images
         self.bt_cancel_new_images = Button(self)
-        self.bt_cancel_new_images.setText("-")
+        self.bt_cancel_new_images.setText(tf.f("-"))
         self.bt_cancel_new_images.setMaximumSize(QSize(22, 22))
         self.bt_cancel_new_images.set_type(Button.BT_CANCEL)
         self.bt_cancel_new_images.set_padding(Button.PADDING_S)
@@ -60,15 +61,15 @@ class AddSklImgItem(PromotedContainer):
 
     def __update_nb_new_images(self):
         if len(self.img_path_name) > 0:
-            self.lb_nb_new_images.setText(len(self.img_path_name), before="+")
+            self.lb_nb_new_images.setText(tf.f(len(self.img_path_name), before="+"))
             self.bt_cancel_new_images.show()
         else:
-            self.lb_nb_new_images.setText("")
+            self.lb_nb_new_images.setText(tf.f(""))
             self.bt_cancel_new_images.hide()
 
     def __loadFiles(self):
-        img_path_name, _ = QFileDialog.getOpenFileNames(self, 'Open ' + util.file_name_to_title(self.id) ,
-             'D:\\Documents\\Internship Documents\\Image data\\2AO\\images',"Image files (*.png *.jpg *.jpeg *.gif *.tif *.tiff *.raw *. *.svg *.bmp *.)")
+        img_path_name, _ = QFileDialog.getOpenFileNames(self, tf.f('Open ') + util.file_name_to_title(self.id),
+             '',"Image files (" + skl_imgs.get_accept_img_extensions_str() +")")
 
         self.img_path_name.update([Image(src, self.id) for src in img_path_name])
         self.__update_nb_new_images()
@@ -80,7 +81,7 @@ class AddSklImgItem(PromotedContainer):
 
     def set_nb_images(self, nb_images):
         self.nb_images = nb_images
-        self.lb_nb_images.setText(self.nb_images, parenthesis=True)
+        self.lb_nb_images.setText(tf.f(self.nb_images, parenthesis=True))
         self.__cancel_new_images()
 
     def get_image_path_names(self):

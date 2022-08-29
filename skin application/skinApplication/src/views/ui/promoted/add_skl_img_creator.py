@@ -43,7 +43,7 @@ class AddSklImgCreator(QWidget):
         ly_name.setContentsMargins(0, 0, 0, 0)
 
         self.lb_name = Label(self)
-        self.lb_name.setText("Name")
+        self.lb_name.setText(tf.f("Name"))
         ly_name.addWidget(self.lb_name)
 
         self.i_name = LineEdit(self)
@@ -59,13 +59,13 @@ class AddSklImgCreator(QWidget):
         ly_bt.addItem(vs_left)
 
         self.bt_cancel = Button(self)
-        self.bt_cancel.setText("Cancel")
+        self.bt_cancel.setText(tf.f("Cancel"))
         self.bt_cancel.set_type(Button.BT_CANCEL)
         ly_bt.addWidget(self.bt_cancel)
         self.bt_cancel.clicked.connect(self.__cancel)
 
         self.bt_add = Button(self)
-        self.bt_add.setText("Add")
+        self.bt_add.setText(tf.f("Add"))
         ly_bt.addWidget(self.bt_add)
         self.bt_add.clicked.connect(self.__add)
 

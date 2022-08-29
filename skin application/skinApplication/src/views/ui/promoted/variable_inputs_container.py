@@ -36,10 +36,10 @@ class VariableInputsContainer(PromotedContainer):
         for vi in VariableInput.get_available_variable_inputs(self.inputs_family):
             self.__create_single_input(vi)
 
-    def __create_single_input(self, variable_input):
+    def __create_single_input(self, variable_input, index=-1):
         input = VariableInputItem(self)
         input.initialize(variable_input, self.edit_receaver, self.inputs_disposition)
-        self.inputs_layout.addWidget(input)
+        self.inputs_layout.insertWidget(index, input)
         self.inputs[variable_input.id] = input
 
     def get_selected_items(self):
@@ -52,9 +52,10 @@ class VariableInputsContainer(PromotedContainer):
         self.__create_single_input(variable_input)
 
     def variable_input_edited(self, variable_input):
+        index = self.inputs_layout.indexOf(self.inputs[variable_input.id])
         self.inputs[variable_input.id].setParent(None)
         del (self.inputs[variable_input.id])
-        self.__create_single_input(variable_input)
+        self.__create_single_input(variable_input, index)
 
     def variable_input_deleted(self, variable_input):
         self.inputs[variable_input.id].setParent(None)
