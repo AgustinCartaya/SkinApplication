@@ -21,7 +21,7 @@ class LoginView(ViewObject):
         self.ui.lb_title.set_title(1)
 
         # create another account
-#        self.ui.bt_create_account.hide()
+        self.ui.bt_create_account.hide()
 
     def connect_ui_signals(self):
         #ui signals

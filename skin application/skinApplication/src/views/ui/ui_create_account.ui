@@ -84,27 +84,15 @@
         <property name="spacing">
          <number>16</number>
         </property>
-        <property name="topMargin">
-         <number>0</number>
-        </property>
         <item>
-         <layout class="QHBoxLayout" name="ly_up">
+         <layout class="QVBoxLayout" name="ly_upper">
           <property name="spacing">
            <number>16</number>
           </property>
-          <property name="leftMargin">
-           <number>0</number>
-          </property>
-          <property name="topMargin">
-           <number>0</number>
-          </property>
           <item>
-           <layout class="QVBoxLayout" name="ly_left">
+           <layout class="QHBoxLayout" name="ly_up">
             <property name="spacing">
              <number>16</number>
-            </property>
-            <property name="topMargin">
-             <number>0</number>
             </property>
             <item>
              <layout class="QVBoxLayout" name="ly_first_name">
@@ -127,36 +115,6 @@
              </layout>
             </item>
             <item>
-             <layout class="QVBoxLayout" name="ly_password">
-              <property name="spacing">
-               <number>2</number>
-              </property>
-              <property name="topMargin">
-               <number>0</number>
-              </property>
-              <item>
-               <widget class="QLabel" name="lb_password">
-                <property name="text">
-                 <string>Password</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="LineEdit" name="i_password"/>
-              </item>
-             </layout>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <layout class="QVBoxLayout" name="ly_right">
-            <property name="spacing">
-             <number>16</number>
-            </property>
-            <property name="topMargin">
-             <number>0</number>
-            </property>
-            <item>
              <layout class="QVBoxLayout" name="ly_last_name">
               <property name="spacing">
                <number>2</number>
@@ -173,6 +131,33 @@
               </item>
               <item>
                <widget class="LineEdit" name="i_last_name"/>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="ly_down">
+            <property name="spacing">
+             <number>16</number>
+            </property>
+            <item>
+             <layout class="QVBoxLayout" name="ly_password">
+              <property name="spacing">
+               <number>2</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="lb_password">
+                <property name="text">
+                 <string>Password</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="LineEdit" name="i_password"/>
               </item>
              </layout>
             </item>

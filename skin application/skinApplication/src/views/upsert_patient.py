@@ -1,5 +1,6 @@
 from .view_object import *
 from .ui.ui_upsert_patient import Ui_upsert_patient
+from PySide6.QtCore import QDate
 
 from src.objects.patient import Patient
 from datetime import datetime
@@ -27,8 +28,11 @@ class UpsertPatientView(ViewObject):
         self.ui.bt_cancel.set_type(Button.BT_CANCEL)
 
         # inputs
-        self.ui.i_first_name.setValidator(self.create_text_validator(data_cleaner.regex_name))
-        self.ui.i_last_name.setValidator(self.create_text_validator(data_cleaner.regex_name))
+        self.ui.i_first_name.setValidator(self.create_text_validator(data_cleaner.regex_letters))
+        self.ui.i_last_name.setValidator(self.create_text_validator(data_cleaner.regex_letters))
+
+        self.ui.i_birth_date.setMaximumDate(QDate.currentDate())
+
 
         #buttons
         self.ui.bt_cancel.set_type(Button.BT_CANCEL)

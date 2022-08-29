@@ -82,10 +82,10 @@ class AIPreview(PromotedContainer):
         self.ly_description.addWidget(self.i_description, 0, Qt.AlignTop)
 
         # read more
-        self.i_read_more = Button(self.c_description)
+#        self.i_read_more = Button(self.c_description)
 #        self.i_read_more.setMaximumSize(QSize(16777215, 20))
-        self.i_read_more.setText(tf.f("Read more"))
-        self.ly_description.addWidget(self.i_read_more, 0, Qt.AlignHCenter)
+#        self.i_read_more.setText(tf.f("Read more"))
+#        self.ly_description.addWidget(self.i_read_more, 0, Qt.AlignHCenter)
 
         self.layout.addWidget(self.c_description)
 

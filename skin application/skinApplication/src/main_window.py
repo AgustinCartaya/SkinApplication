@@ -12,6 +12,9 @@ from PySide6.QtCore import QObject, Signal, Slot, QTimer
 
 import src.util.util as util
 import src.config as cfg
+import src.util.text_filter as tf
+
+
 from PySide6.QtWidgets import QStatusBar
 from .views.patients import PatientsView
 from .views.create_account import CreateAccountView

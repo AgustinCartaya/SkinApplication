@@ -17,8 +17,8 @@ class CreateAccountView(ViewObject):
         self.ui = Ui_create_account()
         self.ui.setupUi(self)
 
-        self.ui.i_first_name.setValidator(self.create_text_validator(data_cleaner.regex_name))
-        self.ui.i_last_name.setValidator(self.create_text_validator(data_cleaner.regex_name))
+        self.ui.i_first_name.setValidator(self.create_text_validator(data_cleaner.regex_letters))
+        self.ui.i_last_name.setValidator(self.create_text_validator(data_cleaner.regex_letters))
         self.ui.i_email.setValidator(self.create_text_validator(data_cleaner.regex_email))
 
         # labels

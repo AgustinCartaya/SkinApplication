@@ -52,15 +52,12 @@ class Ui_create_account(object):
         self.ly_inputs = QVBoxLayout()
         self.ly_inputs.setSpacing(16)
         self.ly_inputs.setObjectName(u"ly_inputs")
-        self.ly_inputs.setContentsMargins(-1, 0, -1, -1)
+        self.ly_upper = QVBoxLayout()
+        self.ly_upper.setSpacing(16)
+        self.ly_upper.setObjectName(u"ly_upper")
         self.ly_up = QHBoxLayout()
         self.ly_up.setSpacing(16)
         self.ly_up.setObjectName(u"ly_up")
-        self.ly_up.setContentsMargins(0, 0, -1, -1)
-        self.ly_left = QVBoxLayout()
-        self.ly_left.setSpacing(16)
-        self.ly_left.setObjectName(u"ly_left")
-        self.ly_left.setContentsMargins(-1, 0, -1, -1)
         self.ly_first_name = QVBoxLayout()
         self.ly_first_name.setSpacing(2)
         self.ly_first_name.setObjectName(u"ly_first_name")
@@ -76,32 +73,8 @@ class Ui_create_account(object):
         self.ly_first_name.addWidget(self.i_first_name)
 
 
-        self.ly_left.addLayout(self.ly_first_name)
+        self.ly_up.addLayout(self.ly_first_name)
 
-        self.ly_password = QVBoxLayout()
-        self.ly_password.setSpacing(2)
-        self.ly_password.setObjectName(u"ly_password")
-        self.ly_password.setContentsMargins(-1, 0, -1, -1)
-        self.lb_password = QLabel(self.c_center)
-        self.lb_password.setObjectName(u"lb_password")
-
-        self.ly_password.addWidget(self.lb_password)
-
-        self.i_password = LineEdit(self.c_center)
-        self.i_password.setObjectName(u"i_password")
-
-        self.ly_password.addWidget(self.i_password)
-
-
-        self.ly_left.addLayout(self.ly_password)
-
-
-        self.ly_up.addLayout(self.ly_left)
-
-        self.ly_right = QVBoxLayout()
-        self.ly_right.setSpacing(16)
-        self.ly_right.setObjectName(u"ly_right")
-        self.ly_right.setContentsMargins(-1, 0, -1, -1)
         self.ly_last_name = QVBoxLayout()
         self.ly_last_name.setSpacing(2)
         self.ly_last_name.setObjectName(u"ly_last_name")
@@ -117,7 +90,30 @@ class Ui_create_account(object):
         self.ly_last_name.addWidget(self.i_last_name)
 
 
-        self.ly_right.addLayout(self.ly_last_name)
+        self.ly_up.addLayout(self.ly_last_name)
+
+
+        self.ly_upper.addLayout(self.ly_up)
+
+        self.ly_down = QHBoxLayout()
+        self.ly_down.setSpacing(16)
+        self.ly_down.setObjectName(u"ly_down")
+        self.ly_password = QVBoxLayout()
+        self.ly_password.setSpacing(2)
+        self.ly_password.setObjectName(u"ly_password")
+        self.ly_password.setContentsMargins(-1, 0, -1, -1)
+        self.lb_password = QLabel(self.c_center)
+        self.lb_password.setObjectName(u"lb_password")
+
+        self.ly_password.addWidget(self.lb_password)
+
+        self.i_password = LineEdit(self.c_center)
+        self.i_password.setObjectName(u"i_password")
+
+        self.ly_password.addWidget(self.i_password)
+
+
+        self.ly_down.addLayout(self.ly_password)
 
         self.ly_repeat_password = QVBoxLayout()
         self.ly_repeat_password.setSpacing(2)
@@ -134,13 +130,13 @@ class Ui_create_account(object):
         self.ly_repeat_password.addWidget(self.i_repeat_password)
 
 
-        self.ly_right.addLayout(self.ly_repeat_password)
+        self.ly_down.addLayout(self.ly_repeat_password)
 
 
-        self.ly_up.addLayout(self.ly_right)
+        self.ly_upper.addLayout(self.ly_down)
 
 
-        self.ly_inputs.addLayout(self.ly_up)
+        self.ly_inputs.addLayout(self.ly_upper)
 
         self.ly_email = QVBoxLayout()
         self.ly_email.setSpacing(2)
@@ -184,8 +180,8 @@ class Ui_create_account(object):
         create_account.setWindowTitle(QCoreApplication.translate("create_account", u"Loggin", None))
         self.lb_title.setText(QCoreApplication.translate("create_account", u"Create account", None))
         self.lb_first_name.setText(QCoreApplication.translate("create_account", u"First name", None))
-        self.lb_password.setText(QCoreApplication.translate("create_account", u"Password", None))
         self.lb_last_name.setText(QCoreApplication.translate("create_account", u"Last name", None))
+        self.lb_password.setText(QCoreApplication.translate("create_account", u"Password", None))
         self.lb_repeat_password.setText(QCoreApplication.translate("create_account", u"Repeat password", None))
         self.lb_email.setText(QCoreApplication.translate("create_account", u"E-mail", None))
         self.bt_create.setText(QCoreApplication.translate("create_account", u"Create", None))
