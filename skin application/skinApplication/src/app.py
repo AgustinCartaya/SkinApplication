@@ -29,7 +29,7 @@ def run():
     GLOBAL["ai_dict"] = ai_dict
     mainWindow = MainWindow(GLOBAL)
 
-    # mainWindow.change_view(None, cfg.PATIENTS_VIEW, [])
+#    mainWindow.change_view(None, cfg.PATIENTS_VIEW, [])
 
     if first_time():
         mainWindow.change_view(None, cfg.CREATE_ACCOUNT_VIEW, [])

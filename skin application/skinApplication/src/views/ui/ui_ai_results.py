@@ -91,7 +91,7 @@ class Ui_ai_results(object):
         self.sc_results.setWidgetResizable(True)
         self.c_results = QWidget()
         self.c_results.setObjectName(u"c_results")
-        self.c_results.setGeometry(QRect(0, 0, 488, 704))
+        self.c_results.setGeometry(QRect(0, 0, 488, 698))
         self.verticalLayout_3 = QVBoxLayout(self.c_results)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.ly_results_content = QVBoxLayout()

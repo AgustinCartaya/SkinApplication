@@ -226,7 +226,7 @@
                <number>0</number>
               </property>
               <item alignment="Qt::AlignHCenter">
-               <widget class="QLabel" name="lb_skl_required_info">
+               <widget class="Label" name="lb_skl_required_info">
                 <property name="text">
                  <string>Skin lesion</string>
                 </property>
@@ -437,7 +437,7 @@
       </layout>
      </item>
      <item alignment="Qt::AlignHCenter">
-      <widget class="QLabel" name="lb_error">
+      <widget class="Label" name="lb_error">
        <property name="text">
         <string>to use the AI please fill in all the necessary fields</string>
        </property>
@@ -470,14 +470,14 @@
    <header>.promoted.label</header>
   </customwidget>
   <customwidget>
+   <class>NavigatorButton</class>
+   <extends>QPushButton</extends>
+   <header location="global">.promoted.navigator_button</header>
+  </customwidget>
+  <customwidget>
    <class>Button</class>
    <extends>QPushButton</extends>
    <header>.promoted.button</header>
-  </customwidget>
-  <customwidget>
-   <class>NavigatorButton</class>
-   <extends>QPushButton</extends>
-   <header>.promoted.navigator_button</header>
   </customwidget>
   <customwidget>
    <class>RequiredElementsContainer</class>

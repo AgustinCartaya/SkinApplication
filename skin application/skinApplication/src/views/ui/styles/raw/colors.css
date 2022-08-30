@@ -28,3 +28,8 @@
 @c_red_base = #ff0000;
 @c_red_light = #ff8080;
 @c_red_ultra_light = #ffbfbf;
+
+/*-----yellow color-----*/
+
+@c_yellow_dark = #BF9742;
+@c_yellow_base = #E6B325;

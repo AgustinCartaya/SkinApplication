@@ -16,6 +16,8 @@ class SklImgCard(PromotedContainer):
         self.img = None
         self.pxm_image = None
         self.setProperty("selected", False)
+        self.setProperty("focus", False)
+
 
         self._pre_charge()
 
@@ -71,5 +73,8 @@ class SklImgCard(PromotedContainer):
     def set_selected(self, selected):
         self.setProperty("selected", selected)
         self.repaint()
+
+    def set_focus(self, focus):
+        self.setProperty("focus", focus)
 
 

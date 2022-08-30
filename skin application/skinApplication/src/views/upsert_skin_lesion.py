@@ -61,12 +61,21 @@ class UpsertSkinLesionView(ViewObject):
         self.ui = Ui_upsert_skin_lesion()
         self.ui.setupUi(self)
 
+        self.ui.lb_title.set_title(1)
+        self.ui.lb_characteristics.set_title(2)
+        self.ui.lb_add_images.set_title(2)
+        self.ui.lb_lauch_ai.set_title(2)
+
         # navigator
         self.ui.bt_complete.set_position(2)
 
         # characteristic
         self.ui.c_characteristics.initialize(VariableInput.SKL_INPUT, self.show_variable_input_editor, VariableInputItem.DISPOSITION_H)
 
+        # buttons
+        self.ui.bt_see_images.set_padding(Button.PADDING_M)
+        self.ui.bt_add_new_skl_charac.set_padding(Button.PADDING_M)
+        self.ui.bt_add_new_skl_image_type.set_padding(Button.PADDING_M)
 
     def charge_ai_previews(self):
         ai_infos = {}

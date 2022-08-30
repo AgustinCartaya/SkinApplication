@@ -57,6 +57,12 @@ class ImagesView(ViewObject):
         self.ui = Ui_images()
         self.ui.setupUi(self)
 
+        # labels
+        self.ui.lb_title.set_title(1)
+        self.ui.lb_filters_title.set_title(2)
+        self.ui.lb_description.set_title(2)
+        self.ui.lb_filter_image_type.set_title(2)
+
         # navigator
         self.ui.bt_command.set_position(2)
         self.bt_command_text = self.ui.bt_command.text()
@@ -84,6 +90,10 @@ class ImagesView(ViewObject):
         # button delete
         self.ui.bt_delete_image.set_type(Button.BT_DELETE)
         self.ui.bt_delete_image.hide()
+
+        # button clear
+        self.ui.bt_clear_selection.set_type(Button.BT_CANCEL)
+        self.ui.bt_clear_selection.hide()
 
 
     def __create_image_type_filter(self):
@@ -114,6 +124,9 @@ class ImagesView(ViewObject):
         # delete image
         self.ui.bt_delete_image.clicked.connect(self.__delete_image)
 
+        # clear selection
+        self.ui.bt_clear_selection.clicked.connect(self.__clear_selection)
+
     Slot()
     def filter_img_type_slot(self):
         self.__filter_images()
@@ -140,6 +153,7 @@ class ImagesView(ViewObject):
     def image_clicked(self, img, selected):
         if selected:
             self.selected_imgs.append(img)
+
             # show image description
             self.__show_image_description(img)
 
@@ -181,9 +195,7 @@ class ImagesView(ViewObject):
                 i_info_value.setText(tf.f(info_value, translate=False, format=True))
             else:
                 i_info_value.setText(tf.f(info_value, translate=False))
-#            i_info_value.set_decoration("mi_content")
             ly_single_img_info.addWidget(i_info_value)
-
 
             # spacer
             hs = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Expanding)
@@ -235,19 +247,18 @@ class ImagesView(ViewObject):
         self.__refresh_command_bt_text()
 
     def __collet_images(self):
-#        print(self.img_list.get_types()[0])
         self.s_change_view.emit(cfg.IMAGES_VIEW, cfg.AI_LAUNCHER_VIEW, {"selected_images_name": self.img_list.get_types()[0], "selected_images":self.selected_imgs})
-
-#    def __get_selected_src(self):
-#        return [img.src for img in self.selected_imgs]
 
     def __refresh_command_bt_text(self):
         nb_selected = len(self.selected_imgs)
         if nb_selected > 0:
             self.ui.bt_command.setText(self.bt_command_text + tf.f(nb_selected, parenthesis=True))
+            self.ui.bt_clear_selection.show()
         else:
             self.ui.bt_command.setText(self.bt_command_text)
+            self.ui.bt_clear_selection.hide()
 
+    @Slot()
     def __delete_image(self):
         # ask if wats delete the image
         img = self.selected_imgs.pop()
@@ -260,4 +271,13 @@ class ImagesView(ViewObject):
 
         if len(self.selected_imgs) == 0:
             self.ui.bt_delete_image.hide()
+            self.__clear_selection()
         self.__refresh_image_type_filter_numbers()
+
+    @Slot()
+    def __clear_selection(self):
+        self.selected_imgs = []
+        self.__show_images()
+        self.ui.bt_delete_image.hide()
+        self.__refresh_command_bt_text()
+        self.__clean_image_descriptions()

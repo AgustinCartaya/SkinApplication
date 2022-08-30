@@ -2,6 +2,7 @@ from .view_object import *
 from .ui.ui_ai_results import Ui_ai_results
 from PySide6.QtWidgets import QHBoxLayout, QVBoxLayout, QSpacerItem, QSizePolicy, QFrame, QFileDialog
 from .ui.promoted.label import Label
+from .ui.promoted.form_item import FormItem
 
 from src.objects.timeline_point import TimelinePoint
 
@@ -24,11 +25,15 @@ class AIResultsView(ViewObject):
         self.ui = Ui_ai_results()
         self.ui.setupUi(self)
 
+        # title
+        self.ui.lb_ai_name.setText(tf.f(self.ai.name, translate=False))
+        self.ui.lb_title.set_title(1)
+        self.ui.lb_ai_name.set_title(1)
+        self.ui.lb_results.set_title(2)
+
         # navigator
         self.ui.bt_relaunch.set_position(2)
 
-        # title
-        self.ui.lb_ai_name.setText(tf.f(self.ai.name, translate=False))
 
     def connect_ui_signals(self):
         self.ui.bt_back.clicked.connect(self.__back)
@@ -36,24 +41,9 @@ class AIResultsView(ViewObject):
 
     def __carge_results(self):
         for res_name, res_content in self.results.items():
-            ly_result = QHBoxLayout()
-            ly_result.setContentsMargins(0, 0, 0, 0)
-            ly_result.setSpacing(4)
-
-            lb_result_name = Label(self.ui.c_results)
-            lb_result_name.setText(tf.f(res_name, colon=True, format=True))
-            ly_result.addWidget(lb_result_name)
-
-            lb_result_content = Label(self.ui.c_results)
-            lb_result_content.setText(tf.f(res_content, translate=False))
-            ly_result.addWidget(lb_result_content)
-
-            # spacer
-            hs = QSpacerItem(20, 20, QSizePolicy.Expanding, QSizePolicy.Fixed)
-            ly_result.addItem(hs)
-
-
-            self.ui.ly_results_content.addLayout(ly_result)
+            res = FormItem(self.ui.c_results)
+            res.initialize(res_name, res_content)
+            self.ui.ly_results_content.addWidget(res)
 
     @Slot()
     def __back(self):

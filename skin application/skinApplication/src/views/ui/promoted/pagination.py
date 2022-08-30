@@ -53,7 +53,6 @@ class Pagination(PromotedContainer):
         self.ly_controllers = QHBoxLayout(self.c_controllers)
         self.ly_controllers.setContentsMargins(0, 0, 0, 0)
 
-#        self.ly_controllers.addWidget(Label(self.c_controllers))
         self.label_3 = Label(self.c_controllers)
         self.ly_controllers.addWidget(self.label_3)
 
@@ -77,7 +76,6 @@ class Pagination(PromotedContainer):
         self.bt_back_page.setMinimumSize(QSize(28, 28))
         self.bt_back_page.setMaximumSize(QSize(28, 28))
         self.bt_back_page.setText(tf.f("<"))
-#        self.bt_back_page.set_icon(Button.IC_LEFT)
         self.ly_pagination_controllers.addWidget(self.bt_back_page)
         self.bt_back_page.clicked.connect(self.back_page)
 
@@ -171,7 +169,8 @@ class Pagination(PromotedContainer):
 
         if w > 0 and h > 0:
             for i in reversed(range(self.ly_cards.count())):
-                self.ly_cards.itemAt(i).widget().resize(QSize(w,h))
+                self.ly_cards.itemAt(i).widget().setMinimumSize(QSize(w,h))
+                self.ly_cards.itemAt(i).widget().setMaximumSize(QSize(w,h))
 
         self.s_card_size_changed.emit(w,h)
 

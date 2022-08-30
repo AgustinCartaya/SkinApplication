@@ -23,7 +23,7 @@ class SkinLesionPreview(PromotedContainer):
         self.s_see_timeline.connect(see_timeline_receaver)
         self.s_see_images.connect(see_images_receaver)
 
-        self.annotations.show_info(self.skl.characteristics, "characteristics")
+        self.annotations.show_info(self.skl.characteristics, "Characteristics")
         self.ai_results.show_info(self.skl.ai_results, "AI results", True)
 
     def _pre_charge(self):
@@ -57,8 +57,6 @@ class SkinLesionPreview(PromotedContainer):
         self.lb_image = Label(self.c_image)
         self.lb_image.setMinimumSize(QSize(150, 0))
         self.lb_image.setAlignment(Qt.AlignCenter)
-#        self.lb_image.setScaledContents(True)
-#        self.lb_image.setStyleSheet("background-color: yellow;")
 
         self.c_image_layout.addWidget(self.lb_image)
         self.c_n1_layout.addWidget(self.c_image)

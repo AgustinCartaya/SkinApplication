@@ -18,45 +18,38 @@ class Body2DContainer(PromotedContainer):
     def _pre_charge(self):
         self.layout = QVBoxLayout(self)
         self.layout.setSpacing(12)
-        self.layout.setContentsMargins(0, 0, 0, 36)
+        self.layout.setContentsMargins(0, 0, 0, 30)
 
-        self.__create_up_controllers()
         self.__create_body2d_container()
-        self.__create_down_controllers()
+        self.__create_controllers()
 
     def __create_body2d_container(self):
         self.body2d = Body2D(self)
         self.layout.addWidget(self.body2d)
 
-    def __create_up_controllers(self):
-        c_up_controllers = QFrame(self)
-        c_up_controllers.setMaximumSize(QSize(16777215, 35))
-        self.layout.addWidget(c_up_controllers)
 
-        ly_up_controllers = QHBoxLayout(c_up_controllers)
-        ly_up_controllers.setContentsMargins(0, 0, 0, 0)
+    def __create_controllers(self):
+        c_controllers = QFrame(self)
+        c_controllers.setMaximumSize(QSize(16777215, 35))
+        self.layout.addWidget(c_controllers)
 
-        self.bt_clear_point = Button(c_up_controllers)
-        self.bt_clear_point.setText(tf.f("Clear point"))
-        ly_up_controllers.addWidget(self.bt_clear_point,0, Qt.AlignRight)
-        self.bt_clear_point.clicked.connect(self.__clear_point)
+        ly_controllers = QHBoxLayout(c_controllers)
+        ly_controllers.setContentsMargins(20, 0, 20, 0)
 
-    def __create_down_controllers(self):
-        c_down_controllers = QFrame(self)
-        c_down_controllers.setMaximumSize(QSize(16777215, 35))
-        self.layout.addWidget(c_down_controllers)
-
-        ly_down_controllers = QHBoxLayout(c_down_controllers)
-        ly_down_controllers.setContentsMargins(0, 0, 0, 0)
-
-        self.bt_turn_body_left = Button(c_down_controllers)
+        self.bt_turn_body_left = Button(c_controllers)
         self.bt_turn_body_left.setText(tf.f("<"))
-        ly_down_controllers.addWidget(self.bt_turn_body_left, 0, Qt.AlignCenter)
+        ly_controllers.addWidget(self.bt_turn_body_left, 0, Qt.AlignLeft)
         self.bt_turn_body_left.clicked.connect(lambda: (self.__turn_image(-1)))
 
-        self.bt_turn_body_right = Button(c_down_controllers)
+        self.bt_clear_point = Button(c_controllers)
+        self.bt_clear_point.setText(tf.f("Clear"))
+        self.bt_clear_point.set_type(Button.BT_CANCEL)
+        ly_controllers.addWidget(self.bt_clear_point,0, Qt.AlignCenter)
+        self.bt_clear_point.clicked.connect(self.__clear_point)
+
+        self.bt_turn_body_right = Button(c_controllers)
         self.bt_turn_body_right.setText(tf.f(">"))
-        ly_down_controllers.addWidget(self.bt_turn_body_right,0, Qt.AlignCenter)
+        ly_controllers.addWidget(self.bt_turn_body_right,0, Qt.AlignRight)
         self.bt_turn_body_right.clicked.connect(lambda: (self.__turn_image(1)))
 
     @Slot()

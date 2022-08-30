@@ -1,0 +1,16 @@
+# ------------- convert .ui to .py -------------
+pyside6-uic ui_name.ui > ui_name.py
+
+# open a command prop in the ui folder and copy this code to convert the .ui files to .py
+pyside6-uic ui_timeline.ui > ui_timeline.py; pyside6-uic ui_ai_results.ui > ui_ai_results.py; pyside6-uic ui_image_viewer.ui > ui_image_viewer.py; pyside6-uic ui_images.ui > ui_images.py; pyside6-uic ui_ai_launcher.ui > ui_ai_launcher.py; pyside6-uic ui_upsert_skin_lesion.ui > ui_upsert_skin_lesion.py; pyside6-uic ui_check_patient.ui > ui_check_patient.py; pyside6-uic ui_upsert_patient_preview.ui > ui_upsert_patient_preview.py; pyside6-uic ui_upsert_patient.ui > ui_upsert_patient.py; pyside6-uic ui_upsert_patient_mi.ui > ui_upsert_patient_mi.py;  pyside6-uic ui_create_account.ui > ui_create_account.py; pyside6-uic ui_login.ui > ui_login.py; pyside6-uic ui_patients.ui > ui_patients.py
+
+
+# ------------- create .exe -------------
+# 	basic
+pyinstaller.exe main.py
+
+# 	without console RECOMMENDED
+pyinstaller.exe --noconsole main.py
+
+# 	one file with logo
+pyinstaller.exe --onefile --windowed --icon=logo.png main.py

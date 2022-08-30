@@ -61,14 +61,21 @@ class CheckPatientView(ViewObject):
         #label
         self.ui.lb_title.set_title(1)
         self.ui.lb_patient_information.set_title(2)
+        self.ui.lb_title_2.set_title(2)
+        self.ui.lb_basic_information.set_title(3)
+        self.ui.lb_medical_information.set_title(3)
 
         # id
         self.ui.i_id.setText(tf.f(self.p.id, translate=False))
+        self.ui.i_id.set_decoration("mi_content")
 
         # basic information
         self.ui.i_first_name.setText(tf.f(self.p.first_name, translate=False))
+        self.ui.i_first_name.set_decoration("mi_content")
         self.ui.i_last_name.setText(tf.f(self.p.last_name, translate=False))
+        self.ui.i_last_name.set_decoration("mi_content")
         self.ui.i_age.setText(tf.f(self.p.age, translate=False))
+        self.ui.i_age.set_decoration("mi_content")
 
         if self.p.gender == 0:
             self.ui.i_gender.setText(tf.f("Woman"))
@@ -76,19 +83,14 @@ class CheckPatientView(ViewObject):
             self.ui.i_gender.setText(tf.f("Man"))
         else:
             self.ui.i_gender.setText(tf.f("Other"))
+        self.ui.i_gender.set_decoration("mi_content")
 
         # navigator
         self.ui.bt_add_lesion.set_position(2)
 
         # medical information
-#        self.c_mi_content_layout = QFormLayout(self.ui.c_mi_content)
-#        self.c_mi_content_layout.setVerticalSpacing(16)
         self.show_medical_information()
 
-        # skin lesions preview
-#        self.skin_lesions_layout = QVBoxLayout(self.ui.c_skin_lesions)
-#        self.skin_lesions_layout.setSpacing(40)
-#        self.skin_lesions_layout.setContentsMargins(0, 0, 0, 0)
 
     def connect_ui_signals(self):
         # navigator
@@ -115,12 +117,3 @@ class CheckPatientView(ViewObject):
     @Slot()
     def add_new_skin_lesion(self):
         self.s_change_view.emit(cfg.CHECK_PATIENT_VIEW, cfg.UPSERT_SKIN_LESION_VIEW, {"patient" : self.p, "skin_lesion": None})
-
-#    def refresh(self):
-#        for skl in self.p.skin_lesions:
-#            skl_photography = skl.get_photography()
-#            if skl_photography is not None:
-#                self.skin_lesion_previews[skl.number].refresh_image(skl_photography)
-#            else:
-#                self.skin_lesion_previews[skl.number].refresh_image(Image(cfg.IMG_LOGO_PATH_NAME, "logo"))
-

@@ -141,7 +141,7 @@
             <x>0</x>
             <y>0</y>
             <width>488</width>
-            <height>704</height>
+            <height>698</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -193,7 +193,7 @@
   <customwidget>
    <class>NavigatorButton</class>
    <extends>QPushButton</extends>
-   <header>.promoted.navigator_button</header>
+   <header location="global">.promoted.navigator_button</header>
   </customwidget>
  </customwidgets>
  <resources/>

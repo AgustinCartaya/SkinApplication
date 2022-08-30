@@ -15,9 +15,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QFrame, QHBoxLayout, QLabel,
-    QScrollArea, QSizePolicy, QSpacerItem, QVBoxLayout,
-    QWidget)
+from PySide6.QtWidgets import (QApplication, QFrame, QHBoxLayout, QScrollArea,
+    QSizePolicy, QSpacerItem, QVBoxLayout, QWidget)
 
 from .promoted.button import Button
 from .promoted.label import Label
@@ -132,7 +131,7 @@ class Ui_ai_launcher(object):
         self.verticalLayout_5.setSpacing(20)
         self.verticalLayout_5.setObjectName(u"verticalLayout_5")
         self.verticalLayout_5.setContentsMargins(0, 0, 0, 0)
-        self.lb_skl_required_info = QLabel(self.c_skl_required_info)
+        self.lb_skl_required_info = Label(self.c_skl_required_info)
         self.lb_skl_required_info.setObjectName(u"lb_skl_required_info")
 
         self.verticalLayout_5.addWidget(self.lb_skl_required_info, 0, Qt.AlignHCenter)
@@ -266,7 +265,7 @@ class Ui_ai_launcher(object):
 
         self.ly_center.addLayout(self.ly_center_content)
 
-        self.lb_error = QLabel(ai_launcher)
+        self.lb_error = Label(ai_launcher)
         self.lb_error.setObjectName(u"lb_error")
 
         self.ly_center.addWidget(self.lb_error, 0, Qt.AlignHCenter)

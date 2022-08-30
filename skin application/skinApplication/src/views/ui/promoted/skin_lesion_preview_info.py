@@ -82,6 +82,7 @@ class SkinLesionPreviewInfo(PromotedContainer):
 
         self.lb_title = Label(self.c_title)
         self.lb_title.setMaximumSize(QSize(16777215, 20))
+        self.lb_title.set_title(3)
 
         self.c_title_layout.addWidget(self.lb_title, 0, Qt.AlignHCenter)
 
@@ -108,6 +109,7 @@ class SkinLesionPreviewInfo(PromotedContainer):
         # AI title
         lb_ai_result_title = Label(c_ai_result)
         lb_ai_result_title.setText(tf.f(ai_name, translate=False))
+        lb_ai_result_title.set_title(4)
         ly_ai_result.addWidget(lb_ai_result_title)
 
         # AI content

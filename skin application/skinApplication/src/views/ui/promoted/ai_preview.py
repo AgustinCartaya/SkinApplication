@@ -1,6 +1,8 @@
 from .promoted_container import *
 
 from PySide6.QtWidgets import QScrollArea, QWidget
+from .form_item import FormItem
+
 
 class AIPreview(PromotedContainer):
 
@@ -71,6 +73,7 @@ class AIPreview(PromotedContainer):
         # title
         self.lb_description = Label(self.c_description)
         self.lb_description.setText(tf.f("Description"))
+        self.lb_description.set_title(3)
         self.lb_description.setMaximumSize(QSize(16777215, 20))
         self.ly_description.addWidget(self.lb_description, 0, Qt.AlignHCenter)
 
@@ -99,34 +102,26 @@ class AIPreview(PromotedContainer):
         # title
         self.lb_results = Label(self.c_results)
         self.lb_results.setText(tf.f("Results"))
+        self.lb_results.set_title(3)
         self.lb_results.setMaximumSize(QSize(16777215, 20))
         self.ly_results.addWidget(self.lb_results, 0, Qt.AlignHCenter)
 
         # content
-        self.ly_form_results = QFormLayout()
-        self.ly_form_results.setVerticalSpacing(12)
-        self.ly_results.addLayout(self.ly_form_results)
+        self.ly_content = QVBoxLayout()
+        self.ly_content.setSpacing(12)
+        self.ly_results.addLayout(self.ly_content)
 
         self.layout.addWidget(self.c_results)
 
     def __show_results(self):
         self.c_description.hide()
         self.c_results.show()
-        count = 0
 
         for res_name, res_content in self.ai_results.items():
-            # Result name
-            lb_res_name = Label(self.c_results)
-            lb_res_name.setText(tf.f(res_name, translate=False))
-#            ly_res.addWidget(lb_res_name)
-            self.ly_form_results.setWidget(count, QFormLayout.LabelRole, lb_res_name)
+            res = FormItem(self.c_results)
+            res.initialize(res_name, res_content)
+            self.ly_content.addWidget(res)
 
-            # Result Content
-            lb_res_content = Label(self.c_results)
-            lb_res_content.setText(tf.f(res_content, translate=False))
-            self.ly_form_results.setWidget(count, QFormLayout.FieldRole, lb_res_content)
-
-            count = count +1
 
     @Slot()
     def __launch_ai(self):

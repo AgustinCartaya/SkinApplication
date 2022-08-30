@@ -22,6 +22,19 @@ class AILauncherView(ViewObject):
         self.ui = Ui_ai_launcher()
         self.ui.setupUi(self)
 
+        # labels
+        self.ui.lb_title.set_title(1)
+        self.ui.lb_required_images.set_title(2)
+        self.ui.lb_required_information.set_title(2)
+
+        self.ui.lb_patient_required_info.set_title(3)
+        self.ui.lb_skl_required_info.set_title(3)
+
+        self.ui.lb_image_name.set_bold(True)
+        self.ui.lb_max_images.set_bold(True)
+        self.ui.lb_min_images.set_bold(True)
+        self.ui.lb_selected_images.set_bold(True)
+
         # navigator
         self.ui.bt_learn_more.set_position(2)
 

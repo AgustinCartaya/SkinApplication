@@ -172,7 +172,7 @@
                   <number>9</number>
                  </property>
                  <item>
-                  <widget class="QLabel" name="lb_filter_image_type">
+                  <widget class="Label" name="lb_filter_image_type">
                    <property name="maximumSize">
                     <size>
                      <width>16777215</width>
@@ -180,7 +180,7 @@
                     </size>
                    </property>
                    <property name="text">
-                    <string>TYPE IMAGE</string>
+                    <string>Image type</string>
                    </property>
                   </widget>
                  </item>
@@ -209,9 +209,9 @@
                    <number>12</number>
                   </property>
                   <item>
-                   <widget class="QLabel" name="lb_filter_date">
+                   <widget class="Label" name="lb_filter_date">
                     <property name="text">
-                     <string>DATE</string>
+                     <string>Date</string>
                     </property>
                    </widget>
                   </item>
@@ -224,7 +224,7 @@
                      <number>9</number>
                     </property>
                     <item>
-                     <widget class="QLabel" name="lb_filter_date_precise">
+                     <widget class="Label" name="lb_filter_date_precise">
                       <property name="text">
                        <string>Precise</string>
                       </property>
@@ -274,7 +274,7 @@
                      <number>9</number>
                     </property>
                     <item>
-                     <widget class="QLabel" name="lb_filter_date_range">
+                     <widget class="Label" name="lb_filter_date_range">
                       <property name="text">
                        <string>Range</string>
                       </property>
@@ -374,7 +374,7 @@
               <number>0</number>
              </property>
              <item alignment="Qt::AlignHCenter">
-              <widget class="QLabel" name="lb_description">
+              <widget class="Label" name="lb_description">
                <property name="text">
                 <string>Description</string>
                </property>
@@ -391,7 +391,7 @@
                   <x>0</x>
                   <y>0</y>
                   <width>303</width>
-                  <height>351</height>
+                  <height>349</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -443,18 +443,29 @@
             </property>
            </spacer>
           </item>
-          <item alignment="Qt::AlignHCenter">
-           <widget class="Button" name="bt_delete_image">
-            <property name="minimumSize">
-             <size>
-              <width>150</width>
-              <height>0</height>
-             </size>
+          <item>
+           <layout class="QHBoxLayout" name="ly_bt">
+            <property name="leftMargin">
+             <number>9</number>
             </property>
-            <property name="text">
-             <string>Delete image</string>
+            <property name="rightMargin">
+             <number>9</number>
             </property>
-           </widget>
+            <item alignment="Qt::AlignHCenter">
+             <widget class="Button" name="bt_delete_image">
+              <property name="text">
+               <string>Delete image</string>
+              </property>
+             </widget>
+            </item>
+            <item alignment="Qt::AlignHCenter">
+             <widget class="Button" name="bt_clear_selection">
+              <property name="text">
+               <string>Clear selection</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
          </layout>
         </item>
@@ -497,7 +508,7 @@
            <number>0</number>
           </property>
           <item alignment="Qt::AlignHCenter">
-           <widget class="QLabel" name="lb_organizer_titles">
+           <widget class="Label" name="lb_organizer_titles">
             <property name="maximumSize">
              <size>
               <width>16777215</width>
@@ -721,7 +732,12 @@
   <customwidget>
    <class>NavigatorButton</class>
    <extends>QPushButton</extends>
-   <header>.promoted.navigator_button</header>
+   <header location="global">.promoted.navigator_button</header>
+  </customwidget>
+  <customwidget>
+   <class>Button</class>
+   <extends>QPushButton</extends>
+   <header>.promoted.button</header>
   </customwidget>
   <customwidget>
    <class>CheckButton</class>
@@ -739,11 +755,6 @@
    <extends>QFrame</extends>
    <header>.promoted.filter_skl_img_container</header>
    <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>Button</class>
-   <extends>QPushButton</extends>
-   <header>.promoted.button</header>
   </customwidget>
  </customwidgets>
  <resources/>

@@ -54,7 +54,7 @@ class FormItem(PromotedContainer):
 
         if self.disposition == self.DISPOSITION_H:
             # spacer
-            sp = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+            sp = QSpacerItem(40, 5, QSizePolicy.Expanding, QSizePolicy.Minimum)
             self.layout.addItem(sp)
 
 
@@ -70,6 +70,7 @@ class FormItem(PromotedContainer):
     def __fill_content(self):
         self.lb_title.setText(tf.f(self.title, translate=False, colon=True, format=True))
         self.lb_value.setText(tf.f(self.content, translate=False))
+        self.lb_value.set_decoration("mi_content")
 
 
 

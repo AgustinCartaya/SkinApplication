@@ -98,7 +98,7 @@ class Ui_images(object):
         self.ly_filter_image_type = QVBoxLayout()
         self.ly_filter_image_type.setSpacing(9)
         self.ly_filter_image_type.setObjectName(u"ly_filter_image_type")
-        self.lb_filter_image_type = QLabel(self.c_filters)
+        self.lb_filter_image_type = Label(self.c_filters)
         self.lb_filter_image_type.setObjectName(u"lb_filter_image_type")
         self.lb_filter_image_type.setMaximumSize(QSize(16777215, 20))
 
@@ -121,7 +121,7 @@ class Ui_images(object):
         self.verticalLayout_5 = QVBoxLayout(self.c_filter_date)
         self.verticalLayout_5.setSpacing(12)
         self.verticalLayout_5.setObjectName(u"verticalLayout_5")
-        self.lb_filter_date = QLabel(self.c_filter_date)
+        self.lb_filter_date = Label(self.c_filter_date)
         self.lb_filter_date.setObjectName(u"lb_filter_date")
 
         self.verticalLayout_5.addWidget(self.lb_filter_date)
@@ -130,7 +130,7 @@ class Ui_images(object):
         self.ly_filter_date_precise.setSpacing(4)
         self.ly_filter_date_precise.setObjectName(u"ly_filter_date_precise")
         self.ly_filter_date_precise.setContentsMargins(9, -1, -1, -1)
-        self.lb_filter_date_precise = QLabel(self.c_filter_date)
+        self.lb_filter_date_precise = Label(self.c_filter_date)
         self.lb_filter_date_precise.setObjectName(u"lb_filter_date_precise")
 
         self.ly_filter_date_precise.addWidget(self.lb_filter_date_precise)
@@ -158,7 +158,7 @@ class Ui_images(object):
         self.ly_filter_date_range.setSpacing(4)
         self.ly_filter_date_range.setObjectName(u"ly_filter_date_range")
         self.ly_filter_date_range.setContentsMargins(9, -1, -1, -1)
-        self.lb_filter_date_range = QLabel(self.c_filter_date)
+        self.lb_filter_date_range = Label(self.c_filter_date)
         self.lb_filter_date_range.setObjectName(u"lb_filter_date_range")
 
         self.ly_filter_date_range.addWidget(self.lb_filter_date_range)
@@ -211,7 +211,7 @@ class Ui_images(object):
         self.verticalLayout_4.setSpacing(20)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.verticalLayout_4.setContentsMargins(0, 0, 0, 0)
-        self.lb_description = QLabel(self.c_description)
+        self.lb_description = Label(self.c_description)
         self.lb_description.setObjectName(u"lb_description")
 
         self.verticalLayout_4.addWidget(self.lb_description, 0, Qt.AlignHCenter)
@@ -221,7 +221,7 @@ class Ui_images(object):
         self.sc_description_content.setWidgetResizable(True)
         self.c_description_content = QWidget()
         self.c_description_content.setObjectName(u"c_description_content")
-        self.c_description_content.setGeometry(QRect(0, 0, 303, 351))
+        self.c_description_content.setGeometry(QRect(0, 0, 303, 349))
         self.verticalLayout_3 = QVBoxLayout(self.c_description_content)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.verticalLayout_3.setContentsMargins(16, 0, 0, -1)
@@ -245,11 +245,21 @@ class Ui_images(object):
 
         self.verticalLayout_10.addItem(self.verticalSpacer_2)
 
+        self.ly_bt = QHBoxLayout()
+        self.ly_bt.setObjectName(u"ly_bt")
+        self.ly_bt.setContentsMargins(9, -1, 9, -1)
         self.bt_delete_image = Button(self.c_left)
         self.bt_delete_image.setObjectName(u"bt_delete_image")
-        self.bt_delete_image.setMinimumSize(QSize(150, 0))
 
-        self.verticalLayout_10.addWidget(self.bt_delete_image, 0, Qt.AlignHCenter)
+        self.ly_bt.addWidget(self.bt_delete_image, 0, Qt.AlignHCenter)
+
+        self.bt_clear_selection = Button(self.c_left)
+        self.bt_clear_selection.setObjectName(u"bt_clear_selection")
+
+        self.ly_bt.addWidget(self.bt_clear_selection, 0, Qt.AlignHCenter)
+
+
+        self.verticalLayout_10.addLayout(self.ly_bt)
 
 
         self.verticalLayout_18.addLayout(self.verticalLayout_10)
@@ -268,7 +278,7 @@ class Ui_images(object):
         self.verticalLayout = QVBoxLayout(self.c_organizer)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
-        self.lb_organizer_titles = QLabel(self.c_organizer)
+        self.lb_organizer_titles = Label(self.c_organizer)
         self.lb_organizer_titles.setObjectName(u"lb_organizer_titles")
         self.lb_organizer_titles.setMaximumSize(QSize(16777215, 20))
 
@@ -377,13 +387,14 @@ class Ui_images(object):
         self.lb_title.setText(QCoreApplication.translate("images", u"Images", None))
         self.bt_command.setText(QCoreApplication.translate("images", u"View", None))
         self.lb_filters_title.setText(QCoreApplication.translate("images", u"Filters", None))
-        self.lb_filter_image_type.setText(QCoreApplication.translate("images", u"TYPE IMAGE", None))
-        self.lb_filter_date.setText(QCoreApplication.translate("images", u"DATE", None))
+        self.lb_filter_image_type.setText(QCoreApplication.translate("images", u"Image type", None))
+        self.lb_filter_date.setText(QCoreApplication.translate("images", u"Date", None))
         self.lb_filter_date_precise.setText(QCoreApplication.translate("images", u"Precise", None))
         self.lb_filter_date_range.setText(QCoreApplication.translate("images", u"Range", None))
         self.lb_date_range_to.setText(QCoreApplication.translate("images", u"to", None))
         self.lb_description.setText(QCoreApplication.translate("images", u"Description", None))
         self.bt_delete_image.setText(QCoreApplication.translate("images", u"Delete image", None))
+        self.bt_clear_selection.setText(QCoreApplication.translate("images", u"Clear selection", None))
         self.lb_organizer_titles.setText(QCoreApplication.translate("images", u"Organizer", None))
         self.bt_sorter_dsc.setText(QCoreApplication.translate("images", u"z-A", None))
         self.bt_sorter_asc.setText(QCoreApplication.translate("images", u"A-z", None))
