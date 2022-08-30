@@ -1,9 +1,8 @@
-## This Python file uses the following encoding: utf-8
-#import sys
-#from pathlib import Path
-#import os
+# @autor: Agustin CARTAYA
 
 if __name__ == '__main__':
     import sys
     from src import app
+
+    # calling the start of the application
     sys.exit(app.run())
