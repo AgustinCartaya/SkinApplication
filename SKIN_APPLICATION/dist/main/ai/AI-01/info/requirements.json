@@ -1,0 +1,42 @@
+{
+
+"images":  { 
+            "dermoscopy" : {
+                            "min": 1,
+                            "max":2
+                            },
+            "microscopy" : {
+                            "min": 1,
+                            "max":4
+                            },
+            "photography" : {
+                            "min": 0,
+                            "max":1
+                            }
+            }
+,
+"medical_information": {
+                            "eye_color" : {
+                                        "name":"Eye color",
+                                        "type":"options",
+                                        "items":["Black","Brown","Blue","Gray","Green","Hazel"]
+                                        },
+                            "hair_color" : {
+                                            "name":"Hair color",
+                                            "type":"options",
+                                            "items":["Black","Brown","Blonde","Grey","White"]
+                                            },
+                            "weight" : {
+                                            "name":"Weight",
+                                            "type":"float",
+                                            "scale":"weight"
+                                        }
+                        },
+"skin_lesion_characteristics":  {
+                                "diameter" : {
+                                                "name":"Diameter",
+                                                "type":"float",
+                                                "scale":"length"
+                                            }
+                                }
+}
